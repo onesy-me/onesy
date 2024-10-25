@@ -116,7 +116,9 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
     value: React.useRef<any>(),
     focus: React.useRef<any>(),
     min: React.useRef<any>(),
-    max: React.useRef<any>()
+    max: React.useRef<any>(),
+    onChange: React.useRef(onChange_),
+    props: React.useRef(props)
   };
 
   refs.value.current = value;
@@ -126,6 +128,10 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
   refs.min.current = min;
 
   refs.max.current = max;
+
+  refs.onChange.current = onChange_;
+
+  refs.props.current = props;
 
   React.useEffect(() => {
     setInit(true);
@@ -210,22 +216,22 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
   const onChange = (valueNew_: any) => {
     let valueNew: any = valueNew_;
 
-    const min_ = min !== undefined ? min : Number.MIN_SAFE_INTEGER;
+    const min_ = refs.min.current !== undefined ? refs.min.current : Number.MIN_SAFE_INTEGER;
 
-    const max_ = max !== undefined ? max : Number.MAX_SAFE_INTEGER;
+    const max_ = refs.max.current !== undefined ? refs.max.current : Number.MAX_SAFE_INTEGER;
 
-    if (['', ' ', props.prefix, `${props.prefix} `, undefined].includes(valueNew)) valueNew = '';
+    if (['', ' ', refs.props.current.prefix, `${refs.props.current.prefix} `, undefined].includes(valueNew)) valueNew = '';
 
-    if (!['', ' ', '+', '-', 'e', 'e+', 'e-', `${props.prefix}+`, `${props.prefix}-`, undefined].includes(valueNew)) {
-      if (props.prefix !== undefined) valueNew = valueNew.replace(props.prefix, '');
+    if (!['', ' ', '+', '-', 'e', 'e+', 'e-', `${refs.props.current.prefix}+`, `${refs.props.current.prefix}-`, undefined].includes(valueNew)) {
+      if (refs.props.current.prefix !== undefined) valueNew = valueNew.replace(refs.props.current.prefix, '');
 
-      if (props.thousand) valueNew = valueNew.replace(new RegExp(`\\${props.thousandSeparator || ','}`, 'g'), '');
+      if (refs.props.current.thousand) valueNew = valueNew.replace(new RegExp(`\\${refs.props.current.thousandSeparator || ','}`, 'g'), '');
 
       valueNew = clamp(+valueNew, min_, max_);
 
-      if (props.thousand) valueNew = numberWithCommas(valueNew);
+      if (refs.props.current.thousand) valueNew = numberWithCommas(valueNew);
 
-      if (props.prefix !== undefined) valueNew = `${props.prefix}${valueNew}`;
+      if (refs.props.current.prefix !== undefined) valueNew = `${refs.props.current.prefix}${valueNew}`;
     }
 
     if (
@@ -234,27 +240,27 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
     ) valueNew = valueNew_;
 
     // Update inner or controlled
-    if (!props.hasOwnProperty('value')) setValue(valueNew);
+    if (!refs.props.current.hasOwnProperty('value')) setValue(valueNew);
 
-    if (is('function', onChange_)) onChange_(valueNew);
+    if (is('function', refs.onChange.current)) refs.onChange.current(valueNew);
   };
 
   const onIncrement = () => {
     let valueNew: any = refs.value.current || '0';
 
-    if (props.prefix !== undefined) valueNew = valueNew.replace(props.prefix, '');
+    if (refs.props.current.prefix !== undefined) valueNew = valueNew.replace(refs.props.current.prefix, '');
 
-    if (props.thousand) valueNew = valueNew.replace(new RegExp(`\\${props.thousandSeparator || ','}`, 'g'), '');
+    if (refs.props.current.thousand) valueNew = valueNew.replace(new RegExp(`\\${refs.props.current.thousandSeparator || ','}`, 'g'), '');
 
-    const min_ = min !== undefined ? min : Number.MIN_SAFE_INTEGER;
+    const min_ = refs.min.current !== undefined ? refs.min.current : Number.MIN_SAFE_INTEGER;
 
-    const max_ = max !== undefined ? max : Number.MAX_SAFE_INTEGER;
+    const max_ = refs.max.current !== undefined ? refs.max.current : Number.MAX_SAFE_INTEGER;
 
     valueNew = clamp(+valueNew + incrementValue, min_, max_);
 
-    if (props.thousand) valueNew = numberWithCommas(valueNew);
+    if (refs.props.current.thousand) valueNew = numberWithCommas(valueNew);
 
-    if (props.prefix !== undefined) valueNew = `${props.prefix}${valueNew}`;
+    if (refs.props.current.prefix !== undefined) valueNew = `${refs.props.current.prefix}${valueNew}`;
 
     // Update
     onChange(valueNew);
@@ -263,19 +269,19 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
   const onDecrement = () => {
     let valueNew: any = refs.value.current || '0';
 
-    if (props.prefix !== undefined) valueNew = valueNew.replace(props.prefix, '');
+    if (refs.props.current.prefix !== undefined) valueNew = valueNew.replace(refs.props.current.prefix, '');
 
-    if (props.thousand) valueNew = valueNew.replace(new RegExp(`\\${props.thousandSeparator || ','}`, 'g'), '');
+    if (refs.props.current.thousand) valueNew = valueNew.replace(new RegExp(`\\${refs.props.current.thousandSeparator || ','}`, 'g'), '');
 
-    const min_ = min !== undefined ? min : Number.MIN_SAFE_INTEGER;
+    const min_ = refs.min.current !== undefined ? refs.min.current : Number.MIN_SAFE_INTEGER;
 
-    const max_ = max !== undefined ? max : Number.MAX_SAFE_INTEGER;
+    const max_ = refs.max.current !== undefined ? refs.max.current : Number.MAX_SAFE_INTEGER;
 
     valueNew = clamp(+valueNew - decrementValue, min_, max_);
 
-    if (props.thousand) valueNew = numberWithCommas(valueNew);
+    if (refs.props.current.thousand) valueNew = numberWithCommas(valueNew);
 
-    if (props.prefix !== undefined) valueNew = `${props.prefix}${valueNew}`;
+    if (refs.props.current.prefix !== undefined) valueNew = `${refs.props.current.prefix}${valueNew}`;
 
     // Update
     onChange(valueNew);

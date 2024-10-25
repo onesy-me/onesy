@@ -476,6 +476,9 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
         if (!openOnFocus) return open_;
 
         refs.input.current.focus();
+
+        // if input wrapper overflows
+        (event.target as HTMLElement).scrollTo(0, 0);
       }
 
       return !open_;
