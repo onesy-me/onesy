@@ -56,6 +56,7 @@ const IconMaterialArrowForwardIos = React.forwardRef((props: any, ref) => {
 
 const useStyle = styleMethod(theme => ({
   root: {
+    padding: '16px',
     background: theme.palette.background.default.primary
   },
 
