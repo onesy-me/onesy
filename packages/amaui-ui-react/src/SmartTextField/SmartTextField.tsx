@@ -1064,11 +1064,6 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     size: 'small'
   };
 
-  const MiniMenuProps: any = {
-    tonal: false,
-    color: 'default'
-  };
-
   const Input = React.useCallback(React.forwardRef((propsInput: any, ref_: any) => {
     const {
       label: labelInput,
@@ -1096,7 +1091,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
         direction='column'
 
-        color='default'
+        color='themed'
 
         Component={Surface}
 
@@ -1129,11 +1124,11 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
             onChange={onChange__}
 
-            className={classNames([
-              classes.textFieldColor
-            ])}
-
             {...InputProps}
+
+            style={{
+              width: 'auto'
+            }}
           />
 
           <Button
@@ -1449,11 +1444,11 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
                       role='toolbar'
 
+                      color='themed'
+
                       aria-label='Mini menu'
 
                       Component={Surface}
-
-                      {...MiniMenuProps}
 
                       className={classNames([
                         classes.textMiniMenu
