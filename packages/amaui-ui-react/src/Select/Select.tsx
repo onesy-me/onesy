@@ -738,9 +738,9 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
                 role={'option'}
 
-                selected={multiple ? value.includes(item?.value) : value === item?.value}
+                selected={item.selected !== undefined ? item.selected : multiple ? value.includes(item?.value) : value === item?.value}
 
-                preselected={!(multiple ? value.includes(item?.value) : value === item?.value)}
+                preselected={item.preselected !== undefined ? item.preselected : !(multiple ? value.includes(item?.value) : value === item?.value)}
 
                 onMouseUp={onMouseUp}
 
@@ -778,9 +778,9 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
               role: 'option',
 
-              selected: multiple ? value.includes(item.props?.value) : value === item.props?.value,
+              selected: item.props.selected !== undefined ? item.props.selected : multiple ? value.includes(item.props?.value) : value === item.props?.value,
 
-              preselected: !(multiple ? value.includes(item.props?.value) : value === item.props?.value),
+              preselected: item.props.preselected !== undefined ? item.props.preselected : !(multiple ? value.includes(item.props?.value) : value === item.props?.value),
 
               onMouseUp,
 
