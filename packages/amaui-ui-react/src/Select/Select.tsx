@@ -507,7 +507,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
   const endIcons = [
     end,
 
-    clear && !!(multiple ? value.length : value) && (
+    clear && !!(multiple ? value.length : ![undefined, null].includes(value)) && (
       <IconButton
         onClick={onClear}
 
@@ -599,7 +599,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
         onFocus={onFocus}
 
-        enabled={open || focus || mouseDown || !!(is('array', value) ? value.length : value !== undefined)}
+        enabled={open || focus || mouseDown || !!(is('array', value) ? value.length : ![undefined, null].includes(value))}
 
         focus={open || focus || mouseDown}
 
