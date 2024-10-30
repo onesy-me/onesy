@@ -736,8 +736,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   placeholder = placeholder_ || placeholder;
 
   const buttonProps = {
-    tonal,
-    color,
+    color: 'inherit',
     version: 'text',
     size,
 
@@ -1153,14 +1152,17 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
           validate={validate}
 
-          CalendarMonthProps={{
-            outside: false,
-            labels: !fullScreen
-          }}
-
           {...CalendarProps}
 
           {...CalendarPropsMobile}
+
+          CalendarMonthProps={{
+            outside: false,
+            labels: !fullScreen,
+
+            ...CalendarProps?.CalendarMonthProps,
+            ...CalendarPropsMobile?.CalendarMonthProps
+          }}
 
           className={classNames([
             staticClassName('DatePicker', theme) && [
@@ -1250,10 +1252,6 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
   const desktop = (
     <Calendar
-      tonal={tonal}
-
-      color={color}
-
       value={value}
 
       calendar={calendar}

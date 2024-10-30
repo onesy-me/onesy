@@ -889,9 +889,6 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   const heading = (range ? (tab === 'date' ? headingTextDateRange : headingTextTimeRange) : (tab === 'date' ? headingTextDate : headingTextTime)) || headingText;
 
   const PickerProps: any = {
-    tonal,
-    color,
-
     value,
     onChange: onPickerChange,
 
@@ -916,10 +913,6 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
   const element = (
     <Surface
-      tonal={tonal}
-
-      color={color}
-
       gap={0}
 
       direction='column'

@@ -305,7 +305,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     validate,
     labels = true,
     dayNamesFull,
-    noTransition,
+    noTransition = true,
 
     valid: valid_,
     renderDay,
@@ -606,11 +606,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
   const getCalendar = (status?: TTransitionStatus) => {
     return (
-      <Surface
-        tonal={tonal}
-
-        color={color}
-      >
+      <Surface>
         {({ palette }) => (
           <Line
             gap={0.5}

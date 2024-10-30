@@ -979,8 +979,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   };
 
   const buttonProps = {
-    tonal,
-    color,
+    color: 'inherit',
     version: 'text',
     size,
 
@@ -995,10 +994,6 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
   const clock = (index = 0) => (
     <Clock
-      tonal={tonal}
-
-      color={color}
-
       size={size}
 
       format={format}
@@ -1497,10 +1492,6 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
   const element = (
     <Surface
-      tonal={tonal}
-
-      color={color}
-
       gap={0}
 
       direction='column'
@@ -1542,10 +1533,6 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
       {/* Tabs */}
       {range && (
         <Tabs
-          tonal={tonal}
-
-          color={color}
-
           justify='center'
 
           initialLineUpdateTimeout={340}

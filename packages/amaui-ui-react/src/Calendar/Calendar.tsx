@@ -290,7 +290,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
   const {
     tonal = true,
-    color = 'primary',
+    color = 'default',
 
     version = 'regular',
 
@@ -485,9 +485,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
       case 'year':
         return (
           <Carousel
-            tonal={tonal}
-
-            color={color}
+            color='default'
 
             id={value[0].milliseconds + (value[1]?.milliseconds || 0) + year}
 
@@ -535,9 +533,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                   </Type>
 
                   <CalendarMonth
-                    tonal={tonal}
-
-                    color={color}
+                    color='default'
 
                     value={value}
 
@@ -657,9 +653,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                     )}
 
                     <CalendarMonth
-                      tonal={tonal}
-
-                      color={color}
+                      color='default'
 
                       value={value}
 
@@ -730,10 +724,6 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
         refs.root.current = item;
       }}
-
-      tonal={tonal}
-
-      color={color}
 
       className={classNames([
         staticClassName('Calendar', theme) && [
@@ -1092,9 +1082,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
             <List
               ref={refs.month}
 
-              tonal={tonal}
-
-              color={color}
+              color='default'
 
               size='large'
 
@@ -1175,9 +1163,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
       {
         open === 'year' && (
           <Surface
-            tonal={tonal}
-
-            color={color}
+            color='default'
           >
             {({ palette }) => (menu === 'month-year' ?
               <Fade
@@ -1186,9 +1172,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                 <List
                   ref={refs.year}
 
-                  tonal={tonal}
-
-                  color={color}
+                  color='default'
 
                   size={size}
 
@@ -1269,10 +1253,6 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
               >
                 <Line
                   ref={refs.year}
-
-                  tonal={tonal}
-
-                  color={color}
 
                   direction='row'
 

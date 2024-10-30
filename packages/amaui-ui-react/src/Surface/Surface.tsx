@@ -730,7 +730,7 @@ const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
 
   const {
     tonal = true,
-    color: color_ = 'primary',
+    color: color_ = 'default',
     version = 'filled',
     elevation,
 
