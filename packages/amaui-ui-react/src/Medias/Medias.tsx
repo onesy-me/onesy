@@ -39,6 +39,8 @@ const useStyle = styleMethod(theme => ({
   },
 
   items: {
+    width: 'auto',
+    maxWidth: '100%',
     padding: theme.methods.space.value(0.5, 'px'),
     overflow: 'auto hidden'
   },
@@ -223,7 +225,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
     show = ['image', 'video', 'audio', 'other'],
 
-    noName,
+    noName = true,
 
     IconDocument = IconMaterialDraft,
 
@@ -588,8 +590,6 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
           align='flex-start'
 
           justify='flex-start'
-
-          fullWidth
 
           {...ItemsProps}
 
