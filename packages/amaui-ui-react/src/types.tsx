@@ -64,4 +64,6 @@ export interface IMediaObject {
   url: string;
 
   urlSmall?: string;
+
+  urlEmbed?: string;
 }

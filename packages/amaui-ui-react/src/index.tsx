@@ -624,3 +624,6 @@ export * from './Space';
 
 export { default as CalendarViews } from './CalendarViews';
 export * from './CalendarViews';
+
+export { default as Info } from './Info';
+export * from './Info';

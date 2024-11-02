@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
+import { cleanValue, is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
+import LinkElement from '../Link';
 import TypeElement from '../Type';
 import InteractionElement from '../Interaction';
 import LineElement, { ILine } from '../Line/Line';
@@ -39,7 +40,6 @@ const useStyle = styleMethod(theme => ({
   },
 
   items: {
-    width: 'auto',
     maxWidth: '100%',
     padding: theme.methods.space.value(0.5, 'px'),
     overflow: 'auto hidden'
@@ -161,6 +161,31 @@ const useStyle = styleMethod(theme => ({
 
   other_size_large: {
     borderRadius: theme.methods.shape.radius.value(3)
+  },
+
+  externalLinks: {
+    overflow: 'auto hidden'
+  },
+
+  aspectRatioYoutube: {
+    aspectRatio: '16 / 9',
+    width: '100%',
+    maxWidth: '750px'
+  },
+
+  aspectRatioVimeo: {
+    aspectRatio: '16 / 9',
+    width: '440px'
+  },
+
+  aspectRatioInstagram: {
+    aspectRatio: '3 / 5.6',
+    width: '340px'
+  },
+
+  aspectRatioTiktok: {
+    aspectRatio: '3 / 6.84',
+    width: '324px'
   }
 }), { name: 'amaui-Medias' });
 
@@ -169,7 +194,7 @@ export interface IMediasItem {
   props?: any;
 }
 
-export type IMediasMediaVersion = 'image' | 'audio' | 'video' | 'other';
+export type IMediasMediaVersion = 'embed' | 'image' | 'audio' | 'video' | 'other';
 
 export interface IMedias extends ILine {
   size?: 'small' | 'regular' | 'large';
@@ -186,11 +211,13 @@ export interface IMedias extends ILine {
 
   NameProps?: IPropsAny;
   WrapperProps?: IPropsAny;
+  EmbedProps?: IPropsAny;
   ImageProps?: IPropsAny;
   AudioProps?: IPropsAny;
   VideoProps?: IPropsAny;
   OtherProps?: IPropsAny;
   ItemsProps?: IPropsAny;
+  EmbedItemsProps?: IPropsAny;
   ImageItemsProps?: IPropsAny;
   AudioItemsProps?: IPropsAny;
   VideoItemsProps?: IPropsAny;
@@ -203,6 +230,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMedias?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+
+  const Link = React.useMemo(() => theme?.elements?.Link || LinkElement, [theme]);
 
   const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
 
@@ -223,7 +252,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
     imageGallery = true,
 
-    show = ['image', 'video', 'audio', 'other'],
+    show = ['embed', 'image', 'video', 'audio', 'other'],
 
     noName = true,
 
@@ -231,11 +260,13 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
     NameProps,
     WrapperProps,
+    EmbedProps,
     ImageProps,
     AudioProps,
     VideoProps,
     OtherProps,
     ItemsProps,
+    EmbedItemsProps = { fullWidth: true },
     ImageItemsProps,
     AudioItemsProps,
     VideoItemsProps,
@@ -277,14 +308,16 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
       image: [],
       audio: [],
       video: [],
-      other: []
+      other: [],
+      embed: []
     };
 
-    (values as any).filter(Boolean).forEach(item => {
+    (values as IMediasItem[]).filter(Boolean).forEach(item => {
       const media = item.value;
 
       if (media) {
-        if (media.mime?.startsWith('image')) items_.image.push(item);
+        if (media.urlEmbed !== undefined) items_.embed.push(item);
+        else if (media.mime?.startsWith('image')) items_.image.push(item);
         else if (media.mime?.startsWith('audio')) items_.audio.push(item);
         else if (media.mime?.startsWith('video')) items_.video.push(item);
         else items_.other.push(item);
@@ -293,6 +326,101 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
     return items_;
   }, [values]);
+
+  const getLink = React.useCallback((item: IMediaObject, index: number) => {
+    if (!item?.urlEmbed) return null;
+
+    let url: URL;
+
+    try {
+      url = new URL(item.urlEmbed);
+    }
+    catch (error) {
+      console.log('Invalid embed URL', item);
+
+      return null;
+    }
+
+    const id = url.pathname?.split('/').filter(Boolean).slice(-1)[0];
+
+    if (item.urlEmbed.includes('youtu.be')) {
+      return (
+        <iframe
+          key={index}
+
+          title={item.name || ''}
+
+          src={`https://www.youtube.com/embed/${id}`}
+
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+
+          allowFullScreen
+
+          className={classes.aspectRatioYoutube}
+        />
+      );
+    }
+
+    if (item.urlEmbed.includes('instagram.com')) {
+      return (
+        <iframe
+          key={index}
+
+          title={item.name || ''}
+
+          src={`https://www.instagram.com/reel/${id}/embed`}
+
+          allowFullScreen
+
+          className={classes.aspectRatioInstagram}
+        />
+      );
+    }
+
+    if (item.urlEmbed.includes('tiktok.com')) {
+      return (
+        <iframe
+          key={index}
+
+          title={item.name || ''}
+
+          src={`https://www.tiktok.com/embed/v2/${id}`}
+
+          allowFullScreen
+
+          className={classes.aspectRatioTiktok}
+        />
+      );
+    }
+
+    if (item.urlEmbed.includes('vimeo.com')) {
+      return (
+        <iframe
+          key={index}
+
+          title={item.name || ''}
+
+          src={`https://player.vimeo.com/video/${id}`}
+
+          allowFullScreen
+
+          className={classes.aspectRatioVimeo}
+        />
+      );
+    }
+
+    return (
+      <Link
+        key={index}
+
+        href={item?.urlEmbed}
+
+        target='blank'
+      >
+        {item.name || item.urlEmbed}
+      </Link>
+    );
+  }, []);
 
   const getItem = (version: IMediasMediaVersion, item: IMediasItem, index: number) => {
     const media = item.value;
@@ -315,6 +443,10 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
         {media?.name || 'No name'}
       </Type>
     );
+
+    if (version === 'embed') {
+      return getLink(media, index);
+    }
 
     if (version === 'image') {
       return (
@@ -581,17 +713,19 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
     >
       {show.filter(item => !!items[item]?.length).map((item, index) => (
         <Line
-          key={index}
+          key={item}
 
           gap={size === 'large' ? 2 : size === 'regular' ? 1.5 : 1}
 
-          direction='row'
+          direction={item === 'embed' ? 'column' : 'row'}
 
-          align='flex-start'
+          align={item === 'embed' ? 'center' : 'flex-start'}
 
-          justify='flex-start'
+          justify={item === 'embed' ? 'center' : 'flex-start'}
 
           {...ItemsProps}
+
+          {...(item === 'embed' && EmbedItemsProps)}
 
           {...(item === 'image' && ImageItemsProps)}
 
@@ -608,6 +742,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
             ],
 
             ItemsProps?.className,
+            item === 'embed' && EmbedItemsProps?.className,
             item === 'image' && ImageItemsProps?.className,
             item === 'audio' && AudioItemsProps?.className,
             item === 'video' && VideoItemsProps?.className,
