@@ -343,6 +343,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
     const id = url.pathname?.split('/').filter(Boolean).slice(-1)[0];
 
+    if (!url?.hostname || !id) return null;
+
     if (item.urlEmbed.includes('youtu.be')) {
       return (
         <iframe
@@ -684,6 +686,13 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
     return null;
   };
 
+  const usable = show.filter(item => (
+    !!items[item]?.length &&
+    !!items[item].map((itemMedia, indexItemMedia) => getItem(item as any, itemMedia, indexItemMedia)).filter(Boolean).length
+  ));
+
+  if (!usable?.length) return null;
+
   return (
     <Line
       ref={(item: any) => {
@@ -711,7 +720,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
       {...other}
     >
-      {show.filter(item => !!items[item]?.length).map((item, index) => (
+      {usable.map(item => (
         <Line
           key={item}
 
