@@ -198,6 +198,7 @@ export interface IAutoComplete extends ITextField {
   filterOutSelectedOptions?: boolean;
   selectOnFocus?: boolean;
   clearOnBlur?: boolean;
+  noInputValue?: boolean;
 
   disabled?: boolean;
 
@@ -299,6 +300,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
     clearInputOnSelect,
     chip,
     fullWidth,
+    noInputValue,
 
     disabled,
 
@@ -1044,7 +1046,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
         {...other}
       >
-        {multiple && !chip && !!value.length && (
+        {!noInputValue && multiple && !chip && !!value.length && (
           <div
             ref={refs.value}
 
@@ -1081,7 +1083,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
           </div>
         )}
 
-        {multiple && chip && !!value.length && renderValues(value, onUnselect)}
+        {!noInputValue && multiple && chip && !!value.length && renderValues(value, onUnselect)}
       </TextField>
 
       <Menu
