@@ -65,6 +65,10 @@ const useStyle = styleMethod(theme => ({
     overflow: 'auto hidden'
   },
 
+  aside: {
+
+  },
+
   day: {
     position: 'relative',
     width: 'auto',
@@ -285,6 +289,14 @@ export interface ICalendarViews extends ICalendar {
 
   onChangeDate?: (value: AmauiDate) => any;
 
+  startLeft?: any;
+
+  endLeft?: any;
+
+  startRight?: any;
+
+  endRight?: any;
+
   IconPrevious?: any;
 
   IconNext?: any;
@@ -327,6 +339,14 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     onChangeView: onChangeViewProps,
 
     onChangeDate: onChangeDateProps,
+
+    startLeft,
+
+    endLeft,
+
+    startRight,
+
+    endRight,
 
     IconPrevious = IconMaterialArrowBackIosNew,
 
@@ -891,7 +911,11 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
           wrap='wrap'
 
           align='center'
+
+          className={classes.aside}
         >
+          {startLeft}
+
           <Button
             color='inherit'
 
@@ -951,15 +975,21 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
           >
             {formattedDate}
           </Type>
+
+          {endLeft}
         </Line>
 
         <Line
-          gap={1}
+          gap={1.5}
 
           direction='row'
 
           align='center'
+
+          className={classes.aside}
         >
+          {startRight}
+
           <Select
             name='View'
 
@@ -980,6 +1010,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
               minWidth: 140
             }}
           />
+
+          {endRight}
         </Line>
       </Line>
 

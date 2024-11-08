@@ -347,6 +347,7 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   placeholder?: string;
   heading?: boolean;
   actions?: boolean;
+  fullWidth?: boolean;
   readOnly?: boolean;
   disabled?: boolean;
 
@@ -361,6 +362,7 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   Icon?: IElementReference;
   IconEnter?: IElementReference;
 
+  WrapperProps?: IPropsAny;
   MainProps?: IPropsAny;
   ModalProps?: IPropsAny;
   MiddleProps?: IPropsAny;
@@ -375,6 +377,7 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   TabFromProps?: IPropsAny;
   TabToProps?: IPropsAny;
   AdvancedTextFieldProps?: IPropsAny;
+  IconProps?: IPropsAny;
 }
 
 const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) => {
@@ -454,6 +457,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     placeholder: placeholder_,
     heading: heading_ = true,
     actions: actions_ = true,
+    fullWidth,
     readOnly,
     disabled,
 
@@ -472,6 +476,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     Icon: Icon_ = IconMaterialScheduleRounded,
     IconEnter = IconMaterialKeyboardAltRounded,
 
+    WrapperProps,
     MainProps,
     ModalProps,
     MiddleProps,
@@ -486,6 +491,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     TabFromProps,
     TabToProps,
     AdvancedTextFieldProps,
+    IconProps,
 
     className,
 
@@ -974,10 +980,6 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
   placeholder = placeholder_ || placeholder;
 
-  const iconProps = {
-    size
-  };
-
   const buttonProps = {
     color: 'inherit',
     version: 'text',
@@ -1050,7 +1052,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
         {...iconButtonProps}
       >
         <Icon_
-          {...iconProps}
+          {...IconProps}
         />
       </IconButton>
     );
@@ -1414,7 +1416,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
               {...iconButtonProps}
             >
-              {mode === 'select' ? <IconEnter {...iconProps} /> : <Icon_  {...iconProps} />}
+              {mode === 'select' ? <IconEnter {...IconProps} /> : <Icon_  {...IconProps} />}
             </IconButton>
           </Tooltip>
         )}
@@ -1607,13 +1609,19 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       direction='column'
 
+      fullWidth={fullWidth}
+
+      {...WrapperProps}
+
       className={classNames([
         staticClassName('TimePicker', theme) && [
           'amaui-TimePicker-root',
           `amaui-TimePicker-version-${version}`,
           `amaui-TimePicker-size-${size}`,
+          WrapperProps?.className,
           readOnly && `amaui-TimePicker-read-only`,
-          disabled && `amaui-TimePicker-disabled`
+          disabled && `amaui-TimePicker-disabled`,
+          fullWidth && 'amaui-full-width'
         ],
 
         className,
@@ -1651,6 +1659,8 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
         endVerticalAlign='center'
 
         error={error}
+
+        fullWidth={fullWidth}
 
         readOnly={readOnly}
 

@@ -135,6 +135,7 @@ export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
   today?: boolean;
   clear?: boolean;
   placeholder?: string;
+  fullWidth?: boolean;
   readOnly?: boolean;
   disabled?: boolean;
 
@@ -148,6 +149,7 @@ export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
   IconDate?: IElementReference;
   IconTime?: IElementReference;
 
+  WrapperProps?: IPropsAny;
   ModalProps?: IPropsAny;
   TooltipProps?: IPropsAny;
   AdvancedTextFieldProps?: IPropsAny;
@@ -158,6 +160,7 @@ export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
   PickerProps?: IPropsAny;
   MiddleProps?: IPropsAny;
   MainProps?: IPropsAny;
+  IconProps?: IPropsAny;
 }
 
 const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref: any) => {
@@ -221,6 +224,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     clear = true,
     size,
     placeholder: placeholder_,
+    fullWidth,
     readOnly,
     disabled,
 
@@ -236,6 +240,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     IconDate = IconMaterialCalendarTodayRoundedFilled,
     IconTime = IconMaterialScheduleRounded,
 
+    WrapperProps,
     ModalProps,
     TooltipProps,
     AdvancedTextFieldProps,
@@ -248,6 +253,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     PickerProps: PickerProps_,
     MiddleProps,
     MainProps,
+    IconProps,
 
     className,
 
@@ -823,7 +829,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
             {...iconButtonProps}
           >
-            {tab === 'date' ? <IconTime /> : <IconDate />}
+            {tab === 'date' ? <IconTime {...IconProps} /> : <IconDate {...IconProps} />}
           </IconButton>
         </Tooltip>
 
@@ -1009,7 +1015,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
         {...iconButtonProps}
       >
-        <Icon_ />
+        <Icon_  {...IconProps} />
       </IconButton>
     );
   }
@@ -1026,14 +1032,20 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
       direction='column'
 
+      fullWidth={fullWidth}
+
+      {...WrapperProps}
+
       className={classNames([
         staticClassName('DateTimePicker', theme) && [
           'amaui-DateTimePicker-root',
           `amaui-DateTimePicker-version-${version}`,
           `amaui-DateTimePicker-size-${size}`,
+          WrapperProps?.className,
           range && `amaui-DateTimePicker-range`,
           readOnly && `amaui-DateTimePicker-read-only`,
-          disabled && `amaui-DateTimePicker-disabled`
+          disabled && `amaui-DateTimePicker-disabled`,
+          fullWidth && 'amaui-full-width'
         ],
 
         className,
@@ -1073,6 +1085,8 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
         size={size}
 
         error={error}
+
+        fullWidth={fullWidth}
 
         readOnly={readOnly}
 
