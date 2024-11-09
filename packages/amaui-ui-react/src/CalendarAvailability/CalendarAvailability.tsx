@@ -379,7 +379,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     return (is('array', timesProps) ? timesProps : [timesProps]).filter(Boolean);
   }, [timesProps]);
 
-  const rangeShade = theme.palette.light ? 80 : 40;
+  const rangeShade = theme.palette.light ? 70 : 40;
 
   React.useEffect(() => {
     // 1 minute
