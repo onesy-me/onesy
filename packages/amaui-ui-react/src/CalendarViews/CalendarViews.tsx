@@ -4,12 +4,13 @@ import { capitalize, is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 import { add, AmauiDate, endOf, format, remove, set, startOf } from '@amaui/date';
 
+import DayElement from '../Day';
+import WeekElement from '../Week';
 import CalendarMonthElement from '../CalendarMonth';
 import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
 import TooltipElement from '../Tooltip';
 import TypeElement from '../Type';
-import DividerElement from '../Divider';
 import SelectElement from '../Select';
 import ButtonElement from '../Button';
 import IconElement from '../Icon';
@@ -57,6 +58,7 @@ const IconMaterialArrowForwardIos = React.forwardRef((props: any, ref) => {
 const useStyle = styleMethod(theme => ({
   root: {
     padding: '16px',
+    color: theme.methods.palette.color.value('primary', 10),
     background: theme.palette.background.default.primary
   },
 
@@ -69,28 +71,10 @@ const useStyle = styleMethod(theme => ({
 
   },
 
-  day: {
-    position: 'relative',
-    width: 'auto',
-    minWidth: '100%'
-  },
-
-  week: {
-    position: 'relative',
-    width: 'auto',
-    minWidth: '100%'
-  },
-
   month: {
     position: 'relative',
     width: 'auto',
     minWidth: '100%'
-  },
-
-  weekDay: {
-    width: '44px',
-    height: '44px',
-    borderRadius: '50%'
   },
 
   monthDay: {
@@ -105,120 +89,11 @@ const useStyle = styleMethod(theme => ({
     color: '#fff'
   },
 
-  wrapperHour: {
-    width: '50px',
-    alignSelf: 'flex-start',
-    left: '0px',
-    background: theme.palette.background.default.primary,
-    position: 'sticky',
-    top: '0',
-    marginTop: '-8px',
-    zIndex: '40',
-    paddingRight: '4px',
-    borderRadius: theme.methods.shape.radius.value(0.5)
-  },
-
-  itemHour: {
-    position: 'relative',
-    minHeight: '50px'
-  },
-
-  contentHour: {
-    borderLeft: `1px solid ${theme.palette.light ? '#dadada' : '#575757'}`
-  },
-
-  contentItems: {
-    position: 'relative',
-    padding: '4px',
-    minWidth: '150px',
-    maxHeight: '150px',
-    overflow: 'hidden auto'
-  },
-
   contentItemsMonth: {
     position: 'relative',
     padding: '0px 4px 8px',
     height: '100px',
     overflow: 'hidden auto'
-  },
-
-  contentItemsWeek: {
-    position: 'relative',
-    padding: '4px',
-    width: 'clamp(150px, calc(calc(100vi / 7) - 32px), 400px)'
-  },
-
-  contentItemsWeekContent: {
-    maxHeight: '150px',
-    overflow: 'hidden auto'
-  },
-
-  contentItemsWeekDay: {
-    position: 'relative',
-    padding: '4px',
-    width: 'clamp(150px, calc(calc(100vi / 7) - 32px), 400px)',
-    zIndex: '54'
-  },
-
-  guidelineHour: {
-    position: 'absolute',
-    left: '66px',
-    width: 'calc(100% - 66px)',
-    height: '2px',
-    transform: 'translateY(-50%)',
-    background: theme.palette.color.tertiary[50],
-    zIndex: 14,
-
-    '&::before': {
-      position: 'absolute',
-      content: "''",
-      width: '12px',
-      height: '12px',
-      borderRadius: '50%',
-      background: theme.palette.color.tertiary[50],
-      top: '-5px',
-      left: '-5.5px'
-    }
-  },
-
-  guidelineDay: {
-    position: 'absolute',
-    left: '0',
-    width: '100%',
-    height: '2px',
-    transform: 'translateY(-50%)',
-    background: theme.palette.color.tertiary[50],
-    zIndex: '14',
-
-    '&::before': {
-      position: 'absolute',
-      content: "''",
-      width: '12px',
-      height: '12px',
-      borderRadius: '50%',
-      background: theme.palette.color.tertiary[50],
-      top: '-5px',
-      left: '-6.5px'
-    }
-  },
-
-  dividerHour: {
-    '&.amaui-Divider-root': {
-      position: 'relative',
-      left: '-8px',
-      width: 'calc(100% + 8px)',
-      margin: '0px !important',
-      background: `${theme.palette.light ? '#dadada' : '#575757'} !important`,
-      opacity: '1 !important'
-    }
-  },
-
-  contentItemsDay: {
-    borderRight: `1px solid ${theme.palette.light ? '#dadada' : '#575757'}`,
-
-    '&:last-child': {
-      borderRight: 'none'
-    }
   },
 
   calendarMonth: {
@@ -265,10 +140,6 @@ const useStyle = styleMethod(theme => ({
 
   dayWrapper: {
     height: '100%'
-  },
-
-  relative: {
-    position: 'relative'
   }
 }), { name: 'amaui-CalendarViews' });
 
@@ -278,6 +149,8 @@ export interface ICalendarViews extends ICalendar {
   viewDefault?: ICalendarViewsView;
 
   dateDefault?: AmauiDate;
+
+  times?: any;
 
   views?: ICalendarViewsView[];
 
@@ -301,6 +174,10 @@ export interface ICalendarViews extends ICalendar {
 
   IconNext?: any;
 
+  WeekProps?: any;
+
+  DayProps?: any;
+
   CalendarMonthProps?: any;
 }
 
@@ -321,14 +198,18 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
   const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
-
   const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
+
+  const Week = React.useMemo(() => theme?.elements?.Week || WeekElement, [theme]);
+
+  const Day = React.useMemo(() => theme?.elements?.Day || DayElement, [theme]);
 
   const {
     viewDefault,
 
     dateDefault,
+
+    times: timesProps,
 
     views: viewsProps = ['month', 'week', 'day'],
 
@@ -351,6 +232,10 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     IconPrevious = IconMaterialArrowBackIosNew,
 
     IconNext = IconMaterialArrowForwardIos,
+
+    WeekProps,
+
+    DayProps,
 
     CalendarMonthProps,
 
@@ -457,9 +342,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
         fullWidth
 
-        className={classNames([
-          classes.dayWrapper
-        ])}
+        className={classes.dayWrapper}
       >
         <Line
           direction='row'
@@ -550,317 +433,25 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
       </Line>
     </>,
 
-    week: <>
-      <Line
-        gap={0}
+    week: (
+      <Week
+        date={date}
 
-        fullWidth
+        times={timesProps}
 
-        className={classes.week}
-      >
-        <Line
-          gap={1}
+        {...WeekProps}
+      />
+    ),
 
-          direction='row'
+    day: (
+      <Day
+        date={date}
 
-          fullWidth
-        >
-          <Line
-            className={classes.wrapperHour}
-          />
+        times={timesProps}
 
-          <Line
-            gap={0}
-
-            flex
-          >
-            <Line
-              gap={0}
-
-              direction='row'
-
-              align='unset'
-
-              flex
-
-              fullWidth
-            >
-              {days.map((itemDay, indexDay) => {
-                return (
-                  <Line
-                    key={indexDay}
-
-                    gap={0}
-
-                    direction='column'
-
-                    align='center'
-
-                    flex
-
-                    className={classNames([
-                      classes.contentItemsWeekDay
-                    ])}
-                  >
-                    <Type
-                      version='l1'
-
-                      weight={200}
-                    >
-                      {format(itemDay, 'd')}
-                    </Type>
-
-                    <Line
-                      align='center'
-
-                      justify='center'
-
-                      className={classNames([
-                        classes.weekDay,
-                        itemDay.year === now.year && itemDay.dayYear === now.dayYear && classes.today
-                      ])}
-                    >
-                      <Type
-                        version='h3'
-
-                        weight={400}
-
-                        align='center'
-                      >
-                        {format(itemDay, 'D')}
-                      </Type>
-                    </Line>
-                  </Line>
-                );
-              })}
-            </Line>
-          </Line>
-        </Line>
-
-        {hours.map((itemHour, index) => {
-
-          return (
-            <Line
-              key={index}
-
-              gap={1}
-
-              align='unset'
-
-              onClick={onTimeClick && (() => onTimeClick(itemHour, view))}
-
-              fullWidth
-
-              className={classes.itemHour}
-            >
-              <Line
-                gap={1}
-
-                direction='row'
-
-                align='unset'
-
-                flex
-
-                fullWidth
-              >
-                <Line
-                  direction='row'
-
-                  align='center'
-
-                  justify='flex-end'
-
-                  fullWidth
-
-                  className={classes.wrapperHour}
-                >
-                  <Type
-                    version='b3'
-
-                    whiteSpace='nowrap'
-                  >
-                    {format(itemHour, 'h A')}
-                  </Type>
-                </Line>
-
-                <Line
-                  gap={0}
-
-                  flex
-
-                  className={classes.contentHour}
-                >
-                  <Divider
-                    className={classes.dividerHour}
-                  />
-
-                  <Line
-                    gap={0}
-
-                    direction='row'
-
-                    align='unset'
-
-                    flex
-
-                    fullWidth
-                  >
-                    {days.map((itemDay, indexDay) => {
-                      const itemDate = set(itemHour.hour, 'hour', itemDay);
-
-                      return (
-                        <Line
-                          key={indexDay}
-
-                          gap={0}
-
-                          flex
-
-                          className={classNames([
-                            classes.contentItemsWeek,
-                            classes.contentItemsDay
-                          ])}
-                        >
-                          {(itemDate.year === now.year && itemDate.dayYear === now.dayYear) && (itemDate.hour === now.hour) && (
-                            <Line
-                              className={classes.guidelineDay}
-
-                              style={{
-                                top: `${(((now.hour * 60) + now.minute) / (24 * 60)) * 100}%`
-                              }}
-                            />
-                          )}
-
-                          <Line
-                            gap={0.5}
-
-                            flex
-
-                            fullWidth
-
-                            className={classes.contentItemsWeekContent}
-                          >
-                            {render && render(itemDate, view)}
-                          </Line>
-                        </Line>
-                      );
-                    })}
-                  </Line>
-                </Line>
-              </Line>
-            </Line>
-          );
-        })}
-      </Line>
-    </>,
-
-    day: <>
-      <Line
-        gap={0}
-
-        fullWidth
-
-        className={classes.day}
-      >
-        {hours.map((itemHour, index) => {
-
-          return (
-            <Line
-              key={index}
-
-              gap={0}
-
-              flex
-
-              fullWidth
-
-              className={classes.relative}
-            >
-              {(itemHour.year === now.year && itemHour.dayYear === now.dayYear) && (itemHour.hour === now.hour) && (
-                <Line
-                  className={classes.guidelineHour}
-
-                  style={{
-                    top: `${(((now.hour * 60) + now.minute) / (24 * 60)) * 100}%`
-                  }}
-                />
-              )}
-
-              <Line
-                gap={1}
-
-                align='unset'
-
-                onClick={onTimeClick && (() => onTimeClick(itemHour, view))}
-
-                fullWidth
-
-                className={classes.itemHour}
-              >
-                <Line
-                  gap={2}
-
-                  direction='row'
-
-                  align='unset'
-
-                  flex
-
-                  fullWidth
-                >
-                  <Line
-                    direction='row'
-
-                    align='center'
-
-                    justify='flex-end'
-
-                    fullWidth
-
-                    className={classes.wrapperHour}
-                  >
-                    <Type
-                      version='b3'
-
-                      whiteSpace='nowrap'
-
-                      className={classes.typeHour}
-                    >
-                      {format(itemHour, 'h A')}
-                    </Type>
-                  </Line>
-
-                  <Line
-                    gap={0}
-
-                    flex
-
-                    className={classes.contentHour}
-                  >
-                    <Divider
-                      className={classes.dividerHour}
-                    />
-
-                    <Line
-                      gap={0.5}
-
-                      flex
-
-                      fullWidth
-
-                      className={classes.contentItems}
-                    >
-                      {render && render(itemHour, view)}
-                    </Line>
-                  </Line>
-                </Line>
-              </Line>
-            </Line>
-          );
-        })}
-      </Line>
-    </>
+        {...DayProps}
+      />
+    )
   };
 
   const iconProps: any = {

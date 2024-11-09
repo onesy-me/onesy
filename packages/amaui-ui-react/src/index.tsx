@@ -627,3 +627,9 @@ export * from './CalendarViews';
 
 export { default as Info } from './Info';
 export * from './Info';
+
+export { default as Week } from './Week';
+export * from './Week';
+
+export { default as Day } from './Day';
+export * from './Day';
