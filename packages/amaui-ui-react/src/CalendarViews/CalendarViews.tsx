@@ -727,7 +727,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
                               className={classes.guidelineDay}
 
                               style={{
-                                top: `${(now.minute / 60) * 100}%`
+                                top: `${(((now.hour * 60) + now.minute) / (24 * 60)) * 100}%`
                               }}
                             />
                           )}
@@ -782,7 +782,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
                   className={classes.guidelineHour}
 
                   style={{
-                    top: `${(now.minute / 60) * 100}%`
+                    top: `${(((now.hour * 60) + now.minute) / (24 * 60)) * 100}%`
                   }}
                 />
               )}
