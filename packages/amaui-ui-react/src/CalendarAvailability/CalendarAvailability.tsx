@@ -124,6 +124,7 @@ const useStyle = styleMethod(theme => ({
 
   calendar: {
     padding: '12px 8px',
+    color: theme.palette.text.default.primary,
     background: theme.palette.background.default.primary
   },
 
