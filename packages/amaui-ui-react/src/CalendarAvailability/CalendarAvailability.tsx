@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { capitalize, cleanValue, elementToCanvas, is, textToInnerHTML } from '@amaui/utils';
+import { capitalize, cleanValue, is, textToInnerHTML } from '@amaui/utils';
 import { style as styleMethod, classNames, useAmauiTheme, colors } from '@amaui/style-react';
 import { AmauiDate, add, endOf, format, remove, set, startOf } from '@amaui/date';
 
-import DayElement from '../Day';
-import WeekElement from '../Week';
+import CalendarWeekElement from '../CalendarWeek';
 import SelectElement from '../Select';
 import ButtonElement from '../Button';
 import LineElement from '../Line';
@@ -278,9 +277,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
   const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
 
-  const Week = React.useMemo(() => theme?.elements?.Week || WeekElement, [theme]);
-
-  const Day = React.useMemo(() => theme?.elements?.Day || DayElement, [theme]);
+  const CalendarWeek = React.useMemo(() => theme?.elements?.CalendarWeek || CalendarWeekElement, [theme]);
 
   const {
     name,
@@ -1022,8 +1019,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
           </Line>
         )}
 
-        {view === 'week' && (
-          <Week
+        {['week', 'day'].includes(view) && (
+          <CalendarWeek
             onOpen={onOpen}
 
             date={date}
@@ -1033,24 +1030,10 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
             statuses={statuses}
 
             times={timesProps}
+
+            day={view === 'day'}
 
             {...WeekProps}
-          />
-        )}
-
-        {view === 'day' && (
-          <Day
-            onOpen={onOpen}
-
-            date={date}
-
-            displayTime={displayTime}
-
-            statuses={statuses}
-
-            times={timesProps}
-
-            {...DayProps}
           />
         )}
 
@@ -1122,7 +1105,11 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
                   name='Update'
                 >
                   <IconButton
-                    onClick={() => onUpdate(modal?.object)}
+                    onClick={() => {
+                      onUpdate(modal?.object);
+
+                      onClose();
+                    }}
                   >
                     <IconEdit
                       {...IconProps}

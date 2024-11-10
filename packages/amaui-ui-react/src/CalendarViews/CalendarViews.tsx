@@ -4,8 +4,7 @@ import { capitalize, is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 import { add, AmauiDate, endOf, format, remove, set, startOf } from '@amaui/date';
 
-import DayElement from '../Day';
-import WeekElement from '../Week';
+import WeekElement from '../CalendarWeek';
 import CalendarMonthElement from '../CalendarMonth';
 import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
@@ -201,8 +200,6 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
 
   const Week = React.useMemo(() => theme?.elements?.Week || WeekElement, [theme]);
-
-  const Day = React.useMemo(() => theme?.elements?.Day || DayElement, [theme]);
 
   const {
     viewDefault,
@@ -444,12 +441,14 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     ),
 
     day: (
-      <Day
+      <Week
         date={date}
 
         times={timesProps}
 
-        {...DayProps}
+        day
+
+        {...WeekProps}
       />
     )
   };

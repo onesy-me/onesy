@@ -2,7 +2,7 @@ import React from 'react';
 
 import { cleanValue, is, textToInnerHTML } from '@amaui/utils';
 import { style as styleMethod, classNames, useAmauiTheme, colors } from '@amaui/style-react';
-import { AmauiDate, endOf, format, set, startOf } from '@amaui/date';
+import { AmauiDate, add, endOf, format, set, startOf } from '@amaui/date';
 
 import LineElement from '../Line';
 import TypeElement from '../Type';
@@ -136,9 +136,9 @@ const useStyle = styleMethod(theme => ({
     padding: '0px 2px',
     borderRadius: 2
   }
-}), { name: 'amaui-Day' });
+}), { name: 'amaui-CalendarWeek' });
 
-export interface IDay extends ILine {
+export interface ICalendarWeek extends ILine {
   date?: AmauiDate;
 
   times?: any;
@@ -148,12 +148,14 @@ export interface IDay extends ILine {
   statuses?: any;
 
   displayTime?: any;
+
+  day?: boolean;
 }
 
-const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
+const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any) => {
   const theme = useAmauiTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDay?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCalendarWeek?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -166,11 +168,13 @@ const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
 
     times: timesProps,
 
+    onOpen,
+
     statuses,
 
     displayTime = true,
 
-    onOpen,
+    day: dayProp,
 
     className,
 
@@ -202,7 +206,7 @@ const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
     return (is('array', timesProps) ? timesProps : [timesProps]).filter(Boolean);
   }, [timesProps]);
 
-  const rangeShade = theme.palette.light ? 70 : 40;
+  const rangeShade = theme.palette.light ? 60 : 40;
 
   React.useEffect(() => {
     // 1 minute
@@ -382,6 +386,8 @@ const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
 
       const minimal = ((100 - bottom) - top) < 5;
 
+      const background = getColor(item);
+
       elements.push(
         <Tooltip
           name={cleanValue(itemToText(item.status), { capitalize: true })}
@@ -404,7 +410,8 @@ const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
             style={{
               top: `${top}%`,
               bottom: `${bottom}%`,
-              background: getColor(item),
+              color: theme.methods.palette.color.text(background),
+              background,
               left: `calc(0px + ${level * 10}px)`,
 
               ...(top === 0 && bottom === 0 && {
@@ -452,26 +459,32 @@ const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
     return elements;
   };
 
-  const timesUI = React.useCallback(() => {
+  const timesUI = React.useCallback((dayDate: AmauiDate) => {
     // clean up
     refs.days.current = {};
     refs.overlaping.current = {};
 
-    const day = date.dayWeek === 0 ? 7 : date.dayWeek;
+    const day = dayDate.dayWeek === 0 ? 7 : dayDate.dayWeek;
 
     return <>
       {times.map(item => <>
         {/* Weekly */}
-        {renderTimes(date, (item.weekly!.days as any)![day]?.values as any, true, (item.weekly!.days as any)![day])}
+        {renderTimes(dayDate, (item.weekly!.days as any)![day]?.values as any, true, (item.weekly!.days as any)![day])}
 
         {/* Dates */}
-        {renderTimes(date, getDates(item), false)}
+        {renderTimes(dayDate, getDates(item), false)}
       </>)}
     </>;
   }, [theme, times, date]);
 
   const hours = React.useMemo(() => {
     return Array.from({ length: 24 }).map((item, index) => set(index, 'hour', date));
+  }, [date]);
+
+  const days = React.useMemo(() => {
+    const weekStartDate = set(4, 'hour', startOf(date, 'week'));
+
+    return Array.from({ length: 7 }).map((_, index) => add(index, 'day', weekStartDate));
   }, [date]);
 
   return (
@@ -485,8 +498,9 @@ const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
       fullWidth
 
       className={classNames([
-        staticClassName('Day', theme) && [
-          'amaui-Day-root'
+        staticClassName('CalendarWeek', theme) && [
+          'amaui-CalendarWeek-root',
+          dayProp && 'amaui-CalendarWeek-day'
         ],
 
         className,
@@ -560,103 +574,204 @@ const Day: React.FC<IDay> = React.forwardRef((props_, ref: any) => {
           </Line>
         </Line>
 
-        <Line
-          gap={0}
-
-          direction='column'
-
-          align='center'
-
-          flex
-
-          className={classNames([
-            'amaui-day',
-
-            classes.day
-          ])}
-        >
+        {dayProp && (
           <Line
             gap={0}
 
+            direction='column'
+
             align='center'
-
-            fullWidth
-
-            className={classes.dayHeader}
-          >
-            <Type
-              version='l1'
-
-              weight={200}
-            >
-              {format(date, 'd')}
-            </Type>
-
-            <Line
-              align='center'
-
-              justify='center'
-
-              className={classNames([
-                classes.weekDay,
-                date.year === now.year && date.dayYear === now.dayYear && classes.today
-              ])}
-            >
-              <Type
-                version='h3'
-
-                weight={400}
-
-                align='center'
-              >
-                {format(date, 'D')}
-              </Type>
-            </Line>
-          </Line>
-
-          <Line
-            className={classes.dayBody}
 
             flex
 
-            fullWidth
+            className={classNames([
+              'amaui-day',
+
+              classes.day
+            ])}
           >
-            {timesUI()}
+            <Line
+              gap={0}
 
-            {/* Guides */}
-            {hours.map((itemGuide, indexGuide) => (
+              align='center'
+
+              fullWidth
+
+              className={classes.dayHeader}
+            >
+              <Type
+                version='l1'
+
+                weight={200}
+              >
+                {format(date, 'd')}
+              </Type>
+
               <Line
-                key={indexGuide}
+                align='center'
 
-                className={classes.guide}
+                justify='center'
 
-                fullWidth
+                className={classNames([
+                  classes.weekDay,
+                  date.year === now.year && date.dayYear === now.dayYear && classes.today
+                ])}
+              >
+                <Type
+                  version='h3'
 
-                style={{
-                  top: `${(100 / 24) * indexGuide}%`
-                }}
-              />
-            ))}
+                  weight={400}
 
-            {/* Now */}
-            {(format(now, formats.date) === format(date, formats.date)) && (
-              <Line
-                className={classes.guidelineHour}
+                  align='center'
+                >
+                  {format(date, 'D')}
+                </Type>
+              </Line>
+            </Line>
 
-                fullWidth
+            <Line
+              className={classes.dayBody}
 
-                style={{
-                  top: `${(((now.hour * 60) + now.minute) / (24 * 60)) * 100}%`
-                }}
-              />
-            )}
+              flex
+
+              fullWidth
+            >
+              {timesUI(date)}
+
+              {/* Guides */}
+              {hours.map((itemGuide, indexGuide) => (
+                <Line
+                  key={indexGuide}
+
+                  className={classes.guide}
+
+                  fullWidth
+
+                  style={{
+                    top: `${(100 / 24) * indexGuide}%`
+                  }}
+                />
+              ))}
+
+              {/* Now */}
+              {(format(now, formats.date) === format(date, formats.date)) && (
+                <Line
+                  className={classes.guidelineHour}
+
+                  fullWidth
+
+                  style={{
+                    top: `${(((now.hour * 60) + now.minute) / (24 * 60)) * 100}%`
+                  }}
+                />
+              )}
+            </Line>
           </Line>
-        </Line>
+        )}
+
+        {!dayProp && days.map((itemDay, index) => {
+          return (
+            <Line
+              key={index}
+
+              gap={0}
+
+              direction='column'
+
+              align='center'
+
+              flex
+
+              className={classNames([
+                'amaui-day',
+
+                classes.day
+              ])}
+            >
+              <Line
+                gap={0}
+
+                align='center'
+
+                fullWidth
+
+                className={classes.dayHeader}
+              >
+                <Type
+                  version='l1'
+
+                  weight={200}
+                >
+                  {format(itemDay, 'd')}
+                </Type>
+
+                <Line
+                  align='center'
+
+                  justify='center'
+
+                  className={classNames([
+                    classes.weekDay,
+                    itemDay.year === now.year && itemDay.dayYear === now.dayYear && classes.today
+                  ])}
+                >
+                  <Type
+                    version='h3'
+
+                    weight={400}
+
+                    align='center'
+                  >
+                    {format(itemDay, 'D')}
+                  </Type>
+                </Line>
+              </Line>
+
+              <Line
+                className={classes.dayBody}
+
+                flex
+
+                fullWidth
+              >
+                {timesUI(itemDay)}
+
+                {/* Guides */}
+                {hours.map((itemGuide, indexGuide) => (
+                  <Line
+                    key={indexGuide}
+
+                    className={classes.guide}
+
+                    fullWidth
+
+                    style={{
+                      top: `${(100 / 24) * indexGuide}%`
+                    }}
+                  />
+                ))}
+
+                {/* Now */}
+                {(format(now, formats.date) === format(itemDay, formats.date)) && (
+                  <Line
+                    className={classes.guidelineHour}
+
+                    fullWidth
+
+                    style={{
+                      top: `${(((now.hour * 60) + now.minute) / (24 * 60)) * 100}%`
+                    }}
+                  />
+                )}
+              </Line>
+            </Line>
+          );
+        })}
       </Line>
     </Line>
   );
 });
 
-Day.displayName = 'amaui-Day';
+CalendarWeek.displayName = 'amaui-CalendarWeek';
 
-export default Day;
+export default CalendarWeek;
