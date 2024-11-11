@@ -122,7 +122,7 @@ const IconMaterialDelete = React.forwardRef((props: any, ref) => {
 const useStyle = styleMethod(theme => ({
   root: {
     padding: '16px',
-    paddingBottom: '40px',
+    paddingBottom: '24px',
     color: theme.methods.palette.color.value('primary', 10),
     background: theme.palette.background.default.primary,
 
