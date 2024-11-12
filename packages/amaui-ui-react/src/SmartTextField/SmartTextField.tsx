@@ -222,6 +222,20 @@ const useStyle = styleMethod(theme => ({
     '&.amaui-TextField-root': {
       flex: '1 1 auto !important'
     }
+  },
+
+  helperText: {
+    display: 'inline-flex',
+    color: theme.palette.text.default.secondary,
+    userSelect: 'none'
+  },
+
+  error_color: {
+    color: [theme.palette.light ? theme.palette.color.error[40] : theme.palette.color.error[80], '!important']
+  },
+
+  error_hover_color: {
+    color: [theme.palette.light ? theme.palette.color.error[20] : theme.palette.color.error[90], '!important']
   }
 }), { name: 'amaui-SmartTextField' });
 
@@ -245,6 +259,8 @@ export interface ISmartTextField extends ITextField {
   additional?: any;
 
   pasteText?: boolean;
+
+  HelperTextProps?: any;
 }
 
 const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref: any) => {
@@ -311,6 +327,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
     optionsMention: optionsMention_,
 
+    error,
+
+    helperText,
+
     mentionLabel,
 
     onKeyDown: onKeyDown_,
@@ -320,6 +340,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     readOnly,
 
     additional,
+
+    HelperTextProps,
 
     className,
 
@@ -1672,6 +1694,29 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
   return <>
     {main}
+
+    {version === 'text' && <>
+      {helperText && is('string', helperText) ? (
+        <Type
+          version={size === 'large' ? 'b1' : size === 'regular' ? 'b2' : 'b3'}
+
+          {...HelperTextProps}
+
+          className={classNames([
+            staticClassName('SmartTextField', theme) && [
+              'amaui-SmartTextField-helper-text',
+              error && 'amaui-SmartTextField-error'
+            ],
+
+            HelperTextProps?.className,
+            classes.helperText,
+            error && classes.error_color
+          ])}
+        >
+          {textToInnerHTML(helperText)}
+        </Type>
+      ) : helperText}
+    </>}
 
     {/* text edit menu */}
     {miniMenu}
