@@ -124,7 +124,7 @@ const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: a
         <Tooltip
           label={label}
 
-          portal={false}
+          portal
 
           nowrap
 

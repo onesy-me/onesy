@@ -361,6 +361,10 @@ const useStyle = styleMethod(theme => ({
     scrollbarWidth: 'none',
     overflow: 'auto hidden',
 
+    '& > *': {
+      flex: '0 0 auto'
+    },
+
     '&::-webkit-scrollbar': {
       display: 'none'
     }
@@ -1380,6 +1384,8 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
               justify='space-between'
 
+              flexNo
+
               fullWidth
             >
               <Line
@@ -1389,9 +1395,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
                 align='center'
 
-                style={{
-                  flex: '0 0 auto'
-                }}
+                flexNo
               >
                 <Line
                   gap={0}
@@ -1493,6 +1497,8 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
                   direction='row'
 
                   align='center'
+
+                  flexNo
 
                   className={classNames([
                     'amaui-Audio-time',

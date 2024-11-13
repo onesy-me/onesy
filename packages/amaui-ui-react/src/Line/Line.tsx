@@ -18,6 +18,9 @@ const useStyle = styleMethod(theme => ({
   // flex
   flex: { flex: '1 1 auto' },
 
+  // flexNo
+  flexNo: { flex: '0 0 auto' },
+
   // full width
   fullWidth: { width: '100%' },
 
@@ -159,6 +162,9 @@ export interface ILine extends IBaseElement {
 
   wrap?: TLineWrap | Partial<Record<IValueBreakpoints, TLineWrap>>;
 
+  flex?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
+  flexNo?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
+
   gap?: string | number | Partial<Record<IValueBreakpoints, string | number>>;
   rowGap?: string | number | Partial<Record<IValueBreakpoints, string | number>>;
   columnGap?: string | number | Partial<Record<IValueBreakpoints, string | number>>;
@@ -188,6 +194,7 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
     divider: divider_,
     wrap: wrap_,
     flex: flex_,
+    flexNo: flexNo_,
     fullWidth: fullWidth_,
 
     DividerProps,
@@ -224,6 +231,7 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
   const divider = valueBreakpoints(divider_, undefined, breakpoints, theme);
   const wrap = valueBreakpoints(wrap_, undefined, breakpoints, theme);
   const flex = valueBreakpoints(flex_, undefined, breakpoints, theme);
+  const flexNo = valueBreakpoints(flexNo_, undefined, breakpoints, theme);
   const fullWidth = valueBreakpoints(fullWidth_, undefined, breakpoints, theme);
 
   const styles: any = {
@@ -282,6 +290,7 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
         classes[`rowGap_${String(rowGap).replace('.', '')}`],
         classes[`columnGap_${String(columnGap).replace('.', '')}`],
         flex && classes.flex,
+        flexNo && classes.flexNo,
         fullWidth && classes.fullWidth
       ])}
 

@@ -276,6 +276,10 @@ const useStyle = styleMethod(theme => ({
     scrollbarWidth: 'none',
     overflow: 'auto hidden',
 
+    '& > *': {
+      flex: '0 0 auto'
+    },
+
     '&::-webkit-scrollbar': {
       display: 'none'
     }
@@ -1086,6 +1090,8 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
               justify='space-between'
 
               fullWidth
+
+              flexNo
             >
               <Line
                 gap={1.5}
@@ -1093,6 +1099,8 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
                 direction='row'
 
                 align='center'
+
+                flexNo
               >
                 <Line
                   gap={0}
@@ -1194,6 +1202,8 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
                   direction='row'
 
                   align='center'
+
+                  flexNo
 
                   className={classNames([
                     'amaui-Audio-time',

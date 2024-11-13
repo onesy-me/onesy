@@ -56,7 +56,14 @@ const useStyle = styleMethod(theme => {
       display: 'inline-flex',
       alignItems: 'stretch',
       position: 'relative',
-      borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`
+      borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
+
+      '& > *': {
+        '&::-webkit-scrollbar': {
+          width: '0px',
+          height: '0px'
+        }
+      }
     },
 
     // Color
@@ -105,8 +112,10 @@ const useStyle = styleMethod(theme => {
       opacity: '0',
       transition: theme.methods.transitions.make('opacity'),
       borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
-      width: '100%',
       cursor: 'text',
+
+      width: '0',
+      flex: '1 1 auto',
 
       ...theme.typography.values.b2
     },
@@ -385,6 +394,8 @@ const useStyle = styleMethod(theme => {
     },
 
     icon_start: {
+      maxWidth: '40%',
+      overflow: 'auto hidden',
       paddingInlineEnd: '16px',
       paddingInlineStart: '12px'
     },
@@ -403,6 +414,8 @@ const useStyle = styleMethod(theme => {
     },
 
     icon_end: {
+      maxWidth: '40%',
+      overflow: 'auto hidden',
       paddingInlineStart: theme.methods.space.value(2, 'px'),
       paddingInlineEnd: theme.methods.space.value(1.5, 'px')
     },
