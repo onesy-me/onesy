@@ -16,7 +16,6 @@ import { ILine } from '../Line/Line';
 import TooltipElement from '../Tooltip';
 import IconButtonElement from '../IconButton';
 import LabelElement from '../Label';
-import ChipElement from '../Chip';
 import SlideElement from '../Slide';
 import SwitchElement from '../Switch';
 import IconElement from '../Icon';
@@ -126,14 +125,25 @@ const useStyle = styleMethod(theme => ({
     color: theme.methods.palette.color.value('primary', 10),
     background: theme.palette.background.default.primary,
 
-    '& .amaui-Select-wrapper, & .amaui-Select-root': {
-      width: 'auto !important'
+    '& .amaui-Label-text': {
+      whiteSpace: 'nowrap'
     }
   },
 
   calendar: {
     padding: '12px 8px',
     background: theme.palette.background.default.primary
+  },
+
+  aside: {
+    width: 'auto',
+    maxWidth: '100%'
+  },
+
+  weekDay: {
+    width: '47px',
+    height: '47px',
+    borderRadius: '50%'
   },
 
   today: {
@@ -191,6 +201,11 @@ const useStyle = styleMethod(theme => ({
 
   itemLegendActive: {
     opacity: 1
+  },
+
+  overflowX: {
+    padding: '2px 0',
+    overflow: 'auto hidden'
   }
 }), { name: 'amaui-CalendarAvailability' });
 
@@ -260,8 +275,6 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
 
   const Label = React.useMemo(() => theme?.elements?.Label || LabelElement, [theme]);
-
-  const Chip = React.useMemo(() => theme?.elements?.Chip || ChipElement, [theme]);
 
   const Switch = React.useMemo(() => theme?.elements?.Switch || SwitchElement, [theme]);
 
@@ -530,6 +543,12 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     }));
   }, [viewsProps]);
 
+  const days = React.useMemo(() => {
+    const weekStartDate = set(4, 'hour', startOf(date, 'week'));
+
+    return Array.from({ length: 7 }).map((_, index) => add(index, 'day', weekStartDate));
+  }, [date]);
+
   const simpleTimesUI = () => {
 
     return (
@@ -548,9 +567,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
         fullWidth
       >
-        {Array.from({ length: 7 }).fill(1 as any).map((_, index) => {
-          const day = set(index === 6 ? 0 : index + 1, 'dayWeek', weekStart);
-
+        {days.map((itemDay, index) => {
           const values = times.filter(item => item.weekly.days[index + 1]?.active).flatMap(item => item.weekly.days[index + 1].values).filter(item => item && [undefined, true].includes(refs.statuses.current[item.status || 'working']));
 
           values.sort((a, b) => b.from > a.from ? -1 : 1);
@@ -571,20 +588,31 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
                 fullWidth
               >
                 <Type
-                  version='l1'
+                  version='h3'
 
                   weight={400}
                 >
-                  {format(day, 'dd')}
+                  {format(itemDay, 'dd')}
                 </Type>
 
-                <Type
-                  version='b2'
+                <Line
+                  align='center'
 
-                  weight={200}
+                  justify='center'
+
+                  className={classNames([
+                    classes.weekDay,
+                    itemDay.year === now.year && itemDay.dayYear === now.dayYear && classes.today
+                  ])}
                 >
-                  {format(day, 'DD.MM.')}
-                </Type>
+                  <Type
+                    version='b2'
+
+                    weight={200}
+                  >
+                    {format(itemDay, 'DD.MM.')}
+                  </Type>
+                </Line>
               </Line>
 
               <Line
@@ -622,7 +650,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
                         <Type
                           version='b2'
 
-                          weight={200}
+                          weight={300}
                         >
                           {format(itemValueFrom, 'hh:mm a')} — {format(itemValueTo, 'hh:mm a')}
                         </Type>
@@ -931,7 +959,12 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
           align='center'
 
-          className={classes.aside}
+          flexNo
+
+          className={classNames([
+            classes.aside,
+            classes.overflowX
+          ])}
         >
           {startRight}
 
@@ -963,8 +996,16 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               size: 'regular'
             }}
 
+            WrapperProps={{
+              style: {
+                width: '140px',
+                minWidth: 'unset'
+              }
+            }}
+
             style={{
-              minWidth: 140
+              width: '140px',
+              minWidth: 'unset'
             }}
           />
 

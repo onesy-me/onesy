@@ -58,7 +58,11 @@ const useStyle = styleMethod(theme => ({
   root: {
     padding: '16px',
     color: theme.methods.palette.color.value('primary', 10),
-    background: theme.palette.background.default.primary
+    background: theme.palette.background.default.primary,
+
+    '& .amaui-Label-text': {
+      whiteSpace: 'nowrap'
+    }
   },
 
   main: {
@@ -67,7 +71,8 @@ const useStyle = styleMethod(theme => ({
   },
 
   aside: {
-
+    width: 'auto',
+    maxWidth: '100%'
   },
 
   month: {
@@ -139,6 +144,11 @@ const useStyle = styleMethod(theme => ({
 
   dayWrapper: {
     height: '100%'
+  },
+
+  overflowX: {
+    padding: '2px 0',
+    overflow: 'auto hidden'
   }
 }), { name: 'amaui-CalendarViews' });
 
@@ -576,7 +586,12 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
           align='center'
 
-          className={classes.aside}
+          flexNo
+
+          className={classNames([
+            classes.aside,
+            classes.overflowX
+          ])}
         >
           {startRight}
 
@@ -596,8 +611,16 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
               size: 'regular'
             }}
 
+            WrapperProps={{
+              style: {
+                width: '140px',
+                minWidth: 'unset'
+              }
+            }}
+
             style={{
-              minWidth: 140
+              width: '140px',
+              minWidth: 'unset'
             }}
           />
 
