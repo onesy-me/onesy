@@ -695,7 +695,11 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
         {...other}
       >
-        <div
+        <Line
+          gap={0}
+
+          direction='row'
+
           className={classNames([
             staticClassName('Select', theme) && [
               'amaui-Select-input'
@@ -706,9 +710,11 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
             open && classes.open,
             readOnly && classes.readOnly
           ])}
+
+          justify={other.align}
         >
           {renderValues(value)}
-        </div>
+        </Line>
       </TextField>
 
       {(!!items.length || children) && (

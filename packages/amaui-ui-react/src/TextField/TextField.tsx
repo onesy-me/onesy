@@ -54,7 +54,7 @@ const useStyle = styleMethod(theme => {
 
     root: {
       display: 'inline-flex',
-      alignItems: 'stretch',
+      alignItems: 'center',
       position: 'relative',
       borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
 
@@ -164,6 +164,18 @@ const useStyle = styleMethod(theme => {
       paddingTop: theme.methods.space.value(3.5, 'px')
     },
 
+    inputWrapper_without_label_size_small: {
+      paddingTop: `${theme.methods.space.value(1, 'px')}`
+    },
+
+    inputWrapper_without_label_size_regular: {
+      paddingTop: `${theme.methods.space.value(2, 'px')}`
+    },
+
+    inputWrapper_without_label_size_large: {
+      paddingTop: `${theme.methods.space.value(2, 'px')}`
+    },
+
     input_version_text: {
       '&:not($input_start_icon)': {
         paddingInline: '0'
@@ -195,6 +207,10 @@ const useStyle = styleMethod(theme => {
 
     input_align_start: {
       textAlign: 'start'
+    },
+
+    input_align_center: {
+      textAlign: 'center'
     },
 
     input_align_end: {
@@ -430,7 +446,7 @@ const useStyle = styleMethod(theme => {
     },
 
     addition_size_regular: {
-      paddingBottom: theme.methods.space.value(1.5, 'px'),
+      paddingBottom: theme.methods.space.value(2, 'px'),
       paddingTop: theme.methods.space.value(3, 'px')
     },
 
@@ -452,6 +468,18 @@ const useStyle = styleMethod(theme => {
     addition_version_outlined_size_large: {
       paddingTop: theme.methods.space.value(2.75, 'px'),
       paddingBottom: theme.methods.space.value(2.75, 'px')
+    },
+
+    addition_without_label_size_small: {
+      paddingTop: `${theme.methods.space.value(1, 'px')}`
+    },
+
+    addition_without_label_size_regular: {
+      paddingTop: `${theme.methods.space.value(2, 'px')}`
+    },
+
+    addition_without_label_size_large: {
+      paddingTop: `${theme.methods.space.value(2, 'px')}`
     },
 
     prefix: {
@@ -531,7 +559,7 @@ export interface ITextField extends IBaseElement {
 
   name?: any;
   label?: any;
-  align?: 'start' | 'end';
+  align?: 'start' | 'center' | 'end';
   start?: IElement;
   startVerticalAlign?: 'start' | 'center' | 'end';
   end?: IElement;
@@ -565,6 +593,7 @@ export interface ITextField extends IBaseElement {
   readOnly?: boolean;
   disabled?: boolean;
   subscription?: AmauiSubscription;
+  minimal?: boolean;
 
   onInput?: (event: InputEvent) => any;
   onFocus?: (event: React.FocusEvent<any>) => any;
@@ -635,6 +664,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
     footer: footer_,
     subscription,
     controlled,
+    minimal,
     restoreSelection = false,
     minWidth,
     readOnly,
@@ -1090,64 +1120,66 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
           ...ComponentProps?.style
         }}
       >
-        {['filled'].includes(version) && (
-          <span
-            className={classNames([
-              staticClassName('TextField', theme) && [
-                'amaui-TextField-background'
-              ],
-
-              classes.background,
-              (enabled || valueWithData || focus) && classes.background_focus,
-              hover && classes.background_hover
-            ])}
-
-            style={styles.background}
-          />
-        )}
-
-        {['text', 'filled'].includes(version) && (
-          <span
-            className={classNames([
-              staticClassName('TextField', theme) && [
-                'amaui-TextField-border'
-              ],
-
-              classes.border,
-              focus && classes.border_focus
-            ])}
-
-            style={styles.border}
-          />
-        )}
-
-        {['outlined'].includes(version) && (
-          <fieldset
-            className={classNames([
-              staticClassName('TextField', theme) && [
-                'amaui-TextField-fieldset'
-              ],
-
-              classes.fieldset,
-              focus && classes.fieldset_focus
-            ])}
-
-            style={styles.fieldset}
-          >
-            <legend
+        {!minimal && <>
+          {['filled'].includes(version) && (
+            <span
               className={classNames([
                 staticClassName('TextField', theme) && [
-                  'amaui-TextField-legend'
+                  'amaui-TextField-background'
                 ],
 
-                classes.legend,
-                (enabled || valueWithData || focus) && label !== undefined && classes.legend_focus
+                classes.background,
+                (enabled || valueWithData || focus) && classes.background_focus,
+                hover && classes.background_hover
               ])}
+
+              style={styles.background}
+            />
+          )}
+
+          {['text', 'filled'].includes(version) && (
+            <span
+              className={classNames([
+                staticClassName('TextField', theme) && [
+                  'amaui-TextField-border'
+                ],
+
+                classes.border,
+                focus && classes.border_focus
+              ])}
+
+              style={styles.border}
+            />
+          )}
+
+          {['outlined'].includes(version) && (
+            <fieldset
+              className={classNames([
+                staticClassName('TextField', theme) && [
+                  'amaui-TextField-fieldset'
+                ],
+
+                classes.fieldset,
+                focus && classes.fieldset_focus
+              ])}
+
+              style={styles.fieldset}
             >
-              {label}{required ? '*' : ''}{optional ? ` (${optionalText})` : ''}
-            </legend>
-          </fieldset>
-        )}
+              <legend
+                className={classNames([
+                  staticClassName('TextField', theme) && [
+                    'amaui-TextField-legend'
+                  ],
+
+                  classes.legend,
+                  (enabled || valueWithData || focus) && label !== undefined && classes.legend_focus
+                ])}
+              >
+                {label}{required ? '*' : ''}{optional ? ` (${optionalText})` : ''}
+              </legend>
+            </fieldset>
+          )}
+        </>}
 
         {label && (
           <Type
@@ -1185,36 +1217,38 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
           </Type>
         )}
 
-        {!!React.Children.toArray(start).length && (
-          <span
-            className={classNames([
-              staticClassName('TextField', theme) && [
-                'amaui-TextField-icon',
-                'amaui-TextField-icon-start'
-              ],
+        {!minimal && <>
+          {!!React.Children.toArray(start).length && (
+            <span
+              className={classNames([
+                staticClassName('TextField', theme) && [
+                  'amaui-TextField-icon',
+                  'amaui-TextField-icon-start'
+                ],
 
-              classes.icon,
-              classes.icon_start,
-              classes[`icon${(start as any)?.type?.displayName?.includes('IconButton') ? '_button' : ''}_size_${size}`],
-              classes[`icon_version_${version}`],
-              classes[`icon_vertical_align_${startVerticalAlign}`]
-            ])}
-          >
-            {React.Children.toArray(start).map((item: any, index: number) => (
-              React.cloneElement(item, {
-                key: index,
+                classes.icon,
+                classes.icon_start,
+                classes[`icon${(start as any)?.type?.displayName?.includes('IconButton') ? '_button' : ''}_size_${size}`],
+                classes[`icon_version_${version}`],
+                classes[`icon_vertical_align_${startVerticalAlign}`]
+              ])}
+            >
+              {React.Children.toArray(start).map((item: any, index: number) => (
+                React.cloneElement(item, {
+                  key: index,
 
-                size: item.props?.size !== undefined ? item.props?.size : 'regular',
-                color: item.props?.color !== undefined ? item.props?.color : theme.palette.text.default.secondary,
-                style: {
-                  ...item.props.style,
+                  size: item.props?.size !== undefined ? item.props?.size : 'regular',
+                  color: item.props?.color !== undefined ? item.props?.color : theme.palette.text.default.secondary,
+                  style: {
+                    ...item.props.style,
 
-                  ...styles.icon
-                }
-              })
-            ))}
-          </span>
-        )}
+                    ...styles.icon
+                  }
+                })
+              ))}
+            </span>
+          )}
+        </>}
 
         {prefix !== undefined && (
           <Type
@@ -1230,7 +1264,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
               classes[`addition_size_${size}`],
               classes[`addition_version_${version}_size_${size}`],
               (enabled || valueWithData || focus) && classes.prefix_focus,
-              noPrefixMargin && classes.noPrefixMargin
+              noPrefixMargin && classes.noPrefixMargin,
+              minimal && !label && classes[`addition_without_label_size_${size}`]
             ])}
 
             version='b2'
@@ -1254,7 +1289,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
             classes[`input_size_${size}`],
             classes[`input_version_${version}_size_${size}`],
             (prefix || start) && classes.input_start_icon,
-            (sufix || end) && classes.input_end_icon
+            (sufix || end) && classes.input_end_icon,
+            minimal && !label && classes[`inputWrapper_without_label_size_${size}`]
           ])}
 
           onClick={onInputWrapperClick}
@@ -1350,36 +1386,38 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
           </Type>
         )}
 
-        {!!React.Children.toArray(end).length && (
-          <span
-            className={classNames([
-              staticClassName('TextField', theme) && [
-                'amaui-TextField-icon',
-                'amaui-TextField-icon-end'
-              ],
+        {!minimal && <>
+          {!!React.Children.toArray(end).length && (
+            <span
+              className={classNames([
+                staticClassName('TextField', theme) && [
+                  'amaui-TextField-icon',
+                  'amaui-TextField-icon-end'
+                ],
 
-              classes.icon,
-              classes.icon_end,
-              classes[`icon${(end as any)?.type?.displayName?.includes('IconButton') ? '_button' : ''}_size_${size}`],
-              classes[`icon_version_${version}`],
-              classes[`icon_vertical_align_${endVerticalAlign}`]
-            ])}
-          >
-            {React.Children.toArray(end).map((item: any, index: number) => (
-              React.cloneElement(item, {
-                key: index,
+                classes.icon,
+                classes.icon_end,
+                classes[`icon${(end as any)?.type?.displayName?.includes('IconButton') ? '_button' : ''}_size_${size}`],
+                classes[`icon_version_${version}`],
+                classes[`icon_vertical_align_${endVerticalAlign}`]
+              ])}
+            >
+              {React.Children.toArray(end).map((item: any, index: number) => (
+                React.cloneElement(item, {
+                  key: index,
 
-                size: item.props?.size !== undefined ? item.props?.size : 'regular',
-                color: item.props?.color !== undefined ? item.props?.color : error ? theme.palette.light ? theme.palette.color.error[hover ? 20 : 40] : theme.palette.color.error[hover ? 90 : 80] : theme.palette.text.default.secondary,
-                style: {
-                  ...item.props.style,
+                  size: item.props?.size !== undefined ? item.props?.size : 'regular',
+                  color: item.props?.color !== undefined ? item.props?.color : error ? theme.palette.light ? theme.palette.color.error[hover ? 20 : 40] : theme.palette.color.error[hover ? 90 : 80] : theme.palette.text.default.secondary,
+                  style: {
+                    ...item.props.style,
 
-                  ...styles.icon
-                }
-              })
-            ))}
-          </span>
-        )}
+                    ...styles.icon
+                  }
+                })
+              ))}
+            </span>
+          )}
+        </>}
       </Component>
 
       {footer && <>
