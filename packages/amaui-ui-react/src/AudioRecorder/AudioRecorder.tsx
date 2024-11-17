@@ -4,6 +4,12 @@ import { getLeadingZerosNumber, is, isEnvironment } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 import { AmauiDate, duration } from '@amaui/date';
 
+import IconMaterialMic from '@amaui/icons-material-rounded-react/IconMaterialMicW100';
+import IconMaterialSend from '@amaui/icons-material-rounded-react/IconMaterialSendW100';
+import IconMaterialPlayArrow from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
+import IconMaterialPause from '@amaui/icons-material-rounded-react/IconMaterialPauseW100';
+import IconMaterialStop from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
+
 import LineElement from '../Line';
 import FadeElement from '../Fade';
 import TypeElement from '../Type';
@@ -13,86 +19,6 @@ import IconElement from '../Icon';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
 import { IElementReference, IPropsAny, ISize } from '../types';
-
-const IconMaterialMicRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='MicRounded'
-      short_name='Mic'
-
-      {...props}
-    >
-      <path d="M12 14Q10.75 14 9.875 13.125Q9 12.25 9 11V5Q9 3.75 9.875 2.875Q10.75 2 12 2Q13.25 2 14.125 2.875Q15 3.75 15 5V11Q15 12.25 14.125 13.125Q13.25 14 12 14ZM12 8Q12 8 12 8Q12 8 12 8Q12 8 12 8Q12 8 12 8Q12 8 12 8Q12 8 12 8Q12 8 12 8Q12 8 12 8ZM12 21Q11.575 21 11.288 20.712Q11 20.425 11 20V17.9Q8.675 17.6 7.05 15.975Q5.425 14.35 5.075 12.075Q5 11.65 5.3 11.325Q5.6 11 6.1 11Q6.45 11 6.725 11.262Q7 11.525 7.075 11.9Q7.4 13.65 8.775 14.825Q10.15 16 12 16Q13.85 16 15.225 14.825Q16.6 13.65 16.925 11.9Q17 11.525 17.288 11.262Q17.575 11 17.925 11Q18.4 11 18.7 11.325Q19 11.65 18.925 12.075Q18.575 14.35 16.95 15.975Q15.325 17.6 13 17.9V20Q13 20.425 12.713 20.712Q12.425 21 12 21ZM12 12Q12.425 12 12.713 11.712Q13 11.425 13 11V5Q13 4.575 12.713 4.287Q12.425 4 12 4Q11.575 4 11.288 4.287Q11 4.575 11 5V11Q11 11.425 11.288 11.712Q11.575 12 12 12Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialSendRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='SendRounded'
-      short_name='Send'
-
-      {...props}
-    >
-      <path d="M3 18.5V5.5Q3 4.95 3.45 4.662Q3.9 4.375 4.4 4.575L19.8 11.075Q20.425 11.35 20.425 12Q20.425 12.65 19.8 12.925L4.4 19.425Q3.9 19.625 3.45 19.337Q3 19.05 3 18.5ZM5 17 16.85 12 5 7V10.5L11 12L5 13.5ZM5 12V7V10.5Q5 10.5 5 10.5Q5 10.5 5 10.5V13.5Q5 13.5 5 13.5Q5 13.5 5 13.5V17Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialPlayArrowRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='PlayArrowRounded'
-      short_name='PlayArrow'
-
-      {...props}
-    >
-      <path d="M9.525 18.025Q9.025 18.35 8.512 18.062Q8 17.775 8 17.175V6.825Q8 6.225 8.512 5.937Q9.025 5.65 9.525 5.975L17.675 11.15Q18.125 11.45 18.125 12Q18.125 12.55 17.675 12.85ZM10 12ZM10 15.35 15.25 12 10 8.65Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialPauseRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='PauseRounded'
-      short_name='Pause'
-
-      {...props}
-    >
-      <path d="M15 19Q14.175 19 13.588 18.413Q13 17.825 13 17V7Q13 6.175 13.588 5.588Q14.175 5 15 5H17Q17.825 5 18.413 5.588Q19 6.175 19 7V17Q19 17.825 18.413 18.413Q17.825 19 17 19ZM7 19Q6.175 19 5.588 18.413Q5 17.825 5 17V7Q5 6.175 5.588 5.588Q6.175 5 7 5H9Q9.825 5 10.413 5.588Q11 6.175 11 7V17Q11 17.825 10.413 18.413Q9.825 19 9 19ZM15 17H17V7H15ZM7 17H9V7H7ZM7 7V17ZM15 7V17Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialStopRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='StopRounded'
-      short_name='Stop'
-
-      {...props}
-    >
-      <path d="M8 8V16ZM8 18Q7.175 18 6.588 17.413Q6 16.825 6 16V8Q6 7.175 6.588 6.588Q7.175 6 8 6H16Q16.825 6 17.413 6.588Q18 7.175 18 8V16Q18 16.825 17.413 17.413Q16.825 18 16 18ZM8 16H16V8H8Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   '@keyframes pulse': {
@@ -198,11 +124,11 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
     Component,
 
-    Icon: Icon_ = IconMaterialMicRounded,
-    IconConfirm = IconMaterialSendRounded,
-    IconStart = IconMaterialPlayArrowRounded,
-    IconPause = IconMaterialPauseRounded,
-    IconStop = IconMaterialStopRounded,
+    Icon: Icon_ = IconMaterialMic,
+    IconConfirm = IconMaterialSend,
+    IconStart = IconMaterialPlayArrow,
+    IconPause = IconMaterialPause,
+    IconStop = IconMaterialStop,
 
     onConfirm: onConfirm_,
     onData,

@@ -3,8 +3,10 @@ import React from 'react';
 import { is, isEnvironment } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
+import IconMaterialExpandMore from '@amaui/icons-material-rounded-react/IconMaterialExpandMoreW100';
+import IconMaterialArrowRight from '@amaui/icons-material-rounded-react/IconMaterialArrowRightW100';
+
 import ListItemElement from '../ListItem';
-import IconElement from '../Icon';
 import ListElement from '../List';
 import IconButtonElement from '../IconButton';
 import MenuElement from '../Menu';
@@ -13,37 +15,6 @@ import FadeElement from '../Fade';
 import { iconFontSize, staticClassName } from '../utils';
 import { IElement, IHTMLElement, IElementReference, IPropsAny } from '../types';
 import { IListItem } from '../ListItem/ListItem';
-
-const IconMaterialExpandMoreRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='ExpandMoreRounded'
-      short_name='ExpandMore'
-
-      {...props}
-    >
-      <path d="M12 14.95Q11.8 14.95 11.625 14.887Q11.45 14.825 11.3 14.675L6.675 10.05Q6.4 9.775 6.413 9.362Q6.425 8.95 6.7 8.675Q6.975 8.4 7.4 8.4Q7.825 8.4 8.1 8.675L12 12.575L15.925 8.65Q16.2 8.375 16.613 8.387Q17.025 8.4 17.3 8.675Q17.575 8.95 17.575 9.375Q17.575 9.8 17.3 10.075L12.7 14.675Q12.55 14.825 12.375 14.887Q12.2 14.95 12 14.95Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialArrowRightRounded = React.forwardRef((props: any, ref) => {
-  return (
-    <IconElement
-      ref={ref}
-
-      name='ArrowRightRounded'
-      short_name='ArrowRight'
-
-      {...props}
-    >
-      <path d="M11.7 15.3Q11.225 15.775 10.613 15.512Q10 15.25 10 14.575V9.425Q10 8.75 10.613 8.488Q11.225 8.225 11.7 8.7L14.3 11.3Q14.45 11.45 14.525 11.625Q14.6 11.8 14.6 12Q14.6 12.2 14.525 12.375Q14.45 12.55 14.3 12.7Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   icon: {
@@ -148,7 +119,7 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
     onMouseEnter: onMouseEnter_,
     onMouseLeave: onMouseLeave_,
 
-    ExpandIcon = IconMaterialExpandMoreRounded,
+    ExpandIcon = IconMaterialExpandMore,
     ListTransitionComponent = Fade,
 
     ListProps,
@@ -219,7 +190,7 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
 
   let end = end_;
 
-  if (menu) end = end_ || <IconMaterialArrowRightRounded />;
+  if (menu) end = end_ || <IconMaterialArrowRight />;
 
   if (list) end = end_ || (indicator && (
     <IconButton

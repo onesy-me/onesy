@@ -3,6 +3,9 @@ import React from 'react';
 import { clamp, is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
+import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialMoreHoriz from '@amaui/icons-material-rounded-react/IconMaterialMoreHorizW100';
+
 import LineElement from '../Line';
 import TypeElement from '../Type';
 import IconElement from '../Icon';
@@ -12,38 +15,6 @@ import { ILine } from '../Line/Line';
 
 import { staticClassName, valueBreakpoints } from '../utils';
 import { IElement } from '../types';
-
-const IconMaterialNavigateNextRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='NavigateNextRounded'
-      short_name='NavigateNext'
-
-      {...props}
-    >
-      <path d="M8.7 17.3Q8.425 17.025 8.425 16.6Q8.425 16.175 8.7 15.9L12.6 12L8.7 8.1Q8.425 7.825 8.425 7.4Q8.425 6.975 8.7 6.7Q8.975 6.425 9.4 6.425Q9.825 6.425 10.1 6.7L14.7 11.3Q14.85 11.45 14.913 11.625Q14.975 11.8 14.975 12Q14.975 12.2 14.913 12.375Q14.85 12.55 14.7 12.7L10.1 17.3Q9.825 17.575 9.4 17.575Q8.975 17.575 8.7 17.3Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialMoreHorizRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='MoreHorizRounded'
-      short_name='MoreHoriz'
-
-      {...props}
-    >
-      <path d="M6 14Q5.175 14 4.588 13.412Q4 12.825 4 12Q4 11.175 4.588 10.587Q5.175 10 6 10Q6.825 10 7.412 10.587Q8 11.175 8 12Q8 12.825 7.412 13.412Q6.825 14 6 14ZM12 14Q11.175 14 10.588 13.412Q10 12.825 10 12Q10 11.175 10.588 10.587Q11.175 10 12 10Q12.825 10 13.413 10.587Q14 11.175 14 12Q14 12.825 13.413 13.412Q12.825 14 12 14ZM18 14Q17.175 14 16.587 13.412Q16 12.825 16 12Q16 11.175 16.587 10.587Q17.175 10 18 10Q18.825 10 19.413 10.587Q20 11.175 20 12Q20 12.825 19.413 13.412Q18.825 14 18 14Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -84,14 +55,14 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
     max: max_,
 
     separator = (
-      <IconMaterialNavigateNextRounded
+      <IconMaterialNavigateNext
         size='small'
       />
     ),
 
     renderMore,
 
-    IconMore = IconMaterialMoreHorizRounded,
+    IconMore = IconMaterialMoreHoriz,
 
     Component = 'nav',
 

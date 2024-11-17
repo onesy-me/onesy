@@ -1,6 +1,6 @@
 {
   "name": "@amaui/ui-react",
-  "version": "1.1.799",
+  "version": "1.1.802",
   "description": "UI for React",
   "repository": "https://github.com/amaui-org/amaui.git",
   "author": "Lazar <lazareric2@gmail.com>",
@@ -41,6 +41,7 @@
     "test": "yarn lint && yarn type && yarn build && yarn test:pre && yarn cov && yarn test:post"
   },
   "peerDependencies": {
+    "@amaui/icons-material-rounded-react": "^1.0.4",
     "@amaui/style-react": "^1.1.31",
     "react": "^18.1.0",
     "react-dom": "^18.2.0",
@@ -49,12 +50,13 @@
   "dependencies": {
     "@amaui/date": "^1.1.16",
     "@amaui/errors": "^1.0.111",
+    "@amaui/icons-material-rounded-react": "^1.0.4",
     "@amaui/log": "^1.0.22",
     "@amaui/subscription": "^1.0.5",
-    "@amaui/ui-react": "^1.1.620",
     "@amaui/utils": "^1.1.30"
   },
   "devDependencies": {
+    "@amaui/icons-material-rounded-react": "^1.0.4",
     "@amaui/style-react": "^1.1.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

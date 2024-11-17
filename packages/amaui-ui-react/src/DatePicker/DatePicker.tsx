@@ -4,7 +4,10 @@ import { is } from '@amaui/utils';
 import { AmauiDate, endOf, format, is as isAmauiDate, startOf } from '@amaui/date';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
-import IconElement from '../Icon';
+import IconMaterialCalendarToday from '@amaui/icons-material-rounded-react/IconMaterialCalendarTodayW100Filled';
+import IconMaterialEdit from '@amaui/icons-material-rounded-react/IconMaterialEditW100';
+import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+
 import IconButtonElement from '../IconButton';
 import ButtonElement from '../Button';
 import AdvancedTextFieldElement from '../AdvancedTextField';
@@ -23,54 +26,6 @@ import { TCalendarUnit } from '../Calendar/Calendar';
 import { TCalendarMonthCalendar, TCalendarMonthValue } from '../CalendarMonth/CalendarMonth';
 import { valueBreakpoints, staticClassName } from '../utils';
 import { ITonal, IColor, ISize, IValueBreakpoints, IElement, IElementReference, IPropsAny } from '../types';
-
-const IconMaterialCalendarTodayRoundedFilled = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='CalendarTodayRoundedFilled'
-      short_name='CalendarToday'
-
-      {...props}
-    >
-      <path d="M5 22Q4.175 22 3.587 21.413Q3 20.825 3 20V6Q3 5.175 3.587 4.588Q4.175 4 5 4H6V2.975Q6 2.55 6.287 2.275Q6.575 2 7 2Q7.425 2 7.713 2.287Q8 2.575 8 3V4H16V2.975Q16 2.55 16.288 2.275Q16.575 2 17 2Q17.425 2 17.712 2.287Q18 2.575 18 3V4H19Q19.825 4 20.413 4.588Q21 5.175 21 6V20Q21 20.825 20.413 21.413Q19.825 22 19 22ZM5 20H19Q19 20 19 20Q19 20 19 20V10H5V20Q5 20 5 20Q5 20 5 20Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialEditRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='EditRounded'
-      short_name='Edit'
-
-      {...props}
-    >
-      <path d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6ZM19.3 8.925 15.05 4.725 16.45 3.325Q17.025 2.75 17.863 2.75Q18.7 2.75 19.275 3.325L20.675 4.725Q21.25 5.3 21.275 6.113Q21.3 6.925 20.725 7.5ZM4 21Q3.575 21 3.288 20.712Q3 20.425 3 20V17.175Q3 16.975 3.075 16.788Q3.15 16.6 3.3 16.45L13.6 6.15L17.85 10.4L7.55 20.7Q7.4 20.85 7.213 20.925Q7.025 21 6.825 21ZM14.325 9.675 13.625 8.975 15.025 10.375Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialCloseRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='CloseRounded'
-      short_name='Close'
-
-      {...props}
-    >
-      <path d="M12 13.4 7.1 18.3Q6.825 18.575 6.4 18.575Q5.975 18.575 5.7 18.3Q5.425 18.025 5.425 17.6Q5.425 17.175 5.7 16.9L10.6 12L5.7 7.1Q5.425 6.825 5.425 6.4Q5.425 5.975 5.7 5.7Q5.975 5.425 6.4 5.425Q6.825 5.425 7.1 5.7L12 10.6L16.9 5.7Q17.175 5.425 17.6 5.425Q18.025 5.425 18.3 5.7Q18.575 5.975 18.575 6.4Q18.575 6.825 18.3 7.1L13.4 12L18.3 16.9Q18.575 17.175 18.575 17.6Q18.575 18.025 18.3 18.3Q18.025 18.575 17.6 18.575Q17.175 18.575 16.9 18.3Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -339,9 +294,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     onCancel: onCancel_,
     onOk: onOk_,
 
-    Icon: Icon_ = IconMaterialCalendarTodayRoundedFilled,
-    IconEnter = IconMaterialEditRounded,
-    IconClose = IconMaterialCloseRounded,
+    Icon: Icon_ = IconMaterialCalendarToday,
+    IconEnter = IconMaterialEdit,
+    IconClose = IconMaterialClose,
 
     WrapperProps,
     CalendarProps,

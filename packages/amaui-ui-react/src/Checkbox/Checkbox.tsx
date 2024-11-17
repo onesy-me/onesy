@@ -3,28 +3,13 @@ import React from 'react';
 import { is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
+import IconMaterialIndeterminateCheckBox from '@amaui/icons-material-rounded-react/IconMaterialIndeterminateCheckBoxW100';
+
 import IconButtonElement from '../IconButton';
-import IconElement from '../Icon';
 import { IconDoneAnimated } from '../Buttons/Buttons';
 import { IIconButton } from '../IconButton/IconButton';
 import { staticClassName } from '../utils';
 import { IRef, IColor } from '../types';
-
-const IconMaterialIndeterminateCheckBoxSharp = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='IndeterminateCheckBoxSharp'
-      short_name='IndeterminateCheckBox'
-
-      {...props}
-    >
-      <path d='M7 13H17V11H7V13Z' />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -495,7 +480,7 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
           noFontSizeDownScale
         >
-          <IconMaterialIndeterminateCheckBoxSharp size='inherit' />
+          <IconMaterialIndeterminateCheckBox size='inherit' />
         </IconItem>
       )}
 

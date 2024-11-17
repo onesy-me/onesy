@@ -4,6 +4,12 @@ import { capitalize, cleanValue, is, textToInnerHTML } from '@amaui/utils';
 import { style as styleMethod, classNames, useAmauiTheme, colors } from '@amaui/style-react';
 import { AmauiDate, add, endOf, format, remove, set, startOf } from '@amaui/date';
 
+import IconMaterialEdit from '@amaui/icons-material-rounded-react/IconMaterialEditW100';
+import IconMaterialKeyboardArrowDown from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
+import IconMaterialArrowForwardIos from '@amaui/icons-material-rounded-react/IconMaterialArrowForwardIosW100';
+import IconMaterialArrowBackIosNew from '@amaui/icons-material-rounded-react/IconMaterialArrowBackIosNewW100';
+import IconMaterialDelete from '@amaui/icons-material-rounded-react/IconMaterialDeleteW100';
+
 import CalendarWeekElement from '../CalendarWeek';
 import SelectElement from '../Select';
 import ButtonElement from '../Button';
@@ -22,101 +28,6 @@ import IconElement from '../Icon';
 import { formats, staticClassName } from '../utils';
 import { IElement } from '../types';
 import { ICalendarViewsView } from '../CalendarViews/CalendarViews';
-
-const IconMaterialEdit = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='Edit'
-
-      short_name='Edit'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M5 19h1.4l8.625-8.625-1.4-1.4L5 17.6ZM19.3 8.925l-4.25-4.2 1.4-1.4q.575-.575 1.413-.575.837 0 1.412.575l1.4 1.4q.575.575.6 1.388.025.812-.55 1.387ZM4 21q-.425 0-.712-.288Q3 20.425 3 20v-2.825q0-.2.075-.387.075-.188.225-.338l10.3-10.3 4.25 4.25-10.3 10.3q-.15.15-.337.225-.188.075-.388.075ZM14.325 9.675l-.7-.7 1.4 1.4Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialKeyboardArrowDown = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='KeyboardArrowDown'
-
-      short_name='KeyboardArrowDown'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M12 14.975q-.2 0-.387-.075-.188-.075-.313-.2l-4.6-4.6q-.275-.275-.275-.7 0-.425.275-.7.275-.275.7-.275.425 0 .7.275l3.9 3.9 3.9-3.9q.275-.275.7-.275.425 0 .7.275.275.275.275.7 0 .425-.275.7l-4.6 4.6q-.15.15-.325.212-.175.063-.375.063Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialArrowForwardIos = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='ArrowForwardIos'
-
-      short_name='ArrowForwardIos'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M7.15 21.1q-.375-.375-.375-.888 0-.512.375-.887L14.475 12l-7.35-7.35q-.35-.35-.35-.875t.375-.9q.375-.375.888-.375.512 0 .887.375l8.4 8.425q.15.15.213.325.062.175.062.375t-.062.375q-.063.175-.213.325L8.9 21.125q-.35.35-.862.35-.513 0-.888-.375Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialArrowBackIosNew = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='ArrowBackIosNew'
-
-      short_name='ArrowBackIosNew'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M15.125 21.1 6.7 12.7q-.15-.15-.212-.325-.063-.175-.063-.375t.063-.375q.062-.175.212-.325l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L9.55 12l7.35 7.35q.35.35.35.862 0 .513-.375.888t-.875.375q-.5 0-.875-.375Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialDelete = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='Delete'
-
-      short_name='Delete'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M7 21q-.825 0-1.412-.587Q5 19.825 5 19V6q-.425 0-.713-.287Q4 5.425 4 5t.287-.713Q4.575 4 5 4h4q0-.425.288-.713Q9.575 3 10 3h4q.425 0 .713.287Q15 3.575 15 4h4q.425 0 .712.287Q20 4.575 20 5t-.288.713Q19.425 6 19 6v13q0 .825-.587 1.413Q17.825 21 17 21ZM7 6v13h10V6Zm2 10q0 .425.288.712Q9.575 17 10 17t.713-.288Q11 16.425 11 16V9q0-.425-.287-.713Q10.425 8 10 8t-.712.287Q9 8.575 9 9Zm4 0q0 .425.288.712.287.288.712.288t.713-.288Q15 16.425 15 16V9q0-.425-.287-.713Q14.425 8 14 8t-.712.287Q13 8.575 13 9ZM7 6v13V6Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -186,6 +97,13 @@ const useStyle = styleMethod(theme => ({
         width: '100%'
       }
     }
+  },
+
+  legend: {
+    padding: '2px',
+    alignSelf: 'center',
+    maxWidth: '100%',
+    overflow: 'auto hidden'
   },
 
   itemLegend: {
@@ -796,17 +714,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
         align='center'
 
-        justify='center'
-
-        wrap='wrap'
-
         className={classes.legend}
-
-        fullWidth
-
-        style={{
-          height: 40
-        }}
       >
         {optionsStatus.map((item, index) => (
           <Line
@@ -819,6 +727,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
             align='center'
 
             onClick={() => onStatusToggle(item.value)}
+
+            flexNo
 
             className={classNames([
               classes.itemLegend,

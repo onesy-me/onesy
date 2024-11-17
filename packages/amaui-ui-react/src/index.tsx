@@ -630,3 +630,6 @@ export * from './Info';
 
 export { default as Week } from './CalendarWeek';
 export * from './CalendarWeek';
+
+export { default as CalendarMenu } from './CalendarMenu';
+export * from './CalendarMenu';

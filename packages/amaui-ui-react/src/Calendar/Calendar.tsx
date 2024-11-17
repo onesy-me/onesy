@@ -4,12 +4,15 @@ import { clamp, is, isEnvironment, Try } from '@amaui/utils';
 import { classNames, style, useAmauiTheme } from '@amaui/style-react';
 import { AmauiDate, add, remove, format, TTimeUnits, set } from '@amaui/date';
 
+import IconMaterialNavigateBefore from '@amaui/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
+import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialArrowDropDown from '@amaui/icons-material-rounded-react/IconMaterialArrowDropDownW100';
+
 import SurfaceElement from '../Surface';
 import LineElement from '../Line';
 import FadeElement from '../Fade';
 import IconButtonElement from '../IconButton';
 import ButtonElement from '../Button';
-import IconElement from '../Icon';
 import CalendarMonthElement from '../CalendarMonth';
 import ListElement from '../List';
 import ListItemElement from '../ListItem';
@@ -23,54 +26,6 @@ import { TTransitionStatus } from '../Transition';
 import { ISurface } from '../Surface/Surface';
 import { iconFontSize, staticClassName } from '../utils';
 import { IColor, IElementReference, IPropsAny, ISize, ITonal } from '../types';
-
-const IconMaterialNavigateBeforeRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='NavigateBeforeRounded'
-      short_name='NavigateBefore'
-
-      {...props}
-    >
-      <path d="M13.3 17.3 8.7 12.7Q8.55 12.55 8.488 12.375Q8.425 12.2 8.425 12Q8.425 11.8 8.488 11.625Q8.55 11.45 8.7 11.3L13.3 6.7Q13.575 6.425 14 6.425Q14.425 6.425 14.7 6.7Q14.975 6.975 14.975 7.4Q14.975 7.825 14.7 8.1L10.8 12L14.7 15.9Q14.975 16.175 14.975 16.6Q14.975 17.025 14.7 17.3Q14.425 17.575 14 17.575Q13.575 17.575 13.3 17.3Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialNavigateNextRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='NavigateNextRounded'
-      short_name='NavigateNext'
-
-      {...props}
-    >
-      <path d="M8.7 17.3Q8.425 17.025 8.425 16.6Q8.425 16.175 8.7 15.9L12.6 12L8.7 8.1Q8.425 7.825 8.425 7.4Q8.425 6.975 8.7 6.7Q8.975 6.425 9.4 6.425Q9.825 6.425 10.1 6.7L14.7 11.3Q14.85 11.45 14.913 11.625Q14.975 11.8 14.975 12Q14.975 12.2 14.913 12.375Q14.85 12.55 14.7 12.7L10.1 17.3Q9.825 17.575 9.4 17.575Q8.975 17.575 8.7 17.3Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialArrowDropDownRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='ArrowDropDownRounded'
-      short_name='ArrowDropDown'
-
-      {...props}
-    >
-      <path d="M11.3 14.3 8.7 11.7Q8.225 11.225 8.488 10.613Q8.75 10 9.425 10H14.575Q15.25 10 15.512 10.613Q15.775 11.225 15.3 11.7L12.7 14.3Q12.55 14.45 12.375 14.525Q12.2 14.6 12 14.6Q11.8 14.6 11.625 14.525Q11.45 14.45 11.3 14.3Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = style(theme => ({
   root: {
@@ -325,9 +280,9 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
     disabled,
 
-    IconPrevious = IconMaterialNavigateBeforeRounded,
-    IconNext = IconMaterialNavigateNextRounded,
-    IconDropDown = IconMaterialArrowDropDownRounded,
+    IconPrevious = IconMaterialNavigateBefore,
+    IconNext = IconMaterialNavigateNext,
+    IconDropDown = IconMaterialArrowDropDown,
 
     CalendarMonthProps,
     OptionButtonProps,

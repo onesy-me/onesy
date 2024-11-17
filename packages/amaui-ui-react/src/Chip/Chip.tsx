@@ -3,27 +3,12 @@ import React from 'react';
 import { is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
+import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+
 import ButtonElement from '../Button';
-import IconElement from '../Icon';
 import { IconDoneAnimated } from '../Buttons/Buttons';
 import { IButton } from '../Button/Button';
 import { staticClassName } from '../utils';
-
-const IconMaterialCloseSharp = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='CloseSharp'
-      short_name='Close'
-
-      {...props}
-    >
-      <path d="M6.4 19 5 17.6 10.6 12 5 6.4 6.4 5 12 10.6 17.6 5 19 6.4 13.4 12 19 17.6 17.6 19 12 13.4Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -95,7 +80,7 @@ const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
   const OtherProps: any = {};
 
   if (input) {
-    OtherProps.end = <IconMaterialCloseSharp
+    OtherProps.end = <IconMaterialClose
       onClick={(event: MouseEvent) => {
         if (is('function', onRemove)) onRemove(event);
       }}

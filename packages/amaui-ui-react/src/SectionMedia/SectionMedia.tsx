@@ -3,8 +3,9 @@ import React from 'react';
 import { cleanValue, is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
+import IconMaterialDraft from '@amaui/icons-material-rounded-react/IconMaterialDraftW100';
+
 import AudioPlayerElement from '../AudioPlayer';
-import IconElement, { IIcon } from '../Icon';
 import ImageElement from '../Image';
 import InteractionElement from '../Interaction';
 import LineElement from '../Line';
@@ -13,25 +14,6 @@ import TypeElement from '../Type';
 import VideoPlayerElement from '../VideoPlayer';
 import { staticClassName } from '../utils';
 import { IMediaObject, IPropsAny } from '../types';
-
-const IconMaterialDraft = React.forwardRef((props: IIcon, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='Draft'
-
-      short_name='Draft'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M6 22q-.825 0-1.412-.587Q4 20.825 4 20V4q0-.825.588-1.413Q5.175 2 6 2h7.175q.4 0 .763.15.362.15.637.425l4.85 4.85q.275.275.425.637.15.363.15.763V20q0 .825-.587 1.413Q18.825 22 18 22Zm7-14V4H6v16h12V9h-4q-.425 0-.712-.288Q13 8.425 13 8ZM6 4v5-5 16V4Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   root: {

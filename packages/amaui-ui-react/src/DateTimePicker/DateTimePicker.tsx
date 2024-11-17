@@ -4,13 +4,16 @@ import { is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 import { AmauiDate, format as formatMethod, set, is as isAmauiDate } from '@amaui/date';
 
+import IconMaterialDateRange from '@amaui/icons-material-rounded-react/IconMaterialDateRangeW100Filled';
+import IconMaterialCalendarToday from '@amaui/icons-material-rounded-react/IconMaterialCalendarTodayW100Filled';
+import IconMaterialSchedule from '@amaui/icons-material-rounded-react/IconMaterialScheduleW100';
+
 import AdvancedTextFieldElement from '../AdvancedTextField';
 import ModalElement from '../Modal';
 import TooltipElement from '../Tooltip';
 import SlideElement from '../Slide';
 import SurfaceElement from '../Surface';
 import IconButtonElement from '../IconButton';
-import IconElement from '../Icon';
 import LineElement from '../Line';
 import TypeElement from '../Type';
 import ButtonElement from '../Button';
@@ -25,54 +28,6 @@ import { TCalendarUnit } from '../Calendar/Calendar';
 import { TClockUnit } from '../Clock/Clock';
 import { valueBreakpoints, staticClassName } from '../utils';
 import { ITonal, IColor, IValueBreakpoints, IElementReference, IPropsAny } from '../types';
-
-const IconMaterialDateRangeRoundedFilled = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='DateRangeRoundedFilled'
-      short_name='DateRange'
-
-      {...props}
-    >
-      <path d="M8 14Q7.575 14 7.287 13.712Q7 13.425 7 13Q7 12.575 7.287 12.287Q7.575 12 8 12Q8.425 12 8.713 12.287Q9 12.575 9 13Q9 13.425 8.713 13.712Q8.425 14 8 14ZM12 14Q11.575 14 11.288 13.712Q11 13.425 11 13Q11 12.575 11.288 12.287Q11.575 12 12 12Q12.425 12 12.713 12.287Q13 12.575 13 13Q13 13.425 12.713 13.712Q12.425 14 12 14ZM16 14Q15.575 14 15.288 13.712Q15 13.425 15 13Q15 12.575 15.288 12.287Q15.575 12 16 12Q16.425 12 16.712 12.287Q17 12.575 17 13Q17 13.425 16.712 13.712Q16.425 14 16 14ZM5 22Q4.175 22 3.587 21.413Q3 20.825 3 20V6Q3 5.175 3.587 4.588Q4.175 4 5 4H6V2.975Q6 2.55 6.287 2.275Q6.575 2 7 2Q7.425 2 7.713 2.287Q8 2.575 8 3V4H16V2.975Q16 2.55 16.288 2.275Q16.575 2 17 2Q17.425 2 17.712 2.287Q18 2.575 18 3V4H19Q19.825 4 20.413 4.588Q21 5.175 21 6V20Q21 20.825 20.413 21.413Q19.825 22 19 22ZM5 20H19Q19 20 19 20Q19 20 19 20V10H5V20Q5 20 5 20Q5 20 5 20Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialCalendarTodayRoundedFilled = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='CalendarTodayRoundedFilled'
-      short_name='CalendarToday'
-
-      {...props}
-    >
-      <path d="M5 22Q4.175 22 3.587 21.413Q3 20.825 3 20V6Q3 5.175 3.587 4.588Q4.175 4 5 4H6V2.975Q6 2.55 6.287 2.275Q6.575 2 7 2Q7.425 2 7.713 2.287Q8 2.575 8 3V4H16V2.975Q16 2.55 16.288 2.275Q16.575 2 17 2Q17.425 2 17.712 2.287Q18 2.575 18 3V4H19Q19.825 4 20.413 4.588Q21 5.175 21 6V20Q21 20.825 20.413 21.413Q19.825 22 19 22ZM5 20H19Q19 20 19 20Q19 20 19 20V10H5V20Q5 20 5 20Q5 20 5 20Z" />
-    </IconElement>
-  );
-});
-
-const IconMaterialScheduleRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <IconElement
-      ref={ref}
-
-      name='ScheduleRounded'
-      short_name='Schedule'
-
-      {...props}
-    >
-      <path d="M14.625 16.025Q14.9 16.3 15.3 16.3Q15.7 16.3 16 16Q16.275 15.725 16.275 15.3Q16.275 14.875 16 14.6L13 11.6V7.975Q13 7.55 12.713 7.275Q12.425 7 12 7Q11.575 7 11.288 7.287Q11 7.575 11 8V11.975Q11 12.175 11.075 12.362Q11.15 12.55 11.3 12.7ZM12 22Q9.925 22 8.1 21.212Q6.275 20.425 4.925 19.075Q3.575 17.725 2.788 15.9Q2 14.075 2 12Q2 9.925 2.788 8.1Q3.575 6.275 4.925 4.925Q6.275 3.575 8.1 2.787Q9.925 2 12 2Q14.075 2 15.9 2.787Q17.725 3.575 19.075 4.925Q20.425 6.275 21.212 8.1Q22 9.925 22 12Q22 14.075 21.212 15.9Q20.425 17.725 19.075 19.075Q17.725 20.425 15.9 21.212Q14.075 22 12 22ZM12 12Q12 12 12 12Q12 12 12 12Q12 12 12 12Q12 12 12 12Q12 12 12 12Q12 12 12 12Q12 12 12 12Q12 12 12 12ZM12 20Q15.325 20 17.663 17.663Q20 15.325 20 12Q20 8.675 17.663 6.337Q15.325 4 12 4Q8.675 4 6.338 6.337Q4 8.675 4 12Q4 15.325 6.338 17.663Q8.675 20 12 20Z" />
-    </IconElement>
-  );
-});
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -236,9 +191,9 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     onCancel: onCancel_,
     onOk: onOk_,
 
-    Icon: Icon_ = IconMaterialDateRangeRoundedFilled,
-    IconDate = IconMaterialCalendarTodayRoundedFilled,
-    IconTime = IconMaterialScheduleRounded,
+    Icon: Icon_ = IconMaterialDateRange,
+    IconDate = IconMaterialCalendarToday,
+    IconTime = IconMaterialSchedule,
 
     WrapperProps,
     ModalProps,

@@ -3,6 +3,20 @@ import React from 'react';
 import { clamp, cleanValue, copy, getID, is, isEnvironment, lighten, numberWithCommas, textToInnerHTML } from '@amaui/utils';
 import { classNames, style, useAmauiTheme } from '@amaui/style-react';
 
+import IconMaterialCheckCircle from '@amaui/icons-material-rounded-react/IconMaterialCheckCircleW100';
+import IconMaterialUngroup from '@amaui/icons-material-rounded-react/IconMaterialUngroupW100';
+import IconMaterialAdGroup from '@amaui/icons-material-rounded-react/IconMaterialAdGroupW100';
+import IconMaterialContentCopy from '@amaui/icons-material-rounded-react/IconMaterialContentCopyW100';
+import IconMaterialFlipToFront from '@amaui/icons-material-rounded-react/IconMaterialFlipToFrontW100';
+import IconMaterialFlipToBack from '@amaui/icons-material-rounded-react/IconMaterialFlipToBackW100';
+import IconMaterialKeyboardArrowDown from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
+import IconMaterialKeyboardArrowUp from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowUpW100';
+import IconMaterialSettings from '@amaui/icons-material-rounded-react/IconMaterialSettingsW100';
+import IconMaterialKeyboardArrowLeft from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowLeftW100';
+import IconMaterialMenuOpen from '@amaui/icons-material-rounded-react/IconMaterialMenuOpenW100';
+import IconMaterialAdd from '@amaui/icons-material-rounded-react/IconMaterialAddW100';
+import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+
 import Icon from '../Icon';
 import LineElement from '../Line';
 import CheckboxElement from '../Checkbox';
@@ -29,253 +43,6 @@ import HTMLCanvasElement, { IHTMLCanvasOnChangeValue } from '../HTMLCanvas';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, ISize } from '../types';
-
-const IconMaterialCheckCircleRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='CheckCircle'
-
-      short_name='CheckCircle'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="m10.6 13.8-2.175-2.175q-.275-.275-.687-.262-.413.012-.688.287-.275.275-.275.7 0 .425.275.7L9.9 15.9q.275.275.7.275.425 0 .7-.275l5.675-5.675q.275-.275.263-.688-.013-.412-.288-.687-.275-.275-.7-.275-.425 0-.7.275ZM12 22q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-10Zm0 8q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialUngroupRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='Ungroup'
-
-      short_name='Ungroup'
-
-      viewBox='0 96 960 960'
-
-      {...props}
-    >
-      <path d="M520 592 376 736q-11 11-28 11t-28-11q-11-11-11-28t11-28l144-144H360q-17 0-28.5-11.5T320 496q0-17 11.5-28.5T360 456h200q17 0 28.5 11.5T600 496v200q0 17-11.5 28.5T560 736q-17 0-28.5-11.5T520 696V592Zm0-296q-17 0-28.5-11.5T480 256q0-17 11.5-28.5T520 216h240q33 0 56.5 23.5T840 296v240q0 17-11.5 28.5T800 576q-17 0-28.5-11.5T760 536V296H520ZM200 936q-33 0-56.5-23.5T120 856V256q0-17 11.5-28.5T160 216q17 0 28.5 11.5T200 256v600h600q17 0 28.5 11.5T840 896q0 17-11.5 28.5T800 936H200Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialAdGroupRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='AdGroup'
-
-      short_name='AdGroup'
-
-      viewBox='0 -960 960 960'
-
-      {...props}
-    >
-      <path d="M320-320h480v-400H320v400Zm0 80q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320ZM160-80q-33 0-56.5-23.5T80-160v-520q0-17 11.5-28.5T120-720q17 0 28.5 11.5T160-680v520h520q17 0 28.5 11.5T720-120q0 17-11.5 28.5T680-80H160Zm160-720v480-480Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialContentCopyRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='ContentCopy'
-
-      short_name='ContentCopy'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.413-.587Q3 20.825 3 20V7q0-.425.288-.713Q3.575 6 4 6t.713.287Q5 6.575 5 7v13h10q.425 0 .713.288.287.287.287.712t-.287.712Q15.425 22 15 22ZM9 4v12V4Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialFlipToFrontRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='FlipToFront'
-
-      short_name='FlipToFront'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M5 21q-.825 0-1.413-.587Q3 19.825 3 19h2Zm-2-4v-2h2v2Zm0-4v-2h2v2Zm0-4V7h2v2Zm4 12v-2h2v2Zm2-4q-.825 0-1.412-.587Q7 15.825 7 15V5q0-.825.588-1.413Q8.175 3 9 3h10q.825 0 1.413.587Q21 4.175 21 5v10q0 .825-.587 1.413Q19.825 17 19 17Zm0-2h10V5H9v10Zm2 6v-2h2v2Zm4 0v-2h2v2Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialFlipToBackRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='FlipToBack'
-
-      short_name='FlipToBack'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M7 9V7h2v2Zm0 4v-2h2v2Zm0-8q0-.825.588-1.413Q8.175 3 9 3v2Zm4 12v-2h2v2Zm8-12V3q.825 0 1.413.587Q21 4.175 21 5Zm-8 0V3h2v2ZM9 17q-.825 0-1.412-.587Q7 15.825 7 15h2Zm10-4v-2h2v2Zm0-4V7h2v2Zm0 8v-2h2q0 .825-.587 1.413Q19.825 17 19 17ZM5 21q-.825 0-1.413-.587Q3 19.825 3 19V8q0-.425.288-.713Q3.575 7 4 7t.713.287Q5 7.575 5 8v11h11q.425 0 .712.288.288.287.288.712t-.288.712Q16.425 21 16 21ZM15 5V3h2v2Zm0 12v-2h2v2Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialKeyboardArrowDownRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='KeyboardArrowDown'
-
-      short_name='KeyboardArrowDown'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M12 14.975q-.2 0-.387-.075-.188-.075-.313-.2l-4.6-4.6q-.275-.275-.275-.7 0-.425.275-.7.275-.275.7-.275.425 0 .7.275l3.9 3.9 3.9-3.9q.275-.275.7-.275.425 0 .7.275.275.275.275.7 0 .425-.275.7l-4.6 4.6q-.15.15-.325.212-.175.063-.375.063Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialKeyboardArrowUpRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='KeyboardArrowUp'
-
-      short_name='KeyboardArrowUp'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M6.7 14.7q-.275-.275-.275-.7 0-.425.275-.7l4.6-4.6q.15-.15.325-.213.175-.062.375-.062t.388.075q.187.075.312.2l4.6 4.6q.275.275.275.7 0 .425-.275.7-.275.275-.7.275-.425 0-.7-.275L12 10.8l-3.9 3.9q-.275.275-.7.275-.425 0-.7-.275Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialSettingsRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='Settings'
-
-      short_name='Settings'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M13.875 22h-3.75q-.375 0-.65-.25t-.325-.625l-.3-2.325q-.325-.125-.612-.3-.288-.175-.563-.375l-2.175.9q-.35.125-.7.025t-.55-.425L2.4 15.4q-.2-.325-.125-.7.075-.375.375-.6l1.875-1.425Q4.5 12.5 4.5 12.337v-.675q0-.162.025-.337L2.65 9.9q-.3-.225-.375-.6-.075-.375.125-.7l1.85-3.225q.175-.35.537-.438.363-.087.713.038l2.175.9q.275-.2.575-.375.3-.175.6-.3l.3-2.325q.05-.375.325-.625t.65-.25h3.75q.375 0 .65.25t.325.625l.3 2.325q.325.125.613.3.287.175.562.375l2.175-.9q.35-.125.7-.025t.55.425L21.6 8.6q.2.325.125.7-.075.375-.375.6l-1.875 1.425q.025.175.025.337v.675q0 .163-.05.338l1.875 1.425q.3.225.375.6.075.375-.125.7l-1.85 3.2q-.2.325-.562.438-.363.112-.713-.013l-2.125-.9q-.275.2-.575.375-.3.175-.6.3l-.3 2.325q-.05.375-.325.625t-.65.25Zm-1.825-6.5q1.45 0 2.475-1.025Q15.55 13.45 15.55 12q0-1.45-1.025-2.475Q13.5 8.5 12.05 8.5q-1.475 0-2.488 1.025Q8.55 10.55 8.55 12q0 1.45 1.012 2.475Q10.575 15.5 12.05 15.5Zm0-2q-.625 0-1.062-.438-.438-.437-.438-1.062t.438-1.062q.437-.438 1.062-.438t1.063.438q.437.437.437 1.062t-.437 1.062q-.438.438-1.063.438ZM12 12Zm-1 8h1.975l.35-2.65q.775-.2 1.438-.588.662-.387 1.212-.937l2.475 1.025.975-1.7-2.15-1.625q.125-.35.175-.738.05-.387.05-.787t-.05-.788q-.05-.387-.175-.737l2.15-1.625-.975-1.7-2.475 1.05q-.55-.575-1.212-.963-.663-.387-1.438-.587L13 4h-1.975l-.35 2.65q-.775.2-1.437.587-.663.388-1.213.938L5.55 7.15l-.975 1.7 2.15 1.6q-.125.375-.175.75-.05.375-.05.8 0 .4.05.775t.175.75l-2.15 1.625.975 1.7 2.475-1.05q.55.575 1.213.962.662.388 1.437.588Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialKeyboardArrowLeftRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='KeyboardArrowLeft'
-
-      short_name='KeyboardArrowLeft'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="m13.3 17.3-4.6-4.6q-.15-.15-.212-.325-.063-.175-.063-.375t.063-.375q.062-.175.212-.325l4.6-4.6q.275-.275.7-.275.425 0 .7.275.275.275.275.7 0 .425-.275.7L10.8 12l3.9 3.9q.275.275.275.7 0 .425-.275.7-.275.275-.7.275-.425 0-.7-.275Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialMenuOpenRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='MenuOpen'
-
-      short_name='MenuOpen'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M4 18q-.425 0-.712-.288Q3 17.425 3 17t.288-.712Q3.575 16 4 16h11q.425 0 .713.288.287.287.287.712t-.287.712Q15.425 18 15 18Zm0-5q-.425 0-.712-.288Q3 12.425 3 12t.288-.713Q3.575 11 4 11h8q.425 0 .713.287.287.288.287.713t-.287.712Q12.425 13 12 13Zm0-5q-.425 0-.712-.287Q3 7.425 3 7t.288-.713Q3.575 6 4 6h11q.425 0 .713.287Q16 6.575 16 7t-.287.713Q15.425 8 15 8Zm13.4 4 2.9 2.9q.275.275.275.7 0 .425-.275.7-.275.275-.7.275-.425 0-.7-.275l-3.6-3.6q-.3-.3-.3-.7 0-.4.3-.7l3.6-3.6q.275-.275.7-.275.425 0 .7.275.275.275.275.7 0 .425-.275.7Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialAddRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='Add'
-
-      short_name='Add'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="M12 19q-.425 0-.712-.288Q11 18.425 11 18v-5H6q-.425 0-.713-.288Q5 12.425 5 12t.287-.713Q5.575 11 6 11h5V6q0-.425.288-.713Q11.575 5 12 5t.713.287Q13 5.575 13 6v5h5q.425 0 .712.287.288.288.288.713t-.288.712Q18.425 13 18 13h-5v5q0 .425-.287.712Q12.425 19 12 19Z" />
-    </Icon>
-  );
-});
-
-const IconMaterialCloseRounded = React.forwardRef((props: any, ref) => {
-
-  return (
-    <Icon
-      ref={ref}
-
-      name='Close'
-
-      short_name='Close'
-
-      viewBox='0 0 24 24'
-
-      {...props}
-    >
-      <path d="m12 13.4-4.9 4.9q-.275.275-.7.275-.425 0-.7-.275-.275-.275-.275-.7 0-.425.275-.7l4.9-4.9-4.9-4.9q-.275-.275-.275-.7 0-.425.275-.7.275-.275.7-.275.425 0 .7.275l4.9 4.9 4.9-4.9q.275-.275.7-.275.425 0 .7.275.275.275.275.7 0 .425-.275.7L13.4 12l4.9 4.9q.275.275.275.7 0 .425-.275.7-.275.275-.7.275-.425 0-.7-.275Z" />
-    </Icon>
-  );
-});
 
 // items
 // furniture
@@ -688,20 +455,20 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
     disabled,
 
-    IconAdd = IconMaterialAddRounded,
-    IconMenu = IconMaterialMenuOpenRounded,
-    IconCloseNavigation = IconMaterialCloseRounded,
-    IconCloseMenu = IconMaterialKeyboardArrowDownRounded,
-    IconArrowBack = IconMaterialKeyboardArrowLeftRounded,
-    IconSettings = IconMaterialSettingsRounded,
-    IconArrowUp = IconMaterialKeyboardArrowUpRounded,
-    IconArrowDown = IconMaterialKeyboardArrowDownRounded,
-    IconToFront = IconMaterialFlipToFrontRounded,
-    IconToBack = IconMaterialFlipToBackRounded,
-    IconMakeCopy = IconMaterialContentCopyRounded,
-    IconGroup = IconMaterialAdGroupRounded,
-    IconUngroup = IconMaterialUngroupRounded,
-    IconGroupSelect = IconMaterialCheckCircleRounded,
+    IconAdd = IconMaterialAdd,
+    IconMenu = IconMaterialMenuOpen,
+    IconCloseNavigation = IconMaterialClose,
+    IconCloseMenu = IconMaterialKeyboardArrowDown,
+    IconArrowBack = IconMaterialKeyboardArrowLeft,
+    IconSettings = IconMaterialSettings,
+    IconArrowUp = IconMaterialKeyboardArrowUp,
+    IconArrowDown = IconMaterialKeyboardArrowDown,
+    IconToFront = IconMaterialFlipToFront,
+    IconToBack = IconMaterialFlipToBack,
+    IconMakeCopy = IconMaterialContentCopy,
+    IconGroup = IconMaterialAdGroup,
+    IconUngroup = IconMaterialUngroup,
+    IconGroupSelect = IconMaterialCheckCircle,
 
     Component = Line,
 
