@@ -3,14 +3,40 @@ import React from 'react';
 import { is, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
-import IconMaterialDone from '@amaui/icons-material-rounded-react/IconMaterialDoneW100';
-
 import TransitionElement, { TTransitionStatus } from '../Transition';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { staticClassName, valueBreakpoints } from '../utils';
 import { IColor, ISize, ITonal, IValueBreakpoints, IVersion } from '../types';
 import useMediaQuery from '../useMediaQuery';
+import Icon from '../Icon';
+
+export const IconMaterialDone = React.forwardRef((props: any, ref) => {
+  const {
+    className,
+
+    ...other
+  } = props;
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='DoneSharp'
+      short_name='Done'
+
+      {...other}
+    >
+      <path
+        className={className}
+
+        fill='none'
+
+        d='M4.5 11.5L9.5 16.5L19.5 6.5'
+      />
+    </Icon>
+  );
+});
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -113,7 +139,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   path: {
-    strokeWidth: '2.5px',
+    strokeWidth: '1.5px',
     strokeDasharray: '30',
     strokeDashoffset: '30',
     stroke: 'currentcolor',
