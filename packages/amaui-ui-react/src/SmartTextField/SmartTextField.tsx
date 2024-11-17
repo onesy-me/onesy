@@ -77,7 +77,8 @@ const useStyle = styleMethod(theme => ({
     boxShadow: theme.shadows.values.default[2]
   },
 
-  textMiniMenuAdditionaMenu: {
+  textMiniMenuAdditionalMenu: {
+    width: 'clamp(140px, 90%, 250px)',
     zIndex: '1514'
   },
 
@@ -1023,7 +1024,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
             {...InputProps}
 
             style={{
-              width: 'auto'
+              width: 'unset',
+              flex: '1 1 auto'
             }}
           />
 
@@ -1064,7 +1066,13 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
         element={(
           <div
-            className={classes.textMiniMenuAdditionaMenu}
+            className={classNames([
+              staticClassName('SmartTextField', theme) && [
+                'amaui-SmartTextField-mini-menu-additional'
+              ],
+
+              classes.textMiniMenuAdditionalMenu
+            ])}
           >
             <Fade
               in={open_}
@@ -1315,7 +1323,13 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
                   zIndex: 1500
                 }}
 
-                className={classes.textMiniMenuWrapper}
+                className={classNames([
+                  staticClassName('SmartTextField', theme) && [
+                    'amaui-SmartTextField-mini-menu-wrapper'
+                  ],
+
+                  classes.textMiniMenuWrapper
+                ])}
               >
                 <Fade
                   in={!!textSelection}

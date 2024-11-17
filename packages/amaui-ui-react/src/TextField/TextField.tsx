@@ -1391,7 +1391,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
                 React.cloneElement(item, {
                   key: index,
 
-                  size: item.props?.size !== undefined ? item.props?.size : 'regular',
+                  size: item.props?.size !== undefined ? item.props?.size : size,
                   color: item.props?.color !== undefined ? item.props?.color : error ? theme.palette.light ? theme.palette.color.error[hover ? 20 : 40] : theme.palette.color.error[hover ? 90 : 80] : theme.palette.text.default.secondary,
                   style: {
                     ...item.props.style,

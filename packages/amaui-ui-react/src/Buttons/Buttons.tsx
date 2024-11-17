@@ -45,19 +45,19 @@ const useStyle = styleMethod(theme => ({
   },
 
   orientation_horizontal_size_small: {
-    '& > *': {
+    '&:not(.amaui-ToggleButtons-root) > *': {
       height: '28px'
     }
   },
 
   orientation_horizontal_size_regular: {
-    '& > *': {
+    '&:not(.amaui-ToggleButtons-root) > *': {
       height: '42px'
     }
   },
 
   orientation_horizontal_size_large: {
-    '& > *': {
+    '&:not(.amaui-ToggleButtons-root) > *': {
       height: '63px'
     }
   },

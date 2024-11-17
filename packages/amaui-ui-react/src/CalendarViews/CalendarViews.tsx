@@ -2,7 +2,7 @@ import React from 'react';
 
 import { capitalize, is } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { add, AmauiDate, endOf, format, remove, set, startOf } from '@amaui/date';
+import { add, AmauiDate, endOf, format, remove, startOf } from '@amaui/date';
 
 import IconMaterialArrowBackIosNew from '@amaui/icons-material-rounded-react/IconMaterialArrowBackIosNewW100';
 import IconMaterialArrowForwardIos from '@amaui/icons-material-rounded-react/IconMaterialArrowForwardIosW100';
@@ -235,16 +235,6 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
       clearInterval(refs.interval.current);
     };
   }, []);
-
-  const hours = React.useMemo(() => {
-    return Array.from({ length: 24 }).map((item, index) => set(index, 'hour', date));
-  }, [date]);
-
-  const days = React.useMemo(() => {
-    const weekStart = set(4, 'hour', startOf(date, 'week'));
-
-    return Array.from({ length: 7 }).map((item, index) => add(index, 'day', weekStart));
-  }, [date]);
 
   const viewOptions = React.useMemo(() => {
     return viewsProps?.map(item => ({
@@ -577,13 +567,13 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
             WrapperProps={{
               style: {
-                width: '140px',
+                width: 170,
                 minWidth: 'unset'
               }
             }}
 
             style={{
-              width: '140px',
+              width: 170,
               minWidth: 'unset'
             }}
           />

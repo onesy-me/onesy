@@ -26,6 +26,8 @@ const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) =>
   const {
     version = 'text',
 
+    size = 'regular',
+
     className,
 
     ...other
@@ -36,6 +38,8 @@ const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) =>
   return (
     <Button
       ref={ref}
+
+      size={size}
 
       {...other}
 

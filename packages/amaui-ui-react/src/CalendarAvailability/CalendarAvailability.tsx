@@ -908,13 +908,13 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
             WrapperProps={{
               style: {
-                width: '140px',
+                width: 170,
                 minWidth: 'unset'
               }
             }}
 
             style={{
-              width: '140px',
+              width: 170,
               minWidth: 'unset'
             }}
           />

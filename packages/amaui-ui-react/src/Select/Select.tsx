@@ -483,8 +483,6 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
         size='small'
 
-        fontSize={iconFontSize}
-
         aria-label='Input clear'
 
         {...IconButtonProps}
@@ -497,9 +495,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
       <IconButton
         key={1}
 
-        size='small'
-
-        fontSize={iconFontSize}
+        size='regular'
 
         onClick={onClickArrowDown}
 
@@ -510,6 +506,8 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
         {...IconButtonProps}
       >
         <IconDropdown
+          size='large'
+
           {...IconProps}
 
           className={classNames([
