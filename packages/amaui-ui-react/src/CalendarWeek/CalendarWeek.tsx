@@ -10,6 +10,7 @@ import { ILine } from '../Line/Line';
 import TooltipElement from '../Tooltip';
 import { formats, staticClassName } from '../utils';
 import { ICalendarEvent } from '../CalendarAvailability/CalendarAvailability';
+import { ICalendarViewsView } from '../CalendarViews/CalendarViews';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -146,7 +147,9 @@ export interface ICalendarWeek extends ILine {
 
   events?: ICalendarEvent[];
 
-  onOpen?: (object?: any) => any;
+  onOpen?: (object?: any, event?: MouseEvent) => any;
+
+  onTimeClick?: (date: AmauiDate, view: ICalendarViewsView, event: MouseEvent) => any;
 
   render?: (item: any, view: 'week' | 'day') => any;
 
@@ -176,6 +179,8 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     events,
 
     onOpen,
+
+    onTimeClick,
 
     render,
 
@@ -418,7 +423,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
       } : undefined;
 
       const itemProps = {
-        onClicl: () => onOpen({ ...item, day, weekly }),
+        onClicl: (event: MouseEvent) => onOpen({ ...item, day, weekly }, event),
         className: classes.range
       };
 
@@ -506,6 +511,21 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     return elements;
   };
 
+  const onTimeClickMethod = React.useCallback((itemDay: AmauiDate, event: MouseEvent) => {
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+
+    const relativeY = event.clientY - rect.top;
+
+    const relativePercentage = (relativeY / rect.height) * 100;
+
+    let timeDate = set(Math.floor(24 * (relativePercentage / 100)), 'hour', itemDay);
+
+    // start of the hour
+    timeDate = startOf(timeDate, 'hour');
+
+    onTimeClick?.(timeDate, dayProp ? 'day' : 'week', event);
+  }, []);
+
   const timesUI = React.useCallback((dayDate: AmauiDate) => {
     // clean up
     refs.days.current = {};
@@ -547,7 +567,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
       className={classNames([
         staticClassName('CalendarWeek', theme) && [
           'amaui-CalendarWeek-root',
-          dayProp && 'amaui-CalendarWeek-day'
+          dayProp && 'amaui-CalendarWeek-prop-day'
         ],
 
         className,
@@ -682,6 +702,8 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
               flex
 
               fullWidth
+
+              onClick={(event: MouseEvent) => onTimeClickMethod(date, event)}
             >
               {timesUI(date)}
 
@@ -780,6 +802,8 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
                 flex
 
                 fullWidth
+
+                onClick={(event: MouseEvent) => onTimeClickMethod(itemDay, event)}
               >
                 {timesUI(itemDay)}
 

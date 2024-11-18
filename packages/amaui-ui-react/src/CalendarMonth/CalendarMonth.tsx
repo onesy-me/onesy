@@ -13,6 +13,7 @@ import TransitionElement, { TTransitionStatus } from '../Transition';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
 import { IColor, IPropsAny, ISize, ITonal } from '../types';
+import { ICalendarViewsView } from '../CalendarViews/CalendarViews';
 
 const useStyle = style(theme => ({
   root: {
@@ -242,6 +243,8 @@ export interface ICalenarDays extends ILine {
   calendarDefault?: TCalendarMonthCalendar;
   onChangeCalendar?: (value: TCalendarMonthCalendar) => any;
 
+  onTimeClick?: (date: AmauiDate, view: ICalendarViewsView, event: MouseEvent) => any;
+
   now?: boolean;
   outside?: boolean;
   range?: boolean;
@@ -294,6 +297,8 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     calendar: calendar_,
     calendarDefault,
     onChangeCalendar,
+
+    onTimeClick,
 
     range,
     offset = 0,
@@ -672,6 +677,12 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                       align='center'
 
                       justify='center'
+
+                      onClick={(event: MouseEvent) => {
+                        const timeDate = startOf(day.amauiDate, 'hour');
+
+                        onTimeClick?.(timeDate, 'month', event);
+                      }}
 
                       className={classNames([
                         staticClassName('CalendarMonth', theme) && [

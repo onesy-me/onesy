@@ -132,7 +132,7 @@ export interface ICalendarViews extends ICalendar {
 
   render?: (date: AmauiDate, view: ICalendarViewsView) => any;
 
-  onTimeClick?: (date: AmauiDate, view: ICalendarViewsView) => any;
+  onTimeClick?: (date: AmauiDate, view: ICalendarViewsView, event: MouseEvent) => any;
 
   onChangeView?: (view: ICalendarViewsView) => any;
 
@@ -399,6 +399,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
           renderDayName={renderDayName}
 
+          onTimeClick={onTimeClick}
+
           size='large'
 
           dayNamesFull
@@ -430,6 +432,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
         events={events}
 
+        onTimeClick={onTimeClick}
+
         {...WeekProps}
       />
     ),
@@ -441,6 +445,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
         times={times}
 
         events={events}
+
+        onTimeClick={onTimeClick}
 
         day
 
