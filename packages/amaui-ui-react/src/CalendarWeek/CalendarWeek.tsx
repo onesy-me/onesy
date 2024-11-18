@@ -148,6 +148,8 @@ export interface ICalendarWeek extends ILine {
 
   onOpen?: (object?: any) => any;
 
+  render?: (item: any, view: 'week' | 'day') => any;
+
   statuses?: any;
 
   displayTime?: any;
@@ -174,6 +176,8 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     events,
 
     onOpen,
+
+    render,
 
     statuses = {},
 
@@ -413,68 +417,88 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
         color: getColor(item)
       } : undefined;
 
+      const itemProps = {
+        onClicl: () => onOpen({ ...item, day, weekly }),
+        className: classes.range
+      };
+
+      const style = {
+        top: `${top}%`,
+        bottom: `${bottom}%`,
+        color: theme.methods.palette.color.text(background),
+        background,
+        left: `calc(0px + ${level * 10}px)`,
+
+        ...(top === 0 && bottom === 0 && {
+          border: 'none'
+        })
+      };
+
+      const elementRendered = is('function', render) ? render(item, dayProp ? 'day' : 'week') : (
+        <Line
+          key={index}
+
+          gap={0.5}
+
+          align='center'
+
+          justify='center'
+
+          {...itemProps}
+        >
+          {!minimal && refs.displayTime.current && (
+            <Type
+              version='l2'
+
+              weight={300}
+
+              align='center'
+
+              className={classes.time}
+
+              style={{
+                background: getColor(item)
+              }}
+            >
+              {format(from, 'hh:mm a')} - {renderTo(format(to, 'hh:mm a'))}
+            </Type>
+          )}
+
+          {item.description && (
+            <Type
+              version='b2'
+
+              dangerouslySetInnerHTML={{
+                __html: textToInnerHTML(item.description)
+              }}
+
+              style={{
+                maxHeight: 24,
+                maxWidth: '90%'
+              }}
+            />
+          )}
+        </Line>
+      );
+
       elements.push(
         <WrapperElement
           {...WrapperElementProps}
         >
-          <Line
-            key={index}
+          {React.cloneElement(elementRendered, {
+            ...itemProps,
 
-            gap={0.5}
+            className: classNames([
+              itemProps.className,
+              elementRendered.props?.className
+            ]),
 
-            align='center'
+            style: {
+              ...style,
 
-            justify='center'
-
-            onClick={() => onOpen({ ...item, day, weekly })}
-
-            className={classes.range}
-
-            style={{
-              top: `${top}%`,
-              bottom: `${bottom}%`,
-              color: theme.methods.palette.color.text(background),
-              background,
-              left: `calc(0px + ${level * 10}px)`,
-
-              ...(top === 0 && bottom === 0 && {
-                border: 'none'
-              })
-            }}
-          >
-            {!minimal && refs.displayTime.current && (
-              <Type
-                version='l2'
-
-                weight={300}
-
-                align='center'
-
-                className={classes.time}
-
-                style={{
-                  background: getColor(item)
-                }}
-              >
-                {format(from, 'hh:mm a')} - {renderTo(format(to, 'hh:mm a'))}
-              </Type>
-            )}
-
-            {item.description && (
-              <Type
-                version='b2'
-
-                dangerouslySetInnerHTML={{
-                  __html: textToInnerHTML(item.description)
-                }}
-
-                style={{
-                  maxHeight: 24,
-                  maxWidth: '90%'
-                }}
-              />
-            )}
-          </Line>
+              ...elementRendered.props?.style
+            }
+          })}
         </WrapperElement>
       );
     });
