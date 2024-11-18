@@ -24,7 +24,6 @@ import IconButtonElement from '../IconButton';
 import LabelElement from '../Label';
 import SlideElement from '../Slide';
 import SwitchElement from '../Switch';
-import IconElement from '../Icon';
 import { formats, staticClassName } from '../utils';
 import { IElement } from '../types';
 import { ICalendarViewsView } from '../CalendarViews/CalendarViews';
@@ -127,12 +126,30 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'amaui-CalendarAvailability' });
 
+export interface ICalendarEvent {
+  id?: string;
+
+  description?: string;
+
+  from?: number;
+
+  to?: number;
+
+  status?: string;
+
+  color?: string;
+}
+
 export interface ICalendarAvailability extends ILine {
   name?: string | IElement;
+
+  date?: AmauiDate;
 
   dateDefault?: AmauiDate;
 
   times?: any;
+
+  events?: ICalendarEvent[];
 
   meta?: boolean;
 
@@ -143,6 +160,10 @@ export interface ICalendarAvailability extends ILine {
   onRemove?: (object?: any) => any;
 
   onChangeDate?: (value: AmauiDate) => any;
+
+  startHeader?: any;
+
+  endHeader?: any;
 
   startLeft?: any;
 
@@ -213,9 +234,13 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   const {
     name,
 
+    date: date_,
+
     dateDefault,
 
     times: timesProps,
+
+    events,
 
     meta,
 
@@ -226,6 +251,10 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     onRemove,
 
     onChangeDate: onChangeDateProps,
+
+    startHeader,
+
+    endHeader,
 
     startLeft,
 
@@ -273,7 +302,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   const { classes } = useStyle();
 
   const [now, setNow] = React.useState(new AmauiDate());
-  const [date, setDate] = React.useState(dateDefault || new AmauiDate());
+  const [date, setDate] = React.useState(dateDefault || date_ || new AmauiDate());
   const [view, setView] = React.useState<any>('week');
   const [displayTime, setDisplayTime] = React.useState(true);
   const [modal, setModal] = React.useState<any>();
@@ -295,6 +324,21 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
   refs.statuses.current = statuses;
 
+  const times = React.useMemo(() => {
+    if (events) {
+      return [
+        {
+          dates: {
+            active: true,
+            values: (is('array', events) ? events : [events] as any).filter(Boolean)
+          }
+        }
+      ];
+    }
+
+    return (is('array', timesProps) ? timesProps : [timesProps]).filter(Boolean);
+  }, [events, timesProps]);
+
   const onStatusToggle = React.useCallback((value = 'working') => {
     setStatuses(previous => ({
       ...previous,
@@ -302,10 +346,6 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
       [value]: previous[value] === undefined ? false : !previous[value]
     }));
   }, []);
-
-  const times = React.useMemo(() => {
-    return (is('array', timesProps) ? timesProps : [timesProps]).filter(Boolean);
-  }, [timesProps]);
 
   const rangeShade = theme.palette.light ? 70 : 40;
 
@@ -319,6 +359,11 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
       clearInterval(refs.interval.current);
     };
   }, []);
+
+  // Date
+  React.useEffect(() => {
+    if (date_ !== undefined && date_ !== date) setDate(date_);
+  }, [date_]);
 
   const onOpen = React.useCallback((item: any) => {
     setModal({ ...item, open: true });
@@ -423,8 +468,6 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
       return !(from.milliseconds >= weekTo.milliseconds || to.milliseconds <= weekFrom.milliseconds);
     });
   }, [date, getDates]);
-
-  const weekStart = startOf(date, 'week');
 
   const getColor = React.useCallback((item: any) => {
     let palette = theme.palette.color.neutral;
@@ -774,153 +817,169 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
       {...other}
     >
       <Line
-        gap={2}
-
-        direction='row'
-
-        wrap='wrap'
-
-        justify='space-between'
-
-        align='center'
+        gap={1}
 
         fullWidth
+
+        className={classNames([
+          staticClassName('CalendarAvailability', theme) && [
+            'amaui-CalendarAvailability-header'
+          ]
+        ])}
       >
+        {startHeader}
+
         <Line
-          gap={1.5}
+          gap={2}
 
           direction='row'
 
           wrap='wrap'
 
+          justify='space-between'
+
           align='center'
 
-          className={classes.aside}
+          fullWidth
         >
-          {startLeft}
+          <Line
+            gap={1.5}
 
-          <Button
-            color='inherit'
+            direction='row'
 
-            version='outlined'
+            wrap='wrap'
 
-            size='small'
+            align='center'
 
-            onClick={onToday}
-
-            selected={now.days === date.days}
+            className={classes.aside}
           >
-            Today
-          </Button>
+            {startLeft}
+
+            <Button
+              color='inherit'
+
+              version='outlined'
+
+              size='small'
+
+              onClick={onToday}
+
+              selected={now.days === date.days}
+            >
+              Today
+            </Button>
+
+            <Line
+              gap={0}
+
+              direction='row'
+
+              align='center'
+            >
+              <Tooltip
+                name={`Previous ${view}`}
+              >
+                <IconButton
+                  onClick={onPrevious}
+
+                  {...IconButtonProps}
+                >
+                  <IconPrevious
+                    size='regular'
+                  />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip
+                name={`Next ${view}`}
+              >
+                <IconButton
+                  onClick={onNext}
+
+                  {...IconButtonProps}
+                >
+                  <IconNext
+                    size='regular'
+                  />
+                </IconButton>
+              </Tooltip>
+            </Line>
+
+            <Type
+              version='h2'
+
+              weight={500}
+
+              whiteSpace='nowrap'
+            >
+              {formattedDate}
+            </Type>
+
+            {endLeft}
+          </Line>
 
           <Line
-            gap={0}
+            gap={1.5}
 
             direction='row'
 
             align='center'
+
+            flexNo
+
+            className={classNames([
+              classes.aside,
+              classes.overflowX
+            ])}
           >
-            <Tooltip
-              name={`Previous ${view}`}
-            >
-              <IconButton
-                onClick={onPrevious}
+            {startRight}
 
-                {...IconButtonProps}
+            {['week', 'day'].includes(view) && (
+              <Label
+                value={displayTime}
+
+                onChange={onChangeDisplayTime}
               >
-                <IconPrevious
-                  size='regular'
-                />
-              </IconButton>
-            </Tooltip>
+                <Switch />
 
-            <Tooltip
-              name={`Next ${view}`}
-            >
-              <IconButton
-                onClick={onNext}
+                Display time
+              </Label>
+            )}
 
-                {...IconButtonProps}
-              >
-                <IconNext
-                  size='regular'
-                />
-              </IconButton>
-            </Tooltip>
-          </Line>
+            <Select
+              name='View'
 
-          <Type
-            version='h2'
+              value={view}
 
-            weight={500}
+              onChange={onChangeView}
 
-            whiteSpace='nowrap'
-          >
-            {formattedDate}
-          </Type>
+              options={viewOptions}
 
-          {endLeft}
-        </Line>
+              size='small'
 
-        <Line
-          gap={1.5}
+              MenuProps={{
+                portal: true,
+                size: 'regular'
+              }}
 
-          direction='row'
+              WrapperProps={{
+                style: {
+                  width: 170,
+                  minWidth: 'unset'
+                }
+              }}
 
-          align='center'
-
-          flexNo
-
-          className={classNames([
-            classes.aside,
-            classes.overflowX
-          ])}
-        >
-          {startRight}
-
-          {['week', 'day'].includes(view) && (
-            <Label
-              value={displayTime}
-
-              onChange={onChangeDisplayTime}
-            >
-              <Switch />
-
-              Display time
-            </Label>
-          )}
-
-          <Select
-            name='View'
-
-            value={view}
-
-            onChange={onChangeView}
-
-            options={viewOptions}
-
-            size='small'
-
-            MenuProps={{
-              portal: true,
-              size: 'regular'
-            }}
-
-            WrapperProps={{
-              style: {
+              style={{
                 width: 170,
                 minWidth: 'unset'
-              }
-            }}
+              }}
+            />
 
-            style={{
-              width: 170,
-              minWidth: 'unset'
-            }}
-          />
-
-          {endRight}
+            {endRight}
+          </Line>
         </Line>
+
+        {endHeader}
       </Line>
 
       <Line
@@ -980,7 +1039,9 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
             statuses={statuses}
 
-            times={timesProps}
+            times={times}
+
+            events={events}
 
             day={view === 'day'}
 

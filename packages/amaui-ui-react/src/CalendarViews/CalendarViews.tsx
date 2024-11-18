@@ -7,7 +7,7 @@ import { add, AmauiDate, endOf, format, remove, startOf } from '@amaui/date';
 import IconMaterialArrowBackIosNew from '@amaui/icons-material-rounded-react/IconMaterialArrowBackIosNewW100';
 import IconMaterialArrowForwardIos from '@amaui/icons-material-rounded-react/IconMaterialArrowForwardIosW100';
 
-import WeekElement from '../CalendarWeek';
+import CalendarWeekElement from '../CalendarWeek';
 import CalendarMonthElement from '../CalendarMonth';
 import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
@@ -17,6 +17,7 @@ import SelectElement from '../Select';
 import ButtonElement from '../Button';
 import { ICalendar } from '../Calendar/Calendar';
 import { staticClassName } from '../utils';
+import { ICalendarEvent } from '../CalendarAvailability/CalendarAvailability';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -125,6 +126,8 @@ export interface ICalendarViews extends ICalendar {
 
   times?: any;
 
+  events?: ICalendarEvent[];
+
   views?: ICalendarViewsView[];
 
   render?: (date: AmauiDate, view: ICalendarViewsView) => any;
@@ -134,6 +137,10 @@ export interface ICalendarViews extends ICalendar {
   onChangeView?: (view: ICalendarViewsView) => any;
 
   onChangeDate?: (value: AmauiDate) => any;
+
+  startHeader?: any;
+
+  endHeader?: any;
 
   startLeft?: any;
 
@@ -173,7 +180,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
   const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
 
-  const Week = React.useMemo(() => theme?.elements?.Week || WeekElement, [theme]);
+  const CalendarWeek = React.useMemo(() => theme?.elements?.CalendarWeek || CalendarWeekElement, [theme]);
 
   const {
     viewDefault,
@@ -181,6 +188,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     dateDefault,
 
     times: timesProps,
+
+    events,
 
     views: viewsProps = ['month', 'week', 'day'],
 
@@ -191,6 +200,10 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     onChangeView: onChangeViewProps,
 
     onChangeDate: onChangeDateProps,
+
+    startHeader,
+
+    endHeader,
 
     startLeft,
 
@@ -235,6 +248,21 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
       clearInterval(refs.interval.current);
     };
   }, []);
+
+  const times = React.useMemo(() => {
+    if (events) {
+      return [
+        {
+          dates: {
+            active: true,
+            values: (is('array', events) ? events : [events] as any).filter(Boolean)
+          }
+        }
+      ];
+    }
+
+    return (is('array', timesProps) ? timesProps : [timesProps]).filter(Boolean);
+  }, [events, timesProps]);
 
   const viewOptions = React.useMemo(() => {
     return viewsProps?.map(item => ({
@@ -335,7 +363,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
           className={classes.contentItemsMonth}
         >
-          {render && render(valueCalendarMonth, view)}
+          {is('function', render) && render(valueCalendarMonth, view)}
         </Line>
       </Line>
     );
@@ -363,9 +391,9 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
         className={classes.month}
       >
         <CalendarMonth
-          value={now as any}
+          value={now}
 
-          calendar={date as any}
+          calendar={date}
 
           renderDay={renderDay as any}
 
@@ -395,20 +423,24 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     </>,
 
     week: (
-      <Week
+      <CalendarWeek
         date={date}
 
-        times={timesProps}
+        times={times}
+
+        events={events}
 
         {...WeekProps}
       />
     ),
 
     day: (
-      <Week
+      <CalendarWeek
         date={date}
 
-        times={timesProps}
+        times={times}
+
+        events={events}
 
         day
 
@@ -445,141 +477,157 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
       {...other}
     >
       <Line
-        gap={2}
-
-        direction='row'
-
-        wrap='wrap'
-
-        justify='space-between'
-
-        align='center'
+        gap={1}
 
         fullWidth
+
+        className={classNames([
+          staticClassName('CalendarViews', theme) && [
+            'amaui-CalendarViews-header'
+          ]
+        ])}
       >
+        {startHeader}
+
         <Line
-          gap={1.5}
+          gap={2}
 
           direction='row'
 
           wrap='wrap'
 
+          justify='space-between'
+
           align='center'
 
-          className={classes.aside}
+          fullWidth
         >
-          {startLeft}
+          <Line
+            gap={1.5}
 
-          <Button
-            color='inherit'
+            direction='row'
 
-            version='outlined'
+            wrap='wrap'
 
-            size='small'
+            align='center'
 
-            onClick={onToday}
-
-            selected={now.days === date.days}
+            className={classes.aside}
           >
-            Today
-          </Button>
+            {startLeft}
+
+            <Button
+              color='inherit'
+
+              version='outlined'
+
+              size='small'
+
+              onClick={onToday}
+
+              selected={now.days === date.days}
+            >
+              Today
+            </Button>
+
+            <Line
+              gap={0}
+
+              direction='row'
+
+              align='center'
+            >
+              <Tooltip
+                name={`Previous ${view}`}
+              >
+                <IconButton
+                  onClick={onPrevious}
+
+                  {...iconButtonProps}
+                >
+                  <IconPrevious
+                    {...iconProps}
+                  />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip
+                name={`Next ${view}`}
+              >
+                <IconButton
+                  onClick={onNext}
+
+                  {...iconButtonProps}
+                >
+                  <IconNext
+                    {...iconProps}
+                  />
+                </IconButton>
+              </Tooltip>
+            </Line>
+
+            <Type
+              version='h2'
+
+              weight={500}
+
+              whiteSpace='nowrap'
+            >
+              {formattedDate}
+            </Type>
+
+            {endLeft}
+          </Line>
 
           <Line
-            gap={0}
+            gap={1.5}
 
             direction='row'
 
             align='center'
+
+            flexNo
+
+            className={classNames([
+              classes.aside,
+              classes.overflowX
+            ])}
           >
-            <Tooltip
-              name={`Previous ${view}`}
-            >
-              <IconButton
-                onClick={onPrevious}
+            {startRight}
 
-                {...iconButtonProps}
-              >
-                <IconPrevious
-                  {...iconProps}
-                />
-              </IconButton>
-            </Tooltip>
+            <Select
+              name='View'
 
-            <Tooltip
-              name={`Next ${view}`}
-            >
-              <IconButton
-                onClick={onNext}
+              value={view}
 
-                {...iconButtonProps}
-              >
-                <IconNext
-                  {...iconProps}
-                />
-              </IconButton>
-            </Tooltip>
-          </Line>
+              onChange={onChangeView}
 
-          <Type
-            version='h2'
+              options={viewOptions}
 
-            weight={500}
+              size='small'
 
-            whiteSpace='nowrap'
-          >
-            {formattedDate}
-          </Type>
+              MenuProps={{
+                portal: true,
+                size: 'regular'
+              }}
 
-          {endLeft}
-        </Line>
+              WrapperProps={{
+                style: {
+                  width: 170,
+                  minWidth: 'unset'
+                }
+              }}
 
-        <Line
-          gap={1.5}
-
-          direction='row'
-
-          align='center'
-
-          flexNo
-
-          className={classNames([
-            classes.aside,
-            classes.overflowX
-          ])}
-        >
-          {startRight}
-
-          <Select
-            name='View'
-
-            value={view}
-
-            onChange={onChangeView}
-
-            options={viewOptions}
-
-            size='small'
-
-            MenuProps={{
-              portal: true,
-              size: 'regular'
-            }}
-
-            WrapperProps={{
-              style: {
+              style={{
                 width: 170,
                 minWidth: 'unset'
-              }
-            }}
+              }}
+            />
 
-            style={{
-              width: 170,
-              minWidth: 'unset'
-            }}
-          />
-
-          {endRight}
+            {endRight}
+          </Line>
         </Line>
+
+        {endHeader}
       </Line>
 
       <Line

@@ -9,6 +9,7 @@ import TypeElement from '../Type';
 import { ILine } from '../Line/Line';
 import TooltipElement from '../Tooltip';
 import { formats, staticClassName } from '../utils';
+import { ICalendarEvent } from '../CalendarAvailability/CalendarAvailability';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -143,6 +144,8 @@ export interface ICalendarWeek extends ILine {
 
   times?: any;
 
+  events?: ICalendarEvent[];
+
   onOpen?: (object?: any) => any;
 
   statuses?: any;
@@ -168,9 +171,11 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
     times: timesProps,
 
+    events,
+
     onOpen,
 
-    statuses,
+    statuses = {},
 
     displayTime = true,
 
@@ -203,8 +208,19 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
   refs.statuses.current = statuses;
 
   const times = React.useMemo(() => {
+    if (events) {
+      return [
+        {
+          dates: {
+            active: true,
+            values: (is('array', events) ? events : [events] as any).filter(Boolean)
+          }
+        }
+      ];
+    }
+
     return (is('array', timesProps) ? timesProps : [timesProps]).filter(Boolean);
-  }, [timesProps]);
+  }, [events, timesProps]);
 
   const rangeShade = theme.palette.light ? 60 : 40;
 
@@ -263,6 +279,8 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     if (item?.status === 'canceled') palette = theme.palette.color.error;
 
     if (item?.status === 'other') palette = theme.palette.color.neutral;
+
+    if (item.color) palette = theme.methods.color(item.color) as any;
 
     return palette[rangeShade];
   }, [rangeShade, colors, theme]);
@@ -388,11 +406,16 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
       const background = getColor(item);
 
-      elements.push(
-        <Tooltip
-          name={cleanValue(itemToText(item.status), { capitalize: true })}
+      const WrapperElement = item.status ? Tooltip : React.Fragment;
 
-          color={getColor(item)}
+      const WrapperElementProps = item.status ? {
+        name: cleanValue(itemToText(item.status), { capitalize: true }),
+        color: getColor(item)
+      } : undefined;
+
+      elements.push(
+        <WrapperElement
+          {...WrapperElementProps}
         >
           <Line
             key={index}
@@ -452,7 +475,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
               />
             )}
           </Line>
-        </Tooltip>
+        </WrapperElement>
       );
     });
 
@@ -469,10 +492,10 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     return <>
       {times.map(item => <>
         {/* Weekly */}
-        {renderTimes(dayDate, (item.weekly!.days as any)![day]?.values as any, true, (item.weekly!.days as any)![day])}
+        {item.weekly && renderTimes(dayDate, (item.weekly!.days as any)![day]?.values as any, true, (item.weekly!.days as any)![day])}
 
         {/* Dates */}
-        {renderTimes(dayDate, getDates(item), false)}
+        {item.dates && renderTimes(dayDate, getDates(item), false)}
       </>)}
     </>;
   }, [theme, times, date]);
