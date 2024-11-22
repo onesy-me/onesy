@@ -150,6 +150,8 @@ export interface ICalendarViews extends ICalendar {
 
   endRight?: any;
 
+  noViews?: boolean;
+
   IconPrevious?: any;
 
   IconNext?: any;
@@ -212,6 +214,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     startRight,
 
     endRight,
+
+    noViews,
 
     IconPrevious = IconMaterialArrowBackIosNew,
 
@@ -600,34 +604,36 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
           >
             {startRight}
 
-            <Select
-              name='View'
+            {!noViews && (
+              <Select
+                name='View'
 
-              value={view}
+                value={view}
 
-              onChange={onChangeView}
+                onChange={onChangeView}
 
-              options={viewOptions}
+                options={viewOptions}
 
-              size='small'
+                size='small'
 
-              MenuProps={{
-                portal: true,
-                size: 'regular'
-              }}
+                MenuProps={{
+                  portal: true,
+                  size: 'regular'
+                }}
 
-              WrapperProps={{
-                style: {
+                WrapperProps={{
+                  style: {
+                    width: 170,
+                    minWidth: 'unset'
+                  }
+                }}
+
+                style={{
                   width: 170,
                   minWidth: 'unset'
-                }
-              }}
-
-              style={{
-                width: 170,
-                minWidth: 'unset'
-              }}
-            />
+                }}
+              />
+            )}
 
             {endRight}
           </Line>

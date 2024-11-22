@@ -165,6 +165,7 @@ export interface ISpeedDial extends Omit<ILine, 'direction'> {
   FabTransitionComponent?: IElementReference;
   SpeeDialItemTransitionComponent?: IElementReference;
 
+  IconProps?: IPropsAny;
   TooltipProps?: IPropsAny;
   FabProps?: IPropsAny;
   FabWrapperProps?: IPropsAny;
@@ -221,6 +222,7 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
     FabTransitionComponent = Zoom,
     SpeeDialItemTransitionComponent: SpeeDialItemTransitionComponent_ = Zoom,
 
+    IconProps,
     TooltipProps = {
       alignment: 'center',
       interactive: false
@@ -680,12 +682,15 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
                   open && classes.iconWrapper_open
                 ])}
               >
-                {!IconOpen ? <Icon_ /> : <>
+                {!IconOpen ? <Icon_ {...IconProps} /> : <>
                   <Fade
                     in={!open}
                   >
                     <Icon_
+                      {...IconProps}
+
                       className={classNames([
+                        IconProps?.className,
                         classes.icon_absolute
                       ])}
                     />
@@ -694,7 +699,7 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
                   <Fade
                     in={open}
                   >
-                    <IconOpen />
+                    <IconOpen {...IconProps} />
                   </Fade>
                 </>}
               </IconWrapper>
