@@ -485,7 +485,9 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
   // Add all month days
   for (let i = 0; i < month.daysInMonth; i++) {
-    const day = set(i + 1, 'day', month);
+    let day = set(i + 1, 'day', month);
+
+    day = set(14, 'hour', day);
 
     const selectedIndex_ = selectedIndex(day);
 
