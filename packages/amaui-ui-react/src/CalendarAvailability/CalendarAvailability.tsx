@@ -1004,7 +1004,13 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
               fullWidth
 
-              className={classes.calendar}
+              className={classNames([
+                staticClassName('CalendarAvailability', theme) && [
+                  'amaui-CalendarAvailability-simple'
+                ],
+
+                classes.calendar
+              ])}
             >
               {/* Weekly */}
               {simpleTimesUI()}
