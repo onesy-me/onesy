@@ -92,6 +92,10 @@ export interface IRating extends IBaseElement {
   };
   iconInactive?: IElement;
   iconActive?: IElement;
+
+  IconProps?: any;
+  IconActiveProps?: any;
+  IconInactiveProps?: any;
 }
 
 const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
@@ -123,6 +127,10 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
     icons,
     iconInactive = <IconMaterialGrade />,
     iconActive = <IconMaterialGradeFilled />,
+
+    IconProps,
+    IconActiveProps,
+    IconInactiveProps,
 
     Component = 'span',
 
@@ -503,7 +511,10 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
             >
               {React.cloneElement(IconInactive, {
                 color: colorInactive,
-                size: IconInactive.props?.size !== undefined ? IconInactive.props?.size : size
+                size: IconInactive.props?.size !== undefined ? IconInactive.props?.size : size,
+
+                ...IconProps,
+                ...IconInactiveProps
               })}
             </span>
 
@@ -523,7 +534,10 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
               {React.cloneElement(IconActive, {
                 tonal: IconActive.props?.tonal !== undefined ? IconActive.props?.tonal : tonal,
                 color: IconActive.props?.color !== undefined ? IconActive.props?.color : color,
-                size: IconActive.props?.size !== undefined ? IconActive.props?.size : size
+                size: IconActive.props?.size !== undefined ? IconActive.props?.size : size,
+
+                ...IconProps,
+                ...IconActiveProps
               })}
             </span>
           </span>
