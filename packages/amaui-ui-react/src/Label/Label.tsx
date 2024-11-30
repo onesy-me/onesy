@@ -102,7 +102,6 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
     valueDefault: valueDefault_,
     checkedDefault: checkedDefault_,
 
-    value: value_,
     checked: checked_,
 
     onChange,
@@ -129,7 +128,7 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const checkedDefault = valueDefault_ !== undefined ? valueDefault_ : checkedDefault_;
-  const checked = value_ !== undefined ? value_ : checked_;
+  const checked = checked_;
 
   const [value, setValue] = React.useState((checkedDefault !== undefined ? checkedDefault : checked) || false);
 
