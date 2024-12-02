@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { is } from '@amaui/utils';
 import { classNames, style, useAmauiTheme } from '@amaui/style-react';
 
 import IconMaterialInfo from '@amaui/icons-material-rounded-react/IconMaterialInfoW100';
@@ -14,9 +15,13 @@ import { staticClassName } from '../utils';
 
 const useStyle = style(theme => ({
   root: {
+
+  },
+
+  menu: {
     width: '100vw',
     maxWidth: '195px',
-    background: theme.palette.light ? theme.palette.background.default.primary : theme.palette.background.primary.quaternary,
+    background: theme.palette.light ? theme.palette.background.default.primary : theme.palette.background.default.quaternary,
     borderRadius: theme.methods.shape.radius.value(2),
     boxShadow: theme.shadows.values.default[1],
     padding: '16px',
@@ -28,13 +33,17 @@ const useStyle = style(theme => ({
 }), { name: 'amaui-Info' });
 
 export interface IInfo extends IMenu {
-  name: string;
+  name?: string;
+
+  title?: string;
+
+  render?: () => any;
 
   Icon?: any;
 
   IconProps?: any;
   IconButtonProps?: any;
-  NameProps?: any;
+  TitleProps?: any;
   ContainerProps?: any;
   TooltipProps?: any;
 }
@@ -57,11 +66,15 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
   const {
     name,
 
+    title,
+
+    render,
+
     Icon = IconMaterialInfo,
 
     IconProps,
     IconButtonProps,
-    NameProps,
+    TitleProps,
     ContainerProps,
     TooltipProps,
 
@@ -80,7 +93,7 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
 
       alignment='center'
 
-      name={(
+      name={is('function', render) ? render() : (
         <Line
           gap={1}
 
@@ -88,11 +101,10 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Info', theme) && [
-              'amaui-Info-root'
+              'amaui-Info-menu'
             ],
 
-            className,
-            classes.root
+            classes.menu
           ])}
         >
           <Line
@@ -105,9 +117,9 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
             <Type
               version='l2'
 
-              {...NameProps}
+              {...TitleProps}
             >
-              {name}
+              {title}
             </Type>
 
             {children}
@@ -115,11 +127,20 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
         </Line>
       )}
 
+      className={classNames([
+        staticClassName('Info', theme) && [
+          'amaui-Info-root'
+        ],
+
+        className,
+        classes.root
+      ])}
+
       {...other}
     >
       <span>
         <Tooltip
-          name='Info'
+          name={name !== undefined ? name : 'Info'}
 
           {...TooltipProps}
         >
