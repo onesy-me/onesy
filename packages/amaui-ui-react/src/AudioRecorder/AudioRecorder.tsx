@@ -8,14 +8,13 @@ import IconMaterialMic from '@amaui/icons-material-rounded-react/IconMaterialMic
 import IconMaterialSend from '@amaui/icons-material-rounded-react/IconMaterialSendW100';
 import IconMaterialPlayArrow from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
 import IconMaterialPause from '@amaui/icons-material-rounded-react/IconMaterialPauseW100';
-import IconMaterialStop from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
+import IconMaterialStop from '@amaui/icons-material-rounded-react/IconMaterialStopW100';
 
 import LineElement from '../Line';
 import FadeElement from '../Fade';
 import TypeElement from '../Type';
 import TooltipElement from '../Tooltip';
 import IconButtonElement from '../IconButton';
-import IconElement from '../Icon';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
 import { IElementReference, IPropsAny, ISize } from '../types';
@@ -267,7 +266,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     if (is('function', onStop_)) onStop_(event);
   }, [onStop_]);
 
-  const onConfirm = React.useCallback((event: React.MouseEvent<any>) => {
+  const onConfirm = React.useCallback(async (event: React.MouseEvent<any>) => {
     // Stop
     onStop(event);
 
@@ -275,10 +274,14 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
       // Get the blob
       const mimeType = refs.mediaRecorder.current?.mimeType;
 
+      console.log('AudioRecorder onConfirm', mimeType);
+
       const blob = new Blob(refs.mediaRecorderBytes.current, { type: mimeType });
 
       // clean up
       refs.mediaRecorderBytes.current = [];
+
+      console.log('AudioRecorder blob', blob, blob.size);
 
       if (is('function', onConfirm_)) onConfirm_(blob);
     }, 14);
