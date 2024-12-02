@@ -420,6 +420,16 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
         valueNew[index] = valueUpdated;
       }
+
+      // start of the day
+      if (valueNew[0]) {
+        valueNew[0] = startOf(valueNew[0], 'day');
+      }
+
+      // end of the day
+      if (valueNew[1]) {
+        valueNew[1] = endOf(valueNew[1], 'day');
+      }
     }
 
     // If value isnt's same as the calendar
