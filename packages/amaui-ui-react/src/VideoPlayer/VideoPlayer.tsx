@@ -767,6 +767,20 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
   }, [play, fullScreen, onPlay, onPause, onFullScreen, onFullScreenExit]);
 
   React.useEffect(() => {
+    const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
+
+    (rootDocument as Document).addEventListener('mouseup', onUpdatingDone);
+
+    (rootDocument as Document).addEventListener('touchend', onUpdatingDone);
+
+    return () => {
+      (rootDocument as Document).removeEventListener('mouseup', onUpdatingDone);
+
+      (rootDocument as Document).removeEventListener('touchend', onUpdatingDone);
+    };
+  }, []);
+
+  React.useEffect(() => {
     // init
     init();
   }, [src]);

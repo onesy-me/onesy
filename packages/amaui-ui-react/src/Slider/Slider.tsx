@@ -710,7 +710,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
   }, []);
 
   React.useEffect(() => {
-    if (init && value_ !== refs.value.current) setValue(value_);
+    if (init && value_ !== value) setValue(value_);
   }, [value_]);
 
   const move = React.useCallback((x: number, y: number) => {
