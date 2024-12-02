@@ -342,7 +342,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
   const { classes } = useStyle();
 
   const [loaded, setLoaded] = React.useState(false);
-  const [duration, setDuration] = React.useState<number>(0);
+  const [duration, setDuration] = React.useState<number>(is('number', meta?.duration) ? meta.duration : undefined);
   const [time, setTime] = React.useState<number>(0);
   const [play, setPlay] = React.useState(false);
   const [muted, setMuted] = React.useState(false);
@@ -552,7 +552,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
       const value = video!.duration;
 
       if (!is('number', durationTime) && is('number', value)) {
-        setDuration(value);
+        if (refs.duration.current === undefined) setDuration(value);
 
         setLoaded(true);
       }
@@ -583,7 +583,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
     startMediaSession();
 
     if (is('number', durationTime)) {
-      setDuration(durationTime);
+      if (refs.duration.current === undefined) setDuration(durationTime);
 
       setLoaded(true);
     }
