@@ -189,10 +189,10 @@
     "@amaui/utils" "^1.0.11450"
     "@babel/runtime" "^7.18.3"
 
-"@amaui/style@^1.1.17":
-  version "1.1.17"
-  resolved "https://registry.yarnpkg.com/@amaui/style/-/style-1.1.17.tgz#321eb454c694842870a3c02b16dc6fed6f7e17ea"
-  integrity sha512-aIT26X0232tmpFdqV8rdJf+h9F+TNQEODnmH0NW0l3sgqfsW+rVHIUejaG3ZmDXX8nVeMaXjJN5ZjsOwmkLqbw==
+"@amaui/style@^1.1.18":
+  version "1.1.18"
+  resolved "https://registry.yarnpkg.com/@amaui/style/-/style-1.1.18.tgz#b688b62efda335aa88e8ce0289d9492f8fbb1209"
+  integrity sha512-41RIx186a/a86etOYTeZllhnKykX1LR3/5E8cL/iQRZaB7YR/r9UAEf9iMTLNKhwRSSWFOXJbtHx9XmlaheKJg==
   dependencies:
     "@amaui/meta" "^1.0.11141"
     "@amaui/node" "^1.0.11117"
