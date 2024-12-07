@@ -87,7 +87,7 @@ const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref:
     location: React.useRef(location),
     transition: React.useRef(transition),
     inProgress: React.useRef(false),
-    timeout: React.useRef<NodeJS.Timeout>(),
+    timeout: React.useRef<NodeJS.Timeout>(undefined),
     duration: React.useRef(duration)
   };
 

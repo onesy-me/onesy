@@ -338,7 +338,7 @@ export default function Library(props: any) {
     wrapper: React.useRef<HTMLElement>(undefined),
     main: React.useRef<HTMLElement>(undefined),
     value: React.useRef<any>(undefined),
-    url: React.useRef<string>()
+    url: React.useRef<string>(undefined)
   };
 
   refs.value.current = value;

@@ -233,7 +233,7 @@ function Root(props: any) {
     imageSelected: React.useRef<any>(undefined),
     images: React.useRef<any[]>([]),
     sidenavMenu: React.useRef<any>(undefined),
-    previousURL: React.useRef<string>(),
+    previousURL: React.useRef<string>(undefined),
     props: React.useRef<any>(undefined)
   };
 

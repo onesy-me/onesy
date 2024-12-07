@@ -186,7 +186,7 @@ export default function Root(props: any) {
 
   const refs = {
     storage: new AmauiStorage({ namespace: 'amaui-docs' }),
-    imageSelected: React.useRef<string>(),
+    imageSelected: React.useRef<string>(undefined),
     images: React.useRef<any[]>([])
   };
 
