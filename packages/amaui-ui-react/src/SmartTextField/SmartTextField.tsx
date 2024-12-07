@@ -237,7 +237,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
   const refs = {
     root: React.useRef<any>(),
-    input: React.useRef(),
+    input: React.useRef(undefined),
     searchElement: React.useRef<any>(),
     error: React.useRef<any>(),
     search: React.useRef<any>(),
