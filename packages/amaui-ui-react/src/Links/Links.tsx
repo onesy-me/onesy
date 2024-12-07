@@ -116,6 +116,8 @@ export interface ILinks extends IBaseElement {
 
   ShareProps?: any;
   ItemShareProps?: any;
+  IconButtonProps?: any;
+  IconProps?: any;
 }
 
 const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
@@ -162,6 +164,8 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
     ShareProps,
     ItemShareProps,
+    IconButtonProps,
+    IconProps,
 
     className,
 
@@ -349,6 +353,8 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
                       start={(
                         <IconShare
                           size='small'
+
+                          {...IconProps}
                         />
                       )}
 
@@ -398,19 +404,26 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
                   ]}
                 >
                   <IconButton
-                    size='small'
+                    size='regular'
+
+                    disabled={!item.share}
+
+                    {...IconButtonProps}
 
                     className={classNames([
                       staticClassName('Links', theme) && [
                         'amaui-Links-more'
                       ],
 
+                      IconButtonProps?.className,
                       classes.more
                     ])}
-
-                    disabled={!item.share}
                   >
-                    <IconMore />
+                    <IconMore
+                      size='large'
+
+                      {...IconProps}
+                    />
                   </IconButton>
                 </Menu>
               </Line>
@@ -419,16 +432,14 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
         )}
       </Line>
 
-      {
-        share && (
-          <Share
-            {...ShareProps}
-          />
-        )
-      }
+      {share && (
+        <Share
+          {...ShareProps}
+        />
+      )}
 
       {end}
-    </Section >
+    </Section>
   );
 });
 
