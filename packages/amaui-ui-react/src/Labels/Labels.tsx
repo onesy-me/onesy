@@ -168,25 +168,27 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
 
       {...other}
     >
-      <Type
-        version={size === 'regular' ? 'l2' : size === 'large' ? 'l1' : 'l3'}
+      {label && (
+        <Type
+          version={size === 'regular' ? 'l2' : size === 'large' ? 'l1' : 'l3'}
 
-        id={refs.ids.label}
+          id={refs.ids.label}
 
-        {...LabelProps}
+          {...LabelProps}
 
-        className={classNames([
-          staticClassName('Labels', theme) && [
-            'amaui-Labels-label'
-          ],
+          className={classNames([
+            staticClassName('Labels', theme) && [
+              'amaui-Labels-label'
+            ],
 
-          LabelProps?.className,
-          classes.label,
-          disabled && classes.label_disabled
-        ])}
-      >
-        {label}
-      </Type>
+            LabelProps?.className,
+            classes.label,
+            disabled && classes.label_disabled
+          ])}
+        >
+          {label}
+        </Type>
+      )}
 
       <Line
         gap={1}
