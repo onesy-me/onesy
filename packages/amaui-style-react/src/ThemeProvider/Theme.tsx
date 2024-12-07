@@ -61,8 +61,8 @@ const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
   } = props;
 
   const refs = {
-    root: React.useRef<any>(),
-    init: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    init: React.useRef<any>(undefined),
     id: React.useId(),
     styleSheet: React.useRef<Element>()
   };

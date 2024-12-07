@@ -346,7 +346,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     previous: React.useRef<AmauiDate>(month),
     previousTheme: React.useRef<boolean>(theme.palette.light),
     move: React.useRef<'previous' | 'next'>(),
-    noTransition: React.useRef<any>()
+    noTransition: React.useRef<any>(undefined)
   };
 
   const weekStartDay = !['Monday', 'Sunday'].includes(weekStartDay_) ? 'Monday' : weekStartDay_;

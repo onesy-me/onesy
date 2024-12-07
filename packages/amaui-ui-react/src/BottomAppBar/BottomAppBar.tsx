@@ -216,8 +216,8 @@ const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any
   const [inProp, setInProp] = React.useState(true);
 
   const refs = {
-    preChildren: React.useRef<any>(),
-    preMain: React.useRef<any>()
+    preChildren: React.useRef<any>(undefined),
+    preMain: React.useRef<any>(undefined)
   };
 
   React.useEffect(() => {

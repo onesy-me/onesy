@@ -50,7 +50,7 @@ const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => 
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   return (

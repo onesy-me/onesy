@@ -127,7 +127,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   const refs = {
     root: React.useRef<HTMLElement>(),
     middle: React.useRef<HTMLElement>(),
-    mouseDown: React.useRef<any>(),
+    mouseDown: React.useRef<any>(undefined),
     value: React.useRef<TClockValue>(),
     selecting: React.useRef<TClockUnit>(),
     autoNext: React.useRef<boolean>(),
@@ -135,7 +135,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     minute: React.useRef<boolean>(),
     second: React.useRef<boolean>(),
     format: React.useRef<TClockFormat>(),
-    dayTime: React.useRef<any>(),
+    dayTime: React.useRef<any>(undefined),
     previous: React.useRef<TClockUnit>(selecting)
   };
 

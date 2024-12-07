@@ -87,7 +87,7 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   return (

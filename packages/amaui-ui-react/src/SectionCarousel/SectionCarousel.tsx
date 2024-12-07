@@ -195,7 +195,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
   const navigate = isEnvironment('browser') && useNavigate();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const laptop = useMediaQuery('(max-width: 1440px)', { element: refs.root.current });

@@ -167,10 +167,10 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    timeoutStart: React.useRef<any>(),
-    timeoutLeftOver: React.useRef<any>(),
-    autoHideDuration: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    timeoutStart: React.useRef<any>(undefined),
+    timeoutLeftOver: React.useRef<any>(undefined),
+    autoHideDuration: React.useRef<any>(undefined)
   };
 
   refs.autoHideDuration.current = autoHideDuration;

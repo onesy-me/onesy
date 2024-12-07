@@ -177,9 +177,9 @@ const Transition: React.FC<ITransition> = (props_) => {
 
   const refs = {
     root: React.useRef<HTMLElement>(),
-    status: React.useRef<any>(),
-    inProp: React.useRef<any>(),
-    prefix: React.useRef<any>()
+    status: React.useRef<any>(undefined),
+    inProp: React.useRef<any>(undefined),
+    prefix: React.useRef<any>(undefined)
   };
 
   refs.status.current = status;

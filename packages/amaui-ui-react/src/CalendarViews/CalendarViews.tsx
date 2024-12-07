@@ -239,7 +239,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   const [view, setView] = React.useState<ICalendarViewsView>(viewDefault || 'month');
 
   const refs = {
-    interval: React.useRef<any>()
+    interval: React.useRef<any>(undefined)
   };
 
   React.useEffect(() => {

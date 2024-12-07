@@ -279,9 +279,9 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
   const [indeterminate, setIndeterminate] = React.useState(!value && indeterminate_);
 
   const refs = {
-    value: React.useRef<any>(),
-    input: React.useRef<any>(),
-    indeterminate: React.useRef<any>()
+    value: React.useRef<any>(undefined),
+    input: React.useRef<any>(undefined),
+    indeterminate: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

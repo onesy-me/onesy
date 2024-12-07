@@ -472,10 +472,10 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    mode: React.useRef<any>(),
-    value: React.useRef<any>(),
-    dayTime: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    mode: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    dayTime: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

@@ -70,7 +70,7 @@ const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
   } = props;
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

@@ -369,13 +369,13 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
   const [copied, setCopied] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     name: React.useRef(name),
     description: React.useRef(description),
     url: React.useRef(url),
     openIn: React.useRef(openIn),
     onOpen: React.useRef(onOpen),
-    copyTimeout: React.useRef<any>()
+    copyTimeout: React.useRef<any>(undefined)
   };
 
   const mobile = useMediaQuery('(pointer: coarse)', { element: refs.root.current });

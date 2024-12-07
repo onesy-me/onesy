@@ -307,11 +307,11 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    wrapper: React.useRef<any>(),
-    value: React.useRef<any>(),
-    valueInput: React.useRef<any>(),
-    menu: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    wrapper: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    valueInput: React.useRef<any>(undefined),
+    menu: React.useRef<any>(undefined),
     input: React.useRef<HTMLInputElement>(),
     optionsProps: React.useRef(options_),
     ids: {

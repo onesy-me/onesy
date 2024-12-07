@@ -387,8 +387,8 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    props: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
     ids: {
       primary: React.useId(),
       secondary: React.useId()

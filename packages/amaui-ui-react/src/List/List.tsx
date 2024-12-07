@@ -126,7 +126,7 @@ const List: React.FC<IList> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const mobile = useMediaQuery('(max-width: 767px)', { element: refs.root.current });

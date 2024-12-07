@@ -55,7 +55,7 @@ const AutoCompleteGooglePlaces: React.FC<IAutoCompleteGooglePlaces> = React.forw
   const [places, setPlaces] = React.useState<any>([]);
 
   const refs = {
-    google: React.useRef<any>()
+    google: React.useRef<any>(undefined)
   };
 
   const optionsGoogle = React.useMemo(() => {

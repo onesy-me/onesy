@@ -370,13 +370,13 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
   const [selectorRelative, setSelectorRelative] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<any>(),
-    image: React.useRef<any>(),
-    mouseDown: React.useRef<any>(),
-    selector: React.useRef<any>(),
-    imageSelectorMain: React.useRef<any>(),
-    imageSelector: React.useRef<any>(),
-    previousMouseEvent: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    image: React.useRef<any>(undefined),
+    mouseDown: React.useRef<any>(undefined),
+    selector: React.useRef<any>(undefined),
+    imageSelectorMain: React.useRef<any>(undefined),
+    imageSelector: React.useRef<any>(undefined),
+    previousMouseEvent: React.useRef<any>(undefined),
     canvasMain: React.useRef<HTMLCanvasElement>(),
     canvasImageSelector: React.useRef<HTMLCanvasElement>(),
     move: React.useRef<HTMLDivElement>(),
@@ -388,10 +388,10 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
     dotTopRight: React.useRef<HTMLDivElement>(),
     dotBottomLeft: React.useRef<HTMLDivElement>(),
     dotBottomRight: React.useRef<HTMLDivElement>(),
-    props: React.useRef<any>(),
-    dynamicParent: React.useRef<any>(),
-    focus: React.useRef<any>(),
-    aspectRatio: React.useRef<any>()
+    props: React.useRef<any>(undefined),
+    dynamicParent: React.useRef<any>(undefined),
+    focus: React.useRef<any>(undefined),
+    aspectRatio: React.useRef<any>(undefined)
   };
 
   refs.image.current = image;

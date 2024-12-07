@@ -175,7 +175,7 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
 
   const refs = {
     value: React.useRef<IWidgetsValue>({} as any),
-    props: React.useRef<any>()
+    props: React.useRef<any>(undefined)
   };
 
   refs.props.current = props;

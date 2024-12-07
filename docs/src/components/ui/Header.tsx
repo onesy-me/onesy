@@ -236,9 +236,9 @@ function Header(props: any) {
 
   const refs = {
     storage: new AmauiStorage({ namespace: 'amaui-docs' }),
-    sidenavMenu: React.useRef<any>(),
+    sidenavMenu: React.useRef<any>(undefined),
     previousURL: React.useRef<string>(),
-    props: React.useRef<any>()
+    props: React.useRef<any>(undefined)
   };
 
   const sidenavMenu: any = React.useMemo(() => {

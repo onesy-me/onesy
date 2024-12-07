@@ -29,13 +29,13 @@ const useSwipe = (element: HTMLElement, options_: IOptionsUseSwipe = {}) => {
   const options = merge(options_, optionsDefault);
 
   const refs = {
-    rect: React.useRef<any>(),
-    element: React.useRef<any>(),
+    rect: React.useRef<any>(undefined),
+    element: React.useRef<any>(undefined),
     options: React.useRef(options),
-    response: React.useRef<any>(),
-    touch: React.useRef<any>(),
-    previous: React.useRef<any>(),
-    previousMouseMove: React.useRef<any>()
+    response: React.useRef<any>(undefined),
+    touch: React.useRef<any>(undefined),
+    previous: React.useRef<any>(undefined),
+    previousMouseMove: React.useRef<any>(undefined)
   };
 
   refs.options.current = options;

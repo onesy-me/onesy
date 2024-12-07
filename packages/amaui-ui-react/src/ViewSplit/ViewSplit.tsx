@@ -210,13 +210,13 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
 
   const refs = {
     root: React.useRef<HTMLElement>(),
-    value: React.useRef<any>(),
-    mouseDown: React.useRef<any>(),
-    hover: React.useRef<any>(),
-    props: React.useRef<any>(),
-    orientation: React.useRef<any>(),
-    version: React.useRef<any>(),
-    direction: React.useRef<any>(),
+    value: React.useRef<any>(undefined),
+    mouseDown: React.useRef<any>(undefined),
+    hover: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    orientation: React.useRef<any>(undefined),
+    version: React.useRef<any>(undefined),
+    direction: React.useRef<any>(undefined),
     ids: {
       root: React.useId()
     }

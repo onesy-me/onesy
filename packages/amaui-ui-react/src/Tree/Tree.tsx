@@ -244,7 +244,7 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
   const [open, setOpen] = React.useState(openDefault !== undefined ? openDefault : open_);
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     ids: {
       middle: React.useId()
     },

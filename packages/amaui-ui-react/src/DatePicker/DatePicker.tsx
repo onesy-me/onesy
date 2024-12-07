@@ -317,7 +317,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

@@ -310,7 +310,7 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
   });
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     noCheckIcon: React.useRef(noCheckIcon)
   };
 

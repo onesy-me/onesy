@@ -123,15 +123,15 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
   const { classes } = useStyle();
 
   const refs = {
-    minMax: React.useRef<any>(),
-    smooth: React.useRef<any>(),
-    theme: React.useRef<any>(),
+    minMax: React.useRef<any>(undefined),
+    smooth: React.useRef<any>(undefined),
+    theme: React.useRef<any>(undefined),
     path: React.useRef<SVGPathElement>(),
     pathBackground: React.useRef<SVGPathElement>(),
     pathStyle: React.useRef({}),
-    animate: React.useRef<any>(),
+    animate: React.useRef<any>(undefined),
     animateTimeout: React.useRef<number>(),
-    init: React.useRef<any>()
+    init: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

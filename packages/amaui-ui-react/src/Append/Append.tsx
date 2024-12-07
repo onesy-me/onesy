@@ -86,12 +86,12 @@ const Append: React.FC<IAppend> = (props_) => {
     root: React.useRef<HTMLElement>(),
     element: React.useRef<HTMLElement>(),
     values: React.useRef(values),
-    alignment: React.useRef<any>(),
-    position: React.useRef<any>(),
-    portal: React.useRef<any>(),
-    props: React.useRef<any>(),
-    anchor: React.useRef<any>(),
-    additional: React.useRef<any>()
+    alignment: React.useRef<any>(undefined),
+    position: React.useRef<any>(undefined),
+    portal: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    anchor: React.useRef<any>(undefined),
+    additional: React.useRef<any>(undefined)
   };
 
   refs.alignment.current = alignment_;

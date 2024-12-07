@@ -337,7 +337,7 @@ export default function Library(props: any) {
     root: React.useRef<HTMLElement>(),
     wrapper: React.useRef<HTMLElement>(),
     main: React.useRef<HTMLElement>(),
-    value: React.useRef<any>(),
+    value: React.useRef<any>(undefined),
     url: React.useRef<string>()
   };
 

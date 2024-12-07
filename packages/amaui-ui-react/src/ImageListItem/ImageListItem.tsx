@@ -59,7 +59,7 @@ const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: a
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

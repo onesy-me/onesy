@@ -384,7 +384,7 @@ const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const breakpoints: any = {};

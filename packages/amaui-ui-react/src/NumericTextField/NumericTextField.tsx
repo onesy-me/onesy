@@ -82,11 +82,11 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
   const [value, setValue] = React.useState(valueDefault !== undefined ? valueDefault : value_);
 
   const refs = {
-    root: React.useRef<any>(),
-    value: React.useRef<any>(),
-    focus: React.useRef<any>(),
-    min: React.useRef<any>(),
-    max: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    focus: React.useRef<any>(undefined),
+    min: React.useRef<any>(undefined),
+    max: React.useRef<any>(undefined),
     onChange: React.useRef(onChange_),
     props: React.useRef(props)
   };

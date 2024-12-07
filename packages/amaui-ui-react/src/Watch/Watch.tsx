@@ -182,8 +182,8 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    value: React.useRef<any>(),
-    requestAnimationFrameID: React.useRef<any>()
+    value: React.useRef<any>(undefined),
+    requestAnimationFrameID: React.useRef<any>(undefined)
   };
 
   const [value, setValue] = React.useState<AmauiDate>(AmauiDate.amauiDate);

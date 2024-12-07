@@ -53,10 +53,10 @@ const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: a
 
   const refs = {
     root: React.useRef<HTMLElement>(),
-    include: React.useRef<any>(),
-    includeQueries: React.useRef<any>(),
-    includeParentQueries: React.useRef<any>(),
-    ignoreNonExisting: React.useRef<any>()
+    include: React.useRef<any>(undefined),
+    includeQueries: React.useRef<any>(undefined),
+    includeParentQueries: React.useRef<any>(undefined),
+    ignoreNonExisting: React.useRef<any>(undefined)
   };
 
   refs.include.current = include;

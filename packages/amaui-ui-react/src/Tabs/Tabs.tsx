@@ -275,14 +275,14 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState(valueDefault !== undefined ? valueDefault : value_);
 
   const refs = {
-    root: React.useRef<any>(),
-    tabsRoot: React.useRef<any>(),
-    value: React.useRef<any>(),
-    props: React.useRef<any>(),
-    mobile: React.useRef<any>(),
-    version: React.useRef<any>(),
-    isActive: React.useRef<any>(),
-    initialLineUpdateTimeout: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    tabsRoot: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    mobile: React.useRef<any>(undefined),
+    version: React.useRef<any>(undefined),
+    isActive: React.useRef<any>(undefined),
+    initialLineUpdateTimeout: React.useRef<any>(undefined)
   };
 
   const mobile = useMediaQuery('(pointer: coarse)', { element: refs.root.current });

@@ -295,18 +295,18 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
   const [open, setOpen] = React.useState<any>({});
 
   const refs = {
-    root: React.useRef<any>(),
-    inputValues: React.useRef<any>(),
-    svg: React.useRef<any>(),
-    value: React.useRef<any>(),
-    mouseDown: React.useRef<any>(),
-    props: React.useRef<any>(),
-    move: React.useRef<any>(),
-    download: React.useRef<any>(),
-    open: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    inputValues: React.useRef<any>(undefined),
+    svg: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    mouseDown: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    move: React.useRef<any>(undefined),
+    download: React.useRef<any>(undefined),
+    open: React.useRef<any>(undefined),
     elements: {
-      size: React.useRef<any>(),
-      strokeColor: React.useRef<any>()
+      size: React.useRef<any>(undefined),
+      strokeColor: React.useRef<any>(undefined)
     }
   };
 

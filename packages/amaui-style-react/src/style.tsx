@@ -43,7 +43,7 @@ export default function style(value: TValue, options_: IOptionsStyle = {}, respo
     const amauiTheme = useAmauiTheme();
 
     const refs = {
-      update: React.useRef<any>(),
+      update: React.useRef<any>(undefined),
       remove: React.useRef(remove),
       amauiStyle: React.useRef(amauiStyle),
       amauiTheme: React.useRef(amauiTheme)

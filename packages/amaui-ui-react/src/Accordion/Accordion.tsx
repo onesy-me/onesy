@@ -249,7 +249,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
   const [parent, setParent] = React.useState();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     ids: {
       button: React.useId(),
       data: React.useId()

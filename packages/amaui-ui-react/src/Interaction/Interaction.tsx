@@ -205,11 +205,11 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
   const refs = {
     root: React.useRef<HTMLElement>(),
     mouse: React.useRef({ down: 0, up: 0, press: 0 }),
-    wave: React.useRef<any>(),
-    pulse: React.useRef<any>(),
-    touch: React.useRef<any>(),
-    interactions: React.useRef<any>(),
-    props: React.useRef<any>()
+    wave: React.useRef<any>(undefined),
+    pulse: React.useRef<any>(undefined),
+    touch: React.useRef<any>(undefined),
+    interactions: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined)
   };
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });

@@ -388,7 +388,7 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
   const [focus, setFocus] = React.useState(focus_ !== undefined ? focus_ : false);
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     ids: {
       label: React.useId()
     }

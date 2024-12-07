@@ -59,11 +59,11 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    dragging: React.useRef<any>(),
-    rectDragged: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    dragging: React.useRef<any>(undefined),
+    rectDragged: React.useRef<any>(undefined),
     isDragging: React.useRef<boolean>(),
-    previous: React.useRef<any>()
+    previous: React.useRef<any>(undefined)
   };
 
   const onChange = React.useMemo(() => {

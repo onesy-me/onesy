@@ -103,13 +103,13 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    rects: React.useRef<any>(),
-    pathStyle: React.useRef<any>(),
-    animate: React.useRef<any>(),
-    animateTimeout: React.useRef<any>(),
-    init: React.useRef<any>(),
-    theme: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    rects: React.useRef<any>(undefined),
+    pathStyle: React.useRef<any>(undefined),
+    animate: React.useRef<any>(undefined),
+    animateTimeout: React.useRef<any>(undefined),
+    init: React.useRef<any>(undefined),
+    theme: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

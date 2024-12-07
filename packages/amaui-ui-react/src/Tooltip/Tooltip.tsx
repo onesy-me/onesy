@@ -304,8 +304,8 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     open: React.useRef(false),
     inProp: React.useRef(inProp),
     longPress: React.useRef(false),
-    longPressTimer: React.useRef<any>(),
-    props: React.useRef<any>()
+    longPressTimer: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined)
   };
 
   refs.props.current = props;

@@ -243,11 +243,11 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
   const [portalElement, setPortalElement] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     focus: React.useRef<HTMLDivElement>(),
     open: React.useRef(open),
-    freezeScroll: React.useRef<any>(),
-    interval: React.useRef<any>()
+    freezeScroll: React.useRef<any>(undefined),
+    interval: React.useRef<any>(undefined)
   };
 
   const mobile = useMediaQuery('(max-width: 767px)', { element: refs.root.current });

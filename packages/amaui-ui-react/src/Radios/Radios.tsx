@@ -105,7 +105,7 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState(checkedDefault !== undefined ? checkedDefault : value_);
 
   const refs = {
-    value: React.useRef<any>(),
+    value: React.useRef<any>(undefined),
     ids: {
       label: React.useId()
     }

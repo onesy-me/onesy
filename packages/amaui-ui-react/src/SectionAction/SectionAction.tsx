@@ -55,7 +55,7 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
   const navigate = isEnvironment('browser') && useNavigate();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   return (

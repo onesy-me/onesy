@@ -125,13 +125,13 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState(valueDefault !== undefined ? valueDefault : value_);
 
   const refs = {
-    root: React.useRef<any>(),
-    value: React.useRef<any>(),
-    label: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    label: React.useRef<any>(undefined),
     input: React.useRef<HTMLInputElement>(),
-    focus: React.useRef<any>(),
-    allowedTypes: React.useRef<any>(),
-    max: React.useRef<any>()
+    focus: React.useRef<any>(undefined),
+    allowedTypes: React.useRef<any>(undefined),
+    max: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

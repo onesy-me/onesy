@@ -41,7 +41,7 @@ const Style: React.FC<IStyle> = React.forwardRef((props, ref: any) => {
   } = props;
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const [value, setValue] = React.useState(() => {

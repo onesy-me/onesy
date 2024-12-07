@@ -250,9 +250,9 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    fab: React.useRef<any>(),
-    line: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    fab: React.useRef<any>(undefined),
+    line: React.useRef<any>(undefined)
   };
 
   const direction = direction_;

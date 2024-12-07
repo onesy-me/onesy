@@ -256,7 +256,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
     previousMouseEvent: React.useRef<MouseEvent | TouchEvent>(),
     mouseDown: React.useRef(false),
     mouseDownMiniMap: React.useRef(false),
-    keyDown: React.useRef<any>(),
+    keyDown: React.useRef<any>(undefined),
     boundaries: React.useRef({ x: [width * positions?.zoom * -1, 0], y: [height * positions?.zoom * -1, 0] }),
     width: React.useRef(width),
     height: React.useRef(height),

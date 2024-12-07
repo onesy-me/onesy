@@ -257,10 +257,10 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    wrapper: React.useRef<any>(),
-    menu: React.useRef<any>(),
-    input: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    wrapper: React.useRef<any>(undefined),
+    menu: React.useRef<any>(undefined),
+    input: React.useRef<any>(undefined),
     ids: {
       list: React.useId()
     }

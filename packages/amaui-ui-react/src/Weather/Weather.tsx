@@ -277,8 +277,8 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
   });
 
   const refs = {
-    root: React.useRef<any>(),
-    values: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    values: React.useRef<any>(undefined)
   };
 
   refs.values.current = values;

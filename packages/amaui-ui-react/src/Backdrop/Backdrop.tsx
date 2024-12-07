@@ -97,7 +97,7 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     focus: React.useRef<HTMLDivElement>()
   };
 

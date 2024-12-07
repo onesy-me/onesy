@@ -67,7 +67,7 @@ const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   React.useEffect(() => {

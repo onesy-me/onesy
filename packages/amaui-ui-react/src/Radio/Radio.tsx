@@ -180,8 +180,8 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState((checkedDefault !== undefined ? checkedDefault : checked) || false);
 
   const refs = {
-    value: React.useRef<any>(),
-    input: React.useRef<any>()
+    value: React.useRef<any>(undefined),
+    input: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

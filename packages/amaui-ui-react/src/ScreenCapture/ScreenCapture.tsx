@@ -141,9 +141,9 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
   const [supported, setSupported] = React.useState(true);
 
   const refs = {
-    root: React.useRef<any>(),
-    canvas: React.useRef<any>(),
-    canvasSelectorValue: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    canvas: React.useRef<any>(undefined),
+    canvasSelectorValue: React.useRef<any>(undefined),
     element: React.useRef<HTMLVideoElement>()
   };
 

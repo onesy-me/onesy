@@ -50,14 +50,14 @@ const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
   } = props;
 
   const refs = {
-    root: React.useRef<any>(),
-    values: React.useRef<any>(),
-    version: React.useRef<any>(),
-    mouseDown: React.useRef<any>(),
-    onMouseDown: React.useRef<any>(),
-    onTouchStart: React.useRef<any>(),
-    previousMouseEvent: React.useRef<any>(),
-    disabled: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    values: React.useRef<any>(undefined),
+    version: React.useRef<any>(undefined),
+    mouseDown: React.useRef<any>(undefined),
+    onMouseDown: React.useRef<any>(undefined),
+    onTouchStart: React.useRef<any>(undefined),
+    previousMouseEvent: React.useRef<any>(undefined),
+    disabled: React.useRef<any>(undefined)
   };
 
   const [mouseDown, setMouseDown] = React.useState(false);

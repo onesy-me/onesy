@@ -1048,22 +1048,22 @@ function App() {
   const { classes } = useStyle();
 
   const refs = {
-    transitions: React.useRef<any>(),
+    transitions: React.useRef<any>(undefined),
     slides: {
-      up: React.useRef<any>(),
-      left: React.useRef<any>(),
-      right: React.useRef<any>(),
-      down: React.useRef<any>()
+      up: React.useRef<any>(undefined),
+      left: React.useRef<any>(undefined),
+      right: React.useRef<any>(undefined),
+      down: React.useRef<any>(undefined)
     },
     menu: {
-      1: React.useRef<any>(),
-      2: React.useRef<any>(),
-      3: React.useRef<any>(),
-      4: React.useRef<any>(),
-      5: React.useRef<any>(),
-      7: React.useRef<any>(),
-      14: React.useRef<any>(),
-      114: React.useRef<any>()
+      1: React.useRef<any>(undefined),
+      2: React.useRef<any>(undefined),
+      3: React.useRef<any>(undefined),
+      4: React.useRef<any>(undefined),
+      5: React.useRef<any>(undefined),
+      7: React.useRef<any>(undefined),
+      14: React.useRef<any>(undefined),
+      114: React.useRef<any>(undefined)
     }
   };
 

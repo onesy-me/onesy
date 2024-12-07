@@ -94,13 +94,13 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
   const { classes } = useStyle();
 
   const refs = {
-    minMax: React.useRef<any>(),
-    path: React.useRef<any>(),
-    theme: React.useRef<any>(),
+    minMax: React.useRef<any>(undefined),
+    path: React.useRef<any>(undefined),
+    theme: React.useRef<any>(undefined),
     pathStyle: React.useRef({}),
-    animate: React.useRef<any>(),
+    animate: React.useRef<any>(undefined),
     animateTimeout: React.useRef<number>(),
-    init: React.useRef<any>()
+    init: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

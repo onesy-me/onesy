@@ -311,8 +311,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   const refs = {
     date: React.useRef(date),
     displayTime: React.useRef(displayTime),
-    interval: React.useRef<any>(),
-    calendar: React.useRef<any>(),
+    interval: React.useRef<any>(undefined),
+    calendar: React.useRef<any>(undefined),
     days: React.useRef<any>({}),
     overlaping: React.useRef<any>({}),
     statuses: React.useRef(statuses)

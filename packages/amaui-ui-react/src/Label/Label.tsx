@@ -133,7 +133,7 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState((checkedDefault !== undefined ? checkedDefault : checked) || false);
 
   const refs = {
-    value: React.useRef<any>(),
+    value: React.useRef<any>(undefined),
     ids: {
       label: React.useId()
     }

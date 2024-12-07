@@ -47,11 +47,11 @@ const Transitions: React.FC<ITransitions> = (props_) => {
   const [element, setElement] = React.useState<any>(React.cloneElement(children__, { in: true, ...other }));
 
   const refs = {
-    element: React.useRef<any>(),
-    previousKeyValue: React.useRef<any>(),
-    status: React.useRef<any>(),
-    id: React.useRef<any>(),
-    noTransition: React.useRef<any>()
+    element: React.useRef<any>(undefined),
+    previousKeyValue: React.useRef<any>(undefined),
+    status: React.useRef<any>(undefined),
+    id: React.useRef<any>(undefined),
+    noTransition: React.useRef<any>(undefined)
   };
 
   refs.element.current = element;

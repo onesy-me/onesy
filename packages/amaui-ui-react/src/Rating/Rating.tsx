@@ -151,14 +151,14 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
   const [mouseDown, setMouseDown] = React.useState(false);
 
   const refs = {
-    root: React.useRef<any>(),
-    props: React.useRef<any>(),
-    value: React.useRef<any>(),
-    valueActive: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    valueActive: React.useRef<any>(undefined),
     values: React.useRef<Array<HTMLSpanElement>>([]),
-    mouseDown: React.useRef<any>(),
-    hover: React.useRef<any>(),
-    direction: React.useRef<any>()
+    mouseDown: React.useRef<any>(undefined),
+    hover: React.useRef<any>(undefined),
+    direction: React.useRef<any>(undefined)
   };
 
   refs.props.current = props;

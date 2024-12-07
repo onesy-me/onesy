@@ -144,10 +144,10 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
   const [value, setValue] = React.useState(valueDefault !== undefined ? valueDefault : value_);
 
   const refs = {
-    value: React.useRef<any>(),
+    value: React.useRef<any>(undefined),
     input: React.useRef<HTMLInputElement>(),
-    allowedTypes: React.useRef<any>(),
-    max: React.useRef<any>()
+    allowedTypes: React.useRef<any>(undefined),
+    max: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

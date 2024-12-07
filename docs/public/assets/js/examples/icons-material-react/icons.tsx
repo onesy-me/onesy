@@ -79,7 +79,7 @@ const IconElement = React.forwardRef((props: any, ref: any) => {
   const [copied, setCopied] = React.useState(false);
 
   const refs = {
-    timeout: React.useRef<any>()
+    timeout: React.useRef<any>(undefined)
   };
 
   const fullName = children?.displayName?.replace(/^Amaui/, '');
@@ -152,13 +152,13 @@ const element = React.forwardRef((props: any, ref: any) => {
   const [visible, setVisible] = React.useState({ total: 1, pages: 1, page: 1, perPage, values: [], loading: false });
 
   const refs = {
-    icons: React.useRef<any>(),
-    search: React.useRef<any>(),
-    version: React.useRef<any>(),
-    values: React.useRef<any>(),
-    visible: React.useRef<any>(),
-    overflow: React.useRef<any>(),
-    timeout: React.useRef<any>()
+    icons: React.useRef<any>(undefined),
+    search: React.useRef<any>(undefined),
+    version: React.useRef<any>(undefined),
+    values: React.useRef<any>(undefined),
+    visible: React.useRef<any>(undefined),
+    overflow: React.useRef<any>(undefined),
+    timeout: React.useRef<any>(undefined)
   };
 
   refs.icons.current = icons;

@@ -140,11 +140,11 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
   const [focus, setFocus] = React.useState(false);
 
   const refs = {
-    root: React.useRef<any>(),
-    props: React.useRef<any>(),
-    openMenu: React.useRef<any>(),
-    openList: React.useRef<any>(),
-    focus: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    openMenu: React.useRef<any>(undefined),
+    openList: React.useRef<any>(undefined),
+    focus: React.useRef<any>(undefined),
     ids: {
       primary: React.useId(),
       secondary: React.useId()

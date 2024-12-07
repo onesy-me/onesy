@@ -19,7 +19,7 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
     const amauiTheme = useAmauiTheme();
 
     const refs = {
-      update: React.useRef<any>()
+      update: React.useRef<any>(undefined)
     };
 
     const resolve = (theme = amauiTheme) => {

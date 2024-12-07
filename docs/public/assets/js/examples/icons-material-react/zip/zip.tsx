@@ -33,7 +33,7 @@ const zip = React.forwardRef((props: any, ref: any) => {
   const [copying, setCopying] = React.useState(false);
 
   const refs = {
-    interval: React.useRef<any>()
+    interval: React.useRef<any>(undefined)
   };
 
   React.useEffect(() => {

@@ -138,11 +138,11 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState<number>(0);
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     start: React.useRef<number>(0),
     valuePaused: React.useRef<any>(0),
-    value: React.useRef<any>(),
-    animationFrame: React.useRef<any>()
+    value: React.useRef<any>(undefined),
+    animationFrame: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

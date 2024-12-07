@@ -103,7 +103,7 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState(is('array', valueDefault__) ? valueDefault__ : [valueDefault__]);
 
   const refs = {
-    value: React.useRef<any>(),
+    value: React.useRef<any>(undefined),
     ids: {
       label: React.useId()
     }

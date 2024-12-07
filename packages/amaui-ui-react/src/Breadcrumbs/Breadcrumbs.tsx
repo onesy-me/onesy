@@ -78,7 +78,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

@@ -68,12 +68,12 @@ const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    value: React.useRef<any>(),
-    scrollDirection: React.useRef<any>(),
-    transformDirection: React.useRef<any>(),
-    rate: React.useRef<any>(),
-    disabled: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    scrollDirection: React.useRef<any>(undefined),
+    transformDirection: React.useRef<any>(undefined),
+    rate: React.useRef<any>(undefined),
+    disabled: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

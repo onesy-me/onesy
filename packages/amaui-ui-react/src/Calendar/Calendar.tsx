@@ -299,7 +299,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     month: React.useRef<HTMLElement>(),
     year: React.useRef<HTMLElement>(),
     inProgressTransition: React.useRef<boolean>()

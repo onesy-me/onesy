@@ -291,22 +291,22 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
   const [openMenu, setOpenMenu] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     audio: React.useRef<HTMLAudioElement>(),
-    controls: React.useRef<any>(),
-    duration: React.useRef<any>(),
-    time: React.useRef<any>(),
-    play: React.useRef<any>(),
-    updating: React.useRef<any>(),
-    onPlay: React.useRef<any>(),
-    onPause: React.useRef<any>(),
-    onTimeChange: React.useRef<any>(),
-    onBackward: React.useRef<any>(),
-    onForward: React.useRef<any>(),
-    onStop: React.useRef<any>(),
-    startMediaSession: React.useRef<any>(),
-    updateMediaSession: React.useRef<any>(),
-    startMediaSessionOnPlay: React.useRef<any>()
+    controls: React.useRef<any>(undefined),
+    duration: React.useRef<any>(undefined),
+    time: React.useRef<any>(undefined),
+    play: React.useRef<any>(undefined),
+    updating: React.useRef<any>(undefined),
+    onPlay: React.useRef<any>(undefined),
+    onPause: React.useRef<any>(undefined),
+    onTimeChange: React.useRef<any>(undefined),
+    onBackward: React.useRef<any>(undefined),
+    onForward: React.useRef<any>(undefined),
+    onStop: React.useRef<any>(undefined),
+    startMediaSession: React.useRef<any>(undefined),
+    updateMediaSession: React.useRef<any>(undefined),
+    startMediaSessionOnPlay: React.useRef<any>(undefined)
   };
 
   refs.duration.current = duration;

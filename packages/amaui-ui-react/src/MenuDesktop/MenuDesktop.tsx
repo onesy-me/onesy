@@ -265,19 +265,19 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
   const [menu, setMenu] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<any>(),
-    open: React.useRef<any>(),
-    focus: React.useRef<any>(),
-    direction: React.useRef<any>(),
-    props: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    open: React.useRef<any>(undefined),
+    focus: React.useRef<any>(undefined),
+    direction: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
     items: React.useRef<any>([]),
-    menu: React.useRef<any>(),
+    menu: React.useRef<any>(undefined),
     menus: React.useRef<Array<HTMLElement>>([]),
     menuRects: React.useRef<Array<DOMRect>>([]),
-    previousOpen: React.useRef<any>(),
-    previousOpenIndex: React.useRef<any>(),
+    previousOpen: React.useRef<any>(undefined),
+    previousOpenIndex: React.useRef<any>(undefined),
     anchorElement: React.useRef<HTMLElement>(),
-    wrapper: React.useRef<any>()
+    wrapper: React.useRef<any>(undefined)
   };
 
   const mobile = useMediaQuery('(pointer: coarse)', { element: refs.root.current });

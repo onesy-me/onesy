@@ -135,10 +135,10 @@ const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any
     stepInterval: React.useRef<number>(),
     stepMin: React.useRef<number>(),
     stepMax: React.useRef<number>(),
-    TransitionComponentProps: React.useRef<any>(),
-    linearProgress: React.useRef<any>(),
-    interval: React.useRef<any>(),
-    props: React.useRef<any>()
+    TransitionComponentProps: React.useRef<any>(undefined),
+    linearProgress: React.useRef<any>(undefined),
+    interval: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

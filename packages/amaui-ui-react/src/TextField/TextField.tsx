@@ -686,9 +686,9 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     input: React.useRef<HTMLInputElement>(),
-    carret: React.useRef<any>(),
+    carret: React.useRef<any>(undefined),
     restoreSelection: React.useRef(restoreSelection),
     controlled: React.useRef(controlled),
     ids: {

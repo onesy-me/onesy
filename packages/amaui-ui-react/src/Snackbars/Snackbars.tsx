@@ -112,10 +112,10 @@ const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
   const [open, setOpen] = React.useState([]);
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     value: React.useRef<ISnackbarsValue>({} as any),
-    open: React.useRef<any>(),
-    preOpen: React.useRef<any>()
+    open: React.useRef<any>(undefined),
+    preOpen: React.useRef<any>(undefined)
   };
 
   refs.open.current = open;

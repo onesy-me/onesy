@@ -108,11 +108,11 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
     modal: React.useRef<IConfirmOpen>(),
 
-    props: React.useRef<any>(),
+    props: React.useRef<any>(undefined),
 
     promise: {
-      resolve: React.useRef<any>(),
-      reject: React.useRef<any>()
+      resolve: React.useRef<any>(undefined),
+      reject: React.useRef<any>(undefined)
     }
   };
 

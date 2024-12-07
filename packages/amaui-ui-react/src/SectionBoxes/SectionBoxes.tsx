@@ -152,7 +152,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
   const navigate = isEnvironment('browser') && useNavigate();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   // Max 4

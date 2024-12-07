@@ -230,11 +230,11 @@ function Root(props: any) {
 
   const refs = {
     storage: new AmauiStorage({ namespace: 'amaui-docs' }),
-    imageSelected: React.useRef<any>(),
+    imageSelected: React.useRef<any>(undefined),
     images: React.useRef<any[]>([]),
-    sidenavMenu: React.useRef<any>(),
+    sidenavMenu: React.useRef<any>(undefined),
     previousURL: React.useRef<string>(),
-    props: React.useRef<any>()
+    props: React.useRef<any>(undefined)
   };
 
   const [imageSelected, setImageSelected] = React.useState('primary');

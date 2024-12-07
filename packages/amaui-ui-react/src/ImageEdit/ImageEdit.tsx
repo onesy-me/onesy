@@ -333,15 +333,15 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    option: React.useRef<any>(),
-    value: React.useRef<any>(),
-    valueCopy: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    option: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    valueCopy: React.useRef<any>(undefined),
     canvasMain: React.useRef<HTMLCanvasElement>(),
     open: React.useRef<HTMLCanvasElement>(),
-    resizeAspectRatio: React.useRef<any>(),
-    filterValues: React.useRef<any>(),
-    filterValuesCopy: React.useRef<any>()
+    resizeAspectRatio: React.useRef<any>(undefined),
+    filterValues: React.useRef<any>(undefined),
+    filterValuesCopy: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

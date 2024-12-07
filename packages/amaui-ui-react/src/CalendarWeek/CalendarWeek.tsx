@@ -204,7 +204,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
   const refs = {
     date: React.useRef(date),
     displayTime: React.useRef(displayTime),
-    interval: React.useRef<any>(),
+    interval: React.useRef<any>(undefined),
     days: React.useRef<any>({}),
     overlaping: React.useRef<any>({}),
     statuses: React.useRef(statuses)

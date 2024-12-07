@@ -195,10 +195,10 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
   const refs = {
     start: React.useRef<number>(0),
     valuePaused: React.useRef<any>(0),
-    value: React.useRef<any>(),
-    total: React.useRef<any>(),
-    values: React.useRef<any>(),
-    animationFrame: React.useRef<any>()
+    value: React.useRef<any>(undefined),
+    total: React.useRef<any>(undefined),
+    values: React.useRef<any>(undefined),
+    animationFrame: React.useRef<any>(undefined)
   };
 
   refs.value.current = value;

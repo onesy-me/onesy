@@ -109,7 +109,7 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const mobile = useMediaQuery('(max-width: 768px)', { element: refs.root.current });

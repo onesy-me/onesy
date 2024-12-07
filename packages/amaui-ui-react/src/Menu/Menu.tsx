@@ -130,11 +130,11 @@ const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
   const [preselected, setPreselected] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<any>(),
-    id: React.useRef<any>(),
-    main: React.useRef<any>(),
-    props: React.useRef<any>(),
-    preselected: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    id: React.useRef<any>(undefined),
+    main: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    preselected: React.useRef<any>(undefined),
     include: React.useRef<any>([]),
     menuClassName: React.useRef(`a-${new Date().getTime()}`)
   };

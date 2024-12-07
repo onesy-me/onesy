@@ -55,11 +55,11 @@ const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
   const [init, setInit] = React.useState(false);
 
   const refs = {
-    root: React.useRef<any>(),
-    gap: React.useRef<any>(),
-    columns: React.useRef<any>(),
-    init: React.useRef<any>(),
-    useMasonry: React.useRef<any>()
+    root: React.useRef<any>(undefined),
+    gap: React.useRef<any>(undefined),
+    columns: React.useRef<any>(undefined),
+    init: React.useRef<any>(undefined),
+    useMasonry: React.useRef<any>(undefined)
   };
 
   const breakpoints = {};

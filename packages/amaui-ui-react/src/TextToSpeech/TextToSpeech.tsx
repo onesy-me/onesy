@@ -111,8 +111,8 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
-    recognition: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    recognition: React.useRef<any>(undefined),
     status: React.useRef(status)
   };
 

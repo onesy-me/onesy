@@ -160,7 +160,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
   const navigate = isEnvironment('browser') && useNavigate();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   const getItem = React.useCallback((item: ISectionCardsItem, index: number) => {

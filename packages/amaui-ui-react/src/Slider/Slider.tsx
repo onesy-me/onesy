@@ -555,13 +555,13 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
   const [focusButton, setFocusButton] = React.useState<any>(false);
 
   const refs = {
-    root: React.useRef<any>(),
-    value: React.useRef<any>(),
-    props: React.useRef<any>(),
-    mouseDown: React.useRef<any>(),
-    mouseDownButton: React.useRef<any>(),
-    focusButton: React.useRef<any>(),
-    direction: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
+    value: React.useRef<any>(undefined),
+    props: React.useRef<any>(undefined),
+    mouseDown: React.useRef<any>(undefined),
+    mouseDownButton: React.useRef<any>(undefined),
+    focusButton: React.useRef<any>(undefined),
+    direction: React.useRef<any>(undefined),
     iconButtons: React.useRef<Array<any>>([]),
     min: React.useRef(min),
     max: React.useRef(max)

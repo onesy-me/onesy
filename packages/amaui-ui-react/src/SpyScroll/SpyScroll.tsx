@@ -61,7 +61,7 @@ const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
     root: React.useRef<HTMLElement>(),
     active: React.useRef<Array<HTMLElement>>([]),
     parent: React.useRef<HTMLElement>(parent),
-    props: React.useRef<any>(),
+    props: React.useRef<any>(undefined),
     onActive: React.useRef(onActive)
   };
 

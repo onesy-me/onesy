@@ -503,9 +503,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     positions: React.useRef(positions),
     selected: React.useRef(selected),
     selectedGroup: React.useRef(selectedGroup),
-    mouseDown: React.useRef<any>(),
-    keyDown: React.useRef<any>(),
-    previousMouseEvent: React.useRef<any>(),
+    mouseDown: React.useRef<any>(undefined),
+    keyDown: React.useRef<any>(undefined),
+    previousMouseEvent: React.useRef<any>(undefined),
     methods: React.useRef<any>({}),
     keepAspectRatio: React.useRef(keepAspectRatio),
     units: React.useRef({

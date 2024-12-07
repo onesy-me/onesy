@@ -200,7 +200,7 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
   const [valueOpacity, setValueOpacity] = React.useState<any>(valueOpacity_ !== undefined ? valueOpacity_ : 100);
 
   const refs = {
-    value: React.useRef<any>(),
+    value: React.useRef<any>(undefined),
     valueColor: React.useRef(valueColor),
     valueOpacity: React.useRef(valueOpacity)
   };

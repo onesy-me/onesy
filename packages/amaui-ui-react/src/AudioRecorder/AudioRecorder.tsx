@@ -152,14 +152,14 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>(),
+    root: React.useRef<any>(undefined),
     mediaRecorder: React.useRef<MediaRecorder>(),
     mediaRecorderBytes: React.useRef<any>([]),
     start: React.useRef<number>(0),
     valuePaused: React.useRef<any>(0),
-    value: React.useRef<any>(),
-    animationFrame: React.useRef<any>(),
-    onData: React.useRef<any>()
+    value: React.useRef<any>(undefined),
+    animationFrame: React.useRef<any>(undefined),
+    onData: React.useRef<any>(undefined)
   };
 
   refs.onData.current = onData;

@@ -47,7 +47,7 @@ const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: a
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<any>()
+    root: React.useRef<any>(undefined)
   };
 
   return (
