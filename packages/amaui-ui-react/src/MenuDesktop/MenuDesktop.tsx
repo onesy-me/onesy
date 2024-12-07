@@ -276,7 +276,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
     menuRects: React.useRef<Array<DOMRect>>([]),
     previousOpen: React.useRef<any>(undefined),
     previousOpenIndex: React.useRef<any>(undefined),
-    anchorElement: React.useRef<HTMLElement>(),
+    anchorElement: React.useRef<HTMLElement>(undefined),
     wrapper: React.useRef<any>(undefined)
   };
 

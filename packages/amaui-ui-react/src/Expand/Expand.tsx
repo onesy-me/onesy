@@ -97,10 +97,10 @@ const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
   const [parent, setParent] = React.useState<HTMLElement>();
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     placeholder: React.useRef<any>(undefined),
-    parent: React.useRef<HTMLElement>(),
-    element: React.useRef<HTMLDivElement>(),
+    parent: React.useRef<HTMLElement>(undefined),
+    element: React.useRef<HTMLDivElement>(undefined),
     value: React.useRef<number>(0)
   };
 

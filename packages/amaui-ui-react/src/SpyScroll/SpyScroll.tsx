@@ -58,7 +58,7 @@ const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     active: React.useRef<Array<HTMLElement>>([]),
     parent: React.useRef<HTMLElement>(parent),
     props: React.useRef<any>(undefined),

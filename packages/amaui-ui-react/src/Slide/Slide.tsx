@@ -61,7 +61,7 @@ const Slide: React.FC<ISlide> = React.forwardRef((props_, ref: any) => {
   } = props;
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     rect: React.useRef<any>(undefined)
   };
 

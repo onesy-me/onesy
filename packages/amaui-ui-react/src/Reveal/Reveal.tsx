@@ -93,7 +93,7 @@ const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
   });
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     props: React.useRef(props),
     in: React.useRef(inProp),
     unreveal: React.useRef(unreveal),

@@ -687,7 +687,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
   const refs = {
     root: React.useRef<any>(undefined),
-    input: React.useRef<HTMLInputElement>(),
+    input: React.useRef<HTMLInputElement>(undefined),
     carret: React.useRef<any>(undefined),
     restoreSelection: React.useRef(restoreSelection),
     controlled: React.useRef(controlled),

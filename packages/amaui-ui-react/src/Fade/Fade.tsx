@@ -52,7 +52,7 @@ const Fade: React.FC<IFade> = React.forwardRef((props_, ref: any) => {
   } = props;
 
   const refs = {
-    root: React.useRef<HTMLElement>()
+    root: React.useRef<HTMLElement>(undefined)
   };
 
   const styles = (status: TTransitionStatus) => {

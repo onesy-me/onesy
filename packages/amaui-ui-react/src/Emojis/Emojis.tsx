@@ -291,7 +291,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
   const [tab, setTab] = React.useState(categories[0].name);
 
   const refs = {
-    main: React.useRef<HTMLElement>()
+    main: React.useRef<HTMLElement>(undefined)
   };
 
   const onOpen = React.useCallback(() => {

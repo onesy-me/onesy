@@ -215,7 +215,7 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
   }) : { visible: true };
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     loaded: React.useRef(loaded)
   };
 

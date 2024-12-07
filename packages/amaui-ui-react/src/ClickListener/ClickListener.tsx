@@ -52,7 +52,7 @@ const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: a
   } = props;
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     include: React.useRef<any>(undefined),
     includeQueries: React.useRef<any>(undefined),
     includeParentQueries: React.useRef<any>(undefined),

@@ -83,8 +83,8 @@ const Append: React.FC<IAppend> = (props_) => {
   const [values, setValues] = React.useState<any>(valuesDefault);
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
-    element: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
+    element: React.useRef<HTMLElement>(undefined),
     values: React.useRef(values),
     alignment: React.useRef<any>(undefined),
     position: React.useRef<any>(undefined),

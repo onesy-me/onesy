@@ -95,7 +95,7 @@ const Keyframes: React.FC<IKeyframes> = (props_) => {
   });
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     status: React.useRef(status)
   };
 

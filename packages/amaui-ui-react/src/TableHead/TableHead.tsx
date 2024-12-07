@@ -99,7 +99,7 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
   const [stickyActive, setStickyActive] = React.useState(false);
 
   const refs = {
-    root: React.useRef<HTMLElement>()
+    root: React.useRef<HTMLElement>(undefined)
   };
 
   const styleOther: any = {};

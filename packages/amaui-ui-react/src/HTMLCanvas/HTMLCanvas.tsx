@@ -247,9 +247,9 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
   const [showGuidelines, setShowGuidelines] = React.useState(!!showGuidelinesDefault);
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
-    container: React.useRef<HTMLElement>(),
-    miniMap: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
+    container: React.useRef<HTMLElement>(undefined),
+    miniMap: React.useRef<HTMLElement>(undefined),
     minZoom: React.useRef(minZoom),
     maxZoom: React.useRef(maxZoom),
     positions: React.useRef(positions),

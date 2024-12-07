@@ -98,7 +98,7 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
 
   const refs = {
     root: React.useRef<any>(undefined),
-    focus: React.useRef<HTMLDivElement>()
+    focus: React.useRef<HTMLDivElement>(undefined)
   };
 
   const onClose = () => {

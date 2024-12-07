@@ -244,7 +244,7 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
 
   const refs = {
     root: React.useRef<any>(undefined),
-    focus: React.useRef<HTMLDivElement>(),
+    focus: React.useRef<HTMLDivElement>(undefined),
     open: React.useRef(open),
     freezeScroll: React.useRef<any>(undefined),
     interval: React.useRef<any>(undefined)

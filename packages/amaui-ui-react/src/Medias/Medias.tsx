@@ -266,7 +266,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
   const [open, setOpen] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<HTMLElement>()
+    root: React.useRef<HTMLElement>(undefined)
   };
 
   const values = is('array', values_) ? values_ : [values_];

@@ -312,7 +312,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
     value: React.useRef<any>(undefined),
     valueInput: React.useRef<any>(undefined),
     menu: React.useRef<any>(undefined),
-    input: React.useRef<HTMLInputElement>(),
+    input: React.useRef<HTMLInputElement>(undefined),
     optionsProps: React.useRef(options_),
     ids: {
       list: React.useId()

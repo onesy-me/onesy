@@ -494,8 +494,8 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
   const [itemsSelected, setItemsSelected] = React.useState<any>({});
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
-    container: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
+    container: React.useRef<HTMLElement>(undefined),
     items: React.useRef(items),
     unit: React.useRef(unit),
     itemOpen: React.useRef(itemOpen),

@@ -15,7 +15,7 @@ const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiZoom?.props?.default, ...props_ }), [props_]);
 
   const refs = {
-    root: React.useRef<HTMLElement>()
+    root: React.useRef<HTMLElement>(undefined)
   };
 
   const {

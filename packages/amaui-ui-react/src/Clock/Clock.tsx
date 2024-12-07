@@ -125,8 +125,8 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   const [mouseDown, setMouseDown] = React.useState(false);
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
-    middle: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
+    middle: React.useRef<HTMLElement>(undefined),
     mouseDown: React.useRef<any>(undefined),
     value: React.useRef<TClockValue>(),
     selecting: React.useRef<TClockUnit>(),

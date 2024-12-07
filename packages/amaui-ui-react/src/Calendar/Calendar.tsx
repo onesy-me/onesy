@@ -300,8 +300,8 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
   const refs = {
     root: React.useRef<any>(undefined),
-    month: React.useRef<HTMLElement>(),
-    year: React.useRef<HTMLElement>(),
+    month: React.useRef<HTMLElement>(undefined),
+    year: React.useRef<HTMLElement>(undefined),
     inProgressTransition: React.useRef<boolean>()
   };
 

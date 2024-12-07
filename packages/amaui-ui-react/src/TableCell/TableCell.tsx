@@ -209,7 +209,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   const [sortedBy, setSortedBy] = React.useState(sortedByDefault);
 
   const refs = {
-    root: React.useRef<HTMLElement>()
+    root: React.useRef<HTMLElement>(undefined)
   };
 
   const init = React.useCallback(() => {

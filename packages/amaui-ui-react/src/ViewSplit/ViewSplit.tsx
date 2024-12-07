@@ -209,7 +209,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
   const [value, setValue] = React.useState(valueDefault !== undefined ? valueDefault : value_);
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     value: React.useRef<any>(undefined),
     mouseDown: React.useRef<any>(undefined),
     hover: React.useRef<any>(undefined),

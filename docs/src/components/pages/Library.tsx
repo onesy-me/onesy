@@ -334,9 +334,9 @@ export default function Library(props: any) {
 
   const refs = {
     id: React.useId(),
-    root: React.useRef<HTMLElement>(),
-    wrapper: React.useRef<HTMLElement>(),
-    main: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
+    wrapper: React.useRef<HTMLElement>(undefined),
+    main: React.useRef<HTMLElement>(undefined),
     value: React.useRef<any>(undefined),
     url: React.useRef<string>()
   };

@@ -208,9 +208,9 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
   const refs = {
     value: React.useRef(value),
     dateProperty: React.useRef(dateProperty),
-    time: React.useRef<HTMLElement>(),
-    repeat: React.useRef<HTMLElement>(),
-    repeatEnd: React.useRef<HTMLElement>(),
+    time: React.useRef<HTMLElement>(undefined),
+    repeat: React.useRef<HTMLElement>(undefined),
+    repeatEnd: React.useRef<HTMLElement>(undefined),
     onChange: React.useRef(onChange_),
     repeatCount: React.useRef<any>({})
   };

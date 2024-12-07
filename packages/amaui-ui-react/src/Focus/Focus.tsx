@@ -29,8 +29,8 @@ const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiFocus?.props?.default, ...props_ }), [props_]);
 
   const refs = {
-    focusStart: React.useRef<HTMLDivElement>(),
-    focusEnd: React.useRef<HTMLDivElement>()
+    focusStart: React.useRef<HTMLDivElement>(undefined),
+    focusEnd: React.useRef<HTMLDivElement>(undefined)
   };
 
   const {

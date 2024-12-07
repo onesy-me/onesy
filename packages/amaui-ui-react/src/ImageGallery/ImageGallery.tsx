@@ -279,11 +279,11 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
   const [keyDown, setKeyDown] = React.useState<any>();
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     version: React.useRef(version),
     more: React.useRef<any>(undefined),
     image: React.useRef<HTMLImageElement>(),
-    imageWrapper: React.useRef<HTMLDivElement>(),
+    imageWrapper: React.useRef<HTMLDivElement>(undefined),
     media: React.useRef<any>(undefined),
     zoom: React.useRef<any>(undefined),
     incrementZoom: React.useRef<any>(undefined),

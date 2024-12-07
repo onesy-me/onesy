@@ -203,7 +203,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
   const [waves, setWaves] = React.useState([]);
 
   const refs = {
-    root: React.useRef<HTMLElement>(),
+    root: React.useRef<HTMLElement>(undefined),
     mouse: React.useRef({ down: 0, up: 0, press: 0 }),
     wave: React.useRef<any>(undefined),
     pulse: React.useRef<any>(undefined),

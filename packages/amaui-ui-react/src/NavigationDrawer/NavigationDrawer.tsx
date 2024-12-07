@@ -143,8 +143,8 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
   const [open, setOpen] = React.useState(false);
 
   const refs = {
-    modal: React.useRef<HTMLElement>(),
-    background: React.useRef<HTMLElement>()
+    modal: React.useRef<HTMLElement>(undefined),
+    background: React.useRef<HTMLElement>(undefined)
   };
 
   const { classes } = useStyle();
