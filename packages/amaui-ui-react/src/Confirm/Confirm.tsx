@@ -49,11 +49,21 @@ export interface IConfirmValue {
 const useStyle = styleMethod(theme => ({
   root: {
     '& .amaui-ModalMain-root': {
-      padding: `${theme.methods.space.value(2, 'px')} 0 0`
+      padding: `12px 0 12px`
     },
 
     '& .amaui-ModalFooter-root': {
-      padding: `${theme.methods.space.value(2, 'px')} 0 0`
+      padding: `12px 0 12px`
+    },
+
+    '& .amaui-Modal-background:not(.amaui-Modal-background-invisible)': {
+      background: theme.methods.palette.color.colorToRgb(theme.methods.palette.color.value('default', 10), theme.palette.light ? 20 : 40)
+    }
+  },
+
+  surface: {
+    '&.amaui-Surface-root': {
+      background: theme.palette.color.primary[theme.palette.light ? 99 : 5]
     }
   }
 }), { name: 'amaui-Confirm' });
@@ -195,6 +205,15 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
         onClose={close}
 
+        SurfaceProps={{
+          tonal: true,
+          color: 'primary',
+
+          className: classNames([
+            classes.surface
+          ])
+        }}
+
         className={classNames([
           staticClassName('Confirm', theme) && [
             `amaui-Confirm-root`
@@ -210,47 +229,59 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
       >
         {is('function', modal) ?
           modal({ resolve: refs.promise.resolve.current, reject: refs.promise.reject.current }) :
-          (
-            <>
-              {name !== false && (
-                <ModalHeader>
-                  <ModalTitle>{name || 'Confirmation'}</ModalTitle>
-                </ModalHeader>
-              )}
+          (<>
+            {name !== false && (
+              <ModalHeader>
+                <ModalTitle
+                  version='h3'
 
-              <ModalMain>
-                <ModalText>
-                  {description !== undefined ? description : 'Are you sure you want to proceed?'}
-                </ModalText>
-              </ModalMain>
-
-              <ModalFooter>
-                <Button
-                  version='text'
-
-                  tonal
-
-                  onClick={() => close(false)}
-
-                  {...ButtonNegativeProps}
+                  weight={400}
                 >
-                  {buttons?.negative?.text !== undefined ? buttons?.negative?.text : 'Cancel'}
-                </Button>
+                  {name || 'Confirmation'}
+                </ModalTitle>
+              </ModalHeader>
+            )}
 
-                <Button
-                  version='text'
+            <ModalMain>
+              <ModalText
+                version='b1'
 
-                  tonal
+                weight={200}
+              >
+                {description !== undefined ? description : 'Are you sure you want to proceed?'}
+              </ModalText>
+            </ModalMain>
 
-                  onClick={() => close(true)}
+            <ModalFooter>
+              <Button
+                version='text'
 
-                  {...ButtonPositiveProps}
-                >
-                  {buttons?.positive?.text !== undefined ? buttons?.positive?.text : 'Confirm'}
-                </Button>
-              </ModalFooter>
-            </>
-          )
+                color='inherit'
+
+                tonal
+
+                onClick={() => close(false)}
+
+                {...ButtonNegativeProps}
+              >
+                {buttons?.negative?.text !== undefined ? buttons?.negative?.text : 'Cancel'}
+              </Button>
+
+              <Button
+                version='text'
+
+                color='inherit'
+
+                tonal
+
+                onClick={() => close(true)}
+
+                {...ButtonPositiveProps}
+              >
+                {buttons?.positive?.text !== undefined ? buttons?.positive?.text : 'Confirm'}
+              </Button>
+            </ModalFooter>
+          </>)
         }
       </Modal>
     </ConfirmContext.Provider>

@@ -118,6 +118,10 @@ export interface ILinks extends IBaseElement {
   ItemShareProps?: any;
   IconButtonProps?: any;
   IconProps?: any;
+  NameProps?: any;
+  ShortDescriptionProps?: any;
+  LinkProps?: any;
+  LinkTypeProps?: any;
 }
 
 const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
@@ -166,6 +170,10 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
     ItemShareProps,
     IconButtonProps,
     IconProps,
+    NameProps,
+    ShortDescriptionProps,
+    LinkProps,
+    LinkTypeProps,
 
     className,
 
@@ -256,7 +264,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
         {(name || short_description) && (
           <Line
-            gap={1}
+            gap={0.5}
 
             align='center'
 
@@ -264,7 +272,9 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
           >
             {name && (
               <Type
-                version='h3'
+                version='h1'
+
+                weight={400}
 
                 align='center'
 
@@ -274,13 +284,24 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
                   __html: textToInnerHTML(name)
                 }}
 
-                className={classes.name}
+                {...NameProps}
+
+                className={classNames([
+                  staticClassName('Links', theme) && [
+                    'amaui-Links-name'
+                  ],
+
+                  NameProps?.className,
+                  classes.name
+                ])}
               />
             )}
 
             {short_description && (
               <Type
-                version='b2'
+                version='b1'
+
+                weight={300}
 
                 align='center'
 
@@ -290,7 +311,16 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
                   __html: textToInnerHTML(short_description)
                 }}
 
-                className={classes.summary}
+                {...ShortDescriptionProps}
+
+                className={classNames([
+                  staticClassName('Links', theme) && [
+                    'amaui-Links-short-description'
+                  ],
+
+                  ShortDescriptionProps?.className,
+                  classes.summary
+                ])}
               />
             )}
           </Line>
@@ -337,14 +367,25 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
                   onClick={() => onOpenLink(item)}
 
+                  {...LinkProps}
+
                   className={classNames([
                     `amaui-Links-link-version-${item.version}`,
 
+                    LinkProps?.className,
                     item.props?.className,
                     classes.link
                   ])}
                 >
-                  {item.name || 'Link'}
+                  <Type
+                    version='b1'
+
+                    weight={300}
+
+                    {...LinkTypeProps}
+                  >
+                    {item.name || 'Link'}
+                  </Type>
                 </Button>
 
                 <Menu
