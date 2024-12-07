@@ -49,7 +49,7 @@ export interface IConfirmValue {
 const useStyle = styleMethod(theme => ({
   root: {
     '& .amaui-ModalMain-root': {
-      padding: `12px 0 12px`
+      padding: `6px 0 10px`
     },
 
     '& .amaui-ModalFooter-root': {
@@ -63,7 +63,8 @@ const useStyle = styleMethod(theme => ({
 
   surface: {
     '&.amaui-Surface-root': {
-      background: theme.palette.color.primary[theme.palette.light ? 99 : 5]
+      background: theme.palette.color.primary[theme.palette.light ? 99 : 5],
+      paddingBottom: '8px'
     }
   }
 }), { name: 'amaui-Confirm' });
@@ -233,9 +234,9 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
             {name !== false && (
               <ModalHeader>
                 <ModalTitle
-                  version='h3'
+                  version='t1'
 
-                  weight={400}
+                  weight={500}
                 >
                   {name || 'Confirmation'}
                 </ModalTitle>
