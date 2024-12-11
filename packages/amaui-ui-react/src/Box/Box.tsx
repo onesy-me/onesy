@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { TValue } from '@amaui/style';
-import { style as styleMethod, classNames, useAmauiTheme, className as classNameMethod } from '@amaui/style-react';
+import { TValue } from '@onesy/style';
+import { style as styleMethod, classNames, useOnesyTheme, className as classNameMethod } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement } from '../types';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-Box' });
+}), { name: 'onesy-Box' });
 
 export interface IBox extends IBaseElement {
   styles?: string | TValue;
 }
 
 const Box: React.FC<IBox> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBox?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBox?.props?.default, ...props_ }), [props_]);
 
   const {
     styles,
@@ -41,12 +41,12 @@ const Box: React.FC<IBox> = React.forwardRef((props_, ref: any) => {
 
       className={classNameMethod(styles as any, props, classNames([
         staticClassName('Box', theme) && [
-          'amaui-Box-root'
+          'onesy-Box-root'
         ],
 
         className,
         classes.root
-      ]), { name: 'amaui-BoxClassNameRoot' })}
+      ]), { name: 'onesy-BoxClassNameRoot' })}
 
       {...other}
     >
@@ -55,6 +55,6 @@ const Box: React.FC<IBox> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Box.displayName = 'amaui-Box';
+Box.displayName = 'onesy-Box';
 
 export default Box;

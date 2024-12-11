@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment, textToInnerHTML } from '@amaui/utils';
-import { TPaletteVersion, classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, textToInnerHTML } from '@onesy/utils';
+import { TPaletteVersion, classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SectionElement, { ISection } from '../Section/Section';
 import ButtonElement from '../Button';
@@ -19,25 +19,25 @@ const useStyle = styleMethod(theme => ({
   },
 
   size_small: {
-    '&.amaui-Carousel-root': {
+    '&.onesy-Carousel-root': {
       height: '340px'
     }
   },
 
   size_regular: {
-    '&.amaui-Carousel-root': {
+    '&.onesy-Carousel-root': {
       height: '540px'
     }
   },
 
   size_large: {
-    '&.amaui-Carousel-root': {
+    '&.onesy-Carousel-root': {
       height: '740px'
     }
   },
 
   fullHeight: {
-    '&.amaui-Carousel-root': {
+    '&.onesy-Carousel-root': {
       height: '100vh'
     }
   },
@@ -65,7 +65,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   text: {
-    '&.amaui-Type-root': {
+    '&.onesy-Type-root': {
       color: 'white !important',
       mixBlendMode: 'difference'
     }
@@ -116,7 +116,7 @@ const useStyle = styleMethod(theme => ({
       paddingInline: 72
     }
   }
-}), { name: 'amaui-SectionCarousel' });
+}), { name: 'onesy-SectionCarousel' });
 
 export interface ISectionCarouselItem {
   name?: any;
@@ -159,9 +159,9 @@ export interface ISectionCarousel extends ISection {
 }
 
 const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionCarousel?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionCarousel?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -293,7 +293,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
         className={classNames([
           staticClassName('SectionCarousel', theme) && [
-            'amaui-SectionCarousel-item'
+            'onesy-SectionCarousel-item'
           ],
 
           ItemProps?.className,
@@ -312,7 +312,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
           className={classNames([
             staticClassName('SectionCarousel', theme) && [
-              'amaui-SectionCarousel-item-main'
+              'onesy-SectionCarousel-item-main'
             ],
 
             classes.main,
@@ -332,7 +332,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
               className={classNames([
                 staticClassName('SectionCarousel', theme) && [
-                  'amaui-SectionCarousel-item-background-video'
+                  'onesy-SectionCarousel-item-background-video'
                 ],
 
                 classes.backgroundVideo
@@ -348,7 +348,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
             <div
               className={classNames([
                 staticClassName('SectionCarousel', theme) && [
-                  'amaui-SectionCarousel-item-background-overlay'
+                  'onesy-SectionCarousel-item-background-overlay'
                 ],
 
                 classes.backgroundOverlay,
@@ -375,7 +375,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
               className={classNames([
                 staticClassName('SectionCarousel', theme) && [
-                  'amaui-SectionCarousel-item-name'
+                  'onesy-SectionCarousel-item-name'
                 ],
 
                 item.propsName?.className,
@@ -398,7 +398,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
               className={classNames([
                 staticClassName('SectionCarousel', theme) && [
-                  'amaui-SectionCarousel-item-description'
+                  'onesy-SectionCarousel-item-description'
                 ],
 
                 item.propsDescription?.className,
@@ -438,7 +438,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
                 className={classNames([
                   staticClassName('SectionCarousel', theme) && [
-                    'amaui-SectionCarousel-item-button'
+                    'onesy-SectionCarousel-item-button'
                   ],
 
                   item.propsButton?.className,
@@ -471,8 +471,8 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('SectionCarousel', theme) && [
-          'amaui-SectionCarousel-root',
-          `amaui-SectionCarousel-size-${size}`
+          'onesy-SectionCarousel-root',
+          `onesy-SectionCarousel-size-${size}`
         ],
 
         className,
@@ -491,7 +491,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
 
           className={classNames([
             staticClassName('SectionCarousel', theme) && [
-              'amaui-SectionCarousel-items'
+              'onesy-SectionCarousel-items'
             ],
 
             CarouselProps?.className,
@@ -505,6 +505,6 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
   );
 });
 
-Element.displayName = 'amaui-SectionCarousel';
+Element.displayName = 'onesy-SectionCarousel';
 
 export default Element;

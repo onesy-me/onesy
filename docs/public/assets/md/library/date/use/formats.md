@@ -1,12 +1,12 @@
 
 # formats
 
-Return object with all format options, and their values, for a provided AmauiDate.
+Return object with all format options, and their values, for a provided OnesyDate.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-formats(amauiDate);
+formats(onesyDate);
 
 // [
 //     Milliseconds
@@ -68,7 +68,7 @@ formats(amauiDate);
 #### formats
 
 ```ts
-default function formats(amauiDate?: AmauiDate): Array<{
+default function formats(onesyDate?: OnesyDate): Array<{
     abr: string;
     value: string;
 }>;

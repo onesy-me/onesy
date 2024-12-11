@@ -30,10 +30,10 @@ interface IDatePicker extends ILine {
     now?: boolean;
     range?: boolean;
     static?: boolean;
-    valid?: (value: AmauiDate, version: TCalendarUnit) => boolean;
-    validate?: (value: AmauiDate) => boolean;
-    min?: AmauiDate;
-    max?: AmauiDate;
+    valid?: (value: OnesyDate, version: TCalendarUnit) => boolean;
+    validate?: (value: OnesyDate) => boolean;
+    min?: OnesyDate;
+    max?: OnesyDate;
     calendars?: number;
     placeholder?: string;
     openMobile?: 'input' | 'select';

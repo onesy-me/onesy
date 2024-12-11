@@ -4,14 +4,14 @@
 
 <p align='center'>
   <a target='_blank' rel='noopener noreferrer' href='#'>
-    <img src='../../utils/images/logo.svg' alt='amaui logo' />
+    <img src='../../utils/images/logo.svg' alt='onesy logo' />
   </a>
 </p>
 
-<h1 align='center'>amaui Babel Plugin React</h1>
+<h1 align='center'>onesy Babel Plugin React</h1>
 
 <p align='center'>
-  Amaui Babel Plugin for React
+  Onesy Babel Plugin for React
 </p>
 
 <br />
@@ -39,10 +39,10 @@
 
 ```sh
   // yarn
-yarn add @amaui/babel-plugin-react
+yarn add @onesy/babel-plugin-react
 
   // npm
-  npm install @amaui/babel-plugin-react
+  npm install @onesy/babel-plugin-react
 ```
 
 ### Use
@@ -62,7 +62,7 @@ yarn add @amaui/babel-plugin-react
 
     const plugins = [
       '@babel/plugin-transform-runtime',
-      '@amaui/babel-plugin-react'
+      '@onesy/babel-plugin-react'
     ];
 
     return {
@@ -74,13 +74,13 @@ yarn add @amaui/babel-plugin-react
 
 You will be able to use css prop in react elements as a prop, and it will be converted as below.
 
-Value in css prop, is instead moved to className prop as a @amaui/style-react className method, which takes the same value as an argument, along side the optional className prop value, so it joins the generated className from className method and other provided className value.
+Value in css prop, is instead moved to className prop as a @onesy/style-react className method, which takes the same value as an argument, along side the optional className prop value, so it joins the generated className from className method and other provided className value.
 
 #### in
 
 ```javascript
 import React from 'react';
-import { style, useTheme } from '@amaui/style-react';
+import { style, useTheme } from '@onesy/style-react';
 
 const useStyle = style({});
 
@@ -136,9 +136,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _react = _interopRequireDefault(require("react"));
 
-var _styleReact = require("@amaui/style-react");
+var _styleReact = require("@onesy/style-react");
 
-var amauiStyleReactClassName = require("@amaui/style-react").className;
+var onesyStyleReactClassName = require("@onesy/style-react").className;
 
 var useStyle = (0, _styleReact.style)({});
 
@@ -147,7 +147,7 @@ function A() {
   var theme = (0, _styleReact.useTheme)();
 
   return /*#__PURE__*/_react["default"].createElement("a", {
-    className: amauiStyleReactClassName(function (theme) {
+    className: onesyStyleReactClassName(function (theme) {
       return {
         a: {
           width: 100,

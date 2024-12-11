@@ -1,27 +1,27 @@
 import React from 'react';
 
-import hash from '@amaui/utils/hash';
-import merge from '@amaui/utils/merge';
+import hash from '@onesy/utils/hash';
+import merge from '@onesy/utils/merge';
 
-import { inline as amauiInlineMethod } from '@amaui/style';
-import { IOptions } from '@amaui/style/inline';
+import { inline as onesyInlineMethod } from '@onesy/style';
+import { IOptions } from '@onesy/style/inline';
 
 import { TValue } from './style';
-import { useAmauiStyle, useAmauiTheme } from '.';
+import { useOnesyStyle, useOnesyTheme } from '.';
 
 export default function inline(value_: TValue, props?: any, options_: IOptions = { response: 'json' }) {
   const [value, setValue] = React.useState(undefined);
 
-  const amauiStyle = useAmauiStyle();
-  const amauiTheme = useAmauiTheme();
+  const onesyStyle = useOnesyStyle();
+  const onesyTheme = useOnesyTheme();
 
   const update = (update_ = true) => {
-    const options = merge(options_, { amaui_style: { value: amauiStyle }, amaui_theme: { value: amauiTheme } }, { copy: true });
+    const options = merge(options_, { onesy_style: { value: onesyStyle }, onesy_theme: { value: onesyTheme } }, { copy: true });
 
     // Options response value
     options.response = 'json';
 
-    const valueNew = amauiInlineMethod(value_ as any, props, options);
+    const valueNew = onesyInlineMethod(value_ as any, props, options);
 
     if (update_) setValue(valueNew as any);
 
@@ -32,12 +32,12 @@ export default function inline(value_: TValue, props?: any, options_: IOptions =
   React.useEffect(() => {
     update();
 
-    if (amauiTheme) amauiTheme.subscriptions.update.subscribe(update);
+    if (onesyTheme) onesyTheme.subscriptions.update.subscribe(update);
 
     // Clean up
     return () => {
       // Unsubscribe
-      if (amauiTheme) amauiTheme.subscriptions.update.unsubscribe(update);
+      if (onesyTheme) onesyTheme.subscriptions.update.unsubscribe(update);
     };
   }, []);
 

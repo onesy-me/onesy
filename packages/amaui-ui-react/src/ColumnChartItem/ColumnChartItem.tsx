@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { TMethod } from '@amaui/models';
+import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { TMethod } from '@onesy/models';
 
 import PathElement from '../Path';
 import LineElement from '../Line';
@@ -25,7 +25,7 @@ const useStyle = styleMethod(theme => ({
     width: '4px',
     height: '12px'
   }
-}), { name: 'amaui-ColumnChartItem' });
+}), { name: 'onesy-ColumnChartItem' });
 
 export interface IColumnChartItem extends IChart {
   name?: string;
@@ -50,9 +50,9 @@ export interface IColumnChartItem extends IChart {
 }
 
 const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiColumnChartItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChartItem?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -154,7 +154,7 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
 
         className={classNames([
           staticClassName('ColumnChartItem', theme) && [
-            'amaui-ColumnChartItem-legend-item'
+            'onesy-ColumnChartItem-legend-item'
           ],
 
           legendItemProps?.className,
@@ -165,7 +165,7 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
         <span
           className={classNames([
             staticClassName('ColumnChartItem', theme) && [
-              'amaui-ColumnChartItem-legend-icon'
+              'onesy-ColumnChartItem-legend-icon'
             ],
 
             classes.legend_icon
@@ -310,6 +310,6 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
   );
 });
 
-ColumnChartItem.displayName = 'amaui-ColumnChartItem';
+ColumnChartItem.displayName = 'onesy-ColumnChartItem';
 
 export default ColumnChartItem;

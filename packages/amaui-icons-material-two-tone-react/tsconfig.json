@@ -6,8 +6,12 @@
     "declaration": true,
     "jsx": "react-jsx",
     "paths": {
-      "@amaui/ui-react": ["../amaui-ui-react/src"],
-      "@amaui/ui-react/*": ["../amaui-ui-react/src/*"]
+      "@onesy/ui-react": [
+        "../onesy-ui-react/src"
+      ],
+      "@onesy/ui-react/*": [
+        "../onesy-ui-react/src/*"
+      ]
     }
   },
   "include": [

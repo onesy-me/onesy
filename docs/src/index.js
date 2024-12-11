@@ -53,7 +53,7 @@ const run = async () => {
     httpServer.listen(port, error => {
       if (error) throw error;
 
-      console.log(`amaui docs started 🌱 at port ${port}`);
+      console.log(`onesy docs started 🌱 at port ${port}`);
     });
 
     process.on('unhandledRejection', error => {

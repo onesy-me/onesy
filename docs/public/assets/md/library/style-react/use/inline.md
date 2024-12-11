@@ -5,10 +5,10 @@ Used for creating inline styles for the element.
 
 ### Use
 
-- It adds no style sheets, simply utilizes `AmauiStyle` API, by providing the `AmauiStyle`, `AmauiTheme` instances in the background, to generate the CSS, that is usuable for element's style value.
+- It adds no style sheets, simply utilizes `OnesyStyle` API, by providing the `OnesyStyle`, `OnesyTheme` instances in the background, to generate the CSS, that is usuable for element's style value.
 
 ```tsx
-import { inline } from '@amaui/style-react';
+import { inline } from '@onesy/style-react';
 
 const Button = () => {
   const style = inline(theme => ({

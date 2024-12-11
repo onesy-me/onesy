@@ -1,5 +1,5 @@
 
-# AmauiTo
+# OnesyTo
 
 Method to run an individual test. \
 
@@ -26,33 +26,33 @@ to('Synchronous method with resolve, reject', (resolve, reject) => {
 
 ## API
 
-#### IAmauiTo
+#### IOnesyTo
 
 ```ts
-interface IAmauiTo {
+interface IOnesyTo {
     name: string;
     method: TMethod;
-    parent: AmauiGroup;
+    parent: OnesyGroup;
     level: number;
     file?: string;
     index: number;
     mainIndex: number;
-    response?: IAmauiResponse;
+    response?: IOnesyResponse;
 }
 ```
 
-#### AmauiTo
+#### OnesyTo
 
 ```ts
-class AmauiTo implements IAmauiTo {
+class OnesyTo implements IOnesyTo {
     name: string;
     method: TMethod;
-    parent: AmauiGroup;
+    parent: OnesyGroup;
     index: number;
     mainIndex: number;
     level: number;
     file?: string;
-    response: IAmauiResponse;
+    response: IOnesyResponse;
     constructor(name: string, method: TMethod);
 }
 ```
@@ -62,8 +62,8 @@ class AmauiTo implements IAmauiTo {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Test: AmauiTest",
-      "to": "/library/test/use/AmauiTest"
+      "label": "Test: OnesyTest",
+      "to": "/library/test/use/OnesyTest"
     },
     "next": {
       "label": "Test: assert",

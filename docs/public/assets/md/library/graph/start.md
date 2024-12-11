@@ -1,5 +1,5 @@
 
-# amaui graph
+# onesy graph
 
 Graph value type & its methods.
 
@@ -12,19 +12,19 @@ Graph value type & its methods.
 ### Add
 
 ```sh
-yarn add @amaui/graph
+yarn add @onesy/graph
 ```
 
 ### Use
 
 ```ts
-import AmauiGraph from '@amaui/graph';
+import OnesyGraph from '@onesy/graph';
 
 // Make a new graph instance
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
 // Add nodes
-amauiGraph
+onesyGraph
   .addNode('a')
   .addNode('b')
   .addNode('c')
@@ -34,7 +34,7 @@ amauiGraph
   .addNode('g');
 
 // Add connections
-amauiGraph
+onesyGraph
   .addConnection('a', 'b', 2)
   .addConnection('a', 'c', 7)
   .addConnection('b', 'd', 5)
@@ -46,7 +46,7 @@ amauiGraph
   .addConnection('e', 'g', 4);
 
 // matrix
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //      a  b  c  d  e  f  g
@@ -60,7 +60,7 @@ amauiGraph.array;
 // ]
 
 // Shortest path
-amauiGraph.shortestPath('a', 'g');
+onesyGraph.shortestPath('a', 'g');
 
 // {
 //   distance: 20,

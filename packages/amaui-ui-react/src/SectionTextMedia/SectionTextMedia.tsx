@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment, textToInnerHTML } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, textToInnerHTML } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TextElement from '../Text';
 import ImageElement from '../Image';
@@ -21,13 +21,13 @@ const useStyle = styleMethod(theme => ({
   },
 
   main: {
-    '&.amaui-Line-direction-row': {
+    '&.onesy-Line-direction-row': {
       '& > *': {
         width: '50%'
       }
     }
   }
-}), { name: 'amaui-SectionTextMedia' });
+}), { name: 'onesy-SectionTextMedia' });
 
 export interface ISectionTextMedia extends ISection {
   title?: string | Partial<Record<IValueBreakpoints, string>>;
@@ -58,9 +58,9 @@ export interface ISectionTextMedia extends ISection {
 }
 
 const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionTextMedia?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTextMedia?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -141,8 +141,8 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
         className={classNames([
           staticClassName('SectionTextMedia', theme) && [
-            'amaui-SectionTextMedia-item',
-            'amaui-SectionTextMedia-item-image'
+            'onesy-SectionTextMedia-item',
+            'onesy-SectionTextMedia-item-image'
           ],
 
           MediaProps?.className,
@@ -165,8 +165,8 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
         className={classNames([
           staticClassName('SectionTextMedia', theme) && [
-            'amaui-SectionTextMedia-item',
-            'amaui-SectionTextMedia-item-audio'
+            'onesy-SectionTextMedia-item',
+            'onesy-SectionTextMedia-item-audio'
           ],
 
           MediaProps?.className,
@@ -189,8 +189,8 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
         className={classNames([
           staticClassName('SectionTextMedia', theme) && [
-            'amaui-SectionTextMedia-item',
-            'amaui-SectionTextMedia-item-video'
+            'onesy-SectionTextMedia-item',
+            'onesy-SectionTextMedia-item-video'
           ],
 
           MediaProps?.className,
@@ -214,7 +214,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
       className={classNames([
         staticClassName('SectionTextMedia', theme) && [
-          'amaui-SectionTextMedia-wrapper-main'
+          'onesy-SectionTextMedia-wrapper-main'
         ],
 
         WrapperMainProps?.className
@@ -233,7 +233,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
         className={classNames([
           staticClassName('SectionTextMedia', theme) && [
-            'amaui-SectionTextMedia-wrapper-text'
+            'onesy-SectionTextMedia-wrapper-text'
           ],
 
           WrapperTextProps?.className
@@ -253,7 +253,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
             className={classNames([
               staticClassName('SectionTextMedia', theme) && [
-                'amaui-SectionTextMedia-title'
+                'onesy-SectionTextMedia-title'
               ],
 
               TitleProps?.className
@@ -279,7 +279,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
             className={classNames([
               staticClassName('SectionTextMedia', theme) && [
-                'amaui-SectionTextMedia-description'
+                'onesy-SectionTextMedia-description'
               ],
 
               DescriptionProps?.className
@@ -304,7 +304,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
           className={classNames([
             staticClassName('SectionAction', theme) && [
-              'amaui-SectionTextMedia-button'
+              'onesy-SectionTextMedia-button'
             ],
 
             button.props?.className,
@@ -332,8 +332,8 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
       className={classNames([
         staticClassName('SectionTextMedia', theme) && [
-          'amaui-SectionTextMedia-root',
-          `amaui-SectionTextMedia-size-${size}`
+          'onesy-SectionTextMedia-root',
+          `onesy-SectionTextMedia-size-${size}`
         ],
 
         className,
@@ -360,7 +360,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
         className={classNames([
           staticClassName('SectionTextMedia', theme) && [
-            'amaui-SectionTextMedia-main'
+            'onesy-SectionTextMedia-main'
           ],
 
           MainProps?.className,
@@ -377,6 +377,6 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
   );
 });
 
-SectionTextMedia.displayName = 'amaui-SectionTextMedia';
+SectionTextMedia.displayName = 'onesy-SectionTextMedia';
 
 export default SectionTextMedia;

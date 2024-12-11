@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
-import { arrayToParts, is } from '@amaui/utils';
-import { add, AmauiDate, endOf, format, remove, set, startOf, is as isAmauiDate } from '@amaui/date';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
+import { arrayToParts, is } from '@onesy/utils';
+import { add, OnesyDate, endOf, format, remove, set, startOf, is as isOnesyDate } from '@onesy/date';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -209,11 +209,11 @@ const useStyle = style(theme => ({
     opacity: '0.54',
     pointerEvents: 'none'
   }
-}), { name: 'amaui-CalendarMonth' });
+}), { name: 'onesy-CalendarMonth' });
 
-export type TCalendarMonthValue = AmauiDate | [AmauiDate, AmauiDate];
+export type TCalendarMonthValue = OnesyDate | [OnesyDate, OnesyDate];
 
-export type TCalendarMonthCalendar = AmauiDate;
+export type TCalendarMonthCalendar = OnesyDate;
 
 export interface ICalendarMonthValuesValue {
   day: string;
@@ -221,9 +221,9 @@ export interface ICalendarMonthValuesValue {
   year: string;
   inputModal: string;
   input: string;
-  selected: AmauiDate;
-  date: AmauiDate;
-  previous: AmauiDate;
+  selected: OnesyDate;
+  date: OnesyDate;
+  previous: OnesyDate;
   move: 'previous' | 'next';
 }
 
@@ -243,7 +243,7 @@ export interface ICalenarDays extends ILine {
   calendarDefault?: TCalendarMonthCalendar;
   onChangeCalendar?: (value: TCalendarMonthCalendar) => any;
 
-  onTimeClick?: (date: AmauiDate, view: ICalendarViewsView, event: MouseEvent) => any;
+  onTimeClick?: (date: OnesyDate, view: ICalendarViewsView, event: MouseEvent) => any;
 
   now?: boolean;
   outside?: boolean;
@@ -251,14 +251,14 @@ export interface ICalenarDays extends ILine {
   weekStartDay?: 'Monday' | 'Sunday';
   noTransition?: boolean;
   offset?: number;
-  min?: AmauiDate;
-  max?: AmauiDate;
-  validate?: (value: AmauiDate) => boolean;
+  min?: OnesyDate;
+  max?: OnesyDate;
+  validate?: (value: OnesyDate) => boolean;
   labels?: boolean;
   dayNamesFull?: boolean;
 
-  valid?: (value: AmauiDate, version: 'day' | 'month' | 'year') => boolean;
-  renderDay?: (value: AmauiDate, props: any, day: any, outside: boolean) => React.ReactNode;
+  valid?: (value: OnesyDate, version: 'day' | 'month' | 'year') => boolean;
+  renderDay?: (value: OnesyDate, props: any, day: any, outside: boolean) => React.ReactNode;
   renderDayName?: (order: number) => any;
 
   DayNameProps?: IPropsAny;
@@ -268,9 +268,9 @@ export interface ICalenarDays extends ILine {
 }
 
 const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCalendarMonth?.props?.default, ...props__ }), [props__]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarMonth?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -331,19 +331,19 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
   const { classes } = useStyle();
 
   const [value, setValue] = React.useState(() => {
-    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new AmauiDate(), new AmauiDate()] : [new AmauiDate()]));
+    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
-    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<AmauiDate>).filter(Boolean);
+    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<OnesyDate>).filter(Boolean);
   });
-  const [calendar, setCalendar] = React.useState((calendarDefault !== undefined ? calendarDefault : calendar_) || new AmauiDate());
+  const [calendar, setCalendar] = React.useState((calendarDefault !== undefined ? calendarDefault : calendar_) || new OnesyDate());
 
-  let month: AmauiDate = calendar || value[0] || new AmauiDate();
+  let month: OnesyDate = calendar || value[0] || new OnesyDate();
 
-  if (!month?.valid) month = new AmauiDate();
+  if (!month?.valid) month = new OnesyDate();
 
   const refs = {
     id: React.useRef<string>(`${(month).year} ${(month).month}`),
-    previous: React.useRef<AmauiDate>(month),
+    previous: React.useRef<OnesyDate>(month),
     previousTheme: React.useRef<boolean>(theme.palette.light),
     move: React.useRef<'previous' | 'next'>(),
     noTransition: React.useRef<any>(undefined)
@@ -361,19 +361,19 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     if (calendar_ !== undefined && calendar_ !== calendar) setCalendar(calendar_);
   }, [calendar_]);
 
-  const valid = React.useCallback((...args: [AmauiDate, any]) => {
+  const valid = React.useCallback((...args: [OnesyDate, any]) => {
     if (is('function', valid_)) return valid_(...args);
 
-    const amauiDate = args[0];
+    const onesyDate = args[0];
 
     if (min || max || validate) {
       let response = true;
 
-      if (is('function', validate)) response = validate(amauiDate);
+      if (is('function', validate)) response = validate(onesyDate);
 
-      if (min !== undefined) response = response && isAmauiDate(amauiDate, 'after or same', min);
+      if (min !== undefined) response = response && isOnesyDate(onesyDate, 'after or same', min);
 
-      if (max !== undefined) response = response && isAmauiDate(amauiDate, 'before or same', max);
+      if (max !== undefined) response = response && isOnesyDate(onesyDate, 'before or same', max);
 
       return response;
     }
@@ -381,15 +381,15 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     return true;
   }, [valid_, min, max, validate]);
 
-  const onUpdateCalendar = React.useCallback((valueNew: AmauiDate) => {
+  const onUpdateCalendar = React.useCallback((valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('calendar')) setCalendar(valueNew);
 
     if (is('function', onChangeCalendar)) onChangeCalendar(valueNew);
   }, [onChangeCalendar]);
 
-  const onUpdate = React.useCallback((valueUpdated: AmauiDate, offsetMultiplier?: number) => {
-    let valueNew: Array<AmauiDate> = [valueUpdated, value[1]].filter(Boolean);
+  const onUpdate = React.useCallback((valueUpdated: OnesyDate, offsetMultiplier?: number) => {
+    let valueNew: Array<OnesyDate> = [valueUpdated, value[1]].filter(Boolean);
 
     // Previous
     // Range reset
@@ -465,7 +465,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
   const days = [];
 
-  const monthNow = new AmauiDate();
+  const monthNow = new OnesyDate();
 
   // value or value range selected value
   let id = `${month.year} ${month.month} ${month.day} ${theme.palette.light}`;
@@ -523,7 +523,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
       selectedSame: selectedSame(day),
 
-      amauiDate: day
+      onesyDate: day
     });
   }
 
@@ -564,7 +564,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
         start: true,
 
-        amauiDate: day
+        onesyDate: day
       });
     }
   }
@@ -601,7 +601,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
         end: true,
 
-        amauiDate: day
+        onesyDate: day
       });
     }
   }
@@ -636,7 +636,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
             className={classNames([
               staticClassName('CalendarMonth', theme) && [
-                'amaui-CalendarMonth-weeks'
+                'onesy-CalendarMonth-weeks'
               ],
 
               classes.weeks,
@@ -660,7 +660,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
                 className={classNames([
                   staticClassName('CalendarMonth', theme) && [
-                    'amaui-CalendarMonth-week'
+                    'onesy-CalendarMonth-week'
                   ],
 
                   classes.week
@@ -668,15 +668,15 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
               >
                 {week.map((day: any, index_: number) => {
                   const propsDay = {
-                    onClick: () => onUpdate(day.amauiDate, day.start || day.end ? -1 : undefined),
+                    onClick: () => onUpdate(day.onesyDate, day.start || day.end ? -1 : undefined),
 
                     disabled: (
                       (!day.in && !outside) ||
 
-                      !valid(day.amauiDate, 'day') ||
+                      !valid(day.onesyDate, 'day') ||
 
                       // not prior to 1970, we may potentially update this in the future
-                      day.amauiDate.year < 1970
+                      day.onesyDate.year < 1970
                     )
                   };
 
@@ -691,15 +691,15 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                       justify='center'
 
                       onClick={(event: MouseEvent) => {
-                        const timeDate = startOf(day.amauiDate, 'hour');
+                        const timeDate = startOf(day.onesyDate, 'hour');
 
                         onTimeClick?.(timeDate, 'month', event);
                       }}
 
                       className={classNames([
                         staticClassName('CalendarMonth', theme) && [
-                          'amaui-CalendarMonth-day',
-                          `amaui-CalendarMonth-day-${day.in ? 'in' : 'out'}`
+                          'onesy-CalendarMonth-day',
+                          `onesy-CalendarMonth-day-${day.in ? 'in' : 'out'}`
                         ],
 
                         classes.day,
@@ -726,7 +726,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                       }}
                     >
                       {is('function', renderDay) ?
-                        renderDay(day.amauiDate, propsDay, day, outside) :
+                        renderDay(day.onesyDate, propsDay, day, outside) :
                         (
                           <PaginationItem
                             tonal={tonal}
@@ -745,21 +745,21 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                               priority: !day.selected ? !day.weekend ? 'primary' : 'secondary' : undefined
                             }}
 
-                            aria-label={format(day.amauiDate, 'DD-MM-YYYY')}
+                            aria-label={format(day.onesyDate, 'DD-MM-YYYY')}
 
                             {...PaginationItemProps}
 
                             className={classNames([
                               staticClassName('CalendarMonth', theme) && [
-                                'amaui-CalendarMonth-day-value',
-                                day.in && 'amaui-CalendarMonth-day-in',
-                                day.dayWeek && 'amaui-CalendarMonth-day-day-week',
-                                day.weekend && 'amaui-CalendarMonth-day-weekend',
-                                day.today && 'amaui-CalendarMonth-day-today',
-                                day.between && 'amaui-CalendarMonth-day-between',
-                                day.selected && 'amaui-CalendarMonth-day-selected',
-                                day.start && 'amaui-CalendarMonth-day-start',
-                                day.end && 'amaui-CalendarMonth-day-end'
+                                'onesy-CalendarMonth-day-value',
+                                day.in && 'onesy-CalendarMonth-day-in',
+                                day.dayWeek && 'onesy-CalendarMonth-day-day-week',
+                                day.weekend && 'onesy-CalendarMonth-day-weekend',
+                                day.today && 'onesy-CalendarMonth-day-today',
+                                day.between && 'onesy-CalendarMonth-day-between',
+                                day.selected && 'onesy-CalendarMonth-day-selected',
+                                day.start && 'onesy-CalendarMonth-day-start',
+                                day.end && 'onesy-CalendarMonth-day-end'
                               ],
 
                               PaginationItemProps?.className,
@@ -805,8 +805,8 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
       className={classNames([
         staticClassName('CalendarMonth', theme) && [
-          'amaui-CalendarMonth-root',
-          `amaui-CalendarMonth-size-${size}`
+          'onesy-CalendarMonth-root',
+          `onesy-CalendarMonth-size-${size}`
         ],
 
         className,
@@ -836,7 +836,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
           className={classNames([
             staticClassName('CalendarMonth', theme) && [
-              'amaui-CalendarMonth-day-names'
+              'onesy-CalendarMonth-day-names'
             ],
 
             classes.dayNames
@@ -854,7 +854,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
               className={classNames([
                 staticClassName('CalendarMonth', theme) && [
-                  'amaui-CalendarMonth-day-name'
+                  'onesy-CalendarMonth-day-name'
                 ],
 
                 classes.dayName,
@@ -905,6 +905,6 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
   );
 });
 
-CalendarMonth.displayName = 'amaui-CalendarMonth';
+CalendarMonth.displayName = 'onesy-CalendarMonth';
 
 export default CalendarMonth;

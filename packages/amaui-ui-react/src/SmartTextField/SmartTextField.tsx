@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { innerHTMLToText, is, isEnvironment, parse, stringToColor, textToInnerHTML } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { innerHTMLToText, is, isEnvironment, parse, stringToColor, textToInnerHTML } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialFormatItalic from '@amaui/icons-material-rounded-react/IconMaterialFormatItalicW100';
-import IconMaterialFormatUnderlined from '@amaui/icons-material-rounded-react/IconMaterialFormatUnderlinedW100';
-import IconMaterialStrikethroughS from '@amaui/icons-material-rounded-react/IconMaterialStrikethroughSW100';
-import IconMaterialFormatBold from '@amaui/icons-material-rounded-react/IconMaterialFormatBoldW100';
-import IconMaterialAddLink from '@amaui/icons-material-rounded-react/IconMaterialAddLinkW100';
-import IconMaterialLinkOff from '@amaui/icons-material-rounded-react/IconMaterialLinkOffW100';
-import IconMaterialFormatClear from '@amaui/icons-material-rounded-react/IconMaterialFormatClearW100';
+import IconMaterialFormatItalic from '@onesy/icons-material-rounded-react/IconMaterialFormatItalicW100';
+import IconMaterialFormatUnderlined from '@onesy/icons-material-rounded-react/IconMaterialFormatUnderlinedW100';
+import IconMaterialStrikethroughS from '@onesy/icons-material-rounded-react/IconMaterialStrikethroughSW100';
+import IconMaterialFormatBold from '@onesy/icons-material-rounded-react/IconMaterialFormatBoldW100';
+import IconMaterialAddLink from '@onesy/icons-material-rounded-react/IconMaterialAddLinkW100';
+import IconMaterialLinkOff from '@onesy/icons-material-rounded-react/IconMaterialLinkOffW100';
+import IconMaterialFormatClear from '@onesy/icons-material-rounded-react/IconMaterialFormatClearW100';
 
 import TextFieldElement, { ITextField } from '../TextField/TextField';
 import LineElement from '../Line';
@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
     minHeight: '20px',
     width: '100%',
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       wordBreak: 'break-word',
       color: theme.methods.palette.color.value('primary', 10),
 
@@ -46,7 +46,7 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     cursor: 'text',
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       wordBreak: 'break-word',
       color: theme.methods.palette.color.value('primary', 10),
 
@@ -94,7 +94,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   inputLink: {
-    '&.amaui-TextField-root': {
+    '&.onesy-TextField-root': {
       flex: '1 1 auto !important'
     }
   },
@@ -112,7 +112,7 @@ const useStyle = styleMethod(theme => ({
   error_hover_color: {
     color: [theme.palette.light ? theme.palette.color.error[20] : theme.palette.color.error[90], '!important']
   }
-}), { name: 'amaui-SmartTextField' });
+}), { name: 'onesy-SmartTextField' });
 
 export interface ISmartTextField extends ITextField {
   placeholder?: any;
@@ -139,9 +139,9 @@ export interface ISmartTextField extends ITextField {
 }
 
 const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSmartTextField?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySmartTextField?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -363,9 +363,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     if (element?.children) {
       Array.from(element?.children).forEach((child: any) => {
         // Any tag
-        if (child.dataset.amauiVersion === 'mention-user') {
+        if (child.dataset.onesyVersion === 'mention-user') {
           // Replace the child if label & textContent don't match
-          if (child.dataset.amauiLabel !== child.innerHTML) {
+          if (child.dataset.onesyLabel !== child.innerHTML) {
             element.replaceChild(
               window.document.createTextNode(child.textContent),
               child
@@ -389,7 +389,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
     refs.validateMeta.current.restore = false;
 
-    // Find all span amaui-mention children
+    // Find all span onesy-mention children
     // if they aren't valid, replace them with text node of their textContent
     validateElement(refs.root.current);
 
@@ -409,7 +409,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       if (!range) return;
 
       // Only allow for text not in span user mention element
-      if (windowSelection!.anchorNode?.parentElement?.dataset?.amauiVersion === 'mention-user') return '';
+      if (windowSelection!.anchorNode?.parentElement?.dataset?.onesyVersion === 'mention-user') return '';
 
       // Text
       if (!['text', '#text'].includes(range?.commonAncestorContainer?.nodeName)) return '';
@@ -560,7 +560,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         const caretElementParentChildNodes = Array.from(caretElementParent!.childNodes);
 
         if (
-          caretElement?.dataset?.amauiVersion === 'mention-user' &&
+          caretElement?.dataset?.onesyVersion === 'mention-user' &&
           range.endOffset === windowSelection.anchorNode!.textContent!.length &&
           caretElementParentChildNodes[caretElementParentChildNodes.length - 1] === caretElement
         ) {
@@ -622,7 +622,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
     const itemName = item.name;
 
-    const classesElement = ['amaui-mention'];
+    const classesElement = ['onesy-mention'];
 
     // Query text node that equals selection anchorNode
     // and replace its textContent's search value with new span
@@ -655,10 +655,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
       span.className = classesElement.join(' ');
 
-      span.dataset.amauiLabel = `@${itemName}`;
-      span.dataset.amauiVersion = `mention-${versionMention}`;
-      span.dataset.amauiObject = `${versionMention}`;
-      span.dataset.amauiId = item.id;
+      span.dataset.onesyLabel = `@${itemName}`;
+      span.dataset.onesyVersion = `mention-${versionMention}`;
+      span.dataset.onesyObject = `${versionMention}`;
+      span.dataset.onesyId = item.id;
 
       span.innerHTML = `@${itemName}`;
 
@@ -1068,7 +1068,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
           <div
             className={classNames([
               staticClassName('SmartTextField', theme) && [
-                'amaui-SmartTextField-mini-menu-additional'
+                'onesy-SmartTextField-mini-menu-additional'
               ],
 
               classes.textMiniMenuAdditionalMenu
@@ -1325,7 +1325,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
                 className={classNames([
                   staticClassName('SmartTextField', theme) && [
-                    'amaui-SmartTextField-mini-menu-wrapper'
+                    'onesy-SmartTextField-mini-menu-wrapper'
                   ],
 
                   classes.textMiniMenuWrapper
@@ -1504,9 +1504,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
       className={classNames([
         staticClassName('SmartTextField', theme) && [
-          'amaui-SmartTextField-root',
-          `amaui-SmartTextField-version-${version}`,
-          `amaui-SmartTextField-size-${size}`
+          'onesy-SmartTextField-root',
+          `onesy-SmartTextField-version-${version}`,
+          `onesy-SmartTextField-size-${size}`
         ],
 
         className,
@@ -1564,9 +1564,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
       className={classNames([
         staticClassName('SmartTextField', theme) && [
-          'amaui-SmartTextField-root',
-          `amaui-SmartTextField-version-${version}`,
-          `amaui-SmartTextField-size-${size}`
+          'onesy-SmartTextField-root',
+          `onesy-SmartTextField-version-${version}`,
+          `onesy-SmartTextField-size-${size}`
         ],
 
         className,
@@ -1592,8 +1592,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
           className={classNames([
             staticClassName('SmartTextField', theme) && [
-              'amaui-SmartTextField-helper-text',
-              error && 'amaui-SmartTextField-error'
+              'onesy-SmartTextField-helper-text',
+              error && 'onesy-SmartTextField-error'
             ],
 
             HelperTextProps?.className,
@@ -1614,6 +1614,6 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   </>;
 });
 
-SmartTextField.displayName = 'amaui-SmartTextField';
+SmartTextField.displayName = 'onesy-SmartTextField';
 
 export default SmartTextField;

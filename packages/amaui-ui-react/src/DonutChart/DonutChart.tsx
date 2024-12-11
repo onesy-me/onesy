@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import PieChartElement from '../PieChart';
 import { IPieChart } from '../PieChart/PieChart';
@@ -8,22 +8,22 @@ import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '& .amaui-Chart-legend-icon': {
+    '& .onesy-Chart-legend-icon': {
       position: 'relative',
       background: 'none !important',
       border: '2px solid currentColor'
     }
   }
-}), { name: 'amaui-DonutChart' });
+}), { name: 'onesy-DonutChart' });
 
 export interface IDonutChart extends IPieChart {
 
 }
 
 const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDonutChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDonutChart?.props?.default, ...props_ }), [props_]);
 
   const PieChart = React.useMemo(() => theme?.elements?.PieChart || PieChartElement, [theme]);
 
@@ -43,7 +43,7 @@ const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('DonutChart', theme) && [
-          'amaui-DonutChart-root'
+          'onesy-DonutChart-root'
         ],
 
         className,
@@ -55,6 +55,6 @@ const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-DonutChart.displayName = 'amaui-DonutChart';
+DonutChart.displayName = 'onesy-DonutChart';
 
 export default DonutChart;

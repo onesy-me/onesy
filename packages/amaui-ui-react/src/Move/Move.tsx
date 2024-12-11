@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { element, is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { element, is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement } from '../types';
@@ -11,7 +11,7 @@ const useStyle = styleMethod(theme => ({
     pointerEvents: 'auto',
     touchAction: 'none'
   }
-}), { name: 'amaui-Move' });
+}), { name: 'onesy-Move' });
 
 export interface IMove extends IBaseElement {
   version?: 'regular' | 'fixed';
@@ -24,9 +24,9 @@ export interface IMove extends IBaseElement {
 }
 
 const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMove?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMove?.props?.default, ...props_ }), [props_]);
 
   const { classes } = useStyle();
 
@@ -209,7 +209,7 @@ const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Move', theme) && [
-          'amaui-Move-root'
+          'onesy-Move-root'
         ],
 
         className,
@@ -229,6 +229,6 @@ const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Move.displayName = 'amaui-Move';
+Move.displayName = 'onesy-Move';
 
 export default Move;

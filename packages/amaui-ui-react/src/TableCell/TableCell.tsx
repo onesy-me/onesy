@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { clamp, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialArrowDownwardAlt from '@amaui/icons-material-rounded-react/IconMaterialArrowDownwardAltW100';
+import IconMaterialArrowDownwardAlt from '@onesy/icons-material-rounded-react/IconMaterialArrowDownwardAltW100';
 
 import LineElement from '../Line';
 import IconButtonElement from '../IconButton';
@@ -59,7 +59,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       position: 'absolute',
       left: '0px',
       bottom: '0px',
@@ -106,17 +106,17 @@ const useStyle = styleMethod(theme => ({
   },
 
   sortedBy: {
-    '& .amaui-Icon-root': {
+    '& .onesy-Icon-root': {
       transition: theme.methods.transitions.make('transform')
     }
   },
 
   sortedBy_asc: {
-    '& .amaui-Icon-root': {
+    '& .onesy-Icon-root': {
       transform: 'rotate(180deg)'
     }
   }
-}), { name: 'amaui-TableCell' });
+}), { name: 'onesy-TableCell' });
 
 export type ITableCellSort = 'asc' | 'desc';
 
@@ -150,9 +150,9 @@ export interface ITableCell extends IBaseElement {
 }
 
 const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTableCell?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableCell?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -224,7 +224,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
           let elementsOffset = stickyPosition === 'left' ? elements.slice(0, index) : elements.slice(index + 1);
 
-          elementsOffset = elementsOffset.filter(item => item.classList.contains('amaui-TableCell-sticky'));
+          elementsOffset = elementsOffset.filter(item => item.classList.contains('onesy-TableCell-sticky'));
 
           const offset_ = elementsOffset.reduce((result, item) => {
             result += item.clientWidth;
@@ -306,11 +306,11 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('TableCell', theme) && [
-          `amaui-TableCell-root`,
-          `amaui-TableCell-size-${size}`,
-          sticky && `amaui-TableCell-sticky`,
-          stickyPosition && `amaui-TableCell-sticky-position-${stickyPosition}`,
-          stickyActive && `amaui-TableHead-sticky-active`
+          `onesy-TableCell-root`,
+          `onesy-TableCell-size-${size}`,
+          sticky && `onesy-TableCell-sticky`,
+          stickyPosition && `onesy-TableCell-sticky-position-${stickyPosition}`,
+          stickyActive && `onesy-TableHead-sticky-active`
         ],
 
         className,
@@ -340,7 +340,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('TableCell', theme) && [
-            `amaui-TableCell-value`
+            `onesy-TableCell-value`
           ],
 
           classes.value,
@@ -358,7 +358,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('TableCell', theme) && [
-                `amaui-TableCell-value-type`
+                `onesy-TableCell-value-type`
               ],
 
               TypeProps?.className
@@ -385,7 +385,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('TableCell', theme) && [
-                  `amaui-TableCell-sort-icon-button`
+                  `onesy-TableCell-sort-icon-button`
                 ],
 
                 classes.sortedBy,
@@ -412,6 +412,6 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-TableCell.displayName = 'amaui-TableCell';
+TableCell.displayName = 'onesy-TableCell';
 
 export default TableCell;

@@ -1,5 +1,5 @@
 
-# amaui diff
+# onesy diff
 
 Use for finding the differences between to different text values, and update one value to equal the other.
 
@@ -13,25 +13,25 @@ Use for finding the differences between to different text values, and update one
 ### Add
 
 ```sh
-yarn add @amaui/diff
+yarn add @onesy/diff
 ```
 
 ### Use
 
 ```ts
-import AmauiDiff from '@amaui/diff';
+import OnesyDiff from '@onesy/diff';
 
-// Make a new AmauiDiff instance
+// Make a new OnesyDiff instance
 // with an optional initial value for options
-const amauiDiff = new AmauiDiff();
+const onesyDiff = new OnesyDiff();
 
 // Diff
-const diff = amauiDiff.diff('aaa', 'aab');
+const diff = onesyDiff.diff('aaa', 'aab');
 
 // { items: ['r', 2, 'a', 2, 'b'] }
 
 // Update
-amauiDiff.update('aaa', diff);
+onesyDiff.update('aaa', diff);
 
 // 'aab'
 ```

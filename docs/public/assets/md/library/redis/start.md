@@ -1,12 +1,12 @@
 
-# amaui redis
+# onesy redis
 
 Utils for easier using of the redis, memory database.
 
 ### Add
 
 ```bash
-yarn add @amaui/redis
+yarn add @onesy/redis
 ```
 
 <br />
@@ -19,21 +19,21 @@ yarn add redis
 ### Use
 
 ```ts
-import AmauiRedis from '@amaui/redis';
+import OnesyRedis from '@onesy/redis';
 // Make if you wanna a config file and
 // inside of it add all the process.env related props
 import Config from './config';
 
 // Make a new redis instance
-const amauiRedis = new AmauiRedis({
+const onesyRedis = new OnesyRedis({
   uri: Config.redis.uri
 });
 
 // Await for a connection
-await amauiRedis.connection;
+await onesyRedis.connection;
 
 // Send to a queue
-await amauiRedis.publish('a', 'a'); 
+await onesyRedis.publish('a', 'a'); 
 ```
 
 ### Dev

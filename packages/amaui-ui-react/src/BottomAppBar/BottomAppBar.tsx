@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -101,7 +101,7 @@ const useStyle = styleMethod(theme => ({
       transform: 'scale(1)'
     }
   }
-}), { name: 'amaui-BottomAppBar' });
+}), { name: 'onesy-BottomAppBar' });
 
 export interface IBottomAppBar extends ISurface {
   size?: ISize;
@@ -112,9 +112,9 @@ export interface IBottomAppBar extends ISurface {
 }
 
 const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBottomAppBar?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBottomAppBar?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -203,7 +203,7 @@ const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any
 
               color: item.props.color !== undefined ? item.props.color : color,
 
-              tonal: item.props.tonal !== undefined ? item.props.tonal : tonal && ['amaui-Fab'].includes(item.type?.displayName) ? 'secondary' : tonal
+              tonal: item.props.tonal !== undefined ? item.props.tonal : tonal && ['onesy-Fab'].includes(item.type?.displayName) ? 'secondary' : tonal
             })
           )}
         </Transition>
@@ -280,8 +280,8 @@ const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('BottomAppBar', theme) && [
-          'amaui-BottomAppBar-root',
-          `amaui-BottomAppBar-size-${size}`
+          'onesy-BottomAppBar-root',
+          `onesy-BottomAppBar-size-${size}`
         ],
 
         className,
@@ -329,6 +329,6 @@ const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any
   );
 });
 
-BottomAppBar.displayName = 'amaui-BottomAppBar';
+BottomAppBar.displayName = 'onesy-BottomAppBar';
 
 export default BottomAppBar;

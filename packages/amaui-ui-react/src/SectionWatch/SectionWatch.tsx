@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { TPaletteVersion, classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { TPaletteVersion, classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SectionElement, { ISection } from '../Section/Section';
 import WatchElement from '../Watch';
@@ -13,7 +13,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-SectionWatch' });
+}), { name: 'onesy-SectionWatch' });
 
 export interface ISectionWatch extends ISection {
   tonal?: boolean;
@@ -28,9 +28,9 @@ export interface ISectionWatch extends ISection {
 }
 
 const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionWatch?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionWatch?.props?.default, ...props_ }), [props_]);
 
   const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
 
@@ -70,9 +70,9 @@ const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => 
 
       className={classNames([
         staticClassName('SectionWatch', theme) && [
-          'amaui-SectionWatch-root',
-          `amaui-SectionWatch-version-${version}`,
-          `amaui-SectionWatch-size-${size}`
+          'onesy-SectionWatch-root',
+          `onesy-SectionWatch-version-${version}`,
+          `onesy-SectionWatch-size-${size}`
         ],
 
         className,
@@ -92,6 +92,6 @@ const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => 
   );
 });
 
-Element.displayName = 'amaui-SectionWatch';
+Element.displayName = 'onesy-SectionWatch';
 
 export default Element;

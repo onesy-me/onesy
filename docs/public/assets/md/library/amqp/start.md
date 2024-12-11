@@ -1,12 +1,12 @@
 
-# amaui amqp
+# onesy amqp
 
 Utils for easier using of the amqplib, ie. rabbitmq, queue messaging service.
 
 ### Add
 
 ```bash
-yarn add @amaui/amqp
+yarn add @onesy/amqp
 ```
 
 <br />
@@ -19,31 +19,31 @@ yarn add amqplib
 ### Use
 
 ```ts
-import AmauiAmqp from '@amaui/amqp';
+import OnesyAmqp from '@onesy/amqp';
 // Make if you wanna a config file and
 // inside of it add all the process.env related props
 import Config from './config';
 
 // Make a new amqp instance
-const amauiAmqp = new AmauiAmqp({
+const onesyAmqp = new OnesyAmqp({
   uri: Config.amqp.rabbitmq.uri,
   queues: Config.amqp.rabbitmq.queues,
   exchanges: Config.amqp.rabbitmq.exchanges,
 });
 
 // Await for a connection
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Subscribe to a queue
-await amauiAmqp.subscribe('a', async message => {
+await onesyAmqp.subscribe('a', async message => {
   ...
 });
 
 // Send to a queue
-await amauiAmqp.send('a', { a: 1114 });
+await onesyAmqp.send('a', { a: 1114 });
 
 // Check a queue
-await amauiAmqp.checkQueue();
+await onesyAmqp.checkQueue();
 
 // { queue: 'a', messageCount: 1, etc. }
 ```

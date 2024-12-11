@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import LineElement from '../Line';
@@ -22,7 +22,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'default',
     userSelect: 'none'
   }
-}), { name: 'amaui-Radios' });
+}), { name: 'onesy-Radios' });
 
 export interface IRadios extends ILine {
   tonal?: ITonal;
@@ -51,9 +51,9 @@ export interface IRadios extends ILine {
 }
 
 const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiRadios?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRadios?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -151,10 +151,10 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Radios', theme) && [
-          'amaui-Radios-root',
-          `amaui-Radios-version-${version}`,
-          `amaui-Radios-size-${size}`,
-          disabled && `amaui-Radios-disabled`
+          'onesy-Radios-root',
+          `onesy-Radios-version-${version}`,
+          `onesy-Radios-size-${size}`,
+          disabled && `onesy-Radios-disabled`
         ],
 
         className,
@@ -174,7 +174,7 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Radios', theme) && [
-              'amaui-Radios-label'
+              'onesy-Radios-label'
             ],
 
             LabelProps?.className,
@@ -223,6 +223,6 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Radios.displayName = 'amaui-Radios';
+Radios.displayName = 'onesy-Radios';
 
 export default Radios;

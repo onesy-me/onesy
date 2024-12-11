@@ -1,5 +1,5 @@
 
-# AmauiLZ77
+# OnesyLZ77
 
 #### Value
 
@@ -9,12 +9,12 @@ Value can be a `string`, `Buffer` or `Uint8Array`.
 
 #### encode
 
-Making an `AmauiLZ77` instance it, encodes the value automatically.
+Making an `OnesyLZ77` instance it, encodes the value automatically.
 
 ```ts
-const amauiLZ77 = new AmauiLZ77('Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fuscem dolor em, facilisis sed eratr sit amet,pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus mmalesuad.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestassed maurelit, eratr sit molestie nisi semper at.Cras interdum massa nec mmolestierutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.');
+const onesyLZ77 = new OnesyLZ77('Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fuscem dolor em, facilisis sed eratr sit amet,pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus mmalesuad.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestassed maurelit, eratr sit molestie nisi semper at.Cras interdum massa nec mmolestierutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.');
 
-amauiLZ77.response;
+onesyLZ77.response;
 
 // {
 //     "value": " Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fusce`1f,8`em, facilisis sed erat`23,b`pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus m`1i,8`.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestas`6c,8`elit,`9d,b`molestie nisi semper at.Cras interdum massa nec m`1d,8`rutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.",
@@ -33,9 +33,9 @@ amauiLZ77.response;
 An alias for the `response` property.
 
 ```ts
-const amauiLZ77 = new AmauiLZ77('Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fuscem dolor em, facilisis sed eratr sit amet,pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus mmalesuad.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestassed maurelit, eratr sit molestie nisi semper at.Cras interdum massa nec mmolestierutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.');
+const onesyLZ77 = new OnesyLZ77('Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fuscem dolor em, facilisis sed eratr sit amet,pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus mmalesuad.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestassed maurelit, eratr sit molestie nisi semper at.Cras interdum massa nec mmolestierutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.');
 
-amauiLZ77.encoded;
+onesyLZ77.encoded;
 
 // {
 //     "value": " Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fusce`1f,8`em, facilisis sed erat`23,b`pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus m`1i,8`.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestas`6c,8`elit,`9d,b`molestie nisi semper at.Cras interdum massa nec m`1d,8`rutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.",
@@ -51,12 +51,12 @@ amauiLZ77.encoded;
 
 #### decode
 
-Value provided should be the value previously encoded with `AmauiLZ77`.
+Value provided should be the value previously encoded with `OnesyLZ77`.
 
 ```ts
-const amauiLZ77 = new AmauiLZ77('Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fuscem dolor em, facilisis sed eratr sit amet,pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus mmalesuad.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestassed maurelit, eratr sit molestie nisi semper at.Cras interdum massa nec mmolestierutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.');
+const onesyLZ77 = new OnesyLZ77('Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fuscem dolor em, facilisis sed eratr sit amet,pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus mmalesuad.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestassed maurelit, eratr sit molestie nisi semper at.Cras interdum massa nec mmolestierutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.');
 
-amauiLZ77.decode(amauiLZ77.response.value);
+onesyLZ77.decode(onesyLZ77.response.value);
 
 // {
 //     "value": "Lorem u ipsum dolor sit amet, consectetur adipiscing elit.Fuscem dolor em, facilisis sed eratr sit amet,pharetra blandit augue.Sed id placerat felis, malesuada rutrum nisl.In ultrices sed mauris finibus mmalesuad.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat.Proin egestassed maurelit, eratr sit molestie nisi semper at.Cras interdum massa nec mmolestierutrum.Duis commodo venenatis justo, ac porta tellus pellentesque sed.Donec et nisi aumus.",
@@ -74,7 +74,7 @@ amauiLZ77.decode(amauiLZ77.response.value);
 Decode method as a static method.
 
 ```ts
-AmauiLZ77.decode('value');
+OnesyLZ77.decode('value');
 ```
 
 ### prefix
@@ -82,19 +82,19 @@ AmauiLZ77.decode('value');
 Returns the first available prefix that's able to be added as quotes for the coordinates, that doesn't exist in the original string.
 
 ```ts
-AmauiLZ77.prefix('value');
+OnesyLZ77.prefix('value');
 
 // `
 ```
 
-### AmauiLZ77Response
+### OnesyLZ77Response
 
-Returns `AmauiLZ77Response` class constructor.
+Returns `OnesyLZ77Response` class constructor.
 
 ```ts
-AmauiLZ77.AmauiLZ77Response;
+OnesyLZ77.OnesyLZ77Response;
 
-// AmauiLZ77Response { }
+// OnesyLZ77Response { }
 ```
 
 
@@ -106,10 +106,10 @@ AmauiLZ77.AmauiLZ77Response;
 type TVariant = Buffer | Uint8Array | string;
 ```
 
-#### AmauiLZ77Response
+#### OnesyLZ77Response
 
 ```ts
-class AmauiLZ77Response {
+class OnesyLZ77Response {
     value: any;
     original_byte_size?: number;
     value_byte_size?: number;
@@ -122,23 +122,23 @@ class AmauiLZ77Response {
 }
 ```
 
-#### AmauiLZ77
+#### OnesyLZ77
 
 ```ts
-class AmauiLZ77 {
+class OnesyLZ77 {
     value?: TVariant;
     variant: TVariant;
-    response: AmauiLZ77Response;
+    response: OnesyLZ77Response;
     valueString: string;
     valueEncoded: Uint8Array | Buffer;
-    static get AmauiLZ77Response(): typeof AmauiLZ77Response;
-    static decode(value: string): AmauiLZ77Response;
+    static get OnesyLZ77Response(): typeof OnesyLZ77Response;
+    static decode(value: string): OnesyLZ77Response;
     static prefix(value: string): string;
-    get encoded(): AmauiLZ77Response;
+    get encoded(): OnesyLZ77Response;
     constructor(value?: TVariant);
     private into;
-    encode(): AmauiLZ77Response;
-    decode(value_: string): AmauiLZ77Response;
+    encode(): OnesyLZ77Response;
+    decode(value_: string): OnesyLZ77Response;
     private valueToVariant;
     private variantToValue;
     private valueEncode;

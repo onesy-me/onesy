@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { is, wait } from '@amaui/utils';
-import AmauiSubscription from '@amaui/subscription';
-import { classNames, useAmauiTheme, TTransitionsDurationProperties } from '@amaui/style-react';
+import { is, wait } from '@onesy/utils';
+import OnesySubscription from '@onesy/subscription';
+import { classNames, useOnesyTheme, TTransitionsDurationProperties } from '@onesy/style-react';
 
 import TransitionContext from './Context';
 import { reflow } from '../utils';
@@ -91,9 +91,9 @@ export interface ITransition extends Omit<IBaseElement, 'children' | 'className'
 }
 
 const Transition: React.FC<ITransition> = (props_) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTransition?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTransition?.props?.default, ...props_ }), [props_]);
 
   const {
     in: inProp_,
@@ -172,7 +172,7 @@ const Transition: React.FC<ITransition> = (props_) => {
   });
 
   const subs = React.useRef({
-    status: new AmauiSubscription()
+    status: new OnesySubscription()
   });
 
   const refs = {
@@ -535,6 +535,6 @@ const Transition: React.FC<ITransition> = (props_) => {
   );
 };
 
-Transition.displayName = 'amaui-Transition';
+Transition.displayName = 'onesy-Transition';
 
 export default Transition;

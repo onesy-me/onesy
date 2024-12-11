@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import useMediaQuery from '../useMediaQuery';
@@ -77,7 +77,7 @@ const useStyle = styleMethod(theme => ({
   'columnGap_12': { columnGap: `${12 * theme.space.unit}px` },
 
   'columnGap_16': { columnGap: `${16 * theme.space.unit}px` }
-}), { name: 'amaui-Grid' });
+}), { name: 'onesy-Grid' });
 
 export type IGridValues = Partial<Record<IValueBreakpoints, number>>;
 
@@ -96,9 +96,9 @@ export interface IGrid extends ILine {
 }
 
 const Grid: React.FC<IGrid> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiGrid?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyGrid?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -243,7 +243,7 @@ const Grid: React.FC<IGrid> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Grid', theme) && [
-          'amaui-Grid-root'
+          'onesy-Grid-root'
         ],
 
         className,
@@ -277,6 +277,6 @@ const Grid: React.FC<IGrid> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Grid.displayName = 'amaui-Grid';
+Grid.displayName = 'onesy-Grid';
 
 export default Grid;

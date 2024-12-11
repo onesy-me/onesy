@@ -1,5 +1,5 @@
 
-# AmauiStyle
+# OnesyStyle
 
 Main class that maintains the state of all the plugins that are methods can use, generated css, classNames, style sheets added to the DOM, etc.
 
@@ -7,7 +7,7 @@ Main class that maintains the state of all the plugins that are methods can use,
 
 #### element
 
-Element in the DOM that this `AmauiStyle` instance will be attached to.
+Element in the DOM that this `OnesyStyle` instance will be attached to.
 
 #### mode
 
@@ -18,21 +18,21 @@ In `atomic` mode, every selector property, value pair will be generated into its
 
 #### renderer
 
-Instance of `AmauiStyleRenderer`.
+Instance of `OnesyStyleRenderer`.
 
 #### rule
 
 ##### sort
 
-If true, it will use sort plugin on `AmauiStyleRule`s.
+If true, it will use sort plugin on `OnesyStyleRule`s.
 
 ##### prefix
 
-If true, it will use prefix plugin on `AmauiStyleRule`s.
+If true, it will use prefix plugin on `OnesyStyleRule`s.
 
 ##### rtl
 
-If true, it will use rtl plugin on `AmauiStyleRule`s.
+If true, it will use rtl plugin on `OnesyStyleRule`s.
 
 #### minify
 
@@ -40,12 +40,12 @@ If true it will minify the css, by default true.
 
 #### optimize
 
-If true will try to optimize `AmauiStyleRule`s by reusing existing classes with exactly the same hash (css property, values), even if it's in another style sheet, manager, by default false.
+If true will try to optimize `OnesyStyleRule`s by reusing existing classes with exactly the same hash (css property, values), even if it's in another style sheet, manager, by default false.
 
 ### Use
 
 ```ts
-const amauiStyle = new AmauiStyle(options);
+const onesyStyle = new OnesyStyle(options);
 ```
 
 ### Plugins
@@ -53,12 +53,12 @@ const amauiStyle = new AmauiStyle(options);
 #### Add
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
-amauiStyle.plugins.add = [
-  AmauiStyle.unit,
-  AmauiStyle.prefix,
-  AmauiStyle.sort
+onesyStyle.plugins.add = [
+  OnesyStyle.unit,
+  OnesyStyle.prefix,
+  OnesyStyle.sort
 ];
 ```
 
@@ -67,19 +67,19 @@ amauiStyle.plugins.add = [
 It removes based on the method reference.
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
-amauiStyle.plugins.remove = [
-  AmauiStyle.unit,
-  AmauiStyle.prefix,
-  AmauiStyle.sort
+onesyStyle.plugins.remove = [
+  OnesyStyle.unit,
+  OnesyStyle.prefix,
+  OnesyStyle.sort
 ];
 ```
 
 #### Making custom plugins
 
 - All of the plugins depend on the `subscriptions` property, and emits for specific use cases.
-- You can inspect any plugin file to see exact implementation of the plugin. More or less it takes in an instance of `AmauiStyle`, and simply subscribes inside to certain `subscriptions` emits, and does some transformations on the css properties, values, etc.
+- You can inspect any plugin file to see exact implementation of the plugin. More or less it takes in an instance of `OnesyStyle`, and simply subscribes inside to certain `subscriptions` emits, and does some transformations on the css properties, values, etc.
 - You can find in the API part, all the `subscriptions` events that are available.
 
 ### response
@@ -94,72 +94,72 @@ In this property you'll find once css is made, all the css as a string.
 
 #### attributes
 
-Defines array of attributes that will be added to an element, on which `AmauiStyle` instance will be attached to as a value.
+Defines array of attributes that will be added to an element, on which `OnesyStyle` instance will be attached to as a value.
 
-#### Find `AmauiStyle` instance from an element
+#### Find `OnesyStyle` instance from an element
 
-All these methods will try to find an element that has `AmauiStyle` instance attached to it, and return it.
+All these methods will try to find an element that has `OnesyStyle` instance attached to it, and return it.
 
 ```ts
-AmauiStyle.get(element, 0);
+OnesyStyle.get(element, 0);
 
-AmauiStyle.first(element);
+OnesyStyle.first(element);
 
-AmauiStyle.last(element);
+OnesyStyle.last(element);
 
-AmauiStyle.nearest(element);
+OnesyStyle.nearest(element);
 
-AmauiStyle.furthest(element);
+OnesyStyle.furthest(element);
 
-AmauiStyle.all(element);
+OnesyStyle.all(element);
 
-// AmauiStyle {}
-// AmauiStyle {}
-// AmauiStyle {}
-// AmauiStyle {}
-// AmauiStyle {}
-// [AmauiStyle {}, AmauiStyle {}, AmauiStyle {}]
+// OnesyStyle {}
+// OnesyStyle {}
+// OnesyStyle {}
+// OnesyStyle {}
+// OnesyStyle {}
+// [OnesyStyle {}, OnesyStyle {}, OnesyStyle {}]
 ```
 
 ### Other
 
 #### refs
 
-Refs property in the `AmauiStyle` instance will hold refs of all classNames with specific hashes that can be reused, if `optimize` option is true.
+Refs property in the `OnesyStyle` instance will hold refs of all classNames with specific hashes that can be reused, if `optimize` option is true.
 
 #### sheets
 
-Reference of all `AmauiStyleSheet`s that are a part of this `AmauiStyle` instance.
+Reference of all `OnesyStyleSheet`s that are a part of this `OnesyStyle` instance.
 
 #### sheet_managers
 
-Reference of all `AmauiStyleSheetManager`s that are a part of this `AmauiStyle` instance.
+Reference of all `OnesyStyleSheetManager`s that are a part of this `OnesyStyle` instance.
 
 #### counter
 
-Counter of all className, keyframesName's made, in the `AmauiStyle` instance.
+Counter of all className, keyframesName's made, in the `OnesyStyle` instance.
 
 ## API
 
-#### IAmauiPluginItem
+#### IOnesyPluginItem
 
 ```ts
-interface IAmauiPluginItem {
+interface IOnesyPluginItem {
     method: TMethod;
     arguments: any[];
 }
 ```
 
-#### TAmauiPlugin
+#### TOnesyPlugin
 
 ```ts
-type TAmauiPlugin = TMethod | IAmauiPluginItem;
+type TOnesyPlugin = TMethod | IOnesyPluginItem;
 ```
 
-#### AmauiPlugins
+#### OnesyPlugins
 
 ```ts
-type AmauiPlugins = TAmauiPlugin | TAmauiPlugin[];
+type OnesyPlugins = TOnesyPlugin | TOnesyPlugin[];
 ```
 
 #### IOptions
@@ -168,68 +168,68 @@ type AmauiPlugins = TAmauiPlugin | TAmauiPlugin[];
 interface IOptions {
     element?: Element;
     mode?: TMode;
-    renderer?: AmauiStyleRenderer;
+    renderer?: OnesyStyleRenderer;
     rule?: IOptionsRule;
     minify?: boolean;
     optimize?: boolean;
 }
 ```
 
-#### AmauiStyle
+#### OnesyStyle
 
 ```ts
-class AmauiStyle {
+class OnesyStyle {
     options: IOptions;
     id?: string;
     element?: Element;
     mode?: TMode;
-    renderer: AmauiStyleRenderer;
+    renderer: OnesyStyleRenderer;
     direction: string;
     subscriptions: {
         className: {
-            pre: AmauiSubscription;
-            name: AmauiSubscription;
-            post: AmauiSubscription;
+            pre: OnesySubscription;
+            name: OnesySubscription;
+            post: OnesySubscription;
         };
         keyframes: {
-            pre: AmauiSubscription;
-            name: AmauiSubscription;
-            post: AmauiSubscription;
+            pre: OnesySubscription;
+            name: OnesySubscription;
+            post: OnesySubscription;
         };
         rule: {
-            pre: AmauiSubscription;
-            unit: AmauiSubscription;
-            value: AmauiSubscription;
-            prefix: AmauiSubscription;
-            rtl: AmauiSubscription;
-            add: AmauiSubscription;
-            update: AmauiSubscription;
-            update_props: AmauiSubscription;
-            remove: AmauiSubscription;
-            post: AmauiSubscription;
+            pre: OnesySubscription;
+            unit: OnesySubscription;
+            value: OnesySubscription;
+            prefix: OnesySubscription;
+            rtl: OnesySubscription;
+            add: OnesySubscription;
+            update: OnesySubscription;
+            update_props: OnesySubscription;
+            remove: OnesySubscription;
+            post: OnesySubscription;
         };
         rules: {
-            sort: AmauiSubscription;
+            sort: OnesySubscription;
         };
         sheet: {
-            add: AmauiSubscription;
-            update: AmauiSubscription;
-            update_props: AmauiSubscription;
-            remove: AmauiSubscription;
+            add: OnesySubscription;
+            update: OnesySubscription;
+            update_props: OnesySubscription;
+            remove: OnesySubscription;
         };
         sheet_manager: {
-            add: AmauiSubscription;
-            update: AmauiSubscription;
-            update_props: AmauiSubscription;
-            remove: AmauiSubscription;
+            add: OnesySubscription;
+            update: OnesySubscription;
+            update_props: OnesySubscription;
+            remove: OnesySubscription;
         };
     };
     values: {
         css: string;
     };
     refs: TRefs;
-    sheets: Array<AmauiStyleSheet>;
-    sheet_managers: Array<AmauiStyleSheetManager>;
+    sheets: Array<OnesyStyleSheet>;
+    sheet_managers: Array<OnesyStyleSheetManager>;
     counter: {
         className: number;
         keyframesName: number;
@@ -239,17 +239,17 @@ class AmauiStyle {
     get response(): IValuesVersion;
     get css(): string;
     get plugins(): {
-        add: AmauiPlugins;
-        remove: AmauiPlugins;
+        add: OnesyPlugins;
+        remove: OnesyPlugins;
     };
     init(): void;
     static attributes: string[];
-    static get(value: Element, index?: number): AmauiStyle;
-    static first(value: Element): AmauiStyle;
-    static last(value: Element): AmauiStyle;
-    static nearest(value: Element): AmauiStyle;
-    static furthest(value: Element): AmauiStyle;
-    static all(value: Element): Array<AmauiStyle>;
+    static get(value: Element, index?: number): OnesyStyle;
+    static first(value: Element): OnesyStyle;
+    static last(value: Element): OnesyStyle;
+    static nearest(value: Element): OnesyStyle;
+    static furthest(value: Element): OnesyStyle;
+    static all(value: Element): Array<OnesyStyle>;
 }
 ```
 
@@ -262,8 +262,8 @@ class AmauiStyle {
       "to": "/library/style/start"
     },
     "next": {
-      "label": "Style: AmauiStyleRenderer",
-      "to": "/library/style/use/AmauiStyleRenderer"
+      "label": "Style: OnesyStyleRenderer",
+      "to": "/library/style/use/OnesyStyleRenderer"
     }
   }
 }~

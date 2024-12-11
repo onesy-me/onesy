@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ChartElement from '../Chart';
 import { IChart } from '../Chart/Chart';
@@ -12,7 +12,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-AreaChart' });
+}), { name: 'onesy-AreaChart' });
 
 export interface IAreaChart extends IChart {
   smooth?: boolean;
@@ -23,9 +23,9 @@ export interface IAreaChart extends IChart {
 }
 
 const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAreaChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChart?.props?.default, ...props_ }), [props_]);
 
   const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
 
@@ -49,7 +49,7 @@ const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('AreaChart', theme) && [
-          'amaui-AreaChart-root'
+          'onesy-AreaChart-root'
         ],
 
         className,
@@ -69,6 +69,6 @@ const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-AreaChart.displayName = 'amaui-AreaChart';
+AreaChart.displayName = 'onesy-AreaChart';
 
 export default AreaChart;

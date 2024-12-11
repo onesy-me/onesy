@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { getObjectValue, is, isEnvironment, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { getObjectValue, is, isEnvironment, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
-import IconMaterialArrowDropDown from '@amaui/icons-material-rounded-react/IconMaterialArrowDropDownW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialArrowDropDown from '@onesy/icons-material-rounded-react/IconMaterialArrowDropDownW100';
 
 import ListItemElement from '../ListItem';
 import TypeElement from '../Type';
@@ -31,7 +31,7 @@ const useStyle = styleMethod(theme => {
       flex: 'unset',
       minWidth: '184px',
 
-      '& .amaui-TextField-input': {
+      '& .onesy-TextField-input': {
         position: 'absolute',
         left: '0',
         bottom: '0',
@@ -39,7 +39,7 @@ const useStyle = styleMethod(theme => {
         opacity: '0'
       },
 
-      '& .amaui-TextField-input-wrapper': {
+      '& .onesy-TextField-input-wrapper': {
         cursor: 'pointer'
       }
     },
@@ -51,7 +51,7 @@ const useStyle = styleMethod(theme => {
     inputWrapper: {
       cursor: 'pointer',
 
-      '&.amaui-TextField-input-wrapper': {
+      '&.onesy-TextField-input-wrapper': {
         cursor: 'pointer'
       }
     },
@@ -89,7 +89,7 @@ const useStyle = styleMethod(theme => {
     },
 
     chip: {
-      '&.amaui-TextField-input-wrapper': {
+      '&.onesy-TextField-input-wrapper': {
         height: 'unset'
       }
     },
@@ -111,7 +111,7 @@ const useStyle = styleMethod(theme => {
     },
 
     open: {
-      '&.amaui-TextField-root': {
+      '&.onesy-TextField-root': {
         cursor: 'default'
       }
     },
@@ -121,18 +121,18 @@ const useStyle = styleMethod(theme => {
     },
 
     readOnly: {
-      '&.amaui-TextField-root': {
+      '&.onesy-TextField-root': {
         cursor: 'default'
       }
     },
 
     disabled: {
-      '&.amaui-TextField-root': {
+      '&.onesy-TextField-root': {
         cursor: 'default'
       }
     }
   };
-}, { name: 'amaui-Select' });
+}, { name: 'onesy-Select' });
 
 export interface ISelect extends ITextField {
   options?: Array<{
@@ -166,9 +166,9 @@ export interface ISelect extends ITextField {
 const getValue = (value: any) => value?.value !== undefined ? value.value : value;
 
 const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSelect?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySelect?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -544,8 +544,8 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Select', theme) && [
-          'amaui-Select-wrapper',
-          fullWidth && 'amaui-full-width'
+          'onesy-Select-wrapper',
+          fullWidth && 'onesy-full-width'
         ],
         WrapperProps?.className,
         classes.wrapper
@@ -573,12 +573,12 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Select', theme) && [
-            'amaui-Select-root',
-            `amaui-Select-version-${version}`,
-            `amaui-Select-size-${size}`,
-            open && `amaui-Select-open`,
-            mouseDown && `amaui-Select-mouse-down`,
-            focus && `amaui-Select-focus`
+            'onesy-Select-root',
+            `onesy-Select-version-${version}`,
+            `onesy-Select-size-${size}`,
+            open && `onesy-Select-open`,
+            mouseDown && `onesy-Select-mouse-down`,
+            focus && `onesy-Select-focus`
           ],
 
           className,
@@ -630,7 +630,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
         InputWrapperProps={{
           className: classNames([
             staticClassName('Select', theme) && [
-              'amaui-Select-input-wrapper'
+              'onesy-Select-input-wrapper'
             ],
 
             classes.inputWrapper,
@@ -670,7 +670,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Select', theme) && [
-              'amaui-Select-input'
+              'onesy-Select-input'
             ],
 
             classes.input,
@@ -810,6 +810,6 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Select.displayName = 'amaui-Select';
+Select.displayName = 'onesy-Select';
 
 export default Select;

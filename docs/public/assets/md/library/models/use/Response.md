@@ -120,7 +120,7 @@ Response.fromRemoved({ _id, data, meta });
 
 #### fromQuery
 
-Use this method for packaging a response from `@amaui/mongo`'s query methods ie. `find`, `searchMany`.
+Use this method for packaging a response from `@onesy/mongo`'s query methods ie. `find`, `searchMany`.
 
 ```ts
 const todos = await todoCollection.searchMany(...);

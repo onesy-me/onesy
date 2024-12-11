@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
@@ -23,16 +23,16 @@ const useStyle = styleMethod(theme => ({
   size_large: {
     padding: `${theme.methods.space.value(4, 'px')} ${theme.methods.space.value(3, 'px')}`
   }
-}), { name: 'amaui-TableFooter' });
+}), { name: 'onesy-TableFooter' });
 
 export interface ITableFooter extends ISurface {
   size?: ISize;
 }
 
 const TableFooter: React.FC<ITableFooter> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTableFooter?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableFooter?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -64,8 +64,8 @@ const TableFooter: React.FC<ITableFooter> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('TableFooter', theme) && [
-          `amaui-TableFooter-root`,
-          `amaui-TableFooter-size-${size}`
+          `onesy-TableFooter-root`,
+          `onesy-TableFooter-size-${size}`
         ],
 
         className,
@@ -80,6 +80,6 @@ const TableFooter: React.FC<ITableFooter> = React.forwardRef((props_, ref: any) 
   );
 });
 
-TableFooter.displayName = 'amaui-TableFooter';
+TableFooter.displayName = 'onesy-TableFooter';
 
 export default TableFooter;

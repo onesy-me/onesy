@@ -1,5 +1,5 @@
 
-# AmauiZip
+# OnesyZip
 
 ### Zipping
 
@@ -7,29 +7,29 @@ More or less any value can be zipped, as if it's not `uint8array`, `buffer` or `
 
 Value zipped is stateless, meaning it doesn't require any information other than the information in itself to be unzipped on the other end.
 
-Under the hood AmauiZip uses 2 data compression algorithms, also with amaui libraries AmauiHuffmanCode, AmauiLZ77.
+Under the hood OnesyZip uses 2 data compression algorithms, also with onesy libraries OnesyHuffmanCode, OnesyLZ77.
 
-Library **AmauiHuffmanCode** essentially takes the string, and orders all characters by their frequency, and to the them assigns the lowest byte value, while in the process of replacing each charater with 0s and 1s.
+Library **OnesyHuffmanCode** essentially takes the string, and orders all characters by their frequency, and to the them assigns the lowest byte value, while in the process of replacing each charater with 0s and 1s.
 
-Library **AmauiLZ77** algorithm finds already mentioned parts of the string on its left, and just removes it from that location, and instead replaces it with a pointer where that data is on the left, and how many characters it is. That way if string has redundency in itself it will get compressed well.
+Library **OnesyLZ77** algorithm finds already mentioned parts of the string on its left, and just removes it from that location, and instead replaces it with a pointer where that data is on the left, and how many characters it is. That way if string has redundency in itself it will get compressed well.
 
 Meaning the more redundency the data has, the better the compression will be.
 
 ```ts
-new AmauiZip('Value to zip');
+new OnesyZip('Value to zip');
 
-new AmauiZip(14);
+new OnesyZip(14);
 
-new AmauiZip({ a: 14 });
+new OnesyZip({ a: 14 });
 ```
 
 ### Unzipping
 
 ```ts
-const zipped = new AmauiZip('Value to zip');
+const zipped = new OnesyZip('Value to zip');
 const response = zipped.encoded;
 
-const unzipped = AmauiZip.decode(response.value);
+const unzipped = OnesyZip.decode(response.value);
 
 unzipped.value;
 
@@ -46,14 +46,14 @@ const options = {
   huffman_code: 'auto'
 };
 
-new AmauiZip('Value to zip', options);
+new OnesyZip('Value to zip', options);
 ```
 
 #### encode\_values
 
 Values: `true`, `false`
 
-Is an option passed into the AmauiHuffmanCode, for it to either encode the huffman code values or not.
+Is an option passed into the OnesyHuffmanCode, for it to either encode the huffman code values or not.
 
 In some use cases it depends, and toggling it might influence difference in value byte size.
 
@@ -76,7 +76,7 @@ If zip is positive it means that the zipped value in byte size is smaller, than 
 If zip is negative it means that the zipped value in byte size is larger, than the original data, in that case using original data (if smaller data size is your goal) is a better way to go.
 
 ```ts
-const zipped = new AmauiZip('Value to zip');
+const zipped = new OnesyZip('Value to zip');
 const response = zipped.encoded;
 
 response;
@@ -121,10 +121,10 @@ response;
 
 ## API
 
-#### AmauiZipResponse
+#### OnesyZipResponse
 
 ```ts
-class AmauiZipResponse {
+class OnesyZipResponse {
     value?: any;
     original_byte_size?: number;
     value_byte_size?: number;
@@ -146,21 +146,21 @@ interface IOptions {
 }
 ```
 
-#### AmauiZip
+#### OnesyZip
 
 ```ts
-class AmauiZip {
+class OnesyZip {
     value?: any;
     options: IOptions;
     serialized: boolean;
-    response: AmauiZipResponse;
-    static get AmauiZipResponse(): typeof AmauiZipResponse;
-    static decode(value: string): AmauiZipResponse;
-    get encoded(): AmauiZipResponse;
+    response: OnesyZipResponse;
+    static get OnesyZipResponse(): typeof OnesyZipResponse;
+    static decode(value: string): OnesyZipResponse;
+    get encoded(): OnesyZipResponse;
     constructor(value?: any, options?: IOptions);
     private init;
-    encode(): AmauiZipResponse;
-    decode(value_: string): AmauiZipResponse;
+    encode(): OnesyZipResponse;
+    decode(value_: string): OnesyZipResponse;
 }
 ```
 

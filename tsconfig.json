@@ -14,17 +14,17 @@
     "declaration": false,
     "allowJs": true,
     "paths": {
-      "@amaui/style-react": [
-        "./packages/amaui-style-react/src"
+      "@onesy/style-react": [
+        "./packages/onesy-style-react/src"
       ],
-      "@amaui/style-react/*": [
-        "./packages/amaui-style-react/src/*"
+      "@onesy/style-react/*": [
+        "./packages/onesy-style-react/src/*"
       ],
-      "@amaui/ui-react": [
-        "./packages/amaui-ui-react/src"
+      "@onesy/ui-react": [
+        "./packages/onesy-ui-react/src"
       ],
-      "@amaui/ui-react/*": [
-        "./packages/amaui-ui-react/src/*"
+      "@onesy/ui-react/*": [
+        "./packages/onesy-ui-react/src/*"
       ]
     }
   },

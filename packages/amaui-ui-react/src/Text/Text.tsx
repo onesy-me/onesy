@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, isEnvironment, textToInnerHTML, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, textToInnerHTML, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import LineElement from '../Line';
@@ -37,7 +37,7 @@ const useStyle = styleMethod(theme => ({
   column_4: {
     columnCount: '4'
   }
-}), { name: 'amaui-Text' });
+}), { name: 'onesy-Text' });
 
 export interface IText extends IBaseElement {
   value?: any;
@@ -58,9 +58,9 @@ export interface IText extends IBaseElement {
 }
 
 const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiText?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyText?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -140,7 +140,7 @@ const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Text', theme) && [
-          'amaui-Text-type'
+          'onesy-Text-type'
         ],
 
         TypeProps?.className,
@@ -174,7 +174,7 @@ const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Text', theme) && [
-          'amaui-Text-root'
+          'onesy-Text-root'
         ],
 
         className,
@@ -196,7 +196,7 @@ const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Text', theme) && [
-            'amaui-Text-main'
+            'onesy-Text-main'
           ],
 
           HorizontalProps?.className,
@@ -211,6 +211,6 @@ const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Text.displayName = 'amaui-Text';
+Text.displayName = 'onesy-Text';
 
 export default Text;

@@ -1,5 +1,5 @@
 
-# AmauiHashTable
+# OnesyHashTable
 
 Each hash represents a table of items, where each item is key, value pair.
 
@@ -20,9 +20,9 @@ Limit for the number of entries in the hash table.
 Sets the value for a key.
 
 ```ts
-const amauiHashTable = new AmauiHashTable();
+const onesyHashTable = new OnesyHashTable();
 
-amauiHashTable.set('a', 1114);
+onesyHashTable.set('a', 1114);
 ```
 
 #### get
@@ -30,11 +30,11 @@ amauiHashTable.set('a', 1114);
 Gets the value for a key.
 
 ```ts
-const amauiHashTable = new AmauiHashTable();
+const onesyHashTable = new OnesyHashTable();
 
-amauiHashTable.set('a', 1114);
+onesyHashTable.set('a', 1114);
 
-amauiHashTable.get('a');
+onesyHashTable.get('a');
 
 // 1114
 ```
@@ -44,39 +44,39 @@ amauiHashTable.get('a');
 Removes the key, value for a key.
 
 ```ts
-const amauiHashTable = new AmauiHashTable();
+const onesyHashTable = new OnesyHashTable();
 
-amauiHashTable.set('a', 1114);
+onesyHashTable.set('a', 1114);
 
-amauiHashTable.get('a');
+onesyHashTable.get('a');
 
 // 1114
 
-amauiHashTable.remove('a');
+onesyHashTable.remove('a');
 
-amauiHashTable.get('a');
+onesyHashTable.get('a');
 
 // undefined
 ```
 
 #### clear
 
-Resets the entire amaui hash table to its initial empty value.
+Resets the entire onesy hash table to its initial empty value.
 
 ```ts
-const amauiHashTable = new AmauiHashTable();
+const onesyHashTable = new OnesyHashTable();
 
-amauiHashTable.set('a', 1114);
+onesyHashTable.set('a', 1114);
 
-amauiHashTable.get('a');
+onesyHashTable.get('a');
 
 // 1114
 
-amauiHashTable.clear();
+onesyHashTable.clear();
 
-amauiHashTable.get('a');
+onesyHashTable.get('a');
 
-amauiHashTable.length;
+onesyHashTable.length;
 
 // undefined
 // 0
@@ -91,51 +91,51 @@ You can override, and make your own hash method.
 The default hash method summarizes each character in the property string, where it replaces it with its UTF-16 character code in the number format.
 
 ```ts
-const amauiHashTable = new AmauiHashTable();
+const onesyHashTable = new OnesyHashTable();
 
-amauiHashTable.set('a', 114).set('a1', 1114);
+onesyHashTable.set('a', 114).set('a1', 1114);
 
 // indexes with values
-[...Object.keys(amauiHashTable.value)];
+[...Object.keys(onesyHashTable.value)];
 
 // ['19', '97']
 ```
 
 #### length
 
-Length is the number of items in the amaui hash table.
+Length is the number of items in the onesy hash table.
 
 ```ts
- const amauiHashTable = new AmauiHashTable();
+ const onesyHashTable = new OnesyHashTable();
 
-amauiHashTable.set('a1', 14).set('a14', 1114).set('a114', 1114);
+onesyHashTable.set('a1', 14).set('a14', 1114).set('a114', 1114);
 
-amauiHashTable.length;
+onesyHashTable.length;
 
 // 3
 ```
 
 ## API
 
-#### TAmauiHashTableValue
+#### TOnesyHashTableValue
 
 ```ts
-type TAmauiHashTableValue = any;
+type TOnesyHashTableValue = any;
 ```
 
-#### AmauiHashTable
+#### OnesyHashTable
 
 ```ts
-default class AmauiHashTable {
-    value: Array<[string?, TAmauiHashTableValue?]>;
+default class OnesyHashTable {
+    value: Array<[string?, TOnesyHashTableValue?]>;
     length: number;
     limit: number;
     constructor(limit?: number);
     hash(property: string): number;
-    get(property: string): TAmauiHashTableValue;
-    set(property: string, value: TAmauiHashTableValue): AmauiHashTable;
+    get(property: string): TOnesyHashTableValue;
+    set(property: string, value: TOnesyHashTableValue): OnesyHashTable;
     remove(property: string): boolean;
-    clear(): AmauiHashTable;
+    clear(): OnesyHashTable;
 }
 ```
 

@@ -1,5 +1,5 @@
 
-# AmauiCookie
+# OnesyCookie
 
 ### Options
 
@@ -27,11 +27,11 @@ Adds new key, value into the cookie.
 If value isn't a string, it will be serialized prior to adding it to the cookie.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.add('todo-1', 'a);
+onesyCookie.add('todo-1', 'a);
 
-// amaui_todo-1=a
+// onesy_todo-1=a
 ```
 
 #### update
@@ -45,9 +45,9 @@ Gets a value from the cookie, based on a key.
 Value is automatically parsed back into its value type, while reading from the cookie, prior to returning.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.get('todo-1');
+onesyCookie.get('todo-1');
 
 // 'a'
 ```
@@ -57,11 +57,11 @@ amauiCookie.get('todo-1');
 Returns an object with all the cookie items, with a prefix for the instance.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.add('todo-1', 'a');
+onesyCookie.add('todo-1', 'a');
 
-amauiCookie.items;
+onesyCookie.items;
 
 // {
 //   'todo-1': 'a'
@@ -73,11 +73,11 @@ amauiCookie.items;
 Returns all the properties from the cookie, prefixed with a prefix for the instance.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.add('todo-1', 'a');
+onesyCookie.add('todo-1', 'a');
 
-amauiCookie.properties;
+onesyCookie.properties;
 
 // ['todo-1']
 ```
@@ -87,11 +87,11 @@ amauiCookie.properties;
 Returns all the values from the cookie, with a key prefixed with a prefix for the instance.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.add('todo-1', 'a');
+onesyCookie.add('todo-1', 'a');
 
-amauiCookie.values;
+onesyCookie.values;
 
 // ['a']
 ```
@@ -103,11 +103,11 @@ Check is the cookie has any value under this key.
 Prefix is added on the key, as it's the same prefix added while writing the value to the cookie.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.add('todo-1', 'a');
+onesyCookie.add('todo-1', 'a');
 
-amauiCookie.has('todo-1');
+onesyCookie.has('todo-1');
 
 // true
 ```
@@ -117,11 +117,11 @@ amauiCookie.has('todo-1');
 Removes a value from the cookie, based on a key.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.add('todo-1', 'a');
+onesyCookie.add('todo-1', 'a');
 
-amauiCookie.remove('todo-1');
+onesyCookie.remove('todo-1');
 ```
 
 #### clear static method
@@ -129,7 +129,7 @@ amauiCookie.remove('todo-1');
 Clears the entire cookie.
 
 ```ts
-AmauiCookie.clear();
+OnesyCookie.clear();
 ```
 
 #### clear instance getter method
@@ -137,15 +137,15 @@ AmauiCookie.clear();
 Removes all prefixed key items from the cookie, other than ones mentioned in `removeNotAllowed` internal array variable.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.add('todo-1', 'a');
+onesyCookie.add('todo-1', 'a');
 
-// amaui_todo-1=a
+// onesy_todo-1=a
 
-amauiCookie.clear;
+onesyCookie.clear;
 
-// All amaui_[name] key items are removed from the cookie.
+// All onesy_[name] key items are removed from the cookie.
 ```
 
 ### Other
@@ -155,9 +155,9 @@ amauiCookie.clear;
 Returns the entire browser cookie.
 
 ```ts
-AmauiCookie.cookie;
+OnesyCookie.cookie;
 
-// amaui_a=a; ...
+// onesy_a=a; ...
 ```
 
 #### namespace
@@ -165,9 +165,9 @@ AmauiCookie.cookie;
 Returns the namespace for in the instance.
 
 ```ts
-const amauiCookie = new AmauiCookie({ namespace: 'a' });
+const onesyCookie = new OnesyCookie({ namespace: 'a' });
 
-amauiCookie.namespace;
+onesyCookie.namespace;
 
 // a_
 ```
@@ -177,14 +177,14 @@ amauiCookie.namespace;
 Instance of this class has `removeNotAllowed`, which is an array of string values, defining any key that will not be removed, on calling clear method.
 
 ```ts
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
-amauiCookie.removeNotAllowed = ['a'];
+onesyCookie.removeNotAllowed = ['a'];
 
-amauiCookie.clear;
+onesyCookie.clear;
 
-// amaui_a=4 is still there
-// but other amaui_[name] properties are removed from the cookie.
+// onesy_a=4 is still there
+// but other onesy_[name] properties are removed from the cookie.
 ```
 
 
@@ -199,10 +199,10 @@ interface IOptions {
 }
 ```
 
-#### AmauiCookie
+#### OnesyCookie
 
 ```ts
-class AmauiCookie {
+class OnesyCookie {
     options: IOptions;
     removeNotAllowed: string[];
     constructor(options?: IOptions);

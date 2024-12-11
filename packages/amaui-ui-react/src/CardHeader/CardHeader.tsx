@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -11,7 +11,7 @@ const useStyle = styleMethod(theme => ({
   root: {
     padding: theme.methods.space.value(3, 'px')
   }
-}), { name: 'amaui-CardHeader' });
+}), { name: 'onesy-CardHeader' });
 
 export interface ICardHeader extends ILine {
   tonal?: ITonal;
@@ -21,9 +21,9 @@ export interface ICardHeader extends ILine {
 }
 
 const CardHeader: React.FC<ICardHeader> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCardHeader?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardHeader?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -60,7 +60,7 @@ const CardHeader: React.FC<ICardHeader> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('CardHeader', theme) && [
-          `amaui-CardHeader-root`
+          `onesy-CardHeader-root`
         ],
 
         className,
@@ -82,6 +82,6 @@ const CardHeader: React.FC<ICardHeader> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-CardHeader.displayName = 'amaui-CardHeader';
+CardHeader.displayName = 'onesy-CardHeader';
 
 export default CardHeader;

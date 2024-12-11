@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, element, Try, isEnvironment } from '@amaui/utils';
-import { classNames, useAmauiTheme } from '@amaui/style-react';
+import { is, element, Try, isEnvironment } from '@onesy/utils';
+import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { matches } from '../utils';
 import { IBaseElement, IHTMLElement } from '../types';
@@ -27,9 +27,9 @@ export interface IClickListener extends IBaseElement {
 }
 
 const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiClickListener?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClickListener?.props?.default, ...props_ }), [props_]);
 
   const {
     mouseEvent = 'onClick',
@@ -138,6 +138,6 @@ const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: a
   );
 });
 
-ClickListener.displayName = 'amaui-ClickListener';
+ClickListener.displayName = 'onesy-ClickListener';
 
 export default ClickListener;

@@ -1,25 +1,25 @@
 
-# amaui huffman code
+# onesy huffman code
 
 Huffman code algorithm implementation.
 
 ### Add
 
 ```sh
-yarn add @amaui/huffman-code
+yarn add @onesy/huffman-code
 ```
 
 ### Use
 
 ```ts
-import AmauiHuffmanCode from '@amaui/huffman-code';
+import OnesyHuffmanCode from '@onesy/huffman-code';
 
-// Make a new AmauiHuffmanCode instance
+// Make a new OnesyHuffmanCode instance
 // with an optional initial values
 // string to encode, already calculated probabilities and
 // already calculated values
 // On making an instance encoding will be made
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
 // Initial byte size value
 // is 589 bytes, and after using
@@ -28,8 +28,8 @@ const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, conse
 // which is 7.3 compression percentage
 
 // Encoded
-// or very simply amauiHuffmanCode.response
-const response = amauiHuffmanCode.encoded;
+// or very simply onesyHuffmanCode.response
+const response = onesyHuffmanCode.encoded;
 
 // {
 //   "value": "AAL/AAgr6XUV8YbCGqY3XUfY4tSPAAoACDcaXTR5Z5laY83/KjrGGwAIalf7e3Hm01NakbIADo1TG66j7OfcAAoAA7frcxpjcTwl5vcjaTZ1uOg6N7K019r9ZUXG7AAFAABXzTVvM/NitAAEnVakbX4gmt7S0/irX6youN3merdVbnQmjRx5idQnka9FuNrTAAIdoEPRJozkGOLF+nsw1AAHfZyDSx06AAaz6bpuQ15n5oTxAAY5AAUVfYTSOk2AoAAK+/W5jTH2ZeiWe1aY3Wn0XXwmkft0YHwscqytMZVGZHyDo83vAAGWyeKo6tfiAAmsrTH2qY3XUa42VRKzTU6ldyDdHmeg6tLQgMV9fqrsyPrjZVErAAFAFfzfxTWON7iYc9pk3RNZ/KoAB+3HzhCO0K1irOVrJoVeiWpG838ACyPlGaanXUFXBA==",
@@ -116,8 +116,8 @@ const response = amauiHuffmanCode.encoded;
 // }
 
 // Decode
-// with amauiHuffmanCode.decode or AmauiHuffmanCode.decode a static method
-AmauiHuffmanCode.decode(response.value, response.values);
+// with onesyHuffmanCode.decode or OnesyHuffmanCode.decode a static method
+OnesyHuffmanCode.decode(response.value, response.values);
 
 // {
 //   "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.",

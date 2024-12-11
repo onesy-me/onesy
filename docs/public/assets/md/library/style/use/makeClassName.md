@@ -3,7 +3,7 @@
 
 Plugin that leaves classNames with a simple counter added to property names in development, and in production build creates minimal class names for made css classes.
 
-It uses `@amaui/utils`'s `variationWithRepetition` method to generate class names with at least 2 characters, and makes all the alphabet varations with repetitions for 2 characters, than resets and adds the 3rd character, etc.
+It uses `@onesy/utils`'s `variationWithRepetition` method to generate class names with at least 2 characters, and makes all the alphabet varations with repetitions for 2 characters, than resets and adds the 3rd character, etc.
 
 ### Options
 
@@ -20,13 +20,13 @@ If true, for every class name, it will make a search in the current dom to check
 ### Add
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Add to plugins
-amauiStyle.plugins.add = makeClassName;
+onesyStyle.plugins.add = makeClassName;
 
 // Add to plugins with options
-amauiStyle.plugins.add = {
+onesyStyle.plugins.add = {
   method: makeClassName,
   arguments: [
     {
@@ -45,10 +45,10 @@ amauiStyle.plugins.add = {
 ### Remove
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Remove from plugins
-amauiStyle.plugins.remove = makeClassName;
+onesyStyle.plugins.remove = makeClassName;
 ```
 
 ### Use
@@ -103,7 +103,7 @@ interface IOptions {
 #### makeClassName
 
 ```ts
-function makeClassName(amauiStyle: AmauiStyle, options_?: IOptions): {
+function makeClassName(onesyStyle: OnesyStyle, options_?: IOptions): {
     methods: {
         method: (value_: {
             property: string;

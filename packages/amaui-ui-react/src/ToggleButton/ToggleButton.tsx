@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ChipElement from '../Chip';
 import { IChip } from '../Chip/Chip';
@@ -8,38 +8,38 @@ import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '&.amaui-Chip-root': {
+    '&.onesy-Chip-root': {
       width: 'unset'
     }
   },
 
   size_small: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       padding: `${theme.methods.space.value(0.5, 'px')} ${theme.methods.space.value(0.75, 'px')}`
     }
   },
 
   size_regular: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       padding: `${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(1, 'px')}`
     }
   },
 
   size_large: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       padding: `${theme.methods.space.value(1.5, 'px')} ${theme.methods.space.value(1.25, 'px')}`
     }
   },
-}), { name: 'amaui-ToggleButton' });
+}), { name: 'onesy-ToggleButton' });
 
 export interface IToggleButton extends IChip {
 
 }
 
 const ToggleButton: React.FC<IToggleButton> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiToggleButton?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButton?.props?.default, ...props_ }), [props_]);
 
   const Chip = React.useMemo(() => theme?.elements?.Chip || ChipElement, [theme]);
 
@@ -67,8 +67,8 @@ const ToggleButton: React.FC<IToggleButton> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('ToggleButton', theme) && [
-          'amaui-ToggleButton-root',
-          `amaui-ToggleButton-size-${size}`
+          'onesy-ToggleButton-root',
+          `onesy-ToggleButton-size-${size}`
         ],
 
         className,
@@ -81,6 +81,6 @@ const ToggleButton: React.FC<IToggleButton> = React.forwardRef((props_, ref: any
   );
 });
 
-ToggleButton.displayName = 'amaui-ToggleButton';
+ToggleButton.displayName = 'onesy-ToggleButton';
 
 export default ToggleButton;

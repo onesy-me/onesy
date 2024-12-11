@@ -1,4 +1,4 @@
-# AmauiGroup
+# OnesyGroup
 
 - Makes a grouping of tests nested within it. \
 - In the console when tests run, they look nicely nested within that group for better readability of responses.
@@ -129,35 +129,35 @@ group('Todos query', () => {
 
 ## API
 
-#### IAmauiGroup
+#### IOnesyGroup
 
 ```ts
-interface IAmauiGroup {
+interface IOnesyGroup {
     name: string;
     method?: TMethod;
-    parent: AmauiGroup;
+    parent: OnesyGroup;
     file?: string;
     level: number;
     levels: number;
     index: number;
     mainIndex: number;
     latestIndex: number;
-    groups: Array<AmauiGroup>;
-    tos: Array<AmauiTo>;
-    preAll: Array<AmauiMiddleware>;
-    preEveryGroup: Array<AmauiMiddleware>;
-    preEveryTo: Array<AmauiMiddleware>;
-    pre: Array<AmauiMiddleware>;
-    preEveryGroupGroup: Array<AmauiMiddleware>;
-    preTo: Array<AmauiMiddleware>;
-    preEveryGroupTo: Array<AmauiMiddleware>;
-    postAll: Array<AmauiMiddleware>;
-    postEveryGroup: Array<AmauiMiddleware>;
-    postEveryTo: Array<AmauiMiddleware>;
-    post: Array<AmauiMiddleware>;
-    postEveryGroupGroup: Array<AmauiMiddleware>;
-    postTo: Array<AmauiMiddleware>;
-    postEveryGroupTo: Array<AmauiMiddleware>;
+    groups: Array<OnesyGroup>;
+    tos: Array<OnesyTo>;
+    preAll: Array<OnesyMiddleware>;
+    preEveryGroup: Array<OnesyMiddleware>;
+    preEveryTo: Array<OnesyMiddleware>;
+    pre: Array<OnesyMiddleware>;
+    preEveryGroupGroup: Array<OnesyMiddleware>;
+    preTo: Array<OnesyMiddleware>;
+    preEveryGroupTo: Array<OnesyMiddleware>;
+    postAll: Array<OnesyMiddleware>;
+    postEveryGroup: Array<OnesyMiddleware>;
+    postEveryTo: Array<OnesyMiddleware>;
+    post: Array<OnesyMiddleware>;
+    postEveryGroupGroup: Array<OnesyMiddleware>;
+    postTo: Array<OnesyMiddleware>;
+    postEveryGroupTo: Array<OnesyMiddleware>;
     summary: {
         amount: {
             tos: number;
@@ -168,17 +168,17 @@ interface IAmauiGroup {
             fail: number;
         };
     };
-    response?: IAmauiResponse;
+    response?: IOnesyResponse;
 }
 ```
 
-#### AmauiGroup
+#### OnesyGroup
 
 ```ts
-class AmauiGroup implements IAmauiGroup {
+class OnesyGroup implements IOnesyGroup {
     name: string;
     method?: TMethod;
-    parent: AmauiGroup;
+    parent: OnesyGroup;
     file?: string;
     level: number;
     levels: number;
@@ -195,23 +195,23 @@ class AmauiGroup implements IAmauiGroup {
             fail: number;
         };
     };
-    response: IAmauiResponse;
-    groups: Array<AmauiGroup>;
-    tos: Array<AmauiTo>;
-    preAll: Array<AmauiMiddleware>;
-    preEveryGroup: Array<AmauiMiddleware>;
-    preEveryTo: Array<AmauiMiddleware>;
-    pre: Array<AmauiMiddleware>;
-    preEveryGroupGroup: Array<AmauiMiddleware>;
-    preTo: Array<AmauiMiddleware>;
-    preEveryGroupTo: Array<AmauiMiddleware>;
-    postAll: Array<AmauiMiddleware>;
-    postEveryGroup: Array<AmauiMiddleware>;
-    postEveryTo: Array<AmauiMiddleware>;
-    post: Array<AmauiMiddleware>;
-    postEveryGroupGroup: Array<AmauiMiddleware>;
-    postTo: Array<AmauiMiddleware>;
-    postEveryGroupTo: Array<AmauiMiddleware>;
+    response: IOnesyResponse;
+    groups: Array<OnesyGroup>;
+    tos: Array<OnesyTo>;
+    preAll: Array<OnesyMiddleware>;
+    preEveryGroup: Array<OnesyMiddleware>;
+    preEveryTo: Array<OnesyMiddleware>;
+    pre: Array<OnesyMiddleware>;
+    preEveryGroupGroup: Array<OnesyMiddleware>;
+    preTo: Array<OnesyMiddleware>;
+    preEveryGroupTo: Array<OnesyMiddleware>;
+    postAll: Array<OnesyMiddleware>;
+    postEveryGroup: Array<OnesyMiddleware>;
+    postEveryTo: Array<OnesyMiddleware>;
+    post: Array<OnesyMiddleware>;
+    postEveryGroupGroup: Array<OnesyMiddleware>;
+    postTo: Array<OnesyMiddleware>;
+    postEveryGroupTo: Array<OnesyMiddleware>;
     constructor(name: string, method?: TMethod);
 }
 ```
@@ -225,8 +225,8 @@ class AmauiGroup implements IAmauiGroup {
       "to": "/library/test/start"
     },
     "next": {
-      "label": "Test: AmauiMiddleware",
-      "to": "/library/test/use/AmauiMiddleware"
+      "label": "Test: OnesyMiddleware",
+      "to": "/library/test/use/OnesyMiddleware"
     }
   }
 }~

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { staticClassName } from '../utils';
@@ -88,7 +88,7 @@ const useStyle = styleMethod(theme => ({
   children: {
     visibility: 'hidden'
   }
-}), { name: 'amaui-Placeholder' });
+}), { name: 'onesy-Placeholder' });
 
 export interface IPlaceholder extends Omit<IBaseElement, 'version'> {
   color?: IColor;
@@ -101,9 +101,9 @@ export interface IPlaceholder extends Omit<IBaseElement, 'version'> {
 }
 
 const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPlaceholder?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPlaceholder?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -145,7 +145,7 @@ const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('Placeholder', theme) && [
-          `amaui-Placeholder-root`
+          `onesy-Placeholder-root`
         ],
 
         className,
@@ -172,7 +172,7 @@ const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) 
 
         className={classNames([
           staticClassName('Placeholder', theme) && [
-            `amaui-Placeholder-wrapper`
+            `onesy-Placeholder-wrapper`
           ],
 
           classes.wrapper
@@ -182,7 +182,7 @@ const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) 
           <div
             className={classNames([
               staticClassName('Placeholder', theme) && [
-                `amaui-Placeholder-children`
+                `onesy-Placeholder-children`
               ],
 
               classes.children
@@ -196,6 +196,6 @@ const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) 
   );
 });
 
-Placeholder.displayName = 'amaui-Placeholder';
+Placeholder.displayName = 'onesy-Placeholder';
 
 export default Placeholder;

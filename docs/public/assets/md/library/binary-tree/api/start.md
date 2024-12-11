@@ -2,7 +2,7 @@
 ### Add
 
 ```bash
-yarn add @amaui/api
+yarn add @onesy/api
 ```
 
 ### Use
@@ -10,7 +10,7 @@ yarn add @amaui/api
 ```ts
 import express from 'express';
 
-import { Route, Method, IRouteClassInstance, Routes } from '@amaui/api';
+import { Route, Method, IRouteClassInstance, Routes } from '@onesy/api';
 
 class Base implements IRouteClassInstance {
 

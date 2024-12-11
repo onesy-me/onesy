@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import TypeElement from '../Type';
@@ -23,7 +23,7 @@ const useStyle = styleMethod(theme => ({
       flex: '1 1 auto'
     }
 
-    // '& .amaui-TextField-root, & .amaui-TextField-wrapper': {
+    // '& .onesy-TextField-root, & .onesy-TextField-wrapper': {
     //   width: '100%'
     // }
   },
@@ -31,7 +31,7 @@ const useStyle = styleMethod(theme => ({
   footer: {
     marginTop: '8px'
   }
-}), { name: 'amaui-FormRow' });
+}), { name: 'onesy-FormRow' });
 
 export interface IFormRow extends ILine {
   name?: string | IElement;
@@ -54,9 +54,9 @@ export interface IFormRow extends ILine {
 }
 
 const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiFormRow?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFormRow?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -120,7 +120,7 @@ const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('FormRow', theme) && [
-          'amaui-FormRow-root'
+          'onesy-FormRow-root'
         ],
 
         className,
@@ -221,7 +221,7 @@ const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('FormRow', theme) && [
-            'amaui-FormRow-main'
+            'onesy-FormRow-main'
           ],
 
           MainProps?.className,
@@ -250,6 +250,6 @@ const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-FormRow.displayName = 'amaui-FormRow';
+FormRow.displayName = 'onesy-FormRow';
 
 export default FormRow;

@@ -1,44 +1,44 @@
 import React from 'react';
 
-import { is, isEnvironment, parse } from '@amaui/utils';
-import { classNames, colors, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, parse } from '@onesy/utils';
+import { classNames, colors, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialFormatItalic from '@amaui/icons-material-rounded-react/IconMaterialFormatItalicW100';
-import IconMaterialFormatUnderlined from '@amaui/icons-material-rounded-react/IconMaterialFormatUnderlinedW100';
-import IconMaterialFormatBold from '@amaui/icons-material-rounded-react/IconMaterialFormatBoldW100';
-import IconMaterialContentCopy from '@amaui/icons-material-rounded-react/IconMaterialContentCopyW100';
-import IconMaterialContentCut from '@amaui/icons-material-rounded-react/IconMaterialContentCutW100';
-import IconMaterialContentPaste from '@amaui/icons-material-rounded-react/IconMaterialContentPasteW100';
-import IconMaterialFormatAlignLeft from '@amaui/icons-material-rounded-react/IconMaterialFormatAlignLeftW100';
-import IconMaterialFormatAlignCenter from '@amaui/icons-material-rounded-react/IconMaterialFormatAlignCenterW100';
-import IconMaterialFormatAlignRight from '@amaui/icons-material-rounded-react/IconMaterialFormatAlignRightW100';
-import IconMaterialFormatAlignJustify from '@amaui/icons-material-rounded-react/IconMaterialFormatAlignJustifyW100';
-import IconMaterialStrikethroughS from '@amaui/icons-material-rounded-react/IconMaterialStrikethroughSW100';
-import IconMaterialUndo from '@amaui/icons-material-rounded-react/IconMaterialUndoW100';
-import IconMaterialRedo from '@amaui/icons-material-rounded-react/IconMaterialRedoW100';
-import IconMaterialFormatClear from '@amaui/icons-material-rounded-react/IconMaterialFormatClearW100';
-import IconMaterialSuperscript from '@amaui/icons-material-rounded-react/IconMaterialSuperscriptW100';
-import IconMaterialSubscript from '@amaui/icons-material-rounded-react/IconMaterialSubscriptW100';
-import IconMaterialFormatIndentIncrease from '@amaui/icons-material-rounded-react/IconMaterialFormatIndentIncreaseW100';
-import IconMaterialFormatIndentDecrease from '@amaui/icons-material-rounded-react/IconMaterialFormatIndentDecreaseW100';
-import IconMaterialFormatListNumbered from '@amaui/icons-material-rounded-react/IconMaterialFormatListNumberedW100';
-import IconMaterialFormatListBulleted from '@amaui/icons-material-rounded-react/IconMaterialFormatListBulletedW100';
-import IconMaterialHorizontalRule from '@amaui/icons-material-rounded-react/IconMaterialHorizontalRuleW100';
-import IconMaterialFormatColorText from '@amaui/icons-material-rounded-react/IconMaterialFormatColorTextW100';
-import IconMaterialFormatColorFill from '@amaui/icons-material-rounded-react/IconMaterialFormatColorFillW100';
-import IconMaterialAddLink from '@amaui/icons-material-rounded-react/IconMaterialAddLinkW100';
-import IconMaterialLinkOff from '@amaui/icons-material-rounded-react/IconMaterialLinkOffW100';
-import IconMaterialImage from '@amaui/icons-material-rounded-react/IconMaterialImageW100';
-import IconMaterialFormatQuote from '@amaui/icons-material-rounded-react/IconMaterialFormatQuoteW100';
-import IconMaterialVideocam from '@amaui/icons-material-rounded-react/IconMaterialVideocamW100';
-import IconMaterialPlayArrow from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
-import IconMaterialCode from '@amaui/icons-material-rounded-react/IconMaterialCodeW100';
-import IconMaterialDeleteSweep from '@amaui/icons-material-rounded-react/IconMaterialDeleteSweepW100';
-import IconMaterialSelectAll from '@amaui/icons-material-rounded-react/IconMaterialSelectAllW100';
-import IconMaterialPrint from '@amaui/icons-material-rounded-react/IconMaterialPrintW100';
-import IconMaterialDownload from '@amaui/icons-material-rounded-react/IconMaterialDownloadW100';
-import IconMaterialTable from '@amaui/icons-material-rounded-react/IconMaterialTableW100';
-import IconMaterialDraw from '@amaui/icons-material-rounded-react/IconMaterialDrawW100';
+import IconMaterialFormatItalic from '@onesy/icons-material-rounded-react/IconMaterialFormatItalicW100';
+import IconMaterialFormatUnderlined from '@onesy/icons-material-rounded-react/IconMaterialFormatUnderlinedW100';
+import IconMaterialFormatBold from '@onesy/icons-material-rounded-react/IconMaterialFormatBoldW100';
+import IconMaterialContentCopy from '@onesy/icons-material-rounded-react/IconMaterialContentCopyW100';
+import IconMaterialContentCut from '@onesy/icons-material-rounded-react/IconMaterialContentCutW100';
+import IconMaterialContentPaste from '@onesy/icons-material-rounded-react/IconMaterialContentPasteW100';
+import IconMaterialFormatAlignLeft from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignLeftW100';
+import IconMaterialFormatAlignCenter from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignCenterW100';
+import IconMaterialFormatAlignRight from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignRightW100';
+import IconMaterialFormatAlignJustify from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignJustifyW100';
+import IconMaterialStrikethroughS from '@onesy/icons-material-rounded-react/IconMaterialStrikethroughSW100';
+import IconMaterialUndo from '@onesy/icons-material-rounded-react/IconMaterialUndoW100';
+import IconMaterialRedo from '@onesy/icons-material-rounded-react/IconMaterialRedoW100';
+import IconMaterialFormatClear from '@onesy/icons-material-rounded-react/IconMaterialFormatClearW100';
+import IconMaterialSuperscript from '@onesy/icons-material-rounded-react/IconMaterialSuperscriptW100';
+import IconMaterialSubscript from '@onesy/icons-material-rounded-react/IconMaterialSubscriptW100';
+import IconMaterialFormatIndentIncrease from '@onesy/icons-material-rounded-react/IconMaterialFormatIndentIncreaseW100';
+import IconMaterialFormatIndentDecrease from '@onesy/icons-material-rounded-react/IconMaterialFormatIndentDecreaseW100';
+import IconMaterialFormatListNumbered from '@onesy/icons-material-rounded-react/IconMaterialFormatListNumberedW100';
+import IconMaterialFormatListBulleted from '@onesy/icons-material-rounded-react/IconMaterialFormatListBulletedW100';
+import IconMaterialHorizontalRule from '@onesy/icons-material-rounded-react/IconMaterialHorizontalRuleW100';
+import IconMaterialFormatColorText from '@onesy/icons-material-rounded-react/IconMaterialFormatColorTextW100';
+import IconMaterialFormatColorFill from '@onesy/icons-material-rounded-react/IconMaterialFormatColorFillW100';
+import IconMaterialAddLink from '@onesy/icons-material-rounded-react/IconMaterialAddLinkW100';
+import IconMaterialLinkOff from '@onesy/icons-material-rounded-react/IconMaterialLinkOffW100';
+import IconMaterialImage from '@onesy/icons-material-rounded-react/IconMaterialImageW100';
+import IconMaterialFormatQuote from '@onesy/icons-material-rounded-react/IconMaterialFormatQuoteW100';
+import IconMaterialVideocam from '@onesy/icons-material-rounded-react/IconMaterialVideocamW100';
+import IconMaterialPlayArrow from '@onesy/icons-material-rounded-react/IconMaterialPlayArrowW100';
+import IconMaterialCode from '@onesy/icons-material-rounded-react/IconMaterialCodeW100';
+import IconMaterialDeleteSweep from '@onesy/icons-material-rounded-react/IconMaterialDeleteSweepW100';
+import IconMaterialSelectAll from '@onesy/icons-material-rounded-react/IconMaterialSelectAllW100';
+import IconMaterialPrint from '@onesy/icons-material-rounded-react/IconMaterialPrintW100';
+import IconMaterialDownload from '@onesy/icons-material-rounded-react/IconMaterialDownloadW100';
+import IconMaterialTable from '@onesy/icons-material-rounded-react/IconMaterialTableW100';
+import IconMaterialDraw from '@onesy/icons-material-rounded-react/IconMaterialDrawW100';
 
 import TypeElement from '../Type';
 import TooltipElement from '../Tooltip';
@@ -167,7 +167,7 @@ const useStyle = styleMethod(theme => ({
       }
     },
 
-    '& .amaui-Drawing-svg': {
+    '& .onesy-Drawing-svg': {
       display: 'block',
       margin: '16px auto',
       background: theme.palette.color.neutral[100]
@@ -185,30 +185,30 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: 0
     }
   },
 
   divider_middle: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       opacity: theme.palette.light ? 0.07 : 0.24
     }
   },
 
   divider_end: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       opacity: theme.palette.light ? 0.14 : 0.4
     }
   },
 
   select: {
-    '& .amaui-TextField-input-wrapper': {
+    '& .onesy-TextField-input-wrapper': {
       height: '40px',
       paddingBlock: theme.methods.space.value(1.25, 'px')
     },
 
-    '& .amaui-Select-input': {
+    '& .onesy-Select-input': {
       '& > *': {
         ...theme.typography.values.b2,
 
@@ -264,7 +264,7 @@ const useStyle = styleMethod(theme => ({
       border: 'none'
     }
   }
-}), { name: 'amaui-RichTextEditor' });
+}), { name: 'onesy-RichTextEditor' });
 
 export interface IRichTextEditor extends ILine {
   tonal?: ITonal;
@@ -367,9 +367,9 @@ export interface IRichTextEditor extends ILine {
 }
 
 const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiRichTextEditor?.props?.default, ...props__ }), [props__]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRichTextEditor?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -1107,7 +1107,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
       <span
         className={classNames([
           staticClassName('RichTextEditor', theme) && [
-            'amaui-RichTextEditor-palette-item'
+            'onesy-RichTextEditor-palette-item'
           ],
 
           classes.paletteItem
@@ -1149,7 +1149,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('RichTextEditor', theme) && [
-            'amaui-RichTextEditor-palette'
+            'onesy-RichTextEditor-palette'
           ],
 
           classes.palette
@@ -1264,7 +1264,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
             className={classNames([
               staticClassName('RichTextEditor', theme) && [
-                'amaui-RichTextEditor-text-field-color'
+                'onesy-RichTextEditor-text-field-color'
               ],
 
               ColorTextFieldProps?.className,
@@ -1336,7 +1336,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('RichTextEditor', theme) && [
-            'amaui-RichTextEditor-palette'
+            'onesy-RichTextEditor-palette'
           ],
 
           classes.palette
@@ -1372,7 +1372,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
             className={classNames([
               staticClassName('RichTextEditor', theme) && [
-                'amaui-RichTextEditor-text-field-color'
+                'onesy-RichTextEditor-text-field-color'
               ],
 
               classes.textFieldColor
@@ -1514,7 +1514,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('RichTextEditor', theme) && [
-            'amaui-RichTextEditor-select'
+            'onesy-RichTextEditor-select'
           ],
 
           SelectProps?.className,
@@ -1562,7 +1562,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('RichTextEditor', theme) && [
-            'amaui-RichTextEditor-select'
+            'onesy-RichTextEditor-select'
           ],
 
           SelectProps?.className,
@@ -1614,7 +1614,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('RichTextEditor', theme) && [
-            'amaui-RichTextEditor-select'
+            'onesy-RichTextEditor-select'
           ],
 
           SelectProps?.className,
@@ -2294,7 +2294,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
               className={classNames([
                 staticClassName('RichTextEditor', theme) && [
-                  'amaui-RichTextEditor-palette'
+                  'onesy-RichTextEditor-palette'
                 ],
 
                 classes.palette
@@ -2645,7 +2645,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
             include={[refs.elements.drawing, refs.elements.drawingSelect, refs.elements.drawingSelect.current, refs.elements.drawingPalette, refs.elements.drawingPalette.current, refs.elements.drawingSize, refs.elements.drawingSize.current]}
 
-            includeParentQueries={['.amaui-Drawing-palette', '.amaui-Drawing-modal']}
+            includeParentQueries={['.onesy-Drawing-palette', '.onesy-Drawing-modal']}
 
             includeQueries={['a[download]', 'svg', 'path']}
           >
@@ -2660,7 +2660,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
               className={classNames([
                 staticClassName('RichTextEditor', theme) && [
-                  'amaui-RichTextEditor-palette'
+                  'onesy-RichTextEditor-palette'
                 ],
 
                 classes.palette
@@ -2741,7 +2741,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                     svgClone.style.boxShadow = 'none';
 
-                    const pointers = Array.from(svgClone.querySelectorAll('.amaui-Drawing-pointer')) as Array<HTMLElement>;
+                    const pointers = Array.from(svgClone.querySelectorAll('.onesy-Drawing-pointer')) as Array<HTMLElement>;
 
                     pointers.forEach(pointer => pointer.remove());
 
@@ -2881,7 +2881,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
       className={classNames([
         staticClassName('RichTextEditor', theme) && [
-          'amaui-RichTextEditor-root'
+          'onesy-RichTextEditor-root'
         ],
 
         className,
@@ -2912,7 +2912,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
           className={classNames([
             staticClassName('RichTextEditor', theme) && [
-              'amaui-RichTextEditor-toolbars'
+              'onesy-RichTextEditor-toolbars'
             ],
 
             ToolbarProps?.className,
@@ -2937,7 +2937,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
               className={classNames([
                 staticClassName('RichTextEditor', theme) && [
-                  'amaui-RichTextEditor-toolbar'
+                  'onesy-RichTextEditor-toolbar'
                 ],
 
                 ToolbarUpdatesProps?.className,
@@ -3077,7 +3077,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
               className={classNames([
                 staticClassName('RichTextEditor', theme) && [
-                  'amaui-RichTextEditor-divider'
+                  'onesy-RichTextEditor-divider'
                 ],
 
                 DividerProps?.className,
@@ -3105,7 +3105,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
               className={classNames([
                 staticClassName('RichTextEditor', theme) && [
-                  'amaui-RichTextEditor-toolbar'
+                  'onesy-RichTextEditor-toolbar'
                 ],
 
                 ToolbarActionsProps?.className,
@@ -3322,7 +3322,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
             className={classNames([
               staticClassName('RichTextEditor', theme) && [
-                'amaui-RichTextEditor-divider'
+                'onesy-RichTextEditor-divider'
               ],
 
               DividerProps?.className,
@@ -3388,7 +3388,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       className={classNames([
                         staticClassName('RichTextEditor', theme) && [
-                          'amaui-RichTextEditor-mini-menu'
+                          'onesy-RichTextEditor-mini-menu'
                         ],
 
                         MiniMenuProps?.className,
@@ -3486,7 +3486,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('RichTextEditor', theme) && [
-            'amaui-RichTextEditor-value'
+            'onesy-RichTextEditor-value'
           ],
 
           classes.value
@@ -3496,6 +3496,6 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
   );
 });
 
-RichTextEditor.displayName = 'amaui-RichTextEditor';
+RichTextEditor.displayName = 'onesy-RichTextEditor';
 
 export default RichTextEditor;

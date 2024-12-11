@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, equalDeep, is, isEnvironment, percentageFromValueWithinRange, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, equalDeep, is, isEnvironment, percentageFromValueWithinRange, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import IconButtonElement from '../IconButton';
 import TooltipElement from '../Tooltip';
@@ -164,116 +164,116 @@ const useStyle = styleMethod(theme => {
 
     // iconButton
     iconButton_color_default: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.text.default.primary
       }
     },
 
     iconButton_color_neutral: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.neutral.main
       }
     },
 
     iconButton_color_primary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.primary.main
       }
     },
 
     iconButton_color_secondary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.secondary.main
       }
     },
 
     iconButton_color_tertiary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.tertiary.main
       }
     },
 
     iconButton_color_quaternary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.quaternary.main
       }
     },
 
     iconButton_color_info: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.info.main
       }
     },
 
     iconButton_color_success: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.success.main
       }
     },
 
     iconButton_color_warning: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.warning.main
       }
     },
 
     iconButton_color_error: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.palette.color.error.main
       }
     },
 
     // Tonal
     iconButton_tonal_color_neutral: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('default', 70)
       }
     },
 
     iconButton_tonal_color_primary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('primary', 70)
       }
     },
 
     iconButton_tonal_color_secondary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('secondary', 70)
       }
     },
 
     iconButton_tonal_color_tertiary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('tertiary', 70)
       }
     },
 
     iconButton_tonal_color_quaternary: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('quaternary', 70)
       }
     },
 
     iconButton_tonal_color_info: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('info', 70)
       }
     },
 
     iconButton_tonal_color_success: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('success', 70)
       }
     },
 
     iconButton_tonal_color_warning: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('warning', 70)
       }
     },
 
     iconButton_tonal_color_error: {
-      '&.amaui-IconButton-root': {
+      '&.onesy-IconButton-root': {
         color: theme.methods.palette.color.value('error', 70)
       }
     },
@@ -384,7 +384,7 @@ const useStyle = styleMethod(theme => {
     },
 
     tooltip: {
-      '& .amaui-Tooltip-name': {
+      '& .onesy-Tooltip-name': {
         padding: '0',
         lineHeight: '0',
         minWidth: '30px',
@@ -393,7 +393,7 @@ const useStyle = styleMethod(theme => {
         borderRadius: `${theme.methods.shape.radius.value(40, 'px')} ${theme.methods.shape.radius.value(40, 'px')} ${theme.methods.shape.radius.value(40, 'px')} 0px`,
         transform: 'rotate(-45deg)',
 
-        '& .amaui-Tooltip-name-text': {
+        '& .onesy-Tooltip-name-text': {
           position: 'absolute',
           top: '50%',
           left: '50%',
@@ -401,34 +401,34 @@ const useStyle = styleMethod(theme => {
         }
       },
 
-      '&.amaui-Tooltip-position-left': {
-        '& .amaui-Tooltip-name': {
+      '&.onesy-Tooltip-position-left': {
+        '& .onesy-Tooltip-name': {
           borderRadius: `${theme.methods.shape.radius.value(40, 'px')} ${theme.methods.shape.radius.value(40, 'px')} 0px ${theme.methods.shape.radius.value(40, 'px')}`
         }
       },
 
-      '&.amaui-Tooltip-position-right': {
-        '& .amaui-Tooltip-name': {
+      '&.onesy-Tooltip-position-right': {
+        '& .onesy-Tooltip-name': {
           borderRadius: `0px ${theme.methods.shape.radius.value(40, 'px')} ${theme.methods.shape.radius.value(40, 'px')} ${theme.methods.shape.radius.value(40, 'px')}`
         }
       }
     },
 
     tooltip_switch_orientation_horizontal_ltr: {
-      '& .amaui-Tooltip-name': {
+      '& .onesy-Tooltip-name': {
         transform: 'rotate(135deg)',
 
-        '& .amaui-Tooltip-name-text': {
+        '& .onesy-Tooltip-name-text': {
           transform: 'translate(-50%, -50%) rotate(-135deg)'
         }
       }
     },
 
     tooltip_switch_orientation_horizontal_rtl: {
-      '& .amaui-Tooltip-name': {
+      '& .onesy-Tooltip-name': {
         transform: 'rotate(135deg)',
 
-        '& .amaui-Tooltip-name-text': {
+        '& .onesy-Tooltip-name-text': {
           transform: 'translate(-50%, -50%) rotate(-135deg)'
         }
       }
@@ -440,7 +440,7 @@ const useStyle = styleMethod(theme => {
       opacity: theme.palette.visual_contrast.default.opacity.disabled
     }
   };
-}, { name: 'amaui-Slider' });
+}, { name: 'onesy-Slider' });
 
 export type TSliderValue = number | Array<number>;
 
@@ -483,9 +483,9 @@ export interface ISlider extends IBaseElement {
 }
 
 const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSlider?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySlider?.props?.default, ...props_ }), [props_]);
 
   const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
 
@@ -1061,12 +1061,12 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Slider', theme) && [
-          'amaui-Slider-root',
-          `amaui-Slider-size-${size}`,
-          mouseDown && `amaui-Slider-mouse-down`,
-          focus && `amaui-Slider-focus`,
-          readOnly && `amaui-Slider-read-only`,
-          disabled && `amaui-Slider-disabled`
+          'onesy-Slider-root',
+          `onesy-Slider-size-${size}`,
+          mouseDown && `onesy-Slider-mouse-down`,
+          focus && `onesy-Slider-focus`,
+          readOnly && `onesy-Slider-read-only`,
+          disabled && `onesy-Slider-disabled`
         ],
 
         className,
@@ -1091,7 +1091,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
       <span
         className={classNames([
           staticClassName('Slider', theme) && [
-            'amaui-Slider-rail'
+            'onesy-Slider-rail'
           ],
 
           classes.rail,
@@ -1113,7 +1113,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
         <span
           className={classNames([
             staticClassName('Slider', theme) && [
-              'amaui-Slider-track'
+              'onesy-Slider-track'
             ],
 
             classes.track,
@@ -1136,7 +1136,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
         <span
           className={classNames([
             staticClassName('Slider', theme) && [
-              'amaui-Slider-marks'
+              'onesy-Slider-marks'
             ],
 
             classes.marks,
@@ -1150,7 +1150,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Slider', theme) && [
-                  'amaui-Slider-mark'
+                  'onesy-Slider-mark'
                 ],
 
                 classes.mark,
@@ -1174,7 +1174,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
         <span
           className={classNames([
             staticClassName('Slider', theme) && [
-              'amaui-Slider-labels'
+              'onesy-Slider-labels'
             ],
 
             classes.labels,
@@ -1191,7 +1191,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Slider', theme) && [
-                  'amaui-Slider-label'
+                  'onesy-Slider-label'
                 ],
 
                 LabelProps?.className,
@@ -1216,7 +1216,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
       {!noButtons && values.map((value__: number, index: number) => {
         const classNameIcon = classNames([
           staticClassName('Slider', theme) && [
-            'amaui-Slider-icon'
+            'onesy-Slider-icon'
           ],
 
           classes.icon,
@@ -1294,7 +1294,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Slider', theme) && [
-                  'amaui-Slider-icon-button'
+                  'onesy-Slider-icon-button'
                 ],
 
                 IconButtonProps?.className,
@@ -1336,6 +1336,6 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Slider.displayName = 'amaui-Slider';
+Slider.displayName = 'onesy-Slider';
 
 export default Slider;

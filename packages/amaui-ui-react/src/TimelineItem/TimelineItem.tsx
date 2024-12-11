@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import DividerElement from '../Divider';
@@ -54,23 +54,23 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0px'
     }
   },
 
   divider_orientation_vertical: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       width: '2px'
     }
   },
 
   divider_orientation_horizontal: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       height: '2px'
     }
   }
-}), { name: 'amaui-TimelineItem' });
+}), { name: 'onesy-TimelineItem' });
 
 export interface ITimelineItem extends ILine {
   orientation?: 'vertical' | 'horizontal';
@@ -86,9 +86,9 @@ export interface ITimelineItem extends ILine {
 }
 
 const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTimelineItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimelineItem?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -154,7 +154,7 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('TimelineItem', theme) && [
-          'amaui-TimelineItem-root'
+          'onesy-TimelineItem-root'
         ],
 
         className,
@@ -168,9 +168,9 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
         <div
           className={classNames([
             staticClassName('TimelineItem', theme) && [
-              'amaui-TimelineItem-aside',
-              'amaui-TimelineItem-item',
-              'amaui-TimelineItem-start'
+              'onesy-TimelineItem-aside',
+              'onesy-TimelineItem-item',
+              'onesy-TimelineItem-start'
             ],
 
             classes.aside,
@@ -194,8 +194,8 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
 
         className={classNames([
           staticClassName('TimelineItem', theme) && [
-            'amaui-TimelineItem-item',
-            'amaui-TimelineItem-middle'
+            'onesy-TimelineItem-item',
+            'onesy-TimelineItem-middle'
           ],
 
           classes.item,
@@ -205,7 +205,7 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
         <div
           className={classNames([
             staticClassName('TimelineItem', theme) && [
-              'amaui-TimelineItem-icon-wrapper'
+              'onesy-TimelineItem-icon-wrapper'
             ],
 
             classes.iconWrapper,
@@ -220,7 +220,7 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
 
               className={classNames([
                 staticClassName('TimelineItem', theme) && [
-                  'amaui-TimelineItem-icon'
+                  'onesy-TimelineItem-icon'
                 ],
 
                 IconProps?.className,
@@ -236,7 +236,7 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
 
             className={classNames([
               staticClassName('TimelineItem', theme) && [
-                'amaui-TimelineItem-divider'
+                'onesy-TimelineItem-divider'
               ],
 
               DividerProps?.className,
@@ -253,9 +253,9 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
         <div
           className={classNames([
             staticClassName('TimelineItem', theme) && [
-              'amaui-TimelineItem-aside',
-              'amaui-TimelineItem-item',
-              'amaui-TimelineItem-end'
+              'onesy-TimelineItem-aside',
+              'onesy-TimelineItem-item',
+              'onesy-TimelineItem-end'
             ],
 
             classes.aside,
@@ -271,6 +271,6 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
   );
 });
 
-TimelineItem.displayName = 'amaui-TimelineItem';
+TimelineItem.displayName = 'onesy-TimelineItem';
 
 export default TimelineItem;

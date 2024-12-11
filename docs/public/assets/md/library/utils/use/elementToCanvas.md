@@ -9,7 +9,7 @@ Using other options either download the canvas, as an image immediatelly or do a
 elementToCanvas(element, { response: 'download', crop: { x: 0, y: 1400, width 1400, height: 740 } });
 
 // Downloaded
-// amaui-image.png
+// onesy-image.png
 ```
 
 ### Options

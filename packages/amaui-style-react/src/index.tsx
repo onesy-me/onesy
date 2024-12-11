@@ -1,8 +1,8 @@
-export { AmauiStyle, AmauiTheme, colors, classNames, makeClassName, prefix, rtl, sort, unit, valueObject } from '@amaui/style';
+export { OnesyStyle, OnesyTheme, colors, classNames, makeClassName, prefix, rtl, sort, unit, valueObject } from '@onesy/style';
 
-export * from '@amaui/style/AmauiTheme';
+export * from '@onesy/style/OnesyTheme';
 
-export * from '@amaui/style/utils';
+export * from '@onesy/style/utils';
 
 // Export all other
 export * from './StyleProvider';

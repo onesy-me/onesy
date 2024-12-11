@@ -5,7 +5,7 @@
 #### TDateTimePicker
 
 ```ts
-type TDateTimePicker = AmauiDate;
+type TDateTimePicker = OnesyDate;
 ```
 
 #### IDateTimePicker
@@ -21,10 +21,10 @@ interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
     now?: boolean;
     range?: boolean;
     static?: boolean;
-    valid?: (value: AmauiDate, version: TCalendarUnit | TClockUnit) => boolean;
-    validate?: (value: AmauiDate) => boolean;
-    min?: AmauiDate;
-    max?: AmauiDate;
+    valid?: (value: OnesyDate, version: TCalendarUnit | TClockUnit) => boolean;
+    validate?: (value: OnesyDate) => boolean;
+    min?: OnesyDate;
+    max?: OnesyDate;
     headingText?: string;
     headingTextTime?: string;
     headingTextTimeRange?: string;

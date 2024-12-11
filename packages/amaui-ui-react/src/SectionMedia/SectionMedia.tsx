@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { cleanValue, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { cleanValue, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialDraft from '@amaui/icons-material-rounded-react/IconMaterialDraftW100';
+import IconMaterialDraft from '@onesy/icons-material-rounded-react/IconMaterialDraftW100';
 
 import AudioPlayerElement from '../AudioPlayer';
 import ImageElement from '../Image';
@@ -59,7 +59,7 @@ const useStyle = styleMethod(theme => ({
   other_size_large: {
     borderRadius: theme.methods.shape.radius.value(3)
   }
-}), { name: 'amaui-SectionMedia' });
+}), { name: 'onesy-SectionMedia' });
 
 export interface ISectionMedia extends ISection {
   value?: IMediaObject;
@@ -78,9 +78,9 @@ export interface ISectionMedia extends ISection {
 }
 
 const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionMedia?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionMedia?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -145,8 +145,8 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionMedia', theme) && [
-            'amaui-SectionMedia-item',
-            'amaui-SectionMedia-item-image'
+            'onesy-SectionMedia-item',
+            'onesy-SectionMedia-item-image'
           ],
 
           MediaProps?.className,
@@ -166,8 +166,8 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionMedia', theme) && [
-            'amaui-SectionMedia-item',
-            'amaui-SectionMedia-item-audio'
+            'onesy-SectionMedia-item',
+            'onesy-SectionMedia-item-audio'
           ],
 
           MediaProps?.className,
@@ -187,8 +187,8 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionMedia', theme) && [
-            'amaui-SectionMedia-item',
-            'amaui-SectionMedia-item-video'
+            'onesy-SectionMedia-item',
+            'onesy-SectionMedia-item-video'
           ],
 
           MediaProps?.className,
@@ -202,8 +202,8 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionMedia', theme) && [
-            'amaui-SectionMedia-wrapper',
-            'amaui-SectionMedia-wrapper-other'
+            'onesy-SectionMedia-wrapper',
+            'onesy-SectionMedia-wrapper-other'
           ],
 
           classes.wrapper,
@@ -225,8 +225,8 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
           className={classNames([
             staticClassName('SectionMedia', theme) && [
-              'amaui-SectionMedia-item',
-              'amaui-SectionMedia-item-other'
+              'onesy-SectionMedia-item',
+              'onesy-SectionMedia-item-other'
             ],
 
             MediaProps?.className,
@@ -262,8 +262,8 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
       className={classNames([
         staticClassName('SectionMedia', theme) && [
-          'amaui-SectionMedia-root',
-          `amaui-SectionMedia-size-${size}`
+          'onesy-SectionMedia-root',
+          `onesy-SectionMedia-size-${size}`
         ],
 
         className,
@@ -289,7 +289,7 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
             className={classNames([
               staticClassName('SectionMedia', theme) && [
-                'amaui-SectionMedia-name'
+                'onesy-SectionMedia-name'
               ],
 
               classes.name
@@ -303,6 +303,6 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
   );
 });
 
-Element.displayName = 'amaui-SectionMedia';
+Element.displayName = 'onesy-SectionMedia';
 
 export default Element;

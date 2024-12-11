@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import AvatarElement from '../Avatar';
@@ -26,7 +26,7 @@ const useStyle = styleMethod(theme => ({
       marginInlineStart: `-0.24em`
     }
   }
-}), { name: 'amaui-AvatarGroup' });
+}), { name: 'onesy-AvatarGroup' });
 
 export interface IAvatarGroup extends IAvatar {
   tonal?: ITonal;
@@ -43,9 +43,9 @@ export interface IAvatarGroup extends IAvatar {
 }
 
 const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAvatarGroup?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAvatarGroup?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -137,8 +137,8 @@ const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('AvatarGroup', theme) && [
-          'amaui-AvatarGroup-root',
-          `amaui-AvatarGroup-size-${size}`,
+          'onesy-AvatarGroup-root',
+          `onesy-AvatarGroup-size-${size}`,
         ],
 
         className,
@@ -174,6 +174,6 @@ const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) 
   );
 });
 
-AvatarGroup.displayName = 'amaui-AvatarGroup';
+AvatarGroup.displayName = 'onesy-AvatarGroup';
 
 export default AvatarGroup;

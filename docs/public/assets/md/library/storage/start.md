@@ -1,35 +1,35 @@
 
-# amaui storage
+# onesy storage
 
 Local, session storage management utils.
 
 ### Add
 
 ```sh
-yarn add @amaui/storage
+yarn add @onesy/storage
 ```
 
 ### Use
 
 ```ts
-import AmauiStorage from '@amaui/storage';
+import OnesyStorage from '@onesy/storage';
 
-const amauiStorage = new AmauiStorage();
+const onesyStorage = new OnesyStorage();
 
 const value = { a: 4 };
 
 // Add
-amauiStorage.add('a', value);
+onesyStorage.add('a', value);
 
 // Get
-amauiStorage.get('a');
+onesyStorage.get('a');
 
 // { a: 4 }
 
 // Remove
-amauiStorage.remove('a');
+onesyStorage.remove('a');
 
-amauiStorage.get('a');
+onesyStorage.get('a');
 
 // null
 ```

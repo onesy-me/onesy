@@ -1,17 +1,17 @@
 
-# AmauiTest
+# OnesyTest
 
 Main class that organizes all the test, their middlewares, and after running all their responses, and prints the results in the console, and/or browser HTML.
 
-You can pass options to AmauiTest, but more on how to do that, explained in the cli page.
+You can pass options to OnesyTest, but more on how to do that, explained in the cli page.
 
 ## API
 
-#### IAmauiResponse
+#### IOnesyResponse
 
 ```ts
-interface IAmauiResponse {
-    for?: AmauiTo | AmauiGroup | AmauiMiddleware;
+interface IOnesyResponse {
+    for?: OnesyTo | OnesyGroup | OnesyMiddleware;
     start?: number;
     end?: number;
     duration?: number;
@@ -25,10 +25,10 @@ interface IAmauiResponse {
 }
 ```
 
-#### IAmauiTestStatus
+#### IOnesyTestStatus
 
 ```ts
-type IAmauiTestStatus = 'IDLE' | 'RUNNING' | 'COMPLETED' | 'CLEAR';
+type IOnesyTestStatus = 'IDLE' | 'RUNNING' | 'COMPLETED' | 'CLEAR';
 ```
 
 #### IOptionsResponse
@@ -107,7 +107,7 @@ interface IOptions {
 //     at: 'auto',
 //     errors_minify: true,
 //     html: {
-//       id: 'amaui-test-results',
+//       id: 'onesy-test-results',
 //     }
 //   },
 
@@ -131,47 +131,47 @@ interface IOptions {
 const optionsDefault: IOptions;
 ```
 
-#### AmauiTest
+#### OnesyTest
 
 ```ts
-class AmauiTest {
+class OnesyTest {
     options_: IOptions;
-    private amauilog;
-    status: IAmauiTestStatus;
+    private onesylog;
+    status: IOnesyTestStatus;
     private fileSource;
     private cleared;
-    subscription: AmauiSubscription;
+    subscription: OnesySubscription;
     previousLog: any;
     archive: {
         logs: any[];
     };
-    static orderTos(group: AmauiGroup, order_: TOptionsOrder): Array<AmauiTo | AmauiGroup>;
-    static order(group: AmauiGroup, order_: TOptionsOrder): Array<AmauiTo | AmauiGroup>;
-    get mainGroup(): AmauiGroup;
+    static orderTos(group: OnesyGroup, order_: TOptionsOrder): Array<OnesyTo | OnesyGroup>;
+    static order(group: OnesyGroup, order_: TOptionsOrder): Array<OnesyTo | OnesyGroup>;
+    get mainGroup(): OnesyGroup;
     get options(): IOptions;
     set options(options: IOptions);
     constructor(options?: IOptions);
     init(): Promise<void>;
     run(): Promise<boolean>;
-    runGroup(group: AmauiGroup): Promise<void>;
+    runGroup(group: OnesyGroup): Promise<void>;
     runMethod(method: TMethod, type?: string): Promise<unknown>;
-    runMiddlewares(middlewares: Array<AmauiMiddleware>, for_: AmauiGroup | AmauiTo): Promise<void>;
-    runMiddleware(middleware: AmauiMiddleware, for_: AmauiGroup | AmauiTo): Promise<void>;
-    runTo(to: AmauiTo): Promise<void>;
+    runMiddlewares(middlewares: Array<OnesyMiddleware>, for_: OnesyGroup | OnesyTo): Promise<void>;
+    runMiddleware(middleware: OnesyMiddleware, for_: OnesyGroup | OnesyTo): Promise<void>;
+    runTo(to: OnesyTo): Promise<void>;
     imports(): Promise<void>;
     import(files: string[]): Promise<void>;
     private importFile;
     initNode(): Promise<void>;
     prepareEnvironment(file?: string): void;
     printTestsHeader(): void;
-    printTo(value: IAmauiResponse): void;
+    printTo(value: IOnesyResponse): void;
     printManual(): void;
-    printGroup(group: AmauiGroup): void;
-    printAuto(value: IAmauiResponse | AmauiGroup): void;
+    printGroup(group: OnesyGroup): void;
+    printAuto(value: IOnesyResponse | OnesyGroup): void;
     printAutoSummary(): void;
     printErrors(): void;
-    printGroupErrors(group?: AmauiGroup): void;
-    printError(to: AmauiTo): void;
+    printGroupErrors(group?: OnesyGroup): void;
+    printError(to: OnesyTo): void;
     private printErrorStackCleanUp;
     private printDiff;
     printSummary(): void;
@@ -185,12 +185,12 @@ class AmauiTest {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Test: AmauiMiddleware",
-      "to": "/library/test/use/AmauiMiddleware"
+      "label": "Test: OnesyMiddleware",
+      "to": "/library/test/use/OnesyMiddleware"
     },
     "next": {
-      "label": "Test: AmauiTo",
-      "to": "/library/test/use/AmauiTo"
+      "label": "Test: OnesyTo",
+      "to": "/library/test/use/OnesyTo"
     }
   }
 }~

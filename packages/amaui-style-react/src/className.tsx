@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { classNames } from '@amaui/style';
-import { IOptions } from '@amaui/style/style';
+import { classNames } from '@onesy/style';
+import { IOptions } from '@onesy/style/style';
 
 import style, { TValue } from './style';
 

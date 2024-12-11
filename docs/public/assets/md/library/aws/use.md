@@ -1,5 +1,5 @@
 
-# AmauiAws
+# OnesyAws
 
 ### Options
 
@@ -39,9 +39,9 @@ Add a value to the s3 bucket.
 If value isn't a string or a buffer, it will be stringified.
 
 ```ts
-const amauiAws =  new AmauiAws(options);
+const onesyAws =  new OnesyAws(options);
 
-await amauiAws.s3.add('a', { a: 1114 });
+await onesyAws.s3.add('a', { a: 1114 });
 ```
 
 #### Get
@@ -53,9 +53,9 @@ You can retrive it as a pure response from the AWS, or convert it to text, JSON,
 If no such key exists, it throws an error.
 
 ```ts
-const amauiAws =  new AmauiAws(options);
+const onesyAws =  new OnesyAws(options);
 
-await amauiAws.s3.get('a', { type: 'json' });
+await onesyAws.s3.get('a', { type: 'json' });
 
 // { a: 1114 }
 ```
@@ -67,9 +67,9 @@ Removes an object from the s3 bucket.
 If no such key exists, it throws an error.
 
 ```ts
-const amauiAws =  new AmauiAws(options);
+const onesyAws =  new OnesyAws(options);
 
-await amauiAws.s3.remove('a');
+await onesyAws.s3.remove('a');
 ```
 
 #### Remove many
@@ -79,9 +79,9 @@ Removes many objects from the s3 bucket.
 It returns array of responses, if no such key exists, the response is an error.
 
 ```ts
-const amauiAws =  new AmauiAws(options);
+const onesyAws =  new OnesyAws(options);
 
-await amauiAws.s3.removeMany(['a', 'a114', 'a1114']);
+await onesyAws.s3.removeMany(['a', 'a114', 'a1114']);
 ```
 
 
@@ -180,10 +180,10 @@ interface IOptions {
 }
 ```
 
-#### AmauiAws
+#### OnesyAws
 
 ```ts
-class AmauiAws {
+class OnesyAws {
     private options;
     private connections_;
     private amalog;

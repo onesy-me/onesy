@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import DividerElement from '../Divider';
 import LineElement from '../Line';
@@ -30,19 +30,19 @@ const useStyle = styleMethod(theme => ({
   divider: {
     margin: '0',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       transition: theme.methods.transitions.make(['background', 'width', 'height'])
     }
   },
 
   divider_active: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       opacity: '1'
     }
   },
 
   divider_orientation_horizontal: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       minWidth: '14px'
     }
   },
@@ -51,7 +51,7 @@ const useStyle = styleMethod(theme => ({
     alignSelf: 'flex-start',
     transform: 'translateX(-50%)',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       minHeight: 14,
       marginInlineStart: '20px'
     }
@@ -60,23 +60,23 @@ const useStyle = styleMethod(theme => ({
   divider_orientation_vertical_stepDirection_column: {
     alignSelf: 'center',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0px'
     }
   },
 
   divider_active_orientation_horizontal: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       height: '2px'
     }
   },
 
   divider_active_orientation_vertical: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       width: '2px'
     }
   }
-}), { name: 'amaui-Stepper' });
+}), { name: 'onesy-Stepper' });
 
 export interface IStepper extends ILine {
   tonal?: ITonal;
@@ -101,9 +101,9 @@ export interface IStepper extends ILine {
 }
 
 const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiStepper?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyStepper?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -164,7 +164,7 @@ const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Stepper', theme) && [
-          'amaui-Stepper-root'
+          'onesy-Stepper-root'
         ],
 
         className,
@@ -238,8 +238,8 @@ const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Stepper', theme) && [
-                  'amaui-Stepper-divider',
-                  active_ && dividerActive && `amaui-Stepper-divider-active`
+                  'onesy-Stepper-divider',
+                  active_ && dividerActive && `onesy-Stepper-divider-active`
                 ],
 
                 DividerProps?.className,
@@ -265,6 +265,6 @@ const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Stepper.displayName = 'amaui-Stepper';
+Stepper.displayName = 'onesy-Stepper';
 
 export default Stepper;

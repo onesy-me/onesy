@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import AutoCompleteElement from '../AutoComplete';
 import { currencies, staticClassName } from '../utils';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-AutoCompleteCurrency' });
+}), { name: 'onesy-AutoCompleteCurrency' });
 
 export interface IAutoCompleteCurrency extends IAutoComplete {
 
 }
 
 const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAutoCompleteCurrency?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCurrency?.props?.default, ...props_ }), [props_]);
 
   const AutoComplete = React.useMemo(() => theme?.elements?.AutoComplete || AutoCompleteElement, [theme]);
 
@@ -73,8 +73,8 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((
 
       className={classNames([
         staticClassName('AutoCompleteCurrency', theme) && [
-          'amaui-AutoCompleteCurrency-root',
-          `amaui-AutoCompleteCurrency-size-${size}`
+          'onesy-AutoCompleteCurrency-root',
+          `onesy-AutoCompleteCurrency-size-${size}`
         ],
 
         className,
@@ -86,6 +86,6 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((
   );
 });
 
-AutoCompleteCurrency.displayName = 'amaui-AutoCompleteCurrency';
+AutoCompleteCurrency.displayName = 'onesy-AutoCompleteCurrency';
 
 export default AutoCompleteCurrency;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import InteractionElement from '../Interaction';
 import PaginationItemElement from '../PaginationItem';
@@ -37,7 +37,7 @@ const useStyle = styleMethod(theme => ({
   direction_column: {
     flex: '1 1 auto',
 
-    '& .amaui-ListItem-text': {
+    '& .onesy-ListItem-text': {
       textAlign: 'center'
     }
   },
@@ -50,7 +50,7 @@ const useStyle = styleMethod(theme => ({
   divider: {
     position: 'absolute',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0',
       transition: theme.methods.transitions.make(['background', 'height'])
     }
@@ -61,7 +61,7 @@ const useStyle = styleMethod(theme => ({
     right: '0',
     transform: 'translate(calc(-50% - 70px), -50%)',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       width: 'calc(100% - 62px)'
     }
   },
@@ -71,23 +71,23 @@ const useStyle = styleMethod(theme => ({
     top: '0',
     transform: 'translate(-50%, calc(-50% - 16px))',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       height: '50%'
     }
   },
 
   divider_active_orientation_horizontal: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       height: '4px'
     }
   },
 
   divider_active_orientation_vertical: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       width: '4px'
     }
   }
-}), { name: 'amaui-Step' });
+}), { name: 'onesy-Step' });
 
 export interface IStep extends ILine {
   tonal?: ITonal;
@@ -118,9 +118,9 @@ export interface IStep extends ILine {
 }
 
 const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiStep?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyStep?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -185,7 +185,7 @@ const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Step', theme) && [
-            'amaui-Step-icon'
+            'onesy-Step-icon'
           ],
 
           classes.icon
@@ -218,10 +218,10 @@ const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Step', theme) && [
-          'amaui-Step-root',
-          active && `amaui-Step-active`,
-          completed && `amaui-Step-completed`,
-          (!active && !completed) && `amaui-Step-inactive`
+          'onesy-Step-root',
+          active && `onesy-Step-active`,
+          completed && `onesy-Step-completed`,
+          (!active && !completed) && `onesy-Step-inactive`
         ],
 
         className,
@@ -269,8 +269,8 @@ const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Step', theme) && [
-              'amaui-Step-divider',
-              activeDivider && `amaui-Step-divider-active`
+              'onesy-Step-divider',
+              activeDivider && `onesy-Step-divider-active`
             ],
 
             DividerProps?.className,
@@ -284,6 +284,6 @@ const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Step.displayName = 'amaui-Step';
+Step.displayName = 'onesy-Step';
 
 export default Step;

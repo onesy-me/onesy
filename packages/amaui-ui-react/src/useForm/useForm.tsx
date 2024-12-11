@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { capitalize, copy, is, setObjectValue } from '@amaui/utils';
-import { ValidationError } from '@amaui/errors';
+import { capitalize, copy, is, setObjectValue } from '@onesy/utils';
+import { ValidationError } from '@onesy/errors';
 
 import validateModel, { IValidateVales } from './validate';
 

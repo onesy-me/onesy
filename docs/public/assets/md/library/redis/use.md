@@ -1,5 +1,5 @@
 
-# AmauiRedis
+# OnesyRedis
 
 ### Options
 
@@ -14,10 +14,10 @@ Redis connection uri.
 Make a connection.
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Connect
-await amauiRedis.connection;
+await onesyRedis.connection;
 ```
 
 #### client
@@ -25,10 +25,10 @@ await amauiRedis.connection;
 Get a client.
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Client
-await amauiRedis.client;
+await onesyRedis.client;
 ```
 
 #### disconnect
@@ -36,13 +36,13 @@ await amauiRedis.client;
 Closes the connection to the database.
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Connect
-await amauiRedis.connection;
+await onesyRedis.connection;
 
 // Disconnect
-await amauiRedis.disconnect;
+await onesyRedis.disconnect;
 ``` 
 
 ### Methods 
@@ -52,12 +52,12 @@ await amauiRedis.disconnect;
 Sets a value 
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Connect
-await amauiRedis.connection;
+await onesyRedis.connection;
 
-const value = await amauiRedis.set('a', 'a14');
+const value = await onesyRedis.set('a', 'a14');
 ```
 
 #### get 
@@ -65,12 +65,12 @@ const value = await amauiRedis.set('a', 'a14');
 Gets a value 
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Connect
-await amauiRedis.connection;
+await onesyRedis.connection;
 
-const value = await amauiRedis.get('a'); 
+const value = await onesyRedis.get('a'); 
 
 value; 
 // a14 
@@ -81,12 +81,12 @@ value;
 Publishes a value to a channel 
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Connect
-await amauiRedis.connection;
+await onesyRedis.connection;
 
-await amauiRedis.publish('a', { a: 14 });
+await onesyRedis.publish('a', { a: 14 });
 ```
 
 #### subscribe  
@@ -94,16 +94,16 @@ await amauiRedis.publish('a', { a: 14 });
 Subscribes a method for receiving messages from 1 or more channels 
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Connect
-await amauiRedis.connection;
+await onesyRedis.connection;
 
-await amauiRedis.subscribe('a', message => {
+await onesyRedis.subscribe('a', message => {
   console.log('Received a message:', message);
 });
 
-await amauiRedis.publish('a', { a: 14 });
+await onesyRedis.publish('a', { a: 14 });
 
 // Received a message: { a: 14 }
 ```
@@ -115,18 +115,18 @@ await amauiRedis.publish('a', { a: 14 });
 Removes all the redis data, and emits a `reset` subscription event.
 
 ```ts
-const amauiRedis = new AmauiRedis(options);
+const onesyRedis = new OnesyRedis(options);
 
 // Connect
-await amauiRedis.connection;
+await onesyRedis.connection;
 
 // Reset
-await amauiRedis.reset();
+await onesyRedis.reset();
 ```
 
 #### subscriptions
 
-Using `@amaui/subscription` library, provides `subscription` property, where you'll receive following events:
+Using `@onesy/subscription` library, provides `subscription` property, where you'll receive following events:
 - `connected` on connect success.
 - `connect:error` on connect error.
 - `disconnected` on disconnect success.
@@ -158,16 +158,16 @@ interface IOptions {
 const optionsDefault: IOptions;
 ```
 
-#### AmauiRedis
+#### OnesyRedis
 
 ```ts
-class AmauiAmqp {
+class OnesyAmqp {
     client_: IRedisClient;
     clientSubscriber: IRedisClient;
     connected: boolean;
     private amalog;
     private options_;
-    subscription: AmauiSubscription<any>;
+    subscription: OnesySubscription<any>;
     get options(): IOptions;
     set options(options: IOptions);
     constructor(options?: IOptions);

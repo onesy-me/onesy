@@ -1,12 +1,12 @@
 
-# amaui models
+# onesy models
 
-Useful classes, methods used as a default in other packages like `@amaui/mongo`.
+Useful classes, methods used as a default in other packages like `@onesy/mongo`.
 
 ### Add
 
 ```sh
-yarn add @amaui/models
+yarn add @onesy/models
 ```
 
 ### Use
@@ -14,7 +14,7 @@ yarn add @amaui/models
 ```ts
 import express from 'express';
 
-import { Query, Response } from '@amaui/models';
+import { Query, Response } from '@onesy/models';
 
 async function route(req: express.Request, res: express.Response) {
   const query = Query.fromRequest(req);

@@ -1,12 +1,12 @@
 import React from 'react';
 
-import is from '@amaui/utils/is';
-import merge from '@amaui/utils/merge';
+import is from '@onesy/utils/is';
+import merge from '@onesy/utils/merge';
 
-import { IResponse, reset as amauiResetMethod } from '@amaui/style';
-import { IOptions } from '@amaui/style/reset';
+import { IResponse, reset as onesyResetMethod } from '@onesy/style';
+import { IOptions } from '@onesy/style/reset';
 
-import { useAmauiStyle, useAmauiTheme } from '.';
+import { useOnesyStyle, useOnesyTheme } from '.';
 import { IResponseStyle, propsAreNew, TValue } from './style';
 
 export default function reset(value: TValue = {}, options_: IOptions = {}) {
@@ -15,21 +15,21 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
   const { name = 'Reset' } = options_;
 
   function useReset(props_?: any) {
-    const amauiStyle = useAmauiStyle();
-    const amauiTheme = useAmauiTheme();
+    const onesyStyle = useOnesyStyle();
+    const onesyTheme = useOnesyTheme();
 
     const refs = {
       update: React.useRef<any>(undefined)
     };
 
-    const resolve = (theme = amauiTheme) => {
+    const resolve = (theme = onesyTheme) => {
       let valueNew = value;
 
       if (is('function', value)) valueNew = (value as any)(theme);
 
       // Add style add & overrides
-      if (amauiTheme.ui?.elements?.[name as any]?.style) {
-        const { add, override } = amauiTheme.ui.elements[name as any].style;
+      if (onesyTheme.ui?.elements?.[name as any]?.style) {
+        const { add, override } = onesyTheme.ui.elements[name as any].style;
 
         // Add
         if (add) {
@@ -52,7 +52,7 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
       return valueNew;
     };
 
-    // Updates for amauiTheme
+    // Updates for onesyTheme
     const method = React.useCallback((updateValue: any, updatedTheme: any) => {
       if (is('function', value)) {
         const valueNew = resolve(updatedTheme);
@@ -66,34 +66,34 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
       let response_: any;
 
       // Method
-      // If it's a new instance of amauiTheme
+      // If it's a new instance of onesyTheme
       // make a new responses with it
-      response_ = responses.find((item: any) => item.amauiTheme.id === amauiTheme.id);
+      response_ = responses.find((item: any) => item.onesyTheme.id === onesyTheme.id);
 
       if (response_) return response_;
 
       // If there's not add a new response and use it
       const options: any = {
-        amaui_style: { value: undefined },
-        amaui_theme: { value: undefined },
+        onesy_style: { value: undefined },
+        onesy_theme: { value: undefined },
       };
 
-      // AmauiStyle
-      if (amauiStyle !== undefined) options.amaui_style.value = amauiStyle;
+      // OnesyStyle
+      if (onesyStyle !== undefined) options.onesy_style.value = onesyStyle;
 
-      // AmauiTheme
-      if (amauiTheme !== undefined) options.amaui_theme.value = amauiTheme;
+      // OnesyTheme
+      if (onesyTheme !== undefined) options.onesy_theme.value = onesyTheme;
 
-      response_ = amauiResetMethod(resolve() as any, merge(options, options_, { copy: true }));
+      response_ = onesyResetMethod(resolve() as any, merge(options, options_, { copy: true }));
 
-      // Add the amauiTheme to the response_
-      response_.amauiTheme = amauiTheme;
+      // Add the onesyTheme to the response_
+      response_.onesyTheme = onesyTheme;
 
       // Add value to the responses
       responses.push(response_);
 
       // Update
-      if (amauiTheme) amauiTheme.subscriptions.update.subscribe(method);
+      if (onesyTheme) onesyTheme.subscriptions.update.subscribe(method);
 
       return response_;
     };
@@ -131,15 +131,15 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
         refs.update.current = 'refresh';
 
         // Remove response from the responses
-        // if users is 0 in amauiStyleSheetManager
-        if (!response?.amaui_style_sheet_manager?.users) {
-          const index = responses.findIndex((item: any) => item.amauiTheme.id === amauiTheme.id);
+        // if users is 0 in onesyStyleSheetManager
+        if (!response?.onesy_style_sheet_manager?.users) {
+          const index = responses.findIndex((item: any) => item.onesyTheme.id === onesyTheme.id);
 
           if (index > -1) {
             responses.splice(index, 1);
 
             // Unsubscribe
-            if (amauiTheme) amauiTheme.subscriptions.update.unsubscribe(method);
+            if (onesyTheme) onesyTheme.subscriptions.update.unsubscribe(method);
           }
         }
       };

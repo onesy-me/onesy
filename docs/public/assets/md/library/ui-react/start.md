@@ -2,21 +2,21 @@
 ### Add
 
 ```bash
-yarn add @amaui/ui-react
+yarn add @onesy/ui-react
 ```
 
 <br />
-Add `@amaui/style-react` peer dependency.
+Add `@onesy/style-react` peer dependency.
 
 ```bash
-yarn add @amaui/style-react
+yarn add @onesy/style-react
 ```
 
 ### Use
 
 ```tsx
 // Import any of the ui
-import { Button } from '@amaui/ui-react';
+import { Button } from '@onesy/ui-react';
 
 function A(props) {
 

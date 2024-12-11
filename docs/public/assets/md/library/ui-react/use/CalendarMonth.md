@@ -5,13 +5,13 @@
 #### TCalendarMonthValue
 
 ```ts
-type TCalendarMonthValue = AmauiDate | [AmauiDate, AmauiDate];
+type TCalendarMonthValue = OnesyDate | [OnesyDate, OnesyDate];
 ```
 
 #### TCalendarMonthCalendar
 
 ```ts
-type TCalendarMonthCalendar = AmauiDate;
+type TCalendarMonthCalendar = OnesyDate;
 ```
 
 #### ICalendarMonthValuesValue
@@ -23,9 +23,9 @@ interface ICalendarMonthValuesValue {
     year: string;
     inputModal: string;
     input: string;
-    selected: AmauiDate;
-    date: AmauiDate;
-    previous: AmauiDate;
+    selected: OnesyDate;
+    date: OnesyDate;
+    previous: OnesyDate;
     move: 'previous' | 'next';
 }
 ```
@@ -54,12 +54,12 @@ interface ICalenarDays extends IBaseElement {
     weekStartDay: 'Monday' | 'Sunday';
     noTransition?: boolean;
     offset?: number;
-    min?: AmauiDate;
-    max?: AmauiDate;
-    validate?: (value: AmauiDate) => boolean;
+    min?: OnesyDate;
+    max?: OnesyDate;
+    validate?: (value: OnesyDate) => boolean;
     labels?: boolean;
-    valid?: (value: AmauiDate, version: 'day' | 'month' | 'year') => boolean;
-    renderDay?: (value: AmauiDate, props: any, today: boolean, weekend: boolean, selected: boolean, outside: boolean) => React.ReactNode;
+    valid?: (value: OnesyDate, version: 'day' | 'month' | 'year') => boolean;
+    renderDay?: (value: OnesyDate, props: any, today: boolean, weekend: boolean, selected: boolean, outside: boolean) => React.ReactNode;
     TransitionProps?: TPropsAny;
     TransitionsProps?: TPropsAny;
 }

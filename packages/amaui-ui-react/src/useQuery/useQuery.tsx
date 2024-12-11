@@ -9,6 +9,6 @@ const useQuery = () => {
   return value;
 };
 
-useQuery.displayName = 'amaui-UseQuery';
+useQuery.displayName = 'onesy-UseQuery';
 
 export default useQuery;

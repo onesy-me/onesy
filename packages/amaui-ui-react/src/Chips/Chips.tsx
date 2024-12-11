@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import ChipElement from '../Chip/Chip';
@@ -57,7 +57,7 @@ const useStyle = styleMethod(theme => ({
   wrap_large: {
     // rowGap: '20px'
   }
-}), { name: 'amaui-Chips' });
+}), { name: 'onesy-Chips' });
 
 export interface IChips extends ILine {
   total?: number;
@@ -70,9 +70,9 @@ export interface IChips extends ILine {
 }
 
 const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiChips?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChips?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -168,8 +168,8 @@ const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Chips', theme) && [
-          'amaui-Chips-root',
-          `amaui-Chips-size-${size}`
+          'onesy-Chips-root',
+          `onesy-Chips-size-${size}`
         ],
 
         className,
@@ -196,6 +196,6 @@ const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Chips.displayName = 'amaui-Chips';
+Chips.displayName = 'onesy-Chips';
 
 export default Chips;

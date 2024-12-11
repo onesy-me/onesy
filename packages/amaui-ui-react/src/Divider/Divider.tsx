@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import SurfaceElement from '../Surface';
@@ -139,7 +139,7 @@ const useStyle = styleMethod(theme => ({
     marginLeft: `72px`,
     width: `calc(100% - 72px)`
   }
-}), { name: 'amaui-Divider' });
+}), { name: 'onesy-Divider' });
 
 export interface IDivider extends ISurface {
   inset?: boolean;
@@ -152,9 +152,9 @@ export interface IDivider extends ISurface {
 }
 
 const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDivider?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDivider?.props?.default, ...props_ }), [props_]);
 
   const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
 
@@ -215,7 +215,7 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Divider', theme) && [
-          'amaui-Divider-root'
+          'onesy-Divider-root'
         ],
 
         className,
@@ -247,7 +247,7 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Divider', theme) && [
-              'amaui-Divider-divider'
+              'onesy-Divider-divider'
             ],
 
             classes.divider,
@@ -267,7 +267,7 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Divider', theme) && [
-              'amaui-Divider-text'
+              'onesy-Divider-text'
             ],
 
             classes.text,
@@ -286,7 +286,7 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Divider', theme) && [
-              'amaui-Divider-divider'
+              'onesy-Divider-divider'
             ],
 
             classes.divider,
@@ -305,6 +305,6 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Divider.displayName = 'amaui-Divider';
+Divider.displayName = 'onesy-Divider';
 
 export default Divider;

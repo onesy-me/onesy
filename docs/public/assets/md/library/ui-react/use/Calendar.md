@@ -2,11 +2,11 @@
 
 ## API
 
-#### TGetAmauiDates
+#### TGetOnesyDates
 
 ```ts
-type TGetAmauiDates = (value: TCalendarMonthValue, calendar: TCalendarMonthCalendar, props: TPropsAny) => Array<{
-    value: AmauiDate;
+type TGetOnesyDates = (value: TCalendarMonthValue, calendar: TCalendarMonthCalendar, props: TPropsAny) => Array<{
+    value: OnesyDate;
 }>;
 ```
 
@@ -33,14 +33,14 @@ interface ICalendar extends IBaseElement {
     now?: boolean;
     range?: boolean;
     calendars?: number;
-    min?: AmauiDate;
-    max?: AmauiDate;
-    validate?: (value: AmauiDate) => boolean;
+    min?: OnesyDate;
+    max?: OnesyDate;
+    validate?: (value: OnesyDate) => boolean;
     menu_month_previous_unit?: TCalendarUnit;
     menu_month_next_unit?: TCalendarUnit;
-    valid?: (value: AmauiDate, version: TCalendarUnit) => boolean;
-    geMonths?: TGetAmauiDates;
-    geYears?: TGetAmauiDates;
+    valid?: (value: OnesyDate, version: TCalendarUnit) => boolean;
+    geMonths?: TGetOnesyDates;
+    geYears?: TGetOnesyDates;
     belowCalendars?: any;
     IconPrevious?: TElementReference;
     IconNext?: TElementReference;

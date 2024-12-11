@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, textToInnerHTML } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, textToInnerHTML } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import SectionElement, { ISection } from '../Section/Section';
@@ -44,7 +44,7 @@ const useStyle = styleMethod(theme => ({
     padding: `${theme.methods.space.value(4, 'px')} ${theme.methods.space.value(4.5, 'px')}`,
     borderRadius: theme.methods.shape.radius.value(4)
   }
-}), { name: 'amaui-SectionReviews' });
+}), { name: 'onesy-SectionReviews' });
 
 export interface ISectionReviewsItem {
   name: string;
@@ -69,9 +69,9 @@ export interface ISectionReviews extends ISection {
 }
 
 const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionReviews?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionReviews?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -123,8 +123,8 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
       className={classNames([
         staticClassName('SectionReviews', theme) && [
-          'amaui-SectionReviews-root',
-          `amaui-SectionReviews-size-${size}`
+          'onesy-SectionReviews-root',
+          `onesy-SectionReviews-size-${size}`
         ],
 
         className,
@@ -146,7 +146,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
         className={classNames([
           staticClassName('SectionReviews', theme) && [
-            'amaui-SectionReviews-reviews'
+            'onesy-SectionReviews-reviews'
           ],
 
           ReviewsProps?.className,
@@ -165,7 +165,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
             className={classNames([
               staticClassName('SectionReviews', theme) && [
-                'amaui-SectionReviews-review'
+                'onesy-SectionReviews-review'
               ],
 
               ReviewProps?.className,
@@ -189,7 +189,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
                 className={classNames([
                   staticClassName('SectionReviews', theme) && [
-                    'amaui-SectionReviews-avatar'
+                    'onesy-SectionReviews-avatar'
                   ],
 
                   AvatarProps?.className
@@ -214,7 +214,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
                   className={classNames([
                     staticClassName('SectionReviews', theme) && [
-                      'amaui-SectionReviews-rating'
+                      'onesy-SectionReviews-rating'
                     ],
 
                     RatingProps?.className
@@ -237,7 +237,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
                     className={classNames([
                       staticClassName('SectionReviews', theme) && [
-                        'amaui-SectionReviews-name'
+                        'onesy-SectionReviews-name'
                       ],
 
                       NameProps?.className
@@ -256,7 +256,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
                       className={classNames([
                         staticClassName('SectionReviews', theme) && [
-                          'amaui-SectionReviews-meta'
+                          'onesy-SectionReviews-meta'
                         ],
 
                         MetaProps?.className
@@ -283,7 +283,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
                 className={classNames([
                   staticClassName('SectionReviews', theme) && [
-                    'amaui-SectionReviews-description'
+                    'onesy-SectionReviews-description'
                   ],
 
                   DescriptionProps?.className
@@ -297,6 +297,6 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
   );
 });
 
-Element.displayName = 'amaui-SectionReviews';
+Element.displayName = 'onesy-SectionReviews';
 
 export default Element;

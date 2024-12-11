@@ -8,11 +8,11 @@ Client command for making static css using the `css` method, in the back end.
 Options can either be in:
 - Command line arguments
   ```ts
-yarn amaui-style --imports=ts-node/register/transpile-only --files=test/example/test/**/a.ts --package=a/package.json --log=false
+yarn onesy-style --imports=ts-node/register/transpile-only --files=test/example/test/**/a.ts --package=a/package.json --log=false
   ```
-- In `amaui-style.options.js` file.
+- In `onesy-style.options.js` file.
   ```ts
-// amaui-style.options.js
+// onesy-style.options.js
 module.exports = {
   imports: [
     'ts-node/register/transpile-only'
@@ -21,12 +21,12 @@ module.exports = {
   log: false
 };
   ```
-- In `package.json`'s `amaui-style` property.
+- In `package.json`'s `onesy-style` property.
   ```ts
 {
   ...
 
-  'amaui-style': {
+  'onesy-style': {
     imports: [
       'ts-node/register/transpile-only'
     ],
@@ -67,7 +67,7 @@ Custom path to `package.json`.
 
 //   "scripts": {
 //     // Any name for the command
-//     "makeCSS": "amaui-style"
+//     "makeCSS": "onesy-style"
 //   },
 
 //   ...
@@ -82,7 +82,7 @@ yarn makeCSS
 npm run makeCSS
 
 // or with the command line directly
-amaui-style
+onesy-style
 ```
 
 ~{

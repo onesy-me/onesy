@@ -3,17 +3,17 @@ import LinkNext from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { isEnvironment, random } from '@amaui/utils';
+import { isEnvironment, random } from '@onesy/utils';
 
-import { Avatar, Line, Link, List, MenuItem, ListSubheader, NavigationDrawer, SpeedDial, SpeedDialItem, Surface, Switch, Tooltip, Type, useMediaQuery } from '@amaui/ui-react';
-import { classNames, colors, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import AmauiStorage from '@amaui/storage';
+import { Avatar, Line, Link, List, MenuItem, ListSubheader, NavigationDrawer, SpeedDial, SpeedDialItem, Surface, Switch, Tooltip, Type, useMediaQuery } from '@onesy/ui-react';
+import { classNames, colors, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import OnesyStorage from '@onesy/storage';
 
-import IconMaterialTempPreferencesCustomRounded from '@amaui/icons-material-rounded-react/IconMaterialTempPreferencesCustom';
-import IconMaterialLightModeRounded from '@amaui/icons-material-rounded-react/IconMaterialLightMode';
-import IconMaterialDarkModeRounded from '@amaui/icons-material-rounded-react/IconMaterialDarkMode';
-import IconMaterialFormatTextdirectionLToRRounded from '@amaui/icons-material-rounded-react/IconMaterialFormatTextdirectionLToR';
-import IconMaterialFormatTextdirectionRToLRounded from '@amaui/icons-material-rounded-react/IconMaterialFormatTextdirectionRToL';
+import IconMaterialTempPreferencesCustomRounded from '@onesy/icons-material-rounded-react/IconMaterialTempPreferencesCustom';
+import IconMaterialLightModeRounded from '@onesy/icons-material-rounded-react/IconMaterialLightMode';
+import IconMaterialDarkModeRounded from '@onesy/icons-material-rounded-react/IconMaterialDarkMode';
+import IconMaterialFormatTextdirectionLToRRounded from '@onesy/icons-material-rounded-react/IconMaterialFormatTextdirectionLToR';
+import IconMaterialFormatTextdirectionRToLRounded from '@onesy/icons-material-rounded-react/IconMaterialFormatTextdirectionRToL';
 
 import sidenavJSON from '../assets/json/sidenav.json';
 
@@ -74,22 +74,22 @@ const useStyle = styleMethod(theme => ({
   navigationDrawer: {
     paddingBottom: 100,
 
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       overflowY: 'scroll',
       scrollbarWidth: 0
     },
 
-    '& .amaui-ListItem-end-button': {
+    '& .onesy-ListItem-end-button': {
       pointerEvents: 'none'
     },
 
-    '& .amaui-List-root': {
+    '& .onesy-List-root': {
       gap: 4
     }
   },
 
   navigationDrawer_desktop: {
-    '&.amaui-Modal-root': {
+    '&.onesy-Modal-root': {
       position: 'fixed !important',
       top: 0,
       insetInlineStart: 0,
@@ -100,7 +100,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   navigationDrawer_mobile: {
-    '&.amaui-Modal-root': {
+    '&.onesy-Modal-root': {
       paddingBottom: 0,
       zIndex: theme.z_index.tooltip + 2
     }
@@ -136,7 +136,7 @@ const useStyle = styleMethod(theme => ({
       transform: 'scale(0.91)'
     },
 
-    '&.amaui-Avatar-root.amaui-Button-root': {
+    '&.onesy-Avatar-root.onesy-Button-root': {
       cursor: 'pointer'
     }
   },
@@ -146,7 +146,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   menuItem_menu: {
-    '& > .amaui-ListItem-root .amaui-ListItem-text-primary': {
+    '& > .onesy-ListItem-root .onesy-ListItem-text-primary': {
       fontWeight: '600'
     }
   },
@@ -158,18 +158,18 @@ const useStyle = styleMethod(theme => ({
       paddingInlineStart: '23px !important'
     },
 
-    '& > * > .amaui-ListItem-root .amaui-ListItem-text': {
+    '& > * > .onesy-ListItem-root .onesy-ListItem-text': {
       fontSize: '0.925rem'
     },
 
-    '&.amaui-Line-root': {
+    '&.onesy-Line-root': {
       width: '90vw',
       maxWidth: 274,
       paddingTop: 0,
       overflow: 'unset'
     },
 
-    '&.amaui-Surface-root:not(.amaui-ListSubheader-root), & .amaui-Surface-root:not(.amaui-ListSubheader-root)': {
+    '&.onesy-Surface-root:not(.onesy-ListSubheader-root), & .onesy-Surface-root:not(.onesy-ListSubheader-root)': {
       background: 'transparent'
     }
   },
@@ -183,7 +183,7 @@ const useStyle = styleMethod(theme => ({
 
   [`@media only screen and (min-width: 1100px)`]: {
     $navigationDrawer: {
-      '& .amaui-Modal-surface': {
+      '& .onesy-Modal-surface': {
         background: 'transparent'
       }
     }
@@ -215,7 +215,7 @@ const MenuItemNext = (props: any) => {
 };
 
 function Root(props: any) {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
   const router = useRouter();
 
   const { classes } = useStyle(props);
@@ -229,7 +229,7 @@ function Root(props: any) {
   const [open, setOpen] = React.useState(false);
 
   const refs = {
-    storage: new AmauiStorage({ namespace: 'amaui-docs' }),
+    storage: new OnesyStorage({ namespace: 'onesy-docs' }),
     imageSelected: React.useRef<any>(undefined),
     images: React.useRef<any[]>([]),
     sidenavMenu: React.useRef<any>(undefined),
@@ -346,7 +346,7 @@ function Root(props: any) {
     });
 
     // Clean up
-    const elements = window.document.querySelectorAll('#amaui-initial-css');
+    const elements = window.document.querySelectorAll('#onesy-initial-css');
 
     elements.forEach(element => element.remove());
 
@@ -550,7 +550,7 @@ function Root(props: any) {
 
   return <>
     <Head>
-      <title>amaui</title>
+      <title>onesy</title>
 
       <meta property='description' content='Make Modern Web &amp; Mobile Apps Quickly 100+ UI elements' />
 
@@ -744,7 +744,7 @@ function Root(props: any) {
               <Link
                 version='m3'
 
-                href='https://github.com/amaui-org/amaui/blob/main/LICENSE'
+                href='https://github.com/onesy-org/onesy/blob/main/LICENSE'
 
                 target='_blank'
 

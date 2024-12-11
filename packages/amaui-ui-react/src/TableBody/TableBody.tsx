@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
@@ -13,11 +13,11 @@ const useStyle = styleMethod(theme => ({
     background: 'inherit',
     transition: theme.methods.transitions.make('opacity'),
 
-    '& .amaui-TableRow-root:last-child hr': {
+    '& .onesy-TableRow-root:last-child hr': {
       display: 'none'
     },
 
-    '& .amaui-TableCell-root': {
+    '& .onesy-TableCell-root': {
       wordBreak: 'normal'
     }
   },
@@ -26,7 +26,7 @@ const useStyle = styleMethod(theme => ({
     opacity: 0.4,
     pointerEvents: 'none'
   }
-}), { name: 'amaui-TableBody' });
+}), { name: 'onesy-TableBody' });
 
 export interface ITableBody extends ISurface {
   loading?: boolean;
@@ -35,9 +35,9 @@ export interface ITableBody extends ISurface {
 }
 
 const TableBody: React.FC<ITableBody> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTableBody?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableBody?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -81,8 +81,8 @@ const TableBody: React.FC<ITableBody> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('TableBody', theme) && [
-          `amaui-TableBody-root`,
-          `amaui-TableBody-size-${size}`
+          `onesy-TableBody-root`,
+          `onesy-TableBody-size-${size}`
         ],
 
         className,
@@ -107,6 +107,6 @@ const TableBody: React.FC<ITableBody> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-TableBody.displayName = 'amaui-TableBody';
+TableBody.displayName = 'onesy-TableBody';
 
 export default TableBody;

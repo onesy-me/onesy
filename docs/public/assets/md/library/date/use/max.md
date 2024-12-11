@@ -1,14 +1,14 @@
 
 # max
 
-Returns max AmauiDate from array of AmauiDates.
+Returns max OnesyDate from array of OnesyDates.
 
 ```ts
 format(max([
-  new AmauiDate('2014-04-14T14:04:14'),
-  new AmauiDate('2014-04-17T14:04:14'),
-  new AmauiDate('2014-04-14T14:40:14'),
-  new AmauiDate('2014-04-14T14:41:14')
+  new OnesyDate('2014-04-14T14:04:14'),
+  new OnesyDate('2014-04-17T14:04:14'),
+  new OnesyDate('2014-04-14T14:40:14'),
+  new OnesyDate('2014-04-14T14:41:14')
 ]));
 
 // '2014-04-17T14:04:14'
@@ -19,7 +19,7 @@ format(max([
 #### max
 
 ```ts
-default function max(values?: Array<AmauiDate>): AmauiDate;
+default function max(values?: Array<OnesyDate>): OnesyDate;
 ```
 
 

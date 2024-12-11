@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { is, clamp, pagination } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, clamp, pagination } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialLastPage from '@amaui/icons-material-rounded-react/IconMaterialLastPageW100';
-import IconMaterialFirstPage from '@amaui/icons-material-rounded-react/IconMaterialFirstPageW100';
-import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
-import IconMaterialNavigateBefore from '@amaui/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
+import IconMaterialLastPage from '@onesy/icons-material-rounded-react/IconMaterialLastPageW100';
+import IconMaterialFirstPage from '@onesy/icons-material-rounded-react/IconMaterialFirstPageW100';
+import IconMaterialNavigateNext from '@onesy/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialNavigateBefore from '@onesy/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
 
 import TypeElement from '../Type';
 import LineElement from '../Line';
@@ -37,7 +37,7 @@ const useStyle = styleMethod(theme => ({
   dots_size_large: {
     width: '50px'
   }
-}), { name: 'amaui-Pagination' });
+}), { name: 'onesy-Pagination' });
 
 export interface IPagination extends ILine {
   tonal?: ITonal;
@@ -71,9 +71,9 @@ export interface IPagination extends ILine {
 }
 
 const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPagination?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPagination?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -144,7 +144,7 @@ const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) =>
 
         className={classNames([
           staticClassName('Pagination', theme) && [
-            `amaui-Pagination-dots`
+            `onesy-Pagination-dots`
           ],
 
           classes.dots,
@@ -204,9 +204,9 @@ const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('Pagination', theme) && [
-          `amaui-Pagination-root`,
-          `amaui-Pagination-version-${version}`,
-          `amaui-Pagination-size-${size}`
+          `onesy-Pagination-root`,
+          `onesy-Pagination-version-${version}`,
+          `onesy-Pagination-size-${size}`
         ],
 
         className,
@@ -275,6 +275,6 @@ const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-Pagination.displayName = 'amaui-Pagination';
+Pagination.displayName = 'onesy-Pagination';
 
 export default Pagination;

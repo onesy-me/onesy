@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { cleanValue, is, textToInnerHTML } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme, colors } from '@amaui/style-react';
-import { AmauiDate, add, endOf, format, set, startOf } from '@amaui/date';
+import { cleanValue, is, textToInnerHTML } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme, colors } from '@onesy/style-react';
+import { OnesyDate, add, endOf, format, set, startOf } from '@onesy/date';
 
 import LineElement from '../Line';
 import TypeElement from '../Type';
@@ -118,7 +118,7 @@ const useStyle = styleMethod(theme => ({
       transition: theme.methods.transitions.make('opacity')
     },
 
-    '& > .amaui-work-day-time': {
+    '& > .onesy-work-day-time': {
       opacity: 0
     },
 
@@ -126,7 +126,7 @@ const useStyle = styleMethod(theme => ({
       zIndex: 14,
       boxShadow: theme.shadows.values.default[2],
 
-      '& > .amaui-work-day-time': {
+      '& > .onesy-work-day-time': {
         opacity: 1
       }
     }
@@ -138,10 +138,10 @@ const useStyle = styleMethod(theme => ({
     padding: '0px 2px',
     borderRadius: 2
   }
-}), { name: 'amaui-CalendarWeek' });
+}), { name: 'onesy-CalendarWeek' });
 
 export interface ICalendarWeek extends ILine {
-  date?: AmauiDate;
+  date?: OnesyDate;
 
   times?: any;
 
@@ -149,7 +149,7 @@ export interface ICalendarWeek extends ILine {
 
   onOpen?: (object?: any, event?: MouseEvent) => any;
 
-  onTimeClick?: (date: AmauiDate, view: ICalendarViewsView, event: MouseEvent) => any;
+  onTimeClick?: (date: OnesyDate, view: ICalendarViewsView, event: MouseEvent) => any;
 
   render?: (item: any, view: 'week' | 'day') => any;
 
@@ -161,9 +161,9 @@ export interface ICalendarWeek extends ILine {
 }
 
 const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCalendarWeek?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarWeek?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -199,7 +199,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
   const { classes } = useStyle();
 
-  const [now, setNow] = React.useState(new AmauiDate());
+  const [now, setNow] = React.useState(new OnesyDate());
 
   const refs = {
     date: React.useRef(date),
@@ -236,7 +236,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
   React.useEffect(() => {
     // 1 minute
     refs.interval.current = setInterval(() => {
-      setNow(new AmauiDate());
+      setNow(new OnesyDate());
     }, 60 * 1e3);
 
     return () => {
@@ -250,9 +250,9 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     return values.map((item: any) => {
       if (item.entire) {
         if (item.from) {
-          let from = new AmauiDate(item.from);
+          let from = new OnesyDate(item.from);
 
-          let to: AmauiDate;
+          let to: OnesyDate;
 
           if (['day', 'week', 'month', 'year'].includes(item.entire)) from = startOf(from, 'day');
 
@@ -302,11 +302,11 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     return item;
   }, []);
 
-  const renderTimes = (day: AmauiDate, valuesAll: any, weekly = true, itemDay?: any) => {
+  const renderTimes = (day: OnesyDate, valuesAll: any, weekly = true, itemDay?: any) => {
     if (itemDay !== undefined && !itemDay?.active) return null;
 
     if (weekly) {
-      const ends_at = itemDay?.ends_at ? new AmauiDate(itemDay.ends_at) : undefined;
+      const ends_at = itemDay?.ends_at ? new OnesyDate(itemDay.ends_at) : undefined;
 
       if (ends_at) {
         const day_StartDay = startOf(day, 'day');
@@ -321,10 +321,10 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     const dayDate = format(day, formats.date);
 
     const values = valuesAll?.filter((item: any) => {
-      const from = new AmauiDate(item.from);
+      const from = new OnesyDate(item.from);
       const fromStartOfDay = startOf(from, 'day');
 
-      const to = new AmauiDate(item.to);
+      const to = new OnesyDate(item.to);
       const toStartOfDay = startOf(to, 'day');
 
       return [undefined, true].includes(refs.statuses.current[item.status || 'working']) && (weekly ? weekly : (
@@ -352,9 +352,9 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     values?.forEach((item: any, index: number) => {
       if (!(item.from && item.to)) return;
 
-      let from = new AmauiDate(item.from);
+      let from = new OnesyDate(item.from);
 
-      let to = new AmauiDate(item.to);
+      let to = new OnesyDate(item.to);
 
       if (!weekly) {
         const fromStartOfDay = startOf(from, 'day');
@@ -378,9 +378,9 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
         ) item.to = endOf(to, 'day').milliseconds;
       }
 
-      from = new AmauiDate(item.from);
+      from = new OnesyDate(item.from);
 
-      to = new AmauiDate(item.to);
+      to = new OnesyDate(item.to);
 
       const itemDate = format(day, formats.date);
 
@@ -511,7 +511,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     return elements;
   };
 
-  const onTimeClickMethod = React.useCallback((itemDay: AmauiDate, event: MouseEvent) => {
+  const onTimeClickMethod = React.useCallback((itemDay: OnesyDate, event: MouseEvent) => {
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
 
     const relativeY = event.clientY - rect.top;
@@ -526,7 +526,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     onTimeClick?.(timeDate, dayProp ? 'day' : 'week', event);
   }, []);
 
-  const timesUI = React.useCallback((dayDate: AmauiDate) => {
+  const timesUI = React.useCallback((dayDate: OnesyDate) => {
     // clean up
     refs.days.current = {};
     refs.overlaping.current = {};
@@ -566,8 +566,8 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('CalendarWeek', theme) && [
-          'amaui-CalendarWeek-root',
-          dayProp && 'amaui-CalendarWeek-prop-day'
+          'onesy-CalendarWeek-root',
+          dayProp && 'onesy-CalendarWeek-prop-day'
         ],
 
         className,
@@ -597,7 +597,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
           fullWidth
 
           className={classNames([
-            'amaui-hours',
+            'onesy-hours',
 
             classes.hours
           ])}
@@ -652,7 +652,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
             flex
 
             className={classNames([
-              'amaui-day',
+              'onesy-day',
 
               classes.day
             ])}
@@ -752,7 +752,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
               flex
 
               className={classNames([
-                'amaui-day',
+                'onesy-day',
 
                 classes.day
               ])}
@@ -843,6 +843,6 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
   );
 });
 
-CalendarWeek.displayName = 'amaui-CalendarWeek';
+CalendarWeek.displayName = 'onesy-CalendarWeek';
 
 export default CalendarWeek;

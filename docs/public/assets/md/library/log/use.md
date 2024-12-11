@@ -1,5 +1,5 @@
 
-# AmauiLog
+# OnesyLog
 
 ### Options
 
@@ -11,7 +11,7 @@ If log is enabled, if false, even when calling the log methods it won't log to t
 
 ##### archive
 
-If all logs should be saved for history purpose in the `archive` array property of the AmauiLog instance.
+If all logs should be saved for history purpose in the `archive` array property of the OnesyLog instance.
 
 ##### native
 
@@ -89,13 +89,13 @@ If you want the date to be added for each log line, default true.
 
 ##### method
 
-Date format method, that should return now time as a formated string, default `@amaui/date`'s `format` method.
+Date format method, that should return now time as a formated string, default `@onesy/date`'s `format` method.
 
 #### stringify
 
 ##### method
 
-Method used to stringify arguments that aren't strings when adding them to the console, default `@amaui/utils`'s `stringify` method.
+Method used to stringify arguments that aren't strings when adding them to the console, default `@onesy/utils`'s `stringify` method.
 
 ### Methods
 
@@ -104,9 +104,9 @@ Method used to stringify arguments that aren't strings when adding them to the c
 General log method, where first argument is type of log method to use, rest of the arguments are used for the console log.
 
 ```ts
-const amauiLog = new AmauiLog();
+const onesyLog = new OnesyLog();
 
-amauiLog.log('info', 'Collection: A', 'Response: 40ms');
+onesyLog.log('info', 'Collection: A', 'Response: 40ms');
 
 // in the console writen:
 
@@ -120,9 +120,9 @@ amauiLog.log('info', 'Collection: A', 'Response: 40ms');
 #### debug
 
 ```ts
-const amauiLog = new AmauiLog();
+const onesyLog = new OnesyLog();
 
-amauiLog.debug('Collection: A', 'Response: 40ms');
+onesyLog.debug('Collection: A', 'Response: 40ms');
 
 // in the console writen:
 
@@ -136,9 +136,9 @@ amauiLog.debug('Collection: A', 'Response: 40ms');
 #### info
 
 ```ts
-const amauiLog = new AmauiLog();
+const onesyLog = new OnesyLog();
 
-amauiLog.info('Collection: A', 'Response: 40ms');
+onesyLog.info('Collection: A', 'Response: 40ms');
 
 // in the console writen:
 
@@ -152,9 +152,9 @@ amauiLog.info('Collection: A', 'Response: 40ms');
 #### warn
 
 ```ts
-const amauiLog = new AmauiLog();
+const onesyLog = new OnesyLog();
 
-amauiLog.warn('Collection: A', 'Response: 40ms');
+onesyLog.warn('Collection: A', 'Response: 40ms');
 
 // in the console writen:
 
@@ -168,9 +168,9 @@ amauiLog.warn('Collection: A', 'Response: 40ms');
 #### error
 
 ```ts
-const amauiLog = new AmauiLog();
+const onesyLog = new OnesyLog();
 
-amauiLog.error('Collection: A', 'Response: 40ms');
+onesyLog.error('Collection: A', 'Response: 40ms');
 
 // in the console writen:
 
@@ -184,9 +184,9 @@ amauiLog.error('Collection: A', 'Response: 40ms');
 #### important
 
 ```ts
-const amauiLog = new AmauiLog();
+const onesyLog = new OnesyLog();
 
-amauiLog.important('Collection: A', 'Response: 40ms');
+onesyLog.important('Collection: A', 'Response: 40ms');
 
 // in the console writen:
 
@@ -202,9 +202,9 @@ amauiLog.important('Collection: A', 'Response: 40ms');
 Clears the archive, makes it its initial empty value.
 
 ```ts
-const amauiLog = new AmauiLog({ log: { archive: true }});
+const onesyLog = new OnesyLog({ log: { archive: true }});
 
-amauiLog.info('Collection: A', 'Response: 40ms');
+onesyLog.info('Collection: A', 'Response: 40ms');
 
 // in the console writen:
 
@@ -213,13 +213,13 @@ amauiLog.info('Collection: A', 'Response: 40ms');
   // Collection: A
   // Response: 40ms
 
-amauiLog.archive.length;
+onesyLog.archive.length;
 
 // 1
 
-amauiLog.archiveClear();
+onesyLog.archiveClear();
 
-amauiLog.archive
+onesyLog.archive
 
 // []
 ```
@@ -228,66 +228,66 @@ amauiLog.archive
 
 #### Global options
 
-If you have multiple instances of `AmauiLog` in your app, and you want to globally disable them all, and not each of them individually, you can just set `AmauiLog.options.log.enabled = false` and it will in one place disable all of them from logging to the console.
+If you have multiple instances of `OnesyLog` in your app, and you want to globally disable them all, and not each of them individually, you can just set `OnesyLog.options.log.enabled = false` and it will in one place disable all of them from logging to the console.
 
 All of the global options are the same as instance options, just as static properties.
 
 ```ts
-AmauiLog.options;
-AmauiLog.variants;
-AmauiLog.archive;
-AmauiLog.variantNames;
-AmauiLog.variantsDefault;
+OnesyLog.options;
+OnesyLog.variants;
+OnesyLog.archive;
+OnesyLog.variantNames;
+OnesyLog.variantsDefault;
 ```
 
-#### amauilog
+#### onesylog
 
-Returns `AmauiLog` instance with default options.
+Returns `OnesyLog` instance with default options.
 
 ```ts
-AmauiLog.amauilog;
+OnesyLog.onesylog;
 
-// AmauiLog { }
+// OnesyLog { }
 ```
 
 #### Static log methods
 
-Do the same as the instance log methods only by creating `AmauiLog` instance with default options.
+Do the same as the instance log methods only by creating `OnesyLog` instance with default options.
 
 ##### log
 
 ```ts
-AmauiLog.log('info', 'a');
+OnesyLog.log('info', 'a');
 ```
 
 ##### debug
 
 ```ts
-AmauiLog.debug('a');
+OnesyLog.debug('a');
 ```
 
 ##### info
 
 ```ts
-AmauiLog.info('a');
+OnesyLog.info('a');
 ```
 
 ##### warn
 
 ```ts
-AmauiLog.warn('a');
+OnesyLog.warn('a');
 ```
 
 ##### error
 
 ```ts
-AmauiLog.error('a');
+OnesyLog.error('a');
 ```
 
 ##### important
 
 ```ts
-AmauiLog.important('a');
+OnesyLog.important('a');
 ```
 
 #### color
@@ -303,7 +303,7 @@ Default values:
 - default (green)
 
 ```ts
-AmauiLog.color('a', 'orange');
+OnesyLog.color('a', 'orange');
 
 // in the browser:
 // '%ca', 'color: #a9b030'
@@ -317,9 +317,9 @@ AmauiLog.color('a', 'orange');
 Static archiveClear method, for clearing static `archive` array of log values.
 
 ```ts
-AmauiLog.archiveClear();
+OnesyLog.archiveClear();
 
-AmauiLog.archive;
+OnesyLog.archive;
 
 // []
 ```
@@ -329,7 +329,7 @@ AmauiLog.archive;
 Static reset method, readds all the default static variants options, and updates static options to the default options.
 
 ```ts
-AmauiLog.reset();
+OnesyLog.reset();
 ```
 
 ## API
@@ -346,108 +346,108 @@ type TVariant = 'log' | 'debug' | 'info' | 'warn' | 'error' | 'important';
 const variantNames: Array<TVariant>;
 ```
 
-#### IAmauiLogVariantColor
+#### IOnesyLogVariantColor
 
 ```ts
-interface IAmauiLogVariantColor {
+interface IOnesyLogVariantColor {
     browser: string;
     server: string;
 }
 ```
 
-#### IAmauiLogVariantPre
+#### IOnesyLogVariantPre
 
 ```ts
-interface IAmauiLogVariantPre {
-    subscription: AmauiSubscription;
+interface IOnesyLogVariantPre {
+    subscription: OnesySubscription;
 }
 ```
 
-#### IAmauiLogVariantPost
+#### IOnesyLogVariantPost
 
 ```ts
-interface IAmauiLogVariantPost {
-    subscription: AmauiSubscription;
+interface IOnesyLogVariantPost {
+    subscription: OnesySubscription;
 }
 ```
 
-#### IAmauiLogVariant
+#### IOnesyLogVariant
 
 ```ts
-interface IAmauiLogVariant {
+interface IOnesyLogVariant {
     name: 'log' | TVariant;
     prefix?: any;
     sufix?: any;
-    color?: IAmauiLogVariantColor;
-    pre?: IAmauiLogVariantPre;
-    post?: IAmauiLogVariantPost;
+    color?: IOnesyLogVariantColor;
+    pre?: IOnesyLogVariantPre;
+    post?: IOnesyLogVariantPost;
 }
 ```
 
-#### IAmauiLogVariants
+#### IOnesyLogVariants
 
 ```ts
-type IAmauiLogVariants = {
-    [p in TVariant]?: IAmauiLogVariant;
+type IOnesyLogVariants = {
+    [p in TVariant]?: IOnesyLogVariant;
 };
 ```
 
-#### IAmauiLogOptionsLogPadding
+#### IOnesyLogOptionsLogPadding
 
 ```ts
-interface IAmauiLogOptionsLogPadding {
+interface IOnesyLogOptionsLogPadding {
     top?: boolean;
     bottom?: boolean;
 }
 ```
 
-#### IAmauiLogOptionsLog
+#### IOnesyLogOptionsLog
 
 ```ts
-interface IAmauiLogOptionsLog {
+interface IOnesyLogOptionsLog {
     archive?: boolean;
     enabled?: boolean;
     native?: boolean;
     variants?: Array<TVariant>;
-    padding?: IAmauiLogOptionsLogPadding;
+    padding?: IOnesyLogOptionsLogPadding;
 }
 ```
 
-#### IAmauiLogOptionsArguments
+#### IOnesyLogOptionsArguments
 
 ```ts
-interface IAmauiLogOptionsArguments {
+interface IOnesyLogOptionsArguments {
     pre?: any[];
     post?: any[];
 }
 ```
 
-#### IAmauiLogOptionsDate
+#### IOnesyLogOptionsDate
 
 ```ts
-interface IAmauiLogOptionsDate {
+interface IOnesyLogOptionsDate {
     add?: boolean;
     method?: TMethod;
 }
 ```
 
-#### IAmauiLogOptionsStringify
+#### IOnesyLogOptionsStringify
 
 ```ts
-interface IAmauiLogOptionsStringify {
+interface IOnesyLogOptionsStringify {
     method?: TMethod;
 }
 ```
 
-#### IAmauiLogOptions
+#### IOnesyLogOptions
 
 ```ts
-interface IAmauiLogOptions {
-    log?: IAmauiLogOptionsLog;
-    arguments?: IAmauiLogOptionsArguments;
-    variants?: IAmauiLogVariants;
-    date?: IAmauiLogOptionsDate;
-    stringify?: IAmauiLogOptionsStringify;
+interface IOnesyLogOptions {
+    log?: IOnesyLogOptionsLog;
+    arguments?: IOnesyLogOptionsArguments;
+    variants?: IOnesyLogVariants;
+    date?: IOnesyLogOptionsDate;
+    stringify?: IOnesyLogOptionsStringify;
 }
 ```
 
@@ -461,38 +461,38 @@ interface ILog {
 }
 ```
 
-#### IAmauiLog
+#### IOnesyLog
 
 ```ts
-interface IAmauiLog {
-    variants: IAmauiLogVariants;
-    options: IAmauiLogOptions;
+interface IOnesyLog {
+    variants: IOnesyLogVariants;
+    options: IOnesyLogOptions;
     [property: string]: any;
 }
 ```
 
-#### AmauiLog
+#### OnesyLog
 
 ```ts
-class AmauiLog implements IAmauiLog {
-    options: IAmauiLogOptions;
-    variants: IAmauiLogVariants;
+class OnesyLog implements IOnesyLog {
+    options: IOnesyLogOptions;
+    variants: IOnesyLogVariants;
     archive: any[];
-    static options: IAmauiLogOptions;
-    static variants: IAmauiLogVariants;
+    static options: IOnesyLogOptions;
+    static variants: IOnesyLogVariants;
     static archive: any[];
     static archiveClear(): void;
-    static get amauilog(): AmauiLog;
+    static get onesylog(): OnesyLog;
     static log(variant_?: TVariant, ...args: any[]): ILog;
     static debug(...args: any[]): ILog;
     static info(...args: any[]): ILog;
     static warn(...args: any[]): ILog;
     static error(...args: any[]): ILog;
     static important(...args: any[]): ILog;
-    static color(value: any, color?: string, options?: IAmauiLogVariantColor): Array<string>;
+    static color(value: any, color?: string, options?: IOnesyLogVariantColor): Array<string>;
     static get variantNames(): Array<TVariant>;
-    static get variantsDefault(): Array<IAmauiLogVariant>;
-    constructor(options?: IAmauiLogOptions);
+    static get variantsDefault(): Array<IOnesyLogVariant>;
+    constructor(options?: IOnesyLogOptions);
     log(variant_?: TVariant, ...args: any[]): ILog;
     debug(...args: any[]): undefined | ILog;
     info(...args: any[]): undefined | ILog;

@@ -17,13 +17,13 @@ Additionally
 Using `string`, instead of `style` method, it will inject a new style sheet in the DOM, for every instance of this element used in the app, where as using `style` method since its invokation is outside the element function body, you'll define it once, and for 1 or many used instances of the element only 1 style sheet for it will be added to the DOM.
 
 ```tsx
-import { className, useAmauiTheme } from '@amaui/style-react';
+import { className, useOnesyTheme } from '@onesy/style-react';
 
 const Button = () => {
-  const amauiTheme = useAmauiTheme();
+  const onesyTheme = useOnesyTheme();
 
   const classNameRoot = string`
-    color: ${amauiTheme.palette.text.default.primary};
+    color: ${onesyTheme.palette.text.default.primary};
     background: ${props.a === 1 ? 'yellow' : 'orange'};
   `;
 

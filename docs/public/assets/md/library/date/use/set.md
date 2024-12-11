@@ -1,10 +1,10 @@
 
 # set
 
-Set AmauiDate to a specific time unit.
+Set OnesyDate to a specific time unit.
 
 ```ts
-format(set(4, 'day', new AmauiDate('2014-04-14T14:04:14.147')));
+format(set(4, 'day', new OnesyDate('2014-04-14T14:04:14.147')));
 
 // '2014-04-04T14:04:14'
 ```
@@ -28,7 +28,7 @@ format(set(4, 'day', new AmauiDate('2014-04-14T14:04:14.147')));
 #### set
 
 ```ts
-default function set(value: number, unit: TTimeUnits, amauiDate_?: AmauiDate): AmauiDate;
+default function set(value: number, unit: TTimeUnits, onesyDate_?: OnesyDate): OnesyDate;
 ```
 
 

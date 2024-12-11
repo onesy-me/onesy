@@ -1,5 +1,5 @@
 
-# AmauiHuffmanCode
+# OnesyHuffmanCode
 
 It is an algorithm that takes in a string, and makes a graph of all the characters, and characters that repeat the most, get the highest value.
 
@@ -23,12 +23,12 @@ If both encoded value & encoded_values should be together base64 encoded, defaul
 
 #### encode
 
-Making an instance of `AmauiHuffmanCode` with a value, encodes the values automatically.
+Making an instance of `OnesyHuffmanCode` with a value, encodes the values automatically.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-const response = amauiHuffmanCode.encoded;
+const response = onesyHuffmanCode.encoded;
 
 response;
 
@@ -119,16 +119,16 @@ response;
 
 #### decode
 
-Decodes the previously encoded `AmauiHuffmanCode` value, by providing the encoded value, and decoded values (if they were encoded), only if using the static decode method, if using same `AmauiHuffmanCode` instance after encoding it already has the values of the dictionary inside of itself.
+Decodes the previously encoded `OnesyHuffmanCode` value, by providing the encoded value, and decoded values (if they were encoded), only if using the static decode method, if using same `OnesyHuffmanCode` instance after encoding it already has the values of the dictionary inside of itself.
 
 Decode using the same instance.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-const response = amauiHuffmanCode.encoded;
+const response = onesyHuffmanCode.encoded;
 
-amauiHuffmanCode.decode(response.value);
+onesyHuffmanCode.decode(response.value);
 
 // {
 //     "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.",
@@ -139,14 +139,14 @@ amauiHuffmanCode.decode(response.value);
 // }
 ```
 
-Or using the `AmauiHuffmanCode` static decode method.
+Or using the `OnesyHuffmanCode` static decode method.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-const response = amauiHuffmanCode.encoded;
+const response = onesyHuffmanCode.encoded;
 
-AmauiHuffmanCode.decode(response.value, response.values);
+OnesyHuffmanCode.decode(response.value, response.values);
 
 // {
 //     "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.",
@@ -159,18 +159,18 @@ AmauiHuffmanCode.decode(response.value, response.values);
 
 ### Other
 
-Usually all of these are only used if you make an instance of `AmauiHuffmanCode` without a value, and plan to manually add the value after, and call each of these methods manually.
+Usually all of these are only used if you make an instance of `OnesyHuffmanCode` without a value, and plan to manually add the value after, and call each of these methods manually.
 
 ##### getProbabilities
 
 Method that creates an object of all characters in the string, and for each how much it occurs.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode();
+const onesyHuffmanCode = new OnesyHuffmanCode();
 
-amauiHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
+onesyHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
 
-amauiHuffmanCode.getProbabilities();
+onesyHuffmanCode.getProbabilities();
 
 // { 'L': 1, 'o': 28, 'r': 31, 'e': 58, 'm': 23, ' ': 89, 'i': 45, 'p': 11, 's': 48, 'u': 31, 'd': 18, 'l': 24, 't': 46, 'a': 41, ',': 10, 'c': 18, 'n': 26, 'g': 4, '.': 10, 'F': 1, 'f': 3, 'h': 3, 'b': 4, 'S': 1, 'I': 2, 'C': 2, 'q': 5, 'v': 2, 'P': 1, 'D': 2, 'j': 1 }
 ```
@@ -180,13 +180,13 @@ amauiHuffmanCode.getProbabilities();
 Normalizes the probabilities of each character occuring in the string relative to total occurence of all characters, how much percentage wise in the number format between 0 & 1, ie. `0.114`.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode();
+const onesyHuffmanCode = new OnesyHuffmanCode();
 
-amauiHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
+onesyHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
 
-amauiHuffmanCode.getProbabilities();
+onesyHuffmanCode.getProbabilities();
 
-amauiHuffmanCode.normalizeProbabilities();
+onesyHuffmanCode.normalizeProbabilities();
 
 // { 'L': 0.0017, 'o': 0.0475, 'r': 0.0526, 'e': 0.0985, 'm': 0.039, ' ': 0.1511, 'i': 0.0764, 'p': 0.0187, 's': 0.0815, 'u': 0.0526, 'd': 0.0306, 'l': 0.0407, 't': 0.0781, 'a': 0.0696, ',': 0.017, 'c': 0.0306, 'n': 0.0441, 'g': 0.0068, '.': 0.017, 'F': 0.0017, 'f': 0.0051, 'h': 0.0051, 'b': 0.0068, 'S': 0.0017, 'I': 0.0034, 'C': 0.0034, 'q': 0.0085, 'v': 0.0034, 'P': 0.0017, 'D': 0.0034, 'j': 0.0017 }
 ```
@@ -196,17 +196,17 @@ amauiHuffmanCode.normalizeProbabilities();
 Makes a huffman tree based on the probabilities of all characters in the string value.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode();
+const onesyHuffmanCode = new OnesyHuffmanCode();
 
-amauiHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
+onesyHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
 
-amauiHuffmanCode.getProbabilities();
+onesyHuffmanCode.getProbabilities();
 
-amauiHuffmanCode.normalizeProbabilities();
+onesyHuffmanCode.normalizeProbabilities();
 
-amauiHuffmanCode.makeHuffmanTree();
+onesyHuffmanCode.makeHuffmanTree();
 
-// AmauiHuffmanTree { }
+// OnesyHuffmanTree { }
 ```
 
 ##### encoded
@@ -214,9 +214,9 @@ amauiHuffmanCode.makeHuffmanTree();
 Returns the response after encoding the value.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-amauiHuffmanCode.encoded;
+onesyHuffmanCode.encoded;
 
 // {
 //     "value": "AAL/6Mjb+q+srfy4u4qO2rjvr6y/uPjdqp+KyMjvjs3s7L6uvrmuzp+d/+rY+unJ3Ji6zb/7vu+PzuztnbrMu5iey62cu9van9z5/eiaiPu/27zp2cu8q+jN+d+8y7qrue3ensj6nfua7O392/25rK+O+4isiK387O2765/ruNuojM+tusy7r/jIzt37quz/ytuv+urY3p3vzr7bva27z6jOy6np+cq9qM/Muv2N3p3bq4jJ7sio/YzOy56ouPjcr/q+64usie/uvMjs3L2eyLrr+rvZ3qjt+c/52KvpicvMjY2v7ozsy9mdyJqImv7/rvnLq4/uub7Krr7turjvrs/sr6/ozsy/3ey4j+jcvNrq3Zy5rY65j+qL2Pzv34i5u5n42sva7f6Ymdua7On92s6d7e2O3p3NrKrc7O2e2a+8yO+p+c/Yntuq7JiLjb+v+tr7nMv6+O6tqZrojYiNv+u/6auunp37yri8/dnM76mduf+a2I/7vL+ejJj7qNuumtz5rtzOya36mbrMu+u/6NzL+anOztnt7Ymt9A==",
@@ -308,9 +308,9 @@ amauiHuffmanCode.encoded;
 Returns the entropy of the encoded value.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-amauiHuffmanCode.entropy;
+onesyHuffmanCode.entropy;
 
 // 4.138
 ```
@@ -320,9 +320,9 @@ amauiHuffmanCode.entropy;
 Returns the averageCodeWordLength of the encoded value.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-amauiHuffmanCode.averageCodeWordLength;
+onesyHuffmanCode.averageCodeWordLength;
 
 // 4.175
 ```
@@ -332,9 +332,9 @@ amauiHuffmanCode.averageCodeWordLength;
 Returns the redundency of the encoded value.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-amauiHuffmanCode.redundency;
+onesyHuffmanCode.redundency;
 
 // 0.037
 ```
@@ -344,43 +344,43 @@ amauiHuffmanCode.redundency;
 Returns the efficiency of the encoded value.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
+const onesyHuffmanCode = new OnesyHuffmanCode('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.');
 
-amauiHuffmanCode.efficiency;
+onesyHuffmanCode.efficiency;
 
 // 0.991
 ```
 
 ### Util methods
 
-#### AmauiHuffmanCodeResponse
+#### OnesyHuffmanCodeResponse
 
-Returns `AmauiHuffmanCodeResponse` class constructor.
+Returns `OnesyHuffmanCodeResponse` class constructor.
 
 ```ts
-AmauiHuffmanCode.AmauiHuffmanCodeResponse;
+OnesyHuffmanCode.OnesyHuffmanCodeResponse;
 
-// AmauiHuffmanCodeResponse
+// OnesyHuffmanCodeResponse
 ```
 
-#### AmauiNode
+#### OnesyNode
 
-Returns `AmauiNode` class constructor.
+Returns `OnesyNode` class constructor.
 
 ```ts
-AmauiHuffmanCode.AmauiNode;
+OnesyHuffmanCode.OnesyNode;
 
-// AmauiNode
+// OnesyNode
 ```
 
-#### AmauiHuffmanTree
+#### OnesyHuffmanTree
 
-Returns `AmauiHuffmanTree` class constructor.
+Returns `OnesyHuffmanTree` class constructor.
 
 ```ts
-AmauiHuffmanCode.AmauiHuffmanTree;
+OnesyHuffmanCode.OnesyHuffmanTree;
 
-// AmauiHuffmanTree
+// OnesyHuffmanTree
 ```
 
 #### encodeValue
@@ -388,7 +388,7 @@ AmauiHuffmanCode.AmauiHuffmanTree;
 Encodes a binary string value.
 
 ```ts
-AmauiHuffmanCode.encodeValue('101110111101');
+OnesyHuffmanCode.encodeValue('101110111101');
 
 // '\x00\x00Þý'
 ```
@@ -398,7 +398,7 @@ AmauiHuffmanCode.encodeValue('101110111101');
 Decodes encoded value into initial binary value.
 
 ```ts
-AmauiHuffmanCode.decodeValue('\x00\x00Þý');
+OnesyHuffmanCode.decodeValue('\x00\x00Þý');
 
 // '101110111101'
 ```
@@ -408,7 +408,7 @@ AmauiHuffmanCode.decodeValue('\x00\x00Þý');
 Encodes the dictionary values, each property being a character, and its value binary string value representing that character in the new compressed string value.
 
 ```ts
-AmauiHuffmanCode.encodeValues({ a: '101110111101' });
+OnesyHuffmanCode.encodeValues({ a: '101110111101' });
 
 // '1a\x00\x00Þý'
 ```
@@ -418,27 +418,27 @@ AmauiHuffmanCode.encodeValues({ a: '101110111101' });
 Decodes the previously encoded string using `encodeValues` static method, and returns the original dictionary object.
 
 ```ts
-AmauiHuffmanCode.decodeValues('1a\x00\x00Þý');
+OnesyHuffmanCode.decodeValues('1a\x00\x00Þý');
 
 // { a: '101110111101' }
 ```
 
 #### getValues
 
-Returns the dictionary values from the `AmauiHuffmanTree`.
+Returns the dictionary values from the `OnesyHuffmanTree`.
 
 ```ts
-const amauiHuffmanCode = new AmauiHuffmanCode();
+const onesyHuffmanCode = new OnesyHuffmanCode();
 
-amauiHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
+onesyHuffmanCode.value = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor sem, facilisis sed erat sit amet, pharetra blandit augue. Sed id placerat felis, malesuada rutrum nisl. In ultrices sed mauris finibus malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer cursus, odio id rutrum blandit, neque velit aliquam odio, at rhoncus elit est nec erat. Proin egestas mauris elit, sit amet molestie nisi semper at. Cras interdum massa nec molestie rutrum. Duis commodo venenatis justo, ac porta tellus pellentesque sed. Donec et nisi metus.';
 
-amauiHuffmanCode.getProbabilities();
+onesyHuffmanCode.getProbabilities();
 
-amauiHuffmanCode.normalizeProbabilities();
+onesyHuffmanCode.normalizeProbabilities();
 
-amauiHuffmanCode.makeHuffmanTree();
+onesyHuffmanCode.makeHuffmanTree();
 
-AmauiHuffmanCode.getValues(amauiHuffmanCode.huffmanTree);
+OnesyHuffmanCode.getValues(onesyHuffmanCode.huffmanTree);
 
 // {
 //     'r': '0000',
@@ -477,20 +477,20 @@ AmauiHuffmanCode.getValues(amauiHuffmanCode.huffmanTree);
 
 #### encodeBase64
 
-Encodes a string using `@amaui/utils`'s `to` method with 'base64' as a second argument in it.
+Encodes a string using `@onesy/utils`'s `to` method with 'base64' as a second argument in it.
 
 ```ts
-AmauiHuffmanCode.encodeBase64('a');
+OnesyHuffmanCode.encodeBase64('a');
 
 // 'YQ=='
 ```
 
 #### decodeBase64
 
-Decodes a string using `@amaui/utils`'s `to` method with 'string' as a second argument in it.
+Decodes a string using `@onesy/utils`'s `to` method with 'string' as a second argument in it.
 
 ```ts
-AmauiHuffmanCode.decodeBase64('YQ==');
+OnesyHuffmanCode.decodeBase64('YQ==');
 
 // 'a'
 ```
@@ -503,23 +503,23 @@ AmauiHuffmanCode.decodeBase64('YQ==');
 type TArrayVariant = 'preorder';
 ```
 
-#### IAmauiNode
+#### IOnesyNode
 
 ```ts
-interface IAmauiNode {
+interface IOnesyNode {
     value: number;
     word?: any;
     path?: string;
-    left: AmauiNode;
-    right: AmauiNode;
+    left: OnesyNode;
+    right: OnesyNode;
     [p: string]: any;
 }
 ```
 
-#### AmauiHuffmanCodeResponse
+#### OnesyHuffmanCodeResponse
 
 ```ts
-class AmauiHuffmanCodeResponse {
+class OnesyHuffmanCodeResponse {
     value: any;
     values?: Record<string, string>;
     values_encoded?: any;
@@ -541,14 +541,14 @@ class AmauiHuffmanCodeResponse {
 }
 ```
 
-#### AmauiNode
+#### OnesyNode
 
 ```ts
-class AmauiNode implements IAmauiNode {
+class OnesyNode implements IOnesyNode {
     value: number;
     word?: any;
-    left: AmauiNode;
-    right: AmauiNode;
+    left: OnesyNode;
+    right: OnesyNode;
     [p: string]: any;
     constructor(value?: number, word?: any);
     get leaf(): boolean;
@@ -556,24 +556,24 @@ class AmauiNode implements IAmauiNode {
 }
 ```
 
-#### IAmauiHuffmanTree
+#### IOnesyHuffmanTree
 
 ```ts
-interface IAmauiHuffmanTree {
-    root: AmauiNode;
+interface IOnesyHuffmanTree {
+    root: OnesyNode;
 }
 ```
 
-#### AmauiHuffmanTree
+#### OnesyHuffmanTree
 
 ```ts
-class AmauiHuffmanTree implements IAmauiHuffmanTree {
-    root: AmauiNode;
-    static make(value: Array<any>): AmauiHuffmanTree;
+class OnesyHuffmanTree implements IOnesyHuffmanTree {
+    root: OnesyNode;
+    static make(value: Array<any>): OnesyHuffmanTree;
     get array(): Array<any>;
-    isRoot(value: AmauiNode): boolean;
-    preorder(value: AmauiNode, method: TMethod): void;
-    make(value_: Array<any>): AmauiHuffmanTree;
+    isRoot(value: OnesyNode): boolean;
+    preorder(value: OnesyNode, method: TMethod): void;
+    make(value_: Array<any>): OnesyHuffmanTree;
 }
 ```
 
@@ -598,40 +598,40 @@ interface IOptions {
 const optionsDefault: IOptions;
 ```
 
-#### AmauiHuffmanCode
+#### OnesyHuffmanCode
 
 ```ts
-class AmauiHuffmanCode {
+class OnesyHuffmanCode {
     value?: string;
     options: IOptions;
-    huffmanTree: AmauiHuffmanTree;
+    huffmanTree: OnesyHuffmanTree;
     probabilities: Record<string, number>;
     values: Record<string, string>;
-    response: AmauiHuffmanCodeResponse;
+    response: OnesyHuffmanCodeResponse;
     private startTime;
-    static get AmauiHuffmanCodeResponse(): typeof AmauiHuffmanCodeResponse;
-    static get AmauiNode(): typeof AmauiNode;
-    static get AmauiHuffmanTree(): typeof AmauiHuffmanTree;
+    static get OnesyHuffmanCodeResponse(): typeof OnesyHuffmanCodeResponse;
+    static get OnesyNode(): typeof OnesyNode;
+    static get OnesyHuffmanTree(): typeof OnesyHuffmanTree;
     static encodeValue(value: string): string;
     static decodeValue(value_: string): string;
     static encodeValues(values: Record<string, string>, encodeValues?: boolean): string | object;
     static decodeValues(value: string): object;
-    static getValues(amauiHuffmanTree: AmauiHuffmanTree): Record<string, string>;
-    static decode(value: string, values: Record<string, string>): AmauiHuffmanCodeResponse;
+    static getValues(onesyHuffmanTree: OnesyHuffmanTree): Record<string, string>;
+    static decode(value: string, values: Record<string, string>): OnesyHuffmanCodeResponse;
     static encodeBase64(value: string): string;
     static decodeBase64(value: string): string;
-    get encoded(): AmauiHuffmanCodeResponse;
+    get encoded(): OnesyHuffmanCodeResponse;
     get entropy(): number;
     get averageCodeWordLength(): number;
     get redundency(): number;
     get efficiency(): number;
     constructor(value?: string, options?: IOptions);
     private init;
-    encode(): AmauiHuffmanCodeResponse;
-    decode(value_: string): AmauiHuffmanCodeResponse;
+    encode(): OnesyHuffmanCodeResponse;
+    decode(value_: string): OnesyHuffmanCodeResponse;
     getProbabilities(): Record<string, number>;
     normalizeProbabilities(): Record<string, number>;
-    makeHuffmanTree(): AmauiHuffmanTree;
+    makeHuffmanTree(): OnesyHuffmanTree;
 }
 ```
 

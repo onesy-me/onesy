@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement, { ILine } from '../Line/Line';
 import PropertyElement from '../Property';
@@ -35,7 +35,7 @@ const useStyle = styleMethod(theme => ({
   maxWidth_extra_extra_large: {
     maxWidth: '1440px'
   }
-}), { name: 'amaui-Properties' });
+}), { name: 'onesy-Properties' });
 
 export interface IPropertiesValue {
   name: any;
@@ -57,9 +57,9 @@ export interface IProperties extends ILine {
 }
 
 const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiProperties?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyProperties?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -104,9 +104,9 @@ const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('Properties', theme) && [
-          'amaui-Properties-root',
-          `amaui-Properties-version-${version}`,
-          `amaui-Properties-size-${size}`
+          'onesy-Properties-root',
+          `onesy-Properties-version-${version}`,
+          `onesy-Properties-size-${size}`
         ],
 
         className,
@@ -139,6 +139,6 @@ const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-Properties.displayName = 'amaui-Properties';
+Properties.displayName = 'onesy-Properties';
 
 export default Properties;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AmauiTheme, classNames, style as styleMethod, TTone, useAmauiTheme } from '@amaui/style-react';
+import { OnesyTheme, classNames, style as styleMethod, TTone, useOnesyTheme } from '@onesy/style-react';
 
 import { iconSizeToFontSize, staticClassName } from '../utils';
 import { IBaseElement, ITonal, IColor } from '../types';
@@ -35,7 +35,7 @@ const useStyle = styleMethod(theme => ({
   disabled: {
     opacity: theme.palette.visual_contrast.default.opacity.disabled
   }
-}), { name: 'amaui-Icon' });
+}), { name: 'onesy-Icon' });
 
 export interface IIcon extends IBaseElement {
   tonal?: ITonal;
@@ -55,9 +55,9 @@ export interface IIcon extends IBaseElement {
 }
 
 const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiIcon?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIcon?.props?.default, ...props_ }), [props_]);
 
   const {
     viewBox = '0 0 24 24',
@@ -90,7 +90,7 @@ const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
 
   React.useEffect(() => {
     // Update rtl based on theme value
-    const method = (update, themeNew: AmauiTheme) => setRtl(themeNew.direction === 'rtl');
+    const method = (update, themeNew: OnesyTheme) => setRtl(themeNew.direction === 'rtl');
 
     theme.subscriptions.update.subscribe(method);
 
@@ -123,10 +123,10 @@ const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Icon', theme) && [
-          'amaui-Icon-root',
-          `amaui-Icon-size-${size}`,
-          (!noRtl && rtl && isRtlIcon) ? 'amaui-Icon-direction-rtl' : 'amaui-Icon-direction-ltr',
-          disabled && `amaui-Icon-disabled`
+          'onesy-Icon-root',
+          `onesy-Icon-size-${size}`,
+          (!noRtl && rtl && isRtlIcon) ? 'onesy-Icon-direction-rtl' : 'onesy-Icon-direction-ltr',
+          disabled && `onesy-Icon-disabled`
         ],
 
         className,
@@ -165,6 +165,6 @@ const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Icon.displayName = 'amaui-Icon';
+Icon.displayName = 'onesy-Icon';
 
 export default Icon;

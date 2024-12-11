@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ListItemElement from '../ListItem';
 import { IListItem } from '../ListItem/ListItem';
@@ -24,7 +24,7 @@ const useStyle = styleMethod(theme => ({
     insetInline: '0',
     borderRadius: `${theme.shape.radius.unit * 3}px ${theme.shape.radius.unit * 3}px 0 0`
   }
-}), { name: 'amaui-ImageListItemBox' });
+}), { name: 'onesy-ImageListItemBox' });
 
 export interface IImageListItemBox extends IListItem {
   position?: 'top' | 'bottom';
@@ -32,9 +32,9 @@ export interface IImageListItemBox extends IListItem {
 }
 
 const ImageListItemBox: React.FC<IImageListItemBox> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiImageListItemBox?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageListItemBox?.props?.default, ...props_ }), [props_]);
 
   const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
 
@@ -63,7 +63,7 @@ const ImageListItemBox: React.FC<IImageListItemBox> = React.forwardRef((props_, 
 
       className={classNames([
         staticClassName('ImageListItemBox', theme) && [
-          'amaui-ImageListItemBox-root'
+          'onesy-ImageListItemBox-root'
         ],
 
         className,
@@ -78,6 +78,6 @@ const ImageListItemBox: React.FC<IImageListItemBox> = React.forwardRef((props_, 
   );
 });
 
-ImageListItemBox.displayName = 'amaui-ImageListItemBox';
+ImageListItemBox.displayName = 'onesy-ImageListItemBox';
 
 export default ImageListItemBox;

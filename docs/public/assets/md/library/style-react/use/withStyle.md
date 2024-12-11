@@ -17,7 +17,7 @@ Additionally
 - Once element instance is removed, its specific dynamic style sheet will be removed from the DOM.
 
 ```tsx
-import { withStyle } from '@amaui/style-react';
+import { withStyle } from '@onesy/style-react';
 
 const MyLink = props => {
   const { classes } = props.styles;

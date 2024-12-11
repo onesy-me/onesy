@@ -1,5 +1,5 @@
 
-# Amaui API
+# Onesy API
 
 ### Decorators
 
@@ -15,7 +15,7 @@ Routes method takes in list of class definitions (within which you've used decor
 
 ```ts
 import express from 'express';
-import { Route, Method, IRouteClassInstance, Routes } from '@amaui/api';
+import { Route, Method, IRouteClassInstance, Routes } from '@onesy/api';
 
 class Base implements IRouteClassInstance {
 

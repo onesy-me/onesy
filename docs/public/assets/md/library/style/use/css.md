@@ -4,7 +4,7 @@
 - Method to add all classes as properties, and their css properties as object property values
 - Provide CSS folders, and file details.
 - Provide HTML file paths, and where to insert generated css.
-- And on `amaui-style` command call, it will using its options, find all files in which `css` method is used, and it will generate all css based on it.
+- And on `onesy-style` command call, it will using its options, find all files in which `css` method is used, and it will generate all css based on it.
 
 ### Options
 
@@ -14,13 +14,13 @@ Values are `regular` or `atomic`, default is `regular`.
 
 Atomic will create a class name for every unique css property, value.
 
-#### amaui\_style
+#### onesy\_style
 
-Add `AmauiStyle` instance it will be a part of.
+Add `OnesyStyle` instance it will be a part of.
 
-#### amaui\_theme
+#### onesy\_theme
 
-Add `AmauiTheme` instance it will use.
+Add `OnesyTheme` instance it will use.
 
 #### pure
 
@@ -115,15 +115,15 @@ If process should log.
 ### Use
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Plugins
-amauiStyle.plugins.add = [
-  AmauiStyle.unit,
-  AmauiStyle.sort,
-  AmauiStyle.prefix,
-  AmauiStyle.makeClassName,
-  AmauiStyle.rtl
+onesyStyle.plugins.add = [
+  OnesyStyle.unit,
+  OnesyStyle.sort,
+  OnesyStyle.prefix,
+  OnesyStyle.makeClassName,
+  OnesyStyle.rtl
 ];
 
 const styles = css(
@@ -172,7 +172,7 @@ const styles = css(
     }
   }),
   {
-    amaui_style: { value: amauiStyle },
+    onesy_style: { value: onesyStyle },
     css: {
       file: {
         name: 'style'

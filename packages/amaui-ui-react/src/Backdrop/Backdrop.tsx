@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, isEnvironment, TMethod } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, TMethod } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import FocusElement from '../Focus';
@@ -37,7 +37,7 @@ const useStyle = styleMethod(theme => ({
     alignItems: 'center',
     justifyContent: 'center'
   }
-}), { name: 'amaui-Backdrop' });
+}), { name: 'onesy-Backdrop' });
 
 let BACKDROPS_OPEN = 0;
 
@@ -58,9 +58,9 @@ export interface IBackdrop extends ILine {
 }
 
 const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBackdrop?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBackdrop?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -183,7 +183,7 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Backdrop', theme) && [
-          'amaui-Backdrop-root'
+          'onesy-Backdrop-root'
         ],
 
         className,
@@ -208,7 +208,7 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
           <div
             className={classNames([
               staticClassName('Backdrop', theme) && [
-                'amaui-Backdrop-background'
+                'onesy-Backdrop-background'
               ],
 
               classes.background,
@@ -223,7 +223,7 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
         <div
           className={classNames([
             staticClassName('Backdrop', theme) && [
-              'amaui-Backdrop-backdrop-root'
+              'onesy-Backdrop-backdrop-root'
             ],
 
             classes.backdropRoot
@@ -246,6 +246,6 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Backdrop.displayName = 'amaui-Backdrop';
+Backdrop.displayName = 'onesy-Backdrop';
 
 export default Backdrop;

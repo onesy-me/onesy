@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next';
 
-import { is } from '@amaui/utils';
-import AmauiRequest from '@amaui/request';
+import { is } from '@onesy/utils';
+import OnesyRequest from '@onesy/request';
 
 import sidenavJSON from '../../assets/json/sidenav.json';
 
@@ -54,7 +54,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
     const port = process.env.PORT || 3000;
 
-    const response = (await AmauiRequest.get(`http://localhost:${port}/assets/md${props.url}.md`, { response: { type: 'text' } }));
+    const response = (await OnesyRequest.get(`http://localhost:${port}/assets/md${props.url}.md`, { response: { type: 'text' } }));
 
     if (response.status === 200) props.value = response.response;
   } catch (error) { }

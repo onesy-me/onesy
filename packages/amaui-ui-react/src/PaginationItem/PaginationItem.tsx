@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import ButtonElement from '../Button';
@@ -15,7 +15,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   size_small: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       width: 'unset',
       minWidth: '30px',
       paddingInline: theme.methods.space.value(0.5, 'px')
@@ -23,7 +23,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   size_regular: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       width: 'unset',
       minWidth: '40px',
       paddingInline: theme.methods.space.value(1, 'px')
@@ -31,22 +31,22 @@ const useStyle = styleMethod(theme => ({
   },
 
   size_large: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       width: 'unset',
       minWidth: '50px',
       paddingInline: theme.methods.space.value(1.25, 'px')
     }
   }
-}), { name: 'amaui-PaginationItem' });
+}), { name: 'onesy-PaginationItem' });
 
 export interface IPaginationItem extends IButton {
   TypeProps?: IPropsAny;
 }
 
 const PaginationItem: React.FC<IPaginationItem> = React.forwardRef((props_, ref) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPaginationItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPaginationItem?.props?.default, ...props_ }), [props_]);
 
   const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
 
@@ -90,9 +90,9 @@ const PaginationItem: React.FC<IPaginationItem> = React.forwardRef((props_, ref)
 
       className={classNames([
         staticClassName('PaginationItem', theme) && [
-          'amaui-PaginationItem-root',
-          `amaui-PaginationItem-version-${version}`,
-          `amaui-PaginationItem-size-${size}`
+          'onesy-PaginationItem-root',
+          `onesy-PaginationItem-version-${version}`,
+          `onesy-PaginationItem-size-${size}`
         ],
 
         className,
@@ -118,6 +118,6 @@ const PaginationItem: React.FC<IPaginationItem> = React.forwardRef((props_, ref)
   );
 });
 
-PaginationItem.displayName = 'amaui-PaginationItem';
+PaginationItem.displayName = 'onesy-PaginationItem';
 
 export default PaginationItem;

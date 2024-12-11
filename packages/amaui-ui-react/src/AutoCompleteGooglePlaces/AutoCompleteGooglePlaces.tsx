@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { debounce, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { debounce, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import AutoCompleteElement from '../AutoComplete';
 import ListItemElement from '../ListItem';
@@ -13,16 +13,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-AutoCompleteGooglePlaces' });
+}), { name: 'onesy-AutoCompleteGooglePlaces' });
 
 export interface IAutoCompleteGooglePlaces extends IAutoComplete {
 
 }
 
 const AutoCompleteGooglePlaces: React.FC<IAutoCompleteGooglePlaces> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAutoCompleteGooglePlaces?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteGooglePlaces?.props?.default, ...props_ }), [props_]);
 
   const AutoComplete = React.useMemo(() => theme?.elements?.AutoComplete || AutoCompleteElement, [theme]);
 
@@ -155,8 +155,8 @@ const AutoCompleteGooglePlaces: React.FC<IAutoCompleteGooglePlaces> = React.forw
 
       className={classNames([
         staticClassName('AutoCompleteGooglePlaces', theme) && [
-          'amaui-AutoCompleteGooglePlaces-root',
-          `amaui-AutoCompleteGooglePlaces-size-${size}`
+          'onesy-AutoCompleteGooglePlaces-root',
+          `onesy-AutoCompleteGooglePlaces-size-${size}`
         ],
 
         className,
@@ -168,6 +168,6 @@ const AutoCompleteGooglePlaces: React.FC<IAutoCompleteGooglePlaces> = React.forw
   );
 });
 
-AutoCompleteGooglePlaces.displayName = 'amaui-AutoCompleteGooglePlaces';
+AutoCompleteGooglePlaces.displayName = 'onesy-AutoCompleteGooglePlaces';
 
 export default AutoCompleteGooglePlaces;

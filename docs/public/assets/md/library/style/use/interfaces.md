@@ -20,7 +20,7 @@ module 'csstype' {
 #### TValueObjectValue
 
 ```ts
-type TValueObjectValue = (string | ((props?: any) => TValueObjectValue) | AmauiSubscription | CSS.Properties<string | number | Array<string | number> | Array<Array<string | number>> | Array<TValueObjectValue> | Array<Array<TValueObjectValue>> | ((props?: any) => TValueObjectValue)> | Record<string, any> | {
+type TValueObjectValue = (string | ((props?: any) => TValueObjectValue) | OnesySubscription | CSS.Properties<string | number | Array<string | number> | Array<Array<string | number>> | Array<TValueObjectValue> | Array<Array<TValueObjectValue>> | ((props?: any) => TValueObjectValue)> | Record<string, any> | {
     [index: string]: CSS.Properties<TValueObjectValue>;
 });
 ```
@@ -34,7 +34,7 @@ type TValueObject = Record<string, TValueObjectValue>;
 #### TValueMethod
 
 ```ts
-type TValueMethod = (theme: AmauiTheme) => TValueObject;
+type TValueMethod = (theme: OnesyTheme) => TValueObject;
 ```
 
 #### TValue
@@ -58,7 +58,7 @@ type TDirection = 'ltr' | 'rtl';
 #### TValueVersion
 
 ```ts
-type TValueVersion = 'value' | 'method' | 'amaui_subscription';
+type TValueVersion = 'value' | 'method' | 'onesy_subscription';
 ```
 
 #### TRef
@@ -66,11 +66,11 @@ type TValueVersion = 'value' | 'method' | 'amaui_subscription';
 ```ts
 type TRef = {
     main: {
-        sheet: AmauiStyleSheet;
-        rule: AmauiStyleRule;
+        sheet: OnesyStyleSheet;
+        rule: OnesyStyleRule;
     };
     className: string;
-    refs: Array<AmauiStyleSheet>;
+    refs: Array<OnesyStyleSheet>;
 };
 ```
 
@@ -147,8 +147,8 @@ type TPriority = 'lower' | 'upper';
 
 ```ts
 interface ISheets {
-    static: Array<AmauiStyleSheet>;
-    dynamic: Array<AmauiStyleSheet>;
+    static: Array<OnesyStyleSheet>;
+    dynamic: Array<OnesyStyleSheet>;
 }
 ```
 
@@ -156,7 +156,7 @@ interface ISheets {
 
 ```ts
 interface IMethodResponse {
-    amaui_style_sheet_manager: AmauiStyleSheetManager;
+    onesy_style_sheet_manager: OnesyStyleSheetManager;
     sheets: ISheets;
     ids: IIds;
     add: (props?: any) => IResponse;
@@ -173,21 +173,21 @@ interface IMethodResponse {
 }
 ```
 
-#### IOptionsAmauiTheme
+#### IOptionsOnesyTheme
 
 ```ts
-interface IOptionsAmauiTheme {
-    value?: AmauiTheme;
-    get?: (value?: Element) => AmauiTheme;
+interface IOptionsOnesyTheme {
+    value?: OnesyTheme;
+    get?: (value?: Element) => OnesyTheme;
 }
 ```
 
-#### IOptionsAmauiStyle
+#### IOptionsOnesyStyle
 
 ```ts
-interface IOptionsAmauiStyle {
-    value?: AmauiStyle;
-    get?: (value?: Element) => AmauiStyle;
+interface IOptionsOnesyStyle {
+    value?: OnesyStyle;
+    get?: (value?: Element) => OnesyStyle;
 }
 ```
 
@@ -203,8 +203,8 @@ interface IInsert {
 
 ```ts
 interface ICSSOptions {
-    amaui_style?: IOptionsAmauiStyle;
-    amaui_theme?: IOptionsAmauiTheme;
+    onesy_style?: IOptionsOnesyStyle;
+    onesy_theme?: IOptionsOnesyTheme;
     mode?: TMode;
     pure?: boolean;
     reset?: boolean;
@@ -238,10 +238,10 @@ interface ICSSOptions {
 }
 ```
 
-#### IAmauiStyleSheetManagerProps
+#### IOnesyStyleSheetManagerProps
 
 ```ts
-interface IAmauiStyleSheetManagerProps {
+interface IOnesyStyleSheetManagerProps {
     props: any;
     ids: string | Array<string>;
 }

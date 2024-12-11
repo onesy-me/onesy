@@ -2,10 +2,10 @@
 
 ## API
 
-#### AmauiConfirmContext
+#### OnesyConfirmContext
 
 ```ts
-const AmauiConfirmContext: any;
+const OnesyConfirmContext: any;
 ```
 
 

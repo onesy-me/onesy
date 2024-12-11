@@ -1,5 +1,5 @@
 
-# AmauiDate
+# OnesyDate
 
 ### Value
 
@@ -7,7 +7,7 @@ Value can be any of the following, any value that's a valid argument for the `Da
 
 - Date string
 - Milliseconds as a number
-- AmauiDate instance
+- OnesyDate instance
 - Date instance
 
 ### Properties
@@ -17,9 +17,9 @@ Value can be any of the following, any value that's a valid argument for the `Da
 Value as a Date value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.value;
+onesyDate.value;
 
 // Date { }
 ```
@@ -29,9 +29,9 @@ amauiDate.value;
 Millisecond value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.millisecond;
+onesyDate.millisecond;
 
 // 114
 ```
@@ -41,9 +41,9 @@ amauiDate.millisecond;
 Milliseconds value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.milliseconds;
+onesyDate.milliseconds;
 
 // 1685217383990
 ```
@@ -53,9 +53,9 @@ amauiDate.milliseconds;
 Second value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.second;
+onesyDate.second;
 
 // 14
 ```
@@ -65,9 +65,9 @@ amauiDate.second;
 Minute value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.minute;
+onesyDate.minute;
 
 // 41
 ```
@@ -77,9 +77,9 @@ amauiDate.minute;
 Hour value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.hour;
+onesyDate.hour;
 
 // 14
 ```
@@ -89,9 +89,9 @@ amauiDate.hour;
 Day value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.day;
+onesyDate.day;
 
 // 27
 ```
@@ -101,9 +101,9 @@ amauiDate.day;
 Day in the week value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.dayWeek;
+onesyDate.dayWeek;
 
 // 4
 ```
@@ -113,9 +113,9 @@ amauiDate.dayWeek;
 Day in the year value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.dayYear;
+onesyDate.dayYear;
 
 // 147
 ```
@@ -125,9 +125,9 @@ amauiDate.dayYear;
 Week value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.week;
+onesyDate.week;
 
 // 24
 ```
@@ -137,9 +137,9 @@ amauiDate.week;
 Month value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.month;
+onesyDate.month;
 
 // 4
 ```
@@ -149,9 +149,9 @@ amauiDate.month;
 Year value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.year;
+onesyDate.year;
 
 // 2024
 ```
@@ -163,9 +163,9 @@ amauiDate.year;
 Returns unix date value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.unix;
+onesyDate.unix;
 
 // 1685217383
 ```
@@ -175,13 +175,13 @@ amauiDate.unix;
 All time unit values will be in utc.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.hour;
+onesyDate.hour;
 
 // 14
 
-amauiDate.utc().hour;
+onesyDate.utc().hour;
 
 // 13
 ```
@@ -191,9 +191,9 @@ amauiDate.utc().hour;
 Returns iso date value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.unix;
+onesyDate.unix;
 
 // '2023-05-27T19:56:23.990Z'
 ```
@@ -203,9 +203,9 @@ amauiDate.unix;
 All time unit values will be in the local timezone value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.local().hour;
+onesyDate.local().hour;
 
 // 14
 ```
@@ -215,9 +215,9 @@ amauiDate.local().hour;
 Returns if the value is valid Date.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.valid;
+onesyDate.valid;
 
 // true
 ```
@@ -227,9 +227,9 @@ amauiDate.valid;
 Returns value in milliseconds.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.valueOf;
+onesyDate.valueOf;
 
 // 1685217383990
 ```
@@ -239,9 +239,9 @@ amauiDate.valueOf;
 Returns days in the value's month.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.daysInMonth;
+onesyDate.daysInMonth;
 
 // 31
 ```
@@ -251,9 +251,9 @@ amauiDate.daysInMonth;
 Returns weeks in the value's year.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.weeksInYear;
+onesyDate.weeksInYear;
 
 // 52
 ```
@@ -263,9 +263,9 @@ amauiDate.weeksInYear;
 Returns month names of the year.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.months;
+onesyDate.months;
 
 // ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 ```
@@ -275,9 +275,9 @@ amauiDate.months;
 Returns month abbreviated names of the year.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.monthsAbr;
+onesyDate.monthsAbr;
 
 // ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 ```
@@ -287,9 +287,9 @@ amauiDate.monthsAbr;
 Returns day names of the week.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.daysWeek;
+onesyDate.daysWeek;
 
 // ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 ```
@@ -299,25 +299,25 @@ amauiDate.daysWeek;
 Returns day abbreviated names of the week.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.daysWeekAbr;
+onesyDate.daysWeekAbr;
 
 // ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 ```
 
 #### Timezone
 
-Returns new AmauiDate with the value localized to that timezone.
+Returns new OnesyDate with the value localized to that timezone.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-amauiDate.hour;
+onesyDate.hour;
 
 // 14
 
-amauiDate.timezone('UTC').hour;
+onesyDate.timezone('UTC').hour;
 
 // 13
 ```
@@ -327,7 +327,7 @@ amauiDate.timezone('UTC').hour;
 #### unix
 
 ```ts
-AmauiDate.unix;
+OnesyDate.unix;
 
 // 1685219927
 ```
@@ -335,7 +335,7 @@ AmauiDate.unix;
 #### milliseconds
 
 ```ts
-AmauiDate.milliseconds;
+OnesyDate.milliseconds;
 
 // 1685219933011
 ```
@@ -343,7 +343,7 @@ AmauiDate.milliseconds;
 #### iso
 
 ```ts
-AmauiDate.iso;
+OnesyDate.iso;
 
 // '2023-05-27T20:38:58.490Z'
 ```
@@ -351,7 +351,7 @@ AmauiDate.iso;
 #### daysInMonth
 
 ```ts
-AmauiDate.daysInMonth;
+OnesyDate.daysInMonth;
 
 // 31
 ```
@@ -359,7 +359,7 @@ AmauiDate.daysInMonth;
 #### valueOf
 
 ```ts
-AmauiDate.unix;
+OnesyDate.unix;
 
 // 1685219933011
 ```
@@ -367,17 +367,17 @@ AmauiDate.unix;
 #### local
 
 ```ts
-AmauiDate.local;
+OnesyDate.local;
 
-// AmauiDate { }
+// OnesyDate { }
 ```
 
-#### amauiDate
+#### onesyDate
 
 ```ts
-AmauiDate.amauiDate;
+OnesyDate.onesyDate;
 
-// AmauiDate { }
+// OnesyDate { }
 ```
 
 ## API
@@ -444,11 +444,11 @@ const daysWeek: string[];
 const daysWeekAbr: string[];
 ```
 
-#### AmauiDate
+#### OnesyDate
 
 ```ts
-default class AmauiDate {
-    value_: string | number | AmauiDate | Date;
+default class OnesyDate {
+    value_: string | number | OnesyDate | Date;
     options: IOptions;
     value: Date;
     millisecond: number;
@@ -462,15 +462,15 @@ default class AmauiDate {
     week: number;
     month: number;
     year: number;
-    static get utc(): AmauiDate;
+    static get utc(): OnesyDate;
     static get daysInMonth(): number;
     static get valueOf(): number;
     static get unix(): number;
     static get milliseconds(): number;
     static get iso(): string;
-    static get amauiDate(): AmauiDate;
-    static get local(): AmauiDate;
-    constructor(value_?: string | number | AmauiDate | Date, options?: IOptions);
+    static get onesyDate(): OnesyDate;
+    static get local(): OnesyDate;
+    constructor(value_?: string | number | OnesyDate | Date, options?: IOptions);
     private init;
     weekValue(): number;
     get months(): string[];
@@ -478,14 +478,14 @@ default class AmauiDate {
     get daysWeek(): string[];
     get daysWeekAbr(): string[];
     get valid(): boolean;
-    get local(): AmauiDate;
-    get utc(): AmauiDate;
+    get local(): OnesyDate;
+    get utc(): OnesyDate;
     get iso(): string;
     get daysInMonth(): number;
     get weeksInYear(): number;
     get valueOf(): number;
     get unix(): number;
-    timezone(value: string): AmauiDate;
+    timezone(value: string): OnesyDate;
 }
 ```
 

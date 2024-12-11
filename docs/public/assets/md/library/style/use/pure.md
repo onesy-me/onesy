@@ -9,34 +9,34 @@ Usefull for any element selector css styles.
 
 #### element
 
-Element which potentially has `AmauiStyle`, `AmauiTheme` instanced bound to it.
+Element which potentially has `OnesyStyle`, `OnesyTheme` instanced bound to it.
 
 #### name
 
 Name for this style, usually if `style` method is used per UI element type, name should be that element's name.
 
-#### amaui\_style
+#### onesy\_style
 
-Add `AmauiStyle` instance it will be a part of.
+Add `OnesyStyle` instance it will be a part of.
 
-#### amaui\_theme
+#### onesy\_theme
 
-Add `AmauiTheme` instance it will use.
+Add `OnesyTheme` instance it will use.
 
 ### Use
 
 When adding pure styles, no class names, or classes are made, since the properties (selectors), will be added to the DOM exactly as they were writen.
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Plugins
-amauiStyle.plugins.add = [
-  AmauiStyle.unit,
-  AmauiStyle.sort,
-  AmauiStyle.prefix,
-  AmauiStyle.makeClassName,
-  AmauiStyle.rtl
+onesyStyle.plugins.add = [
+  OnesyStyle.unit,
+  OnesyStyle.sort,
+  OnesyStyle.prefix,
+  OnesyStyle.makeClassName,
+  OnesyStyle.rtl
 ];
 
 const styles = pure(
@@ -91,7 +91,7 @@ const styles = pure(
   }),
   {
     name: 'Pure',
-    amaui_style: { value: amauiStyle }
+    onesy_style: { value: onesyStyle }
   }
 );
 
@@ -123,8 +123,8 @@ response;
 interface IOptions {
     element?: Element;
     name?: string;
-    amaui_style?: IOptionsAmauiStyle;
-    amaui_theme?: IOptionsAmauiTheme;
+    onesy_style?: IOptionsOnesyStyle;
+    onesy_theme?: IOptionsOnesyTheme;
 }
 ```
 

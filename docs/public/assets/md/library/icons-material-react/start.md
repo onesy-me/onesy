@@ -1,5 +1,5 @@
 
-# amaui icons material react
+# onesy icons material react
 
 25000+ round, sharp, outlined, filled, width 100, two tone Google open source icons as easy to use react elements library for front end & back end.
 
@@ -12,19 +12,19 @@ Install any library of icons you want to use.
 #### Rounded
 
 ```bash
-yarn add @amaui/icons-material-rounded-react
+yarn add @onesy/icons-material-rounded-react
 ```
 
 #### Sharp
 
 ```bash
-yarn add @amaui/icons-material-sharp-react
+yarn add @onesy/icons-material-sharp-react
 ```
 
 #### Two  tone
 
 ```bash
-yarn add @amaui/icons-material-two-tone-react
+yarn add @onesy/icons-material-two-tone-react
 ```
 
 ### Use
@@ -33,7 +33,7 @@ yarn add @amaui/icons-material-two-tone-react
 // Import any of the icons
 // best to import them as modules like this example
 // it's the most efficient way to import icons
-import IconMaterialPottedPlantRounded from '@amaui/icons-material-rounded-react/IconMaterialPottedPlant';
+import IconMaterialPottedPlantRounded from '@onesy/icons-material-rounded-react/IconMaterialPottedPlant';
 
 function A(props) {
 
@@ -72,7 +72,7 @@ yarn build
 
 Updates made to original icons:
 - A part of the icons are used not all of them.
-- Inner svg elements (children) are extracted from every icon, and put within the @amaui/ui-react Icon component as children.
+- Inner svg elements (children) are extracted from every icon, and put within the @onesy/ui-react Icon component as children.
 - Every icon from there is made into it's own React component as part of this UI library.
 
 ~{

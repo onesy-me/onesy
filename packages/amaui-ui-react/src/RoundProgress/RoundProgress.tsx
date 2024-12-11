@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, IColor, IPropsAny, ISize, ITonal } from '../types';
@@ -137,7 +137,7 @@ const useStyle = styleMethod(theme => ({
     strokeDashoffset: '0px',
     stroke: 'transparent'
   }
-}), { name: 'amaui-RoundProgress' });
+}), { name: 'onesy-RoundProgress' });
 
 export interface IRoundProgress extends IBaseElement {
   tonal?: ITonal;
@@ -156,9 +156,9 @@ export interface IRoundProgress extends IBaseElement {
 }
 
 const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiRoundProgress?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRoundProgress?.props?.default, ...props_ }), [props_]);
 
   const {
     tonal = true,
@@ -231,9 +231,9 @@ const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('RoundedProgress', theme) && [
-          'amaui-RoundedProgress-root',
-          `amaui-RoundedProgress-version-${version}`,
-          `amaui-RoundedProgress-size-${size}`
+          'onesy-RoundedProgress-root',
+          `onesy-RoundedProgress-version-${version}`,
+          `onesy-RoundedProgress-size-${size}`
         ],
 
         className,
@@ -249,7 +249,7 @@ const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: a
 
         className={classNames([
           staticClassName('RoundedProgress', theme) && [
-            'amaui-RoundedProgress-svg'
+            'onesy-RoundedProgress-svg'
           ],
 
           classes.svg
@@ -276,7 +276,7 @@ const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: a
 
           className={classNames([
             staticClassName('RoundedProgress', theme) && [
-              'amaui-RoundedProgress-path-background'
+              'onesy-RoundedProgress-path-background'
             ],
 
             pathBackgroundProps?.className,
@@ -298,7 +298,7 @@ const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: a
 
           className={classNames([
             staticClassName('RoundedProgress', theme) && [
-              'amaui-RoundedProgress-path'
+              'onesy-RoundedProgress-path'
             ],
 
             pathProps?.className,
@@ -320,6 +320,6 @@ const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: a
   );
 });
 
-RoundProgress.displayName = 'amaui-RoundProgress';
+RoundProgress.displayName = 'onesy-RoundProgress';
 
 export default RoundProgress;

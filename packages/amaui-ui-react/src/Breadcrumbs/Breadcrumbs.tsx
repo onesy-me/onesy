@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { clamp, is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
-import IconMaterialMoreHoriz from '@amaui/icons-material-rounded-react/IconMaterialMoreHorizW100';
+import IconMaterialNavigateNext from '@onesy/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialMoreHoriz from '@onesy/icons-material-rounded-react/IconMaterialMoreHorizW100';
 
 import LineElement from '../Line';
 import TypeElement from '../Type';
@@ -22,14 +22,14 @@ const useStyle = styleMethod(theme => ({
   },
 
   expandMore: {
-    '&.amaui-IconButton-root': {
+    '&.onesy-IconButton-root': {
       padding: '0',
       width: 'unset',
       height: '100%',
       borderRadius: theme.methods.shape.radius.value(0.25, 'px')
     }
   }
-}), { name: 'amaui-Breadcrumbs' });
+}), { name: 'onesy-Breadcrumbs' });
 
 export interface IBreadcrumbs extends ILine {
   separator?: IElement | string;
@@ -40,9 +40,9 @@ export interface IBreadcrumbs extends ILine {
 }
 
 const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBreadcrumbs?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBreadcrumbs?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -135,7 +135,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
 
           className={classNames([
             staticClassName('Breadcrumbs', theme) && [
-              'amaui-Breadcrumbs-expand-more'
+              'onesy-Breadcrumbs-expand-more'
             ],
 
             MoreProps?.className,
@@ -208,7 +208,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('Breadcrumbs', theme) && [
-          'amaui-Breadcrumbs-root'
+          'onesy-Breadcrumbs-root'
         ],
 
         className,
@@ -235,7 +235,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
 
               className={classNames([
                 staticClassName('Breadcrumbs', theme) && [
-                  'amaui-Breadcrumbs-item'
+                  'onesy-Breadcrumbs-item'
                 ],
 
                 classes.item
@@ -252,7 +252,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
 
             className: classNames([
               staticClassName('Breadcrumbs', theme) && [
-                'amaui-Breadcrumbs-item'
+                'onesy-Breadcrumbs-item'
               ],
 
               item?.props?.className,
@@ -267,6 +267,6 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
   );
 });
 
-Breadcrumbs.displayName = 'amaui-Breadcrumbs';
+Breadcrumbs.displayName = 'onesy-Breadcrumbs';
 
 export default Breadcrumbs;

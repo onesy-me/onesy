@@ -1,12 +1,12 @@
 import React from 'react';
 
-import AmauiZip from '@amaui/zip';
-import { copyToClipboard, stringify } from '@amaui/utils';
-import { Button, IconButton, Line, TextField, Tooltip, Type } from '@amaui/ui-react';
-import { style } from '@amaui/style-react';
+import OnesyZip from '@onesy/zip';
+import { copyToClipboard, stringify } from '@onesy/utils';
+import { Button, IconButton, Line, TextField, Tooltip, Type } from '@onesy/ui-react';
+import { style } from '@onesy/style-react';
 
-import IconMaterialContentCopyRounded from '@amaui/icons-material-rounded-react/IconMaterialContentCopy';
-import IconMaterialDoneRounded from '@amaui/icons-material-rounded-react/IconMaterialDone';
+import IconMaterialContentCopyRounded from '@onesy/icons-material-rounded-react/IconMaterialContentCopy';
+import IconMaterialDoneRounded from '@onesy/icons-material-rounded-react/IconMaterialDone';
 
 const useStyle = style(theme => ({
   root: {
@@ -29,7 +29,7 @@ const zip = React.forwardRef((props: any, ref: any) => {
   const { classes } = useStyle();
 
   const [value, setValue] = React.useState();
-  const [response, setResponse] = React.useState<AmauiZip>();
+  const [response, setResponse] = React.useState<OnesyZip>();
   const [copying, setCopying] = React.useState(false);
 
   const refs = {
@@ -37,15 +37,15 @@ const zip = React.forwardRef((props: any, ref: any) => {
   };
 
   React.useEffect(() => {
-    (window as any).AmauiZip = AmauiZip;
+    (window as any).OnesyZip = OnesyZip;
   }, []);
 
   const onZip = React.useCallback(() => {
-    // AmauiZip encoded_values option, ought to be true
+    // OnesyZip encoded_values option, ought to be true
     // for most efficiency, i've only made it false so in the UI
-    // to try the AmauiZip, without it browser on copy, copies
+    // to try the OnesyZip, without it browser on copy, copies
     // incorrectly encoded values, use encode_values: true in production
-    setResponse(new AmauiZip(value, { encode_values: false }));
+    setResponse(new OnesyZip(value, { encode_values: false }));
   }, [value]);
 
   const onCopy = React.useCallback(async () => {

@@ -1,14 +1,14 @@
 import React from 'react';
 import LinkNext from 'next/link';
 
-import { isEnvironment } from '@amaui/utils';
+import { isEnvironment } from '@onesy/utils';
 
-import { IconButton, List, MenuItem, MenuDesktop, Tooltip, TopAppBar, useMediaQuery, useScroll } from '@amaui/ui-react';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import AmauiStorage from '@amaui/storage';
+import { IconButton, List, MenuItem, MenuDesktop, Tooltip, TopAppBar, useMediaQuery, useScroll } from '@onesy/ui-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import OnesyStorage from '@onesy/storage';
 
-import IconMaterialAutoAwesomeRounded from '@amaui/icons-material-rounded-react/IconMaterialAutoAwesome';
-import IconMaterialMenuRounded from '@amaui/icons-material-rounded-react/IconMaterialMenu';
+import IconMaterialAutoAwesomeRounded from '@onesy/icons-material-rounded-react/IconMaterialAutoAwesome';
+import IconMaterialMenuRounded from '@onesy/icons-material-rounded-react/IconMaterialMenu';
 
 import Logo from '../../../public/assets/svg/logo.svg';
 import IconGithub from '../../../public/assets/svg/github.svg';
@@ -40,22 +40,22 @@ const useStyle = styleMethod(theme => ({
   navigationDrawer: {
     paddingBottom: 100,
 
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       overflowY: 'auto',
       scrollbarWidth: 0
     },
 
-    '& .amaui-ListItem-end-button': {
+    '& .onesy-ListItem-end-button': {
       pointerEvents: 'none'
     },
 
-    '& .amaui-List-root': {
+    '& .onesy-List-root': {
       gap: 4
     }
   },
 
   navigationDrawer_desktop: {
-    '&.amaui-Modal-root': {
+    '&.onesy-Modal-root': {
       position: 'fixed',
       top: 0,
       insetInlineStart: 0,
@@ -66,7 +66,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   navigationDrawer_mobile: {
-    '&.amaui-Modal-root': {
+    '&.onesy-Modal-root': {
       paddingBottom: 0,
       zIndex: theme.z_index.tooltip + 2
     }
@@ -77,7 +77,7 @@ const useStyle = styleMethod(theme => ({
     left: '50%',
     transform: 'translateX(-50%)',
 
-    '&.amaui-TopAppBar-root': {
+    '&.onesy-TopAppBar-root': {
       width: `calc(100% - 48px)`,
       maxWidth: theme.breakpoints.values.lg,
       padding: 0,
@@ -91,7 +91,7 @@ const useStyle = styleMethod(theme => ({
       zIndex: theme.z_index.tooltip + 1
     },
 
-    '& .amaui-TopAppBar-wrapper': {
+    '& .onesy-TopAppBar-wrapper': {
       height: 'unset',
       padding: '12px 24px'
     }
@@ -100,20 +100,20 @@ const useStyle = styleMethod(theme => ({
   header_withNavigationDrawer: {
     left: `calc(50% ${theme.direction === 'ltr' ? '+' : '-'} 137px)`,
 
-    '&.amaui-TopAppBar-root': {
+    '&.onesy-TopAppBar-root': {
       width: `calc(100% - 354px)`,
     }
   },
 
   header_not_top: {
-    '&.amaui-TopAppBar-root': {
+    '&.onesy-TopAppBar-root': {
       maxWidth: theme.breakpoints.values.md,
       boxShadow: theme.shadows.values.default['2']
     }
   },
 
   header_down: {
-    '&.amaui-TopAppBar-root': {
+    '&.onesy-TopAppBar-root': {
       transform: 'translate(-50%, calc(-100% - 16px))'
     }
   },
@@ -149,7 +149,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   menuItem_menu: {
-    '& > .amaui-ListItem-root .amaui-ListItem-text-primary': {
+    '& > .onesy-ListItem-root .onesy-ListItem-text-primary': {
       fontWeight: '600'
     }
   },
@@ -161,18 +161,18 @@ const useStyle = styleMethod(theme => ({
       paddingInlineStart: '23px !important'
     },
 
-    '& > * > .amaui-ListItem-root .amaui-ListItem-text': {
+    '& > * > .onesy-ListItem-root .onesy-ListItem-text': {
       fontSize: '0.925rem'
     },
 
-    '&.amaui-Line-root': {
+    '&.onesy-Line-root': {
       width: '90vw',
       maxWidth: 274,
       paddingTop: 0,
       overflow: 'unset'
     },
 
-    '&.amaui-Surface-root:not(.amaui-ListSubheader-root), & .amaui-Surface-root:not(.amaui-ListSubheader-root)': {
+    '&.onesy-Surface-root:not(.onesy-ListSubheader-root), & .onesy-Surface-root:not(.onesy-ListSubheader-root)': {
       background: 'transparent'
     }
   },
@@ -186,7 +186,7 @@ const useStyle = styleMethod(theme => ({
 
   [`@media only screen and (min-width: 1100px)`]: {
     $navigationDrawer: {
-      '& .amaui-Modal-surface': {
+      '& .onesy-Modal-surface': {
         background: 'transparent'
       }
     }
@@ -223,7 +223,7 @@ function Header(props: any) {
     setOpen
   } = props;
 
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const { classes } = useStyle(props);
 
@@ -235,7 +235,7 @@ function Header(props: any) {
   const scrollDown = useScroll({ direction: 'down', offset: smallerScreen ? 40 : mediumScreen ? 100 : 200 });
 
   const refs = {
-    storage: new AmauiStorage({ namespace: 'amaui-docs' }),
+    storage: new OnesyStorage({ namespace: 'onesy-docs' }),
     sidenavMenu: React.useRef<any>(undefined),
     previousURL: React.useRef<string>(undefined),
     props: React.useRef<any>(undefined)
@@ -486,7 +486,7 @@ function Header(props: any) {
         <Tooltip
           key={1}
 
-          label='amaui org'
+          label='onesy org'
 
           color='inverted'
         >
@@ -495,7 +495,7 @@ function Header(props: any) {
 
             Component='a'
 
-            href='https://github.com/amaui-org'
+            href='https://github.com/onesy-org'
 
             target='_blank'
           >

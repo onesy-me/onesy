@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import KeyframesElement from '../Keyframes';
 import IconButtonElement from '../IconButton';
@@ -155,7 +155,7 @@ const useStyle = styleMethod(theme => ({
     opacity: theme.palette.light ? theme.palette.visual_contrast.default.opacity.disabled : '1',
     pointerEvents: 'none'
   }
-}), { name: 'amaui-Switch' });
+}), { name: 'onesy-Switch' });
 
 const Icon = (props: any) => {
   const {
@@ -215,9 +215,9 @@ export interface ISwitch extends IBaseElement {
 }
 
 const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSwitch?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySwitch?.props?.default, ...props_ }), [props_]);
 
   const Keyframes = React.useMemo(() => theme?.elements?.Keyframes || KeyframesElement, [theme]);
 
@@ -710,10 +710,10 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Switch', theme) && [
-          'amaui-Switch-root',
-          `amaui-Switch-size-${size}`,
-          value && `amaui-Switch-checked`,
-          disabled && `amaui-Switch-disabled`
+          'onesy-Switch-root',
+          `onesy-Switch-size-${size}`,
+          value && `onesy-Switch-checked`,
+          disabled && `onesy-Switch-disabled`
         ],
 
         className,
@@ -749,7 +749,7 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Switch', theme) && [
-            'amaui-Switch-input'
+            'onesy-Switch-input'
           ],
 
           classes.input
@@ -777,7 +777,7 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('Switch', theme) && [
-                  'amaui-Switch-background'
+                  'onesy-Switch-background'
                 ],
 
                 classes.background,
@@ -796,7 +796,7 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('Switch', theme) && [
-                  'amaui-Switch-border'
+                  'onesy-Switch-border'
                 ],
 
                 classes.border,
@@ -820,7 +820,7 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Switch', theme) && [
-                  'amaui-Switch-icon-button'
+                  'onesy-Switch-icon-button'
                 ],
 
                 classes.iconButton
@@ -837,7 +837,7 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
               <Icon
                 className={classNames([
                   staticClassName('Switch', theme) && [
-                    'amaui-Switch-icon'
+                    'onesy-Switch-icon'
                   ],
 
                   classes.icon
@@ -863,6 +863,6 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Switch.displayName = 'amaui-Switch';
+Switch.displayName = 'onesy-Switch';
 
 export default Switch;

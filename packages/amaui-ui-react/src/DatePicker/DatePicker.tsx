@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { AmauiDate, endOf, format, is as isAmauiDate, startOf } from '@amaui/date';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { OnesyDate, endOf, format, is as isOnesyDate, startOf } from '@onesy/date';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialCalendarToday from '@amaui/icons-material-rounded-react/IconMaterialCalendarTodayW100Filled';
-import IconMaterialEdit from '@amaui/icons-material-rounded-react/IconMaterialEditW100';
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialCalendarToday from '@onesy/icons-material-rounded-react/IconMaterialCalendarTodayW100Filled';
+import IconMaterialEdit from '@onesy/icons-material-rounded-react/IconMaterialEditW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
 import IconButtonElement from '../IconButton';
 import ButtonElement from '../Button';
@@ -54,17 +54,17 @@ const useStyle = styleMethod(theme => ({
   },
 
   calendar_mobile: {
-    '&.amaui-Calendar-root': {
+    '&.onesy-Calendar-root': {
       width: '100%'
     },
 
-    '& .amaui-Calendar-header + .amaui-Divider-root': {
+    '& .onesy-Calendar-header + .onesy-Divider-root': {
       display: 'none'
     }
   },
 
   input_mobile: {
-    '&.amaui-TextField-root': {
+    '&.onesy-TextField-root': {
       width: '100%'
     }
   },
@@ -76,7 +76,7 @@ const useStyle = styleMethod(theme => ({
     borderRadius: theme.methods.shape.radius.value(3.5, 'px'),
     overflow: 'hidden',
 
-    '& .amaui-Calendar-root': {
+    '& .onesy-Calendar-root': {
       borderRadius: '0'
     }
   },
@@ -128,11 +128,11 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0'
     }
   }
-}), { name: 'amaui-DatePicker' });
+}), { name: 'onesy-DatePicker' });
 
 export const SEPARATOR_SYMBOL = `–`;
 
@@ -157,10 +157,10 @@ export interface IDatePicker extends ILine {
   now?: boolean;
   range?: boolean;
   static?: boolean;
-  valid?: (value: AmauiDate, version: TCalendarUnit) => boolean;
-  validate?: (value: AmauiDate) => boolean;
-  min?: AmauiDate;
-  max?: AmauiDate;
+  valid?: (value: OnesyDate, version: TCalendarUnit) => boolean;
+  validate?: (value: OnesyDate) => boolean;
+  min?: OnesyDate;
+  max?: OnesyDate;
   calendars?: number;
   placeholder?: string;
   openMobile?: 'input' | 'select';
@@ -210,9 +210,9 @@ export interface IDatePicker extends ILine {
 }
 
 const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDatePicker?.props?.default, ...props__ }), [props__]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDatePicker?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -344,12 +344,12 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
-  const [value, setValue] = React.useState<[AmauiDate, AmauiDate]>((): [AmauiDate, AmauiDate] => {
-    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new AmauiDate(), new AmauiDate()] : [new AmauiDate()]));
+  const [value, setValue] = React.useState<[OnesyDate, OnesyDate]>((): [OnesyDate, OnesyDate] => {
+    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
-    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<AmauiDate>).filter(Boolean) as any;
+    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<OnesyDate>).filter(Boolean) as any;
   });
-  const [calendar, setCalendar] = React.useState((calendarDefault !== undefined ? calendarDefault : calendar_) || new AmauiDate());
+  const [calendar, setCalendar] = React.useState((calendarDefault !== undefined ? calendarDefault : calendar_) || new OnesyDate());
   const [open, setOpen] = React.useState(false);
   const [mode, setMode] = React.useState((touch ? openMobile : 'select') || 'select');
   const [error, setError] = React.useState(false);
@@ -361,7 +361,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
     if (!(from || to)) return '';
 
-    const method = (item: AmauiDate) => `${format(item, 'DD')}/${format(item, 'MM')}/${format(item, 'YYYY')}`;
+    const method = (item: OnesyDate) => `${format(item, 'DD')}/${format(item, 'MM')}/${format(item, 'YYYY')}`;
 
     result += `${method(from)}`;
 
@@ -383,7 +383,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   const onUpdateValue = (valueNew_: any) => {
     const valueNew = is('array', valueNew_) ? valueNew_ : [valueNew_];
 
-    const dateNow = new AmauiDate();
+    const dateNow = new OnesyDate();
 
     // Update value
     setValue(valueNew as any);
@@ -419,14 +419,14 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     if (calendar_ !== undefined && calendar_ !== calendar) setCalendar(calendar_);
   }, [calendar_]);
 
-  const onUpdate = React.useCallback((valueNew: AmauiDate) => {
+  const onUpdate = React.useCallback((valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
     if (is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
   }, [onChange, range]);
 
-  const onUpdateCalendar = React.useCallback((valueNew: AmauiDate) => {
+  const onUpdateCalendar = React.useCallback((valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('calendar')) setCalendar(valueNew);
 
@@ -457,9 +457,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
     let [from, to] = valueNew.split(SEPARATOR) as any;
 
-    from = textToAmauiDate(from);
+    from = textToOnesyDate(from);
 
-    if (to) to = textToAmauiDate(to, false);
+    if (to) to = textToOnesyDate(to, false);
 
     valueNew = [from, to].filter(Boolean) as any;
 
@@ -481,7 +481,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   const onReset = React.useCallback(() => {
     let valueNew: any = inputToValue();
 
-    const isValid = valueNew && (valueNew?.[0] as AmauiDate)?.valid;
+    const isValid = valueNew && (valueNew?.[0] as OnesyDate)?.valid;
 
     if (isValid) {
       // Update value
@@ -494,7 +494,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
       setInputModal(input);
     }
     else {
-      const dateNow = new AmauiDate();
+      const dateNow = new OnesyDate();
 
       valueNew = [];
 
@@ -513,9 +513,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   }, [input]);
 
   const onToday = React.useCallback((event: React.MouseEvent) => {
-    const valueNew = [startOf(new AmauiDate(), 'day')];
+    const valueNew = [startOf(new OnesyDate(), 'day')];
 
-    if (range) valueNew.push(endOf(new AmauiDate(), 'day'));
+    if (range) valueNew.push(endOf(new OnesyDate(), 'day'));
 
     // Update value
     onUpdate(valueNew as any);
@@ -535,7 +535,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   }, [input, range, onToday_]);
 
   const onClear = React.useCallback((event: React.MouseEvent) => {
-    const dateNow = new AmauiDate();
+    const dateNow = new OnesyDate();
 
     const valueNew = [];
 
@@ -582,19 +582,19 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     if (is('function', onCancel_)) onCancel_(event);
   }, [input, onCancel_]);
 
-  const valid = React.useCallback((...args: [AmauiDate, any?]) => {
+  const valid = React.useCallback((...args: [OnesyDate, any?]) => {
     if (is('function', valid_)) return valid_(...args);
 
-    const amauiDate = args[0];
+    const onesyDate = args[0];
 
     if (min || max || validate) {
       let response = true;
 
-      if (is('function', validate)) response = validate(amauiDate);
+      if (is('function', validate)) response = validate(onesyDate);
 
-      if (min !== undefined) response = response && isAmauiDate(amauiDate, 'after or same', min);
+      if (min !== undefined) response = response && isOnesyDate(onesyDate, 'after or same', min);
 
-      if (max !== undefined) response = response && isAmauiDate(amauiDate, 'before or same', max);
+      if (max !== undefined) response = response && isOnesyDate(onesyDate, 'before or same', max);
 
       return response;
     }
@@ -602,18 +602,18 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     return true;
   }, [valid_, min, max, validate]);
 
-  const textToAmauiDate = React.useCallback((valueNew: string, start = true) => {
+  const textToOnesyDate = React.useCallback((valueNew: string, start = true) => {
     const [valueDay, valueMonth, valueYear] = (valueNew || '').split('/');
 
-    const amauiDate = new AmauiDate(new Date(`${valueMonth}/${valueDay}/${valueYear}`));
+    const onesyDate = new OnesyDate(new Date(`${valueMonth}/${valueDay}/${valueYear}`));
 
-    return start ? startOf(amauiDate, 'day') : endOf(amauiDate, 'day');
+    return start ? startOf(onesyDate, 'day') : endOf(onesyDate, 'day');
   }, []);
 
   const onInputChange = React.useCallback((valueNew_: any) => {
     const valueNew = inputToValue(valueNew_);
 
-    const validValues = (valueNew as [AmauiDate, AmauiDate]).every(item => item.valid);
+    const validValues = (valueNew as [OnesyDate, OnesyDate]).every(item => item.valid);
 
     // Only update values if input is valid
     // format used to make the value
@@ -639,7 +639,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   const onInputChangeModal = React.useCallback((valueNew_: any) => {
     const valueNew = inputToValue(valueNew_);
 
-    const validValues = (valueNew as [AmauiDate, AmauiDate]).every(item => item.valid);
+    const validValues = (valueNew as [OnesyDate, OnesyDate]).every(item => item.valid);
 
     // Only update values if input is valid
     // format used to make the value
@@ -725,7 +725,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
       className={classNames([
         staticClassName('DatePicker', theme) && [
-          'amaui-DatePicker-actions'
+          'onesy-DatePicker-actions'
         ],
 
         classes.actions
@@ -839,7 +839,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
       className={classNames([
         staticClassName('DatePicker', theme) && [
-          'amaui-DatePicker-mobile'
+          'onesy-DatePicker-mobile'
         ],
 
         classes.mobile,
@@ -854,7 +854,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
         className={classNames([
           staticClassName('DatePicker', theme) && [
-            'amaui-DatePicker-header'
+            'onesy-DatePicker-header'
           ],
 
           classes.header,
@@ -911,7 +911,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
             className={classNames([
               staticClassName('DatePicker', theme) && [
-                'amaui-DatePicker-subheading'
+                'onesy-DatePicker-subheading'
               ],
 
               classes.subheading,
@@ -933,7 +933,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
             className={classNames([
               staticClassName('DatePicker', theme) && [
-                'amaui-DatePicker-heading'
+                'onesy-DatePicker-heading'
               ],
 
               classes.heading,
@@ -981,7 +981,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
             className={classNames([
               staticClassName('DatePicker', theme) && [
-                'amaui-DatePicker-heading'
+                'onesy-DatePicker-heading'
               ],
 
               classes.heading,
@@ -1032,7 +1032,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
           className={classNames([
             staticClassName('DatePicker', theme) && [
-              'amaui-DatePicker-day-names'
+              'onesy-DatePicker-day-names'
             ],
 
             classes.dayNames
@@ -1054,7 +1054,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
               className={classNames([
                 staticClassName('DatePicker', theme) && [
-                  'amaui-DatePicker-day-name'
+                  'onesy-DatePicker-day-name'
                 ],
 
                 classes.dayName
@@ -1072,7 +1072,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
         className={classNames([
           staticClassName('DatePicker', theme) && [
-            'amaui-DatePicker-divider'
+            'onesy-DatePicker-divider'
           ],
 
           classes.divider
@@ -1132,8 +1132,8 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
           className={classNames([
             staticClassName('DatePicker', theme) && [
-              'amaui-DatePicker-calendar',
-              'amaui-DatePicker-version-mobile'
+              'onesy-DatePicker-calendar',
+              'onesy-DatePicker-version-mobile'
             ],
 
             CalendarProps?.className,
@@ -1200,7 +1200,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
           className={classNames([
             staticClassName('DatePicker', theme) && [
-              'amaui-DatePicker-divider'
+              'onesy-DatePicker-divider'
             ],
 
             classes.divider
@@ -1250,8 +1250,8 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
       className={classNames([
         staticClassName('DatePicker', theme) && [
-          'amaui-DatePicker-calendar',
-          'amaui-DatePicker-version-desktop'
+          'onesy-DatePicker-calendar',
+          'onesy-DatePicker-version-desktop'
         ],
 
         CalendarProps?.className,
@@ -1280,14 +1280,14 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
       className={classNames([
         staticClassName('DatePicker', theme) && [
-          'amaui-DatePicker-root',
-          `amaui-DatePicker-version-${version}`,
-          `amaui-DatePicker-size-${size}`,
+          'onesy-DatePicker-root',
+          `onesy-DatePicker-version-${version}`,
+          `onesy-DatePicker-size-${size}`,
           WrapperProps?.className,
-          range && `amaui-DatePicker-range`,
-          readOnly && `amaui-DatePicker-read-only`,
-          disabled && `amaui-DatePicker-disabled`,
-          fullWidth && 'amaui-full-width'
+          range && `onesy-DatePicker-range`,
+          readOnly && `onesy-DatePicker-read-only`,
+          disabled && `onesy-DatePicker-disabled`,
+          fullWidth && 'onesy-full-width'
         ],
 
         className,
@@ -1387,7 +1387,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
             <ClickListener
               onClickOutside={onCancel as any}
 
-              includeParentQueries={['.amaui-Calendar-list']}
+              includeParentQueries={['.onesy-Calendar-list']}
             >
               {desktop}
             </ClickListener>
@@ -1400,6 +1400,6 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   );
 });
 
-DatePicker.displayName = 'amaui-DatePicker';
+DatePicker.displayName = 'onesy-DatePicker';
 
 export default DatePicker;

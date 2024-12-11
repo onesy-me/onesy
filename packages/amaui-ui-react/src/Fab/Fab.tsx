@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ButtonElement from '../Button';
 import { IButton } from '../Button/Button';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-Fab' });
+}), { name: 'onesy-Fab' });
 
 export interface IFab extends IButton {
 
 }
 
 const Fab: React.FC<IFab> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiFab?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFab?.props?.default, ...props_ }), [props_]);
 
   const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
 
@@ -41,7 +41,7 @@ const Fab: React.FC<IFab> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Fab', theme) && [
-          'amaui-Fab-root'
+          'onesy-Fab-root'
         ],
 
         className,
@@ -57,6 +57,6 @@ const Fab: React.FC<IFab> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Fab.displayName = 'amaui-Fab';
+Fab.displayName = 'onesy-Fab';
 
 export default Fab;

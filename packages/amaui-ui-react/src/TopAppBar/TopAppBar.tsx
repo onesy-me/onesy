@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -120,7 +120,7 @@ const useStyle = styleMethod(theme => ({
     left: '50%',
     transform: 'translateX(-50%)'
   }
-}), { name: 'amaui-TopAppBar' });
+}), { name: 'onesy-TopAppBar' });
 
 export interface ITopAppBar extends Omit<ISurface, 'version'> {
   position?: 'relative' | 'absolute' | 'static' | 'sticky' | 'fixed' | 'unset';
@@ -135,9 +135,9 @@ export interface ITopAppBar extends Omit<ISurface, 'version'> {
 }
 
 const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTopAppBar?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTopAppBar?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -199,7 +199,7 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
   const classNameTitle = classNames([
     staticClassName('TopAppBar', theme) && [
-      'amaui-TopAppBar-title'
+      'onesy-TopAppBar-title'
     ],
 
     classes.title,
@@ -209,8 +209,8 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
   const classNameTitleMedium = classNames([
     staticClassName('TopAppBar', theme) && [
-      'amaui-TopAppBar-title',
-      'amaui-TopAppBar-title-medium'
+      'onesy-TopAppBar-title',
+      'onesy-TopAppBar-title-medium'
     ],
 
     classes.title,
@@ -280,9 +280,9 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('TopAppBar', theme) && [
-          'amaui-TopAppBar-root',
-          `amaui-TopAppBar-version-${version}`,
-          `amaui-TopAppBar-size-${size}`
+          'onesy-TopAppBar-root',
+          `onesy-TopAppBar-version-${version}`,
+          `onesy-TopAppBar-size-${size}`
         ],
 
         className,
@@ -304,7 +304,7 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('TopAppBar', theme) && [
-            'amaui-TopAppBar-wrapper'
+            'onesy-TopAppBar-wrapper'
           ],
 
           classes.wrapper,
@@ -323,8 +323,8 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('TopAppBar', theme) && [
-                'amaui-TopAppBar-aside',
-                `amaui-TopAppBar-start`
+                'onesy-TopAppBar-aside',
+                `onesy-TopAppBar-start`
               ],
 
               classes.aside
@@ -348,8 +348,8 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('TopAppBar', theme) && [
-                'amaui-TopAppBar-aside',
-                `amaui-TopAppBar-end`
+                'onesy-TopAppBar-aside',
+                `onesy-TopAppBar-end`
               ],
 
               classes.aside
@@ -373,6 +373,6 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-TopAppBar.displayName = 'amaui-TopAppBar';
+TopAppBar.displayName = 'onesy-TopAppBar';
 
 export default TopAppBar;

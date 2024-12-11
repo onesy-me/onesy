@@ -116,7 +116,7 @@ assert(null).falsy;
 
 #### Valid
 
-va, valid uses `@amaui/utils`'s `isValid` method to do the validation.
+va, valid uses `@onesy/utils`'s `isValid` method to do the validation.
 
 ##### va
 
@@ -126,7 +126,7 @@ Alias for valid.
 
 ```ts
 assert(new Date()).valid('date');
-assert(AmauiUtils.getID()).valid('uuid');
+assert(OnesyUtils.getID()).valid('uuid');
 assert('110101').valid('binary-string');
 assert('abcdef').valid('hexadecimal-string');
 assert('https://a.com/a').valid('url');
@@ -157,7 +157,7 @@ assert('data:,A%20brief%20note').valid('datauri');
 
 #### A, an
 
-a, an uses `@amaui/utils`'s `is`, `isState`, `isEnvironment`, `isExists`, `isOS`, `isBrowser`, `isResponsive` methods to do the validation.
+a, an uses `@onesy/utils`'s `is`, `isState`, `isEnvironment`, `isExists`, `isOS`, `isBrowser`, `isResponsive` methods to do the validation.
 
 A one or array of arguments are passed into all of the above methods, and if any of them is true, then this method is true.
 
@@ -344,7 +344,7 @@ assert({ a: { a: 4 }, ab: 4 }).include({ a: { a: 4 }, ab: 4 });
 
 #### Properties
 
-Uses `@amaui/utils`'s `hasObjectProperty`, `getObjectValue`, to validate the values.
+Uses `@onesy/utils`'s `hasObjectProperty`, `getObjectValue`, to validate the values.
 
 ##### prop
 
@@ -399,7 +399,7 @@ Alias for throwAsync.
 
 ```ts
 async function a() {
-  await AmauiUtils.wait(140);
+  await OnesyUtils.wait(140);
 
   throw new Error();
 }
@@ -525,8 +525,8 @@ type IAssert = {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Test: AmauiTo",
-      "to": "/library/test/use/AmauiTo"
+      "label": "Test: OnesyTo",
+      "to": "/library/test/use/OnesyTo"
     },
     "next": {
       "label": "Test: cli",

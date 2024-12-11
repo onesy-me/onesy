@@ -1,14 +1,14 @@
 import ReactDOM from 'react-dom/client';
 
-import { Snackbars, Confirm, MainProgress, Widgets, ScreenCapture, Timer, Countdown, Weather, Watch } from '@amaui/ui-react';
-import { AmauiStyle, AmauiStyleProvider, AmauiThemeProvider, valueObject, prefix, rtl, unit } from '@amaui/style-react';
+import { Snackbars, Confirm, MainProgress, Widgets, ScreenCapture, Timer, Countdown, Weather, Watch } from '@onesy/ui-react';
+import { OnesyStyle, OnesyStyleProvider, OnesyThemeProvider, valueObject, prefix, rtl, unit } from '@onesy/style-react';
 
-import IconMaterialTimerRounded from '@amaui/icons-material-react/build/IconMaterialTimerRounded';
-import IconMaterialVideocamRounded from '@amaui/icons-material-react/build/IconMaterialVideocamRounded';
-import IconMaterialAvTimerRounded from '@amaui/icons-material-react/build/IconMaterialAvTimerRounded';
-import IconMaterialWeatherRounded from '@amaui/icons-material-react/build/IconMaterialClearDayRounded';
-import IconMaterialNestClockFarsightDigitalRounded from '@amaui/icons-material-react/build/IconMaterialNestClockFarsightDigitalRounded';
-import IconMaterialNestClockFarsightAnalogRounded from '@amaui/icons-material-react/build/IconMaterialNestClockFarsightAnalogRounded';
+import IconMaterialTimerRounded from '@onesy/icons-material-react/build/IconMaterialTimerRounded';
+import IconMaterialVideocamRounded from '@onesy/icons-material-react/build/IconMaterialVideocamRounded';
+import IconMaterialAvTimerRounded from '@onesy/icons-material-react/build/IconMaterialAvTimerRounded';
+import IconMaterialWeatherRounded from '@onesy/icons-material-react/build/IconMaterialClearDayRounded';
+import IconMaterialNestClockFarsightDigitalRounded from '@onesy/icons-material-react/build/IconMaterialNestClockFarsightDigitalRounded';
+import IconMaterialNestClockFarsightAnalogRounded from '@onesy/icons-material-react/build/IconMaterialNestClockFarsightAnalogRounded';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -17,9 +17,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
-amauiStyle.plugins.add = [unit, prefix, rtl, valueObject];
+onesyStyle.plugins.add = [unit, prefix, rtl, valueObject];
 
 const widgets = [
   {
@@ -56,8 +56,8 @@ const widgets = [
 ];
 
 root.render(
-  <AmauiStyleProvider value={amauiStyle}>
-    <AmauiThemeProvider>
+  <OnesyStyleProvider value={onesyStyle}>
+    <OnesyThemeProvider>
       <MainProgress>
         <Confirm>
           <Snackbars>
@@ -69,8 +69,8 @@ root.render(
           </Snackbars>
         </Confirm>
       </MainProgress>
-    </AmauiThemeProvider>
-  </AmauiStyleProvider>
+    </OnesyThemeProvider>
+  </OnesyStyleProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

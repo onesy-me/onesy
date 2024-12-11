@@ -22,13 +22,13 @@ More specific properties have higher priority.
 ### Add
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Add to plugins
-amauiStyle.plugins.add = sort;
+onesyStyle.plugins.add = sort;
 
 // Add to plugins with options
-amauiStyle.plugins.add = {
+onesyStyle.plugins.add = {
   method: sort,
   arguments: [
     {
@@ -42,10 +42,10 @@ amauiStyle.plugins.add = {
 ### Remove
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Remove from plugins
-amauiStyle.plugins.remove = sort;
+onesyStyle.plugins.remove = sort;
 ```
 
 ### Use
@@ -94,7 +94,7 @@ interface IOptions {
 #### sort
 
 ```ts
-function sort(amauiStyle: AmauiStyle, options_?: IOptions): {
+function sort(onesyStyle: OnesyStyle, options_?: IOptions): {
     methods: {
         method: (values: Array<IRuleItem>) => ISort;
     };

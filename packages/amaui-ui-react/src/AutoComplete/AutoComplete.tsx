@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { getObjectValue, is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { getObjectValue, is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
-import IconMaterialArrowDropDown from '@amaui/icons-material-rounded-react/IconMaterialArrowDropDownW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialArrowDropDown from '@onesy/icons-material-rounded-react/IconMaterialArrowDropDownW100';
 
 import MenuElement from '../Menu';
 import ChipElement from '../Chip';
@@ -25,7 +25,7 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     flex: 'unset',
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       flex: '1 1 auto',
       width: 'auto'
     }
@@ -72,7 +72,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   multiple: {
-    '&.amaui-TextField-input-wrapper': {
+    '&.onesy-TextField-input-wrapper': {
       height: 'unset'
     }
   },
@@ -92,7 +92,7 @@ const useStyle = styleMethod(theme => ({
   open: {},
 
   readOnly: {
-    '&.amaui-TextField-input-wrapper': {
+    '&.onesy-TextField-input-wrapper': {
       cursor: 'default'
     }
   },
@@ -111,11 +111,11 @@ const useStyle = styleMethod(theme => ({
   },
 
   disabled: {
-    '&.amaui-TextField-input-wrapper': {
+    '&.onesy-TextField-input-wrapper': {
       cursor: 'default'
     }
   }
-}), { name: 'amaui-AutoComplete' });
+}), { name: 'onesy-AutoComplete' });
 
 export type TAutoCompleteValue = string | Array<string>;
 
@@ -193,9 +193,9 @@ const getText = (value: any) => {
 const getValue = (value: any) => value?.value !== undefined ? value.value : value;
 
 const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAutoComplete?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoComplete?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -881,8 +881,8 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('AutoComplete', theme) && [
-          'amaui-AutoComplete-wrapper',
-          fullWidth && 'amaui-full-width'
+          'onesy-AutoComplete-wrapper',
+          fullWidth && 'onesy-full-width'
         ],
         WrapperProps?.className,
         classes.wrapper
@@ -914,13 +914,13 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
         className={classNames([
           staticClassName('AutoComplete', theme) && [
-            'amaui-AutoComplete-root',
-            `amaui-AutoComplete-version-${version}`,
-            `amaui-AutoComplete-size-${size}`,
-            open && `amaui-AutoComplete-open`,
-            mouseDown && `amaui-AutoComplete-mouse-down`,
-            focus && `amaui-AutoComplete-focus`,
-            loading && `amaui-AutoComplete-loading`
+            'onesy-AutoComplete-root',
+            `onesy-AutoComplete-version-${version}`,
+            `onesy-AutoComplete-size-${size}`,
+            open && `onesy-AutoComplete-open`,
+            mouseDown && `onesy-AutoComplete-mouse-down`,
+            focus && `onesy-AutoComplete-focus`,
+            loading && `onesy-AutoComplete-loading`
           ],
 
           className,
@@ -974,7 +974,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
         InputWrapperProps={{
           className: classNames([
             staticClassName('AutoComplete', theme) && [
-              'amaui-AutoComplete-input-wrapper'
+              'onesy-AutoComplete-input-wrapper'
             ],
 
             classes.inputWrapper,
@@ -1032,12 +1032,12 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
             className={classNames([
               staticClassName('AutoComplete', theme) && [
-                'amaui-AutoComplete-input',
+                'onesy-AutoComplete-input',
 
                 multiple && [
-                  chip && `amaui-AutoComplete-chip`,
-                  open && `amaui-AutoComplete-open`,
-                  readOnly && `amaui-Select-readOnly`
+                  chip && `onesy-AutoComplete-chip`,
+                  open && `onesy-AutoComplete-open`,
+                  readOnly && `onesy-Select-readOnly`
                 ],
               ],
 
@@ -1126,6 +1126,6 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
   );
 });
 
-AutoComplete.displayName = 'amaui-AutoComplete';
+AutoComplete.displayName = 'onesy-AutoComplete';
 
 export default AutoComplete;

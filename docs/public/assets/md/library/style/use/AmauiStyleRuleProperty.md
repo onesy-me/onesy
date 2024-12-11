@@ -1,15 +1,15 @@
 
-# AmauiStyleRuleProperty
+# OnesyStyleRuleProperty
 
 Used for creating 1 style rule, having a property & value.
 
 ### Use
 
-- In the options you have to add `amauiStyle`, `amauiStyleSheet`, `amauiStyleRule` instances, as once you make an instance of `AmauiStyleRuleProperty` it will based on those options make class name potentially (if not a pure selector), and use plugins on the class name, value, and create a ready made css property, value.
-- It will add itself to the `AmauiStyleRule` instance, ready to be added to the DOM.
+- In the options you have to add `onesyStyle`, `onesyStyleSheet`, `onesyStyleRule` instances, as once you make an instance of `OnesyStyleRuleProperty` it will based on those options make class name potentially (if not a pure selector), and use plugins on the class name, value, and create a ready made css property, value.
+- It will add itself to the `OnesyStyleRule` instance, ready to be added to the DOM.
 
 ```ts
-const amauiStyleRuleProperty = new AmauiStyleRuleProperty('width', 1114, options);
+const onesyStyleRuleProperty = new OnesyStyleRuleProperty('width', 1114, options);
 ```
 
 ### Values
@@ -32,11 +32,11 @@ Those are css rule property values that can change after they were initially add
 
 ##### Method
 
-If value is a method, it takes an argument which are props, so any times props change in `AmauiStyleSheet` instance, it will trigger an update of all `AmauiStyleRuleProperty`'s that have dynamic value using a method, to update their value.
+If value is a method, it takes an argument which are props, so any times props change in `OnesyStyleSheet` instance, it will trigger an update of all `OnesyStyleRuleProperty`'s that have dynamic value using a method, to update their value.
 
-##### AmauiSubscription
+##### OnesySubscription
 
-If value is `@amaui/subscription` instance, it will subscribe to the emits from it, and any time it emits a new value, that changes the previous value in that subscription, it will update its value.
+If value is `@onesy/subscription` instance, it will subscribe to the emits from it, and any time it emits a new value, that changes the previous value in that subscription, it will update its value.
 
 ## API
 
@@ -46,28 +46,28 @@ If value is `@amaui/subscription` instance, it will subscribe to the emits from 
 interface IOptions extends IOptionsRule {
     value_version?: TValueVersion;
     pure?: boolean;
-    owner?: AmauiStyleRule;
-    parents?: Array<AmauiStyleSheet | AmauiStyleRule>;
-    amauiStyle?: AmauiStyle;
-    amauiStyleSheet?: AmauiStyleSheet;
-    amauiStyleRule?: AmauiStyleRule;
+    owner?: OnesyStyleRule;
+    parents?: Array<OnesyStyleSheet | OnesyStyleRule>;
+    onesyStyle?: OnesyStyle;
+    onesyStyleSheet?: OnesyStyleSheet;
+    onesyStyleRule?: OnesyStyleRule;
 }
 ```
 
-#### AmauiStyleRuleProperty
+#### OnesyStyleRuleProperty
 
 ```ts
-class AmauiStyleRuleProperty {
+class OnesyStyleRuleProperty {
     value: any;
     property: string;
     options: IOptions;
     value_version: TValueVersion;
     pure: boolean;
-    owner: AmauiStyleRule;
-    parents: Array<AmauiStyleSheet | AmauiStyleRule>;
-    amauiStyleRule: AmauiStyleRule;
-    amauiStyleSheet: AmauiStyleSheet;
-    amauiStyle: AmauiStyle;
+    owner: OnesyStyleRule;
+    parents: Array<OnesyStyleSheet | OnesyStyleRule>;
+    onesyStyleRule: OnesyStyleRule;
+    onesyStyleSheet: OnesyStyleSheet;
+    onesyStyle: OnesyStyle;
     level: number;
     level_actual: number;
     id: string;
@@ -77,7 +77,7 @@ class AmauiStyleRuleProperty {
         css: string;
     };
     constructor(value: any, property: string, options?: IOptions);
-    get parent(): AmauiStyleRule;
+    get parent(): OnesyStyleRule;
     get response(): IValuesVersion;
     get css(): string;
     private updateValues;
@@ -86,7 +86,7 @@ class AmauiStyleRuleProperty {
     remove(): void;
     makeSelector(): void;
     private clear;
-    static make(value: any, property: string, options?: IOptions): AmauiStyleRuleProperty;
+    static make(value: any, property: string, options?: IOptions): OnesyStyleRuleProperty;
 }
 ```
 
@@ -95,12 +95,12 @@ class AmauiStyleRuleProperty {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Style: AmauiStyleRule",
-      "to": "/library/style/use/AmauiStyleRule"
+      "label": "Style: OnesyStyleRule",
+      "to": "/library/style/use/OnesyStyleRule"
     },
     "next": {
-      "label": "Style: AmauiStyleSheet",
-      "to": "/library/style/use/AmauiStyleSheet"
+      "label": "Style: OnesyStyleSheet",
+      "to": "/library/style/use/OnesyStyleSheet"
     }
   }
 }~

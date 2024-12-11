@@ -16,10 +16,10 @@ Additionally
 - Once element instance is removed, its specific dynamic style sheet will be removed from the DOM.
 
 ```tsx
-import { style } from '@amaui/style-react';
-import AmauiSubscription from '@amaui/subscription';
+import { style } from '@onesy/style-react';
+import OnesySubscription from '@onesy/subscription';
 
-const amauiSubscription = new AmauiSubscription('beige');
+const onesySubscription = new OnesySubscription('beige');
 
 const useStyle = style(theme => ({
   '@keyframes a': {
@@ -43,10 +43,10 @@ const useStyle = style(theme => ({
       // this property's value will be dynamically updated
       background: props => props.a === 114 ? 'yellow' : 'beige',
 
-      // Using @amaui/subscription
-      // any time amauiSubscription emits new value
+      // Using @onesy/subscription
+      // any time onesySubscription emits new value
       // this property's value will be dynamically updated
-      borderColor: amauiSubscription,
+      borderColor: onesySubscription,
 
       // Simple
       margin: '0 14px 4px 40px',
@@ -102,16 +102,16 @@ type RecursiveRequired<T> = {
 };
 ```
 
-#### AmauiThemeRequired
+#### OnesyThemeRequired
 
 ```ts
-type AmauiThemeRequired = RecursiveRequired<AmauiTheme>;
+type OnesyThemeRequired = RecursiveRequired<OnesyTheme>;
 ```
 
 #### TValueMethod
 
 ```ts
-type TValueMethod = (theme: AmauiThemeRequired) => TValueObject;
+type TValueMethod = (theme: OnesyThemeRequired) => TValueObject;
 ```
 
 #### TValue
@@ -124,7 +124,7 @@ type TValue = TValueObject | TValueMethod;
 
 ```ts
 interface IResponseStyle extends IMethodResponse {
-    amauiTheme?: AmauiTheme;
+    onesyTheme?: OnesyTheme;
 }
 ```
 

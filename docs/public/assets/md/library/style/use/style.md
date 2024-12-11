@@ -12,7 +12,7 @@ Method to add all classes as properties, and their css properties as object prop
 
 #### element
 
-Element which potentially has `AmauiStyle`, `AmauiTheme` instanced bound to it.
+Element which potentially has `OnesyStyle`, `OnesyTheme` instanced bound to it.
 
 #### name
 
@@ -24,13 +24,13 @@ Values are `regular` or `atomic`, default is `regular`.
 
 Atomic will create a class name for every unique css property, value.
 
-#### amaui\_style
+#### onesy\_style
 
-Add `AmauiStyle` instance it will be a part of.
+Add `OnesyStyle` instance it will be a part of.
 
-#### amaui\_theme
+#### onesy\_theme
 
-Add `AmauiTheme` instance it will use.
+Add `OnesyTheme` instance it will use.
 
 #### add
 
@@ -43,15 +43,15 @@ If add is true, what to return from the add response, values `'ids' | 'className
 ### Use
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Plugins
-amauiStyle.plugins.add = [
-  AmauiStyle.unit,
-  AmauiStyle.sort,
-  AmauiStyle.prefix,
-  AmauiStyle.makeClassName,
-  AmauiStyle.rtl
+onesyStyle.plugins.add = [
+  OnesyStyle.unit,
+  OnesyStyle.sort,
+  OnesyStyle.prefix,
+  OnesyStyle.makeClassName,
+  OnesyStyle.rtl
 ];
 
 const styles = style(
@@ -101,7 +101,7 @@ const styles = style(
   }),
   {
     name: 'Button',
-    amaui_style: { value: amauiStyle }
+    onesy_style: { value: onesyStyle }
   }
 );
 
@@ -142,8 +142,8 @@ interface IOptions {
     element?: Element;
     name?: string;
     mode?: TMode;
-    amaui_style?: IOptionsAmauiStyle;
-    amaui_theme?: IOptionsAmauiTheme;
+    onesy_style?: IOptionsOnesyStyle;
+    onesy_theme?: IOptionsOnesyTheme;
     add?: boolean;
     return?: 'ids' | 'classNames' | 'classes' | 'keyframes';
 }

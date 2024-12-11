@@ -1,5 +1,5 @@
 
-# AmauiGraph
+# OnesyGraph
 
 ### Options
 
@@ -25,11 +25,11 @@ Connections can have a weight, default false;
 Adds a node.
 
 ```ts
-const amauiGraph = new AmauiGraph();
+const onesyGraph = new OnesyGraph();
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    a  b  c  d  e  f  g
@@ -48,13 +48,13 @@ amauiGraph.array;
 Adds a connection betweek nodes, optionally a weighted one.
 
 ```ts
-const amauiGraph = new AmauiGraph();
+const onesyGraph = new OnesyGraph();
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b').addConnection('a', 'c').addConnection('b', 'd').addConnection('c', 'd').addConnection('d', 'e').addConnection('d', 'f').addConnection('e', 'f').addConnection('f', 'g').addConnection('e', 'g');
+onesyGraph.addConnection('a', 'b').addConnection('a', 'c').addConnection('b', 'd').addConnection('c', 'd').addConnection('d', 'e').addConnection('d', 'f').addConnection('e', 'f').addConnection('f', 'g').addConnection('e', 'g');
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    a  b  c  d  e  f  g
@@ -71,13 +71,13 @@ amauiGraph.array;
 ##### Connections weighted
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    a  b  c  d  e  f  g
@@ -96,15 +96,15 @@ amauiGraph.array;
 Updates an existing connection.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.updateConnection('a', 'b', 4);
+onesyGraph.updateConnection('a', 'b', 4);
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    a  b  c  d  e  f  g
@@ -123,15 +123,15 @@ amauiGraph.array;
 Removes a node, and all its connections, if it's undirectional, in all those nodes removes the connection to removed node as well.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.removeNode('a');
+onesyGraph.removeNode('a');
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    b  c  d  e  f  g
@@ -149,15 +149,15 @@ amauiGraph.array;
 Removes a connection, if it's undirectional, removes the connection in both nodes.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.removeConnection('a', 'b');
+onesyGraph.removeConnection('a', 'b');
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    a  b  c  d  e  f  g
@@ -176,13 +176,13 @@ amauiGraph.array;
 Returns array representation of the graph.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    a  b  c  d  e  f  g
@@ -201,13 +201,13 @@ amauiGraph.array;
 Now this is the coolest part, algorithm that easily gives us the shortest path, and it's summarized weight (distance) for that path, between two nodes.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.shortestPath('a', 'g');
+onesyGraph.shortestPath('a', 'g');
 
 // {
 //   distance: 20,
@@ -221,15 +221,15 @@ Breadth first search. \
 Vists first its nearest nodes, and then for those nodes their nearest nodes, etc.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
 const response = [];
 
-amauiGraph.bfs('a', item => response.push(item));
+onesyGraph.bfs('a', item => response.push(item));
 
 // [
 //   'a',
@@ -248,15 +248,15 @@ Depth first search. \
 Vists first all nodes in connection with one of its nearest nodes in depth, then the same for the next nearest node, etc.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
 const response = [];
 
-amauiGraph.dfs('a', item => response.push(item));
+onesyGraph.dfs('a', item => response.push(item));
 
 // [
 //   'a',
@@ -274,13 +274,13 @@ amauiGraph.dfs('a', item => response.push(item));
 Resets the graph to its initial empty value.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.array;
+onesyGraph.array;
 
 // [
 //    a  b  c  d  e  f  g
@@ -293,9 +293,9 @@ amauiGraph.array;
 // g [0, 0, 0, 0, 4, 2, 0]
 // ]
 
-amauiGraph.clear();
+onesyGraph.clear();
 
-amauiGraph.array;
+onesyGraph.array;
 
 // []
 ```
@@ -307,13 +307,13 @@ amauiGraph.array;
 Number of nodes in the graph.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.nodes;
+onesyGraph.nodes;
 
 // 7
 ```
@@ -323,76 +323,76 @@ amauiGraph.nodes;
 Number of connections in the graph.
 
 ```ts
-const amauiGraph = new AmauiGraph({ weighted: true });
+const onesyGraph = new OnesyGraph({ weighted: true });
 
-amauiGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
+onesyGraph.addNode('a').addNode('b').addNode('c').addNode('d').addNode('e').addNode('f').addNode('g');
 
-amauiGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
+onesyGraph.addConnection('a', 'b', 2).addConnection('a', 'c', 7).addConnection('b', 'd', 5).addConnection('c', 'd', 7).addConnection('d', 'e', 14).addConnection('d', 'f', 11).addConnection('e', 'f', 4).addConnection('f', 'g', 2).addConnection('e', 'g', 4);
 
-amauiGraph.connections;
+onesyGraph.connections;
 
 // 18
 ```
 
 ## API
 
-#### TAmauiGraphNode
+#### TOnesyGraphNode
 
 ```ts
-type TAmauiGraphNode = string | [string, number];
+type TOnesyGraphNode = string | [string, number];
 ```
 
-#### TAmauiGraphAdjacency
+#### TOnesyGraphAdjacency
 
 ```ts
-type TAmauiGraphAdjacency = Record<string, Array<TAmauiGraphNode>>;
+type TOnesyGraphAdjacency = Record<string, Array<TOnesyGraphNode>>;
 ```
 
-#### TAmauiGraphDirection
+#### TOnesyGraphDirection
 
 ```ts
-type TAmauiGraphDirection = 'directed' | 'undirected';
+type TOnesyGraphDirection = 'directed' | 'undirected';
 ```
 
-#### IAmauiGraphShortestPath
+#### IOnesyGraphShortestPath
 
 ```ts
-interface IAmauiGraphShortestPath {
+interface IOnesyGraphShortestPath {
     distance: number;
     path: string;
 }
 ```
 
-#### IAmauiGraphOptions
+#### IOnesyGraphOptions
 
 ```ts
-interface IAmauiGraphOptions {
-    adjacency?: TAmauiGraphAdjacency;
-    direction?: TAmauiGraphDirection;
+interface IOnesyGraphOptions {
+    adjacency?: TOnesyGraphAdjacency;
+    direction?: TOnesyGraphDirection;
     weighted?: boolean;
 }
 ```
 
-#### AmauiGraph
+#### OnesyGraph
 
 ```ts
-default class AmauiGraph {
-    adjacency: TAmauiGraphAdjacency;
-    direction: TAmauiGraphDirection;
+default class OnesyGraph {
+    adjacency: TOnesyGraphAdjacency;
+    direction: TOnesyGraphDirection;
     weighted: boolean;
     nodes: number;
     connections: number;
-    constructor(options?: IAmauiGraphOptions);
+    constructor(options?: IOnesyGraphOptions);
     get array(): Array<Array<number>>;
-    addNode(name: string): AmauiGraph;
-    addConnection(from: string, to: string, value?: number): AmauiGraph;
-    updateConnection(from: string, to: string, value: number): AmauiGraph;
-    removeNode(name: string): AmauiGraph;
-    removeConnection(from: string, to: string): AmauiGraph;
-    shortestPath(from: string, to: string): IAmauiGraphShortestPath;
-    bfs(from: string, method: TMethod): AmauiGraph;
-    dfs(from: string, method: TMethod): AmauiGraph;
-    clear(): AmauiGraph;
+    addNode(name: string): OnesyGraph;
+    addConnection(from: string, to: string, value?: number): OnesyGraph;
+    updateConnection(from: string, to: string, value: number): OnesyGraph;
+    removeNode(name: string): OnesyGraph;
+    removeConnection(from: string, to: string): OnesyGraph;
+    shortestPath(from: string, to: string): IOnesyGraphShortestPath;
+    bfs(from: string, method: TMethod): OnesyGraph;
+    dfs(from: string, method: TMethod): OnesyGraph;
+    clear(): OnesyGraph;
 }
 ```
 

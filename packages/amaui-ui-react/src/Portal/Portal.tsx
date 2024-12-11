@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { is } from '@amaui/utils';
-import { useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { useOnesyTheme } from '@onesy/style-react';
 
 import { IBaseElement } from '../types';
 
@@ -11,9 +11,9 @@ export interface IPortal extends IBaseElement {
 }
 
 const Portal: React.FC<IPortal> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPortal?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPortal?.props?.default, ...props_ }), [props_]);
 
   const {
     element,
@@ -45,6 +45,6 @@ const Portal: React.FC<IPortal> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Portal.displayName = 'amaui-Portal';
+Portal.displayName = 'onesy-Portal';
 
 export default Portal;

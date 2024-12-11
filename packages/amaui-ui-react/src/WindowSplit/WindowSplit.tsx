@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { is, clamp, valueFromPercentageWithinRange, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, clamp, valueFromPercentageWithinRange, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialSwapHoriz from '@amaui/icons-material-rounded-react/IconMaterialSwapHorizW100';
-import IconMaterialSwapVert from '@amaui/icons-material-rounded-react/IconMaterialSwapVertW100';
+import IconMaterialSwapHoriz from '@onesy/icons-material-rounded-react/IconMaterialSwapHorizW100';
+import IconMaterialSwapVert from '@onesy/icons-material-rounded-react/IconMaterialSwapVertW100';
 
 import LineElement from '../Line';
 import DividerElement from '../Divider';
@@ -68,7 +68,7 @@ const useStyle = styleMethod(theme => ({
     flex: '0 0 auto',
     zIndex: '3',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       opacity: '1',
       margin: '0px'
     }
@@ -79,7 +79,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'ew-resize',
     transform: `translateX(${theme.direction === 'rtl' ? '-' : ''}50%)`,
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       width: '8px'
     }
   },
@@ -89,11 +89,11 @@ const useStyle = styleMethod(theme => ({
     cursor: 'ns-resize',
     transform: `translateY(50%)`,
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       height: '8px'
     }
   }
-}), { name: 'amaui-WindowSplit' });
+}), { name: 'onesy-WindowSplit' });
 
 export interface IWindowSplit extends ILine {
   tonal?: ITonal;
@@ -130,9 +130,9 @@ export interface IWindowSplit extends ILine {
 }
 
 const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiWindowSplit?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWindowSplit?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -462,9 +462,9 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('WindowSplit', theme) && [
-          'amaui-WindowSplit-root',
-          focus && `amaui-WindowSplit-focus`,
-          mouseDown && `amaui-WindowSplit-mouse-down`,
+          'onesy-WindowSplit-root',
+          focus && `onesy-WindowSplit-focus`,
+          mouseDown && `onesy-WindowSplit-mouse-down`,
         ],
 
         className,
@@ -486,7 +486,7 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
         className={classNames([
           staticClassName('WindowSplit', theme) && [
-            'amaui-WindowSplit-wrapper'
+            'onesy-WindowSplit-wrapper'
           ],
 
           classes.wrapper
@@ -502,7 +502,7 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
             className={classNames([
               staticClassName('WindowSplit', theme) && [
-                'amaui-WindowSplit-start'
+                'onesy-WindowSplit-start'
               ],
 
               classes.item,
@@ -527,7 +527,7 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
             className={classNames([
               staticClassName('WindowSplit', theme) && [
-                'amaui-WindowSplit-end'
+                'onesy-WindowSplit-end'
               ],
 
               classes.item,
@@ -559,7 +559,7 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
           className={classNames([
             staticClassName('WindowSplit', theme) && [
-              'amaui-WindowSplit-divider'
+              'onesy-WindowSplit-divider'
             ],
 
             DividerProps?.className,
@@ -579,7 +579,7 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
         (iconButtonComponent && React.cloneElement(iconButtonComponent as any, {
           className: classNames([
             staticClassName('WindowSplit', theme) && [
-              'amaui-WindowSplit-icon-button'
+              'onesy-WindowSplit-icon-button'
             ],
 
             classes.iconButton,
@@ -608,7 +608,7 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
           className={classNames([
             staticClassName('WindowSplit', theme) && [
-              'amaui-WindowSplit-icon-button'
+              'onesy-WindowSplit-icon-button'
             ],
 
             IconButtonProps?.className,
@@ -629,6 +629,6 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
   );
 });
 
-WindowSplit.displayName = 'amaui-WindowSplit';
+WindowSplit.displayName = 'onesy-WindowSplit';
 
 export default WindowSplit;

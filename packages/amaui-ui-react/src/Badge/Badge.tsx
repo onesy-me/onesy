@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { staticClassName } from '../utils';
@@ -65,7 +65,7 @@ const useStyle = styleMethod(theme => ({
     padding: '0',
     borderRadius: `${theme.shape.radius.unit * 0.5}px`,
   }
-}), { name: 'amaui-Badge' });
+}), { name: 'onesy-Badge' });
 
 export interface IBadge extends IBaseElement {
   tonal?: ITonal;
@@ -82,9 +82,9 @@ export interface IBadge extends IBaseElement {
 }
 
 const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBadge?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBadge?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -125,7 +125,7 @@ const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
 
   const classesBadge = classNames([
     staticClassName('Badge', theme) && [
-      'amaui-Badge-badge'
+      'onesy-Badge-badge'
     ],
 
     classes.badge,
@@ -143,8 +143,8 @@ const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Badge', theme) && [
-          'amaui-Badge-root',
-          `amaui-Badge-size-${size}`
+          'onesy-Badge-root',
+          `onesy-Badge-size-${size}`
         ],
 
         className,
@@ -179,6 +179,6 @@ const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Badge.displayName = 'amaui-Badge';
+Badge.displayName = 'onesy-Badge';
 
 export default Badge;

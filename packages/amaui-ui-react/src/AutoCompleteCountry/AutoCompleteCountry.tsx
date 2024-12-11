@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { countries } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { countries } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import AutoCompleteElement from '../AutoComplete';
 import ListItemElement from '../ListItem';
@@ -13,16 +13,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-AutoCompleteCountry' });
+}), { name: 'onesy-AutoCompleteCountry' });
 
 export interface IAutoCompleteCountry extends IAutoComplete {
 
 }
 
 const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAutoCompleteCountry?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCountry?.props?.default, ...props_ }), [props_]);
 
   const AutoComplete = React.useMemo(() => theme?.elements?.AutoComplete || AutoCompleteElement, [theme]);
 
@@ -115,8 +115,8 @@ const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((pr
 
       className={classNames([
         staticClassName('AutoCompleteCountry', theme) && [
-          'amaui-AutoCompleteCountry-root',
-          `amaui-AutoCompleteCountry-size-${size}`
+          'onesy-AutoCompleteCountry-root',
+          `onesy-AutoCompleteCountry-size-${size}`
         ],
 
         className,
@@ -128,6 +128,6 @@ const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((pr
   );
 });
 
-AutoCompleteCountry.displayName = 'amaui-AutoCompleteCountry';
+AutoCompleteCountry.displayName = 'onesy-AutoCompleteCountry';
 
 export default AutoCompleteCountry;

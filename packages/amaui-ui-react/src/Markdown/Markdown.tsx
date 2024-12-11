@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { colorToRgb, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { colorToRgb, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { replace, sanitize, staticClassName } from '../utils';
 import { IBaseElement } from '../types';
@@ -213,7 +213,7 @@ const useStyle = styleMethod(theme => ({
     }
   }
 
-}), { name: 'amaui-Markdown' });
+}), { name: 'onesy-Markdown' });
 
 const escapeRegExp = (value: string) => value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
@@ -232,9 +232,9 @@ export interface IMarkdown extends IBaseElement {
 }
 
 const Markdown: React.FC<IMarkdown> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMarkdown?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMarkdown?.props?.default, ...props_ }), [props_]);
 
   const {
     value,
@@ -873,7 +873,7 @@ ${listItem(other_, level)}
       let codeBlocks = valueNew.match(/`{3}([\s\S]*?)`{3}/g) || [];
 
       if (!!codeBlocks.length) {
-        codeBlocks.forEach((item: any, index: number) => valueNew = valueNew.replace(item, `amaui-${index}-var`));
+        codeBlocks.forEach((item: any, index: number) => valueNew = valueNew.replace(item, `onesy-${index}-var`));
       }
 
       valueNew = method(valueNew);
@@ -891,7 +891,7 @@ ${listItem(other_, level)}
             return `<pre${addClassName('pre', ...additionalClassNames)}${addStyle('pre')}><code${addClassName('code')}${addStyle('code')}>${sanitize(a2)}</code></pre>`;
           }));
 
-        codeBlocks.forEach((item, index) => valueNew = replace(valueNew, `amaui-${index}-var`, item));
+        codeBlocks.forEach((item, index) => valueNew = replace(valueNew, `onesy-${index}-var`, item));
       }
     }
 
@@ -927,7 +927,7 @@ ${listItem(other_, level)}
 
       className={classNames([
         staticClassName('Markdown', theme) && [
-          'amaui-Markdown-root'
+          'onesy-Markdown-root'
         ],
 
         className,
@@ -939,6 +939,6 @@ ${listItem(other_, level)}
   );
 });
 
-Markdown.displayName = 'amaui-Markdown';
+Markdown.displayName = 'onesy-Markdown';
 
 export default Markdown;

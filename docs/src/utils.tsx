@@ -1,42 +1,42 @@
-import { colors } from '@amaui/style-react';
-import AmauiSubscrption from '@amaui/subscription';
+import { colors } from '@onesy/style-react';
+import OnesySubscrption from '@onesy/subscription';
 
 export const libraries = [
-  { name: 'UI React', url: '/library/ui-react', version: 'primary', github: '/amaui/tree/main/packages/amaui-ui-react' },
-  { name: 'Style React', url: '/library/style-react', version: 'secondary', github: '/amaui/tree/main/packages/amaui-style-react' },
-  { name: 'Icons Material React', url: '/library/icons-material-react', version: 'secondary', github: '/amaui/tree/main/packages/amaui-icons-material-react' },
+  { name: 'UI React', url: '/library/ui-react', version: 'primary', github: '/onesy/tree/main/packages/onesy-ui-react' },
+  { name: 'Style React', url: '/library/style-react', version: 'secondary', github: '/onesy/tree/main/packages/onesy-style-react' },
+  { name: 'Icons Material React', url: '/library/icons-material-react', version: 'secondary', github: '/onesy/tree/main/packages/onesy-icons-material-react' },
   ...[
-    { name: 'AMQP', url: '/library/amqp', github: '/amaui-amqp' },
-    { name: 'API', url: '/library/api', github: '/amaui-api' },
-    { name: 'AWS', url: '/library/aws', github: '/amaui-aws' },
-    { name: 'Binary Tree', url: '/library/binary-tree', github: '/amaui-binary-tree' },
-    { name: 'Cache', url: '/library/cache', github: '/amaui-cache' },
-    { name: 'Cookie', url: '/library/cookie', github: '/amaui-cookie' },
-    { name: 'Date', url: '/library/date', github: '/amaui-date' },
-    { name: 'Diff', url: '/library/diff', github: '/amaui-diff' },
-    { name: 'Errors', url: '/library/errors', github: '/amaui-errors' },
-    { name: 'Heap', url: '/library/heap', github: '/amaui-heap' },
-    { name: 'Huffman Code', url: '/library/huffman-code', github: '/amaui-huffman-code' },
-    { name: 'Log', url: '/library/log', github: '/amaui-log' },
-    { name: 'Lz77', url: '/library/lz77', github: '/amaui-lz77' },
-    { name: 'Meta', url: '/library/meta', github: '/amaui-meta' },
-    { name: 'Models', url: '/library/models', github: '/amaui-models' },
-    { name: 'Mongo', url: '/library/mongo', github: '/amaui-mongo' },
-    { name: 'Node', url: '/library/node', github: '/amaui-node' },
-    { name: 'Redis', url: '/library/redis', github: '/amaui-redis' },
-    { name: 'Request', url: '/library/request', github: '/amaui-request' },
-    { name: 'Storage', url: '/library/storage', github: '/amaui-storage' },
-    { name: 'Style', url: '/library/style', github: '/amaui-style' },
-    { name: 'Subscription', url: '/library/subscription', github: '/amaui-subscription' },
-    { name: 'Test', url: '/library/test', github: '/amaui-test' },
-    { name: 'Utils', url: '/library/utils', github: '/amaui-utils' },
-    { name: 'Zip', url: '/library/zip', github: '/amaui-zip' },
-    { name: 'Algorithms', url: '/library/algorithms', github: '/amaui-algorithms' },
-    { name: 'Linked List', url: '/library/linked-list', github: '/amaui-linked-list' },
-    { name: 'Queue', url: '/library/queue', github: '/amaui-queue' },
-    { name: 'Stack', url: '/library/stack', github: '/amaui-stack' },
-    { name: 'Hash Table', url: '/library/hash-table', github: '/amaui-hash-table' },
-    { name: 'Graph', url: '/library/graph', github: '/amaui-graph' },
+    { name: 'AMQP', url: '/library/amqp', github: '/onesy-amqp' },
+    { name: 'API', url: '/library/api', github: '/onesy-api' },
+    { name: 'AWS', url: '/library/aws', github: '/onesy-aws' },
+    { name: 'Binary Tree', url: '/library/binary-tree', github: '/onesy-binary-tree' },
+    { name: 'Cache', url: '/library/cache', github: '/onesy-cache' },
+    { name: 'Cookie', url: '/library/cookie', github: '/onesy-cookie' },
+    { name: 'Date', url: '/library/date', github: '/onesy-date' },
+    { name: 'Diff', url: '/library/diff', github: '/onesy-diff' },
+    { name: 'Errors', url: '/library/errors', github: '/onesy-errors' },
+    { name: 'Heap', url: '/library/heap', github: '/onesy-heap' },
+    { name: 'Huffman Code', url: '/library/huffman-code', github: '/onesy-huffman-code' },
+    { name: 'Log', url: '/library/log', github: '/onesy-log' },
+    { name: 'Lz77', url: '/library/lz77', github: '/onesy-lz77' },
+    { name: 'Meta', url: '/library/meta', github: '/onesy-meta' },
+    { name: 'Models', url: '/library/models', github: '/onesy-models' },
+    { name: 'Mongo', url: '/library/mongo', github: '/onesy-mongo' },
+    { name: 'Node', url: '/library/node', github: '/onesy-node' },
+    { name: 'Redis', url: '/library/redis', github: '/onesy-redis' },
+    { name: 'Request', url: '/library/request', github: '/onesy-request' },
+    { name: 'Storage', url: '/library/storage', github: '/onesy-storage' },
+    { name: 'Style', url: '/library/style', github: '/onesy-style' },
+    { name: 'Subscription', url: '/library/subscription', github: '/onesy-subscription' },
+    { name: 'Test', url: '/library/test', github: '/onesy-test' },
+    { name: 'Utils', url: '/library/utils', github: '/onesy-utils' },
+    { name: 'Zip', url: '/library/zip', github: '/onesy-zip' },
+    { name: 'Algorithms', url: '/library/algorithms', github: '/onesy-algorithms' },
+    { name: 'Linked List', url: '/library/linked-list', github: '/onesy-linked-list' },
+    { name: 'Queue', url: '/library/queue', github: '/onesy-queue' },
+    { name: 'Stack', url: '/library/stack', github: '/onesy-stack' },
+    { name: 'Hash Table', url: '/library/hash-table', github: '/onesy-hash-table' },
+    { name: 'Graph', url: '/library/graph', github: '/onesy-graph' },
   ].sort((a: any, b: any) => a.name.localeCompare(b.name))
 ];
 
@@ -47,15 +47,15 @@ export const images = [
   { id: 'image-pink', label: 'Pink Shiba Inu image to theme', image: '/assets/image/image-pink.jpg', alt: 'Photo by Anna Shvets' }
 ];
 
-export const themeImageSub = new AmauiSubscrption('primary');
+export const themeImageSub = new OnesySubscrption('primary');
 
-export const newImagesSub = new AmauiSubscrption([]);
+export const newImagesSub = new OnesySubscrption([]);
 
 export const importIframeStyles = (iframeDocument: Document) => {
   const styleSheets = window.document.styleSheets;
 
   for (const styleSheet of Array.from(styleSheets)) {
-    if (!(styleSheet.ownerNode as any).amaui) {
+    if (!(styleSheet.ownerNode as any).onesy) {
       iframeDocument.head.append((styleSheet.ownerNode as any)?.cloneNode(true));
 
       continue;

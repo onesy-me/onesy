@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { clamp, cleanValue, copy, getID, is, isEnvironment, lighten, numberWithCommas, textToInnerHTML } from '@amaui/utils';
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
+import { clamp, cleanValue, copy, getID, is, isEnvironment, lighten, numberWithCommas, textToInnerHTML } from '@onesy/utils';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialCheckCircle from '@amaui/icons-material-rounded-react/IconMaterialCheckCircleW100';
-import IconMaterialUngroup from '@amaui/icons-material-rounded-react/IconMaterialUngroupW100';
-import IconMaterialAdGroup from '@amaui/icons-material-rounded-react/IconMaterialAdGroupW100';
-import IconMaterialContentCopy from '@amaui/icons-material-rounded-react/IconMaterialContentCopyW100';
-import IconMaterialFlipToFront from '@amaui/icons-material-rounded-react/IconMaterialFlipToFrontW100';
-import IconMaterialFlipToBack from '@amaui/icons-material-rounded-react/IconMaterialFlipToBackW100';
-import IconMaterialKeyboardArrowDown from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
-import IconMaterialKeyboardArrowUp from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowUpW100';
-import IconMaterialSettings from '@amaui/icons-material-rounded-react/IconMaterialSettingsW100';
-import IconMaterialKeyboardArrowLeft from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowLeftW100';
-import IconMaterialMenuOpen from '@amaui/icons-material-rounded-react/IconMaterialMenuOpenW100';
-import IconMaterialAdd from '@amaui/icons-material-rounded-react/IconMaterialAddW100';
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialCheckCircle from '@onesy/icons-material-rounded-react/IconMaterialCheckCircleW100';
+import IconMaterialUngroup from '@onesy/icons-material-rounded-react/IconMaterialUngroupW100';
+import IconMaterialAdGroup from '@onesy/icons-material-rounded-react/IconMaterialAdGroupW100';
+import IconMaterialContentCopy from '@onesy/icons-material-rounded-react/IconMaterialContentCopyW100';
+import IconMaterialFlipToFront from '@onesy/icons-material-rounded-react/IconMaterialFlipToFrontW100';
+import IconMaterialFlipToBack from '@onesy/icons-material-rounded-react/IconMaterialFlipToBackW100';
+import IconMaterialKeyboardArrowDown from '@onesy/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
+import IconMaterialKeyboardArrowUp from '@onesy/icons-material-rounded-react/IconMaterialKeyboardArrowUpW100';
+import IconMaterialSettings from '@onesy/icons-material-rounded-react/IconMaterialSettingsW100';
+import IconMaterialKeyboardArrowLeft from '@onesy/icons-material-rounded-react/IconMaterialKeyboardArrowLeftW100';
+import IconMaterialMenuOpen from '@onesy/icons-material-rounded-react/IconMaterialMenuOpenW100';
+import IconMaterialAdd from '@onesy/icons-material-rounded-react/IconMaterialAddW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
 import Icon from '../Icon';
 import LineElement from '../Line';
@@ -246,13 +246,13 @@ const useStyle = style(theme => ({
   },
 
   navigationDrawerNavigation: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       boxShadow: '4px 0px 24px rgba(0, 0, 0, 0.04)'
     }
   },
 
   navigationDrawerMenu: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       boxShadow: '0px 4px 24px rgba(0, 0, 0, 0.04)'
     }
   },
@@ -270,7 +270,7 @@ const useStyle = style(theme => ({
     userSelect: 'none',
     transition: theme.methods.transitions.make('transform'),
 
-    '& > .amaui-thumb': {
+    '& > .onesy-thumb': {
       boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.07)',
       borderRadius: 24,
       width: 114,
@@ -292,18 +292,18 @@ const useStyle = style(theme => ({
   },
 
   accordion: {
-    '&.amaui-Accordion-root': {
-      '& .amaui-Accordion-wrapper-header': {
+    '&.onesy-Accordion-root': {
+      '& .onesy-Accordion-wrapper-header': {
         paddingInline: 16
       },
 
-      '& .amaui-Accordion-header': {
-        '& .amaui-Type-root': {
+      '& .onesy-Accordion-header': {
+        '& .onesy-Type-root': {
           ...theme.typography.values.l2
         }
       },
 
-      '& .amaui-Accordion-main': {
+      '& .onesy-Accordion-main': {
         '& > *': {
           margin: 0,
           gap: 0,
@@ -314,7 +314,7 @@ const useStyle = style(theme => ({
   },
 
   select: {
-    '& .amaui-Select-input': {
+    '& .onesy-Select-input': {
       borderRadius: 0
     }
   },
@@ -324,7 +324,7 @@ const useStyle = style(theme => ({
     opacity: 0.54,
     cursor: 'default'
   }
-}), { name: 'amaui-Space' });
+}), { name: 'onesy-Space' });
 
 export interface ISpace extends IBaseElement {
   unitDefault?: 'm' | 'px';
@@ -383,9 +383,9 @@ export interface ISpace extends IBaseElement {
 // info
 // 1. icons (freecads.com)
 const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSpace?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpace?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -1399,7 +1399,7 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
         props: {
           ...itemToAdd.props,
 
-          'data-amaui': true,
+          'data-onesy': true,
           'data-element': true,
           'data-id': id,
           'data-name': itemToAdd.name,
@@ -2235,7 +2235,7 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Space', theme) && [
-          'amaui-Space-root'
+          'onesy-Space-root'
         ],
 
         className,
@@ -2575,6 +2575,6 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Space.displayName = 'amaui-Space';
+Space.displayName = 'onesy-Space';
 
 export default Space;

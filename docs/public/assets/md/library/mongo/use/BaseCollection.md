@@ -49,7 +49,7 @@ class TodoCollection extends BaseCollection {
 
 #### Query
 
-For all queries either use object, or array (for aggregate pipeline) or `Query` model from `@amaui/models` library.
+For all queries either use object, or array (for aggregate pipeline) or `Query` model from `@onesy/models` library.
 
 ```ts
 const query = new Query({
@@ -463,7 +463,7 @@ await todoCollection.searchOne(
 
 Adds one document to the collection.
 
-If `options.add\_date: true`, by default true, it will add to `this.addedProperty` (getter), `AmauiDate.utc.unix` value.
+If `options.add\_date: true`, by default true, it will add to `this.addedProperty` (getter), `OnesyDate.utc.unix` value.
 
 Uses mongo's `insertOne` method.
 
@@ -487,7 +487,7 @@ await todoCollection.addOne(
 
 Updates one document, by providing a query, value to be set (updated) optionally, and/or mongo update operators.
 
-If `options.update\_date: true`, by default true, it will add to `this.updatedProperty` (getter), `AmauiDate.utc.unix` value.
+If `options.update\_date: true`, by default true, it will add to `this.updatedProperty` (getter), `OnesyDate.utc.unix` value.
 
 Uses mongo's `findOneAndUpdate` method.
 
@@ -539,9 +539,9 @@ await todoCollection.removeOne({
 
 Updates one document, by providing a query, value to be set (updated), or upserts the document if query resulted in no results.
 
-If `options.add\_date: true`, by default true, it will add to `this.addedProperty` (getter), `AmauiDate.utc.unix` value, if document is upserted.
+If `options.add\_date: true`, by default true, it will add to `this.addedProperty` (getter), `OnesyDate.utc.unix` value, if document is upserted.
 
-If `options.update\_date: true`, by default true, it will add to `this.updatedProperty` (getter), `AmauiDate.utc.unix` value, if document is updated & upserted.
+If `options.update\_date: true`, by default true, it will add to `this.updatedProperty` (getter), `OnesyDate.utc.unix` value, if document is updated & upserted.
 
 Uses mongo's `findOneAndUpdate` method, with `upsert: true` option.
 
@@ -571,7 +571,7 @@ await todoCollection.updateOneOrAdd(
 
 Adds multiple document to the collection.
 
-If `options.add\_date: true`, by default true, it will add to `this.addedProperty` (getter), `AmauiDate.utc.unix` value, to every item.
+If `options.add\_date: true`, by default true, it will add to `this.addedProperty` (getter), `OnesyDate.utc.unix` value, to every item.
 
 Uses mongo's `insertMany` method.
 
@@ -605,7 +605,7 @@ await todoCollection.addMany(
 
 Updates multiple documents, by providing a query, value to be set (updated) optionally, and/or mongo update operators.
 
-If `options.update\_date: true`, by default true, it will add to `this.updatedProperty` (getter), `AmauiDate.utc.unix` value, to every item.
+If `options.update\_date: true`, by default true, it will add to `this.updatedProperty` (getter), `OnesyDate.utc.unix` value, to every item.
 
 Uses mongo's `updateMany` method.
 
@@ -805,7 +805,7 @@ class BaseCollection {
     defaults?: TDefaults;
     private db_;
     protected collections: Record<string, mongodb.Collection>;
-    protected amalog: AmauiLog;
+    protected amalog: OnesyLog;
     static defaults: TDefaults;
     constructor(collectionName: string, mongo: Mongo, Model?: IClass, defaults?: TDefaults);
     get sort(): Record<string, number>;
@@ -840,7 +840,7 @@ class BaseCollection {
     query(query: any, aggregate?: boolean): any;
     getDefaults(method: TMethods): void;
     static value(value: any): any;
-    static isAmauiQuery(value: any): any;
+    static isOnesyQuery(value: any): any;
 }
 ```
 
@@ -849,8 +849,8 @@ class BaseCollection {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Mongo: AmauiMongo",
-      "to": "/library/mongo/use/AmauiMongo"
+      "label": "Mongo: OnesyMongo",
+      "to": "/library/mongo/use/OnesyMongo"
     },
     "next": {
       "label": "Mongo: Mongo",

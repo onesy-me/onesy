@@ -1,5 +1,5 @@
 
-# amaui stack
+# onesy stack
 
 Stack data structure.
 
@@ -13,35 +13,35 @@ Stack data structure.
 ### Add
 
 ```sh
-yarn add @amaui/stack
+yarn add @onesy/stack
 ```
 
 ### Use
 
 ```ts
-import AmauiStack from '@amaui/stack';
+import OnesyStack from '@onesy/stack';
 
 // Make a new stack instance
-const amauiStack = new AmauiStack();
+const onesyStack = new OnesyStack();
 
 // Add values
-amauiStack.push(1, 2, 3, 4);
+onesyStack.push(1, 2, 3, 4);
 
-amauiStack.first;
+onesyStack.first;
 // 4
 
-amauiStack.length;
+onesyStack.length;
 // 4
 
-const value = amauiStack.pop();
+const value = onesyStack.pop();
 
 value;
 // 4
 
-amauiStack.first;
+onesyStack.first;
 // 3
 
-amauiStack.length;
+onesyStack.length;
 // 3
 ```
 

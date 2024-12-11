@@ -1,11 +1,11 @@
 
-# AmauiLinkedList
+# OnesyLinkedList
 
 ### Options
 
 #### main
 
-First AmauiNode in the list.
+First OnesyNode in the list.
 
 ### Methods
 
@@ -14,11 +14,11 @@ First AmauiNode in the list.
 Adds an item to the list, by adding it to the last item's next value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114);
+onesyLinkedList.add(114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [114]
 ```
@@ -28,13 +28,13 @@ amauiLinkedList.array;
 Adds an item to the start of the list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114);
+onesyLinkedList.add(114);
 
-amauiLinkedList.addAtStart(1114);
+onesyLinkedList.addAtStart(1114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [1114, 114]
 ```
@@ -44,45 +44,45 @@ amauiLinkedList.array;
 Alias for add, as they both add the value to the last item in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114);
+onesyLinkedList.add(114);
 
-amauiLinkedList.addAtEnd(1114);
+onesyLinkedList.addAtEnd(1114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [114, 1114]
 ```
 
 #### Add after
 
-Adds a value after an AmauiNode on the provided index.
+Adds a value after an OnesyNode on the provided index.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(14).add(114);
+onesyLinkedList.add(14).add(114);
 
-amauiLinkedList.addAfter(1114, 0);
+onesyLinkedList.addAfter(1114, 0);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 //  [14, 1114, 114]
 ```
 
 #### Add before
 
-Adds a value before an AmauiNode on the provided index.
+Adds a value before an OnesyNode on the provided index.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(14).add(114);
+onesyLinkedList.add(14).add(114);
 
-amauiLinkedList.addBefore(1114, 1);
+onesyLinkedList.addBefore(1114, 1);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 //  [14, 1114, 114]
 ```
@@ -92,17 +92,17 @@ amauiLinkedList.array;
 Updates an item based on its value, with a new provided value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [114, 1114]
 
-amauiLinkedList.update(114, 1114);
+onesyLinkedList.update(114, 1114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [1114, 1114]
 ```
@@ -112,17 +112,17 @@ amauiLinkedList.array;
 Updates an item based on its index, with a new provided value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [114, 1114]
 
-amauiLinkedList.updateAtIndex(1114, 0);
+onesyLinkedList.updateAtIndex(1114, 0);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [1114, 1114]
 ```
@@ -132,13 +132,13 @@ amauiLinkedList.array;
 Removes the first item it finds whose value equals the provided value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.remove(1114);
+onesyLinkedList.remove(1114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [114]
 ```
@@ -148,13 +148,13 @@ amauiLinkedList.array;
 Removes the first item in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.removeFirst();
+onesyLinkedList.removeFirst();
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [1114]
 ```
@@ -164,13 +164,13 @@ amauiLinkedList.array;
 Removes the last item in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.removeLast();
+onesyLinkedList.removeLast();
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [114]
 ```
@@ -180,41 +180,41 @@ amauiLinkedList.array;
 Removes the item at specified index in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.removeAtIndex(1);
+onesyLinkedList.removeAtIndex(1);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [114]
 ```
 
 #### Find
 
-Finds an AmauiNode at a provided index.
+Finds an OnesyNode at a provided index.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.find(1).value;
+onesyLinkedList.find(1).value;
 
 // 1114
 ```
 
 #### Find value
 
-Finds the first AmauiNode whose value equals the provided value.
+Finds the first OnesyNode whose value equals the provided value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.findValue(114).value;
+onesyLinkedList.findValue(114).value;
 
 // 114
 ```
@@ -224,39 +224,39 @@ amauiLinkedList.findValue(114).value;
 Alias for the `findValue` method.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.search(114).value;
+onesyLinkedList.search(114).value;
 
 // 114
 ```
 
 #### Index of
 
-Returns the index of the first AmauiNode whose value equals the provided value.
+Returns the index of the first OnesyNode whose value equals the provided value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.indexOf(1114);
+onesyLinkedList.indexOf(1114);
 
 // 1
 ```
 
 #### Includes
 
-True if linked list includes at least one AmauiNode whose value equals the provided value.
+True if linked list includes at least one OnesyNode whose value equals the provided value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.includes(1114);
+onesyLinkedList.includes(1114);
 
 // true
 ```
@@ -266,11 +266,11 @@ amauiLinkedList.includes(1114);
 Returns array of values as a representation of the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(14).add(114).add(1114);
+onesyLinkedList.add(14).add(114).add(1114);
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // [14, 114, 1114]
 ```
@@ -280,11 +280,11 @@ amauiLinkedList.array;
 Makes an array using `array` method and calls map method on it, with a provided method as the first argument.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(14).add(114).add(1114);
+onesyLinkedList.add(14).add(114).add(1114);
 
-amauiLinkedList.map(item => item + 3);
+onesyLinkedList.map(item => item + 3);
 
 // [17, 117, 1117]
 ```
@@ -294,11 +294,11 @@ amauiLinkedList.map(item => item + 3);
 Makes an array using `array` method and calls forEach method on it, with a provided method as the first argument.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(14).add(114).add(1114);
+onesyLinkedList.add(14).add(114).add(1114);
 
-amauiLinkedList.forEach(item => console.log(item));
+onesyLinkedList.forEach(item => console.log(item));
 
 // 14
 // 114
@@ -310,13 +310,13 @@ amauiLinkedList.forEach(item => console.log(item));
 Resets the entire linked list into its initial empty value.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(14).add(114).add(1114);
+onesyLinkedList.add(14).add(114).add(1114);
 
-amauiLinkedList.clear();
+onesyLinkedList.clear();
 
-amauiLinkedList.array;
+onesyLinkedList.array;
 
 // []
 ```
@@ -328,11 +328,11 @@ amauiLinkedList.array;
 Number of items in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114);
+onesyLinkedList.add(114);
 
-amauiLinkedList.length;
+onesyLinkedList.length;
 
 // 1
 ```
@@ -342,9 +342,9 @@ amauiLinkedList.length;
 True if there are no items in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.empty;
+onesyLinkedList.empty;
 
 // true
 ```
@@ -354,11 +354,11 @@ amauiLinkedList.empty;
 First item in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.first.value;
+onesyLinkedList.first.value;
 
 // 114
 ```
@@ -368,16 +368,16 @@ amauiLinkedList.first.value;
 Last item in the linked list.
 
 ```ts
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
-amauiLinkedList.add(114).add(1114);
+onesyLinkedList.add(114).add(1114);
 
-amauiLinkedList.last.value;
+onesyLinkedList.last.value;
 
 // 1114
 ```
 
-### AmauiNode
+### OnesyNode
 
 #### Value
 
@@ -385,65 +385,65 @@ Any value.
 
 #### Next
 
-AmauiNode.
+OnesyNode.
 
 #### Previous
 
-AmauiNode.
+OnesyNode.
 
 ## API
 
-#### IAmauiLinkedListNode
+#### IOnesyLinkedListNode
 
 ```ts
-interface IAmauiLinkedListNode {
+interface IOnesyLinkedListNode {
     value: any;
-    previous?: IAmauiLinkedListNode;
-    next?: IAmauiLinkedListNode;
+    previous?: IOnesyLinkedListNode;
+    next?: IOnesyLinkedListNode;
 }
 ```
 
-#### AmauiNode
+#### OnesyNode
 
 ```ts
-class AmauiNode {
+class OnesyNode {
     value: any;
-    next?: IAmauiLinkedListNode;
-    previous?: IAmauiLinkedListNode;
-    constructor(value: any, next?: IAmauiLinkedListNode, previous?: IAmauiLinkedListNode);
+    next?: IOnesyLinkedListNode;
+    previous?: IOnesyLinkedListNode;
+    constructor(value: any, next?: IOnesyLinkedListNode, previous?: IOnesyLinkedListNode);
 }
 ```
 
-#### AmauiLinkedList
+#### OnesyLinkedList
 
 ```ts
-default class AmauiLinkedList {
-    main?: IAmauiLinkedListNode;
+default class OnesyLinkedList {
+    main?: IOnesyLinkedListNode;
     length: number;
-    constructor(main?: IAmauiLinkedListNode);
+    constructor(main?: IOnesyLinkedListNode);
     get empty(): boolean;
-    get first(): IAmauiLinkedListNode;
-    get last(): IAmauiLinkedListNode;
+    get first(): IOnesyLinkedListNode;
+    get last(): IOnesyLinkedListNode;
     get array(): Array<any>;
     map(method: TMethod): Array<any>;
     forEach(method: TMethod): void;
-    add(value: any): AmauiLinkedList;
-    addAtStart(value: any): AmauiLinkedList;
-    addAtEnd: (value: any) => AmauiLinkedList;
-    addAfter(value: any, index: number): AmauiLinkedList;
-    addBefore(value: any, index: number): AmauiLinkedList;
-    update(previousValue: any, value: any): AmauiLinkedList;
-    updateAtIndex(value: any, index: number): AmauiLinkedList;
-    remove(value: any): AmauiLinkedList;
-    removeFirst(): AmauiLinkedList;
-    removeLast(): AmauiLinkedList;
-    removeAtIndex(value: number): AmauiLinkedList;
-    find(value: number): AmauiNode;
-    findValue(value: any): AmauiNode;
-    search: (value: any) => AmauiNode;
+    add(value: any): OnesyLinkedList;
+    addAtStart(value: any): OnesyLinkedList;
+    addAtEnd: (value: any) => OnesyLinkedList;
+    addAfter(value: any, index: number): OnesyLinkedList;
+    addBefore(value: any, index: number): OnesyLinkedList;
+    update(previousValue: any, value: any): OnesyLinkedList;
+    updateAtIndex(value: any, index: number): OnesyLinkedList;
+    remove(value: any): OnesyLinkedList;
+    removeFirst(): OnesyLinkedList;
+    removeLast(): OnesyLinkedList;
+    removeAtIndex(value: number): OnesyLinkedList;
+    find(value: number): OnesyNode;
+    findValue(value: any): OnesyNode;
+    search: (value: any) => OnesyNode;
     indexOf(value: any): number;
     includes(value: any): boolean;
-    clear(): AmauiLinkedList;
+    clear(): OnesyLinkedList;
 }
 ```
 

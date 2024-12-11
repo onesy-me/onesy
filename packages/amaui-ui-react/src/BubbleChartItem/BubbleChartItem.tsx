@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { TMethod } from '@amaui/models';
+import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { TMethod } from '@onesy/models';
 
 import PathElement from '../Path';
 import LineElement from '../Line';
@@ -31,7 +31,7 @@ const useStyle = styleMethod(theme => ({
     textAnchor: 'middle',
     alignmentBaseline: 'middle'
   }
-}), { name: 'amaui-BubbleChartItem' });
+}), { name: 'onesy-BubbleChartItem' });
 
 export interface IBubbleChartItem extends IChart {
   name?: string;
@@ -58,9 +58,9 @@ export interface IBubbleChartItem extends IChart {
 }
 
 const BubbleChartItem: React.FC<IBubbleChartItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBubbleChartItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBubbleChartItem?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -160,7 +160,7 @@ const BubbleChartItem: React.FC<IBubbleChartItem> = React.forwardRef((props_, re
 
         className={classNames([
           staticClassName('BubbleChart', theme) && [
-            'amaui-BubbleChart-legend-item'
+            'onesy-BubbleChart-legend-item'
           ],
 
           LegendItemProps?.className,
@@ -170,7 +170,7 @@ const BubbleChartItem: React.FC<IBubbleChartItem> = React.forwardRef((props_, re
         <span
           className={classNames([
             staticClassName('BubbleChart', theme) && [
-              'amaui-BubbleChart-legend-icon'
+              'onesy-BubbleChart-legend-icon'
             ],
 
             classes.legend_icon
@@ -262,7 +262,7 @@ const BubbleChartItem: React.FC<IBubbleChartItem> = React.forwardRef((props_, re
 
               className={classNames([
                 staticClassName('BubbleChartItem', theme) && [
-                  'amaui-BubbleChartItem-text'
+                  'onesy-BubbleChartItem-text'
                 ],
 
                 classes.text
@@ -358,6 +358,6 @@ const BubbleChartItem: React.FC<IBubbleChartItem> = React.forwardRef((props_, re
   );
 });
 
-BubbleChartItem.displayName = 'amaui-BubbleChartItem';
+BubbleChartItem.displayName = 'onesy-BubbleChartItem';
 
 export default BubbleChartItem;

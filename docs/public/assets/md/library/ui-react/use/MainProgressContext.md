@@ -2,10 +2,10 @@
 
 ## API
 
-#### AmauiMainProgressContext
+#### OnesyMainProgressContext
 
 ```ts
-const AmauiMainProgressContext: any;
+const OnesyMainProgressContext: any;
 ```
 
 

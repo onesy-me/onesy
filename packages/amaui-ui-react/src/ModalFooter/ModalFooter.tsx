@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
     paddingTop: theme.methods.space.value('md', 'px')
   }
-}), { name: 'amaui-ModalFooter' });
+}), { name: 'onesy-ModalFooter' });
 
 export interface IModalFooter extends ILine {
 
 }
 
 const ModalFooter: React.FC<IModalFooter> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiModalFooter?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalFooter?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -47,7 +47,7 @@ const ModalFooter: React.FC<IModalFooter> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('ModalFooter', theme) && [
-          'amaui-ModalFooter-root'
+          'onesy-ModalFooter-root'
         ],
 
         className,
@@ -61,6 +61,6 @@ const ModalFooter: React.FC<IModalFooter> = React.forwardRef((props_, ref: any) 
   );
 });
 
-ModalFooter.displayName = 'amaui-ModalFooter';
+ModalFooter.displayName = 'onesy-ModalFooter';
 
 export default ModalFooter;

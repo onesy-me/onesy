@@ -1,20 +1,20 @@
 {
-  "name": "@amaui/monorepo",
+  "name": "@onesy/monorepo",
   "version": "1.0.0",
   "description": "MIT / Open source framework agnostic UI elements and utils, for building quality and production ready modern front end web apps",
-  "repository": "https://github.com/amaui-org/amaui.git",
+  "repository": "https://github.com/onesy-org/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "lerna bootstrap --scope='@amaui/docs' --include-dependencies && lerna run build --scope='@amaui/docs' --include-dependencies --stream",
+    "build": "lerna bootstrap --scope='@onesy/docs' --include-dependencies && lerna run build --scope='@onesy/docs' --include-dependencies --stream",
     "start": "cd docs && cross-env NODE_ENV=production node ./src",
     "dev": "cd docs && yarn dev"
   },
   "devDependencies": {
-    "@amaui/date": "^1.1.16",
-    "@amaui/models": "^1.0.11114",
-    "@amaui/test": "^1.0.11150",
+    "@onesy/date": "^1.1.16",
+    "@onesy/models": "^1.0.11114",
+    "@onesy/test": "^1.0.11150",
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.17.12",

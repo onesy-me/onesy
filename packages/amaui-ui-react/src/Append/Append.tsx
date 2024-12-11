@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, isEnvironment, element as element_, clamp, wait } from '@amaui/utils';
-import { useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, element as element_, clamp, wait } from '@onesy/utils';
+import { useOnesyTheme } from '@onesy/style-react';
 
 import PortalElement from '../Portal';
 import { IChildren, IHTMLElement, IStyle } from '../types';
@@ -49,9 +49,9 @@ export interface IAppend {
 }
 
 const Append: React.FC<IAppend> = (props_) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAppend?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAppend?.props?.default, ...props_ }), [props_]);
 
   const Portal = React.useMemo(() => theme?.elements?.Portal || PortalElement, [theme]);
 
@@ -753,6 +753,6 @@ const Append: React.FC<IAppend> = (props_) => {
   );
 };
 
-Append.displayName = 'amaui-Append';
+Append.displayName = 'onesy-Append';
 
 export default Append;

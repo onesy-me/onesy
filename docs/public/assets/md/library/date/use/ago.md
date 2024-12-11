@@ -4,9 +4,9 @@
 Returns how long ago date was from now, in a nicely formated string (optional, default true).
 
 ```ts
-const amauiDate = new AmauiDate(new Date().getTime() - (44 * 1000));
+const onesyDate = new OnesyDate(new Date().getTime() - (44 * 1000));
 
-ago(amauiDate);
+ago(onesyDate);
 
 // 44 seconds ago
 ```
@@ -16,7 +16,7 @@ ago(amauiDate);
 #### ago
 
 ```ts
-default function ago(amauiDate?: AmauiDate, withSufix?: boolean): string;
+default function ago(onesyDate?: OnesyDate, withSufix?: boolean): string;
 ```
 
 
@@ -28,8 +28,8 @@ default function ago(amauiDate?: AmauiDate, withSufix?: boolean): string;
       "to": "/library/date/use/add"
     },
     "next": {
-      "label": "Date: AmauiDate",
-      "to": "/library/date/use/AmauiDate"
+      "label": "Date: OnesyDate",
+      "to": "/library/date/use/OnesyDate"
     }
   }
 }~

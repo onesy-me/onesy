@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import FadeElement from '../Fade';
@@ -119,7 +119,7 @@ const useStyle = styleMethod(theme => ({
     pointerEvents: 'none',
     cursor: 'default'
   }
-}), { name: 'amaui-NavigationItem' });
+}), { name: 'onesy-NavigationItem' });
 
 // To do
 
@@ -156,9 +156,9 @@ export interface INavigationItem extends ITooltip {
 }
 
 const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiNavigationItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationItem?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -327,7 +327,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
     LabelWrapperProps.className = classNames([
       staticClassName('NavigationItem', theme) && [
-        'amaui-NavigationItem-label'
+        'onesy-NavigationItem-label'
       ],
 
       classes.labelWrapper
@@ -373,12 +373,12 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
         className={classNames([
           staticClassName('NavigationItem', theme) && [
-            'amaui-NavigationItem-root',
-            selected && 'amaui-NavigationItem-selected',
-            hover && `amaui-NavigationItem-hover`,
-            mouseDown && `amaui-NavigationItem-mouse-down`,
-            focus && `amaui-NavigationItem-focus`,
-            disabled && `amaui-NavigationItem-disabled`
+            'onesy-NavigationItem-root',
+            selected && 'onesy-NavigationItem-selected',
+            hover && `onesy-NavigationItem-hover`,
+            mouseDown && `onesy-NavigationItem-mouse-down`,
+            focus && `onesy-NavigationItem-focus`,
+            disabled && `onesy-NavigationItem-disabled`
           ],
 
           className,
@@ -415,7 +415,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
           className={classNames([
             staticClassName('NavigationItem', theme) && [
-              'amaui-NavigationItem-item'
+              'onesy-NavigationItem-item'
             ],
 
             classes.item
@@ -431,7 +431,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
               className={classNames([
                 staticClassName('NavigationItem', theme) && [
-                  'amaui-NavigationItem-icon-wrapper'
+                  'onesy-NavigationItem-icon-wrapper'
                 ],
 
                 classes.iconWrapper,
@@ -446,7 +446,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
                   <span
                     className={classNames([
                       staticClassName('NavigationItem', theme) && [
-                        'amaui-NavigationItem-indicator'
+                        'onesy-NavigationItem-indicator'
                       ],
 
                       classes.indicator,
@@ -467,7 +467,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
                 className={classNames([
                   staticClassName('NavigationItem', theme) && [
-                    'amaui-NavigationItem-icon'
+                    'onesy-NavigationItem-icon'
                   ],
 
                   IconWrapperProps?.className,
@@ -494,7 +494,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
                 className={classNames([
                   staticClassName('NavigationItem', theme) && [
-                    'amaui-NavigationItem-label'
+                    'onesy-NavigationItem-label'
                   ],
 
                   classes.label
@@ -512,6 +512,6 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
   );
 });
 
-NavigationItem.displayName = 'amaui-NavigationItem';
+NavigationItem.displayName = 'onesy-NavigationItem';
 
 export default NavigationItem;

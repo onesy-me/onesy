@@ -1,7 +1,7 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { AmauiStyle, AmauiStyleProvider, valueObject, prefix, rtl, unit, makeClassName } from '@amaui/style-react';
+import { OnesyStyle, OnesyStyleProvider, valueObject, prefix, rtl, unit, makeClassName } from '@onesy/style-react';
 
 export default class CustomDocument extends Document {
   render() {
@@ -38,20 +38,20 @@ export default class CustomDocument extends Document {
 }
 
 CustomDocument.getInitialProps = async ctx => {
-  const amauiStyle = new AmauiStyle();
+  const onesyStyle = new OnesyStyle();
 
-  amauiStyle.plugins.add = [unit, prefix, rtl, valueObject, makeClassName];
+  onesyStyle.plugins.add = [unit, prefix, rtl, valueObject, makeClassName];
 
   const page = ctx.renderPage;
 
   ctx.renderPage = () =>
     page({
       enhanceApp: App => props => (
-        <AmauiStyleProvider
-          value={amauiStyle}
+        <OnesyStyleProvider
+          value={onesyStyle}
         >
           <App {...props} />
-        </AmauiStyleProvider>
+        </OnesyStyleProvider>
       ),
     });
 
@@ -63,11 +63,11 @@ CustomDocument.getInitialProps = async ctx => {
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
       <style
-        id='amaui'
+        id='onesy'
 
-        key='amaui'
+        key='onesy'
       >
-        {amauiStyle.css}
+        {onesyStyle.css}
       </style>
     ],
   };

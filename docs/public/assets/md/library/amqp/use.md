@@ -1,5 +1,5 @@
 
-# AmauiAmqp
+# OnesyAmqp
 
 ### Options
 
@@ -22,10 +22,10 @@ Array of exchanges's name, type values, to assert upon connecting to the service
 Make a connection.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 ```
 
 #### client
@@ -33,10 +33,10 @@ await amauiAmqp.connection;
 Get a client.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Client
-await amauiAmqp.client;
+await onesyAmqp.client;
 ```
 
 #### disconnect
@@ -44,13 +44,13 @@ await amauiAmqp.client;
 Closes the connection to the service.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Disconnect
-await amauiAmqp.disconnect;
+await onesyAmqp.disconnect;
 ```
 
 ### Queues
@@ -63,12 +63,12 @@ Sends a message to the queue. \
 All values will by default be stringified, so you can pass into it value of any type.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.send('a', { a: 1114 });
+await onesyAmqp.send('a', { a: 1114 });
 ```
 
 #### consume
@@ -76,12 +76,12 @@ await amauiAmqp.send('a', { a: 1114 });
 Subscribe a method to a queue, for incoming messages for it.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.consume('a', async message => {
+await onesyAmqp.consume('a', async message => {
   ...
 });
 ```
@@ -95,13 +95,13 @@ Alias of the consume method.
 Extracts data from the message, and parses it back into its original value type.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.consume('a', async message => {
-  const data = amauiAmqp.messageData(message);
+await onesyAmqp.consume('a', async message => {
+  const data = onesyAmqp.messageData(message);
 
   data;
 
@@ -115,15 +115,15 @@ Acknowledges the message, meaning, it will be removed, as message is marked as d
 You have to use it to mark a message as resolved, so it doesn't go back into the queue.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.consume('a', async message => {
+await onesyAmqp.consume('a', async message => {
   ...
 
-  await amauiAmqp.ack(message);
+  await onesyAmqp.ack(message);
 });
 ```
 
@@ -132,15 +132,15 @@ await amauiAmqp.consume('a', async message => {
 Not acknowledges the message, meaning, it will be marked as failed, and optionally (by default true) requeued to be consumed all over again.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.consume('a', async message => {
+await onesyAmqp.consume('a', async message => {
   ...
 
-  await amauiAmqp.nack(message);
+  await onesyAmqp.nack(message);
 });
 ```
 
@@ -149,20 +149,20 @@ await amauiAmqp.consume('a', async message => {
 Cancel the consumer for a queue.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-const consumer = await amauiAmqp.consume('a', async message => {
-  const data = amauiAmqp.messageData(message);
+const consumer = await onesyAmqp.consume('a', async message => {
+  const data = onesyAmqp.messageData(message);
 
   data;
 
   // { a: 1114 }
 });
 
-await amauiAmqp.cancel(consumer.consumerTag);
+await onesyAmqp.cancel(consumer.consumerTag);
 ```
 
 #### bindQueue
@@ -170,18 +170,18 @@ await amauiAmqp.cancel(consumer.consumerTag);
 Used when we want to bind a queue to a certain exchange, and its routing key, in order to receive only messages from that exchange, and that routing key.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-const queue = await amauiAmqp.assertQueue('', { exclusive: true });
+const queue = await onesyAmqp.assertQueue('', { exclusive: true });
 
 // Bind the queue for 'a' exchange, and 'a.*' routing key
-await amauiAmqp.bindQueue(queue.queue, 'a', 'a.*');
+await onesyAmqp.bindQueue(queue.queue, 'a', 'a.*');
 
 // Consume
-await amauiAmqp.consume(queue.queue, async message => {
+await onesyAmqp.consume(queue.queue, async message => {
   ...
 });
 ```
@@ -192,13 +192,13 @@ Asserts a queue, based on a queue name. \
 Meaning creates a queue if it doesn't already exist.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Assert a queue
-await amauiAmqp.assertQueue('a');
+await onesyAmqp.assertQueue('a');
 ```
 
 #### assertQueues
@@ -206,13 +206,13 @@ await amauiAmqp.assertQueue('a');
 Asserts an array of queues that are mentioned in the `options.queues`.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Asserts all queues
-await amauiAmqp.assertQueues();
+await onesyAmqp.assertQueues();
 ```
 
 #### checkQueue
@@ -220,12 +220,12 @@ await amauiAmqp.assertQueues();
 Checks if queue exists, and if not throws error, if yes returns it.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.checkQueue('a');
+await onesyAmqp.checkQueue('a');
 ```
 
 #### get
@@ -233,12 +233,12 @@ await amauiAmqp.checkQueue('a');
 Returns a queue if it exists.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.get('a');
+await onesyAmqp.get('a');
 ```
 
 #### removeQueue
@@ -246,12 +246,12 @@ await amauiAmqp.get('a');
 Removes a queue if it exists, if it doesn't exist, it throws an error.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.removeQueue('a');
+await onesyAmqp.removeQueue('a');
 ```
 
 ### Exchanges
@@ -263,13 +263,13 @@ Exchanges management.
 Publishes a message to an exchange.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Publish
-await amauiAmqp.publish('a', 'a.a114', { a: 1114 });
+await onesyAmqp.publish('a', 'a.a114', { a: 1114 });
 ```
 
 #### assertExchange
@@ -278,13 +278,13 @@ Asserts an exchange, based on an exchange name. \
 Meaning creates an exchange if it doesn't already exist.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Assert an exchange
-await amauiAmqp.assertExchange('a');
+await onesyAmqp.assertExchange('a');
 ```
 
 #### assertExhanges
@@ -292,13 +292,13 @@ await amauiAmqp.assertExchange('a');
 Asserts an array of exchanges that are mentioned in the `options.exchanges`.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Asserts all exchanges
-await amauiAmqp.assertExhanges();
+await onesyAmqp.assertExhanges();
 ```
 
 #### checkExchange
@@ -306,12 +306,12 @@ await amauiAmqp.assertExhanges();
 Checks if an exchange exists, and if not throws error, if yes returns it.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.checkExchange('a');
+await onesyAmqp.checkExchange('a');
 ```
 
 #### removeExchange
@@ -319,12 +319,12 @@ await amauiAmqp.checkExchange('a');
 Removes an exchange if it exists, if it doesn't exist, it throws an error.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
-await amauiAmqp.removeExchange('a');
+await onesyAmqp.removeExchange('a');
 ```
 
 ### Other
@@ -334,18 +334,18 @@ await amauiAmqp.removeExchange('a');
 Removes all queues, exchanges mentioned in the options, and emits a `reset` subscription event.
 
 ```ts
-const amauiAmqp = new AmauiAmqp(options);
+const onesyAmqp = new OnesyAmqp(options);
 
 // Connect
-await amauiAmqp.connection;
+await onesyAmqp.connection;
 
 // Reset
-await amauiAmqp.reset();
+await onesyAmqp.reset();
 ```
 
 #### subscriptions
 
-Using `@amaui/subscription` library, provides `subscription` property, where you'll receive following events:
+Using `@onesy/subscription` library, provides `subscription` property, where you'll receive following events:
 - `connected` on connect success.
 - `connect:error` on connect error.
 - `disconnected` on disconnect success.
@@ -398,16 +398,16 @@ interface IOptions {
 const optionsDefault: IOptions;
 ```
 
-#### AmauiAmqp
+#### OnesyAmqp
 
 ```ts
-class AmauiAmqp {
+class OnesyAmqp {
     connection_: amqp.Connection;
     channel_: amqp.Channel;
     connected: boolean;
     private amalog;
     private options_;
-    subscription: AmauiSubscription;
+    subscription: OnesySubscription;
     queues: Record<string, any>;
     exchanges: Record<string, any>;
     sendOptions: amqp.Options.Publish;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, is, isEnvironment } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is, isEnvironment } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
 import GrowElement from '../Grow';
 import ModalElement from '../Modal';
@@ -168,7 +168,7 @@ const useStyle = styleMethod(theme => ({
   nowrap: {
     whiteSpace: 'nowrap'
   }
-}), { name: 'amaui-Tooltip' });
+}), { name: 'onesy-Tooltip' });
 
 export interface ITooltip extends Omit<IModal, 'maxWidth'> {
   tonal?: ITonal;
@@ -220,9 +220,9 @@ export interface ITooltip extends Omit<IModal, 'maxWidth'> {
 }
 
 const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTooltip?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTooltip?.props?.default, ...props_ }), [props_]);
 
   const Grow = React.useMemo(() => theme?.elements?.Grow || GrowElement, [theme]);
 
@@ -565,13 +565,13 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Tooltip', theme) && [
-                'amaui-Tooltip-root',
-                open && `amaui-Button-open`,
-                touch && 'amaui-Tooltip-touch',
-                longPress && 'amaui-Tooltip-long-press',
-                hover && 'amaui-Tooltip-hover',
-                focus && 'amaui-Tooltip-focus',
-                `amaui-Tooltip-position-${position}`
+                'onesy-Tooltip-root',
+                open && `onesy-Button-open`,
+                touch && 'onesy-Tooltip-touch',
+                longPress && 'onesy-Tooltip-long-press',
+                hover && 'onesy-Tooltip-hover',
+                focus && 'onesy-Tooltip-focus',
+                `onesy-Tooltip-position-${position}`
               ],
 
               className,
@@ -608,7 +608,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Tooltip', theme) && [
-                    'amaui-Tooltip-name-root'
+                    'onesy-Tooltip-name-root'
                   ],
 
                   classes.nameRoot,
@@ -631,7 +631,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Tooltip', theme) && [
-                        'amaui-Tooltip-name'
+                        'onesy-Tooltip-name'
                       ],
 
                       LabelProps?.className,
@@ -651,7 +651,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
                     <span
                       className={classNames([
                         staticClassName('Tooltip', theme) && [
-                          'amaui-Tooltip-name-text'
+                          'onesy-Tooltip-name-text'
                         ],
                       ])}
                     >
@@ -704,6 +704,6 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Tooltip.displayName = 'amaui-Tooltip';
+Tooltip.displayName = 'onesy-Tooltip';
 
 export default Tooltip;

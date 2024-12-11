@@ -46,9 +46,9 @@ cleanValue('BackgroundImage', { cammelCaseTransform: true });
 Cleans up strings that are a url value.
 
 ```ts
-cleanValue('https://amaui.me/a/?a=a4', { url: true });
+cleanValue('https://onesy.me/a/?a=a4', { url: true });
 
-// https://amaui.me/a?a=a4
+// https://onesy.me/a?a=a4
 ```
 
 #### replaceWith

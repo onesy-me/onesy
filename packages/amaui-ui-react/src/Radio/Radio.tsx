@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import IconButtonElement from '../IconButton';
 import { IIconButton } from '../IconButton/IconButton';
@@ -74,7 +74,7 @@ const useStyle = styleMethod(theme => ({
   disabled: {
     cursor: 'default'
   }
-}), { name: 'amaui-Radio' });
+}), { name: 'onesy-Radio' });
 
 const IconItem = (props: any) => {
   const {
@@ -136,9 +136,9 @@ export interface IRadio extends IIconButton {
 }
 
 const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiRadio?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRadio?.props?.default, ...props_ }), [props_]);
 
   const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
 
@@ -270,7 +270,7 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Radio', theme) && [
-              'amaui-Radio-input'
+              'onesy-Radio-input'
             ],
 
             classes.input
@@ -292,11 +292,11 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Radio', theme) && [
-          'amaui-Radio-root',
-          `amaui-Radio-version-${version}`,
-          `amaui-Radio-size-${size}`,
-          value && `amaui-Radio-checked`,
-          disabled && `amaui-Radio-disabled`
+          'onesy-Radio-root',
+          `onesy-Radio-version-${version}`,
+          `onesy-Radio-size-${size}`,
+          value && `onesy-Radio-checked`,
+          disabled && `onesy-Radio-disabled`
         ],
 
         className,
@@ -312,8 +312,8 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Radio', theme) && [
-              'amaui-Radio-icon',
-              'amaui-Radio-icon-box'
+              'onesy-Radio-icon',
+              'onesy-Radio-icon-box'
             ],
 
             classes.icon,
@@ -331,9 +331,9 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Radio', theme) && [
-              'amaui-Radio-icon',
-              'amaui-Radio-icon-dot',
-              value && 'amaui-Radio-icon-dot-checked'
+              'onesy-Radio-icon',
+              'onesy-Radio-icon-dot',
+              value && 'onesy-Radio-icon-dot-checked'
             ],
 
             classes.icon,
@@ -346,6 +346,6 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Radio.displayName = 'amaui-Radio';
+Radio.displayName = 'onesy-Radio';
 
 export default Radio;

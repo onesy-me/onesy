@@ -1,14 +1,14 @@
 
 # min
 
-Returns min AmauiDate from array of AmauiDates.
+Returns min OnesyDate from array of OnesyDates.
 
 ```ts
 format(min([
-  new AmauiDate('2014-04-14T14:04:14'),
-  new AmauiDate('2014-04-17T14:04:14'),
-  new AmauiDate('2014-04-14T14:40:14'),
-  new AmauiDate('2014-04-14T14:41:14')
+  new OnesyDate('2014-04-14T14:04:14'),
+  new OnesyDate('2014-04-17T14:04:14'),
+  new OnesyDate('2014-04-14T14:40:14'),
+  new OnesyDate('2014-04-14T14:41:14')
 ]));
 
 // '2014-04-14T14:04:14'
@@ -19,7 +19,7 @@ format(min([
 #### min
 
 ```ts
-default function min(values?: Array<AmauiDate>): AmauiDate;
+default function min(values?: Array<OnesyDate>): OnesyDate;
 ```
 
 

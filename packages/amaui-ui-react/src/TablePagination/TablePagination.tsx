@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { clamp, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialLastPage from '@amaui/icons-material-rounded-react/IconMaterialLastPageW100';
-import IconMaterialFirstPage from '@amaui/icons-material-rounded-react/IconMaterialFirstPageW100';
-import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
-import IconMaterialNavigateBefore from '@amaui/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
+import IconMaterialLastPage from '@onesy/icons-material-rounded-react/IconMaterialLastPageW100';
+import IconMaterialFirstPage from '@onesy/icons-material-rounded-react/IconMaterialFirstPageW100';
+import IconMaterialNavigateNext from '@onesy/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialNavigateBefore from '@onesy/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
 
 import LineElement from '../Line';
 import TypeElement from '../Type';
@@ -29,7 +29,7 @@ const useStyle = styleMethod(theme => ({
   text: {
     flex: '0 0 auto'
   }
-}), { name: 'amaui-TablePagination' });
+}), { name: 'onesy-TablePagination' });
 
 export interface ITableRow extends ILine {
   tonal?: ITonal;
@@ -63,9 +63,9 @@ export interface ITableRow extends ILine {
 }
 
 const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTablePagination?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTablePagination?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -165,9 +165,9 @@ const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any)
 
       className={classNames([
         staticClassName('TablePagination', theme) && [
-          `amaui-TablePagination-root`,
-          `amaui-TablePagination-version-${version}`,
-          `amaui-TablePagination-size-${size}`
+          `onesy-TablePagination-root`,
+          `onesy-TablePagination-version-${version}`,
+          `onesy-TablePagination-size-${size}`
         ],
 
         className,
@@ -200,7 +200,7 @@ const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any)
 
           className={classNames([
             staticClassName('TablePagination', theme) && [
-              `amaui-TablePagination-select`
+              `onesy-TablePagination-select`
             ],
 
             classes.select
@@ -235,7 +235,7 @@ const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any)
 
         className={classNames([
           staticClassName('TablePagination', theme) && [
-            `amaui-TablePagination-text`
+            `onesy-TablePagination-text`
           ],
 
           classes.text
@@ -305,6 +305,6 @@ const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any)
   );
 });
 
-TablePagination.displayName = 'amaui-TablePagination';
+TablePagination.displayName = 'onesy-TablePagination';
 
 export default TablePagination;

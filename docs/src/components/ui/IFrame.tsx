@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { TextField, Chips, Chip } from '@amaui/ui-react';
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
+import { TextField, Chips, Chip } from '@onesy/ui-react';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 
 import { importIframeStyles } from '../../utils';
 
@@ -36,7 +36,7 @@ const IFrame = React.forwardRef((props: any, ref: any) => {
     ...other
   } = props;
 
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const { classes } = useStyle();
 

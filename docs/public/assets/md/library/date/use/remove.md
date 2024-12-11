@@ -1,12 +1,12 @@
 
 # Remove
 
-Removes time unit to the AmauiDate value.
+Removes time unit to the OnesyDate value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-remove(14, 'day', amauiDate);
+remove(14, 'day', onesyDate);
 ```
 
 ### Units
@@ -28,7 +28,7 @@ remove(14, 'day', amauiDate);
 #### remove
 
 ```ts
-default function remove(value: number, unit: TTimeUnits, amauiDate?: AmauiDate): AmauiDate;
+default function remove(value: number, unit: TTimeUnits, onesyDate?: OnesyDate): OnesyDate;
 ```
 
 

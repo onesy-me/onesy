@@ -4,15 +4,15 @@ import React from 'react';
 
 import { useServerInsertedHTML } from 'next/navigation';
 
-import { Snackbars, Confirm, MainProgress, Widgets, ScreenCapture, Timer, Countdown, Weather, Watch } from '@amaui/ui-react';
-import { AmauiThemeProvider, valueObject, prefix, rtl, unit, makeClassName, AmauiStyle, AmauiStyleProvider, colors } from '@amaui/style-react';
+import { Snackbars, Confirm, MainProgress, Widgets, ScreenCapture, Timer, Countdown, Weather, Watch } from '@onesy/ui-react';
+import { OnesyThemeProvider, valueObject, prefix, rtl, unit, makeClassName, OnesyStyle, OnesyStyleProvider, colors } from '@onesy/style-react';
 
-import IconMaterialTimerRounded from '@amaui/icons-material-react/build/IconMaterialTimerRounded';
-import IconMaterialVideocamRounded from '@amaui/icons-material-react/build/IconMaterialVideocamRounded';
-import IconMaterialAvTimerRounded from '@amaui/icons-material-react/build/IconMaterialAvTimerRounded';
-import IconMaterialWeatherRounded from '@amaui/icons-material-react/build/IconMaterialClearDayRounded';
-import IconMaterialNestClockFarsightDigitalRounded from '@amaui/icons-material-react/build/IconMaterialNestClockFarsightDigitalRounded';
-import IconMaterialNestClockFarsightAnalogRounded from '@amaui/icons-material-react/build/IconMaterialNestClockFarsightAnalogRounded';
+import IconMaterialTimerRounded from '@onesy/icons-material-react/build/IconMaterialTimerRounded';
+import IconMaterialVideocamRounded from '@onesy/icons-material-react/build/IconMaterialVideocamRounded';
+import IconMaterialAvTimerRounded from '@onesy/icons-material-react/build/IconMaterialAvTimerRounded';
+import IconMaterialWeatherRounded from '@onesy/icons-material-react/build/IconMaterialClearDayRounded';
+import IconMaterialNestClockFarsightDigitalRounded from '@onesy/icons-material-react/build/IconMaterialNestClockFarsightDigitalRounded';
+import IconMaterialNestClockFarsightAnalogRounded from '@onesy/icons-material-react/build/IconMaterialNestClockFarsightAnalogRounded';
 
 const widgets = [
   {
@@ -52,10 +52,10 @@ export default function Layout(props: { children: React.ReactNode }) {
     children
   } = props;
 
-  const amauiStyle = React.useState(() => {
-    const amauiStyle_ = new AmauiStyle();
+  const onesyStyle = React.useState(() => {
+    const onesyStyle_ = new OnesyStyle();
 
-    amauiStyle_.plugins.add = [
+    onesyStyle_.plugins.add = [
       unit,
       prefix,
       rtl,
@@ -70,12 +70,12 @@ export default function Layout(props: { children: React.ReactNode }) {
       }
     ];
 
-    return amauiStyle_;
+    return onesyStyle_;
   })[0];
 
   // Clean up
   React.useEffect(() => {
-    const elements = window.document.querySelectorAll('#amaui-initial-style');
+    const elements = window.document.querySelectorAll('#onesy-initial-style');
 
     elements.forEach(element => element.remove());
   }, []);
@@ -84,9 +84,9 @@ export default function Layout(props: { children: React.ReactNode }) {
     return (
       <>
         <style
-          id='amaui-initial-style'
+          id='onesy-initial-style'
         >
-          {amauiStyle.css}
+          {onesyStyle.css}
         </style>
       </>
     );
@@ -130,10 +130,10 @@ export default function Layout(props: { children: React.ReactNode }) {
       </head>
 
       <body>
-        <AmauiStyleProvider
-          value={amauiStyle}
+        <OnesyStyleProvider
+          value={onesyStyle}
         >
-          <AmauiThemeProvider>
+          <OnesyThemeProvider>
             <MainProgress>
               <Confirm>
                 <Snackbars>
@@ -145,8 +145,8 @@ export default function Layout(props: { children: React.ReactNode }) {
                 </Snackbars>
               </Confirm>
             </MainProgress>
-          </AmauiThemeProvider>
-        </AmauiStyleProvider>
+          </OnesyThemeProvider>
+        </OnesyStyleProvider>
       </body>
     </html>
   );

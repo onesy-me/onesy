@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { is, getID, debounce, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import AmauiSubscription from '@amaui/subscription/AmauiSubscription';
+import { is, getID, debounce, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import OnesySubscription from '@onesy/subscription/OnesySubscription';
 
 import { staticClassName, Transition, Transitions, TTransitionStatus, useMediaQuery } from '..';
 import { IBaseElement } from '../types';
@@ -151,7 +151,7 @@ const useStyle = styleMethod(theme => ({
       opacity: '0',
     }
   }
-}), { name: 'amaui-Interaction' });
+}), { name: 'onesy-Interaction' });
 
 export type TMethodsVersion = 'add' | 'pulse' | 'remove';
 
@@ -167,15 +167,15 @@ export interface IInteraction extends IBaseElement {
   dragged?: boolean;
   pulseOnMouseDown?: boolean;
   wave_version?: 'simple';
-  subscription?: AmauiSubscription;
+  subscription?: OnesySubscription;
   clear?: any;
   disabled?: boolean;
 }
 
 const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiInteraction?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyInteraction?.props?.default, ...props_ }), [props_]);
 
   const {
     wave = true,
@@ -509,8 +509,8 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('Interaction', theme) && [
-          'amaui-Interaction-root',
-          disabled && `amaui-Interaction-disabled`
+          'onesy-Interaction-root',
+          disabled && `onesy-Interaction-disabled`
         ],
 
         className,
@@ -522,7 +522,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
         <span
           className={classNames([
             staticClassName('Interaction', theme) && [
-              'amaui-Interaction-background'
+              'onesy-Interaction-background'
             ],
 
             classes.background,
@@ -558,7 +558,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
             <span
               className={classNames([
                 staticClassName('Interaction', theme) && [
-                  'amaui-Interaction-border'
+                  'onesy-Interaction-border'
                 ],
 
                 classes.border
@@ -577,6 +577,6 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
   );
 });
 
-Interaction.displayName = 'amaui-Interaction';
+Interaction.displayName = 'onesy-Interaction';
 
 export default Interaction;

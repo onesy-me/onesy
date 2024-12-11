@@ -1,5 +1,5 @@
 
-# amaui linked list
+# onesy linked list
 
 Linked list data type & its methods.
 
@@ -12,35 +12,35 @@ Linked list data type & its methods.
 ### Add
 
 ```sh
-yarn add @amaui/linked-list
+yarn add @onesy/linked-list
 ```
 
 ### Use
 
 ```ts
-import AmauiLinkedList from '@amaui/linked-list';
+import OnesyLinkedList from '@onesy/linked-list';
 
 // Make a new linked list instance
-const amauiLinkedList = new AmauiLinkedList();
+const onesyLinkedList = new OnesyLinkedList();
 
 // Add values
-amauiLinkedList.add(1).add(4);
+onesyLinkedList.add(1).add(4);
 
-amauiLinkedList.first;
+onesyLinkedList.first;
 // 1
 
-amauiLinkedList.last;
+onesyLinkedList.last;
 // 4
 
-const value = amauiLinkedList.search(4);
-// AmauiNode { value: 4, ... }
+const value = onesyLinkedList.search(4);
+// OnesyNode { value: 4, ... }
 
-amauiLinkedList.remove(1);
+onesyLinkedList.remove(1);
 
-amauiLinkedList.first;
+onesyLinkedList.first;
 // 4
 
-amauiLinkedList.length;
+onesyLinkedList.length;
 // 1
 ```
 

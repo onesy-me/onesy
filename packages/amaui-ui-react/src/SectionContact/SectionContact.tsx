@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { is, textToInnerHTML } from '@amaui/utils';
-import { TPaletteVersion, classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, textToInnerHTML } from '@onesy/utils';
+import { TPaletteVersion, classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialMap from '@amaui/icons-material-rounded-react/IconMaterialMapW100';
-import IconMaterialCall from '@amaui/icons-material-rounded-react/IconMaterialCallW100';
-import IconMaterialMail from '@amaui/icons-material-rounded-react/IconMaterialMailW100';
+import IconMaterialMap from '@onesy/icons-material-rounded-react/IconMaterialMapW100';
+import IconMaterialCall from '@onesy/icons-material-rounded-react/IconMaterialCallW100';
+import IconMaterialMail from '@onesy/icons-material-rounded-react/IconMaterialMailW100';
 
 import LineElement from '../Line';
 import PropertiesElement from '../Properties';
@@ -36,7 +36,7 @@ const useStyle = styleMethod(theme => ({
     inset: '0',
     zIndex: '4'
   }
-}), { name: 'amaui-SectionContact' });
+}), { name: 'onesy-SectionContact' });
 
 export interface ISectionContact extends ISection {
   map?: {
@@ -68,9 +68,9 @@ export interface ISectionContact extends ISection {
 }
 
 const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionContact?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionContact?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -139,7 +139,7 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
 
       className={classNames([
         staticClassName('SectionContact', theme) && [
-          'amaui-SectionContact-map'
+          'onesy-SectionContact-map'
         ],
 
         classes.map
@@ -158,7 +158,7 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
       )}
 
       <iframe
-        title='amaui-google-map'
+        title='onesy-google-map'
 
         src={`https://www.google.com/maps/embed/v1/place?q=${map?.latitude},${map?.longitude}${map?.apiKey ? `&key=${map?.apiKey}` : ''}`}
 
@@ -196,7 +196,7 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
 
       className={classNames([
         staticClassName('SectionContact', theme) && [
-          'amaui-SectionContact-root'
+          'onesy-SectionContact-root'
         ],
 
         className,
@@ -243,7 +243,7 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
 
                   className={classNames([
                     staticClassName('SectionContact', theme) && [
-                      'amaui-SectionContact-heading'
+                      'onesy-SectionContact-heading'
                     ],
 
                     HeadingProps?.className,
@@ -264,7 +264,7 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
 
                   className={classNames([
                     staticClassName('SectionContact', theme) && [
-                      'amaui-SectionContact-summary'
+                      'onesy-SectionContact-summary'
                     ],
 
                     SummaryProps?.className,
@@ -302,6 +302,6 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
   );
 });
 
-Element.displayName = 'amaui-SectionContact';
+Element.displayName = 'onesy-SectionContact';
 
 export default Element;

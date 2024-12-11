@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import InteractionElement from '../Interaction';
 import { staticClassName } from '../utils';
@@ -12,7 +12,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'pointer',
     userSelect: 'none'
   }
-}), { name: 'amaui-CardButton' });
+}), { name: 'onesy-CardButton' });
 
 export interface ICardButton extends IBaseElement {
   focus?: boolean;
@@ -27,9 +27,9 @@ export interface ICardButton extends IBaseElement {
 }
 
 const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCardButton?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardButton?.props?.default, ...props_ }), [props_]);
 
   const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
 
@@ -91,9 +91,9 @@ const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('CardButton', theme) && [
-          `amaui-CardButton-root`,
-          focus && `amaui-CardButton-focus`,
-          disabled && `amaui-CardButton-disabled`
+          `onesy-CardButton-root`,
+          focus && `onesy-CardButton-focus`,
+          disabled && `onesy-CardButton-disabled`
         ],
 
         className,
@@ -117,6 +117,6 @@ const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-CardButton.displayName = 'amaui-CardButton';
+CardButton.displayName = 'onesy-CardButton';
 
 export default CardButton;

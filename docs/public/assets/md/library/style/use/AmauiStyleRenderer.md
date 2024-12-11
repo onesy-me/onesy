@@ -1,5 +1,5 @@
 
-# AmauiStyleRenderer
+# OnesyStyleRenderer
 
 Used to insert css values to the DOM.
 
@@ -18,7 +18,7 @@ Method called to remove the element from the DOM.
 ## API
 
 ```ts
-class AmauiStyleRenderer {
+class OnesyStyleRenderer {
     make(attributes?: {
         element: {};
         data: {};
@@ -33,12 +33,12 @@ class AmauiStyleRenderer {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Style: AmauiStyle",
-      "to": "/library/style/use/AmauiStyle"
+      "label": "Style: OnesyStyle",
+      "to": "/library/style/use/OnesyStyle"
     },
     "next": {
-      "label": "Style: AmauiStyleRule",
-      "to": "/library/style/use/AmauiStyleRule"
+      "label": "Style: OnesyStyleRule",
+      "to": "/library/style/use/OnesyStyleRule"
     }
   }
 }~

@@ -1,12 +1,12 @@
 
 # endOf
 
-End of provided time unit, from a provided AmauiDate.
+End of provided time unit, from a provided OnesyDate.
 
 ```ts
-const amauiDate = new AmauiDate('2014-04-14T14:04:14.147');
+const onesyDate = new OnesyDate('2014-04-14T14:04:14.147');
 
-const value = endOf(amauiDate, 'day');
+const value = endOf(onesyDate, 'day');
 
 format(value);
 
@@ -27,7 +27,7 @@ format(value);
 #### endOf
 
 ```ts
-default function endOf(amauiDate_?: AmauiDate, unit?: TTimeUnits): AmauiDate;
+default function endOf(onesyDate_?: OnesyDate, unit?: TTimeUnits): OnesyDate;
 ```
 
 

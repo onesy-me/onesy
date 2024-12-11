@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { getLeadingZerosNumber, is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { AmauiDate, duration } from '@amaui/date';
+import { getLeadingZerosNumber, is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { OnesyDate, duration } from '@onesy/date';
 
-import IconMaterialMic from '@amaui/icons-material-rounded-react/IconMaterialMicW100';
-import IconMaterialSend from '@amaui/icons-material-rounded-react/IconMaterialSendW100';
-import IconMaterialPlayArrow from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
-import IconMaterialPause from '@amaui/icons-material-rounded-react/IconMaterialPauseW100';
-import IconMaterialStop from '@amaui/icons-material-rounded-react/IconMaterialStopW100';
+import IconMaterialMic from '@onesy/icons-material-rounded-react/IconMaterialMicW100';
+import IconMaterialSend from '@onesy/icons-material-rounded-react/IconMaterialSendW100';
+import IconMaterialPlayArrow from '@onesy/icons-material-rounded-react/IconMaterialPlayArrowW100';
+import IconMaterialPause from '@onesy/icons-material-rounded-react/IconMaterialPauseW100';
+import IconMaterialStop from '@onesy/icons-material-rounded-react/IconMaterialStopW100';
 
 import LineElement from '../Line';
 import FadeElement from '../Fade';
@@ -59,11 +59,11 @@ const useStyle = styleMethod(theme => ({
   },
 
   time: {
-    '&.amaui-Type-root': {
+    '&.onesy-Type-root': {
       whiteSpace: 'nowrap'
     }
   }
-}), { name: 'amaui-AudioRecorder' });
+}), { name: 'onesy-AudioRecorder' });
 
 export interface IAudioRecorder extends ILine {
   size?: ISize;
@@ -96,9 +96,9 @@ export interface IAudioRecorder extends ILine {
 }
 
 const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAudioRecorder?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAudioRecorder?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -178,7 +178,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
   }, []);
 
   const update = () => {
-    setValue(refs.valuePaused.current + (AmauiDate.milliseconds - refs.start.current));
+    setValue(refs.valuePaused.current + (OnesyDate.milliseconds - refs.start.current));
 
     refs.animationFrame.current = requestAnimationFrame(update);
   };
@@ -219,7 +219,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
       return;
     }
 
-    refs.start.current = AmauiDate.milliseconds;
+    refs.start.current = OnesyDate.milliseconds;
 
     // ~60+ fps
     refs.animationFrame.current = requestAnimationFrame(update);
@@ -297,7 +297,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     refs.animationFrame.current = requestAnimationFrame(update);
 
     // Update start, valuePaused value
-    refs.start.current = AmauiDate.milliseconds;
+    refs.start.current = OnesyDate.milliseconds;
 
     setStatus('running');
 
@@ -357,8 +357,8 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('AudioRecorder', theme) && [
-          `amaui-AudioRecorder-root`,
-          `amaui-AudioRecorder-size-${size}`
+          `onesy-AudioRecorder-root`,
+          `onesy-AudioRecorder-size-${size}`
         ],
 
         className,
@@ -396,7 +396,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
                 className={classNames([
                   staticClassName('AudioRecorder', theme) && [
-                    'amaui-AudioRecorder-time'
+                    'onesy-AudioRecorder-time'
                   ],
 
                   classes.time
@@ -567,6 +567,6 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
   );
 });
 
-AudioRecorder.displayName = 'amaui-AudioRecorder';
+AudioRecorder.displayName = 'onesy-AudioRecorder';
 
 export default AudioRecorder;

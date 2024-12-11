@@ -1,15 +1,15 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
-import { Snackbars, Confirm, MainProgress, Widgets, ScreenCapture, Timer, Countdown, Weather, Watch } from '@amaui/ui-react';
-import { AmauiThemeProvider, valueObject, prefix, rtl, unit, makeClassName, useAmauiStyle } from '@amaui/style-react';
+import { Snackbars, Confirm, MainProgress, Widgets, ScreenCapture, Timer, Countdown, Weather, Watch } from '@onesy/ui-react';
+import { OnesyThemeProvider, valueObject, prefix, rtl, unit, makeClassName, useOnesyStyle } from '@onesy/style-react';
 
-import IconMaterialTimerRounded from '@amaui/icons-material-react/IconMaterialTimerRounded';
-import IconMaterialVideocamRounded from '@amaui/icons-material-react/IconMaterialVideocamRounded';
-import IconMaterialAvTimerRounded from '@amaui/icons-material-react/IconMaterialAvTimerRounded';
-import IconMaterialWeatherRounded from '@amaui/icons-material-react/IconMaterialClearDayRounded';
-import IconMaterialNestClockFarsightDigitalRounded from '@amaui/icons-material-react/IconMaterialNestClockFarsightDigitalRounded';
-import IconMaterialNestClockFarsightAnalogRounded from '@amaui/icons-material-react/IconMaterialNestClockFarsightAnalogRounded';
+import IconMaterialTimerRounded from '@onesy/icons-material-react/IconMaterialTimerRounded';
+import IconMaterialVideocamRounded from '@onesy/icons-material-react/IconMaterialVideocamRounded';
+import IconMaterialAvTimerRounded from '@onesy/icons-material-react/IconMaterialAvTimerRounded';
+import IconMaterialWeatherRounded from '@onesy/icons-material-react/IconMaterialClearDayRounded';
+import IconMaterialNestClockFarsightDigitalRounded from '@onesy/icons-material-react/IconMaterialNestClockFarsightDigitalRounded';
+import IconMaterialNestClockFarsightAnalogRounded from '@onesy/icons-material-react/IconMaterialNestClockFarsightAnalogRounded';
 
 const widgets = [
   {
@@ -45,12 +45,12 @@ const widgets = [
 ];
 
 export default function App({ Component, pageProps }: AppProps) {
-  const amauiStyle = useAmauiStyle();
+  const onesyStyle = useOnesyStyle();
 
-  amauiStyle.plugins.add = [unit, prefix, rtl, valueObject, makeClassName];
+  onesyStyle.plugins.add = [unit, prefix, rtl, valueObject, makeClassName];
 
   return (
-    <AmauiThemeProvider>
+    <OnesyThemeProvider>
       <MainProgress>
         <Confirm>
           <Snackbars>
@@ -62,6 +62,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </Snackbars>
         </Confirm>
       </MainProgress>
-    </AmauiThemeProvider>
+    </OnesyThemeProvider>
   )
 }

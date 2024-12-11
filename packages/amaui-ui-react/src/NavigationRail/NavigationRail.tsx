@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -42,7 +42,7 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     flex: '1 1 auto',
 
-    '&.amaui-NavigationBar-root': {
+    '&.onesy-NavigationBar-root': {
       background: 'transparent'
     }
   },
@@ -53,12 +53,12 @@ const useStyle = styleMethod(theme => ({
     insetBlock: '0',
     insetInlineEnd: '0',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0',
       opacity: theme.palette.light ? '0.07' : '0.11'
     }
   }
-}), { name: 'amaui-NavigationRail' });
+}), { name: 'onesy-NavigationRail' });
 
 export interface INavigationRail extends Omit<ISurface, 'version'> {
   size?: ISize;
@@ -83,9 +83,9 @@ export interface INavigationRail extends Omit<ISurface, 'version'> {
 }
 
 const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiNavigationRail?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationRail?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -168,7 +168,7 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
 
       color: item.props.color !== undefined ? item.props.color : color,
 
-      tonal: item.props.tonal !== undefined ? item.props.tonal : tonal && ['amaui-Fab'].includes(item.type?.displayName) ? 'secondary' : tonal
+      tonal: item.props.tonal !== undefined ? item.props.tonal : tonal && ['onesy-Fab'].includes(item.type?.displayName) ? 'secondary' : tonal
     }));
 
   const children = React.Children
@@ -176,7 +176,7 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
     .map((item: any, index: number) => React.cloneElement(item, {
       key: index,
 
-      ...(['amaui-NavigationItem'].includes(item.type?.displayName) ? {
+      ...(['onesy-NavigationItem'].includes(item.type?.displayName) ? {
         vertical: true
       } : {}),
 
@@ -212,9 +212,9 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
 
       className={classNames([
         staticClassName('NavigationRail', theme) && [
-          'amaui-NavigationRail-root',
-          `amaui-NavigationRail-version-${version}`,
-          `amaui-NavigationRail-size-${size}`
+          'onesy-NavigationRail-root',
+          `onesy-NavigationRail-version-${version}`,
+          `onesy-NavigationRail-size-${size}`
         ],
 
         className,
@@ -237,7 +237,7 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
 
           className={classNames([
             staticClassName('NavigationRail', theme) && [
-              'amaui-NavigationRail-header'
+              'onesy-NavigationRail-header'
             ],
 
             classes.header
@@ -265,7 +265,7 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
 
           className={classNames([
             staticClassName('NavigationRail', theme) && [
-              'amaui-NavigationRail-main'
+              'onesy-NavigationRail-main'
             ],
 
             NavigationBarProps?.className,
@@ -284,7 +284,7 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
 
           className={classNames([
             staticClassName('NavigationRail', theme) && [
-              'amaui-NavigationRail-divider'
+              'onesy-NavigationRail-divider'
             ],
 
             DividerProps?.className,
@@ -296,6 +296,6 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
   );
 });
 
-NavigationRail.displayName = 'amaui-NavigationRail';
+NavigationRail.displayName = 'onesy-NavigationRail';
 
 export default NavigationRail;

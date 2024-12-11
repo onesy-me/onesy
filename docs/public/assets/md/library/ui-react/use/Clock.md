@@ -5,7 +5,7 @@
 #### TClockValue
 
 ```ts
-type TClockValue = AmauiDate;
+type TClockValue = OnesyDate;
 ```
 
 #### TClockFormat
@@ -44,12 +44,12 @@ interface IClock extends IBaseElement {
     minute?: boolean;
     second?: boolean;
     autoNext?: boolean;
-    min?: AmauiDate;
-    max?: AmauiDate;
-    validate?: (value: AmauiDate) => boolean;
+    min?: OnesyDate;
+    max?: OnesyDate;
+    validate?: (value: OnesyDate) => boolean;
     readOnly?: boolean;
     disabled?: boolean;
-    valid?: (value: AmauiDate, selecting: TClockUnit) => any;
+    valid?: (value: OnesyDate, selecting: TClockUnit) => any;
     renderValue?: (value: TClockValue, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
     onDoneSelecting?: (value: TClockValue, selecting: TClockUnit) => any;
 }

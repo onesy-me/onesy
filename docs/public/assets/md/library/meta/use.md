@@ -1,5 +1,5 @@
 
-# AmauiMeta
+# OnesyMeta
 
 All methods are static methods.
 
@@ -27,11 +27,11 @@ Property doesn't have to exist in that object, but can be anything, property, me
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 114, object);
-AmauiMeta.add('a', 1114, object, 'p');
+OnesyMeta.add('a', 114, object);
+OnesyMeta.add('a', 1114, object, 'p');
 
-AmauiMeta.get('a', object);
-AmauiMeta.get('a', object, 'p');
+OnesyMeta.get('a', object);
+OnesyMeta.get('a', object, 'p');
 
 // 114
 // 1114
@@ -44,14 +44,14 @@ Updates key's value referenced to an object, or object's property.
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 114, object);
-AmauiMeta.add('a', 1114, object, 'p');
+OnesyMeta.add('a', 114, object);
+OnesyMeta.add('a', 1114, object, 'p');
 
-AmauiMeta.update('a', 1114, object);
-AmauiMeta.update('a', 11114, object, 'p');
+OnesyMeta.update('a', 1114, object);
+OnesyMeta.update('a', 11114, object, 'p');
 
-AmauiMeta.get('a', object);
-AmauiMeta.get('a', object, 'p');
+OnesyMeta.get('a', object);
+OnesyMeta.get('a', object, 'p');
 
 // 1114
 // 11114
@@ -64,11 +64,11 @@ Returns a value referenced to an object, or object's property.
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 11, object);
-AmauiMeta.add('a', 114, object, 'p');
+OnesyMeta.add('a', 11, object);
+OnesyMeta.add('a', 114, object, 'p');
 
-AmauiMeta.get('a', object);
-AmauiMeta.get('a', object, 'p');
+OnesyMeta.get('a', object);
+OnesyMeta.get('a', object, 'p');
 
 // 11
 // 114
@@ -81,11 +81,11 @@ Returns true if there's a key, value referenced to an object, or object's proper
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 11, object);
-AmauiMeta.add('a', 114, object, 'p');
+OnesyMeta.add('a', 11, object);
+OnesyMeta.add('a', 114, object, 'p');
 
-AmauiMeta.has('a', object);
-AmauiMeta.has('a', object, 'p');
+OnesyMeta.has('a', object);
+OnesyMeta.has('a', object, 'p');
 
 // true
 // true
@@ -98,14 +98,14 @@ Removes key, value referenced to an object, or object's property.
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 11, object);
-AmauiMeta.add('a', 114, object, 'p');
+OnesyMeta.add('a', 11, object);
+OnesyMeta.add('a', 114, object, 'p');
 
-AmauiMeta.remove('a', object);
-AmauiMeta.remove('a', object, 'p');
+OnesyMeta.remove('a', object);
+OnesyMeta.remove('a', object, 'p');
 
-AmauiMeta.has('a', object);
-AmauiMeta.has('a', object, 'p');
+OnesyMeta.has('a', object);
+OnesyMeta.has('a', object, 'p');
 
 // undefined
 // undefined
@@ -118,14 +118,14 @@ Returns all values referenced to an object, or object's property.
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 11, object);
-AmauiMeta.add('a1', 14, object);
+OnesyMeta.add('a', 11, object);
+OnesyMeta.add('a1', 14, object);
 
-AmauiMeta.add('a14', 114, object, 'p');
-AmauiMeta.add('a114', 1114, object, 'p');
+OnesyMeta.add('a14', 114, object, 'p');
+OnesyMeta.add('a114', 1114, object, 'p');
 
-AmauiMeta.values(object);
-AmauiMeta.values(object, 'p');
+OnesyMeta.values(object);
+OnesyMeta.values(object, 'p');
 
 // [11, 14]
 // [114, 1114]
@@ -138,14 +138,14 @@ Returns all keys referenced to an object, or object's property.
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 11, object);
-AmauiMeta.add('a1', 14, object);
+OnesyMeta.add('a', 11, object);
+OnesyMeta.add('a1', 14, object);
 
-AmauiMeta.add('a14', 114, object, 'p');
-AmauiMeta.add('a114', 1114, object, 'p');
+OnesyMeta.add('a14', 114, object, 'p');
+OnesyMeta.add('a114', 1114, object, 'p');
 
-AmauiMeta.keys(object);
-AmauiMeta.keys(object, 'p');
+OnesyMeta.keys(object);
+OnesyMeta.keys(object, 'p');
 
 // ['a', 'a1']
 // ['a14', 'a114']
@@ -158,13 +158,13 @@ Resets the entire meta value, to its empty value.
 ```ts
 const object = {};
 
-AmauiMeta.add('a', 11, object);
-AmauiMeta.add('a', 114, object, 'p');
+OnesyMeta.add('a', 11, object);
+OnesyMeta.add('a', 114, object, 'p');
 
-AmauiMeta.reset();
+OnesyMeta.reset();
 
-AmauiMeta.get('a', object);
-AmauiMeta.get('a', object, 'p');
+OnesyMeta.get('a', object);
+OnesyMeta.get('a', object, 'p');
 
 // undefined
 // undefined
@@ -177,13 +177,13 @@ Typescript decorators for classes, class's methods, properties & parameters.
 #### class
 
 ```ts
-@AmauiMeta.class(
+@OnesyMeta.class(
   'a',
   1114
 )
 class A { }
 
-AmauiMeta.get('a', A);
+OnesyMeta.get('a', A);
 
 // 1114
 ```
@@ -193,7 +193,7 @@ AmauiMeta.get('a', A);
 ```ts
 class A {
 
-  @AmauiMeta.method(
+  @OnesyMeta.method(
     'a',
     1114
   )
@@ -202,7 +202,7 @@ class A {
   }
 }
 
-AmauiMeta.get('a', A, 'm');
+OnesyMeta.get('a', A, 'm');
 
 // 1114
 ```
@@ -212,7 +212,7 @@ AmauiMeta.get('a', A, 'm');
 ```ts
 class A {
 
-  @AmauiMeta.property(
+  @OnesyMeta.property(
     'a',
     1114
   )
@@ -220,7 +220,7 @@ class A {
 
 }
 
-AmauiMeta.get('a', A, 'p');
+OnesyMeta.get('a', A, 'p');
 
 // 1114
 ```
@@ -231,7 +231,7 @@ AmauiMeta.get('a', A, 'p');
 class A {
 
   public m(
-    @AmauiMeta.parameter(
+    @OnesyMeta.parameter(
       1114
     )
     p = 'a'
@@ -239,7 +239,7 @@ class A {
 
 }
 
-AmauiMeta.get('amaui-meta-param:0', A, 'm');
+OnesyMeta.get('onesy-meta-param:0', A, 'm');
 
 // 1114
 ```
@@ -273,10 +273,10 @@ interface IOptions {
 }
 ```
 
-#### AmauiMeta
+#### OnesyMeta
 
 ```ts
-class AmauiMeta {
+class OnesyMeta {
     static meta: WeakMap<object, any>;
     private static options_;
     static get options(): IOptions;

@@ -1,41 +1,41 @@
 import React from 'react';
 
-import { is, unique, random, countries } from '@amaui/utils';
-import { AmauiDate, format, add, remove, set } from '@amaui/date';
-import { AmauiThemeProvider, classNames, style, sy, useAmauiTheme } from '@amaui/style-react';
-import { Button, Modal, Expand, Fab, Fade, Focus, Grow, IconButton, Interaction, LinearProgress, Link, Portal, Reset, RoundProgress, Buttons, Slide, Surface, Transition, Transitions, Type, Zoom, ModalHeader, ModalMain, ModalFooter, ModalTitle, ModalText, ModalIcon, Divider, Badge, Avatar, AvatarGroup, ClickListener, Chip, Chips, Backdrop, Checkbox, Radio, Radios, Keyframes, Switch, TextField, Label, List, ListItem, ListSubheader, Append, Tooltip, Menu, Select, AutoComplete, Rating, Box, Container, Line, Grid, Banner, Slider, ToggleButtons, ToggleButton, Accordion, NavigationBar, NavigationItem, NavigationRail, NavigationDrawer, BottomSheet, BottomAppBar, TopAppBar, Card, CardImage, CardMain, CardHeader, CardButton, CardFooter, Table, TableHead, TableRow, TableCell, TableHeader, TableFooter, TableBody, Placeholder, Snackbar, useSnackbars, Pagination, TablePagination, SpeedDial, SpeedDialItem, ImageList, ImageListItem, ImageListItemBox, Stepper, Step, Tabs, Tab, Timeline, TimelineItem, Tree, Masonry, Reveal, useConfirm, ViewSplit, WindowSplit, useMainProgress, Image, SpyScroll, AdvancedTextField, NumericTextField, ColorTextField, useWidgets, ImageCrop, ImageEdit, FileChoose, DropZone, MenuDesktop, Markdown, RichTextEditor, ScreenCapture, Timer, Countdown, Drawing, Parallax, Weather, RoundMeter, Path, Watch, LinearMeter, Carousel, TimePicker, TimeRangePicker, DatePicker, DateRangePicker, DateTimePicker, DateTimeRangePicker, LineChart, AreaChart, ScatterChart, BubbleChart, ColumnChart, PieChart, DonutChart, Chart, LineChartItem, AreaChartItem, ColumnChartItem, Breadcrumbs, Clock, CalendarMonth, Calendar } from '@amaui/ui-react';
+import { is, unique, random, countries } from '@onesy/utils';
+import { OnesyDate, format, add, remove, set } from '@onesy/date';
+import { OnesyThemeProvider, classNames, style, sy, useOnesyTheme } from '@onesy/style-react';
+import { Button, Modal, Expand, Fab, Fade, Focus, Grow, IconButton, Interaction, LinearProgress, Link, Portal, Reset, RoundProgress, Buttons, Slide, Surface, Transition, Transitions, Type, Zoom, ModalHeader, ModalMain, ModalFooter, ModalTitle, ModalText, ModalIcon, Divider, Badge, Avatar, AvatarGroup, ClickListener, Chip, Chips, Backdrop, Checkbox, Radio, Radios, Keyframes, Switch, TextField, Label, List, ListItem, ListSubheader, Append, Tooltip, Menu, Select, AutoComplete, Rating, Box, Container, Line, Grid, Banner, Slider, ToggleButtons, ToggleButton, Accordion, NavigationBar, NavigationItem, NavigationRail, NavigationDrawer, BottomSheet, BottomAppBar, TopAppBar, Card, CardImage, CardMain, CardHeader, CardButton, CardFooter, Table, TableHead, TableRow, TableCell, TableHeader, TableFooter, TableBody, Placeholder, Snackbar, useSnackbars, Pagination, TablePagination, SpeedDial, SpeedDialItem, ImageList, ImageListItem, ImageListItemBox, Stepper, Step, Tabs, Tab, Timeline, TimelineItem, Tree, Masonry, Reveal, useConfirm, ViewSplit, WindowSplit, useMainProgress, Image, SpyScroll, AdvancedTextField, NumericTextField, ColorTextField, useWidgets, ImageCrop, ImageEdit, FileChoose, DropZone, MenuDesktop, Markdown, RichTextEditor, ScreenCapture, Timer, Countdown, Drawing, Parallax, Weather, RoundMeter, Path, Watch, LinearMeter, Carousel, TimePicker, TimeRangePicker, DatePicker, DateRangePicker, DateTimePicker, DateTimeRangePicker, LineChart, AreaChart, ScatterChart, BubbleChart, ColumnChart, PieChart, DonutChart, Chart, LineChartItem, AreaChartItem, ColumnChartItem, Breadcrumbs, Clock, CalendarMonth, Calendar } from '@onesy/ui-react';
 
-import IconMaterial10kRounded from '@amaui/icons-material-react/build/IconMaterial10kRounded';
-import IconMaterialAddRounded from '@amaui/icons-material-react/build/IconMaterialAddRounded';
-import IconMaterialPottedPlantRounded from '@amaui/icons-material-react/build/IconMaterialPottedPlantRounded';
-import IconMaterialPottedPlantRoundedFilled from '@amaui/icons-material-react/build/IconMaterialPottedPlantRoundedFilled';
-import IconMaterialCheckRounded from '@amaui/icons-material-react/build/IconMaterialCheckRounded';
-import IconMaterialCloseRounded from '@amaui/icons-material-react/build/IconMaterialCloseRounded';
-import IconMaterialLightModeRounded from '@amaui/icons-material-react/build/IconMaterialLightModeRounded';
-import IconMaterialDarkModeRounded from '@amaui/icons-material-react/build/IconMaterialDarkModeRounded';
-import IconMaterialUndoRounded from '@amaui/icons-material-react/build/IconMaterialUndoRounded';
-import IconMaterialCutRounded from '@amaui/icons-material-react/build/IconMaterialCutRounded';
-import IconMaterialContentCopyRounded from '@amaui/icons-material-react/build/IconMaterialContentCopyRounded';
-import IconMaterialContentPasteRounded from '@amaui/icons-material-react/build/IconMaterialContentPasteRounded';
-import IconMaterialCloudRounded from '@amaui/icons-<material-react/build/IconMaterialCloudRounded';
-import IconMaterialArrowRightRounded from '@amaui/icons-material-react/build/IconMaterialArrowRightRounded';
-import IconMaterialArrowBackRounded from '@amaui/icons-material-react/build/IconMaterialArrowBackRounded';
-import IconMaterialSentimentDissatisfiedRounded from '@amaui/icons-material-react/build/IconMaterialSentimentDissatisfiedRounded';
-import IconMaterialSentimentNeutralRounded from '@amaui/icons-material-react/build/IconMaterialSentimentNeutralRounded';
-import IconMaterialSentimentSatisfiedRounded from '@amaui/icons-material-react/build/IconMaterialSentimentSatisfiedRounded';
-import IconMaterialFormatAlignLeftRounded from '@amaui/icons-material-react/build/IconMaterialFormatAlignLeftRounded';
-import IconMaterialFormatAlignRightRounded from '@amaui/icons-material-react/build/IconMaterialFormatAlignRightRounded';
-import IconMaterialFormatAlignCenterRounded from '@amaui/icons-material-react/build/IconMaterialFormatAlignCenterRounded';
-import IconMaterialFormatAlignJustifyRounded from '@amaui/icons-material-react/build/IconMaterialFormatAlignJustifyRounded';
-import IconMaterialHomeRounded from '@amaui/icons-material-react/build/IconMaterialHomeRounded';
-import IconMaterialHomeRoundedFilled from '@amaui/icons-material-react/build/IconMaterialHomeRoundedFilled';
-import IconMaterialMenuRounded from '@amaui/icons-material-react/build/IconMaterialMenuRounded';
-import IconMaterialMoreVertRounded from '@amaui/icons-material-react/build/IconMaterialMoreVertRounded';
-import IconMaterialEditRounded from '@amaui/icons-material-react/build/IconMaterialEditRounded';
-import IconMaterialInfoRounded from '@amaui/icons-material-react/build/IconMaterialInfoRounded';
-import IconMaterialFolderRounded from '@amaui/icons-material-react/build/IconMaterialFolderRounded';
-import IconMaterialFolderOpenRounded from '@amaui/icons-material-react/build/IconMaterialFolderOpenRounded';
-import IconMaterialFiberManualRecordRounded from '@amaui/icons-material-react/build/IconMaterialFiberManualRecordRoundedFilled';
+import IconMaterial10kRounded from '@onesy/icons-material-react/build/IconMaterial10kRounded';
+import IconMaterialAddRounded from '@onesy/icons-material-react/build/IconMaterialAddRounded';
+import IconMaterialPottedPlantRounded from '@onesy/icons-material-react/build/IconMaterialPottedPlantRounded';
+import IconMaterialPottedPlantRoundedFilled from '@onesy/icons-material-react/build/IconMaterialPottedPlantRoundedFilled';
+import IconMaterialCheckRounded from '@onesy/icons-material-react/build/IconMaterialCheckRounded';
+import IconMaterialCloseRounded from '@onesy/icons-material-react/build/IconMaterialCloseRounded';
+import IconMaterialLightModeRounded from '@onesy/icons-material-react/build/IconMaterialLightModeRounded';
+import IconMaterialDarkModeRounded from '@onesy/icons-material-react/build/IconMaterialDarkModeRounded';
+import IconMaterialUndoRounded from '@onesy/icons-material-react/build/IconMaterialUndoRounded';
+import IconMaterialCutRounded from '@onesy/icons-material-react/build/IconMaterialCutRounded';
+import IconMaterialContentCopyRounded from '@onesy/icons-material-react/build/IconMaterialContentCopyRounded';
+import IconMaterialContentPasteRounded from '@onesy/icons-material-react/build/IconMaterialContentPasteRounded';
+import IconMaterialCloudRounded from '@onesy/icons-<material-react/build/IconMaterialCloudRounded';
+import IconMaterialArrowRightRounded from '@onesy/icons-material-react/build/IconMaterialArrowRightRounded';
+import IconMaterialArrowBackRounded from '@onesy/icons-material-react/build/IconMaterialArrowBackRounded';
+import IconMaterialSentimentDissatisfiedRounded from '@onesy/icons-material-react/build/IconMaterialSentimentDissatisfiedRounded';
+import IconMaterialSentimentNeutralRounded from '@onesy/icons-material-react/build/IconMaterialSentimentNeutralRounded';
+import IconMaterialSentimentSatisfiedRounded from '@onesy/icons-material-react/build/IconMaterialSentimentSatisfiedRounded';
+import IconMaterialFormatAlignLeftRounded from '@onesy/icons-material-react/build/IconMaterialFormatAlignLeftRounded';
+import IconMaterialFormatAlignRightRounded from '@onesy/icons-material-react/build/IconMaterialFormatAlignRightRounded';
+import IconMaterialFormatAlignCenterRounded from '@onesy/icons-material-react/build/IconMaterialFormatAlignCenterRounded';
+import IconMaterialFormatAlignJustifyRounded from '@onesy/icons-material-react/build/IconMaterialFormatAlignJustifyRounded';
+import IconMaterialHomeRounded from '@onesy/icons-material-react/build/IconMaterialHomeRounded';
+import IconMaterialHomeRoundedFilled from '@onesy/icons-material-react/build/IconMaterialHomeRoundedFilled';
+import IconMaterialMenuRounded from '@onesy/icons-material-react/build/IconMaterialMenuRounded';
+import IconMaterialMoreVertRounded from '@onesy/icons-material-react/build/IconMaterialMoreVertRounded';
+import IconMaterialEditRounded from '@onesy/icons-material-react/build/IconMaterialEditRounded';
+import IconMaterialInfoRounded from '@onesy/icons-material-react/build/IconMaterialInfoRounded';
+import IconMaterialFolderRounded from '@onesy/icons-material-react/build/IconMaterialFolderRounded';
+import IconMaterialFolderOpenRounded from '@onesy/icons-material-react/build/IconMaterialFolderOpenRounded';
+import IconMaterialFiberManualRecordRounded from '@onesy/icons-material-react/build/IconMaterialFiberManualRecordRoundedFilled';
 
 const useStyleA = style(theme => ({
   a: {
@@ -818,20 +818,20 @@ const SliderYoutube = sy(Slider)(() => ({
     width: '50px',
     borderRadius: '0px',
 
-    '& .AmauiSlider-rail': {
+    '& .OnesySlider-rail': {
       height: '5px'
     },
 
-    '& .AmauiSlider-track': {
+    '& .OnesySlider-track': {
       height: '5px'
     },
 
-    '& .AmauiSlider-iconButton': {
+    '& .OnesySlider-iconButton': {
       height: '10px',
       width: '10px'
     },
 
-    '& .AmauiSlider-icon': {
+    '& .OnesySlider-icon': {
       height: '10px',
       width: '10px'
     }
@@ -845,12 +845,12 @@ const SliderMiUI = sy(Slider)(() => ({
     borderRadius: '16px',
     overflow: 'hidden',
 
-    '& .AmauiSlider-rail': {
+    '& .OnesySlider-rail': {
       height: '100%',
       width: '100%'
     },
 
-    '& .AmauiSlider-track': {
+    '& .OnesySlider-track': {
       height: '100%',
       width: '100%',
       borderRadius: '0px'
@@ -1063,7 +1063,7 @@ function App() {
     }
   };
 
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const updateLight = () => theme.updateWithRerender({
     palette: {
@@ -2366,7 +2366,7 @@ Markdown 1 | Less | Pretty
                   direction='row'
                 >
                   <Type
-                    data-amaui-spy-scroll='a1 a14'
+                    data-onesy-spy-scroll='a1 a14'
                   >
                     a1 and a14
                   </Type>
@@ -4725,7 +4725,7 @@ Please sign in again.`}
 
               maxPaddingY={0.14}
 
-              labelResolve={(value_: any, axes: any) => axes === 'x' ? format(new AmauiDate(value_), 'DD, MM YYYY') : value_}
+              labelResolve={(value_: any, axes: any) => axes === 'x' ? format(new OnesyDate(value_), 'DD, MM YYYY') : value_}
 
               values={[
                 {
@@ -4754,7 +4754,7 @@ Please sign in again.`}
 
               maxPaddingY={0.14}
 
-              labelResolve={(value_: any, axes: any) => axes === 'x' ? format(new AmauiDate(value_), 'DD, MM YYYY') : value_}
+              labelResolve={(value_: any, axes: any) => axes === 'x' ? format(new OnesyDate(value_), 'DD, MM YYYY') : value_}
 
               values={[
                 {
@@ -5195,7 +5195,7 @@ Please sign in again.`}
           <DateTimePicker
             label='Date time validate'
 
-            validate={(value: AmauiDate) => value.milliseconds < add(4, 'month').milliseconds}
+            validate={(value: OnesyDate) => value.milliseconds < add(4, 'month').milliseconds}
 
             style={{
               width: 400
@@ -5207,9 +5207,9 @@ Please sign in again.`}
           <DateTimePicker
             label='Date time min'
 
-            min={remove(4, 'month', new AmauiDate())}
+            min={remove(4, 'month', new OnesyDate())}
 
-            max={add(4, 'month', add(4, 'hour', new AmauiDate()))}
+            max={add(4, 'month', add(4, 'hour', new OnesyDate()))}
 
             style={{
               width: 400
@@ -5279,7 +5279,7 @@ Please sign in again.`}
           <DatePicker
             label='Date picker'
 
-            validate={(value: AmauiDate) => {
+            validate={(value: OnesyDate) => {
               const day = value.day;
 
               return !(day % 10);
@@ -5291,9 +5291,9 @@ Please sign in again.`}
           <DatePicker
             label='Date picker'
 
-            min={remove(4, 'month', new AmauiDate())}
+            min={remove(4, 'month', new OnesyDate())}
 
-            max={add(3, 'month', add(4, 'day', new AmauiDate()))}
+            max={add(3, 'month', add(4, 'day', new OnesyDate()))}
           />
         </Accordion>
       </Accordion>
@@ -5390,9 +5390,9 @@ Please sign in again.`}
           <TimePicker
             label='Time'
 
-            min={set(11, 'hour', new AmauiDate())}
+            min={set(11, 'hour', new OnesyDate())}
 
-            max={set(19, 'hour', set(44, 'minute', new AmauiDate()))}
+            max={set(19, 'hour', set(44, 'minute', new OnesyDate()))}
           />
         </Accordion>
 
@@ -10905,9 +10905,9 @@ Please sign in again.`}
 
         <Accordion primary='Drawing download'>
           <Line>
-            <Drawing downloadType='image/png' downloadName='amaui-drawing.png' />
+            <Drawing downloadType='image/png' downloadName='onesy-drawing.png' />
 
-            <Drawing downloadType='image/jpeg' downloadName='amaui-drawing.jpeg' />
+            <Drawing downloadType='image/jpeg' downloadName='onesy-drawing.jpeg' />
           </Line>
         </Accordion>
       </Accordion>
@@ -10975,7 +10975,7 @@ Libero et sagittis. Phasellus egestas consequat dolor a scelerisque. Duis at var
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <RichTextEditor
               value={`<p>
@@ -10987,8 +10987,8 @@ Libero et sagittis. Phasellus egestas consequat dolor a scelerisque. Duis at var
 </p>`}
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -11013,15 +11013,15 @@ Sed luctus quis felis sed dictum. Aenean hendrerit eros a dolor dictum, quis eui
 Libero et sagittis. Phasellus egestas consequat dolor a scelerisque. Duis at varius ipsum.
 </p>`}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRichTextEditor: {
+                      OnesyRichTextEditor: {
                         style: {
                           add: {
                             root: {
@@ -11045,15 +11045,15 @@ Sed luctus quis felis sed dictum. Aenean hendrerit eros a dolor dictum, quis eui
 Libero et sagittis. Phasellus egestas consequat dolor a scelerisque. Duis at varius ipsum.
 </p>`}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRichTextEditor: {
+                      OnesyRichTextEditor: {
                         style: {
                           override: {
                             root: {
@@ -11075,15 +11075,15 @@ Sed luctus quis felis sed dictum. Aenean hendrerit eros a dolor dictum, quis eui
 Libero et sagittis. Phasellus egestas consequat dolor a scelerisque. Duis at varius ipsum.
 </p>`}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRichTextEditor: {
+                      OnesyRichTextEditor: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -11103,10 +11103,10 @@ Sed luctus quis felis sed dictum. Aenean hendrerit eros a dolor dictum, quis eui
 Libero et sagittis. Phasellus egestas consequat dolor a scelerisque. Duis at varius ipsum.
 </p>`}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.RichTextEditor
                 value={`<p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia elementum tincidunt. Morbi tristique nulla eu tellus posuere malesuada. Cras sed augue eget urna semper condimentum. In lobortis odio et quam lobortis ultricies. Duis nisi libero, pulvinar dignissim nibh quis, consectetur venenatis dui. Cras at tempus felis, id fringilla mi. Vestibulum faucibus vel libero et sagittis. Phasellus egestas consequat dolor a scelerisque. Duis at varius ipsum.
@@ -11315,7 +11315,7 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Markdown
               value={`
@@ -11508,8 +11508,8 @@ Markdown 1 | Less | Pretty
 `}
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -11717,15 +11717,15 @@ Markdown 1 | Less | Pretty
 [link text itself]: http://www.reddit.com "Reddit website"
 `}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMarkdown: {
+                      OnesyMarkdown: {
                         style: {
                           add: {
                             root: {
@@ -11934,15 +11934,15 @@ Markdown 1 | Less | Pretty
 [link text itself]: http://www.reddit.com "Reddit website"
 `}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMarkdown: {
+                      OnesyMarkdown: {
                         style: {
                           override: {
                             root: {
@@ -12149,15 +12149,15 @@ Markdown 1 | Less | Pretty
 [link text itself]: http://www.reddit.com "Reddit website"
 `}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMarkdown: {
+                      OnesyMarkdown: {
                         props: {
                           default: {
                             Component: 'main',
@@ -12362,10 +12362,10 @@ Markdown 1 | Less | Pretty
 [link text itself]: http://www.reddit.com "Reddit website"
 `}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Markdown
                 value={`
 # h1
@@ -13063,7 +13063,7 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <MenuDesktop
               items={[
@@ -13166,8 +13166,8 @@ Markdown 1 | Less | Pretty
               ]}
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -13287,15 +13287,15 @@ Markdown 1 | Less | Pretty
                     }
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMenuDesktop: {
+                      OnesyMenuDesktop: {
                         style: {
                           add: {
                             root: {
@@ -13414,15 +13414,15 @@ Markdown 1 | Less | Pretty
                     }
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMenuDesktop: {
+                      OnesyMenuDesktop: {
                         style: {
                           override: {
                             root: {
@@ -13539,15 +13539,15 @@ Markdown 1 | Less | Pretty
                     }
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMenuDesktop: {
+                      OnesyMenuDesktop: {
                         props: {
                           default: {
                             menuTransition: false
@@ -13662,10 +13662,10 @@ Markdown 1 | Less | Pretty
                     }
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.MenuDesktop
                 items={[
                   {
@@ -13784,7 +13784,7 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <DropZone
               files
@@ -13792,8 +13792,8 @@ Markdown 1 | Less | Pretty
               multiple
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -13818,15 +13818,15 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiDropZone: {
+                      OnesyDropZone: {
                         style: {
                           add: {
                             root: {
@@ -13850,15 +13850,15 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiDropZone: {
+                      OnesyDropZone: {
                         style: {
                           override: {
                             root: {
@@ -13880,15 +13880,15 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiDropZone: {
+                      OnesyDropZone: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -13908,10 +13908,10 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.DropZone
                 files
 
@@ -13935,15 +13935,15 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <FileChoose
 
               multiple
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -13968,15 +13968,15 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiFileChoose: {
+                      OnesyFileChoose: {
                         style: {
                           add: {
                             root: {
@@ -14000,15 +14000,15 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiFileChoose: {
+                      OnesyFileChoose: {
                         style: {
                           override: {
                             root: {
@@ -14030,15 +14030,15 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiFileChoose: {
+                      OnesyFileChoose: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -14058,10 +14058,10 @@ Markdown 1 | Less | Pretty
 
                   multiple
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.FileChoose
                 files
 
@@ -14083,7 +14083,7 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <ImageEdit
               image='./image.jpg'
@@ -14093,8 +14093,8 @@ Markdown 1 | Less | Pretty
               }}
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -14119,15 +14119,15 @@ Markdown 1 | Less | Pretty
                     width: 340
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageEdit: {
+                      OnesyImageEdit: {
                         style: {
                           add: {
                             root: {
@@ -14153,15 +14153,15 @@ Markdown 1 | Less | Pretty
                     width: 340
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageEdit: {
+                      OnesyImageEdit: {
                         style: {
                           override: {
                             root: {
@@ -14186,15 +14186,15 @@ Markdown 1 | Less | Pretty
                     width: 340
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageEdit: {
+                      OnesyImageEdit: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -14216,10 +14216,10 @@ Markdown 1 | Less | Pretty
                     width: 340
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.ImageEdit
                 image='./image.jpg'
 
@@ -14441,7 +14441,7 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <ImageCrop
               image='./image.jpg'
@@ -14449,8 +14449,8 @@ Markdown 1 | Less | Pretty
               dynamicParent
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -14473,15 +14473,15 @@ Markdown 1 | Less | Pretty
 
                   dynamicParent
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageCrop: {
+                      OnesyImageCrop: {
                         style: {
                           add: {
                             root: {
@@ -14505,15 +14505,15 @@ Markdown 1 | Less | Pretty
 
                   dynamicParent
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageCrop: {
+                      OnesyImageCrop: {
                         style: {
                           override: {
                             root: {
@@ -14536,15 +14536,15 @@ Markdown 1 | Less | Pretty
 
                   dynamicParent
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageCrop: {
+                      OnesyImageCrop: {
                         props: {
                           default: {
                             aspectRatio: 4 / 3
@@ -14564,10 +14564,10 @@ Markdown 1 | Less | Pretty
 
                   dynamicParent
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.ImageCrop
                 image='./image.jpg'
 
@@ -14842,7 +14842,7 @@ Markdown 1 | Less | Pretty
                   direction='row'
                 >
                   <Type
-                    data-amaui-spy-scroll='a1 a14'
+                    data-onesy-spy-scroll='a1 a14'
                   >
                     a1 and a14
                   </Type>
@@ -15088,7 +15088,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Image
               src='./image.jpg'
@@ -15096,8 +15096,8 @@ Markdown 1 | Less | Pretty
               description='Value, some decription value y'
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -15116,15 +15116,15 @@ Markdown 1 | Less | Pretty
 
                   description='Value, some decription value y'
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImage: {
+                      OnesyImage: {
                         style: {
                           add: {
                             root: {
@@ -15144,15 +15144,15 @@ Markdown 1 | Less | Pretty
 
                   description='Value, some decription value y'
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImage: {
+                      OnesyImage: {
                         style: {
                           override: {
                             root: {
@@ -15170,15 +15170,15 @@ Markdown 1 | Less | Pretty
 
                   description='Value, some decription value y'
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImage: {
+                      OnesyImage: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -15194,10 +15194,10 @@ Markdown 1 | Less | Pretty
 
                   description='Value, some decription value y'
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Image
                 src='./image.jpg'
 
@@ -15486,7 +15486,7 @@ Markdown 1 | Less | Pretty
           </WindowSplit>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <WindowSplit
               style={{
@@ -15517,8 +15517,8 @@ Markdown 1 | Less | Pretty
               </Surface>
             </WindowSplit>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -15564,15 +15564,15 @@ Markdown 1 | Less | Pretty
                     ab
                   </Surface>
                 </WindowSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiWindowSplit: {
+                      OnesyWindowSplit: {
                         style: {
                           add: {
                             root: {
@@ -15619,15 +15619,15 @@ Markdown 1 | Less | Pretty
                     ab
                   </Surface>
                 </WindowSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiWindowSplit: {
+                      OnesyWindowSplit: {
                         style: {
                           override: {
                             root: {
@@ -15672,15 +15672,15 @@ Markdown 1 | Less | Pretty
                     ab
                   </Surface>
                 </WindowSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiWindowSplit: {
+                      OnesyWindowSplit: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -15723,10 +15723,10 @@ Markdown 1 | Less | Pretty
                     ab
                   </Surface>
                 </WindowSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.WindowSplit
                 style={{
                   width: '100%',
@@ -15855,7 +15855,7 @@ Markdown 1 | Less | Pretty
           </ViewSplit>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <ViewSplit
               divider
@@ -15873,8 +15873,8 @@ Markdown 1 | Less | Pretty
               />
             </ViewSplit>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -15903,15 +15903,15 @@ Markdown 1 | Less | Pretty
                     }}
                   />
                 </ViewSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiWindowSplit: {
+                      OnesyWindowSplit: {
                         style: {
                           add: {
                             root: {
@@ -15941,15 +15941,15 @@ Markdown 1 | Less | Pretty
                     }}
                   />
                 </ViewSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiViewSplit: {
+                      OnesyViewSplit: {
                         style: {
                           override: {
                             root: {
@@ -15977,15 +15977,15 @@ Markdown 1 | Less | Pretty
                     }}
                   />
                 </ViewSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiViewSplit: {
+                      OnesyViewSplit: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -16011,10 +16011,10 @@ Markdown 1 | Less | Pretty
                     }}
                   />
                 </ViewSplit>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.ViewSplit
                 divider
               >
@@ -16191,7 +16191,7 @@ Markdown 1 | Less | Pretty
           </Masonry>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Masonry>
               {new Array(14).fill(1).map((item: any, index: number) => (
@@ -16222,8 +16222,8 @@ Markdown 1 | Less | Pretty
               ))}
             </Masonry>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -16269,15 +16269,15 @@ Markdown 1 | Less | Pretty
                     </Surface>
                   ))}
                 </Masonry>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMasonry: {
+                      OnesyMasonry: {
                         style: {
                           add: {
                             root: {
@@ -16324,15 +16324,15 @@ Markdown 1 | Less | Pretty
                     </Surface>
                   ))}
                 </Masonry>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMasonry: {
+                      OnesyMasonry: {
                         style: {
                           override: {
                             root: {
@@ -16377,15 +16377,15 @@ Markdown 1 | Less | Pretty
                     </Surface>
                   ))}
                 </Masonry>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiMasonry: {
+                      OnesyMasonry: {
                         props: {
                           default: {
                             columns: 4
@@ -16428,10 +16428,10 @@ Markdown 1 | Less | Pretty
                     </Surface>
                   ))}
                 </Masonry>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Masonry>
                 {new Array(14).fill(1).map((item: any, index: number) => (
                   <Surface
@@ -17732,7 +17732,7 @@ Markdown 1 | Less | Pretty
           </Tree>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Tree
               openDefault
@@ -17884,8 +17884,8 @@ Markdown 1 | Less | Pretty
               </Tree>
             </Tree>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -18050,15 +18050,15 @@ Markdown 1 | Less | Pretty
                     />
                   </Tree>
                 </Tree>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTree: {
+                      OnesyTree: {
                         style: {
                           add: {
                             root: {
@@ -18222,15 +18222,15 @@ Markdown 1 | Less | Pretty
                     />
                   </Tree>
                 </Tree>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTree: {
+                      OnesyTree: {
                         style: {
                           override: {
                             root: {
@@ -18392,15 +18392,15 @@ Markdown 1 | Less | Pretty
                     />
                   </Tree>
                 </Tree>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTree: {
+                      OnesyTree: {
                         props: {
                           default: {
                             color: 'primary'
@@ -18560,10 +18560,10 @@ Markdown 1 | Less | Pretty
                     />
                   </Tree>
                 </Tree>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Tree
                 openDefault
 
@@ -18823,7 +18823,7 @@ Markdown 1 | Less | Pretty
           </Timeline>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Timeline>
               {new Array(7).fill(1).map((item: any, index: number) => (
@@ -18855,8 +18855,8 @@ Markdown 1 | Less | Pretty
               ))}
             </Timeline>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -18899,15 +18899,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Timeline>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTimeline: {
+                      OnesyTimeline: {
                         style: {
                           add: {
                             root: {
@@ -18951,15 +18951,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Timeline>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTimeline: {
+                      OnesyTimeline: {
                         style: {
                           override: {
                             root: {
@@ -19001,15 +19001,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Timeline>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTimeline: {
+                      OnesyTimeline: {
                         props: {
                           default: {
                             orientation: 'horizontal'
@@ -19049,10 +19049,10 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Timeline>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Timeline>
                 {new Array(7).fill(1).map((item: any, index: number) => (
                   <TimelineItem
@@ -19364,7 +19364,7 @@ Markdown 1 | Less | Pretty
           </Tabs>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Tabs
               color='secondary'
@@ -19380,8 +19380,8 @@ Markdown 1 | Less | Pretty
               ))}
             </Tabs>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -19412,15 +19412,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Tabs>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTabs: {
+                      OnesyTabs: {
                         style: {
                           add: {
                             root: {
@@ -19452,15 +19452,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Tabs>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTabs: {
+                      OnesyTabs: {
                         style: {
                           override: {
                             root: {
@@ -19490,15 +19490,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Tabs>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTabs: {
+                      OnesyTabs: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -19524,10 +19524,10 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Tabs>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Tabs>
                 {new Array(44).fill(1).map((item: any, index: number) => (
                   <Tab
@@ -19843,7 +19843,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Stepper
               color='secondary'
@@ -19863,8 +19863,8 @@ Markdown 1 | Less | Pretty
               ))}
             </Stepper>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -19895,15 +19895,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Stepper>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiStepper: {
+                      OnesyStepper: {
                         style: {
                           add: {
                             root: {
@@ -19935,15 +19935,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Stepper>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiStepper: {
+                      OnesyStepper: {
                         style: {
                           override: {
                             root: {
@@ -19973,15 +19973,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Stepper>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiStepper: {
+                      OnesyStepper: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -20007,10 +20007,10 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </Stepper>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Stepper
                 active={a.stepper}
 
@@ -20710,7 +20710,7 @@ Markdown 1 | Less | Pretty
           </Accordion>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <ImageList
               style={{ height: 440, overflowY: 'auto' }}
@@ -20730,8 +20730,8 @@ Markdown 1 | Less | Pretty
               ))}
             </ImageList>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -20762,15 +20762,15 @@ Markdown 1 | Less | Pretty
                     </ImageListItem>
                   ))}
                 </ImageList>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageList: {
+                      OnesyImageList: {
                         style: {
                           add: {
                             root: {
@@ -20802,15 +20802,15 @@ Markdown 1 | Less | Pretty
                     </ImageListItem>
                   ))}
                 </ImageList>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageList: {
+                      OnesyImageList: {
                         style: {
                           override: {
                             root: {
@@ -20840,15 +20840,15 @@ Markdown 1 | Less | Pretty
                     </ImageListItem>
                   ))}
                 </ImageList>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiImageList: {
+                      OnesyImageList: {
                         props: {
                           default: {
                             gap: 1
@@ -20876,10 +20876,10 @@ Markdown 1 | Less | Pretty
                     </ImageListItem>
                   ))}
                 </ImageList>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.ImageList
                 style={{ height: 440, overflowY: 'auto' }}
               >
@@ -21211,7 +21211,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Accordion primary='SpeedDial'>
               <SpeedDial
@@ -21229,8 +21229,8 @@ Markdown 1 | Less | Pretty
               </SpeedDial>
             </Accordion>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -21257,15 +21257,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </SpeedDial>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSpeedDial: {
+                      OnesySpeedDial: {
                         style: {
                           add: {
                             root: {
@@ -21293,15 +21293,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </SpeedDial>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSpeedDial: {
+                      OnesySpeedDial: {
                         style: {
                           override: {
                             root: {
@@ -21329,15 +21329,15 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </SpeedDial>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSpeedDial: {
+                      OnesySpeedDial: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -21359,10 +21359,10 @@ Markdown 1 | Less | Pretty
                     />
                   ))}
                 </SpeedDial>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.SpeedDial>
                 {[1, 2, 3, 4].map((item: any) => (
                   <SpeedDialItem
@@ -21677,7 +21677,7 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Pagination
               color='secondary'
@@ -21688,8 +21688,8 @@ Markdown 1 | Less | Pretty
               last
             />
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -21711,15 +21711,15 @@ Markdown 1 | Less | Pretty
                   first
                   last
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiPagination: {
+                      OnesyPagination: {
                         style: {
                           add: {
                             root: {
@@ -21742,15 +21742,15 @@ Markdown 1 | Less | Pretty
                   first
                   last
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiPagination: {
+                      OnesyPagination: {
                         style: {
                           override: {
                             root: {
@@ -21771,15 +21771,15 @@ Markdown 1 | Less | Pretty
                   first
                   last
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiPagination: {
+                      OnesyPagination: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -21796,10 +21796,10 @@ Markdown 1 | Less | Pretty
                   first
                   last
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Pagination
                 total={11}
 
@@ -22515,7 +22515,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Snackbar
               color='secondary'
@@ -22535,8 +22535,8 @@ Markdown 1 | Less | Pretty
               )}
             />
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -22567,15 +22567,15 @@ Markdown 1 | Less | Pretty
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSnackbar: {
+                      OnesySnackbar: {
                         style: {
                           add: {
                             root: {
@@ -22607,15 +22607,15 @@ Markdown 1 | Less | Pretty
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSnackbar: {
+                      OnesySnackbar: {
                         style: {
                           override: {
                             root: {
@@ -22645,15 +22645,15 @@ Markdown 1 | Less | Pretty
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSnackbar: {
+                      OnesySnackbar: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -22679,10 +22679,10 @@ Markdown 1 | Less | Pretty
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Snackbar
                 primary='Value primary text for snackbar'
 
@@ -23142,7 +23142,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Placeholder color='secondary'
               width={240}
@@ -23150,8 +23150,8 @@ Markdown 1 | Less | Pretty
               height={40}
             />
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -23170,15 +23170,15 @@ Markdown 1 | Less | Pretty
 
                   height={40}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiPlaceholder: {
+                      OnesyPlaceholder: {
                         style: {
                           add: {
                             root: {
@@ -23200,15 +23200,15 @@ Markdown 1 | Less | Pretty
 
                   animation={false}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiPlaceholder: {
+                      OnesyPlaceholder: {
                         style: {
                           override: {
                             root: {
@@ -23226,15 +23226,15 @@ Markdown 1 | Less | Pretty
 
                   height={140}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiPlaceholder: {
+                      OnesyPlaceholder: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -23250,10 +23250,10 @@ Markdown 1 | Less | Pretty
 
                   height={40}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Placeholder
                 width={240}
 
@@ -25162,7 +25162,7 @@ Markdown 1 | Less | Pretty
           </Table>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Table color='secondary'
               header={(
@@ -25230,8 +25230,8 @@ Markdown 1 | Less | Pretty
               </TableBody>
             </Table>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -25311,15 +25311,15 @@ Markdown 1 | Less | Pretty
                   </TableBody>
                 </Table>
 
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTable: {
+                      OnesyTable: {
                         style: {
                           add: {
                             root: {
@@ -25399,15 +25399,15 @@ Markdown 1 | Less | Pretty
                     ))}
                   </TableBody>
                 </Table>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTable: {
+                      OnesyTable: {
                         style: {
                           override: {
                             root: {
@@ -25485,15 +25485,15 @@ Markdown 1 | Less | Pretty
                     ))}
                   </TableBody>
                 </Table>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTable: {
+                      OnesyTable: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -25570,10 +25570,10 @@ Markdown 1 | Less | Pretty
                   </TableBody>
                 </Table>
 
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Table
                 header={(
                   <TableHeader>
@@ -26462,7 +26462,7 @@ Markdown 1 | Less | Pretty
           </Card>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Card
               color='secondary'
@@ -26550,8 +26550,8 @@ Markdown 1 | Less | Pretty
               </CardFooter>
             </Card>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -26648,15 +26648,15 @@ Markdown 1 | Less | Pretty
                     </Button>
                   </CardFooter>
                 </Card>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiCard: {
+                      OnesyCard: {
                         style: {
                           add: {
                             root: {
@@ -26754,15 +26754,15 @@ Markdown 1 | Less | Pretty
                     </Button>
                   </CardFooter>
                 </Card>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiCard: {
+                      OnesyCard: {
                         style: {
                           override: {
                             root: {
@@ -26859,15 +26859,15 @@ Markdown 1 | Less | Pretty
                     </Button>
                   </CardFooter>
                 </Card>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiCard: {
+                      OnesyCard: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -26959,10 +26959,10 @@ Markdown 1 | Less | Pretty
                     </Button>
                   </CardFooter>
                 </Card>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.Card>
                 <CardHeader>
                   <ListItem
@@ -27816,7 +27816,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <TopAppBar
               color='secondary'
@@ -27844,8 +27844,8 @@ Markdown 1 | Less | Pretty
               ]}
             />
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -27884,15 +27884,15 @@ Markdown 1 | Less | Pretty
                     </IconButton>
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTopAppBar: {
+                      OnesyTopAppBar: {
                         style: {
                           add: {
                             root: {
@@ -27932,15 +27932,15 @@ Markdown 1 | Less | Pretty
                     </IconButton>
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTopAppBar: {
+                      OnesyTopAppBar: {
                         style: {
                           override: {
                             root: {
@@ -27978,15 +27978,15 @@ Markdown 1 | Less | Pretty
                     </IconButton>
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTopAppBar: {
+                      OnesyTopAppBar: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -28020,10 +28020,10 @@ Markdown 1 | Less | Pretty
                     </IconButton>
                   ]}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.TopAppBar
                 title='Title Large'
 
@@ -28803,7 +28803,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <BottomAppBar
               color='secondary'
@@ -28833,8 +28833,8 @@ Markdown 1 | Less | Pretty
               </IconButton>
             </BottomAppBar>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -28875,15 +28875,15 @@ Markdown 1 | Less | Pretty
                     <IconMaterialUndoRounded />
                   </IconButton>
                 </BottomAppBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBottomAppBar: {
+                      OnesyBottomAppBar: {
                         style: {
                           add: {
                             root: {
@@ -28925,15 +28925,15 @@ Markdown 1 | Less | Pretty
                     <IconMaterialUndoRounded />
                   </IconButton>
                 </BottomAppBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBottomAppBar: {
+                      OnesyBottomAppBar: {
                         style: {
                           override: {
                             root: {
@@ -28973,15 +28973,15 @@ Markdown 1 | Less | Pretty
                     <IconMaterialUndoRounded />
                   </IconButton>
                 </BottomAppBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBottomAppBar: {
+                      OnesyBottomAppBar: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -29017,10 +29017,10 @@ Markdown 1 | Less | Pretty
                     <IconMaterialUndoRounded />
                   </IconButton>
                 </BottomAppBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.BottomAppBar
                 main={(
                   <Fab
@@ -29074,7 +29074,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <BottomSheet
               open
@@ -29096,8 +29096,8 @@ Markdown 1 | Less | Pretty
               </List>
             </BottomSheet>
 
-            <Accordion primary='AmauiTheme nested value'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value'>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -29130,15 +29130,15 @@ Markdown 1 | Less | Pretty
                     ))}
                   </List>
                 </BottomSheet>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBottomSheet: {
+                      OnesyBottomSheet: {
                         style: {
                           add: {
                             root: {
@@ -29172,15 +29172,15 @@ Markdown 1 | Less | Pretty
                     ))}
                   </List>
                 </BottomSheet>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBottomSheet: {
+                      OnesyBottomSheet: {
                         style: {
                           override: {
                             root: {
@@ -29212,15 +29212,15 @@ Markdown 1 | Less | Pretty
                     ))}
                   </List>
                 </BottomSheet>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props'>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props'>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBottomSheet: {
+                      OnesyBottomSheet: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -29248,10 +29248,10 @@ Markdown 1 | Less | Pretty
                     ))}
                   </List>
                 </BottomSheet>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled'>
+            <Accordion primary='OnesyTheme styled'>
               <styled.BottomSheet
                 open
 
@@ -30197,7 +30197,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <NavigationDrawer
               open
@@ -30209,8 +30209,8 @@ Markdown 1 | Less | Pretty
               a
             </NavigationDrawer>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -30233,15 +30233,15 @@ Markdown 1 | Less | Pretty
                 >
                   a
                 </NavigationDrawer>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationDrawer: {
+                      OnesyNavigationDrawer: {
                         style: {
                           add: {
                             root: {
@@ -30265,15 +30265,15 @@ Markdown 1 | Less | Pretty
                 >
                   a
                 </NavigationDrawer>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationDrawer: {
+                      OnesyNavigationDrawer: {
                         style: {
                           override: {
                             root: {
@@ -30295,15 +30295,15 @@ Markdown 1 | Less | Pretty
                 >
                   a
                 </NavigationDrawer>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationDrawer: {
+                      OnesyNavigationDrawer: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -30321,10 +30321,10 @@ Markdown 1 | Less | Pretty
                 >
                   a
                 </NavigationDrawer>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.NavigationDrawer
                 open
 
@@ -31927,7 +31927,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <NavigationRail
               color='secondary'
@@ -31973,8 +31973,8 @@ Markdown 1 | Less | Pretty
               />
             </NavigationRail>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -32033,15 +32033,15 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationRail>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationRail: {
+                      OnesyNavigationRail: {
                         style: {
                           add: {
                             root: {
@@ -32101,15 +32101,15 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationRail>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationRail: {
+                      OnesyNavigationRail: {
                         style: {
                           override: {
                             root: {
@@ -32171,15 +32171,15 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationRail>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationRail: {
+                      OnesyNavigationRail: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -32233,10 +32233,10 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationRail>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.NavigationRail
                 header={[
                   <IconButton tonal={false}>
@@ -33084,7 +33084,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <NavigationBar>
               <NavigationItem
@@ -33116,8 +33116,8 @@ Markdown 1 | Less | Pretty
               />
             </NavigationBar>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -33162,15 +33162,15 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationBar: {
+                      OnesyNavigationBar: {
                         style: {
                           add: {
                             root: {
@@ -33216,15 +33216,15 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationBar: {
+                      OnesyNavigationBar: {
                         style: {
                           override: {
                             root: {
@@ -33273,15 +33273,15 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiNavigationBar: {
+                      OnesyNavigationBar: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -33323,10 +33323,10 @@ Markdown 1 | Less | Pretty
                     disabled
                   />
                 </NavigationBar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.NavigationBar>
                 <NavigationItem
                   label='Home'
@@ -33631,7 +33631,7 @@ Markdown 1 | Less | Pretty
           </Accordion>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Accordion
               primary='Primary text'
@@ -33641,8 +33641,8 @@ Markdown 1 | Less | Pretty
               <div className={classes.div} />
             </Accordion>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -33663,15 +33663,15 @@ Markdown 1 | Less | Pretty
                 >
                   <div className={classes.div} />
                 </Accordion>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAccordion: {
+                      OnesyAccordion: {
                         style: {
                           add: {
                             root: {
@@ -33693,15 +33693,15 @@ Markdown 1 | Less | Pretty
                 >
                   <div className={classes.div} />
                 </Accordion>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAccordion: {
+                      OnesyAccordion: {
                         style: {
                           override: {
                             root: {
@@ -33725,15 +33725,15 @@ Markdown 1 | Less | Pretty
                 >
                   <div className={classes.div} />
                 </Accordion>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAccordion: {
+                      OnesyAccordion: {
                         props: {
                           default: {
                             background: true
@@ -33751,10 +33751,10 @@ Markdown 1 | Less | Pretty
                 >
                   <div className={classes.div} />
                 </Accordion>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Accordion
                 primary='Primary text'
 
@@ -34018,7 +34018,7 @@ Markdown 1 | Less | Pretty
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <ToggleButtons color='secondary'>
               <ToggleButton value='1' icon><IconMaterialFormatAlignLeftRounded /></ToggleButton>
@@ -34027,8 +34027,8 @@ Markdown 1 | Less | Pretty
               <ToggleButton value='4' icon disabled><IconMaterialFormatAlignJustifyRounded /></ToggleButton>
             </ToggleButtons>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -34048,15 +34048,15 @@ Markdown 1 | Less | Pretty
                   <ToggleButton value='3' icon><IconMaterialFormatAlignRightRounded /></ToggleButton>
                   <ToggleButton value='4' icon disabled><IconMaterialFormatAlignJustifyRounded /></ToggleButton>
                 </ToggleButtons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiToggleButtons: {
+                      OnesyToggleButtons: {
                         style: {
                           add: {
                             root: {
@@ -34077,15 +34077,15 @@ Markdown 1 | Less | Pretty
                   <ToggleButton value='3' icon><IconMaterialFormatAlignRightRounded /></ToggleButton>
                   <ToggleButton value='4' icon disabled><IconMaterialFormatAlignJustifyRounded /></ToggleButton>
                 </ToggleButtons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiToggleButtons: {
+                      OnesyToggleButtons: {
                         style: {
                           override: {
                             root: {
@@ -34108,15 +34108,15 @@ Markdown 1 | Less | Pretty
                   <ToggleButton value='3' icon><IconMaterialFormatAlignRightRounded /></ToggleButton>
                   <ToggleButton value='4' icon disabled><IconMaterialFormatAlignJustifyRounded /></ToggleButton>
                 </ToggleButtons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiToggleButtons: {
+                      OnesyToggleButtons: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -34133,10 +34133,10 @@ Markdown 1 | Less | Pretty
                   <ToggleButton value='3' icon><IconMaterialFormatAlignRightRounded /></ToggleButton>
                   <ToggleButton value='4' icon disabled><IconMaterialFormatAlignJustifyRounded /></ToggleButton>
                 </ToggleButtons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.ToggleButtons>
                 <ToggleButton value='1' icon><IconMaterialFormatAlignLeftRounded /></ToggleButton>
                 <ToggleButton value='2' icon><IconMaterialFormatAlignCenterRounded /></ToggleButton>
@@ -35470,7 +35470,7 @@ Markdown 1 | Less | Pretty
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Slider
               color='secondary'
@@ -35480,8 +35480,8 @@ Markdown 1 | Less | Pretty
               }}
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -35502,15 +35502,15 @@ Markdown 1 | Less | Pretty
                     width: 140
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSlider: {
+                      OnesySlider: {
                         style: {
                           add: {
                             root: {
@@ -35532,15 +35532,15 @@ Markdown 1 | Less | Pretty
                     width: 140
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSlider: {
+                      OnesySlider: {
                         style: {
                           override: {
                             root: {
@@ -35564,15 +35564,15 @@ Markdown 1 | Less | Pretty
                     width: 140
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSlider: {
+                      OnesySlider: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -35588,10 +35588,10 @@ Markdown 1 | Less | Pretty
                     width: 140
                   }}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Slider
                 style={{
                   width: 140
@@ -37286,7 +37286,7 @@ Please sign in again.`}
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Banner
               primary={`Your password was updated on your other device.
@@ -37307,8 +37307,8 @@ Please sign in again.`}
               )}
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -37340,15 +37340,15 @@ Please sign in again.`}
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBanner: {
+                      OnesyBanner: {
                         style: {
                           add: {
                             root: {
@@ -37381,15 +37381,15 @@ Please sign in again.`}
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBanner: {
+                      OnesyBanner: {
                         style: {
                           override: {
                             root: {
@@ -37422,15 +37422,15 @@ Please sign in again.`}
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBanner: {
+                      OnesyBanner: {
                         props: {
                           default: {
                             maxWidth: 'lg'
@@ -37461,10 +37461,10 @@ Please sign in again.`}
                     </Button>
                   )}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Banner
                 primary={`Your password was updated on your other device.
 Please sign in again.`}
@@ -37591,7 +37591,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Grid line>
               <Grid values={{ xs: 8, sm: 4 }}>
@@ -37603,8 +37603,8 @@ Please sign in again.`}
               </Grid>
             </Grid>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -37627,15 +37627,15 @@ Please sign in again.`}
                     <Item elevation={1} style={{ width: '100%' }}>Item 2</Item>
                   </Grid>
                 </Grid>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiGrid: {
+                      OnesyGrid: {
                         style: {
                           add: {
                             root: {
@@ -37659,15 +37659,15 @@ Please sign in again.`}
                     <Item elevation={1} style={{ width: '100%' }}>Item 2</Item>
                   </Grid>
                 </Grid>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiGrid: {
+                      OnesyGrid: {
                         style: {
                           override: {
                             root: {
@@ -37692,15 +37692,15 @@ Please sign in again.`}
                     <Item elevation={1} style={{ width: '100%' }}>Item 2</Item>
                   </Grid>
                 </Grid>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiGrid: {
+                      OnesyGrid: {
                         props: {
                           default: {
                             gap: 4
@@ -37720,10 +37720,10 @@ Please sign in again.`}
                     <Item elevation={1} style={{ width: '100%' }}>Item 2</Item>
                   </Grid>
                 </Grid>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Grid line>
                 <Grid values={{ xs: 8, sm: 4 }}>
                   <Item elevation={1} style={{ width: '100%' }}>Item 1</Item>
@@ -38345,7 +38345,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Line>
               <Item size='small' elevation={1}>Item 1</Item>
@@ -38353,8 +38353,8 @@ Please sign in again.`}
               <Item size='large' elevation={1}>Item 1114</Item>
             </Line>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -38373,15 +38373,15 @@ Please sign in again.`}
                   <Item size='regular' elevation={1}>Item 114</Item>
                   <Item size='large' elevation={1}>Item 1114</Item>
                 </Line>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLine: {
+                      OnesyLine: {
                         style: {
                           add: {
                             root: {
@@ -38401,15 +38401,15 @@ Please sign in again.`}
                   <Item size='regular' elevation={1}>Item 114</Item>
                   <Item size='large' elevation={1}>Item 1114</Item>
                 </Line>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLine: {
+                      OnesyLine: {
                         style: {
                           override: {
                             root: {
@@ -38430,15 +38430,15 @@ Please sign in again.`}
                   <Item size='regular' elevation={1}>Item 114</Item>
                   <Item size='large' elevation={1}>Item 1114</Item>
                 </Line>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLine: {
+                      OnesyLine: {
                         props: {
                           default: {
                             gap: 4
@@ -38454,10 +38454,10 @@ Please sign in again.`}
                   <Item size='regular' elevation={1}>Item 114</Item>
                   <Item size='large' elevation={1}>Item 1114</Item>
                 </Line>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Line>
                 <Item size='small' elevation={1}>Item 1</Item>
                 <Item size='regular' elevation={1}>Item 114</Item>
@@ -38589,14 +38589,14 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Container>
               <Box14 />
             </Container>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -38613,15 +38613,15 @@ Please sign in again.`}
                 <Container>
                   <Box14 />
                 </Container>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiContainer: {
+                      OnesyContainer: {
                         style: {
                           add: {
                             root: {
@@ -38639,15 +38639,15 @@ Please sign in again.`}
                 <Container>
                   <Box14 />
                 </Container>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiContainer: {
+                      OnesyContainer: {
                         style: {
                           override: {
                             root: {
@@ -38666,15 +38666,15 @@ Please sign in again.`}
                 <Container>
                   <Box14 />
                 </Container>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiContainer: {
+                      OnesyContainer: {
                         props: {
                           default: {
                             Component: 'main'
@@ -38688,10 +38688,10 @@ Please sign in again.`}
                 <Container>
                   <Box14 />
                 </Container>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Container>
                 <Box14 />
               </styled.Container>
@@ -38717,12 +38717,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Box1 />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -38737,15 +38737,15 @@ Please sign in again.`}
                 }}
               >
                 <Box1 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBox: {
+                      OnesyBox: {
                         style: {
                           add: {
                             root: {
@@ -38761,15 +38761,15 @@ Please sign in again.`}
                 }}
               >
                 <Box1 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBox: {
+                      OnesyBox: {
                         style: {
                           override: {
                             root: {
@@ -38786,15 +38786,15 @@ Please sign in again.`}
                 }}
               >
                 <Box1 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBox: {
+                      OnesyBox: {
                         props: {
                           default: {
                             Component: 'main'
@@ -38806,10 +38806,10 @@ Please sign in again.`}
                 }}
               >
                 <Box1 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <BoxStyled />
             </Accordion>
           </div>
@@ -38945,12 +38945,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Rating color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -38965,15 +38965,15 @@ Please sign in again.`}
                 }}
               >
                 <Rating color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRating: {
+                      OnesyRating: {
                         style: {
                           add: {
                             root: {
@@ -38989,15 +38989,15 @@ Please sign in again.`}
                 }}
               >
                 <Rating color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRating: {
+                      OnesyRating: {
                         style: {
                           override: {
                             root: {
@@ -39014,15 +39014,15 @@ Please sign in again.`}
                 }}
               >
                 <Rating color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRating: {
+                      OnesyRating: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -39034,10 +39034,10 @@ Please sign in again.`}
                 }}
               >
                 <Rating />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Rating />
             </Accordion>
           </div>
@@ -39553,7 +39553,7 @@ Please sign in again.`}
           />
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div
             className={classNames([classes.column])}
 
@@ -39569,8 +39569,8 @@ Please sign in again.`}
               color='secondary'
             />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -39595,15 +39595,15 @@ Please sign in again.`}
 
                   color='secondary'
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAutoComplete: {
+                      OnesyAutoComplete: {
                         style: {
                           add: {
                             root: {
@@ -39629,15 +39629,15 @@ Please sign in again.`}
 
                   color='secondary'
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAutoComplete: {
+                      OnesyAutoComplete: {
                         style: {
                           override: {
                             root: {
@@ -39663,15 +39663,15 @@ Please sign in again.`}
 
                   color='secondary'
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAutoComplete: {
+                      OnesyAutoComplete: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -39691,10 +39691,10 @@ Please sign in again.`}
 
                   options={countries.map(item => ({ label: item.name }))}
                 />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.AutoComplete
                 label='Items'
 
@@ -40374,7 +40374,7 @@ Please sign in again.`}
           </Select>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div
             className={classNames([classes.column])}
 
@@ -40400,8 +40400,8 @@ Please sign in again.`}
               ))}
             </Select>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -40436,15 +40436,15 @@ Please sign in again.`}
                     />
                   ))}
                 </Select>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSelect: {
+                      OnesySelect: {
                         style: {
                           add: {
                             root: {
@@ -40480,15 +40480,15 @@ Please sign in again.`}
                     />
                   ))}
                 </Select>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSelect: {
+                      OnesySelect: {
                         style: {
                           override: {
                             root: {
@@ -40524,15 +40524,15 @@ Please sign in again.`}
                     />
                   ))}
                 </Select>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSelect: {
+                      OnesySelect: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -40562,10 +40562,10 @@ Please sign in again.`}
                     />
                   ))}
                 </Select>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Select
                 label='Items'
               >
@@ -41623,7 +41623,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Tooltip
               label='Label'
@@ -41633,8 +41633,8 @@ Please sign in again.`}
               <Button color='secondary'>Append</Button>
             </Tooltip>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -41655,15 +41655,15 @@ Please sign in again.`}
                 >
                   <Button color='secondary'>Append</Button>
                 </Tooltip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTooltip: {
+                      OnesyTooltip: {
                         style: {
                           add: {
                             root: {
@@ -41685,15 +41685,15 @@ Please sign in again.`}
                 >
                   <Button color='secondary'>Append</Button>
                 </Tooltip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTooltip: {
+                      OnesyTooltip: {
                         style: {
                           override: {
                             root: {
@@ -41715,15 +41715,15 @@ Please sign in again.`}
                 >
                   <Button color='secondary'>Append</Button>
                 </Tooltip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTooltip: {
+                      OnesyTooltip: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -41739,10 +41739,10 @@ Please sign in again.`}
                 >
                   <Button color='secondary'>Append</Button>
                 </Tooltip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Tooltip
                 label='Label'
               >
@@ -49441,7 +49441,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <List>
               {[0, 1, 4].map(item => (
@@ -49455,8 +49455,8 @@ Please sign in again.`}
               ))}
             </List>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -49481,15 +49481,15 @@ Please sign in again.`}
                     />
                   ))}
                 </List>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiList: {
+                      OnesyList: {
                         style: {
                           add: {
                             root: {
@@ -49515,15 +49515,15 @@ Please sign in again.`}
                     />
                   ))}
                 </List>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiList: {
+                      OnesyList: {
                         style: {
                           override: {
                             root: {
@@ -49538,7 +49538,7 @@ Please sign in again.`}
                           }
                         }
                       },
-                      AmauiListItem: {
+                      OnesyListItem: {
                         style: {
                           override: {
                             wrapper: {
@@ -49563,22 +49563,22 @@ Please sign in again.`}
                     />
                   ))}
                 </List>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiList: {
+                      OnesyList: {
                         props: {
                           default: {
                             paddingVertical: 'none'
                           }
                         }
                       },
-                      AmauiListItem: {
+                      OnesyListItem: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -49602,10 +49602,10 @@ Please sign in again.`}
                     />
                   ))}
                 </List>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.List>
                 {[0, 1, 4].map(item => (
                   <ListItem
@@ -49861,7 +49861,7 @@ Please sign in again.`}
           </Line>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Label>
               <Checkbox />
@@ -49869,8 +49869,8 @@ Please sign in again.`}
               First checkbox value
             </Label>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -49889,15 +49889,15 @@ Please sign in again.`}
 
                   First checkbox value
                 </Label>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLabel: {
+                      OnesyLabel: {
                         style: {
                           add: {
                             root: {
@@ -49917,15 +49917,15 @@ Please sign in again.`}
 
                   First checkbox value
                 </Label>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLabel: {
+                      OnesyLabel: {
                         style: {
                           override: {
                             root: {
@@ -49944,15 +49944,15 @@ Please sign in again.`}
 
                   First checkbox value
                 </Label>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLabel: {
+                      OnesyLabel: {
                         props: {
                           default: {
                             position: 'top'
@@ -49968,10 +49968,10 @@ Please sign in again.`}
 
                   First checkbox value
                 </Label>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Label>
                 <Checkbox />
 
@@ -50657,7 +50657,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div
             className={classNames([classes.column])}
 
@@ -50667,8 +50667,8 @@ Please sign in again.`}
           >
             <TextField color='secondary' label='Value text' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -50687,15 +50687,15 @@ Please sign in again.`}
                 }}
               >
                 <TextField color='secondary' label='Value text' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTextField: {
+                      OnesyTextField: {
                         style: {
                           add: {
                             root: {
@@ -50715,15 +50715,15 @@ Please sign in again.`}
                 }}
               >
                 <TextField color='secondary' label='Value text' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTextField: {
+                      OnesyTextField: {
                         style: {
                           override: {
                             root: {
@@ -50743,15 +50743,15 @@ Please sign in again.`}
                 }}
               >
                 <TextField color='secondary' label='Value text' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiTextField: {
+                      OnesyTextField: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -50767,10 +50767,10 @@ Please sign in again.`}
                 }}
               >
                 <TextField label='Value text' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.TextField label='Value text' />
             </Accordion>
           </div>
@@ -50901,12 +50901,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Switch color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -50921,15 +50921,15 @@ Please sign in again.`}
                 }}
               >
                 <Switch color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSwitch: {
+                      OnesySwitch: {
                         style: {
                           add: {
                             root: {
@@ -50945,15 +50945,15 @@ Please sign in again.`}
                 }}
               >
                 <Switch color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSwitch: {
+                      OnesySwitch: {
                         style: {
                           override: {
                             root: {
@@ -50969,15 +50969,15 @@ Please sign in again.`}
                 }}
               >
                 <Switch color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSwitch: {
+                      OnesySwitch: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -50989,10 +50989,10 @@ Please sign in again.`}
                 }}
               >
                 <Switch />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Switch />
             </Accordion>
           </div>
@@ -51233,7 +51233,7 @@ Please sign in again.`}
           </Radios>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Radios
               label='Items'
@@ -51253,8 +51253,8 @@ Please sign in again.`}
               ))}
             </Radios>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -51287,15 +51287,15 @@ Please sign in again.`}
                     </Label>
                   ))}
                 </Radios>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRadios: {
+                      OnesyRadios: {
                         style: {
                           add: {
                             root: {
@@ -51327,15 +51327,15 @@ Please sign in again.`}
                     </Label>
                   ))}
                 </Radios>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRadios: {
+                      OnesyRadios: {
                         style: {
                           override: {
                             root: {
@@ -51365,15 +51365,15 @@ Please sign in again.`}
                     </Label>
                   ))}
                 </Radios>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRadios: {
+                      OnesyRadios: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -51401,10 +51401,10 @@ Please sign in again.`}
                     </Label>
                   ))}
                 </Radios>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Radios
                 label='Items'
               >
@@ -51574,12 +51574,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Radio color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -51594,15 +51594,15 @@ Please sign in again.`}
                 }}
               >
                 <Radio color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRadio: {
+                      OnesyRadio: {
                         style: {
                           add: {
                             root: {
@@ -51618,15 +51618,15 @@ Please sign in again.`}
                 }}
               >
                 <Radio color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRadio: {
+                      OnesyRadio: {
                         style: {
                           override: {
                             root: {
@@ -51642,15 +51642,15 @@ Please sign in again.`}
                 }}
               >
                 <Radio color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRadio: {
+                      OnesyRadio: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -51662,10 +51662,10 @@ Please sign in again.`}
                 }}
               >
                 <Radio />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Radio />
             </Accordion>
           </div>
@@ -51939,12 +51939,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Checkbox color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -51959,15 +51959,15 @@ Please sign in again.`}
                 }}
               >
                 <Checkbox color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiCheckbox: {
+                      OnesyCheckbox: {
                         style: {
                           add: {
                             root: {
@@ -51983,15 +51983,15 @@ Please sign in again.`}
                 }}
               >
                 <Checkbox color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiCheckbox: {
+                      OnesyCheckbox: {
                         style: {
                           override: {
                             root: {
@@ -52007,15 +52007,15 @@ Please sign in again.`}
                 }}
               >
                 <Checkbox color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiCheckbox: {
+                      OnesyCheckbox: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -52027,10 +52027,10 @@ Please sign in again.`}
                 }}
               >
                 <Checkbox />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Checkbox />
             </Accordion>
           </div>
@@ -52204,7 +52204,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Chips color='secondary'>
               <Chip>Assistive</Chip>
@@ -52216,8 +52216,8 @@ Please sign in again.`}
               <Chip>Assistive 1114</Chip>
             </Chips>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -52240,15 +52240,15 @@ Please sign in again.`}
                   <Chip>Assistive 114</Chip>
                   <Chip>Assistive 1114</Chip>
                 </Chips>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiChips: {
+                      OnesyChips: {
                         style: {
                           add: {
                             root: {
@@ -52272,15 +52272,15 @@ Please sign in again.`}
                   <Chip>Assistive 114</Chip>
                   <Chip>Assistive 1114</Chip>
                 </Chips>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiChips: {
+                      OnesyChips: {
                         style: {
                           override: {
                             root: {
@@ -52304,15 +52304,15 @@ Please sign in again.`}
                   <Chip>Assistive 114</Chip>
                   <Chip>Assistive 1114</Chip>
                 </Chips>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiChips: {
+                      OnesyChips: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -52332,10 +52332,10 @@ Please sign in again.`}
                   <Chip>Assistive 114</Chip>
                   <Chip>Assistive 1114</Chip>
                 </Chips>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Chips>
                 <Chip>Assistive</Chip>
                 <Chip>Assistive 1</Chip>
@@ -52735,12 +52735,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Chip color='secondary'>Enabled</Chip>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -52755,15 +52755,15 @@ Please sign in again.`}
                 }}
               >
                 <Chip color='secondary'>Enabled</Chip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiChip: {
+                      OnesyChip: {
                         style: {
                           add: {
                             root: {
@@ -52779,15 +52779,15 @@ Please sign in again.`}
                 }}
               >
                 <Chip color='secondary'>Enabled</Chip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiChip: {
+                      OnesyChip: {
                         style: {
                           override: {
                             root: {
@@ -52803,15 +52803,15 @@ Please sign in again.`}
                 }}
               >
                 <Chip color='secondary'>Enabled</Chip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiChip: {
+                      OnesyChip: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -52823,10 +52823,10 @@ Please sign in again.`}
                 }}
               >
                 <Chip>Enabled</Chip>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Chip>Enabled</styled.Chip>
             </Accordion>
           </div>
@@ -53038,7 +53038,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <AvatarGroup color='secondary'>
               <Avatar>1</Avatar>
@@ -53048,8 +53048,8 @@ Please sign in again.`}
               <Avatar>5</Avatar>
             </AvatarGroup>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -53070,15 +53070,15 @@ Please sign in again.`}
                   <Avatar>4</Avatar>
                   <Avatar>5</Avatar>
                 </AvatarGroup>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAvatarGroup: {
+                      OnesyAvatarGroup: {
                         style: {
                           add: {
                             root: {
@@ -53100,15 +53100,15 @@ Please sign in again.`}
                   <Avatar>4</Avatar>
                   <Avatar>5</Avatar>
                 </AvatarGroup>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAvatarGroup: {
+                      OnesyAvatarGroup: {
                         style: {
                           override: {
                             root: {
@@ -53130,15 +53130,15 @@ Please sign in again.`}
                   <Avatar>4</Avatar>
                   <Avatar>5</Avatar>
                 </AvatarGroup>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAvatarGroup: {
+                      OnesyAvatarGroup: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -53156,10 +53156,10 @@ Please sign in again.`}
                   <Avatar>4</Avatar>
                   <Avatar>5</Avatar>
                 </AvatarGroup>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.AvatarGroup color='secondary'>
                 <Avatar>1</Avatar>
                 <Avatar>2</Avatar>
@@ -53585,12 +53585,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Avatar color='secondary'>a</Avatar>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -53605,15 +53605,15 @@ Please sign in again.`}
                 }}
               >
                 <Avatar color='secondary'>a</Avatar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAvatar: {
+                      OnesyAvatar: {
                         style: {
                           add: {
                             root: {
@@ -53629,15 +53629,15 @@ Please sign in again.`}
                 }}
               >
                 <Avatar color='secondary'>a</Avatar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAvatar: {
+                      OnesyAvatar: {
                         style: {
                           override: {
                             root: {
@@ -53653,15 +53653,15 @@ Please sign in again.`}
                 }}
               >
                 <Avatar color='secondary'>a</Avatar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiAvatar: {
+                      OnesyAvatar: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -53673,10 +53673,10 @@ Please sign in again.`}
                 }}
               >
                 <Avatar>a</Avatar>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Avatar color='secondary'>a</styled.Avatar>
             </Accordion>
           </div>
@@ -53917,14 +53917,14 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Badge color='secondary' value='1114'>
               <IconMaterialPottedPlantRounded />
             </Badge>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -53941,15 +53941,15 @@ Please sign in again.`}
                 <Badge color='secondary' value='1114'>
                   <IconMaterialPottedPlantRounded />
                 </Badge>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBadge: {
+                      OnesyBadge: {
                         style: {
                           add: {
                             root: {
@@ -53967,15 +53967,15 @@ Please sign in again.`}
                 <Badge color='secondary' value='1114'>
                   <IconMaterialPottedPlantRounded />
                 </Badge>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBadge: {
+                      OnesyBadge: {
                         style: {
                           override: {
                             root: {
@@ -53993,15 +53993,15 @@ Please sign in again.`}
                 <Badge color='secondary' value='1114'>
                   <IconMaterialPottedPlantRounded />
                 </Badge>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiBadge: {
+                      OnesyBadge: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -54015,10 +54015,10 @@ Please sign in again.`}
                 <Badge value='1114'>
                   <IconMaterialPottedPlantRounded />
                 </Badge>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Badge value='1114'>
                 <IconMaterialPottedPlantRounded />
               </styled.Badge>
@@ -54194,12 +54194,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Divider color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -54218,15 +54218,15 @@ Please sign in again.`}
                 }}
               >
                 <Divider color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiDivider: {
+                      OnesyDivider: {
                         style: {
                           add: {
                             root: {
@@ -54246,15 +54246,15 @@ Please sign in again.`}
                 }}
               >
                 <Divider color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiDivider: {
+                      OnesyDivider: {
                         style: {
                           override: {
                             root: {
@@ -54274,15 +54274,15 @@ Please sign in again.`}
                 }}
               >
                 <Divider color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiDivider: {
+                      OnesyDivider: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -54298,10 +54298,10 @@ Please sign in again.`}
                 }}
               >
                 <Divider />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Divider />
             </Accordion>
           </div>
@@ -54626,7 +54626,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Button size='small' color='secondary' className={classes.btn} onClick={() => updateValue(11)}>a</Button>
 
@@ -54665,8 +54665,8 @@ Please sign in again.`}
               </ModalFooter>
             </Modal>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -54716,15 +54716,15 @@ Please sign in again.`}
                     </Button>
                   </ModalFooter>
                 </Modal>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiModal: {
+                      OnesyModal: {
                         style: {
                           add: {
                             root: {
@@ -54775,15 +54775,15 @@ Please sign in again.`}
                     </Button>
                   </ModalFooter>
                 </Modal>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiModal: {
+                      OnesyModal: {
                         style: {
                           override: {
                             root: {
@@ -54834,15 +54834,15 @@ Please sign in again.`}
                     </Button>
                   </ModalFooter>
                 </Modal>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiModal: {
+                      OnesyModal: {
                         props: {
                           default: {
                             fullScreen: true
@@ -54889,10 +54889,10 @@ Please sign in again.`}
                     </Button>
                   </ModalFooter>
                 </Modal>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <Button size='small' color='secondary' className={classes.btn} onClick={() => updateValue(17)}>a</Button>
 
               <styled.Modal
@@ -55103,14 +55103,14 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Surface style={{ padding: '24px 40px' }} color='secondary'>
               a
             </Surface>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -55127,15 +55127,15 @@ Please sign in again.`}
                 <Surface style={{ padding: '24px 40px' }} color='secondary'>
                   a
                 </Surface>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSurface: {
+                      OnesySurface: {
                         style: {
                           add: {
                             root: {
@@ -55153,15 +55153,15 @@ Please sign in again.`}
                 <Surface style={{ padding: '24px 40px' }} color='secondary'>
                   a
                 </Surface>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSurface: {
+                      OnesySurface: {
                         style: {
                           override: {
                             root: {
@@ -55179,15 +55179,15 @@ Please sign in again.`}
                 <Surface style={{ padding: '24px 40px' }} color='secondary'>
                   a
                 </Surface>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiSurface: {
+                      OnesySurface: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -55201,10 +55201,10 @@ Please sign in again.`}
                 <Surface style={{ padding: '24px 40px' }} value='1114'>
                   a
                 </Surface>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Surface>
                 a
               </styled.Surface>
@@ -55291,12 +55291,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Link href='https://google.com' target='_blank' color='secondary'>Enabled</Link>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -55311,15 +55311,15 @@ Please sign in again.`}
                 }}
               >
                 <Link href='https://google.com' target='_blank' color='secondary'>Enabled</Link>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLink: {
+                      OnesyLink: {
                         style: {
                           add: {
                             root: {
@@ -55335,15 +55335,15 @@ Please sign in again.`}
                 }}
               >
                 <Link href='https://google.com' target='_blank' color='secondary'>Enabled</Link>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLink: {
+                      OnesyLink: {
                         style: {
                           override: {
                             root: {
@@ -55359,15 +55359,15 @@ Please sign in again.`}
                 }}
               >
                 <Link href='https://google.com' target='_blank' color='secondary'>Enabled</Link>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLink: {
+                      OnesyLink: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -55379,10 +55379,10 @@ Please sign in again.`}
                 }}
               >
                 <Link href='https://google.com' target='_blank'>Enabled</Link>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Link href='https://google.com' target='_blank'>Enabled</styled.Link>
             </Accordion>
           </div>
@@ -55430,12 +55430,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Type color='secondary'>Enabled</Type>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   typography: {
                     values: {
@@ -55447,15 +55447,15 @@ Please sign in again.`}
                 }}
               >
                 <Type>Enabled</Type>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiType: {
+                      OnesyType: {
                         style: {
                           add: {
                             root: {
@@ -55471,15 +55471,15 @@ Please sign in again.`}
                 }}
               >
                 <Type version='b3'>Enabled</Type>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiType: {
+                      OnesyType: {
                         style: {
                           override: {
                             root: {
@@ -55494,15 +55494,15 @@ Please sign in again.`}
                 }}
               >
                 <Type version='b3'>Enabled</Type>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiType: {
+                      OnesyType: {
                         props: {
                           default: {
                             version: 'b3'
@@ -55514,10 +55514,10 @@ Please sign in again.`}
                 }}
               >
                 <Type>Enabled</Type>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Type>Enabled</styled.Type>
             </Accordion>
           </div>
@@ -55707,12 +55707,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <Fab color='secondary' tonal version='filled' size='regular'><IconMaterialPottedPlantRounded /> Regular</Fab>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -55727,15 +55727,15 @@ Please sign in again.`}
                 }}
               >
                 <Fab color='secondary' tonal version='filled' size='regular'><IconMaterialPottedPlantRounded /> Regular</Fab>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiFab: {
+                      OnesyFab: {
                         style: {
                           add: {
                             root: {
@@ -55751,15 +55751,15 @@ Please sign in again.`}
                 }}
               >
                 <Fab color='secondary' tonal version='filled' size='regular'><IconMaterialPottedPlantRounded /> Regular</Fab>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiFab: {
+                      OnesyFab: {
                         style: {
                           override: {
                             root: {
@@ -55775,15 +55775,15 @@ Please sign in again.`}
                 }}
               >
                 <Fab color='secondary' tonal version='filled' size='regular'><IconMaterialPottedPlantRounded /> Regular</Fab>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiFab: {
+                      OnesyFab: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -55795,10 +55795,10 @@ Please sign in again.`}
                 }}
               >
                 <Fab tonal version='filled' size='regular'><IconMaterialPottedPlantRounded /> Regular</Fab>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Fab color='secondary' tonal version='filled' size='regular'><IconMaterialPottedPlantRounded /> Regular</styled.Fab>
             </Accordion>
           </div>
@@ -56053,14 +56053,14 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <IconButton color='secondary'>
               <IconMaterialPottedPlantRounded />
             </IconButton>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -56077,15 +56077,15 @@ Please sign in again.`}
                 <IconButton color='secondary'>
                   <IconMaterialPottedPlantRounded />
                 </IconButton>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiIconButton: {
+                      OnesyIconButton: {
                         style: {
                           add: {
                             root: {
@@ -56103,15 +56103,15 @@ Please sign in again.`}
                 <IconButton color='secondary'>
                   <IconMaterialPottedPlantRounded />
                 </IconButton>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiIconButton: {
+                      OnesyIconButton: {
                         style: {
                           override: {
                             root: {
@@ -56129,15 +56129,15 @@ Please sign in again.`}
                 <IconButton color='secondary'>
                   <IconMaterialPottedPlantRounded />
                 </IconButton>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiIconButton: {
+                      OnesyIconButton: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -56151,10 +56151,10 @@ Please sign in again.`}
                 <IconButton>
                   <IconMaterialPottedPlantRounded />
                 </IconButton>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.IconButton color='secondary'>
                 <IconMaterialPottedPlantRounded />
               </styled.IconButton>
@@ -56225,12 +56225,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <LinearProgress color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -56249,15 +56249,15 @@ Please sign in again.`}
                 }}
               >
                 <LinearProgress color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLinearProgress: {
+                      OnesyLinearProgress: {
                         style: {
                           add: {
                             root: {
@@ -56277,15 +56277,15 @@ Please sign in again.`}
                 }}
               >
                 <LinearProgress color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLinearProgress: {
+                      OnesyLinearProgress: {
                         style: {
                           override: {
                             root: {
@@ -56307,15 +56307,15 @@ Please sign in again.`}
                 }}
               >
                 <LinearProgress color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiLinearProgress: {
+                      OnesyLinearProgress: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -56331,10 +56331,10 @@ Please sign in again.`}
                 }}
               >
                 <LinearProgress />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.LinearProgress />
             </Accordion>
           </div>
@@ -56451,12 +56451,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <RoundProgress color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -56471,15 +56471,15 @@ Please sign in again.`}
                 }}
               >
                 <RoundProgress color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRoundProgress: {
+                      OnesyRoundProgress: {
                         style: {
                           add: {
                             root: {
@@ -56497,15 +56497,15 @@ Please sign in again.`}
                 }}
               >
                 <RoundProgress color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRoundProgress: {
+                      OnesyRoundProgress: {
                         style: {
                           override: {
                             root: {
@@ -56521,15 +56521,15 @@ Please sign in again.`}
                 }}
               >
                 <RoundProgress color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiRoundProgress: {
+                      OnesyRoundProgress: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -56541,10 +56541,10 @@ Please sign in again.`}
                 }}
               >
                 <RoundProgress />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.RoundProgress />
             </Accordion>
           </div>
@@ -56899,7 +56899,7 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Buttons color='secondary'>
               <Button>Button one</Button>
@@ -56908,8 +56908,8 @@ Please sign in again.`}
               <Button>Button four</Button>
             </Buttons>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -56929,15 +56929,15 @@ Please sign in again.`}
                   <Button>Button three</Button>
                   <Button>Button four</Button>
                 </Buttons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiButtons: {
+                      OnesyButtons: {
                         style: {
                           add: {
                             root: {
@@ -56958,15 +56958,15 @@ Please sign in again.`}
                   <Button>Button three</Button>
                   <Button>Button four</Button>
                 </Buttons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiButtons: {
+                      OnesyButtons: {
                         style: {
                           override: {
                             root: {
@@ -56987,15 +56987,15 @@ Please sign in again.`}
                   <Button>Button three</Button>
                   <Button>Button four</Button>
                 </Buttons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiButtons: {
+                      OnesyButtons: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -57012,10 +57012,10 @@ Please sign in again.`}
                   <Button>Button three</Button>
                   <Button>Button four</Button>
                 </Buttons>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Buttons>
                 <Button>Button one</Button>
                 <Button>Button two</Button>
@@ -57235,12 +57235,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme'>
+        <Accordion primary='OnesyTheme'>
           <div className={classNames([classes.column])}>
             <Button color='secondary'>Button</Button>
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -57255,15 +57255,15 @@ Please sign in again.`}
                 }}
               >
                 <Button color='secondary'>Button</Button>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiButton: {
+                      OnesyButton: {
                         style: {
                           add: {
                             root: {
@@ -57279,15 +57279,15 @@ Please sign in again.`}
                 }}
               >
                 <Button color='secondary'>Button</Button>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiButton: {
+                      OnesyButton: {
                         style: {
                           override: {
                             root: {
@@ -57303,15 +57303,15 @@ Please sign in again.`}
                 }}
               >
                 <Button color='secondary'>Button</Button>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiButton: {
+                      OnesyButton: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -57323,10 +57323,10 @@ Please sign in again.`}
                 }}
               >
                 <Button>Button</Button>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.Button>Button</styled.Button>
             </Accordion>
           </div>
@@ -57389,12 +57389,12 @@ Please sign in again.`}
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <IconMaterialPottedPlantRounded color='secondary' />
 
-            <Accordion primary='AmauiTheme nested value' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme nested value' open>
+              <OnesyThemeProvider
                 value={{
                   palette: {
                     color: {
@@ -57409,15 +57409,15 @@ Please sign in again.`}
                 }}
               >
                 <IconMaterialPottedPlantRounded color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiIcon: {
+                      OnesyIcon: {
                         style: {
                           add: {
                             root: {
@@ -57433,15 +57433,15 @@ Please sign in again.`}
                 }}
               >
                 <IconMaterialPottedPlantRounded color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiIcon: {
+                      OnesyIcon: {
                         style: {
                           override: {
                             root: {
@@ -57457,15 +57457,15 @@ Please sign in again.`}
                 }}
               >
                 <IconMaterialPottedPlantRounded color='secondary' />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiIcon: {
+                      OnesyIcon: {
                         props: {
                           default: {
                             color: 'secondary'
@@ -57477,10 +57477,10 @@ Please sign in again.`}
                 }}
               >
                 <IconMaterialPottedPlantRounded />
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme styled' open>
+            <Accordion primary='OnesyTheme styled' open>
               <styled.IconMaterialPottedPlantRounded />
             </Accordion>
           </div>
@@ -57700,7 +57700,7 @@ Please sign in again.`}
           <span style={{ position: 'relative' }}>a</span>
         </div>
 
-        <Accordion primary='AmauiTheme' open>
+        <Accordion primary='OnesyTheme' open>
           <div className={classNames([classes.column])}>
             <div className={classes.a} style={{ color: 'orange' }}>
               <Interaction pulse={a.pulse} />
@@ -57710,12 +57710,12 @@ Please sign in again.`}
               <span style={{ position: 'relative' }}>a</span>
             </div>
 
-            <Accordion primary='AmauiTheme add' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme add' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiInteraction: {
+                      OnesyInteraction: {
                         style: {
                           add: {
                             wave: {
@@ -57735,15 +57735,15 @@ Please sign in again.`}
 
                   <span style={{ position: 'relative' }}>a</span>
                 </div>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme override' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme override' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiInteraction: {
+                      OnesyInteraction: {
                         style: {
                           override: {
                             root: {
@@ -57765,15 +57765,15 @@ Please sign in again.`}
 
                   <span style={{ position: 'relative' }}>a</span>
                 </div>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
 
-            <Accordion primary='AmauiTheme props' open>
-              <AmauiThemeProvider
+            <Accordion primary='OnesyTheme props' open>
+              <OnesyThemeProvider
                 value={{
                   ui: {
                     elements: {
-                      AmauiInteraction: {
+                      OnesyInteraction: {
                         props: {
                           default: {
                             background: false
@@ -57791,19 +57791,19 @@ Please sign in again.`}
 
                   <span style={{ position: 'relative' }}>a</span>
                 </div>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
             </Accordion>
           </div>
         </Accordion>
       </Accordion>
 
-      <Accordion primary='AmauiTheme usage values'>
+      <Accordion primary='OnesyTheme usage values'>
 
-        <Accordion primary='AmauiTheme nested' open>
+        <Accordion primary='OnesyTheme nested' open>
           <div className={classNames([classes.column])}>
             <Button color='primary'>Primary</Button>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 palette: {
                   color: {
@@ -57815,15 +57815,15 @@ Please sign in again.`}
               }}
             >
               <Button color='primary'>Primary nested</Button>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme nested with value as a method' open>
+        <Accordion primary='OnesyTheme nested with value as a method' open>
           <div className={classNames([classes.column])}>
             <Button color='primary'>Primary</Button>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={(theme: any) => ({
                 ...theme,
 
@@ -57843,15 +57843,15 @@ Please sign in again.`}
               <Button color='primary'>Primary nested</Button>
 
               <Button color='secondary'>Primary nested</Button>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme with style add' open>
+        <Accordion primary='OnesyTheme with style add' open>
           <div className={classNames([classes.column])}>
             <Button color='primary'>Primary</Button>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 palette: {
                   color: {
@@ -57862,7 +57862,7 @@ Please sign in again.`}
                 },
                 ui: {
                   elements: {
-                    AmauiButton: {
+                    OnesyButton: {
                       style: {
                         add: {
                           root: {
@@ -57876,15 +57876,15 @@ Please sign in again.`}
               }}
             >
               <Button color='primary'>Primary nested</Button>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme with style override' open>
+        <Accordion primary='OnesyTheme with style override' open>
           <div className={classNames([classes.column])}>
             <Button color='primary'>Primary</Button>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 palette: {
                   color: {
@@ -57895,7 +57895,7 @@ Please sign in again.`}
                 },
                 ui: {
                   elements: {
-                    AmauiButton: {
+                    OnesyButton: {
                       style: {
                         override: {
                           border: {
@@ -57912,15 +57912,15 @@ Please sign in again.`}
               }}
             >
               <Button color='primary'>Primary nested</Button>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme with style override with theme and prop dynamic value' open>
+        <Accordion primary='OnesyTheme with style override with theme and prop dynamic value' open>
           <div className={classNames([classes.column])}>
             <Button color='primary'>Primary</Button>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 palette: {
                   color: {
@@ -57931,7 +57931,7 @@ Please sign in again.`}
                 },
                 ui: {
                   elements: {
-                    AmauiButton: {
+                    OnesyButton: {
                       style: {
                         add: {
                           root: {
@@ -57955,15 +57955,15 @@ Please sign in again.`}
               <Button color='primary'>Primary nested</Button>
 
               <Button color='secondary'>Secondary nested</Button>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme with default props' open>
+        <Accordion primary='OnesyTheme with default props' open>
           <div className={classNames([classes.column])}>
             <Avatar color='primary'>a</Avatar>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 palette: {
                   color: {
@@ -57974,7 +57974,7 @@ Please sign in again.`}
                 },
                 ui: {
                   elements: {
-                    AmauiAvatar: {
+                    OnesyAvatar: {
                       props: {
                         default: {
                           square: true
@@ -57988,15 +57988,15 @@ Please sign in again.`}
               <Avatar color='primary'>a</Avatar>
 
               <Avatar color='secondary'>a</Avatar>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme with classNames global' open>
+        <Accordion primary='OnesyTheme with classNames global' open>
           <div className={classNames([classes.column])}>
             <Avatar color='primary'>a</Avatar>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 ui: {
                   className: {
@@ -58006,19 +58006,19 @@ Please sign in again.`}
               }}
             >
               <Avatar>a</Avatar>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 
-        <Accordion primary='AmauiTheme with classNames global' open>
+        <Accordion primary='OnesyTheme with classNames global' open>
           <div className={classNames([classes.column])}>
             <Avatar>a</Avatar>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 ui: {
                   elements: {
-                    AmauiButton: {
+                    OnesyButton: {
                       className: {
                         static: false
                       }
@@ -58030,9 +58030,9 @@ Please sign in again.`}
               <Avatar>a</Avatar>
 
               <Button>a</Button>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
 
-            <AmauiThemeProvider
+            <OnesyThemeProvider
               value={{
                 ui: {
                   className: {
@@ -58040,7 +58040,7 @@ Please sign in again.`}
                   },
 
                   elements: {
-                    AmauiAvatar: {
+                    OnesyAvatar: {
                       className: {
                         static: true
                       }
@@ -58052,7 +58052,7 @@ Please sign in again.`}
               <Avatar>a</Avatar>
 
               <Button>a</Button>
-            </AmauiThemeProvider>
+            </OnesyThemeProvider>
           </div>
         </Accordion>
 

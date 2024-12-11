@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { TMethod } from '@amaui/models';
+import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { TMethod } from '@onesy/models';
 
 import PathElement from '../Path';
 import LineElement from '../Line';
@@ -25,7 +25,7 @@ const useStyle = styleMethod(theme => ({
     height: '8px',
     borderRadius: theme.methods.shape.radius.value(40, 'px')
   }
-}), { name: 'amaui-ScatterChartItem' });
+}), { name: 'onesy-ScatterChartItem' });
 
 export interface IScatterChartItem extends IChart {
   name?: string;
@@ -48,9 +48,9 @@ export interface IScatterChartItem extends IChart {
 }
 
 const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiScatterChartItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChartItem?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -148,7 +148,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
 
         className={classNames([
           staticClassName('ScatterChartItem', theme) && [
-            'amaui-ScatterChartItem-legend-item'
+            'onesy-ScatterChartItem-legend-item'
           ],
 
           LegendItemProps?.className,
@@ -158,7 +158,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
         <span
           className={classNames([
             staticClassName('ScatterChartItem', theme) && [
-              'amaui-ScatterChartItem-legend-icon'
+              'onesy-ScatterChartItem-legend-icon'
             ],
 
             classes.legend_icon
@@ -314,6 +314,6 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
   );
 });
 
-ScatterChartItem.displayName = 'amaui-ScatterChartItem';
+ScatterChartItem.displayName = 'onesy-ScatterChartItem';
 
 export default ScatterChartItem;

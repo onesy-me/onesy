@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { isEnvironment } from '@amaui/utils';
+import { isEnvironment } from '@onesy/utils';
 
 export interface IOptionsUseMediaQuery {
   element?: any;
@@ -54,6 +54,6 @@ const useMediaQuery = (props: string, options?: IOptionsUseMediaQuery) => {
   return matches;
 };
 
-useMediaQuery.displayName = 'amaui-UseMediaQuery';
+useMediaQuery.displayName = 'onesy-UseMediaQuery';
 
 export default useMediaQuery;

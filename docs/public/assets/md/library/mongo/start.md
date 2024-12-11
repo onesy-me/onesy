@@ -1,12 +1,12 @@
 
-# amaui mongo
+# onesy mongo
 
 Utils for easier using of `mongodb` library.
 
 ### Add
 
 ```sh
-yarn add @amaui/mongo
+yarn add @onesy/mongo
 ```
 
 <br />
@@ -19,7 +19,7 @@ yarn add mongodb
 ### Use
 
 ```ts
-import { Mongo, BaseCollection } from '@amaui/mongo';
+import { Mongo, BaseCollection } from '@onesy/mongo';
 // Make if you wanna a config file and
 // inside of it add all the process.env related props
 import Config from './config';
@@ -125,8 +125,8 @@ yarn build
       "to": "/library/models/start"
     },
     "next": {
-      "label": "Mongo: AmauiMongo",
-      "to": "/library/mongo/use/AmauiMongo"
+      "label": "Mongo: OnesyMongo",
+      "to": "/library/mongo/use/OnesyMongo"
     }
   }
 }~

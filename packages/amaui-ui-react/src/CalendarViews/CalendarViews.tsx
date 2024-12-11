@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { capitalize, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { add, AmauiDate, endOf, format, remove, startOf } from '@amaui/date';
+import { capitalize, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { add, OnesyDate, endOf, format, remove, startOf } from '@onesy/date';
 
-import IconMaterialArrowBackIosNew from '@amaui/icons-material-rounded-react/IconMaterialArrowBackIosNewW100';
-import IconMaterialArrowForwardIos from '@amaui/icons-material-rounded-react/IconMaterialArrowForwardIosW100';
+import IconMaterialArrowBackIosNew from '@onesy/icons-material-rounded-react/IconMaterialArrowBackIosNewW100';
+import IconMaterialArrowForwardIos from '@onesy/icons-material-rounded-react/IconMaterialArrowForwardIosW100';
 
 import CalendarWeekElement from '../CalendarWeek';
 import CalendarMonthElement from '../CalendarMonth';
@@ -25,7 +25,7 @@ const useStyle = styleMethod(theme => ({
     color: theme.methods.palette.color.value('primary', 10),
     background: theme.palette.background.default.primary,
 
-    '& .amaui-Label-text': {
+    '& .onesy-Label-text': {
       whiteSpace: 'nowrap'
     }
   },
@@ -66,7 +66,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   calendarMonth: {
-    '&.amaui-CalendarMonth-root': {
+    '&.onesy-CalendarMonth-root': {
       width: '100%',
       height: '100%',
       minHeight: '0',
@@ -76,7 +76,7 @@ const useStyle = styleMethod(theme => ({
       transition: theme.methods.transitions.make('opacity')
     },
 
-    '& .amaui-CalendarMonth-weeks': {
+    '& .onesy-CalendarMonth-weeks': {
       position: 'relative',
       top: '0',
       width: 'calc(100% - 2px)',
@@ -85,11 +85,11 @@ const useStyle = styleMethod(theme => ({
       gap: '0'
     },
 
-    '& .amaui-CalendarMonth-week': {
+    '& .onesy-CalendarMonth-week': {
       flex: '1 1 auto'
     },
 
-    '& .amaui-CalendarMonth-day': {
+    '& .onesy-CalendarMonth-day': {
       height: 'unset',
       minWidth: '170px',
       minHeight: '100px',
@@ -98,11 +98,11 @@ const useStyle = styleMethod(theme => ({
       border: `1px solid ${theme.palette.light ? '#dadada' : '#575757'}`
     },
 
-    '& .amaui-CalendarMonth-day-name': {
+    '& .onesy-CalendarMonth-day-name': {
       minWidth: '170px'
     },
 
-    '& .amaui-CalendarMonth-day-out': {
+    '& .onesy-CalendarMonth-day-out': {
       zIndex: '-1px'
     }
   },
@@ -115,14 +115,14 @@ const useStyle = styleMethod(theme => ({
     padding: '2px 0',
     overflow: 'auto hidden'
   }
-}), { name: 'amaui-CalendarViews' });
+}), { name: 'onesy-CalendarViews' });
 
 export type ICalendarViewsView = 'day' | 'week' | 'month';
 
 export interface ICalendarViews extends ICalendar {
   viewDefault?: ICalendarViewsView;
 
-  dateDefault?: AmauiDate;
+  dateDefault?: OnesyDate;
 
   times?: any;
 
@@ -130,13 +130,13 @@ export interface ICalendarViews extends ICalendar {
 
   views?: ICalendarViewsView[];
 
-  render?: (date: AmauiDate, view: ICalendarViewsView) => any;
+  render?: (date: OnesyDate, view: ICalendarViewsView) => any;
 
-  onTimeClick?: (date: AmauiDate, view: ICalendarViewsView, event: MouseEvent) => any;
+  onTimeClick?: (date: OnesyDate, view: ICalendarViewsView, event: MouseEvent) => any;
 
   onChangeView?: (view: ICalendarViewsView) => any;
 
-  onChangeDate?: (value: AmauiDate) => any;
+  onChangeDate?: (value: OnesyDate) => any;
 
   startHeader?: any;
 
@@ -164,9 +164,9 @@ export interface ICalendarViews extends ICalendar {
 }
 
 const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCalendarViews?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarViews?.props?.default, ...props_ }), [props_]);
 
   const CalendarMonth = React.useMemo(() => theme?.elements?.CalendarMonth || CalendarMonthElement, [theme]);
 
@@ -234,8 +234,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
   const { classes } = useStyle(props);
 
-  const [now, setNow] = React.useState(new AmauiDate());
-  const [date, setDate] = React.useState(dateDefault || new AmauiDate());
+  const [now, setNow] = React.useState(new OnesyDate());
+  const [date, setDate] = React.useState(dateDefault || new OnesyDate());
   const [view, setView] = React.useState<ICalendarViewsView>(viewDefault || 'month');
 
   const refs = {
@@ -245,7 +245,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   React.useEffect(() => {
     // 1 minute
     refs.interval.current = setInterval(() => {
-      setNow(new AmauiDate());
+      setNow(new OnesyDate());
     }, 60 * 1e3);
 
     return () => {
@@ -290,7 +290,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   }, [onChangeViewProps]);
 
   const onToday = React.useCallback(() => {
-    const valueNew = new AmauiDate();
+    const valueNew = new OnesyDate();
 
     setDate(valueNew);
 
@@ -298,7 +298,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   }, [onChangeDateProps]);
 
   const onPrevious = React.useCallback(() => {
-    let valueNew = new AmauiDate();
+    let valueNew = new OnesyDate();
 
     setDate(previous => {
       valueNew = remove(1, view, previous);
@@ -310,7 +310,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   }, [view, onChangeDateProps]);
 
   const onNext = React.useCallback(() => {
-    let valueNew = new AmauiDate();
+    let valueNew = new OnesyDate();
 
     setDate(previous => {
       valueNew = add(1, view, previous);
@@ -321,7 +321,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     if (is('function', onChangeDateProps)) onChangeDateProps(valueNew);
   }, [view, onChangeDateProps]);
 
-  const renderDay = React.useCallback((valueCalendarMonth: AmauiDate, propsDay: any, day: any, outside: boolean) => {
+  const renderDay = React.useCallback((valueCalendarMonth: OnesyDate, propsDay: any, day: any, outside: boolean) => {
 
     return (
       <Line
@@ -477,7 +477,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('CalendarViews', theme) && [
-          'amaui-CalendarViews-root'
+          'onesy-CalendarViews-root'
         ],
 
         className,
@@ -493,7 +493,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
         className={classNames([
           staticClassName('CalendarViews', theme) && [
-            'amaui-CalendarViews-header'
+            'onesy-CalendarViews-header'
           ]
         ])}
       >
@@ -655,6 +655,6 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   );
 });
 
-CalendarViews.displayName = 'amaui-CalendarViews';
+CalendarViews.displayName = 'onesy-CalendarViews';
 
 export default CalendarViews;

@@ -2,10 +2,10 @@
 
 ## API
 
-#### AmauiWidgetsContext
+#### OnesyWidgetsContext
 
 ```ts
-const AmauiWidgetsContext: any;
+const OnesyWidgetsContext: any;
 ```
 
 

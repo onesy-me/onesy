@@ -1,20 +1,20 @@
 
 # Style
 
-Provider for `AmauiStyle` instance value.
+Provider for `OnesyStyle` instance value.
 
 ### Use
 
-- By default all plugins are used in a default `AmauiStyle` instance: `unit`, `makeClassName`, `prefix`, `sort`, `rtl`, `valueObject`.
-- If you want to only use specific plugins, or your own instance of `AmauiStyle`, you can provide it as a value to the provider.
-- All of the `AmauiStyle` classes, and plugins are also re-exported from this library, but you can import them directly from `@amaui/style` library as well.
+- By default all plugins are used in a default `OnesyStyle` instance: `unit`, `makeClassName`, `prefix`, `sort`, `rtl`, `valueObject`.
+- If you want to only use specific plugins, or your own instance of `OnesyStyle`, you can provide it as a value to the provider.
+- All of the `OnesyStyle` classes, and plugins are also re-exported from this library, but you can import them directly from `@onesy/style` library as well.
 
 ```tsx
-import { Style, AmauiStyle, unit, sort, prefix } from '@amaui/style-react';
+import { Style, OnesyStyle, unit, sort, prefix } from '@onesy/style-react';
 
 const App = () => {
-  const amauiStyle = React.useMemo(() => {
-    const instance = new AmauiStyle();
+  const onesyStyle = React.useMemo(() => {
+    const instance = new OnesyStyle();
 
     instance.plugins.add = [unit, sort, prefix];
 
@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <Style
-      value={amauiStyle}
+      value={onesyStyle}
     >
       ...
     </Style>
@@ -33,23 +33,23 @@ const App = () => {
 
 ### Update
 
-- You can update the `AmauiStyle` by providing new values to it, but, updating it as an instance reference won't trigger the rerender.
+- You can update the `OnesyStyle` by providing new values to it, but, updating it as an instance reference won't trigger the rerender.
 - You can use new injected method `updateWithRerender` to update it, while triggering the rerender.
-- On `updateWithRerender` new instance of `AmauiStyle` is made, and provided values in this method, are merged with values of the previous `AmauiStyle` instance, as new properties for the new instance.
+- On `updateWithRerender` new instance of `OnesyStyle` is made, and provided values in this method, are merged with values of the previous `OnesyStyle` instance, as new properties for the new instance.
 
 ```tsx
-import { Style, useAmauiStyle, AmauiStyle, unit, sort, prefix } from '@amaui/style-react';
+import { Style, useOnesyStyle, OnesyStyle, unit, sort, prefix } from '@onesy/style-react';
 
 const Button = props => {
-  // useAmauiStyle (useContext) retrieves
+  // useOnesyStyle (useContext) retrieves
   // the nearest Style value
-  const amauiStyle = useAmauiStyle();
+  const onesyStyle = useOnesyStyle();
 
   const onClick = React.useCallback(() => {
-    amauiStyle.updateWithRerender({ a: 114 });
+    onesyStyle.updateWithRerender({ a: 114 });
   }, []);
 
-  console.log(amauiStyle.a);
+  console.log(onesyStyle.a);
 
   // 114
 
@@ -65,8 +65,8 @@ const Button = props => {
 };
 
 const App = () => {
-  const amauiStyle = React.useMemo(() => {
-    const instance = new AmauiStyle();
+  const onesyStyle = React.useMemo(() => {
+    const instance = new OnesyStyle();
 
     instance.plugins.add = [unit, sort, prefix];
 
@@ -75,7 +75,7 @@ const App = () => {
 
   return (
     <Style
-      value={amauiStyle}
+      value={onesyStyle}
     >
       <Button>My button</Button>
     </Style>
@@ -85,17 +85,17 @@ const App = () => {
 
 ### Other
 
-#### useAmauiStyle
+#### useOnesyStyle
 
-- Using `useAmauiStyle` without the `Style` as a parent returns default `StyleContext` value, which is `AmauiStyle` instance with the default options.
+- Using `useOnesyStyle` without the `Style` as a parent returns default `StyleContext` value, which is `OnesyStyle` instance with the default options.
 
 ## API
 
 #### IStyle
 
 ```ts
-interface IStyle extends AmauiStyle {
-    updateWithRerender?: (value: any) => AmauiStyle;
+interface IStyle extends OnesyStyle {
+    updateWithRerender?: (value: any) => OnesyStyle;
 }
 ```
 

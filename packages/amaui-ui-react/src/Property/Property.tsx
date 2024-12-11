@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement, { ILine } from '../Line/Line';
 import TypeElement from '../Type';
@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
   text: {
     wordBreak: 'break-word'
   }
-}), { name: 'amaui-Property' });
+}), { name: 'onesy-Property' });
 
 export interface IProperty extends ILine {
   name?: any;
@@ -57,9 +57,9 @@ export interface IProperty extends ILine {
 }
 
 const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiProperty?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyProperty?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -144,9 +144,9 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Property', theme) && [
-          'amaui-Property-root',
-          `amaui-Property-version-${version}`,
-          `amaui-Property-size-${size}`
+          'onesy-Property-root',
+          `onesy-Property-version-${version}`,
+          `onesy-Property-size-${size}`
         ],
 
         className,
@@ -175,7 +175,7 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Property', theme) && [
-                'amaui-Property-name'
+                'onesy-Property-name'
               ],
 
               ItemProps?.className,
@@ -201,7 +201,7 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Property', theme) && [
-              'amaui-Property-name'
+              'onesy-Property-name'
             ],
 
             ItemProps?.className,
@@ -217,6 +217,6 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Property.displayName = 'amaui-Property';
+Property.displayName = 'onesy-Property';
 
 export default Property;

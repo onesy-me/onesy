@@ -5,16 +5,16 @@ import presetReact from '@babel/preset-react';
 
 import pluginRuntimeTransform from '@babel/plugin-transform-runtime';
 
-import { assert } from '@amaui/test';
+import { assert } from '@onesy/test';
 
-import AmauiBabelPluginReact from '../src';
+import OnesyBabelPluginReact from '../src';
 
-group('@amaui/babel-plugin-react', () => {
+group('@onesy/babel-plugin-react', () => {
 
   to('babel-plugin-react', () => {
     const value = `
 import React from 'react';
-import { style, useTheme } from '@amaui/style-react';
+import { style, useTheme } from '@onesy/style-react';
 
 const useStyle = style({});
 
@@ -103,7 +103,7 @@ function A() {
 
     const { code } = babel.transform(value, {
       presets: [presetEnv, presetReact],
-      plugins: [pluginRuntimeTransform, AmauiBabelPluginReact]
+      plugins: [pluginRuntimeTransform, OnesyBabelPluginReact]
     });
 
     const valueAsserted = `"use strict";
@@ -112,9 +112,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _react = _interopRequireDefault(require("react"));
 
-var _styleReact = require("@amaui/style-react");
+var _styleReact = require("@onesy/style-react");
 
-var amauiStyleReactClassName = require("@amaui/style-react").className;
+var onesyStyleReactClassName = require("@onesy/style-react").className;
 
 var useStyle = (0, _styleReact.style)({});
 
@@ -122,7 +122,7 @@ function A() {
   var a = useStyle();
   var theme = (0, _styleReact.useTheme)();
   return /*#__PURE__*/_react["default"].createElement("a", {
-    className: amauiStyleReactClassName(function (theme) {
+    className: onesyStyleReactClassName(function (theme) {
       return {
         '@keyframes a': {
           '0%': {
@@ -156,14 +156,14 @@ function A() {
       };
     }, a.classNames.a)
   }, "a", /*#__PURE__*/_react["default"].createElement("a", {
-    className: amauiStyleReactClassName({
+    className: onesyStyleReactClassName({
       width: 100,
       'max-width': 100,
       // Simple
       background: '#faa'
     }, a.classNames.a)
   }, "a1"), /*#__PURE__*/_react["default"].createElement("a", {
-    className: amauiStyleReactClassName("\n          width: 100,\n\n          'max-width': 100,\n\n          background: ".concat(theme.palette.primary.main, "\n        "))
+    className: onesyStyleReactClassName("\n          width: 100,\n\n          'max-width': 100,\n\n          background: ".concat(theme.palette.primary.main, "\n        "))
   }, "a14"));
 }`;
 

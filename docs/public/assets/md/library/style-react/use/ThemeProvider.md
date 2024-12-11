@@ -1,16 +1,16 @@
 
 # Theme
 
-Provider for `AmauiTheme` instance value.
+Provider for `OnesyTheme` instance value.
 
 ### Use
 
-- You can simply provide values as an object of `AmauiTheme` allowed values.
-- If you want your own instance of `AmauiTheme`, you can provide it as a value to the provider.
-- All of the `AmauiStyle` classes are also re-exported from this library, but you can import them directly from `@amaui/style` library as well.
+- You can simply provide values as an object of `OnesyTheme` allowed values.
+- If you want your own instance of `OnesyTheme`, you can provide it as a value to the provider.
+- All of the `OnesyStyle` classes are also re-exported from this library, but you can import them directly from `@onesy/style` library as well.
 
 ```tsx
-import { Theme } from '@amaui/style-react';
+import { Theme } from '@onesy/style-react';
 
 const App = () => {
   const value = React.useMemo(() => {
@@ -34,11 +34,11 @@ const App = () => {
 or provide your own instance.
 
 ```tsx
-import { Theme, AmauiTheme } from '@amaui/style-react';
+import { Theme, OnesyTheme } from '@onesy/style-react';
 
 const App = () => {
-  const amauiTheme = React.useMemo(() => {
-    const instance = new AmauiTheme({
+  const onesyTheme = React.useMemo(() => {
+    const instance = new OnesyTheme({
       palette: {
         light: true
       }
@@ -49,7 +49,7 @@ const App = () => {
 
   return (
     <Theme
-      value={amauiTheme}
+      value={onesyTheme}
     >
       ...
     </Theme>
@@ -59,25 +59,25 @@ const App = () => {
 
 ### Update
 
-- You can update the `AmauiTheme` by providing new values to it, but, updating it as an instance reference won't trigger the rerender.
+- You can update the `OnesyTheme` by providing new values to it, but, updating it as an instance reference won't trigger the rerender.
 - You can use new injected method `updateWithRerender` to update it, while triggering the rerender.
-- On `updateWithRerender` new instance of `AmauiTheme` is made, and provided values in this method, are merged with values of the previous `AmauiTheme` instance, as new properties for the new instance.
+- On `updateWithRerender` new instance of `OnesyTheme` is made, and provided values in this method, are merged with values of the previous `OnesyTheme` instance, as new properties for the new instance.
 
 ```tsx
-import { Theme, useAmauiTheme } from '@amaui/style-react';
+import { Theme, useOnesyTheme } from '@onesy/style-react';
 
 const Button = props => {
-  // useAmauiTheme (useContext) retrieves
+  // useOnesyTheme (useContext) retrieves
   // the nearest Theme value
-  const amauiTheme = useAmauiTheme();
+  const onesyTheme = useOnesyTheme();
 
   const onSwitchLight = React.useCallback(() => {
-    amauiTheme.updateWithRerender({
+    onesyTheme.updateWithRerender({
       palette: {
-        light: !amauiTheme.palette.light
+        light: !onesyTheme.palette.light
       }
     });
-  }, [amauiTheme]);
+  }, [onesyTheme]);
 
   return (
     <button
@@ -85,7 +85,7 @@ const Button = props => {
 
       {...props}
     >
-      {!amauiTheme.palette.light ? 'Light' : 'Dark} theme
+      {!onesyTheme.palette.light ? 'Light' : 'Dark} theme
     </button>
   );
 };
@@ -116,7 +116,7 @@ const App = () => {
 Adds all theme important properties as CSS variables into the DOM, by default it's true.
 
 ```tsx
-import { Theme } from '@amaui/style-react';
+import { Theme } from '@onesy/style-react';
 
 const App = () => {
   const value = React.useMemo(() => {
@@ -139,7 +139,7 @@ const App = () => {
 };
 ```
 
-#### AmauiTheme values
+#### OnesyTheme values
 
 ```ts
 {
@@ -941,15 +941,15 @@ const App = () => {
 
 #### Nested themes
 
-If you have `Theme` as a child element of another `Theme`, the child `Theme` will inherit the `AmauiTheme` instance, and add onto it it's own values.
+If you have `Theme` as a child element of another `Theme`, the child `Theme` will inherit the `OnesyTheme` instance, and add onto it it's own values.
 
 ```tsx
-import { Theme, useAmauiTheme } from '@amaui/style-react';
+import { Theme, useOnesyTheme } from '@onesy/style-react';
 
 const Button = () => {
-  const amauiTheme = useAmauiTheme();
+  const onesyTheme = useOnesyTheme();
 
-  console.log(amauiTheme.palette.color.primary.main, amauiTheme.palette.color.secondary.main);
+  console.log(onesyTheme.palette.color.primary.main, onesyTheme.palette.color.secondary.main);
 
   // '#ff0' '#ffa'
 
@@ -1009,9 +1009,9 @@ const App = () => {
 };
 ```
 
-#### useAmauiTheme
+#### useOnesyTheme
 
-- Using `useAmauiTheme` without the `Theme` as a parent returns default `ThemeContext` value, which is `AmauiTheme` instance with the default options.
+- Using `useOnesyTheme` without the `Theme` as a parent returns default `ThemeContext` value, which is `OnesyTheme` instance with the default options.
 
 
 ## API
@@ -1019,8 +1019,8 @@ const App = () => {
 #### IThemeValue
 
 ```ts
-interface IThemeValue extends AmauiThemeRequired {
-    updateWithRerender: (value: IAmauiTheme) => AmauiThemeRequired;
+interface IThemeValue extends OnesyThemeRequired {
+    updateWithRerender: (value: IOnesyTheme) => OnesyThemeRequired;
 }
 ```
 
@@ -1029,7 +1029,7 @@ interface IThemeValue extends AmauiThemeRequired {
 ```ts
 interface ITheme extends React.HTMLAttributes<any> {
     root?: boolean;
-    value?: IAmauiTheme;
+    value?: IOnesyTheme;
     addCssVariables?: boolean;
     children?: any;
 }

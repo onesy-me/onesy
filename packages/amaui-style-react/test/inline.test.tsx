@@ -2,17 +2,17 @@
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 
-import { assert } from '@amaui/test';
+import { assert } from '@onesy/test';
 
 import { evaluate } from '../../../utils/js/test/utils';
 
-import * as AmauiStyleReact from '../src';
+import * as OnesyStyleReact from '../src';
 
-group('@amaui/style-react/inline', () => {
+group('@onesy/style-react/inline', () => {
 
   to('inline', async () => {
     const valueBrowsers = await evaluate(async (window: any) => {
-      const { inline } = window.AmauiStyleReact;
+      const { inline } = window.OnesyStyleReact;
 
       const A = (props) => {
         const style = inline(theme => ({
@@ -45,7 +45,7 @@ group('@amaui/style-react/inline', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         window.document.getElementById('app').innerHTML
@@ -61,7 +61,7 @@ group('@amaui/style-react/inline', () => {
 
   to('i', async () => {
     const valueBrowsers = await evaluate(async (window: any) => {
-      const { i } = window.AmauiStyleReact;
+      const { i } = window.OnesyStyleReact;
 
       const A = (props) => {
         const style = i(theme => ({
@@ -94,7 +94,7 @@ group('@amaui/style-react/inline', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         window.document.getElementById('app').innerHTML
@@ -112,7 +112,7 @@ group('@amaui/style-react/inline', () => {
 
     to('add', async () => {
       const valueBrowsers = await evaluate(async (window: any) => {
-        const { inline } = window.AmauiStyleReact;
+        const { inline } = window.OnesyStyleReact;
 
         const A = (props) => {
           const style = inline(theme => ({
@@ -145,7 +145,7 @@ group('@amaui/style-react/inline', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(140);
+        await window.OnesyUtils.wait(140);
 
         return [
           window.document.getElementById('app').innerHTML
@@ -163,7 +163,7 @@ group('@amaui/style-react/inline', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { inline, useAmauiTheme, AmauiThemeProvider } = window.AmauiStyleReact;
+        const { inline, useOnesyTheme, OnesyThemeProvider } = window.OnesyStyleReact;
 
         const A = (props) => {
           const style = inline(theme => ({
@@ -171,7 +171,7 @@ group('@amaui/style-react/inline', () => {
             backgroundColor: 'orange'
           }));
 
-          const amauiTheme = useAmauiTheme();
+          const onesyTheme = useOnesyTheme();
 
           window.React.useEffect(() => {
             setTimeout(() => {
@@ -179,7 +179,7 @@ group('@amaui/style-react/inline', () => {
             });
 
             setTimeout(() => {
-              amauiTheme.updateWithRerender({
+              onesyTheme.updateWithRerender({
                 palette: {
                   light: false
                 }
@@ -200,11 +200,11 @@ group('@amaui/style-react/inline', () => {
 
           return (
             eval(window.Babel.transform(`
-              <AmauiThemeProvider>
+              <OnesyThemeProvider>
                   <A>a</A>
 
                   <A>a</A>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
           `, { presets: [window.Babel.availablePresets.es2015, window.Babel.availablePresets.react] }).code)
           );
         };
@@ -212,7 +212,7 @@ group('@amaui/style-react/inline', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         window.value.push(window.document.getElementById('app').innerHTML);
 
@@ -222,9 +222,9 @@ group('@amaui/style-react/inline', () => {
       const values = [...valueBrowsers];
 
       values.forEach(value => assert(value).eql([
-        "<div data-amaui-theme=\"true\"><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a></div>",
-        "<div data-amaui-theme=\"true\"><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a></div>",
-        "<div data-amaui-theme=\"true\"><a style=\"color: rgba(255, 255, 255, 0.87); background-color: orange;\">a</a><a style=\"color: rgba(255, 255, 255, 0.87); background-color: orange;\">a</a></div>"
+        "<div data-onesy-theme=\"true\"><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a></div>",
+        "<div data-onesy-theme=\"true\"><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a><a style=\"color: rgba(0, 0, 0, 0.87); background-color: orange;\">a</a></div>",
+        "<div data-onesy-theme=\"true\"><a style=\"color: rgba(255, 255, 255, 0.87); background-color: orange;\">a</a><a style=\"color: rgba(255, 255, 255, 0.87); background-color: orange;\">a</a></div>"
       ]));
     });
 
@@ -232,7 +232,7 @@ group('@amaui/style-react/inline', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { inline } = window.AmauiStyleReact;
+        const { inline } = window.OnesyStyleReact;
 
         const A = (props) => {
           const style = inline(theme => ({
@@ -274,7 +274,7 @@ group('@amaui/style-react/inline', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         window.value.push(window.document.getElementById('app').innerHTML);
 
@@ -293,7 +293,7 @@ group('@amaui/style-react/inline', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { inline } = window.AmauiStyleReact;
+        const { inline } = window.OnesyStyleReact;
 
         const A = (props) => {
           const style = inline(theme => ({
@@ -342,7 +342,7 @@ group('@amaui/style-react/inline', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         return window.value;
       });
@@ -360,9 +360,9 @@ group('@amaui/style-react/inline', () => {
   group('ssr', () => {
 
     to('renderToString', async () => {
-      const { AmauiStyle, AmauiStyleProvider, AmauiThemeProvider, inline } = AmauiStyleReact;
+      const { OnesyStyle, OnesyStyleProvider, OnesyThemeProvider, inline } = OnesyStyleReact;
 
-      const amauiStyle = new AmauiStyle();
+      const onesyStyle = new OnesyStyle();
 
       const A = (props) => {
         const style = inline(theme => ({
@@ -379,13 +379,13 @@ group('@amaui/style-react/inline', () => {
 
       const App = () => {
         return (
-          <AmauiStyleProvider value={amauiStyle}>
-            <AmauiThemeProvider>
+          <OnesyStyleProvider value={onesyStyle}>
+            <OnesyThemeProvider>
               <A a={1}>a</A>
 
               <A>a1</A>
-            </AmauiThemeProvider>
-          </AmauiStyleProvider>
+            </OnesyThemeProvider>
+          </OnesyStyleProvider>
         );
       };
 
@@ -393,7 +393,7 @@ group('@amaui/style-react/inline', () => {
 
       assert(value).eq('<div><div><a style="background-color:orange;color:yellow">a</a><a style="background-color:orange;color:orange">a1</a></div></div>');
 
-      assert(amauiStyle.css).eq(``);
+      assert(onesyStyle.css).eq(``);
     });
 
   });

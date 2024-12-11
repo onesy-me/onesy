@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, colorToRgb, is, rgbToHex } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, colorToRgb, is, rgbToHex } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import TextFieldElement from '../TextField';
@@ -12,7 +12,7 @@ import { ITextField } from '../TextField/TextField';
 import { staticClassName } from '../utils';
 
 const SliderInput = React.forwardRef((props: any, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const FormRow = React.useMemo(() => theme?.elements?.FormRow || FormRowElement, [theme]);
 
@@ -140,7 +140,7 @@ const useStyle = styleMethod(theme => ({
       border: 'none'
     }
   }
-}), { name: 'amaui-ColorTextField' });
+}), { name: 'onesy-ColorTextField' });
 
 export interface IColorTextField extends ITextField {
   name?: any;
@@ -157,9 +157,9 @@ export interface IColorTextField extends ITextField {
 }
 
 const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiColorTextField?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColorTextField?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -303,7 +303,7 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
 
           className={classNames([
             staticClassName('ColorTextField', theme) && [
-              'amaui-ColorTextField-input-color'
+              'onesy-ColorTextField-input-color'
             ],
 
             classes.inputColor
@@ -313,9 +313,9 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
 
       className={classNames([
         staticClassName('ColorTextField', theme) && [
-          'amaui-ColorTextField-root',
-          `amaui-ColorTextField-version-${version}`,
-          `amaui-ColorTextField-size-${size}`
+          'onesy-ColorTextField-root',
+          `onesy-ColorTextField-version-${version}`,
+          `onesy-ColorTextField-size-${size}`
         ],
 
         classes.root
@@ -363,6 +363,6 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
   return root;
 });
 
-ColorTextField.displayName = 'amaui-ColorTextField';
+ColorTextField.displayName = 'onesy-ColorTextField';
 
 export default ColorTextField;

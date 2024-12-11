@@ -1,12 +1,12 @@
 
-# AmauiStyleSheet
+# OnesyStyleSheet
 
 Used to encapsulate all of the different made selectors, and their values.
 
 ### Use
 
 ```ts
-const amauiStyleSheetStatic = new AmauiStyleSheet({
+const onesyStyleSheetStatic = new OnesyStyleSheet({
   a: {
     width: 1114
   },
@@ -16,7 +16,7 @@ const amauiStyleSheetStatic = new AmauiStyleSheet({
   }
 }, options);
 
-const amauiStyleSheetDynamic = new AmauiStyleSheet({
+const onesyStyleSheetDynamic = new OnesyStyleSheet({
   a14: {
     background: props => props.a === 1 ? 'yellow' : 'beige'
   }
@@ -27,21 +27,21 @@ const amauiStyleSheetDynamic = new AmauiStyleSheet({
 
 #### Static
 
-Static `AmauiStyleSheet` will have all the `AmauiStyleRule`'s with static `AmauiStyleRuleProperty`'s values.
+Static `OnesyStyleSheet` will have all the `OnesyStyleRule`'s with static `OnesyStyleRuleProperty`'s values.
 
 #### Dynamic
 
-Dynamic `AmauiStyleSheet` will have all the `AmauiStyleRule`'s with dynamic `AmauiStyleRuleProperty`'s values.
+Dynamic `OnesyStyleSheet` will have all the `OnesyStyleRule`'s with dynamic `OnesyStyleRuleProperty`'s values.
 
 ### Methods
 
 #### response
 
-Returns in an object with css property's value entire css generated from all the `AmauiStyleRule`'s.
+Returns in an object with css property's value entire css generated from all the `OnesyStyleRule`'s.
 
 #### css
 
-Returns in a string value entire css generated from all the `AmauiStyleRule`'s.
+Returns in a string value entire css generated from all the `OnesyStyleRule`'s.
 
 #### add
 
@@ -49,26 +49,26 @@ Adds the made selectors & their values to the DOM.
 
 #### update
 
-Updates the entire `AmauiStyleSheet` with new rules.
+Updates the entire `OnesyStyleSheet` with new rules.
 
-Based on the value provided, it will add new `AmauiStyleRule`'s, update existing ones, and remove ones that currently exist, but are not part of the new value.
+Based on the value provided, it will add new `OnesyStyleRule`'s, update existing ones, and remove ones that currently exist, but are not part of the new value.
 
 #### props
 
-Updates the props, and triggers updates for all `AmauiStyleRule`'s `AmauiStyleRuleProperty`'s with dynamic values of type method.
+Updates the props, and triggers updates for all `OnesyStyleRule`'s `OnesyStyleRuleProperty`'s with dynamic values of type method.
 
 ```ts
-const amauiStyleSheet = new AmauiStyleSheet(value, options);
+const onesyStyleSheet = new OnesyStyleSheet(value, options);
 
 // Updates props
-amauiStyleSheet.props = {
+onesyStyleSheet.props = {
   a: 114
 };
 ```
 
 #### remove
 
-Removes the `AmauiStyleSheet` from the DOM.
+Removes the `OnesyStyleSheet` from the DOM.
 
 ## API
 
@@ -103,9 +103,9 @@ interface IOptions {
     mode?: TMode;
     pure?: boolean;
     priority?: TPriority;
-    amauiTheme?: AmauiTheme;
-    amauiStyleSheetManager?: AmauiStyleSheetManager;
-    amauiStyle?: AmauiStyle;
+    onesyTheme?: OnesyTheme;
+    onesyStyleSheetManager?: OnesyStyleSheetManager;
+    onesyStyle?: OnesyStyle;
     props?: any;
     style?: IOptionsStyle;
     rule?: IOptionsRule;
@@ -113,10 +113,10 @@ interface IOptions {
 }
 ```
 
-#### AmauiStyleSheet
+#### OnesyStyleSheet
 
 ```ts
-class AmauiStyleSheet {
+class OnesyStyleSheet {
     value?: TValueObject;
     options: IOptions;
     id: string;
@@ -124,9 +124,9 @@ class AmauiStyleSheet {
     mode: TMode;
     pure: boolean;
     priority: TPriority;
-    amauiTheme: AmauiTheme;
-    amauiStyleSheetManager: AmauiStyleSheetManager;
-    amauiStyle: AmauiStyle;
+    onesyTheme: OnesyTheme;
+    onesyStyleSheetManager: OnesyStyleSheetManager;
+    onesyStyle: OnesyStyle;
     status: TStatus;
     element: HTMLStyleElement;
     sheet: CSSStyleSheet;
@@ -164,12 +164,12 @@ class AmauiStyleSheet {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Style: AmauiStyleRuleProperty",
-      "to": "/library/style/use/AmauiStyleRuleProperty"
+      "label": "Style: OnesyStyleRuleProperty",
+      "to": "/library/style/use/OnesyStyleRuleProperty"
     },
     "next": {
-      "label": "Style: AmauiStyleSheetManager",
-      "to": "/library/style/use/AmauiStyleSheetManager"
+      "label": "Style: OnesyStyleSheetManager",
+      "to": "/library/style/use/OnesyStyleSheetManager"
     }
   }
 }~

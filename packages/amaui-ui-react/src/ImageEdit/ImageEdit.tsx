@@ -1,23 +1,23 @@
 import React from 'react';
 
-import { is, to, clamp, debounce, canvasCrop, download as downloadMethod, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { TMethod } from '@amaui/models';
+import { is, to, clamp, debounce, canvasCrop, download as downloadMethod, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { TMethod } from '@onesy/models';
 
-import IconMaterialDone from '@amaui/icons-material-rounded-react/IconMaterialDoneW100';
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
-import IconMaterialTune from '@amaui/icons-material-rounded-react/IconMaterialTuneW100';
-import IconMaterialCrop from '@amaui/icons-material-rounded-react/IconMaterialCropW100';
-import IconMaterialAspectRatio from '@amaui/icons-material-rounded-react/IconMaterialAspectRatioW100';
-import IconMaterialHighQuality from '@amaui/icons-material-rounded-react/IconMaterialHighQualityW100';
-import IconMaterialClearAll from '@amaui/icons-material-rounded-react/IconMaterialClearAllW100';
-import IconMaterialDownload from '@amaui/icons-material-rounded-react/IconMaterialDownloadW100';
-import IconMaterialCloud from '@amaui/icons-material-rounded-react/IconMaterialCloudW100';
-import IconMaterialWaterDrop from '@amaui/icons-material-rounded-react/IconMaterialWaterDropW100';
-import IconMaterialFlaky from '@amaui/icons-material-rounded-react/IconMaterialFlakyW100';
-import IconMaterialWbSunny from '@amaui/icons-material-rounded-react/IconMaterialWbSunnyW100';
-import IconMaterialTonality from '@amaui/icons-material-rounded-react/IconMaterialTonalityW100';
-import IconMaterialNightlight from '@amaui/icons-material-rounded-react/IconMaterialNightlightW100';
+import IconMaterialDone from '@onesy/icons-material-rounded-react/IconMaterialDoneW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialTune from '@onesy/icons-material-rounded-react/IconMaterialTuneW100';
+import IconMaterialCrop from '@onesy/icons-material-rounded-react/IconMaterialCropW100';
+import IconMaterialAspectRatio from '@onesy/icons-material-rounded-react/IconMaterialAspectRatioW100';
+import IconMaterialHighQuality from '@onesy/icons-material-rounded-react/IconMaterialHighQualityW100';
+import IconMaterialClearAll from '@onesy/icons-material-rounded-react/IconMaterialClearAllW100';
+import IconMaterialDownload from '@onesy/icons-material-rounded-react/IconMaterialDownloadW100';
+import IconMaterialCloud from '@onesy/icons-material-rounded-react/IconMaterialCloudW100';
+import IconMaterialWaterDrop from '@onesy/icons-material-rounded-react/IconMaterialWaterDropW100';
+import IconMaterialFlaky from '@onesy/icons-material-rounded-react/IconMaterialFlakyW100';
+import IconMaterialWbSunny from '@onesy/icons-material-rounded-react/IconMaterialWbSunnyW100';
+import IconMaterialTonality from '@onesy/icons-material-rounded-react/IconMaterialTonalityW100';
+import IconMaterialNightlight from '@onesy/icons-material-rounded-react/IconMaterialNightlightW100';
 
 import TypeElement from '../Type';
 import SurfaceElement from '../Surface';
@@ -61,7 +61,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0px'
     }
   },
@@ -111,12 +111,12 @@ const useStyle = styleMethod(theme => ({
   },
 
   optionInput: {
-    '& .amaui-TextField-input-wrapper': {
+    '& .onesy-TextField-input-wrapper': {
       padding: '0px',
       height: 'auto'
     },
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       textAlign: 'center'
     }
   },
@@ -138,7 +138,7 @@ const useStyle = styleMethod(theme => ({
   slider: {
     width: '100%'
   }
-}), { name: 'amaui-ImageEdit' });
+}), { name: 'onesy-ImageEdit' });
 
 export type TImageEditFilter = {
   label?: string;
@@ -218,9 +218,9 @@ export interface IImageEdit extends ILine {
 }
 
 const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiImageEdit?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageEdit?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -250,7 +250,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
     image,
 
-    name = 'amaui-image.jpg',
+    name = 'onesy-image.jpg',
     type = 'image/jpeg',
 
     openDefault,
@@ -863,7 +863,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-slider'
+              'onesy-ImageEdit-slider'
             ],
 
             SliderProps.className,
@@ -934,7 +934,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-slider'
+              'onesy-ImageEdit-slider'
             ],
 
             SliderProps.className,
@@ -1005,7 +1005,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-slider'
+              'onesy-ImageEdit-slider'
             ],
 
             SliderProps.className,
@@ -1075,7 +1075,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-slider'
+              'onesy-ImageEdit-slider'
             ],
 
             SliderProps.className,
@@ -1145,7 +1145,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-slider'
+              'onesy-ImageEdit-slider'
             ],
 
             SliderProps.className,
@@ -1216,7 +1216,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-slider'
+              'onesy-ImageEdit-slider'
             ],
 
             SliderProps.className,
@@ -1308,8 +1308,8 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('ImageEdit', theme) && [
-          'amaui-ImageEdit-root',
-          `amaui-ImageEdit-size-${size}`
+          'onesy-ImageEdit-root',
+          `onesy-ImageEdit-size-${size}`
         ],
 
         className,
@@ -1329,7 +1329,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('ImageEdit', theme) && [
-            'amaui-ImageEdit-image-wrapper'
+            'onesy-ImageEdit-image-wrapper'
           ],
 
           classes.imageWrapper
@@ -1338,7 +1338,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
         <div
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-canvas-wrapper'
+              'onesy-ImageEdit-canvas-wrapper'
             ],
 
             classes.canvasWrapper
@@ -1349,8 +1349,8 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('ImageEdit', theme) && [
-                'amaui-ImageEdit-canvas',
-                'amaui-ImageEdit-canvas-main'
+                'onesy-ImageEdit-canvas',
+                'onesy-ImageEdit-canvas-main'
               ],
 
               classes.canvas,
@@ -1370,7 +1370,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('ImageEdit', theme) && [
-                  'amaui-ImageEdit-image-crop'
+                  'onesy-ImageEdit-image-crop'
                 ],
 
                 ImageCropProps.className,
@@ -1405,7 +1405,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('ImageEdit', theme) && [
-                'amaui-ImageEdit-option'
+                'onesy-ImageEdit-option'
               ],
 
               classes.option
@@ -1442,7 +1442,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('ImageEdit', theme) && [
-                    'amaui-ImageEdit-filters'
+                    'onesy-ImageEdit-filters'
                   ],
 
                   classes.filters
@@ -1513,7 +1513,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
                       className={classNames([
                         staticClassName('ImageEdit', theme) && [
-                          'amaui-ImageEdit-option-input'
+                          'onesy-ImageEdit-option-input'
                         ],
 
                         classes.optionInput
@@ -1551,7 +1551,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
                       className={classNames([
                         staticClassName('ImageEdit', theme) && [
-                          'amaui-ImageEdit-option-input'
+                          'onesy-ImageEdit-option-input'
                         ],
 
                         classes.optionInput
@@ -1576,7 +1576,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('ImageEdit', theme) && [
-                    'amaui-ImageEdit-inputs'
+                    'onesy-ImageEdit-inputs'
                   ],
 
                   classes.inputs
@@ -1669,7 +1669,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('ImageEdit', theme) && [
-                      'amaui-ImageEdit-slider'
+                      'onesy-ImageEdit-slider'
                     ],
 
                     SliderProps.className,
@@ -1700,7 +1700,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('ImageEdit', theme) && [
-                      'amaui-ImageEdit-option-input'
+                      'onesy-ImageEdit-option-input'
                     ],
 
                     classes.optionInput
@@ -1724,7 +1724,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('ImageEdit', theme) && [
-                  'amaui-ImageEdit-action'
+                  'onesy-ImageEdit-action'
                 ],
 
                 classes.action
@@ -1773,7 +1773,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('ImageEdit', theme) && [
-                'amaui-ImageEdit-divider'
+                'onesy-ImageEdit-divider'
               ],
 
               classes.divider
@@ -1790,7 +1790,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-options'
+              'onesy-ImageEdit-options'
             ],
 
             classes.options
@@ -1883,7 +1883,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-divider'
+              'onesy-ImageEdit-divider'
             ],
 
             classes.divider
@@ -1901,7 +1901,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ImageEdit', theme) && [
-              'amaui-ImageEdit-meta'
+              'onesy-ImageEdit-meta'
             ],
 
             classes.meta
@@ -1930,6 +1930,6 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-ImageEdit.displayName = 'amaui-ImageEdit';
+ImageEdit.displayName = 'onesy-ImageEdit';
 
 export default ImageEdit;

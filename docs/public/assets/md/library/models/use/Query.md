@@ -1,11 +1,11 @@
 
 # Query
 
-Used to create a `Query` instance that you can pass into `@amaui/mongo` methods to perform the queries.
+Used to create a `Query` instance that you can pass into `@onesy/mongo` methods to perform the queries.
 
 The main idea about it is:
 - You can use the `fromRequest` static method to create a new `Query` instance from the request.
-- In the new instance you can manually add to `query.queries.api` or `query.queries.permissions` new filter items, that `@amaui/mongo`'s methods will utilize to add onto the user query, ie. if you want to attach permission query onto the user query, to only give the user ability to see stuff he has permission to, etc.
+- In the new instance you can manually add to `query.queries.api` or `query.queries.permissions` new filter items, that `@onesy/mongo`'s methods will utilize to add onto the user query, ie. if you want to attach permission query onto the user query, to only give the user ability to see stuff he has permission to, etc.
 - All other defaults, or query specific values, ie. `limit`, `sort`, `projection`, `total`, etc.
 
 ### Properties

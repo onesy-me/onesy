@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ListItemElement from '../ListItem';
 import { IListItem } from '../ListItem/ListItem';
@@ -13,20 +13,20 @@ const useStyle = styleMethod(theme => ({
     zIndex: '1',
     userSelect: 'none',
 
-    '& .amaui-Type-root': {
+    '& .onesy-Type-root': {
       fontWeight: 'bold',
     }
   }
-}), { name: 'amaui-ListSubheader' });
+}), { name: 'onesy-ListSubheader' });
 
 export interface IListSubheader extends IListItem {
 
 }
 
 const ListSubheader: React.FC<IListSubheader> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiListSubheader?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyListSubheader?.props?.default, ...props_ }), [props_]);
 
   const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
 
@@ -48,7 +48,7 @@ const ListSubheader: React.FC<IListSubheader> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('ListSubheader', theme) && [
-          'amaui-ListSubheader-root'
+          'onesy-ListSubheader-root'
         ],
 
         className,
@@ -60,6 +60,6 @@ const ListSubheader: React.FC<IListSubheader> = React.forwardRef((props_, ref: a
   );
 });
 
-ListSubheader.displayName = 'amaui-ListSubheader';
+ListSubheader.displayName = 'onesy-ListSubheader';
 
 export default ListSubheader;

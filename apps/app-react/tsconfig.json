@@ -1,37 +1,47 @@
- {
-   "compilerOptions": {
-     "target": "es5",
-     "lib": [
-       "dom",
-       "dom.iterable",
-       "esnext"
-     ],
-     "allowJs": true,
-     "skipLibCheck": true,
-     "esModuleInterop": true,
-     "allowSyntheticDefaultImports": true,
-     "strict": true,
-     "forceConsistentCasingInFileNames": true,
-     "noFallthroughCasesInSwitch": true,
-     "module": "esnext",
-     "moduleResolution": "node",
-     "resolveJsonModule": true,
-     "isolatedModules": true,
-     "noEmit": true,
-     "jsx": "react-jsx",
-     "checkJs": false,
-     "paths": {
-       "@amaui/style-react": ["../../packages/amaui-style-react/src"],
-       "@amaui/style-react/*": ["../../packages/amaui-style-react/src/*"],
-
-       "@amaui/icons-material-react": ["../../packages/amaui-icons-material-react/src"],
-       "@amaui/icons-material-react/*": ["../../packages/amaui-icons-material-react/src/*"],
-
-       "@amaui/ui-react": ["../../packages/amaui-ui-react/src"],
-       "@amaui/ui-react/*": ["../../packages/amaui-ui-react/src/*"]
-     }
-   },
-   "include": [
-     "src"
-   ]
- }
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "checkJs": false,
+    "paths": {
+      "@onesy/style-react": [
+        "../../packages/onesy-style-react/src"
+      ],
+      "@onesy/style-react/*": [
+        "../../packages/onesy-style-react/src/*"
+      ],
+      "@onesy/icons-material-react": [
+        "../../packages/onesy-icons-material-react/src"
+      ],
+      "@onesy/icons-material-react/*": [
+        "../../packages/onesy-icons-material-react/src/*"
+      ],
+      "@onesy/ui-react": [
+        "../../packages/onesy-ui-react/src"
+      ],
+      "@onesy/ui-react/*": [
+        "../../packages/onesy-ui-react/src/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

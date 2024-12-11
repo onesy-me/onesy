@@ -1,5 +1,5 @@
 
-# amaui log
+# onesy log
 
 Logging utils for front end & back end.
 
@@ -9,17 +9,17 @@ Add prefix to your log lines, to easier find when some log lines happened when d
 ### Add
 
 ```sh
-yarn add @amaui/log
+yarn add @onesy/log
 ```
 
 ### Use
 
 ```ts
-import AmauiLog from '@amaui/log';
+import OnesyLog from '@onesy/log';
 
 // Make a new log instance
 // with an optional options value
-const amauiLog = new AmauiLog({
+const onesyLog = new OnesyLog({
   arguments: {
     pre: [
       'Mongo'
@@ -28,7 +28,7 @@ const amauiLog = new AmauiLog({
 });
 
 // Log any array of values
-amauiLog.info('Collection: A', 'Response: 40ms');
+onesyLog.info('Collection: A', 'Response: 40ms');
 
 // Output
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SnackbarElement from '../Snackbar';
 import SlideElement from '../Slide';
@@ -31,7 +31,7 @@ const useStyle = styleMethod(theme => ({
   position_top: {
     top: '24px',
 
-    '& .amaui-Snackbar-root': {
+    '& .onesy-Snackbar-root': {
       marginBottom: '16px'
     }
   },
@@ -39,7 +39,7 @@ const useStyle = styleMethod(theme => ({
   position_bottom: {
     bottom: '24px',
 
-    '& .amaui-Snackbar-root': {
+    '& .onesy-Snackbar-root': {
       marginTop: '16px'
     }
   },
@@ -69,7 +69,7 @@ const useStyle = styleMethod(theme => ({
     insetInlineEnd: '24px',
     insetInlineStart: 'auto'
   }
-}), { name: 'amaui-Snackbars' });
+}), { name: 'onesy-Snackbars' });
 
 export interface ISnackbars extends IBaseElement {
   max?: number;
@@ -80,9 +80,9 @@ export interface ISnackbars extends IBaseElement {
 }
 
 const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSnackbars?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySnackbars?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -273,7 +273,7 @@ const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Snackbars', theme) && [
-            `amaui-Snackbars-root`
+            `onesy-Snackbars-root`
           ],
 
           className,
@@ -331,6 +331,6 @@ const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Snackbars.displayName = 'amaui-Snackbars';
+Snackbars.displayName = 'onesy-Snackbars';
 
 export default Snackbars;

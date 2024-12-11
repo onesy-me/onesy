@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -11,7 +11,7 @@ const useStyle = styleMethod(theme => ({
   root: {
     padding: theme.methods.space.value(3, 'px')
   }
-}), { name: 'amaui-CardFooter' });
+}), { name: 'onesy-CardFooter' });
 
 export interface ICardFooter extends ILine {
   tonal?: ITonal;
@@ -21,9 +21,9 @@ export interface ICardFooter extends ILine {
 }
 
 const CardFooter: React.FC<ICardFooter> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCardFooter?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardFooter?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -64,7 +64,7 @@ const CardFooter: React.FC<ICardFooter> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('CardFooter', theme) && [
-          `amaui-CardFooter-root`
+          `onesy-CardFooter-root`
         ],
 
         className,
@@ -78,6 +78,6 @@ const CardFooter: React.FC<ICardFooter> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-CardFooter.displayName = 'amaui-CardFooter';
+CardFooter.displayName = 'onesy-CardFooter';
 
 export default CardFooter;

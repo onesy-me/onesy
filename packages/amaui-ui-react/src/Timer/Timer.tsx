@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { is, getLeadingZerosNumber } from '@amaui/utils';
-import { AmauiDate, duration } from '@amaui/date';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, getLeadingZerosNumber } from '@onesy/utils';
+import { OnesyDate, duration } from '@onesy/date';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialTimer from '@amaui/icons-material-rounded-react/IconMaterialTimerW100';
-import IconMaterialPlayArrow from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
-import IconMaterialPause from '@amaui/icons-material-rounded-react/IconMaterialPauseW100';
-import IconMaterialStop from '@amaui/icons-material-rounded-react/IconMaterialStopW100';
-import IconMaterialFlag from '@amaui/icons-material-rounded-react/IconMaterialFlagW100';
+import IconMaterialTimer from '@onesy/icons-material-rounded-react/IconMaterialTimerW100';
+import IconMaterialPlayArrow from '@onesy/icons-material-rounded-react/IconMaterialPlayArrowW100';
+import IconMaterialPause from '@onesy/icons-material-rounded-react/IconMaterialPauseW100';
+import IconMaterialStop from '@onesy/icons-material-rounded-react/IconMaterialStopW100';
+import IconMaterialFlag from '@onesy/icons-material-rounded-react/IconMaterialFlagW100';
 
 import FadeElement from '../Fade';
 import ExpandElement from '../Expand';
@@ -52,7 +52,7 @@ const useStyle = styleMethod(theme => ({
   actions: {
     marginTop: '8px'
   }
-}), { name: 'amaui-Timer' });
+}), { name: 'onesy-Timer' });
 
 export interface ITimer extends ISurface {
   renderValue?: (value: string) => any;
@@ -78,9 +78,9 @@ export interface ITimer extends ISurface {
 }
 
 const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTimer?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimer?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -159,13 +159,13 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
   }, []);
 
   const update = () => {
-    setValue(refs.valuePaused.current + (AmauiDate.milliseconds - refs.start.current));
+    setValue(refs.valuePaused.current + (OnesyDate.milliseconds - refs.start.current));
 
     refs.animationFrame.current = requestAnimationFrame(update);
   };
 
   const onStart = React.useCallback((event: React.MouseEvent<any>) => {
-    refs.start.current = AmauiDate.milliseconds;
+    refs.start.current = OnesyDate.milliseconds;
 
     // ~60+ fps
     refs.animationFrame.current = requestAnimationFrame(update);
@@ -217,7 +217,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
     refs.animationFrame.current = requestAnimationFrame(update);
 
     // Update start, valuePaused value
-    refs.start.current = AmauiDate.milliseconds;
+    refs.start.current = OnesyDate.milliseconds;
 
     setStatus('running');
 
@@ -302,7 +302,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Timer', theme) && [
-          'amaui-Timer-root'
+          'onesy-Timer-root'
         ],
 
         className,
@@ -333,7 +333,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Timer', theme) && [
-              'amaui-Timer-value'
+              'onesy-Timer-value'
             ],
 
             classes.value
@@ -353,7 +353,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Timer', theme) && [
-            'amaui-Timer-flags-wrapper'
+            'onesy-Timer-flags-wrapper'
           ],
 
           classes.flags_wrapper
@@ -382,7 +382,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
                   TreeProps={{
                     className: classNames([
                       staticClassName('Timer', theme) && [
-                        'amaui-Timer-flags'
+                        'onesy-Timer-flags'
                       ],
 
                       classes.flags
@@ -467,7 +467,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Timer', theme) && [
-            'amaui-Timer-actions'
+            'onesy-Timer-actions'
           ],
 
           classes.actions
@@ -582,6 +582,6 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Timer.displayName = 'amaui-Timer';
+Timer.displayName = 'onesy-Timer';
 
 export default Timer;

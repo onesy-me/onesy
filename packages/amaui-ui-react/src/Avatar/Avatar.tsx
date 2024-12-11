@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ButtonElement from '../Button';
 import TypeElement from '../Type';
 import { IButton } from '../Button/Button';
 import { staticClassName } from '../utils';
 import { IElevation, IPropsAny } from '../types';
-import { stringToColor } from '@amaui/utils';
+import { stringToColor } from '@onesy/utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       cursor: 'default',
       overflow: 'hidden',
       borderRadius: theme.methods.shape.radius.value(40, 'px')
@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
   image: {
     objectFit: 'cover'
   }
-}), { name: 'amaui-Avatar' });
+}), { name: 'onesy-Avatar' });
 
 export interface IAvatar extends Omit<IButton, 'elevation'> {
   image?: string;
@@ -46,9 +46,9 @@ export interface IAvatar extends Omit<IButton, 'elevation'> {
 }
 
 const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAvatar?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAvatar?.props?.default, ...props_ }), [props_]);
 
   const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
 
@@ -157,9 +157,9 @@ const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
 
       className={classNames([
         staticClassName('Avatar', theme) && [
-          'amaui-Avatar-root',
-          `amaui-Avatar-version-${version}`,
-          `amaui-Avatar-size-${size}`
+          'onesy-Avatar-root',
+          `onesy-Avatar-version-${version}`,
+          `onesy-Avatar-size-${size}`
         ],
 
         className,
@@ -174,6 +174,6 @@ const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
   );
 });
 
-Avatar.displayName = 'amaui-Avatar';
+Avatar.displayName = 'onesy-Avatar';
 
 export default Avatar;

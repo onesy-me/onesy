@@ -1,7 +1,7 @@
 
 # Mongo
 
-Main `@amaui/mongo` class for making, managing the connection to the mongodb.
+Main `@onesy/mongo` class for making, managing the connection to the mongodb.
 
 ### Options
 
@@ -129,7 +129,7 @@ Mongo.defaults.limitCount = Number.MAX_SAFE_INTEGER;
 
 #### subscription
 
-Using `@amaui/subscription`, you can subscribe for various values.
+Using `@onesy/subscription`, you can subscribe for various values.
 
 - 'connected'
 - 'disconnected'
@@ -172,7 +172,7 @@ class Mongo {
     private amalog;
     private options_;
     collections: Array<mongodb.CollectionInfo>;
-    subscription: AmauiSubscription;
+    subscription: OnesySubscription;
     static defaults: IDefaults;
     get options(): IMongoOptions;
     set options(options: IMongoOptions);

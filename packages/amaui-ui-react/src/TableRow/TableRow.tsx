@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
 import { ISize } from '../types';
 import { staticClassName } from '../utils';
-import { is } from '@amaui/utils';
+import { is } from '@onesy/utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -16,18 +16,18 @@ const useStyle = styleMethod(theme => ({
 
   hover: {
     '&:hover': {
-      '& .amaui-TableCell-root::before': {
+      '& .onesy-TableCell-root::before': {
         opacity: theme.palette.visual_contrast.default.opacity.hover
       }
     }
   },
 
   selected: {
-    '& .amaui-TableCell-root::before': {
+    '& .onesy-TableCell-root::before': {
       opacity: [theme.palette.visual_contrast.default.opacity.selected, '!important']
     }
   }
-}), { name: 'amaui-TableRow' });
+}), { name: 'onesy-TableRow' });
 
 export interface ITableRow extends ISurface {
   size?: ISize;
@@ -38,9 +38,9 @@ export interface ITableRow extends ISurface {
 }
 
 const TableRow: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTableRow?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableRow?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -78,10 +78,10 @@ const TableRow: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('TableRow', theme) && [
-          `amaui-TableRow-root`,
-          `amaui-TableRow-size-${size}`,
-          (hover && position === 'body') && `amaui-TableRow-hover`,
-          selected && `amaui-TableRow-selected`
+          `onesy-TableRow-root`,
+          `onesy-TableRow-size-${size}`,
+          (hover && position === 'body') && `onesy-TableRow-hover`,
+          selected && `onesy-TableRow-selected`
         ],
 
         className,
@@ -111,6 +111,6 @@ const TableRow: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-TableRow.displayName = 'amaui-TableRow';
+TableRow.displayName = 'onesy-TableRow';
 
 export default TableRow;

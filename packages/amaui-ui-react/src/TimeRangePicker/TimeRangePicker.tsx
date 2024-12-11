@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TimePickerElement from '../TimePicker';
 import { ITimePicker } from '../TimePicker/TimePicker';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-TimeRangePicker' });
+}), { name: 'onesy-TimeRangePicker' });
 
 export interface ITimeRangePicker extends ITimePicker {
 
 }
 
 const TimeRangePicker: React.FC<ITimeRangePicker> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTimeRangePicker?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimeRangePicker?.props?.default, ...props_ }), [props_]);
 
   const TimePicker = React.useMemo(() => theme?.elements?.TimePicker || TimePickerElement, [theme]);
 
@@ -39,7 +39,7 @@ const TimeRangePicker: React.FC<ITimeRangePicker> = React.forwardRef((props_, re
 
       className={classNames([
         staticClassName('TimeRangePicker', theme) && [
-          'amaui-TimeRangePicker-root'
+          'onesy-TimeRangePicker-root'
         ],
 
         className,
@@ -51,6 +51,6 @@ const TimeRangePicker: React.FC<ITimeRangePicker> = React.forwardRef((props_, re
   );
 });
 
-TimeRangePicker.displayName = 'amaui-TimeRangePicker';
+TimeRangePicker.displayName = 'onesy-TimeRangePicker';
 
 export default TimeRangePicker;

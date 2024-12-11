@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, TMethod, setObjectValue } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, TMethod, setObjectValue } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ButtonElement from '../Button';
 import ConfirmContext from './Context';
@@ -48,26 +48,26 @@ export interface IConfirmValue {
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '& .amaui-ModalMain-root': {
+    '& .onesy-ModalMain-root': {
       padding: `6px 0 10px`
     },
 
-    '& .amaui-ModalFooter-root': {
+    '& .onesy-ModalFooter-root': {
       padding: `12px 0 12px`
     },
 
-    '& .amaui-Modal-background:not(.amaui-Modal-background-invisible)': {
+    '& .onesy-Modal-background:not(.onesy-Modal-background-invisible)': {
       background: theme.methods.palette.color.colorToRgb(theme.methods.palette.color.value('default', 10), theme.palette.light ? 20 : 40)
     }
   },
 
   surface: {
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: theme.palette.color.primary[theme.palette.light ? 99 : 5],
       paddingBottom: '8px'
     }
   }
-}), { name: 'amaui-Confirm' });
+}), { name: 'onesy-Confirm' });
 
 export interface IConfirm extends IBaseElement {
   throwError?: boolean;
@@ -78,9 +78,9 @@ export interface IConfirm extends IBaseElement {
 }
 
 const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiConfirm?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyConfirm?.props?.default, ...props_ }), [props_]);
 
   const ModalHeader = React.useMemo(() => theme?.elements?.ModalHeader || ModalHeaderElement, [theme]);
 
@@ -217,7 +217,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Confirm', theme) && [
-            `amaui-Confirm-root`
+            `onesy-Confirm-root`
           ],
 
           className,
@@ -289,6 +289,6 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Confirm.displayName = 'amaui-Confirm';
+Confirm.displayName = 'onesy-Confirm';
 
 export default Confirm;

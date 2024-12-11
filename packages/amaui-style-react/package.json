@@ -1,8 +1,8 @@
 {
-  "name": "@amaui/style-react",
+  "name": "@onesy/style-react",
   "version": "1.1.35",
-  "description": "Amaui CSS in JS styling solution for React",
-  "repository": "https://github.com/amaui-org/amaui.git",
+  "description": "Onesy CSS in JS styling solution for React",
+  "repository": "https://github.com/onesy-org/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -30,7 +30,7 @@
     "node",
     "nodejs",
     "library",
-    "amaui",
+    "onesy",
     "utils"
   ],
   "scripts": {
@@ -39,7 +39,7 @@
     "release": "yarn build && yarn version --patch --no-git-tag-version && yarn build && cd ./build && npm publish",
     "lint": "tslint -c ../../tslint.json -p tsconfig.json",
     "type": "tsc --noEmit -p tsconfig.json",
-    "cov": "cross-env NODE_ENV=test amaui-test",
+    "cov": "cross-env NODE_ENV=test onesy-test",
     "test:pre": "pm2 update && pm2 delete all && pm2 start ../../utils/js/test/app.js && wait-on http://localhost:4000",
     "test:post": "pm2 delete all",
     "test": "yarn lint && yarn type && yarn build && yarn test:pre && yarn cov && yarn test:post"
@@ -48,8 +48,8 @@
     "react": "^18.1.0"
   },
   "dependencies": {
-    "@amaui/style": "^1.1.21",
-    "@amaui/utils": "^1.1.40"
+    "@onesy/style": "^1.1.21",
+    "@onesy/utils": "^1.1.40"
   },
   "publishConfig": {
     "access": "public",

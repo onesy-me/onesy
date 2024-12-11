@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialSmartphone from '@amaui/icons-material-rounded-react/IconMaterialSmartphoneW100';
-import IconMaterialTabletMac from '@amaui/icons-material-rounded-react/IconMaterialTabletMacW100';
-import IconMaterialComputer from '@amaui/icons-material-rounded-react/IconMaterialComputerW100';
-import IconMaterialDesktopWindows from '@amaui/icons-material-rounded-react/IconMaterialDesktopWindowsW100';
+import IconMaterialSmartphone from '@onesy/icons-material-rounded-react/IconMaterialSmartphoneW100';
+import IconMaterialTabletMac from '@onesy/icons-material-rounded-react/IconMaterialTabletMacW100';
+import IconMaterialComputer from '@onesy/icons-material-rounded-react/IconMaterialComputerW100';
+import IconMaterialDesktopWindows from '@onesy/icons-material-rounded-react/IconMaterialDesktopWindowsW100';
 
 import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
@@ -40,7 +40,7 @@ const useStyle = styleMethod(theme => ({
     boxShadow: theme.shadows.values.default[1],
     overflow: 'hidden',
 
-    '&.amaui-Line-root': {
+    '&.onesy-Line-root': {
       width: 'calc(100% - 8px)'
     }
   },
@@ -53,7 +53,7 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     height: '100%'
   }
-}), { name: 'amaui-Frame' });
+}), { name: 'onesy-Frame' });
 
 export interface IFrame extends ILine {
   url?: string;
@@ -78,9 +78,9 @@ export interface IFrame extends ILine {
 }
 
 const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiFrame?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFrame?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -216,7 +216,7 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Frame', theme) && [
-          'amaui-Frame-root'
+          'onesy-Frame-root'
         ],
 
         className,
@@ -243,7 +243,7 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Frame', theme) && [
-            'amaui-Frame-options-wrapper'
+            'onesy-Frame-options-wrapper'
           ],
 
           OptionsWrapperProps?.className
@@ -262,7 +262,7 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Frame', theme) && [
-              'amaui-Frame-options'
+              'onesy-Frame-options'
             ],
 
             OptionsProps?.className,
@@ -290,7 +290,7 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Frame', theme) && [
-                    'amaui-Frame-option'
+                    'onesy-Frame-option'
                   ],
 
                   OptionProps?.className
@@ -318,7 +318,7 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Frame', theme) && [
-            'amaui-Frame-wrapper'
+            'onesy-Frame-wrapper'
           ],
 
           WrapperProps?.className,
@@ -336,6 +336,6 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Frame.displayName = 'amaui-Frame';
+Frame.displayName = 'onesy-Frame';
 
 export default Frame;

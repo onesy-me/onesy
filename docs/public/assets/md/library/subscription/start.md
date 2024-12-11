@@ -1,25 +1,25 @@
 
-# amaui subscription
+# onesy subscription
 
 Use as a subscription method where you can emit values to the subscribed methods, anywhere in your app.
 
 ### Add
 
 ```sh
-yarn add @amaui/subscription
+yarn add @onesy/subscription
 ```
 
 ### Use
 
 ```ts
-import AmauiSubscription from '@amaui/subscription';
+import OnesySubscription from '@onesy/subscription';
 
 // Make a new subscription instance
 // with an optional initial value
-const amauiSubscription = new AmauiSubscription('🙂');
+const onesySubscription = new OnesySubscription('🙂');
 
 // Value
-amauiSub.value;
+onesySub.value;
 
 // '🙂'
 
@@ -28,13 +28,13 @@ const method = (...value) => console.log('Yup, I got it ', ...value);
 const method1 = value => console.log('Yup, I got it as well ', value);
 
 // Methods subscribe
-amauiSub.subscribe(method);
+onesySub.subscribe(method);
 
-amauiSub.subscribe(method1);
+onesySub.subscribe(method1);
 
 // Emit a value to all subscribed methods
 // a value always emitted as arguments received by emit method
-amauiSub.emit('🌱', '🌱', '🌱', '🌱');
+onesySub.emit('🌱', '🌱', '🌱', '🌱');
 
 // method, log:
 // Yup, I got it 🌱 🌱 🌱 🌱
@@ -43,12 +43,12 @@ amauiSub.emit('🌱', '🌱', '🌱', '🌱');
 // Yup, I got it as well 🌱
 
 // Methods unsubscribe
-amauiSub.unsubscribe(method);
+onesySub.unsubscribe(method);
 
-amauiSub.unsubscribe(method1);
+onesySub.unsubscribe(method1);
 
 // or with anonymous method
-const subscription = amauiSub.subscribe(value => console.log(value));
+const subscription = onesySub.subscribe(value => console.log(value));
 
 subscription.unsubscribe();
 ```

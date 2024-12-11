@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -11,7 +11,7 @@ const useStyle = styleMethod(theme => ({
   root: {
     padding: theme.methods.space.value(3, 'px')
   }
-}), { name: 'amaui-CardMain' });
+}), { name: 'onesy-CardMain' });
 
 export interface ICardMain extends ILine {
   tonal?: ITonal;
@@ -21,9 +21,9 @@ export interface ICardMain extends ILine {
 }
 
 const CardMain: React.FC<ICardMain> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCardMain?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardMain?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -54,7 +54,7 @@ const CardMain: React.FC<ICardMain> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('CardMain', theme) && [
-          `amaui-CardMain-root`
+          `onesy-CardMain-root`
         ],
 
         className,
@@ -68,6 +68,6 @@ const CardMain: React.FC<ICardMain> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-CardMain.displayName = 'amaui-CardMain';
+CardMain.displayName = 'onesy-CardMain';
 
 export default CardMain;

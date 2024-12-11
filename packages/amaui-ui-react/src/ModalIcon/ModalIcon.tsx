@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAmauiTheme } from '@amaui/style-react';
+import { useOnesyTheme } from '@onesy/style-react';
 
 import { IIcon } from '../Icon/Icon';
 
@@ -9,9 +9,9 @@ export interface IModalIcon extends IIcon {
 }
 
 const ModalIcon: React.FC<IModalIcon> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiModalIcon?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalIcon?.props?.default, ...props_ }), [props_]);
 
   const {
     className,
@@ -32,6 +32,6 @@ const ModalIcon: React.FC<IModalIcon> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-ModalIcon.displayName = 'amaui-ModalIcon';
+ModalIcon.displayName = 'onesy-ModalIcon';
 
 export default ModalIcon;

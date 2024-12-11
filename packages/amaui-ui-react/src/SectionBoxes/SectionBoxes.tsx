@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment, textToInnerHTML } from '@amaui/utils';
-import { TPaletteVersion, classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, textToInnerHTML } from '@onesy/utils';
+import { TPaletteVersion, classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SectionElement, { ISection } from '../Section/Section';
 import LineElement from '../Line';
@@ -40,7 +40,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   text: {
-    '&.amaui-Type-root': {
+    '&.onesy-Type-root': {
       color: 'white',
       mixBlendMode: 'difference'
     }
@@ -78,7 +78,7 @@ const useStyle = styleMethod(theme => ({
   backgroundOverlayBlur: {
     backdropFilter: 'blur(12px)'
   }
-}), { name: 'amaui-SectionBoxes' });
+}), { name: 'onesy-SectionBoxes' });
 
 export interface ISectionBoxesItem {
   name?: any;
@@ -120,9 +120,9 @@ export interface ISectionBoxes extends ISection {
 }
 
 const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionBoxes?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionBoxes?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -237,7 +237,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionBoxes', theme) && [
-            'amaui-SectionBoxes-item'
+            'onesy-SectionBoxes-item'
           ],
 
           ItemProps?.className,
@@ -258,7 +258,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
             className={classNames([
               staticClassName('SectionBoxes', theme) && [
-                'amaui-SectionBoxes-item-background-video'
+                'onesy-SectionBoxes-item-background-video'
               ],
 
               classes.backgroundVideo
@@ -274,7 +274,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
           <div
             className={classNames([
               staticClassName('SectionBoxes', theme) && [
-                'amaui-SectionBoxes-item-background-overlay'
+                'onesy-SectionBoxes-item-background-overlay'
               ],
 
               classes.backgroundOverlay,
@@ -299,7 +299,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
             className={classNames([
               staticClassName('SectionBoxes', theme) && [
-                'amaui-SectionBoxes-item-wrapper-text'
+                'onesy-SectionBoxes-item-wrapper-text'
               ],
 
               item.propsWrapperText?.className,
@@ -322,7 +322,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
                 className={classNames([
                   staticClassName('SectionBoxes', theme) && [
-                    'amaui-SectionBoxes-item-name'
+                    'onesy-SectionBoxes-item-name'
                   ],
 
                   item.propsName?.className,
@@ -347,7 +347,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
                 className={classNames([
                   staticClassName('SectionBoxes', theme) && [
-                    'amaui-SectionBoxes-item-description'
+                    'onesy-SectionBoxes-item-description'
                   ],
 
                   item.propsDescription?.className,
@@ -368,7 +368,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
             className={classNames([
               staticClassName('SectionBoxes', theme) && [
-                'amaui-SectionBoxes-item-actions'
+                'onesy-SectionBoxes-item-actions'
               ],
 
               item.propsActions?.className,
@@ -388,7 +388,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
               className={classNames([
                 staticClassName('SectionBoxes', theme) && [
-                  'amaui-SectionBoxes-item-button'
+                  'onesy-SectionBoxes-item-button'
                 ],
 
                 item.propsButton?.className,
@@ -420,8 +420,8 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
       className={classNames([
         staticClassName('SectionBoxes', theme) && [
-          'amaui-SectionBoxes-root',
-          `amaui-SectionBoxes-size-${size}`
+          'onesy-SectionBoxes-root',
+          `onesy-SectionBoxes-size-${size}`
         ],
 
         className,
@@ -446,7 +446,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionBoxes', theme) && [
-            'amaui-SectionBoxes-items'
+            'onesy-SectionBoxes-items'
           ],
 
           ItemsProps?.className,
@@ -459,6 +459,6 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
   );
 });
 
-Element.displayName = 'amaui-SectionBoxes';
+Element.displayName = 'onesy-SectionBoxes';
 
 export default Element;

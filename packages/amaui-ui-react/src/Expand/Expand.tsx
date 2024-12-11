@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
 import { IPropsAny } from '../types';
@@ -45,9 +45,9 @@ export interface IExpand extends Omit<ITransition, 'className'> {
 }
 
 const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiExpand?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyExpand?.props?.default, ...props_ }), [props_]);
 
   const {
     in: inProp,
@@ -301,6 +301,6 @@ const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
   </>;
 });
 
-Expand.displayName = 'amaui-Expand';
+Expand.displayName = 'onesy-Expand';
 
 export default Expand;

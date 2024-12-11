@@ -1,12 +1,12 @@
 
-# amaui node
+# onesy node
 
 Nodejs util methods.
 
 ### Add
 
 ```sh
-yarn add @amaui/node
+yarn add @onesy/node
 ```
 
 ### Use
@@ -14,16 +14,16 @@ yarn add @amaui/node
 ```ts
 import path from 'path';
 
-import AmauiNode from '@amaui/node';
+import OnesyNode from '@onesy/node';
 
 // A file add
-await AmauiNode.file.add(path.resolve('a.json'), 'a');
+await OnesyNode.file.add(path.resolve('a.json'), 'a');
 
 // A file read
-await AmauiNode.file.get(path.resolve('a.json'));
+await OnesyNode.file.get(path.resolve('a.json'));
 
 // A file remove
-await AmauiNode.file.remove(path.resolve('a.json'));
+await OnesyNode.file.remove(path.resolve('a.json'));
 ```
 
 ### Dev

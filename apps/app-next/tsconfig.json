@@ -20,18 +20,30 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@amaui/style-react": ["../../packages/amaui-style-react/src"],
-      "@amaui/style-react/*": ["../../packages/amaui-style-react/src/*"],
-
-      "@amaui/icons-material-react": ["../../packages/amaui-icons-material-react/src"],
-      "@amaui/icons-material-react/*": ["../../packages/amaui-icons-material-react/src/*"],
-
-      "@amaui/ui-react": ["../../packages/amaui-ui-react/build"],
-      "@amaui/ui-react/*": ["../../packages/amaui-ui-react/build/*"]
+      "@onesy/style-react": [
+        "../../packages/onesy-style-react/src"
+      ],
+      "@onesy/style-react/*": [
+        "../../packages/onesy-style-react/src/*"
+      ],
+      "@onesy/icons-material-react": [
+        "../../packages/onesy-icons-material-react/src"
+      ],
+      "@onesy/icons-material-react/*": [
+        "../../packages/onesy-icons-material-react/src/*"
+      ],
+      "@onesy/ui-react": [
+        "../../packages/onesy-ui-react/build"
+      ],
+      "@onesy/ui-react/*": [
+        "../../packages/onesy-ui-react/build/*"
+      ]
     },
-    "plugins": [{
-      "name": "next"
-    }]
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",

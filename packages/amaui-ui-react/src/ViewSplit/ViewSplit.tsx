@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { is, clamp, valueFromPercentageWithinRange, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, clamp, valueFromPercentageWithinRange, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialSwapHoriz from '@amaui/icons-material-rounded-react/IconMaterialSwapHorizW100';
-import IconMaterialSwapVert from '@amaui/icons-material-rounded-react/IconMaterialSwapVertW100';
+import IconMaterialSwapHoriz from '@onesy/icons-material-rounded-react/IconMaterialSwapHorizW100';
+import IconMaterialSwapVert from '@onesy/icons-material-rounded-react/IconMaterialSwapVertW100';
 
 import LineElement from '../Line';
 import DividerElement from '../Divider';
@@ -92,7 +92,7 @@ const useStyle = styleMethod(theme => ({
     zIndex: '3',
     borderRadius: theme.methods.shape.radius.value('lg', 'px'),
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0px'
     }
   },
@@ -109,7 +109,7 @@ const useStyle = styleMethod(theme => ({
     insetBlock: '0',
     transform: `translateX(${theme.direction === 'rtl' ? '-' : ''}50%)`,
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       width: '8px'
     }
   },
@@ -118,11 +118,11 @@ const useStyle = styleMethod(theme => ({
     insetInline: '0',
     transform: `translateY(50%)`,
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       height: '8px'
     }
   }
-}), { name: 'amaui-ViewSplit' });
+}), { name: 'onesy-ViewSplit' });
 
 export interface IViewSplit extends ILine {
   tonal?: ITonal;
@@ -151,9 +151,9 @@ export interface IViewSplit extends ILine {
 }
 
 const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiViewSplit?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyViewSplit?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -531,11 +531,11 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('ViewSplit', theme) && [
-          'amaui-ViewSplit-root',
-          `amaui-ViewSplit-version-${version}`,
-          hover && `amaui-ViewSplit-hover`,
-          focus && `amaui-ViewSplit-focus`,
-          mouseDown && `amaui-ViewSplit-mouse-down`
+          'onesy-ViewSplit-root',
+          `onesy-ViewSplit-version-${version}`,
+          hover && `onesy-ViewSplit-hover`,
+          focus && `onesy-ViewSplit-focus`,
+          mouseDown && `onesy-ViewSplit-mouse-down`
         ],
 
         className,
@@ -550,7 +550,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
         <div
           className={classNames([
             staticClassName('ViewSplit', theme) && [
-              'amaui-ViewSplit-hidden'
+              'onesy-ViewSplit-hidden'
             ],
 
             classes.hidden
@@ -562,7 +562,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
         <div
           className={classNames([
             staticClassName('ViewSplit', theme) && [
-              'amaui-ViewSplit-start'
+              'onesy-ViewSplit-start'
             ],
 
             classes.item,
@@ -597,7 +597,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ViewSplit', theme) && [
-              'amaui-ViewSplit-divider'
+              'onesy-ViewSplit-divider'
             ],
 
             DividerProps?.className,
@@ -618,7 +618,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
         (iconButtonComponent && React.cloneElement(iconButtonComponent as any, {
           className: classNames([
             staticClassName('ViewSplit', theme) && [
-              'amaui-ViewSplit-icon-button'
+              'onesy-ViewSplit-icon-button'
             ],
 
             classes.iconButton,
@@ -646,7 +646,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ViewSplit', theme) && [
-              'amaui-ViewSplit-icon-button'
+              'onesy-ViewSplit-icon-button'
             ],
 
             IconButtonProps?.className,
@@ -669,7 +669,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
         <div
           className={classNames([
             staticClassName('ViewSplit', theme) && [
-              'amaui-ViewSplit-end'
+              'onesy-ViewSplit-end'
             ],
 
             classes.item,
@@ -689,6 +689,6 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-ViewSplit.displayName = 'amaui-ViewSplit';
+ViewSplit.displayName = 'onesy-ViewSplit';
 
 export default ViewSplit;

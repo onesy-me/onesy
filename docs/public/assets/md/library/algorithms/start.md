@@ -1,12 +1,12 @@
 
-# amaui algorithms
+# onesy algorithms
 
 Algorithms for various use cases.
 
 ### Add
 
 ```bash
-yarn add @amaui/algorithms
+yarn add @onesy/algorithms
 ```
 
 ### Algorithms
@@ -27,7 +27,7 @@ yarn add @amaui/algorithms
 ### Use
 
 ```ts
-import { bubbleSort } from '@amaui/algorithms';
+import { bubbleSort } from '@onesy/algorithms';
 
 const value = [1, 14, 7, 4];
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import LineElement from '../Line';
@@ -28,7 +28,7 @@ const useStyle = styleMethod(theme => ({
     overflowX: 'auto',
     background: 'inherit'
   }
-}), { name: 'amaui-Table' });
+}), { name: 'onesy-Table' });
 
 export interface ITable extends ISurface {
   size?: ISize;
@@ -43,9 +43,9 @@ export interface ITable extends ISurface {
 }
 
 const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTable?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTable?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -104,8 +104,8 @@ const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Table', theme) && [
-          `amaui-Table-root`,
-          `amaui-Table-size-${size}`
+          `onesy-Table-root`,
+          `onesy-Table-size-${size}`
         ],
 
         className,
@@ -127,7 +127,7 @@ const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Table', theme) && [
-            `amaui-Table-wrapper`
+            `onesy-Table-wrapper`
           ],
 
           WrapperComponentProps?.className,
@@ -137,9 +137,9 @@ const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
         <TableComponent
           className={classNames([
             staticClassName('Table', theme) && [
-              `amaui-Table-table`,
-              header && `amaui-Table-header`,
-              footer && `amaui-Table-footer`
+              `onesy-Table-table`,
+              header && `onesy-Table-header`,
+              footer && `onesy-Table-footer`
             ],
 
             classes.table
@@ -168,6 +168,6 @@ const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Table.displayName = 'amaui-Table';
+Table.displayName = 'onesy-Table';
 
 export default Table;

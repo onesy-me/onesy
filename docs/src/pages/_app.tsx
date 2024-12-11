@@ -3,15 +3,15 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
 
-import { isOS } from '@amaui/utils';
-import { Widgets, ScreenCapture, Timer, Countdown, Watch, Reset, MainProgress, useMediaQuery } from '@amaui/ui-react';
-import { Style, Theme, valueObject, prefix, sort, rtl, unit, makeClassName, useAmauiStyle, AmauiTheme } from '@amaui/style-react';
+import { isOS } from '@onesy/utils';
+import { Widgets, ScreenCapture, Timer, Countdown, Watch, Reset, MainProgress, useMediaQuery } from '@onesy/ui-react';
+import { Style, Theme, valueObject, prefix, sort, rtl, unit, makeClassName, useOnesyStyle, OnesyTheme } from '@onesy/style-react';
 
-import IconMaterialTimerRounded from '@amaui/icons-material-rounded-react/build/IconMaterialTimer';
-import IconMaterialVideocamRounded from '@amaui/icons-material-rounded-react/build/IconMaterialVideocam';
-import IconMaterialAvTimerRounded from '@amaui/icons-material-rounded-react/build/IconMaterialAvTimer';
-import IconMaterialNestClockFarsightDigitalRounded from '@amaui/icons-material-rounded-react/build/IconMaterialNestClockFarsightDigital';
-import IconMaterialNestClockFarsightAnalogRounded from '@amaui/icons-material-rounded-react/build/IconMaterialNestClockFarsightAnalog';
+import IconMaterialTimerRounded from '@onesy/icons-material-rounded-react/build/IconMaterialTimer';
+import IconMaterialVideocamRounded from '@onesy/icons-material-rounded-react/build/IconMaterialVideocam';
+import IconMaterialAvTimerRounded from '@onesy/icons-material-rounded-react/build/IconMaterialAvTimer';
+import IconMaterialNestClockFarsightDigitalRounded from '@onesy/icons-material-rounded-react/build/IconMaterialNestClockFarsightDigital';
+import IconMaterialNestClockFarsightAnalogRounded from '@onesy/icons-material-rounded-react/build/IconMaterialNestClockFarsightAnalog';
 
 const FONT_FAMILY = {
   primary: ['Montserrat', 'Helvetica', 'Helvetica Neue', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'].join(', '),
@@ -34,9 +34,9 @@ export default function App(props: AppProps) {
     setScreenCaptureSupported(!(touch || isOS('mobile')));
   }, [touch]);
 
-  const valueAmauiStyle = useAmauiStyle();
+  const valueOnesyStyle = useOnesyStyle();
 
-  valueAmauiStyle.plugins!.add = [
+  valueOnesyStyle.plugins!.add = [
     unit,
     prefix,
     sort,
@@ -52,9 +52,9 @@ export default function App(props: AppProps) {
     }
   ];
 
-  const valueAmauiTheme = React.useMemo(() => {
+  const valueOnesyTheme = React.useMemo(() => {
 
-    return new AmauiTheme({
+    return new OnesyTheme({
       typography: {
         font_family: {
           primary: FONT_FAMILY.primary,
@@ -167,10 +167,10 @@ export default function App(props: AppProps) {
 
     {/* Website */}
     <Style
-      value={valueAmauiStyle}
+      value={valueOnesyStyle}
     >
       <Theme
-        value={valueAmauiTheme}
+        value={valueOnesyTheme}
       >
         <MainProgress>
           <Widgets

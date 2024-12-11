@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
-import { clamp, getLeadingZerosNumber, is, isEnvironment, unique } from '@amaui/utils';
-import { AmauiDate, is as isAmauiDate, set } from '@amaui/date';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
+import { clamp, getLeadingZerosNumber, is, isEnvironment, unique } from '@onesy/utils';
+import { OnesyDate, is as isOnesyDate, set } from '@onesy/date';
 
 import RoundMeterElement from '../RoundMeter';
 import PathElement from '../Path';
@@ -15,7 +15,7 @@ const useStyle = style(theme => ({
     userSelect: 'none',
     touchAction: 'none',
 
-    '& .amaui-RoundMeter-children, & .amaui-RoundMeter-labels': {
+    '& .onesy-RoundMeter-children, & .onesy-RoundMeter-labels': {
       pointerEvents: 'none'
     },
 
@@ -29,9 +29,9 @@ const useStyle = style(theme => ({
       cursor: 'grabbing'
     }
   },
-}), { name: 'amaui-Clock' });
+}), { name: 'onesy-Clock' });
 
-export type TClockValue = AmauiDate;
+export type TClockValue = OnesyDate;
 
 export type TClockFormat = '12' | '24';
 
@@ -59,21 +59,21 @@ export interface IClock extends IRoundMeter {
   minute?: boolean;
   second?: boolean;
   autoNext?: boolean;
-  min?: AmauiDate;
-  max?: AmauiDate;
-  validate?: (value: AmauiDate) => boolean;
+  min?: OnesyDate;
+  max?: OnesyDate;
+  validate?: (value: OnesyDate) => boolean;
   readOnly?: boolean;
   disabled?: boolean;
 
-  valid?: (value: AmauiDate, selecting: TClockUnit) => any;
+  valid?: (value: OnesyDate, selecting: TClockUnit) => any;
   renderValue?: (value: TClockValue, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
   onDoneSelecting?: (value: TClockValue, selecting: TClockUnit) => any;
 }
 
 const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiClock?.props?.default, ...props__ }), [props__]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClock?.props?.default, ...props__ }), [props__]);
 
   const RoundMeter = React.useMemo(() => theme?.elements?.RoundMeter || RoundMeterElement, [theme]);
 
@@ -120,7 +120,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
 
   const { classes } = useStyle();
 
-  const [value, setValue] = React.useState((valueDefault !== undefined ? valueDefault : value_) || new AmauiDate());
+  const [value, setValue] = React.useState((valueDefault !== undefined ? valueDefault : value_) || new OnesyDate());
   const [selecting, setSelecting] = React.useState((selectingDefault !== undefined ? selectingDefault : selecting_) || 'hour');
   const [mouseDown, setMouseDown] = React.useState(false);
 
@@ -171,7 +171,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   }, [value, dayTime, format]);
 
   const inputToValue = React.useCallback((valueNew: string | number, unit: TClockUnit = refs.selecting.current) => {
-    let amauiDate = new AmauiDate(refs.value.current);
+    let onesyDate = new OnesyDate(refs.value.current);
 
     let valueTime: any = valueNew;
 
@@ -179,10 +179,10 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
 
     valueTime = +valueTime;
 
-    if (unit === 'hour') amauiDate = set((format === '12' && dayTime === 'pm') ? valueTime + 12 : valueTime, 'hour', amauiDate);
-    else amauiDate = set(valueTime, unit, amauiDate);
+    if (unit === 'hour') onesyDate = set((format === '12' && dayTime === 'pm') ? valueTime + 12 : valueTime, 'hour', onesyDate);
+    else onesyDate = set(valueTime, unit, onesyDate);
 
-    return resolve(amauiDate);
+    return resolve(onesyDate);
   }, [value, format, dayTime, hour, minute, second]);
 
   const onMove = React.useCallback((x_: number, y_: number) => {
@@ -217,7 +217,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
       if (refs.format.current === '24') {
         let within = false;
 
-        const labelElements = refs.root.current.querySelectorAll('.amaui-RoundMeter-labels');
+        const labelElements = refs.root.current.querySelectorAll('.onesy-RoundMeter-labels');
 
         const elements = {
           outer: labelElements[0],
@@ -333,11 +333,11 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   }, [value_]);
 
   const updateTransitions = React.useCallback(() => {
-    // Add momentary transition to the AmauiRoundMeter-children > *
+    // Add momentary transition to the OnesyRoundMeter-children > *
     // if selecting value updates
     if (refs.root.current) {
-      let elementChildren: any = (refs.root.current as HTMLElement).getElementsByClassName('amaui-RoundMeter-children')[0];
-      let elementLabels: any = (refs.root.current as HTMLElement).getElementsByClassName('amaui-RoundMeter-labels')[0];
+      let elementChildren: any = (refs.root.current as HTMLElement).getElementsByClassName('onesy-RoundMeter-children')[0];
+      let elementLabels: any = (refs.root.current as HTMLElement).getElementsByClassName('onesy-RoundMeter-labels')[0];
 
       if (elementChildren && elementLabels) {
         elementChildren = Array.from(elementChildren.children);
@@ -394,19 +394,19 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     }
   }, [readOnly, disabled]);
 
-  const valid = React.useCallback((...args: [AmauiDate, any?]) => {
+  const valid = React.useCallback((...args: [OnesyDate, any?]) => {
     if (is('function', valid_)) return valid_(...args);
 
-    const amauiDate = args[0];
+    const onesyDate = args[0];
 
     if (min || max || validate) {
       let response = true;
 
-      if (is('function', validate)) response = validate(amauiDate);
+      if (is('function', validate)) response = validate(onesyDate);
 
-      if (min !== undefined) response = response && isAmauiDate(amauiDate, 'after or same', min);
+      if (min !== undefined) response = response && isOnesyDate(onesyDate, 'after or same', min);
 
-      if (max !== undefined) response = response && isAmauiDate(amauiDate, 'before or same', max);
+      if (max !== undefined) response = response && isOnesyDate(onesyDate, 'before or same', max);
 
       return response;
     }
@@ -604,7 +604,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
 
       className={classNames([
         staticClassName('Clock', theme) && [
-          'amaui-Clock-round-meter'
+          'onesy-Clock-round-meter'
         ],
 
         className,
@@ -665,6 +665,6 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   );
 });
 
-Clock.displayName = 'amaui-Clock';
+Clock.displayName = 'onesy-Clock';
 
 export default Clock;

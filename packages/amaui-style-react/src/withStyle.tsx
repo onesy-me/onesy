@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IOptions } from '@amaui/style/style';
+import { IOptions } from '@onesy/style/style';
 
 import { TValue } from './style';
 import { style } from '.';

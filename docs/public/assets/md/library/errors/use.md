@@ -1,20 +1,20 @@
 
-# AmauiError
+# OnesyError
 
-Main Error class is AmauiError that extends Error, and adds onto it.
+Main Error class is OnesyError that extends Error, and adds onto it.
 
 ```ts
-const amauiError = new AmauiError('a');
+const onesyError = new OnesyError('a');
 
-amauiError.name;
-amauiError.message;
-amauiError.added_at;
-amauiError.stack;
+onesyError.name;
+onesyError.message;
+onesyError.added_at;
+onesyError.stack;
 
-// AmauiError
+// OnesyError
 // 'a'
 // 1643893234
-// 'AmauiError: a\n    at eval (eval at evaluate (:3:2389), <anonymous>:2:31)\n    at t.default.evaluate (<anonymous>:3:2412)\n    at t.default.<anonymous> (<anonymous>:1:44)'
+// 'OnesyError: a\n    at eval (eval at evaluate (:3:2389), <anonymous>:2:31)\n    at t.default.evaluate (<anonymous>:3:2412)\n    at t.default.<anonymous> (<anonymous>:1:44)'
 ```
 
 ### All error version
@@ -28,16 +28,16 @@ Useful for example in the express API in the error middleware to check error nam
 - 'PermissionError' 403
 - etc.
 
-#### AmauiError
+#### OnesyError
 
 ```ts
-new AmauiError();
+new OnesyError();
 ```
 
-#### AmauiTestError
+#### OnesyTestError
 
 ```ts
-new AmauiTestError();
+new OnesyTestError();
 ```
 
 #### AssertError
@@ -76,22 +76,22 @@ new NotFoundError();
 new PermissionError();
 ```
 
-#### AmauiAmqpError
+#### OnesyAmqpError
 
 ```ts
-new AmauiAmqpError();
+new OnesyAmqpError();
 ```
 
-#### AmauiAwsError
+#### OnesyAwsError
 
 ```ts
-new AmauiAwsError();
+new OnesyAwsError();
 ```
 
-#### AmauiMongoError
+#### OnesyMongoError
 
 ```ts
-new AmauiMongoError();
+new OnesyMongoError();
 ```
 
 #### ConnectionError
@@ -108,12 +108,12 @@ new DeveloperError();
 
 ### Custom errors
 
-You can make your own custom error by extending the main `AmauiError`.
+You can make your own custom error by extending the main `OnesyError`.
 
 ```ts
-class MyError extends AmauiError {
+class MyError extends OnesyError {
 
-  public constructor(value: TAmauiErrorValue = '', ...args: any[]) {
+  public constructor(value: TOnesyErrorValue = '', ...args: any[]) {
     super(value, MyError, ...args);
 
     this.name = 'MyError';
@@ -133,10 +133,10 @@ interface IClass {
 }
 ```
 
-#### IAmauiError
+#### IOnesyError
 
 ```ts
-interface IAmauiError {
+interface IOnesyError {
     message: string;
     name: string;
     stack: string;
@@ -145,116 +145,116 @@ interface IAmauiError {
 }
 ```
 
-#### TAmauiErrorValue
+#### TOnesyErrorValue
 
 ```ts
-type TAmauiErrorValue = Error | string;
+type TOnesyErrorValue = Error | string;
 ```
 
-#### AmauiError
+#### OnesyError
 
 ```ts
-class AmauiError extends Error implements IAmauiError {
+class OnesyError extends Error implements IOnesyError {
     added_at: number;
     stack: string;
     [p: string]: any;
-    constructor(value?: TAmauiErrorValue, Constructor?: IClass, options?: any);
+    constructor(value?: TOnesyErrorValue, Constructor?: IClass, options?: any);
 }
 ```
 
-#### AmauiTestError
+#### OnesyTestError
 
 ```ts
-class AmauiTestError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class OnesyTestError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### AssertError
 
 ```ts
-class AssertError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class AssertError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### AuthenticationError
 
 ```ts
-class AuthenticationError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class AuthenticationError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### AuthorizationError
 
 ```ts
-class AuthorizationError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class AuthorizationError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### ValidationError
 
 ```ts
-class ValidationError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class ValidationError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### NotFoundError
 
 ```ts
-class NotFoundError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class NotFoundError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### PermissionError
 
 ```ts
-class PermissionError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class PermissionError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
-#### AmauiAmqpError
+#### OnesyAmqpError
 
 ```ts
-class AmauiAmqpError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class OnesyAmqpError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
-#### AmauiAwsError
+#### OnesyAwsError
 
 ```ts
-class AmauiAwsError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class OnesyAwsError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
-#### AmauiMongoError
+#### OnesyMongoError
 
 ```ts
-class AmauiMongoError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class OnesyMongoError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### ConnectionError
 
 ```ts
-class ConnectionError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class ConnectionError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 
 #### DeveloperError
 
 ```ts
-class DeveloperError extends AmauiError {
-    constructor(value?: TAmauiErrorValue, ...args: any[]);
+class DeveloperError extends OnesyError {
+    constructor(value?: TOnesyErrorValue, ...args: any[]);
 }
 ```
 

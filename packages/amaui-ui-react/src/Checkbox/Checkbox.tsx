@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import IconButtonElement from '../IconButton';
 import { IconDoneAnimated } from '../Buttons/Buttons';
@@ -160,7 +160,7 @@ const useStyle = styleMethod(theme => ({
   disabled: {
     cursor: 'default'
   }
-}), { name: 'amaui-Checkbox' });
+}), { name: 'onesy-Checkbox' });
 
 const IconItem = (props: any) => {
   const {
@@ -232,9 +232,9 @@ export interface ICheckbox extends IIconButton {
 }
 
 const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...props_, ...theme?.ui?.elements?.amauiCheckbox?.props?.default }), [props_]);
+  const props = React.useMemo(() => ({ ...props_, ...theme?.ui?.elements?.onesyCheckbox?.props?.default }), [props_]);
 
   const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
 
@@ -414,7 +414,7 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Checkbox', theme) && [
-              'amaui-Checkbox-input'
+              'onesy-Checkbox-input'
             ],
 
             classes.input
@@ -436,11 +436,11 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Checkbox', theme) && [
-          'amaui-Checkbox-root',
-          `amaui-Checkbox-version-${version}`,
-          `amaui-Checkbox-size-${size}`,
-          value && `amaui-Checkbox-checked`,
-          disabled && `amaui-Checkbox-disabled`
+          'onesy-Checkbox-root',
+          `onesy-Checkbox-version-${version}`,
+          `onesy-Checkbox-size-${size}`,
+          value && `onesy-Checkbox-checked`,
+          disabled && `onesy-Checkbox-disabled`
         ],
 
         className,
@@ -518,6 +518,6 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Checkbox.displayName = 'amaui-Checkbox';
+Checkbox.displayName = 'onesy-Checkbox';
 
 export default Checkbox;

@@ -1,5 +1,5 @@
 
-# amaui binary tree
+# onesy binary tree
 
 Binary tree data type & its methods.
 
@@ -12,22 +12,22 @@ Binary tree data type & its methods.
 ### Add
 
 ```bash
-yarn add @amaui/binary-tree
+yarn add @onesy/binary-tree
 ```
 
 ### Use
 
 ```ts
-import { AmauiBinaryTree } from '@amaui/binary-tree';
+import { OnesyBinaryTree } from '@onesy/binary-tree';
 
 // Make a new binary tree instance
-const amauiBinaryTree = new AmauiBinaryTree();
+const onesyBinaryTree = new OnesyBinaryTree();
 
-// Add a amaui node / value
-[4, 2, 7, 14, 1, 3, 5].map(value => amauiBinaryTree.add(value));
+// Add a onesy node / value
+[4, 2, 7, 14, 1, 3, 5].map(value => onesyBinaryTree.add(value));
 
 // or use a make method or a static method
-amauiBinaryTree.make([4, 2, 7, 14, 1, 3, 5]);
+onesyBinaryTree.make([4, 2, 7, 14, 1, 3, 5]);
 
 // Binary tree
       4
@@ -38,7 +38,7 @@ amauiBinaryTree.make([4, 2, 7, 14, 1, 3, 5]);
  1   3  5   14
 
 // Remove any value
-amauiBinaryTree.remove(2);
+onesyBinaryTree.remove(2);
 
 // Binary tree
       4

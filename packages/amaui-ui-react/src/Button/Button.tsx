@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import InteractionElement from '../Interaction';
@@ -256,24 +256,24 @@ const useStyle = styleMethod(theme => ({
   },
 
   disabled_version_text: {
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       color: theme.palette.text.default.primary
     }
   },
 
   disabled_version_outlined: {
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       color: theme.palette.text.default.primary
     }
   },
 
   disabled_version_filled: {
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       color: theme.palette.text.neutral.primary,
       background: theme.palette.light ? theme.palette.text.divider : theme.palette.text.neutral.quaternary
     }
   }
-}), { name: 'amaui-Button' });
+}), { name: 'onesy-Button' });
 
 export interface IButton extends Omit<ISurface, 'elevation'> {
   name?: any;
@@ -317,9 +317,9 @@ export interface IButton extends Omit<ISurface, 'elevation'> {
 }
 
 const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiButton?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButton?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -585,16 +585,16 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Button', theme) && [
-          `amaui-Button-root`,
-          `amaui-Button-version-${version}`,
-          `amaui-Button-size-${size}`,
-          fullWidth && `amaui-Button-full-width`,
-          start && `amaui-Button-start`,
-          end && `amaui-Button-end`,
-          selected && `amaui-Button-selected`,
-          loading && `amaui-Button-loading`,
-          focus && `amaui-Button-focus`,
-          disabled && `amaui-Button-disabled`
+          `onesy-Button-root`,
+          `onesy-Button-version-${version}`,
+          `onesy-Button-size-${size}`,
+          fullWidth && `onesy-Button-full-width`,
+          start && `onesy-Button-start`,
+          end && `onesy-Button-end`,
+          selected && `onesy-Button-selected`,
+          loading && `onesy-Button-loading`,
+          focus && `onesy-Button-focus`,
+          disabled && `onesy-Button-disabled`
         ],
 
         className,
@@ -650,8 +650,8 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
         <span
           className={classNames([
             staticClassName('Button', theme) && [
-              'amaui-Button-icon',
-              'amaui-Button-start'
+              'onesy-Button-icon',
+              'onesy-Button-start'
             ],
 
             classes.Icon,
@@ -674,7 +674,7 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Button', theme) && [
-              'amaui-Button-icon-root'
+              'onesy-Button-icon-root'
             ],
 
             IconWrapperProps?.className,
@@ -703,7 +703,7 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Button', theme) && [
-              'amaui-Button-label'
+              'onesy-Button-label'
             ],
 
             LabelProps?.className,
@@ -722,11 +722,11 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
           }}
         >
           {React.Children.toArray(children_).map((item_: any, index: number) => {
-            const item = (selected && item_.type?.displayName?.includes('amaui-Icon') && iconSelected) ? iconSelected : item_;
+            const item = (selected && item_.type?.displayName?.includes('onesy-Icon') && iconSelected) ? iconSelected : item_;
 
             if (is('simple', item)) return item;
 
-            return React.cloneElement((selected && item.type?.displayName?.includes('amaui-Icon') && iconSelected) ? iconSelected : item, {
+            return React.cloneElement((selected && item.type?.displayName?.includes('onesy-Icon') && iconSelected) ? iconSelected : item, {
               key: index
             });
           })}
@@ -737,8 +737,8 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
         <span
           className={classNames([
             staticClassName('Button', theme) && [
-              'amaui-Button-icon',
-              'amaui-Button-end'
+              'onesy-Button-icon',
+              'onesy-Button-end'
             ],
 
             classes.Icon,
@@ -756,6 +756,6 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Button.displayName = 'amaui-Button';
+Button.displayName = 'onesy-Button';
 
 export default Button;

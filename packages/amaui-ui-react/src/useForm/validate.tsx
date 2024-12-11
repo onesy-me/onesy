@@ -1,7 +1,7 @@
-import is, { TIsType, IOptions as IIsOptions } from '@amaui/utils/is';
-import isValid, { TIsValidType, IOptions as IIsValidOptions } from '@amaui/utils/isValid';
-import { capitalize, cleanValue, equalDeep, merge, stringify } from '@amaui/utils';
-import { ValidationError } from '@amaui/errors';
+import is, { TIsType, IOptions as IIsOptions } from '@onesy/utils/is';
+import isValid, { TIsValidType, IOptions as IIsValidOptions } from '@onesy/utils/isValid';
+import { capitalize, cleanValue, equalDeep, merge, stringify } from '@onesy/utils';
+import { ValidationError } from '@onesy/errors';
 
 export interface IValidateOptions {
   message?: string;

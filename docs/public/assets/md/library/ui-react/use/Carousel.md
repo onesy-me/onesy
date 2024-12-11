@@ -56,9 +56,9 @@ interface ICarousel extends Omit<ISurface, 'version'> {
     arrows?: boolean | Record<TValueBreakpoints, boolean>;
     mouseScroll?: boolean;
     momentum?: boolean | Record<TValueBreakpoints, boolean>;
-    previousSub?: AmauiSubscription;
-    nextSub?: AmauiSubscription;
-    updateSub?: AmauiSubscription;
+    previousSub?: OnesySubscription;
+    nextSub?: OnesySubscription;
+    updateSub?: OnesySubscription;
     arrowsVisibility?: 'hover' | 'visible' | Record<TValueBreakpoints, 'hover' | 'visible'>;
     arrowHideOnStartEnd?: boolean | Record<TValueBreakpoints, boolean>;
     renderProgress?: (update: TCarouseOnUpdate) => TElement;

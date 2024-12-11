@@ -5,7 +5,7 @@
 #### TTimePickerValue
 
 ```ts
-type TTimePickerValue = AmauiDate | [AmauiDate, AmauiDate];
+type TTimePickerValue = OnesyDate | [OnesyDate, OnesyDate];
 ```
 
 #### TTimePickerSelecting
@@ -28,10 +28,10 @@ interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
     now?: boolean;
     range?: boolean;
     static?: boolean;
-    valid?: (value: AmauiDate, version: TClockUnit) => boolean;
-    validate?: (value: AmauiDate) => boolean;
-    min?: AmauiDate;
-    max?: AmauiDate;
+    valid?: (value: OnesyDate, version: TClockUnit) => boolean;
+    validate?: (value: OnesyDate) => boolean;
+    min?: OnesyDate;
+    max?: OnesyDate;
     autoNext?: boolean | Record<TValueBreakpoints, boolean>;
     autoCloseOnLast?: boolean | Record<TValueBreakpoints, boolean>;
     openMobile?: 'input' | 'select';
@@ -56,7 +56,7 @@ interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
     onCancel?: (event: React.MouseEvent<any>) => any;
     onNow?: (event: React.MouseEvent<any>) => any;
     onOk?: (event: React.MouseEvent<any>) => any;
-    renderValue?: (value: AmauiDate, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
+    renderValue?: (value: OnesyDate, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
     Icon?: TElementReference;
     IconEnter?: TElementReference;
     MainProps?: TPropsAny;

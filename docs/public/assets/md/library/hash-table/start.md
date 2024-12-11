@@ -1,5 +1,5 @@
 
-# amaui hash table
+# onesy hash table
 
 Hash table data type & its methods.
 
@@ -13,31 +13,31 @@ Hash table data type & its methods.
 ### Add
 
 ```sh
-yarn add @amaui/hash-table
+yarn add @onesy/hash-table
 ```
 
 ### Use
 
 ```ts
-import AmauiHashTable from '@amaui/hash-table';
+import OnesyHashTable from '@onesy/hash-table';
 
 // Make a new hash table instance
-const amauiHashTable = new AmauiHashTable();
+const onesyHashTable = new OnesyHashTable();
 
 // Add values
-amauiHashTable.set('a', 14).set('a1', 114);
+onesyHashTable.set('a', 14).set('a1', 114);
 
-amauiHashTable.get('a');
+onesyHashTable.get('a');
 // 14
 
-amauiHashTable.get('a14');
+onesyHashTable.get('a14');
 // undefined
 
 // Remove
-amauiHashTable.remove('a');
+onesyHashTable.remove('a');
 // true
 
-amauiHashTable.get('a');
+onesyHashTable.get('a');
 // undefined
 ```
 

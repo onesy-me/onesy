@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -83,7 +83,7 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     maxWidth: 'unset'
   },
-}), { name: 'amaui-Container' });
+}), { name: 'onesy-Container' });
 
 export interface IContainer extends ILine {
   alignment?: 'start' | 'center' | 'end' | Partial<Record<IValueBreakpoints, 'start' | 'center' | 'end'>>;
@@ -98,9 +98,9 @@ export interface IContainer extends ILine {
 }
 
 const Container: React.FC<IContainer> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiContainer?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyContainer?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -183,7 +183,7 @@ const Container: React.FC<IContainer> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Container', theme) && [
-          'amaui-Container-root'
+          'onesy-Container-root'
         ],
 
         className,
@@ -208,6 +208,6 @@ const Container: React.FC<IContainer> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Container.displayName = 'amaui-Container';
+Container.displayName = 'onesy-Container';
 
 export default Container;

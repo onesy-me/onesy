@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { hash, is } from '@amaui/utils';
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
-import { AmauiDate, add, diff, format, is as isDate } from '@amaui/date';
+import { hash, is } from '@onesy/utils';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
+import { OnesyDate, add, diff, format, is as isDate } from '@onesy/date';
 
-import IconMaterialScheduleRounded from '@amaui/icons-material-rounded-react/IconMaterialScheduleW100';
-import IconMaterialWbSunnyRounded from '@amaui/icons-material-rounded-react/IconMaterialWbSunnyW100';
-import IconMaterialWbTwilightRounded from '@amaui/icons-material-rounded-react/IconMaterialWbTwilightW100';
-import IconMaterialCounter7Rounded from '@amaui/icons-material-rounded-react/IconMaterialCounter7W100';
-import IconMaterialCalendarMonthRounded from '@amaui/icons-material-rounded-react/IconMaterialCalendarMonthW100';
-import IconMaterialDeleteRounded from '@amaui/icons-material-rounded-react/IconMaterialDeleteW100';
+import IconMaterialScheduleRounded from '@onesy/icons-material-rounded-react/IconMaterialScheduleW100';
+import IconMaterialWbSunnyRounded from '@onesy/icons-material-rounded-react/IconMaterialWbSunnyW100';
+import IconMaterialWbTwilightRounded from '@onesy/icons-material-rounded-react/IconMaterialWbTwilightW100';
+import IconMaterialCounter7Rounded from '@onesy/icons-material-rounded-react/IconMaterialCounter7W100';
+import IconMaterialCalendarMonthRounded from '@onesy/icons-material-rounded-react/IconMaterialCalendarMonthW100';
+import IconMaterialDeleteRounded from '@onesy/icons-material-rounded-react/IconMaterialDeleteW100';
 
 import MenuElement from '../Menu';
 import CalendarElement from '../Calendar';
@@ -47,11 +47,11 @@ const useStyle = style(theme => ({
   calendar: {
     boxShadow: '0px 4px 32px 0px rgba(0, 0, 0, 0.04)',
 
-    '& .amaui-Calendar-header': {
+    '& .onesy-Calendar-header': {
       paddingTop: '0px'
     },
 
-    '& .amaui-Calendar-calendars': {
+    '& .onesy-Calendar-calendars': {
       paddingBottom: '4px'
     }
   },
@@ -63,7 +63,7 @@ const useStyle = style(theme => ({
   end: {
     padding: '0 12px 12px',
 
-    '& .amaui-ListItem-root': {
+    '& .onesy-ListItem-root': {
       minHeight: '24px !important',
       padding: '0 8px',
       borderRadius: theme.methods.shape.radius.value(0.5, 'px')
@@ -71,13 +71,13 @@ const useStyle = style(theme => ({
   },
 
   minorMenu: {
-    '& .amaui-List-root': {
+    '& .onesy-List-root': {
       width: '100%'
     }
   },
 
   repeatEndMenu: {
-    '& .amaui-List-root': {
+    '& .onesy-List-root': {
       width: '100%'
     }
   },
@@ -87,22 +87,22 @@ const useStyle = style(theme => ({
     padding: '12px',
     borderRadius: theme.methods.shape.radius.value(0.5, 'px'),
 
-    '& .amaui-TextField-input-wrapper': {
+    '& .onesy-TextField-input-wrapper': {
       paddingBlock: '12px',
       height: '40px'
     },
 
-    '& .amaui-TextField-icon-end': {
+    '& .onesy-TextField-icon-end': {
       paddingBlock: '8px'
     }
   },
 
   item: {
-    '& .amaui-ListItem-root': {
+    '& .onesy-ListItem-root': {
       minHeight: '30px !important'
     },
 
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: 'transparent'
     }
   },
@@ -115,7 +115,7 @@ const useStyle = style(theme => ({
   menuFooter: {
     marginTop: '8px'
   }
-}), { name: 'amaui-CalendarMenu' });
+}), { name: 'onesy-CalendarMenu' });
 
 export interface ICalendarMenu extends IMenu {
   value?: any;
@@ -144,9 +144,9 @@ export interface ICalendarMenu extends IMenu {
 }
 
 const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCalendarAvailability?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -249,13 +249,13 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
     setTimeMenuOpen(false);
   }, []);
 
-  const onChangeDate = React.useCallback((valueNew: AmauiDate) => {
+  const onChangeDate = React.useCallback((valueNew: OnesyDate) => {
     if (closeOnChange) onMenuClose();
 
     onChange(refs.dateProperty.current, valueNew?.milliseconds);
   }, [closeOnChange, onChange]);
 
-  const onChangeTime = React.useCallback((valueNew: AmauiDate) => {
+  const onChangeTime = React.useCallback((valueNew: OnesyDate) => {
     onTimeMenuClose();
 
     onChange(refs.dateProperty.current, valueNew?.milliseconds);
@@ -275,7 +275,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
   };
 
   const shortcuts = [
-    { name: 'Today', onClick: () => onChangeDate(new AmauiDate()), icon: <IconMaterialWbSunnyRounded {...iconProps} /> },
+    { name: 'Today', onClick: () => onChangeDate(new OnesyDate()), icon: <IconMaterialWbSunnyRounded {...iconProps} /> },
     { name: 'Tomorrow', onClick: () => onChangeDate(add(1, 'day')), icon: <IconMaterialWbTwilightRounded {...iconProps} /> },
     { name: '7 days', onClick: () => onChangeDate(add(7, 'day')), icon: <IconMaterialCounter7Rounded {...iconProps} /> },
     { name: '1 month', onClick: () => onChangeDate(add(1, 'month')), icon: <IconMaterialCalendarMonthRounded {...iconProps} /> }
@@ -285,9 +285,9 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
     onChange(refs.dateProperty.current, null);
   }, [onChange]);
 
-  const date = React.useMemo(() => new AmauiDate(value?.[dateProperty] || undefined), [value, dateProperty]);
+  const date = React.useMemo(() => new OnesyDate(value?.[dateProperty] || undefined), [value, dateProperty]);
 
-  const repeats = (day: AmauiDate) => {
+  const repeats = (day: OnesyDate) => {
     if (!value?.repeat?.active) return;
 
     let unit = value?.repeat?.unit;
@@ -354,7 +354,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
       if (value?.repeat?.ends?.active) {
         // date
         if (value?.repeat.ends.version === 'date') {
-          const endsDate = new AmauiDate(value?.repeat.ends.value);
+          const endsDate = new OnesyDate(value?.repeat.ends.value);
 
           repeating = repeating && (
             (day.year < endsDate.year) ||
@@ -502,7 +502,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
 
                   className={classNames([
                     classes.timeMenu,
-                    'amaui-time'
+                    'onesy-time'
                   ])}
 
                   style={{
@@ -588,8 +588,8 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
           )}
 
           CalendarMonthProps={{
-            renderDay: (dayAmauiDate: AmauiDate, propsDay: any, day: any, outside: boolean) => {
-              const repeating = repeats(dayAmauiDate);
+            renderDay: (dayOnesyDate: OnesyDate, propsDay: any, day: any, outside: boolean) => {
+              const repeating = repeats(dayOnesyDate);
 
               return (
                 <PaginationItem
@@ -609,7 +609,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
                     priority: !day.selected ? !day.weekend ? 'primary' : 'secondary' : undefined
                   }}
 
-                  aria-label={format(dayAmauiDate, 'DD-MM-YYYY')}
+                  aria-label={format(dayOnesyDate, 'DD-MM-YYYY')}
 
                   className={classNames([
                     classes.dayValue,
@@ -638,7 +638,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
           }}
 
           className={classNames([
-            'amaui-ObjectCalendar-root',
+            'onesy-ObjectCalendar-root',
             classes.calendar
           ])}
         />
@@ -650,7 +650,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('CalendarMenu', theme) && [
-          'amaui-CalendarMenu-root'
+          'onesy-CalendarMenu-root'
         ],
 
         className,
@@ -664,6 +664,6 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
   );
 });
 
-CalendarMenu.displayName = 'amaui-CalendarMenu';
+CalendarMenu.displayName = 'onesy-CalendarMenu';
 
 export default CalendarMenu;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { clamp, is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialExpandMore from '@amaui/icons-material-rounded-react/IconMaterialExpandMoreW100';
+import IconMaterialExpandMore from '@onesy/icons-material-rounded-react/IconMaterialExpandMoreW100';
 
 import CheckboxElement from '../Checkbox';
 import SurfaceElement from '../Surface';
@@ -108,7 +108,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'default',
     opacity: theme.palette.visual_contrast.default.opacity.disabled
   }
-}), { name: 'amaui-Tree' });
+}), { name: 'onesy-Tree' });
 
 export interface ITree extends Omit<IBaseElement, 'children'> {
   open?: boolean;
@@ -163,9 +163,9 @@ const TreeDelays = {
 };
 
 const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTree?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTree?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -461,10 +461,10 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Tree', theme) && [
-          'amaui-Tree-root',
-          children ? `amaui-Tree-children` : `amaui-Tree-empty`,
-          parentDisabled && `amaui-Tree-parent-disabled`,
-          disabled && `amaui-Tree-disabled`
+          'onesy-Tree-root',
+          children ? `onesy-Tree-children` : `onesy-Tree-empty`,
+          parentDisabled && `onesy-Tree-parent-disabled`,
+          disabled && `onesy-Tree-disabled`
         ],
 
         className,
@@ -502,7 +502,7 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Tree', theme) && [
-            'amaui-Tree-main'
+            'onesy-Tree-main'
           ],
 
           MainProps?.className,
@@ -533,9 +533,9 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Tree', theme) && [
-                'amaui-Tree-item',
-                'amaui-Tree-aside',
-                'amaui-Tree-start'
+                'onesy-Tree-item',
+                'onesy-Tree-aside',
+                'onesy-Tree-start'
               ],
 
               StartProps?.className,
@@ -564,9 +564,9 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Tree', theme) && [
-                'amaui-Tree-item',
-                'amaui-Tree-middle',
-                'amaui-Tree-end'
+                'onesy-Tree-item',
+                'onesy-Tree-middle',
+                'onesy-Tree-end'
               ],
 
               MiddleProps?.className,
@@ -592,9 +592,9 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Tree', theme) && [
-                'amaui-Tree-item',
-                'amaui-Tree-aside',
-                'amaui-Tree-end'
+                'onesy-Tree-item',
+                'onesy-Tree-aside',
+                'onesy-Tree-end'
               ],
 
               EndProps?.className,
@@ -642,7 +642,7 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Tree', theme) && [
-                  'amaui-Tree-tree'
+                  'onesy-Tree-tree'
                 ],
 
                 TreeProps?.className,
@@ -662,6 +662,6 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Tree.displayName = 'amaui-Tree';
+Tree.displayName = 'onesy-Tree';
 
 export default Tree;

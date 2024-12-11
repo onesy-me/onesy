@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, isEnvironment, TMethod } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, TMethod } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
 import PortalElement from '../Portal';
 import FocusElement from '../Focus';
@@ -117,7 +117,7 @@ const useStyle = styleMethod(theme => ({
   maxWidth_xxl: { maxWidth: `1360px` },
 
   maxWidth_unset: { maxWidth: `unset` }
-}), { name: 'amaui-Modal' });
+}), { name: 'onesy-Modal' });
 
 let MODALS_OPEN = 0;
 
@@ -172,9 +172,9 @@ export interface IModal extends IBaseElement {
 }
 
 const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiModal?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModal?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -362,9 +362,9 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
   const MainProps: any = {
     role: 'dialog',
 
-    'aria-labelledby': 'amaui-modal-title',
+    'aria-labelledby': 'onesy-modal-title',
 
-    'aria-describedby': 'amaui-modal-text',
+    'aria-describedby': 'onesy-modal-text',
 
     'aria-modal': 'true',
 
@@ -381,7 +381,7 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Modal', theme) && [
-          'amaui-Modal-modal-root'
+          'onesy-Modal-modal-root'
         ],
 
         classes.modalRoot
@@ -401,7 +401,7 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
             <div
               className={classNames([
                 staticClassName('Modal', theme) && [
-                  'amaui-Modal-no-surface'
+                  'onesy-Modal-no-surface'
                 ],
 
                 NoSurfaceProps?.className,
@@ -425,8 +425,8 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Modal', theme) && [
-                'amaui-Modal-surface',
-                `amaui-Modal-size-${size}`
+                'onesy-Modal-surface',
+                `onesy-Modal-size-${size}`
               ],
 
               classes.surface,
@@ -466,9 +466,9 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Modal', theme) && [
-            'amaui-Modal-root',
-            open && `amaui-Modal-open`,
-            focus && `amaui-Modal-focus`
+            'onesy-Modal-root',
+            open && `onesy-Modal-open`,
+            focus && `onesy-Modal-focus`
           ],
 
           className,
@@ -496,8 +496,8 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Modal', theme) && [
-                    'amaui-Modal-background',
-                    backgroundInvisible && 'amaui-Modal-background-invisible'
+                    'onesy-Modal-background',
+                    backgroundInvisible && 'onesy-Modal-background-invisible'
                   ],
 
                   classes.background,
@@ -515,6 +515,6 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Modal.displayName = 'amaui-Modal';
+Modal.displayName = 'onesy-Modal';
 
 export default Modal;

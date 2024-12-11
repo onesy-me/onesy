@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -22,7 +22,7 @@ const useStyle = styleMethod(theme => ({
     opacity: 0,
     visibility: 'hidden'
   }
-}), { name: 'amaui-IFrame' });
+}), { name: 'onesy-IFrame' });
 
 export interface IIFrame extends ILine {
   id?: string;
@@ -31,9 +31,9 @@ export interface IIFrame extends ILine {
 }
 
 const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiIFrame?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIFrame?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -155,7 +155,7 @@ const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('IFrame', theme) && [
-              'amaui-IFrame-root'
+              'onesy-IFrame-root'
             ],
 
             className,
@@ -185,6 +185,6 @@ const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-IFrame.displayName = 'amaui-IFrame';
+IFrame.displayName = 'onesy-IFrame';
 
 export default IFrame;

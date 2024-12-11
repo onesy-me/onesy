@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation as useLocationReactRouterDOM } from 'react-router-dom';
 
-import { debounce, isEnvironment } from '@amaui/utils';
+import { debounce, isEnvironment } from '@onesy/utils';
 
 export interface IUseLocation {
 
@@ -61,6 +61,6 @@ const useLocation = (props?: IUseLocation): Location => {
   return response;
 };
 
-useLocation.displayName = 'amaui-UseLocation';
+useLocation.displayName = 'onesy-UseLocation';
 
 export default useLocation;

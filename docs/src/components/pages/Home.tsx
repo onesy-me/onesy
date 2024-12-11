@@ -1,21 +1,21 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { is, random } from '@amaui/utils';
-import { AreaChart, Avatar, Button, Card, CardFooter, CardHeader, CardImage, CardMain, Checkbox, DatePicker, DonutChart, Fab, Fade, IconButton, Line, Link, ListItem, Masonry, Radio, Rating, Reveal, Slider, Surface, Switch, Tab, Tabs, TimePicker, Tooltip, Tree, Type, useMediaQuery, Weather } from '@amaui/ui-react';
-import { classNames, colors, style, useAmauiTheme } from '@amaui/style-react';
-import AmauiStorage from '@amaui/storage';
+import { is, random } from '@onesy/utils';
+import { AreaChart, Avatar, Button, Card, CardFooter, CardHeader, CardImage, CardMain, Checkbox, DatePicker, DonutChart, Fab, Fade, IconButton, Line, Link, ListItem, Masonry, Radio, Rating, Reveal, Slider, Surface, Switch, Tab, Tabs, TimePicker, Tooltip, Tree, Type, useMediaQuery, Weather } from '@onesy/ui-react';
+import { classNames, colors, style, useOnesyTheme } from '@onesy/style-react';
+import OnesyStorage from '@onesy/storage';
 
-import IconMaterialLightModeRounded from '@amaui/icons-material-rounded-react/IconMaterialLightMode';
-import IconMaterialDarkModeRounded from '@amaui/icons-material-rounded-react/IconMaterialDarkMode';
-import IconMaterialFormatTextdirectionLToRRounded from '@amaui/icons-material-rounded-react/IconMaterialFormatTextdirectionLToR';
-import IconMaterialFormatTextdirectionRToLRounded from '@amaui/icons-material-rounded-react/IconMaterialFormatTextdirectionRToL';
-import IconMaterialPottedPlantRounded from '@amaui/icons-material-rounded-react/IconMaterialPottedPlant';
-import IconMaterialFolderRounded from '@amaui/icons-material-rounded-react/IconMaterialFolder';
-import IconMaterialFolderOpenRounded from '@amaui/icons-material-rounded-react/IconMaterialFolderOpen';
-import IconMaterialFiberManualRecordRounded from '@amaui/icons-material-rounded-react/IconMaterialFiberManualRecordFilled';
-import IconMaterialMoreVertRounded from '@amaui/icons-material-rounded-react/IconMaterialMoreVert';
-import IconMaterialEastRounded from '@amaui/icons-material-rounded-react/IconMaterialEast';
+import IconMaterialLightModeRounded from '@onesy/icons-material-rounded-react/IconMaterialLightMode';
+import IconMaterialDarkModeRounded from '@onesy/icons-material-rounded-react/IconMaterialDarkMode';
+import IconMaterialFormatTextdirectionLToRRounded from '@onesy/icons-material-rounded-react/IconMaterialFormatTextdirectionLToR';
+import IconMaterialFormatTextdirectionRToLRounded from '@onesy/icons-material-rounded-react/IconMaterialFormatTextdirectionRToL';
+import IconMaterialPottedPlantRounded from '@onesy/icons-material-rounded-react/IconMaterialPottedPlant';
+import IconMaterialFolderRounded from '@onesy/icons-material-rounded-react/IconMaterialFolder';
+import IconMaterialFolderOpenRounded from '@onesy/icons-material-rounded-react/IconMaterialFolderOpen';
+import IconMaterialFiberManualRecordRounded from '@onesy/icons-material-rounded-react/IconMaterialFiberManualRecordFilled';
+import IconMaterialMoreVertRounded from '@onesy/icons-material-rounded-react/IconMaterialMoreVert';
+import IconMaterialEastRounded from '@onesy/icons-material-rounded-react/IconMaterialEast';
 
 import Logo from '../../../public/assets/svg/logo.svg';
 
@@ -27,13 +27,13 @@ const useStyle = style(theme => ({
     flex: '1 1 auto',
     background: 'transparent',
 
-    '& .amaui-TimePicker-main, & .amaui-Calendar-root, & .amaui-DatePicker-mobile': {
+    '& .onesy-TimePicker-main, & .onesy-Calendar-root, & .onesy-DatePicker-mobile': {
       width: '100%',
       maxWidth: 'unset',
       margin: 0
     },
 
-    '& .amaui-TimePicker-mode': {
+    '& .onesy-TimePicker-mode': {
       margin: 0
     }
   },
@@ -111,7 +111,7 @@ const useStyle = style(theme => ({
       transform: 'scale(0.91)'
     },
 
-    '&.amaui-Avatar-root.amaui-Button-root': {
+    '&.onesy-Avatar-root.onesy-Button-root': {
       cursor: 'pointer'
     }
   },
@@ -129,7 +129,7 @@ const useStyle = style(theme => ({
   card: {
     maxWidth: 'unset !important',
 
-    '&.amaui-Card-root': {
+    '&.onesy-Card-root': {
       overflow: 'visible'
     },
 
@@ -158,20 +158,20 @@ const useStyle = style(theme => ({
   },
 
   weather: {
-    '& .amaui-Weather-icon': {
+    '& .onesy-Weather-icon': {
       clipPath: `circle(0)`,
       transition: `${theme.methods.transitions.make(['clip-path'], { duration: 7400, timing_function: 'decelerated', delay: 1400 })}, ${theme.methods.transitions.make(['opacity', 'transform'], { duration: 'rg', timing_function: 'decelerated' })} !important`
     },
 
     '&:hover': {
-      '& .amaui-Weather-icon': {
+      '& .onesy-Weather-icon': {
         transform: 'scale(1.04)'
       }
     }
   },
 
   weatherIn: {
-    '& .amaui-Weather-icon': {
+    '& .onesy-Weather-icon': {
       clipPath: `circle(100%)`
     }
   }
@@ -182,10 +182,10 @@ export default function Root(props: any) {
 
   const router = useRouter();
 
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const refs = {
-    storage: new AmauiStorage({ namespace: 'amaui-docs' }),
+    storage: new OnesyStorage({ namespace: 'onesy-docs' }),
     imageSelected: React.useRef<string>(undefined),
     images: React.useRef<any[]>([])
   };
@@ -1061,7 +1061,7 @@ export default function Root(props: any) {
               classes.about_text
             ])}
           >
-            I am Lazar Erić, maker of amaui. I made amaui ecosystem of front-end & back-end tools, including UI React library with 100+ UI elements, based on newest Material Design 3, all a 100% Open source and free to use, as I want to push our market forward.
+            I am Lazar Erić, maker of onesy. I made onesy ecosystem of front-end & back-end tools, including UI React library with 100+ UI elements, based on newest Material Design 3, all a 100% Open source and free to use, as I want to push our market forward.
             <br /> <br />
 
             Waste less time on building tools, and more on making modern apps quickly, with quality.
@@ -1077,7 +1077,7 @@ export default function Root(props: any) {
               marginBottom: 12
             }}
           >
-            amaui made
+            onesy made
           </Type>
 
           <Line
@@ -1103,12 +1103,12 @@ export default function Root(props: any) {
               wrap='wrap'
             >
               {[
-                { name: 'UI', desc: 'UI React library, based on Material Design 3', url: 'https://github.com/amaui-org/amaui' },
-                { name: 'Utils', desc: 'Utils for front-end, back-end', url: 'https://github.com/amaui-org/amaui-utils' },
-                { name: 'Style', desc: 'Amaui CSS in JS library', url: 'https://github.com/amaui-org/amaui-style' },
-                { name: 'Date', desc: 'Date & time utils', url: 'https://github.com/amaui-org/amaui-date' },
-                { name: 'Request', desc: 'Request making for front-end, back-end', url: 'https://github.com/amaui-org/amaui-request' },
-                { name: 'Test', desc: 'Test framework for front-end, back-end', url: 'https://github.com/amaui-org/amaui-test' }
+                { name: 'UI', desc: 'UI React library, based on Material Design 3', url: 'https://github.com/onesy-org/onesy' },
+                { name: 'Utils', desc: 'Utils for front-end, back-end', url: 'https://github.com/onesy-org/onesy-utils' },
+                { name: 'Style', desc: 'Onesy CSS in JS library', url: 'https://github.com/onesy-org/onesy-style' },
+                { name: 'Date', desc: 'Date & time utils', url: 'https://github.com/onesy-org/onesy-date' },
+                { name: 'Request', desc: 'Request making for front-end, back-end', url: 'https://github.com/onesy-org/onesy-request' },
+                { name: 'Test', desc: 'Test framework for front-end, back-end', url: 'https://github.com/onesy-org/onesy-test' }
               ].map((item: any, index: number) => (
                 <Tooltip
                   key={index}
@@ -1155,7 +1155,7 @@ export default function Root(props: any) {
 
               version='text'
 
-              href='https://github.com/amaui-org'
+              href='https://github.com/onesy-org'
 
               target='_blank'
             >

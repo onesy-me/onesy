@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialExpandMore from '@amaui/icons-material-rounded-react/IconMaterialExpandMoreW100';
-import IconMaterialArrowRight from '@amaui/icons-material-rounded-react/IconMaterialArrowRightW100';
+import IconMaterialExpandMore from '@onesy/icons-material-rounded-react/IconMaterialExpandMoreW100';
+import IconMaterialArrowRight from '@onesy/icons-material-rounded-react/IconMaterialArrowRightW100';
 
 import ListItemElement from '../ListItem';
 import ListElement from '../List';
@@ -24,7 +24,7 @@ const useStyle = styleMethod(theme => ({
   icon_open: {
     transform: 'rotate(-180deg)'
   }
-}), { name: 'amaui-ListItem' });
+}), { name: 'onesy-ListItem' });
 
 export interface IMenuItem extends IListItem {
   menu?: IElement;
@@ -62,9 +62,9 @@ const ListItemDelays = {
 };
 
 const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMenuItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuItem?.props?.default, ...props_ }), [props_]);
 
   const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
 
@@ -202,7 +202,7 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('ListItem', theme) && [
-          'amaui-ListItem-icon-button'
+          'onesy-ListItem-icon-button'
         ],
 
         classes.iconButton
@@ -366,8 +366,8 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('MenuItem', theme) && [
-          'amaui-MenuItem-root',
-          `amaui-MenuItem-size-${size}`
+          'onesy-MenuItem-root',
+          `onesy-MenuItem-size-${size}`
         ],
 
         classes.root
@@ -380,14 +380,14 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
       RootProps={{
         className: classNames([
           staticClassName('ListItem', theme) && [
-            menu && `amaui-ListItem-menu`,
-            list && `amaui-ListItem-list`,
-            menuItem && `amaui-ListItem-menu-item`,
-            menuOpen && `amaui-ListItem-menu-open`,
-            openMenu && `amaui-ListItem-open-menu`,
-            openList && `amaui-ListItem-open-list`,
+            menu && `onesy-ListItem-menu`,
+            list && `onesy-ListItem-list`,
+            menuItem && `onesy-ListItem-menu-item`,
+            menuOpen && `onesy-ListItem-menu-open`,
+            openMenu && `onesy-ListItem-open-menu`,
+            openList && `onesy-ListItem-open-list`,
             menuItem && [
-              inset && `amaui-ListItem-menu-item-inset`
+              inset && `onesy-ListItem-menu-item-inset`
             ],
           ]
         ])
@@ -413,7 +413,7 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('ListItem', theme) && [
-                  'amaui-ListItem-list'
+                  'onesy-ListItem-list'
                 ],
 
                 ListProps?.className,
@@ -464,6 +464,6 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
   </>;
 });
 
-MenuItem.displayName = 'amaui-MenuItem';
+MenuItem.displayName = 'onesy-MenuItem';
 
 export default MenuItem;

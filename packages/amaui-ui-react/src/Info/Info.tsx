@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialInfo from '@amaui/icons-material-rounded-react/IconMaterialInfoW100';
+import IconMaterialInfo from '@onesy/icons-material-rounded-react/IconMaterialInfoW100';
 
 import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
@@ -26,11 +26,11 @@ const useStyle = style(theme => ({
     boxShadow: theme.shadows.values.default[1],
     padding: '16px',
 
-    '& .amaui-Type-root': {
+    '& .onesy-Type-root': {
       whiteSpace: 'normal'
     }
   }
-}), { name: 'amaui-Info' });
+}), { name: 'onesy-Info' });
 
 export interface IInfo extends IMenu {
   name?: string;
@@ -49,9 +49,9 @@ export interface IInfo extends IMenu {
 }
 
 const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiInfo?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyInfo?.props?.default, ...props_ }), [props_]);
 
   const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
 
@@ -101,7 +101,7 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Info', theme) && [
-              'amaui-Info-menu'
+              'onesy-Info-menu'
             ],
 
             classes.menu
@@ -129,7 +129,7 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Info', theme) && [
-          'amaui-Info-root'
+          'onesy-Info-root'
         ],
 
         className,
@@ -157,6 +157,6 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Info.displayName = 'amaui-Info';
+Info.displayName = 'onesy-Info';
 
 export default Info;

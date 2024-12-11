@@ -2,7 +2,7 @@ const path = require('path');
 const fg = require('fast-glob');
 const fs = require('fs');
 
-const AmauiNode = require('@amaui/node').default;
+const OnesyNode = require('@onesy/node').default;
 
 const wd = process.cwd();
 
@@ -18,7 +18,7 @@ let made = 0;
 let icons_ = 0;
 
 const valueMake = async (url, name, short_name) => {
-  const valueFile = await AmauiNode.file.get(url, false);
+  const valueFile = await OnesyNode.file.get(url, false);
 
   const viewBox = valueFile.match(/viewBox="([^"]+)"/g)?.[0]?.replace(/viewBox="|"/g, '') || '0 0 24 24';
 
@@ -26,7 +26,7 @@ const valueMake = async (url, name, short_name) => {
 
   value = `import React from 'react';
 
-import { Icon, IIcon } from '@amaui/ui-react';
+import { Icon, IIcon } from '@onesy/ui-react';
 
 const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
 
@@ -47,7 +47,7 @@ const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
   );
 });
 
-${prefix}${name}.displayName = 'Amaui${prefix}${name}';
+${prefix}${name}.displayName = 'Onesy${prefix}${name}';
 
 export default ${prefix}${name};
 `;
@@ -61,7 +61,7 @@ export default ${prefix}${name};
     .replace(/fill-opacity/g, 'fillOpacity')
     .replace(/fill-rule/g, 'fillRule');
 
-  await AmauiNode.file.add(path.join(src, `${prefix}${name}.tsx`), value);
+  await OnesyNode.file.add(path.join(src, `${prefix}${name}.tsx`), value);
 
   made++;
 };
@@ -150,10 +150,10 @@ async function method() {
   const indexPath = path.join(src, 'index.tsx');
 
   // Remove previous index
-  if (fs.existsSync(indexPath)) await AmauiNode.file.remove(indexPath);
+  if (fs.existsSync(indexPath)) await OnesyNode.file.remove(indexPath);
 
   // Add new index
-  await AmauiNode.file.add(indexPath, index);
+  await OnesyNode.file.add(indexPath, index);
 }
 
 method();

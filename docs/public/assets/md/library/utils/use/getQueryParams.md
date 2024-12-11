@@ -6,7 +6,7 @@ Returns query params from the URL, or with second argument a specific value of a
 Every value is decoded with `decodeURIComponent` method.
 
 ```ts
-// url https://amaui.me?a=114&ad1114
+// url https://onesy.me?a=114&ad1114
 
 getQueryParams();
 getQueryParams(undefined, 'a');

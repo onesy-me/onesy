@@ -12,19 +12,19 @@
 ### Version
 
 There are 25k+ icons within 3 of the libraries, including various usefull versions:
-- `@amaui/icons-material-rounded-react`
+- `@onesy/icons-material-rounded-react`
   - Rounded
   - Rounded Filled
   - Rounded W100
   - Rounded W100 Filled
 
-- `@amaui/icons-material-sharp-react`
+- `@onesy/icons-material-sharp-react`
   - Sharp
   - Sharp Filled
   - Sharp W100
   - Sharp W100 Filled
 
-- `@amaui/icons-material-two-tone-react`
+- `@onesy/icons-material-two-tone-react`
   - Two Tone
 
 ### Width
@@ -34,4 +34,4 @@ There are 25k+ icons within 3 of the libraries, including various usefull versio
 
 ### Other
 
-- All icons are using `@amaui/ui-react`'s `Icon` UI element.
+- All icons are using `@onesy/ui-react`'s `Icon` UI element.

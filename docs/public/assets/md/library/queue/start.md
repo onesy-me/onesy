@@ -1,12 +1,12 @@
 
-# amaui queue
+# onesy queue
 
 Queue data structure.
 
 ### Add
 
 ```bash
-yarn add @amaui/queue
+yarn add @onesy/queue
 ```
 
 ### Use cases
@@ -20,29 +20,29 @@ yarn add @amaui/queue
 ### Use
 
 ```ts
-import AmauiQueue from '@amaui/queue';
+import OnesyQueue from '@onesy/queue';
 
 // Make a new queue instance
-const amauiQueue = new AmauiQueue();
+const onesyQueue = new OnesyQueue();
 
 // Add values
-amauiQueue.push(1, 2, 3, 4);
+onesyQueue.push(1, 2, 3, 4);
 
-amauiQueue.first;
+onesyQueue.first;
 // 1
 
-amauiQueue.length;
+onesyQueue.length;
 // 4
 
-const value = amauiQueue.pop();
+const value = onesyQueue.pop();
 
 value;
 // 1
 
-amauiQueue.first;
+onesyQueue.first;
 // 2
 
-amauiQueue.length;
+onesyQueue.length;
 // 3
 ```
 

@@ -1,5 +1,5 @@
 
-# AmauiQueue
+# OnesyQueue
 
 ### Options
 
@@ -18,7 +18,7 @@ Limit to how many values can be in the queue.
 Adds new value into the queue.
 
 ```ts
-const queue = new AmauiQueue();
+const queue = new OnesyQueue();
 
 queue.push(1114);
 
@@ -32,7 +32,7 @@ queue.length;
 Remove last added item from the queue, and returns it.
 
 ```ts
-const queue = new AmauiQueue([1114]);
+const queue = new OnesyQueue([1114]);
 
 queue.push(114);
 
@@ -49,7 +49,7 @@ queue.length;
 Makes the value [], clears the entire queue.
 
 ```ts
-const queue = new AmauiQueue([1114]);
+const queue = new OnesyQueue([1114]);
 
 queue.push(114);
 
@@ -71,7 +71,7 @@ Value of the queue (entire queue), as an array of items.
 Returns the first item in the queue.
 
 ```ts
-const queue = new AmauiQueue([1114]);
+const queue = new OnesyQueue([1114]);
 
 queue.push(114);
 
@@ -98,27 +98,27 @@ True if queue number of items is equal to the limit.
 
 ## API
 
-#### TAmauiQueueValue
+#### TOnesyQueueValue
 
 ```ts
-type TAmauiQueueValue = Array<any>;
+type TOnesyQueueValue = Array<any>;
 ```
 
-#### AmauiQueue
+#### OnesyQueue
 
 ```ts
-default class AmauiQueue {
-    value: TAmauiQueueValue;
+default class OnesyQueue {
+    value: TOnesyQueueValue;
     limit: number;
-    constructor(value: TAmauiQueueValue, limit: number);
+    constructor(value: TOnesyQueueValue, limit: number);
     get length(): number;
     get first(): any;
     get peak(): any;
     get empty(): boolean;
     get full(): boolean;
-    push(...values: TAmauiQueueValue): boolean;
+    push(...values: TOnesyQueueValue): boolean;
     pop(): any;
-    clear(): AmauiQueue;
+    clear(): OnesyQueue;
 }
 ```
 

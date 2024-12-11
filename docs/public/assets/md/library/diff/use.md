@@ -1,5 +1,5 @@
 
-# AmauiDiff
+# OnesyDiff
 
 ### Options
 
@@ -30,9 +30,9 @@ By default it compares every character.
 It returns the instructions of what to add, remove in the first value to make it equal the second value, in exact otder.
 
 ```ts
-const amauiDiff = new AmauiDiff();
+const onesyDiff = new OnesyDiff();
 
-amauiDiff.diff('aau', 'aay ay');
+onesyDiff.diff('aau', 'aay ay');
 
 // { items: ['r', 2, 'a', 2, 'y', 'a', 3, ' ', 'a', 4, 'a', 'a', 5, 'y'] }
 ```
@@ -42,9 +42,9 @@ amauiDiff.diff('aau', 'aay ay');
 Updates the first value, based on the diff instructions, to make it equal the second provided value.
 
 ```ts
-const amauiDiff = new AmauiDiff();
+const onesyDiff = new OnesyDiff();
 
-amauiDiff.update('aau', amauiDiff.diff('aau', 'aay ay'));
+onesyDiff.update('aau', onesyDiff.diff('aau', 'aay ay'));
 
 // 'aay ay'
 ```
@@ -56,9 +56,9 @@ amauiDiff.update('aau', amauiDiff.diff('aau', 'aay ay'));
 Groups as many of same action types as it can in order, ie. few removes, then few add actions etc. to make update easier, but still get the correct result.
 
 ```ts
-const amauiDiff = new AmauiDiff();
+const onesyDiff = new OnesyDiff();
 
-AmauiDiff.updateGroups(amauiDiff.diff('aaa4aa', 'a44aa'));
+OnesyDiff.updateGroups(onesyDiff.diff('aaa4aa', 'a44aa'));
 
 // [
 //   [['r', 1], ['r', 2]],
@@ -66,44 +66,44 @@ AmauiDiff.updateGroups(amauiDiff.diff('aaa4aa', 'a44aa'));
 // ]
 ```
 
-#### amauiDiff
+#### onesyDiff
 
-Makes AmauiDiff instances with default options, per character.
+Makes OnesyDiff instances with default options, per character.
 
 ```ts
-const amauiDiff = AmauiDiff.amauiDiff;
+const onesyDiff = OnesyDiff.onesyDiff;
 ```
 
 #### word
 
-Makes AmauiDiff instances with word options, per word.
+Makes OnesyDiff instances with word options, per word.
 
 ```ts
-const amauiDiff = AmauiDiff.word;
+const onesyDiff = OnesyDiff.word;
 ```
 
 #### line
 
-Makes AmauiDiff instances with line options, per line.
+Makes OnesyDiff instances with line options, per line.
 
 ```ts
-const amauiDiff = AmauiDiff.line;
+const onesyDiff = OnesyDiff.line;
 ```
 
 #### sentence
 
-Makes AmauiDiff instances with sentence options, per sentence.
+Makes OnesyDiff instances with sentence options, per sentence.
 
 ```ts
-const amauiDiff = AmauiDiff.sentence;
+const onesyDiff = OnesyDiff.sentence;
 ```
 
 #### json
 
-Makes AmauiDiff instances with json options, per json line.
+Makes OnesyDiff instances with json options, per json line.
 
 ```ts
-const amauiDiff = AmauiDiff.json;
+const onesyDiff = OnesyDiff.json;
 ```
 
 ## API
@@ -206,16 +206,16 @@ type IOPTIONS = {
 const optionsDefault: IOptions;
 ```
 
-#### AmauiDiff
+#### OnesyDiff
 
 ```ts
-class AmauiDiff {
+class OnesyDiff {
     options: IOptions;
-    static get amauidiff(): AmauiDiff;
-    static get word(): AmauiDiff;
-    static get line(): AmauiDiff;
-    static get sentence(): AmauiDiff;
-    static get json(): AmauiDiff;
+    static get onesydiff(): OnesyDiff;
+    static get word(): OnesyDiff;
+    static get line(): OnesyDiff;
+    static get sentence(): OnesyDiff;
+    static get json(): OnesyDiff;
     static get OPTIONS(): IOPTIONS;
     static updateGroups(diff: IDiff): any[];
     constructor(options?: IOptions);

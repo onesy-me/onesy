@@ -1,12 +1,12 @@
 
 # startOf
 
-Start of provided time unit, from a provided AmauiDate.
+Start of provided time unit, from a provided OnesyDate.
 
 ```ts
-const amauiDate = new AmauiDate('2014-04-14T14:04:14.147');
+const onesyDate = new OnesyDate('2014-04-14T14:04:14.147');
 
-const value = startOf(amauiDate, 'day');
+const value = startOf(onesyDate, 'day');
 
 format(value);
 
@@ -27,7 +27,7 @@ format(value);
 #### startOf
 
 ```ts
-default function startOf(amauiDate_?: AmauiDate, unit?: TTimeUnits): AmauiDate;
+default function startOf(onesyDate_?: OnesyDate, unit?: TTimeUnits): OnesyDate;
 ```
 
 

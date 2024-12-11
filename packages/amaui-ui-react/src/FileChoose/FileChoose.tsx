@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { is, to } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, to } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
-import IconMaterialDraft from '@amaui/icons-material-rounded-react/IconMaterialDraftW100';
-import IconMaterialCloudUpload from '@amaui/icons-material-rounded-react/IconMaterialCloudUploadW100';
-import IconMaterialFolder from '@amaui/icons-material-rounded-react/IconMaterialFolderW100';
-import IconMaterialFolderOpen from '@amaui/icons-material-rounded-react/IconMaterialFolderOpenW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialDraft from '@onesy/icons-material-rounded-react/IconMaterialDraftW100';
+import IconMaterialCloudUpload from '@onesy/icons-material-rounded-react/IconMaterialCloudUploadW100';
+import IconMaterialFolder from '@onesy/icons-material-rounded-react/IconMaterialFolderW100';
+import IconMaterialFolderOpen from '@onesy/icons-material-rounded-react/IconMaterialFolderOpenW100';
 
 import TypeElement from '../Type';
 import ButtonElement from '../Button';
@@ -41,7 +41,7 @@ const useStyle = styleMethod(theme => ({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap'
   }
-}), { name: 'amaui-FileChoose' });
+}), { name: 'onesy-FileChoose' });
 
 export type TFileChooseValue = File | Array<File>;
 
@@ -81,9 +81,9 @@ export interface IFileChoose extends ILine {
 }
 
 const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiFileChoose?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFileChoose?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -211,7 +211,7 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
 
     className: classNames([
       staticClassName('FileChoose', theme) && [
-        'amaui-FileChoose-root'
+        'onesy-FileChoose-root'
       ],
 
       WrapperProps_?.className,
@@ -234,7 +234,7 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
 
       className: classNames([
         staticClassName('FileChoose', theme) && [
-          'amaui-FileChoose-root'
+          'onesy-FileChoose-root'
         ],
 
         ComponentProps_?.className,
@@ -290,7 +290,7 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
 
           className={classNames([
             staticClassName('FileChoose', theme) && [
-              'amaui-FileChoose-input'
+              'onesy-FileChoose-input'
             ],
 
             inputProps?.className,
@@ -317,7 +317,7 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
 
             className={classNames([
               staticClassName('FileChoose', theme) && [
-                'amaui-FileChoose-files'
+                'onesy-FileChoose-files'
               ],
 
               classes.files
@@ -358,7 +358,7 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
 
                       className={classNames([
                         staticClassName('FileChoose', theme) && [
-                          'amaui-FileChoose-file'
+                          'onesy-FileChoose-file'
                         ],
 
                         classes.file
@@ -385,6 +385,6 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-FileChoose.displayName = 'amaui-FileChoose';
+FileChoose.displayName = 'onesy-FileChoose';
 
 export default FileChoose;

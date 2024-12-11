@@ -1,7 +1,7 @@
 /* tslint:disable: no-shadowed-variable */
 import playwright, { chromium, webkit, firefox } from 'playwright';
 
-import { TMethod } from '@amaui/models';
+import { TMethod } from '@onesy/models';
 
 export type TType = 'chromium' | 'firefox' | 'webkit';
 
@@ -115,8 +115,8 @@ export const evaluate = async (
     // Reset
     await browser.page?.evaluateHandle((window: any) => {
       // Counter
-      window.amaui_counter.className = 0;
-      window.amaui_counter.keyframesName = 0;
+      window.onesy_counter.className = 0;
+      window.onesy_counter.keyframesName = 0;
     }, args);
 
     if (options.pre) await browser.page?.evaluateHandle(options.pre, args);
@@ -165,8 +165,8 @@ preAll(async () => utils.browsers = await startBrowsers());
 
 preEveryTo(async () => {
   // Counter
-  global.amaui_counter.className = 0;
-  global.amaui_counter.keyframesName = 0;
+  global.onesy_counter.className = 0;
+  global.onesy_counter.keyframesName = 0;
 });
 
 postAll(async () => await closeBrowsers(utils.browsers as IBrowsers));

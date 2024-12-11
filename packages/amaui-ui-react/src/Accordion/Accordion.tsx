@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialExpandMore from '@amaui/icons-material-rounded-react/IconMaterialExpandMoreW100';
+import IconMaterialExpandMore from '@onesy/icons-material-rounded-react/IconMaterialExpandMoreW100';
 
 import SurfaceElement from '../Surface';
 import FadeElement from '../Fade';
@@ -115,7 +115,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   noBackground: {
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: 'transparent'
     }
   },
@@ -125,7 +125,7 @@ const useStyle = styleMethod(theme => ({
     pointerEvents: 'none',
     opacity: theme.palette.visual_contrast.default.opacity.disabled
   }
-}), { name: 'amaui-Accordion' });
+}), { name: 'onesy-Accordion' });
 
 type TPadding = 'start' | 'end' | 'both' | 'none';
 
@@ -175,9 +175,9 @@ const AccordionDelays = {
 };
 
 const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAccordion?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAccordion?.props?.default, ...props_ }), [props_]);
 
   // Why
   // By providing option for a theme to override an entire element
@@ -298,7 +298,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
     <Line
       className={classNames([
         staticClassName('Accordion', theme) && [
-          'amaui-Accordion-main'
+          'onesy-Accordion-main'
         ],
 
         classes.main,
@@ -333,8 +333,8 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Accordion', theme) && [
-          'amaui-Accordion-root',
-          disabled && `amaui-Accordion-disabled`
+          'onesy-Accordion-root',
+          disabled && `onesy-Accordion-disabled`
         ],
 
         className,
@@ -359,7 +359,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Accordion', theme) && [
-            'amaui-Accordion-wrapper-header'
+            'onesy-Accordion-wrapper-header'
           ],
 
           WrapperHeaderProps?.className,
@@ -388,7 +388,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Accordion', theme) && [
-              'amaui-Accordion-header'
+              'onesy-Accordion-header'
             ],
 
             HeaderProps?.className,
@@ -404,7 +404,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Accordion', theme) && [
-                    'amaui-Accordion-primary'
+                    'onesy-Accordion-primary'
                   ],
 
                   classes.primary
@@ -437,7 +437,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('Accordion', theme) && [
-                      'amaui-Accordion-secondary'
+                      'onesy-Accordion-secondary'
                     ],
 
                     classes.secondary
@@ -489,7 +489,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Accordion', theme) && [
-                  'amaui-Accordion-icon-button'
+                  'onesy-Accordion-icon-button'
                 ],
 
                 IconButtonProps?.className,
@@ -538,6 +538,6 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Accordion.displayName = 'amaui-Accordion';
+Accordion.displayName = 'onesy-Accordion';
 
 export default Accordion;

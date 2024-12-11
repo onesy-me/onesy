@@ -9,10 +9,10 @@ const h1Element = ...;
 const h1 = element(h1Element);
 
 // ie.
-// Furthest parent element with .amaui-theme class
-h1.furthest(['.amaui-theme']);
+// Furthest parent element with .onesy-theme class
+h1.furthest(['.onesy-theme']);
 
-// Div.amaui-theme element
+// Div.onesy-theme element
 ```
 
 ### Methods
@@ -36,7 +36,7 @@ Returns parents that pass the css selectors match, with second argument arrayMet
 ```ts
 const h1 = element(...);
 
-h1.parents(['.amaui-theme']);
+h1.parents(['.onesy-theme']);
 
 // [div, div, div, div]
 ```
@@ -48,7 +48,7 @@ Returns nearest parent that pass the css selectors match, with second argument a
 ```ts
 const h1 = element(...);
 
-h1.nearest(['.amaui-theme']);
+h1.nearest(['.onesy-theme']);
 
 // Div element
 ```
@@ -60,7 +60,7 @@ Returns furthest parent that pass the css selectors match, with second argument 
 ```ts
 const h1 = element(...);
 
-h1.furthest(['.amaui-theme']);
+h1.furthest(['.onesy-theme']);
 
 // Div element
 ```
@@ -72,7 +72,7 @@ Returns true if immediate parent or including grandparents (other parents) or no
 ```ts
 const h1 = element(...);
 
-h1.hasParent(['.amaui-theme']);
+h1.hasParent(['.onesy-theme']);
 
 // true
 ```
@@ -84,7 +84,7 @@ Returns true if there are parents who pass the css selectors match, and if uniqu
 ```ts
 const h1 = element(...);
 
-h1.hasParents(['.amaui-theme']);
+h1.hasParents(['.onesy-theme']);
 
 // true
 ```

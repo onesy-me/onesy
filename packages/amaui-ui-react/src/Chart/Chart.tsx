@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { castParam, clamp, copy, is, isEnvironment, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, TColorValues, useAmauiTheme } from '@amaui/style-react';
+import { castParam, clamp, copy, is, isEnvironment, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, TColorValues, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import LineElement from '../Line';
@@ -18,7 +18,7 @@ const useStyle = styleMethod(theme => ({
   root: {
     width: '100%',
 
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: 'transparent'
     }
   },
@@ -320,7 +320,7 @@ const useStyle = styleMethod(theme => ({
     opacity: '0.44',
     pointerEvents: 'none'
   }
-}), { name: 'amaui-Chart' });
+}), { name: 'onesy-Chart' });
 
 export type IChartValueValues = Array<any>;
 
@@ -489,9 +489,9 @@ export interface IChart extends ISurface {
 }
 
 const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChart?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -940,7 +940,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Chart', theme) && [
-            'amaui-Chart-append'
+            'onesy-Chart-append'
           ],
 
           classes.append
@@ -1003,7 +1003,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
                 <span
                   className={classNames([
                     staticClassName('Chart', theme) && [
-                      'amaui-Chart-append-icon'
+                      'onesy-Chart-append-icon'
                     ],
 
                     classes.append_icon
@@ -1262,7 +1262,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Chart', theme) && [
-            'amaui-Chart-legend-item'
+            'onesy-Chart-legend-item'
           ],
 
           className_,
@@ -1275,7 +1275,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
         <span
           className={classNames([
             staticClassName('Chart', theme) && [
-              'amaui-Chart-legend-icon'
+              'onesy-Chart-legend-icon'
             ],
 
             classes.legend_icon
@@ -1454,7 +1454,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Chart', theme) && [
-                'amaui-Chart-point'
+                'onesy-Chart-point'
               ],
 
               PointProps?.className,
@@ -1517,7 +1517,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Chart', theme) && [
-                'amaui-Chart-additional-lines'
+                'onesy-Chart-additional-lines'
               ],
 
               AdditionalLineProps?.className,
@@ -1607,7 +1607,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Chart', theme) && [
-          'amaui-Chart-root'
+          'onesy-Chart-root'
         ],
 
         className,
@@ -1629,7 +1629,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Chart', theme) && [
-              'amaui-Chart-header'
+              'onesy-Chart-header'
             ],
 
             HeaderProps?.className,
@@ -1649,7 +1649,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Chart', theme) && [
-                  'amaui-Chart-title'
+                  'onesy-Chart-title'
                 ],
 
                 TypeProps?.className,
@@ -1672,7 +1672,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Chart', theme) && [
-                  'amaui-Chart-title'
+                  'onesy-Chart-title'
                 ],
 
                 TypeProps?.className,
@@ -1703,8 +1703,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Chart', theme) && [
-              'amaui-Chart-legend',
-              `amaui-Chart-legend-position-${legendPosition}`
+              'onesy-Chart-legend',
+              `onesy-Chart-legend-position-${legendPosition}`
             ],
 
             LegendProps?.className,
@@ -1739,7 +1739,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Chart', theme) && [
-            'amaui-Chart-wrapper'
+            'onesy-Chart-wrapper'
           ],
 
           WrapperProps?.className,
@@ -1772,8 +1772,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-grids',
-                        'amaui-Chart-grids-x'
+                        'onesy-Chart-grids',
+                        'onesy-Chart-grids-x'
                       ],
 
                       classes.grids,
@@ -1786,8 +1786,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                         className={classNames([
                           staticClassName('Chart', theme) && [
-                            'amaui-Chart-grid',
-                            'amaui-Chart-grid-x'
+                            'onesy-Chart-grid',
+                            'onesy-Chart-grid-x'
                           ],
 
                           classes.grid,
@@ -1814,8 +1814,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-grids',
-                        'amaui-Chart-grids-y'
+                        'onesy-Chart-grids',
+                        'onesy-Chart-grids-y'
                       ],
 
                       classes.grids,
@@ -1828,8 +1828,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                         className={classNames([
                           staticClassName('Chart', theme) && [
-                            'amaui-Chart-grid',
-                            'amaui-Chart-grid-y'
+                            'onesy-Chart-grid',
+                            'onesy-Chart-grid-y'
                           ],
 
                           classes.grid,
@@ -1863,7 +1863,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('Chart', theme) && [
-                      'amaui-Chart-svg'
+                      'onesy-Chart-svg'
                     ],
 
                     SvgProps?.className,
@@ -1987,7 +1987,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-additional-lines'
+                          'onesy-Chart-additional-lines'
                         ],
 
                         AdditionalLinesProps?.className,
@@ -2008,8 +2008,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                         className={classNames([
                           staticClassName('Chart', theme) && [
-                            'amaui-Chart-guidelines',
-                            'amaui-Chart-guidelines-vertical'
+                            'onesy-Chart-guidelines',
+                            'onesy-Chart-guidelines-vertical'
                           ],
 
                           GuidelineProps?.className,
@@ -2027,8 +2027,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                         className={classNames([
                           staticClassName('Chart', theme) && [
-                            'amaui-Chart-guidelines',
-                            'amaui-Chart-guidelines-horizontal'
+                            'onesy-Chart-guidelines',
+                            'onesy-Chart-guidelines-horizontal'
                           ],
 
                           GuidelineProps?.className,
@@ -2046,7 +2046,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-points'
+                          'onesy-Chart-points'
                         ],
 
                         PointsProps?.className,
@@ -2068,9 +2068,9 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
                     <div
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-border',
-                          'amaui-Chart-border-x',
-                          'amaui-Chart-border-top'
+                          'onesy-Chart-border',
+                          'onesy-Chart-border-x',
+                          'onesy-Chart-border-top'
                         ],
 
                         classes.border,
@@ -2084,9 +2084,9 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
                     <div
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-border',
-                          'amaui-Chart-border-x',
-                          'amaui-Chart-border-bottom'
+                          'onesy-Chart-border',
+                          'onesy-Chart-border-x',
+                          'onesy-Chart-border-bottom'
                         ],
 
                         classes.border,
@@ -2100,9 +2100,9 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
                     <div
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-border',
-                          'amaui-Chart-border-y',
-                          'amaui-Chart-border-start'
+                          'onesy-Chart-border',
+                          'onesy-Chart-border-y',
+                          'onesy-Chart-border-start'
                         ],
 
                         classes.border,
@@ -2116,9 +2116,9 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
                     <div
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-border',
-                          'amaui-Chart-border-y',
-                          'amaui-Chart-border-left'
+                          'onesy-Chart-border',
+                          'onesy-Chart-border-y',
+                          'onesy-Chart-border-left'
                         ],
 
                         classes.border,
@@ -2132,9 +2132,9 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
                     <div
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-border',
-                          'amaui-Chart-border-y',
-                          'amaui-Chart-border-end'
+                          'onesy-Chart-border',
+                          'onesy-Chart-border-y',
+                          'onesy-Chart-border-end'
                         ],
 
                         classes.border,
@@ -2148,9 +2148,9 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
                     <div
                       className={classNames([
                         staticClassName('Chart', theme) && [
-                          'amaui-Chart-border',
-                          'amaui-Chart-border-y',
-                          'amaui-Chart-border-right'
+                          'onesy-Chart-border',
+                          'onesy-Chart-border-y',
+                          'onesy-Chart-border-right'
                         ],
 
                         classes.border,
@@ -2172,8 +2172,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-labels',
-                        'amaui-Chart-labels-x'
+                        'onesy-Chart-labels',
+                        'onesy-Chart-labels-x'
                       ],
 
                       classes.labels,
@@ -2188,8 +2188,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                         className: classNames([
                           staticClassName('Chart', theme) && [
-                            'amaui-Chart-label',
-                            'amaui-Chart-label-x'
+                            'onesy-Chart-label',
+                            'onesy-Chart-label-x'
                           ],
 
                           classes.label,
@@ -2212,8 +2212,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                             className={classNames([
                               staticClassName('Chart', theme) && [
-                                'amaui-Chart-label',
-                                'amaui-Chart-label-x'
+                                'onesy-Chart-label',
+                                'onesy-Chart-label-x'
                               ],
 
                               classes.label,
@@ -2243,8 +2243,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-labels',
-                        'amaui-Chart-labels-y'
+                        'onesy-Chart-labels',
+                        'onesy-Chart-labels-y'
                       ],
 
                       classes.labels,
@@ -2262,8 +2262,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                           className={classNames([
                             staticClassName('Chart', theme) && [
-                              'amaui-Chart-label',
-                              'amaui-Chart-label-y'
+                              'onesy-Chart-label',
+                              'onesy-Chart-label-y'
                             ],
 
                             classes.label,
@@ -2291,8 +2291,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-marks',
-                        'amaui-Chart-marks-x'
+                        'onesy-Chart-marks',
+                        'onesy-Chart-marks-x'
                       ],
 
                       classes.marks,
@@ -2305,8 +2305,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                         className={classNames([
                           staticClassName('Chart', theme) && [
-                            'amaui-Chart-mark',
-                            'amaui-Chart-mark-x'
+                            'onesy-Chart-mark',
+                            'onesy-Chart-mark-x'
                           ],
 
                           classes.mark,
@@ -2335,8 +2335,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-marks',
-                        'amaui-Chart-marks-y'
+                        'onesy-Chart-marks',
+                        'onesy-Chart-marks-y'
                       ],
 
                       classes.marks,
@@ -2349,8 +2349,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                         className={classNames([
                           staticClassName('Chart', theme) && [
-                            'amaui-Chart-mark',
-                            'amaui-Chart-mark-y'
+                            'onesy-Chart-mark',
+                            'onesy-Chart-mark-y'
                           ],
 
                           classes.mark,
@@ -2374,8 +2374,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-name',
-                        'amaui-Chart-name-x'
+                        'onesy-Chart-name',
+                        'onesy-Chart-name-x'
                       ],
 
                       classes.name,
@@ -2392,8 +2392,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-name',
-                        'amaui-Chart-name-y'
+                        'onesy-Chart-name',
+                        'onesy-Chart-name-y'
                       ],
 
                       classes.name,
@@ -2426,8 +2426,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Chart', theme) && [
-              'amaui-Chart-legend',
-              `amaui-Chart-legend-position-${legendPosition}`
+              'onesy-Chart-legend',
+              `onesy-Chart-legend-position-${legendPosition}`
             ],
 
             LegendProps?.className,
@@ -2467,7 +2467,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
             <div
               className={classNames([
                 staticClassName('Chart', theme) && [
-                  'amaui-Chart-append-wrapper'
+                  'onesy-Chart-append-wrapper'
                 ],
 
                 classes.append_wrapper
@@ -2514,7 +2514,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Chart', theme) && [
-                        'amaui-Chart-append'
+                        'onesy-Chart-append'
                       ],
 
                       classes.append
@@ -2588,6 +2588,6 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Chart.displayName = 'amaui-Chart';
+Chart.displayName = 'onesy-Chart';
 
 export default Chart;

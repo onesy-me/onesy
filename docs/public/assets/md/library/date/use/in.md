@@ -6,9 +6,9 @@ Returns how long until date is from now, in a nicely formated string (optional, 
 You can provide both to, and from date.
 
 ```ts
-const amauiDate = new AmauiDate(new Date().getTime() + (44 * 1000));
+const onesyDate = new OnesyDate(new Date().getTime() + (44 * 1000));
 
-In(amauiDate);
+In(onesyDate);
 
 // 44 seconds
 ```
@@ -16,9 +16,9 @@ In(amauiDate);
 ### withPrefix
 
 ```ts
-const amauiDate = new AmauiDate(new Date().getTime() + (44 * 1000));
+const onesyDate = new OnesyDate(new Date().getTime() + (44 * 1000));
 
-In(amauiDate);
+In(onesyDate);
 
 // in 44 seconds
 ```
@@ -28,7 +28,7 @@ In(amauiDate);
 #### In
 
 ```ts
-default function In(to?: AmauiDate, withPrefix?: boolean, from?: AmauiDate): string;
+default function In(to?: OnesyDate, withPrefix?: boolean, from?: OnesyDate): string;
 ```
 
 

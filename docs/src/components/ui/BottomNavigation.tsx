@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import { classNames, style } from '@amaui/style-react';
-import { Interaction, Line, Surface, Type } from '@amaui/ui-react';
+import { classNames, style } from '@onesy/style-react';
+import { Interaction, Line, Surface, Type } from '@onesy/ui-react';
 
-import IconMaterialWestRounded from '@amaui/icons-material-rounded-react/IconMaterialWest';
-import IconMaterialEastRounded from '@amaui/icons-material-rounded-react/IconMaterialEast';
+import IconMaterialWestRounded from '@onesy/icons-material-rounded-react/IconMaterialWest';
+import IconMaterialEastRounded from '@onesy/icons-material-rounded-react/IconMaterialEast';
 
 const useStyle = style(theme => ({
   root: {
@@ -13,7 +13,7 @@ const useStyle = style(theme => ({
     width: '100%',
 
     // bug
-    '&.amaui-Line-root': {
+    '&.onesy-Line-root': {
       flexDirection: 'column'
     }
   },
@@ -35,7 +35,7 @@ const useStyle = style(theme => ({
   [`@media only screen and (min-width: ${theme.breakpoints.values.sm}px)`]: {
     $root: {
       // bug
-      '&.amaui-Line-root': {
+      '&.onesy-Line-root': {
         flexDirection: 'row !important'
       }
     },

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, clamp, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, clamp, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import useMediaQuery from '../useMediaQuery';
 import { valueBreakpoints, staticClassName } from '../utils';
@@ -11,7 +11,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-Parallax' });
+}), { name: 'onesy-Parallax' });
 
 export type TParallaxDirection = 'vertical' | 'horizontal';
 
@@ -35,9 +35,9 @@ export interface IParallax extends IBaseElement {
 }
 
 const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiParallax?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyParallax?.props?.default, ...props_ }), [props_]);
 
   const {
     value: value_,
@@ -185,7 +185,7 @@ const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
       React.cloneElement(children as any, {
         className: classNames([
           staticClassName('Parallax', theme) && [
-            `amaui-Parallax-root`
+            `onesy-Parallax-root`
           ],
 
           className,
@@ -217,6 +217,6 @@ const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Parallax.displayName = 'amaui-Parallax';
+Parallax.displayName = 'onesy-Parallax';
 
 export default Parallax;

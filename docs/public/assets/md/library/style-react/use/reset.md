@@ -16,7 +16,7 @@ Additionally
 - Once element instance is removed, its specific dynamic style sheet will be removed from the DOM.
 
 ```tsx
-import { reset } from '@amaui/style-react';
+import { reset } from '@onesy/style-react';
 
 const useReset = reset(theme => ({
   a: {

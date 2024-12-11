@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import useMediaQuery from '../useMediaQuery';
 import { valueBreakpoints, staticClassName } from '../utils';
@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
   version_masonry: {
     display: 'block'
   }
-}), { name: 'amaui-ImageList' });
+}), { name: 'onesy-ImageList' });
 
 export interface IImageList extends IBaseElement {
   version?: 'standard' | 'vowen' | 'masonry';
@@ -45,9 +45,9 @@ export interface IImageList extends IBaseElement {
 }
 
 const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiImageList?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageList?.props?.default, ...props_ }), [props_]);
 
   const { classes } = useStyle();
 
@@ -169,7 +169,7 @@ const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
       <Component
         className={classNames([
           staticClassName('ImageList', theme) && [
-            `amaui-ImageList-root`
+            `onesy-ImageList-root`
           ],
 
           className,
@@ -197,6 +197,6 @@ const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-ImageList.displayName = 'amaui-ImageList';
+ImageList.displayName = 'onesy-ImageList';
 
 export default ImageList;

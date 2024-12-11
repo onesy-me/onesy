@@ -6,19 +6,19 @@ Plugin that allows you to use an object value for specific properties instead of
 ### Add
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Add to plugins
-amauiStyle.plugins.add = valueObject;
+onesyStyle.plugins.add = valueObject;
 ```
 
 ### Remove
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Remove from plugins
-amauiStyle.plugins.remove = valueObject;
+onesyStyle.plugins.remove = valueObject;
 ```
 
 ### Use
@@ -283,7 +283,7 @@ interface IValueObject {
 #### valueObject
 
 ```ts
-function valueObject(amauiStyle: AmauiStyle): {
+function valueObject(onesyStyle: OnesyStyle): {
     methods: {
         method: (value_?: {
             property?: string;

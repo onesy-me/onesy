@@ -1,16 +1,16 @@
 
-# AmauiStyleSheetManager
+# OnesyStyleSheetManager
 
-Used for managing multiple `AmauiStyleSheet` instances in one place, for the same use cases.
+Used for managing multiple `OnesyStyleSheet` instances in one place, for the same use cases.
 
-You have to provide `AmauiStyle` instance in the options, as it will use the available plugins from it, and provide made css to it. It also needs an `AmauiTheme` instance if you want to have theme available for `AmauiStyleRuleProperty`'s within it.
+You have to provide `OnesyStyle` instance in the options, as it will use the available plugins from it, and provide made css to it. It also needs an `OnesyTheme` instance if you want to have theme available for `OnesyStyleRuleProperty`'s within it.
 
-Usually if you create styles that include multiple classes, where some have static, some dynamic property values, then you would add all those styles to `AmauiStyleSheetManager` instance which sorts those selectors into static, dynamic ones, and creates for each static, dynamic `AmauiStyleSheet` instances, and manages all of those within itself.
+Usually if you create styles that include multiple classes, where some have static, some dynamic property values, then you would add all those styles to `OnesyStyleSheetManager` instance which sorts those selectors into static, dynamic ones, and creates for each static, dynamic `OnesyStyleSheet` instances, and manages all of those within itself.
 
 ### Use
 
 ```ts
-const amauiStyleSheetManager = new AmauiStyleSheetManager({
+const onesyStyleSheetManager = new OnesyStyleSheetManager({
   '@keyframes a': {
     '0%': {
         color: 'white'
@@ -60,36 +60,36 @@ const amauiStyleSheetManager = new AmauiStyleSheetManager({
 
 #### response
 
-Returns in an object with css property's value entire css generated from all the `AmauiStyleSheet`'s.
+Returns in an object with css property's value entire css generated from all the `OnesyStyleSheet`'s.
 
 #### css
 
-Returns in a string value entire css generated from all the `AmauiStyleSheet`'s.
+Returns in a string value entire css generated from all the `OnesyStyleSheet`'s.
 
 #### add
 
-Adds the made selectors & their values to the DOM, for each of the `AmauiStyleSheet`'s.
+Adds the made selectors & their values to the DOM, for each of the `OnesyStyleSheet`'s.
 
 #### update
 
-Updates all of the `AmauiStyleSheet`'s with new rules.
+Updates all of the `OnesyStyleSheet`'s with new rules.
 
 #### props
 
-Updates the props, and triggers updates for all dynamic `AmauiStyleSheet`'s.
+Updates the props, and triggers updates for all dynamic `OnesyStyleSheet`'s.
 
 ```ts
-const amauiStyleSheetManager = new AmauiStyleSheetManager(value, options);
+const onesyStyleSheetManager = new OnesyStyleSheetManager(value, options);
 
 // Updates props
-amauiStyleSheetManager.props = {
+onesyStyleSheetManager.props = {
   a: 114
 };
 ```
 
 #### remove
 
-Removes all of the `AmauiStyleSheet`'s from the DOM.
+Removes all of the `OnesyStyleSheet`'s from the DOM.
 
 ## API
 
@@ -123,19 +123,19 @@ interface IOptions {
     mode?: TMode;
     pure?: boolean;
     priority?: TPriority;
-    amauiTheme?: AmauiTheme;
-    amauiStyle?: AmauiStyle;
+    onesyTheme?: OnesyTheme;
+    onesyStyle?: OnesyStyle;
     style?: IOptionsStyle;
     rule?: IOptionsRule;
-    amaui_style_cache?: boolean;
+    onesy_style_cache?: boolean;
     name?: string;
 }
 ```
 
-#### AmauiStyleSheetManager
+#### OnesyStyleSheetManager
 
 ```ts
-class AmauiStyleSheetManager {
+class OnesyStyleSheetManager {
     value?: TValueObject;
     options: IOptions;
     id: string;
@@ -143,8 +143,8 @@ class AmauiStyleSheetManager {
     mode: TMode;
     pure: boolean;
     priority: TPriority;
-    amauiTheme: AmauiTheme;
-    amauiStyle: AmauiStyle;
+    onesyTheme: OnesyTheme;
+    onesyStyle: OnesyStyle;
     values: {
         css: string;
     };
@@ -154,7 +154,7 @@ class AmauiStyleSheetManager {
     users: number;
     constructor(value?: TValueObject, options?: IOptions);
     private propertiesVersion;
-    set props(value: IAmauiStyleSheetManagerProps);
+    set props(value: IOnesyStyleSheetManagerProps);
     get ids(): IIds;
     get response(): IValuesVersion;
     get css(): string;
@@ -171,12 +171,12 @@ class AmauiStyleSheetManager {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Style: AmauiStyleSheet",
-      "to": "/library/style/use/AmauiStyleSheet"
+      "label": "Style: OnesyStyleSheet",
+      "to": "/library/style/use/OnesyStyleSheet"
     },
     "next": {
-      "label": "Style: AmauiTheme",
-      "to": "/library/style/use/AmauiTheme"
+      "label": "Style: OnesyTheme",
+      "to": "/library/style/use/OnesyTheme"
     }
   }
 }~

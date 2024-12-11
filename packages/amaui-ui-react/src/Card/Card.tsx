@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import InteractionElement from '../Interaction';
@@ -42,7 +42,7 @@ const useStyle = styleMethod(theme => ({
     pointerEvents: 'none',
     opacity: theme.palette.visual_contrast.default.opacity.disabled
   }
-}), { name: 'amaui-Card' });
+}), { name: 'onesy-Card' });
 
 export interface ICard extends ISurface {
   focus?: boolean;
@@ -58,9 +58,9 @@ export interface ICard extends ISurface {
 }
 
 const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCard?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCard?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -154,9 +154,9 @@ const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Card', theme) && [
-          `amaui-Card-root`,
-          focus && `amaui-Card-focus`,
-          disabled && `amaui-Card-disabled`
+          `onesy-Card-root`,
+          focus && `onesy-Card-focus`,
+          disabled && `onesy-Card-disabled`
         ],
 
         className,
@@ -198,6 +198,6 @@ const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Card.displayName = 'amaui-Card';
+Card.displayName = 'onesy-Card';
 
 export default Card;

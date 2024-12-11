@@ -1,21 +1,21 @@
 import React from 'react';
 
-import { clamp, getLeadingZerosNumber, is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { AmauiDate, duration as durationMethod } from '@amaui/date';
+import { clamp, getLeadingZerosNumber, is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { OnesyDate, duration as durationMethod } from '@onesy/date';
 
-import IconMaterialPlayArrow from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
-import IconMaterialPause from '@amaui/icons-material-rounded-react/IconMaterialPauseW100';
-import IconMaterialForwardMedia from '@amaui/icons-material-rounded-react/IconMaterialForwardMediaW100';
-import IconMaterialVolumeDownAlt from '@amaui/icons-material-rounded-react/IconMaterialVolumeDownAltW100';
-import IconMaterialVolumeOff from '@amaui/icons-material-rounded-react/IconMaterialVolumeOffW100';
-import IconMaterialFullscreen from '@amaui/icons-material-rounded-react/IconMaterialFullscreenW100';
-import IconMaterialFullscreenExit from '@amaui/icons-material-rounded-react/IconMaterialFullscreenExitW100';
-import IconMaterialSettings from '@amaui/icons-material-rounded-react/IconMaterialSettingsW100';
-import IconMaterialTune from '@amaui/icons-material-rounded-react/IconMaterialTuneW100';
-import IconMaterialSlowMotionVideo from '@amaui/icons-material-rounded-react/IconMaterialSlowMotionVideoW100';
-import IconMaterialPictureInPictureAlt from '@amaui/icons-material-rounded-react/IconMaterialPictureInPictureAltW100';
-import IconMaterialArrowBackIos from '@amaui/icons-material-rounded-react/IconMaterialArrowBackIosW100';
+import IconMaterialPlayArrow from '@onesy/icons-material-rounded-react/IconMaterialPlayArrowW100';
+import IconMaterialPause from '@onesy/icons-material-rounded-react/IconMaterialPauseW100';
+import IconMaterialForwardMedia from '@onesy/icons-material-rounded-react/IconMaterialForwardMediaW100';
+import IconMaterialVolumeDownAlt from '@onesy/icons-material-rounded-react/IconMaterialVolumeDownAltW100';
+import IconMaterialVolumeOff from '@onesy/icons-material-rounded-react/IconMaterialVolumeOffW100';
+import IconMaterialFullscreen from '@onesy/icons-material-rounded-react/IconMaterialFullscreenW100';
+import IconMaterialFullscreenExit from '@onesy/icons-material-rounded-react/IconMaterialFullscreenExitW100';
+import IconMaterialSettings from '@onesy/icons-material-rounded-react/IconMaterialSettingsW100';
+import IconMaterialTune from '@onesy/icons-material-rounded-react/IconMaterialTuneW100';
+import IconMaterialSlowMotionVideo from '@onesy/icons-material-rounded-react/IconMaterialSlowMotionVideoW100';
+import IconMaterialPictureInPictureAlt from '@onesy/icons-material-rounded-react/IconMaterialPictureInPictureAltW100';
+import IconMaterialArrowBackIos from '@onesy/icons-material-rounded-react/IconMaterialArrowBackIosW100';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -76,7 +76,7 @@ const useStyle = styleMethod(theme => ({
     borderRadius: 'inherit',
     transition: theme.methods.transitions.make('opacity'),
 
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: 'linear-gradient(0deg, rgb(0, 0, 0, 0.24), transparent)'
     }
   },
@@ -107,7 +107,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   timeline: {
-    '&.amaui-Slider-root': {
+    '&.onesy-Slider-root': {
       height: '20px !important',
       width: '100% !important',
       margin: 'unset !important',
@@ -118,18 +118,18 @@ const useStyle = styleMethod(theme => ({
   volume: {
     flex: '1 1 auto',
 
-    '&.amaui-Slider-root': {
+    '&.onesy-Slider-root': {
       height: '24px !important',
       width: '100vw !important',
       maxWidth: '54px !important',
       margin: 'unset !important',
       borderRadius: '0px',
 
-      '& .amaui-Slider-rail': {
+      '& .onesy-Slider-rail': {
         borderRadius: '0px'
       },
 
-      '& .amaui-Slider-track': {
+      '& .onesy-Slider-track': {
         borderRadius: '0px'
       }
     }
@@ -173,7 +173,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   menuSettingsFullScreen: {
-    '&.amaui-Modal-root': {
+    '&.onesy-Modal-root': {
       position: 'fixed !important',
       transform: 'none !important',
       left: 'unset !important',
@@ -181,7 +181,7 @@ const useStyle = styleMethod(theme => ({
       bottom: '47.8906px !important'
     }
   }
-}), { name: 'amaui-VideoPlayer' });
+}), { name: 'onesy-VideoPlayer' });
 
 export interface IVideoPlayer extends ILine {
   name?: string;
@@ -248,9 +248,9 @@ export interface IVideoPlayer extends ILine {
 }
 
 const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiVideoPlayer?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyVideoPlayer?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -614,13 +614,13 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
         setMouseMoved({
           moved: true,
-          unix: AmauiDate.unix
+          unix: OnesyDate.unix
         });
 
         refs.timeoutMouseMoved.current = setTimeout(() => {
           setMouseMoved({
             moved: false,
-            unix: AmauiDate.unix
+            unix: OnesyDate.unix
           });
         }, 4000);
       }
@@ -833,7 +833,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
       startAlign: 'center',
       endAlign: 'center',
       size: 'small',
-      className: 'amaui-videoPlayer-option'
+      className: 'onesy-videoPlayer-option'
     };
 
     const items: any = [];
@@ -1070,9 +1070,9 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('VideoPlayer', theme) && [
-          `amaui-VideoPlayer-root`,
-          `amaui-VideoPlayer-size-${size}`,
-          fullScreen && `amaui-VideoPlayer-full-screen`
+          `onesy-VideoPlayer-root`,
+          `onesy-VideoPlayer-size-${size}`,
+          fullScreen && `onesy-VideoPlayer-full-screen`
         ],
 
         className,
@@ -1317,7 +1317,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
                   flexNo
 
                   className={classNames([
-                    'amaui-Audio-time',
+                    'onesy-Audio-time',
                     classes.time
                   ])}
                 >
@@ -1364,7 +1364,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
                     onClose={onSettingsMenuClose}
 
-                    includeParentQueries={['.amaui-videoPlayer']}
+                    includeParentQueries={['.onesy-videoPlayer']}
 
                     {...SettingsMenuProps}
 
@@ -1378,7 +1378,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
                     }}
 
                     className={classNames([
-                      'amaui-videoPlayer',
+                      'onesy-videoPlayer',
                       SettingsMenuProps?.className,
                       fullScreen && classes.menuSettingsFullScreen
                     ])}
@@ -1433,6 +1433,6 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
   );
 });
 
-VideoPlayer.displayName = 'amaui-VideoPlayer';
+VideoPlayer.displayName = 'onesy-VideoPlayer';
 
 export default VideoPlayer;

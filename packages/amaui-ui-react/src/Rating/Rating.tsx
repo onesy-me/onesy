@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { clamp, is, isEnvironment, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is, isEnvironment, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialGrade from '@amaui/icons-material-rounded-react/IconMaterialGradeW100';
-import IconMaterialGradeFilled from '@amaui/icons-material-rounded-react/IconMaterialGradeW100Filled';
+import IconMaterialGrade from '@onesy/icons-material-rounded-react/IconMaterialGradeW100';
+import IconMaterialGradeFilled from '@onesy/icons-material-rounded-react/IconMaterialGradeW100Filled';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, ITonal, IColor, ISize, IElement } from '../types';
@@ -62,7 +62,7 @@ const useStyle = styleMethod(theme => ({
     opacity: theme.palette.visual_contrast.default.opacity.disabled,
     cursor: 'default'
   }
-}), { name: 'amaui-Rating' });
+}), { name: 'onesy-Rating' });
 
 export interface IRating extends IBaseElement {
   tonal?: ITonal;
@@ -99,9 +99,9 @@ export interface IRating extends IBaseElement {
 }
 
 const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiRating?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRating?.props?.default, ...props_ }), [props_]);
 
   const {
     tonal = true,
@@ -451,16 +451,16 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Rating', theme) && [
-          'amaui-Rating-root',
-          `amaui-Rating-size-${size}`,
-          hover && `amaui-Button-hover`,
-          mouseDown && `amaui-Button-mouse-down`,
+          'onesy-Rating-root',
+          `onesy-Rating-size-${size}`,
+          hover && `onesy-Button-hover`,
+          mouseDown && `onesy-Button-mouse-down`,
           focus && [
-            `amaui-Button-focus`,
-            [undefined, 0].includes(value) && `amaui-Button-focus-noValue`
+            `onesy-Button-focus`,
+            [undefined, 0].includes(value) && `onesy-Button-focus-noValue`
           ],
-          readOnly && `amaui-Rating-read-only`,
-          disabled && `amaui-Rating-disabled`
+          readOnly && `onesy-Rating-read-only`,
+          disabled && `onesy-Rating-disabled`
         ],
 
         className,
@@ -489,8 +489,8 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Rating', theme) && [
-                'amaui-Rating-icon-wrapper',
-                focus && selected(index + 1) && 'amaui-Rating-focus'
+                'onesy-Rating-icon-wrapper',
+                focus && selected(index + 1) && 'onesy-Rating-focus'
               ],
 
               classes.iconWrapper,
@@ -501,8 +501,8 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('Rating', theme) && [
-                  'amaui-Rating-icon',
-                  'amaui-Rating-icon-inactive'
+                  'onesy-Rating-icon',
+                  'onesy-Rating-icon-inactive'
                 ],
 
                 classes.icon,
@@ -521,8 +521,8 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('Rating', theme) && [
-                  'amaui-Rating-icon',
-                  'amaui-Rating-icon-active'
+                  'onesy-Rating-icon',
+                  'onesy-Rating-icon-active'
                 ],
 
                 classes.icon,
@@ -547,6 +547,6 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Rating.displayName = 'amaui-Rating';
+Rating.displayName = 'onesy-Rating';
 
 export default Rating;

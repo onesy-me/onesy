@@ -1,17 +1,17 @@
 import React from 'react';
 
-import is from '@amaui/utils/is';
-import { AmauiStyle, makeClassName, unit, rtl, sort, valueObject, prefix } from '@amaui/style';
+import is from '@onesy/utils/is';
+import { OnesyStyle, makeClassName, unit, rtl, sort, valueObject, prefix } from '@onesy/style';
 
 import StyleContext from './Context';
 
-function makeAmauiStyle(element?: Element) {
-  const amauiStyle = new AmauiStyle({
+function makeOnesyStyle(element?: Element) {
+  const onesyStyle = new OnesyStyle({
     element
   });
 
   // Add all the plugins
-  amauiStyle.plugins.add = [
+  onesyStyle.plugins.add = [
     unit,
     makeClassName,
     prefix,
@@ -20,11 +20,11 @@ function makeAmauiStyle(element?: Element) {
     valueObject
   ];
 
-  return amauiStyle;
+  return onesyStyle;
 }
 
-export interface IStyle extends Partial<AmauiStyle> {
-  updateWithRerender?: (value: any) => AmauiStyle;
+export interface IStyle extends Partial<OnesyStyle> {
+  updateWithRerender?: (value: any) => OnesyStyle;
 }
 
 const Style: React.FC<IStyle> = React.forwardRef((props, ref: any) => {
@@ -45,11 +45,11 @@ const Style: React.FC<IStyle> = React.forwardRef((props, ref: any) => {
   };
 
   const [value, setValue] = React.useState(() => {
-    if (value_ === undefined || !(value_ instanceof AmauiStyle)) return makeAmauiStyle();
+    if (value_ === undefined || !(value_ instanceof OnesyStyle)) return makeOnesyStyle();
 
-    (value_ as AmauiStyle).remove = remove;
+    (value_ as OnesyStyle).remove = remove;
 
-    return (value_ as AmauiStyle);
+    return (value_ as OnesyStyle);
   });
 
   React.useEffect(() => {
@@ -61,7 +61,7 @@ const Style: React.FC<IStyle> = React.forwardRef((props, ref: any) => {
       // Init
       value.init();
 
-      const valueNew = new AmauiStyle();
+      const valueNew = new OnesyStyle();
 
       // Copy over from value
       Object.keys(value).forEach((prop: any) => valueNew[prop] = value[prop]);
@@ -72,7 +72,7 @@ const Style: React.FC<IStyle> = React.forwardRef((props, ref: any) => {
 
   const update = (updateValue: any) => {
     if (updateValue !== undefined) {
-      const valueNew = new AmauiStyle();
+      const valueNew = new OnesyStyle();
 
       valueNew.remove = remove;
 

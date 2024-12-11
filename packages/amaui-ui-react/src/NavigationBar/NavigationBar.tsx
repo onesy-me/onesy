@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -21,7 +21,7 @@ const useStyle = styleMethod(theme => ({
     insetInline: '0',
     bottom: '0'
   }
-}), { name: 'amaui-NavigationBar' });
+}), { name: 'onesy-NavigationBar' });
 
 export type TNavigationBarValue = Array<string>;
 
@@ -36,9 +36,9 @@ export interface INavigationBar extends Omit<ISurface, 'version'> {
 }
 
 const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiNavigationBar?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationBar?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -127,13 +127,13 @@ const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: a
     .map((item: any, index: number) => React.cloneElement(item, {
       key: index,
 
-      ...(['amaui-NavigationItem'].includes(item.type?.displayName) ? {
+      ...(['onesy-NavigationItem'].includes(item.type?.displayName) ? {
         ...other,
 
         version
       } : {}),
 
-      color: item.props.color !== undefined ? item.props.color : (['amaui-NavigationItem'].includes(item.type?.displayName) ? color : styles.icon.color),
+      color: item.props.color !== undefined ? item.props.color : (['onesy-NavigationItem'].includes(item.type?.displayName) ? color : styles.icon.color),
 
       tonal: item.props.tonal !== undefined ? item.props.tonal : tonal,
 
@@ -169,7 +169,7 @@ const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('NavigationBar', theme) && [
-          'amaui-NavigationBar-root'
+          'onesy-NavigationBar-root'
         ],
 
         className,
@@ -190,6 +190,6 @@ const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: a
   );
 });
 
-NavigationBar.displayName = 'amaui-NavigationBar';
+NavigationBar.displayName = 'onesy-NavigationBar';
 
 export default NavigationBar;

@@ -2,17 +2,17 @@
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 
-import { assert } from '@amaui/test';
+import { assert } from '@onesy/test';
 
 import { evaluate } from '../../../utils/js/test/utils';
 
-import * as AmauiStyleReact from '../src';
+import * as OnesyStyleReact from '../src';
 
-group('@amaui/style-react/pure', () => {
+group('@onesy/style-react/pure', () => {
 
   to('pure', async () => {
     const valueBrowsers = await evaluate(async (window: any) => {
-      const { pure } = window.AmauiStyleReact;
+      const { pure } = window.OnesyStyleReact;
 
       const usePure = pure(theme => ({
         a: {
@@ -46,7 +46,7 @@ group('@amaui/style-react/pure', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         window.document.styleSheets.length,
@@ -70,7 +70,7 @@ group('@amaui/style-react/pure', () => {
 
   to('p', async () => {
     const valueBrowsers = await evaluate(async (window: any) => {
-      const { p } = window.AmauiStyleReact;
+      const { p } = window.OnesyStyleReact;
 
       const usePure = p(theme => ({
         a: {
@@ -104,7 +104,7 @@ group('@amaui/style-react/pure', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         window.document.styleSheets.length,
@@ -130,7 +130,7 @@ group('@amaui/style-react/pure', () => {
 
     to('add', async () => {
       const valueBrowsers = await evaluate(async (window: any) => {
-        const { pure } = window.AmauiStyleReact;
+        const { pure } = window.OnesyStyleReact;
 
         const usePure = pure(theme => ({
           a: {
@@ -164,7 +164,7 @@ group('@amaui/style-react/pure', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(140);
+        await window.OnesyUtils.wait(140);
 
         return [
           window.document.styleSheets.length,
@@ -190,7 +190,7 @@ group('@amaui/style-react/pure', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { pure, useAmauiTheme, AmauiThemeProvider } = window.AmauiStyleReact;
+        const { pure, useOnesyTheme, OnesyThemeProvider } = window.OnesyStyleReact;
 
         const usePure = pure(theme => ({
           a: {
@@ -201,7 +201,7 @@ group('@amaui/style-react/pure', () => {
         const A = props => {
           usePure(props);
 
-          const amauiTheme = useAmauiTheme();
+          const onesyTheme = useOnesyTheme();
 
           window.React.useEffect(() => {
             setTimeout(() => {
@@ -209,7 +209,7 @@ group('@amaui/style-react/pure', () => {
             });
 
             setTimeout(() => {
-              amauiTheme.update({
+              onesyTheme.update({
                 palette: {
                   light: false
                 }
@@ -230,9 +230,9 @@ group('@amaui/style-react/pure', () => {
 
           return (
             eval(window.Babel.transform(`
-              <AmauiThemeProvider>
+              <OnesyThemeProvider>
                   <A>a</A>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
           `, { presets: [window.Babel.availablePresets.es2015, window.Babel.availablePresets.react] }).code)
           );
         };
@@ -240,7 +240,7 @@ group('@amaui/style-react/pure', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         window.value.push(window.document.styleSheets.length, Array.from(window.document.styleSheets).map((sheet: any) => Array.from(sheet.cssRules).map((rule: any) => rule.cssText)), window.document.getElementById('app').innerHTML);
 
@@ -256,14 +256,14 @@ group('@amaui/style-react/pure', () => {
             "a { color: rgba(0, 0, 0, 0.87); }"
           ]
         ],
-        "<div data-amaui-theme=\"true\"><a>a</a></div>",
+        "<div data-onesy-theme=\"true\"><a>a</a></div>",
         1,
         [
           [
             "a { color: rgba(255, 255, 255, 0.87); }"
           ]
         ],
-        "<div data-amaui-theme=\"true\"><a>a</a></div>"
+        "<div data-onesy-theme=\"true\"><a>a</a></div>"
       ]));
     });
 
@@ -271,7 +271,7 @@ group('@amaui/style-react/pure', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { pure } = window.AmauiStyleReact;
+        const { pure } = window.OnesyStyleReact;
 
         const usePure = pure(theme => ({
           a: {
@@ -318,7 +318,7 @@ group('@amaui/style-react/pure', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         return window.value;
       });
@@ -347,7 +347,7 @@ group('@amaui/style-react/pure', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { pure } = window.AmauiStyleReact;
+        const { pure } = window.OnesyStyleReact;
 
         const usePure = pure(theme => ({
           a: {
@@ -398,7 +398,7 @@ group('@amaui/style-react/pure', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         return window.value;
       });
@@ -424,9 +424,9 @@ group('@amaui/style-react/pure', () => {
   group('ssr', () => {
 
     to('renderToString', async () => {
-      const { AmauiStyle, AmauiStyleProvider, AmauiThemeProvider, pure } = AmauiStyleReact;
+      const { OnesyStyle, OnesyStyleProvider, OnesyThemeProvider, pure } = OnesyStyleReact;
 
-      const amauiStyle = new AmauiStyle();
+      const onesyStyle = new OnesyStyle();
 
       const usePure = pure(theme => ({
         a: {
@@ -446,13 +446,13 @@ group('@amaui/style-react/pure', () => {
 
       const App = () => {
         return (
-          <AmauiStyleProvider value={amauiStyle}>
-            <AmauiThemeProvider>
+          <OnesyStyleProvider value={onesyStyle}>
+            <OnesyThemeProvider>
               <A>
                 a
               </A>
-            </AmauiThemeProvider>
-          </AmauiStyleProvider>
+            </OnesyThemeProvider>
+          </OnesyStyleProvider>
         );
       };
 
@@ -460,7 +460,7 @@ group('@amaui/style-react/pure', () => {
 
       assert(value).eq('<div><div><a>a</a></div></div>');
 
-      assert(amauiStyle.css).eq(`
+      assert(onesyStyle.css).eq(`
 
 a {
   color: yellow;

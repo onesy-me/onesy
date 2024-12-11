@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import { IType } from '../Type/Type';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-ModalText' });
+}), { name: 'onesy-ModalText' });
 
 export interface IModalText extends IType {
 
 }
 
 const ModalText: React.FC<IModalText> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiModalText?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalText?.props?.default, ...props_ }), [props_]);
 
   const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
 
@@ -41,11 +41,11 @@ const ModalText: React.FC<IModalText> = React.forwardRef((props_, ref: any) => {
 
       align='center'
 
-      id='amaui-modal-text'
+      id='onesy-modal-text'
 
       className={classNames([
         staticClassName('ModalText', theme) && [
-          'amaui-ModalText-root'
+          'onesy-ModalText-root'
         ],
 
         className,
@@ -59,6 +59,6 @@ const ModalText: React.FC<IModalText> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-ModalText.displayName = 'amaui-ModalText';
+ModalText.displayName = 'onesy-ModalText';
 
 export default ModalText;

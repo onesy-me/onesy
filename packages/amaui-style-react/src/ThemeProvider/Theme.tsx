@@ -1,21 +1,21 @@
 import React from 'react';
 
-import is from '@amaui/utils/is';
-import merge from '@amaui/utils/merge';
-import hash from '@amaui/utils/hash';
-import isEnvironment from '@amaui/utils/isEnvironment';
-import { AmauiTheme, classNames } from '@amaui/style';
-import { IAmauiTheme } from '@amaui/style/AmauiTheme';
+import is from '@onesy/utils/is';
+import merge from '@onesy/utils/merge';
+import hash from '@onesy/utils/hash';
+import isEnvironment from '@onesy/utils/isEnvironment';
+import { OnesyTheme, classNames } from '@onesy/style';
+import { IOnesyTheme } from '@onesy/style/OnesyTheme';
 
 import ThemeContext from './Context';
-import useAmauiTheme from './useAmauiTheme';
+import useOnesyTheme from './useOnesyTheme';
 import { ThemeRequired } from '../style';
 
 export interface IThemeValue extends ThemeRequired {
-  updateWithRerender: (value: IAmauiTheme) => ThemeRequired;
+  updateWithRerender: (value: IOnesyTheme) => ThemeRequired;
 }
 
-const hashValue = (value: AmauiTheme) => {
+const hashValue = (value: OnesyTheme) => {
   const allowed = ['direction', 'preference', 'mode', 'palette', 'shape', 'breakpoints', 'space', 'shadows', 'typography', 'transitions', 'z_index'];
 
   const valueNew = {};
@@ -25,7 +25,7 @@ const hashValue = (value: AmauiTheme) => {
   return hash(valueNew);
 };
 
-const resolveValue = (value: AmauiTheme) => {
+const resolveValue = (value: OnesyTheme) => {
   const notAllowed = ['subscriptions', 'id', 'element', 'updateWithRerender'];
 
   const valueNew = {};
@@ -38,7 +38,7 @@ const resolveValue = (value: AmauiTheme) => {
 export interface ITheme extends React.HTMLAttributes<any> {
   root?: boolean;
 
-  value?: IAmauiTheme;
+  value?: IOnesyTheme;
 
   addCssVariables?: boolean;
 
@@ -69,15 +69,15 @@ const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
 
   refs.init.current = init;
 
-  const valueParent = useAmauiTheme() as any || {};
+  const valueParent = useOnesyTheme() as any || {};
 
-  const [value, setValue] = React.useState<IThemeValue>(() => new AmauiTheme(merge(resolveValue(is('function', valueLocal) ? (valueLocal as any)(valueParent) : valueLocal), resolveValue(valueParent), { copy: true }) as any) as any);
+  const [value, setValue] = React.useState<IThemeValue>(() => new OnesyTheme(merge(resolveValue(is('function', valueLocal) ? (valueLocal as any)(valueParent) : valueLocal), resolveValue(valueParent), { copy: true }) as any) as any);
 
   const addCssVariablesMethod = React.useCallback(() => {
     if (!refs.styleSheet.current) {
       refs.styleSheet.current = window.document.createElement('style');
 
-      refs.styleSheet.current.setAttribute('data-amaui', 'true');
+      refs.styleSheet.current.setAttribute('data-onesy', 'true');
       refs.styleSheet.current.setAttribute('data-version', 'static');
       refs.styleSheet.current.setAttribute('data-name', 'vars');
 
@@ -86,7 +86,7 @@ const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
 
     const values = [];
 
-    const prefix = 'amaui';
+    const prefix = 'onesy';
 
     // Palette
     // Color
@@ -164,14 +164,14 @@ ${values.map(item => `\t${item};`).join('\n')}
 
   React.useEffect(() => {
     if (refs.root.current) {
-      const amauiTheme = new AmauiTheme(value as any, { element: refs.root.current }) as any;
+      const onesyTheme = new OnesyTheme(value as any, { element: refs.root.current }) as any;
 
-      amauiTheme.id = value.id;
+      onesyTheme.id = value.id;
 
-      amauiTheme.subscriptions = value.subscriptions;
+      onesyTheme.subscriptions = value.subscriptions;
 
       // Init
-      setValue(amauiTheme);
+      setValue(onesyTheme);
     }
 
     setInit(true);
@@ -185,29 +185,29 @@ ${values.map(item => `\t${item};`).join('\n')}
     if (init) {
       value.update(merge(resolveValue(is('function', valueLocal) ? (valueLocal as any)(valueParent) : valueLocal), resolveValue(valueParent), { copy: true }) as any);
 
-      const amauiTheme = new AmauiTheme(value as any, { element: refs.root?.current }) as any;
+      const onesyTheme = new OnesyTheme(value as any, { element: refs.root?.current }) as any;
 
-      amauiTheme.id = value.id;
+      onesyTheme.id = value.id;
 
-      amauiTheme.subscriptions = value.subscriptions;
+      onesyTheme.subscriptions = value.subscriptions;
 
-      setValue(amauiTheme);
+      setValue(onesyTheme);
     }
   }, [hashValue(valueLocal as any), valueParent?.palette?.light]);
 
-  const update = (updateValue: IAmauiTheme) => {
+  const update = (updateValue: IOnesyTheme) => {
     if (updateValue !== undefined) {
       // Update
       value.update(updateValue);
 
-      const amauiTheme = new AmauiTheme(value as any, { element: refs.root?.current || (isEnvironment('browser') && window.document.body) }) as any;
+      const onesyTheme = new OnesyTheme(value as any, { element: refs.root?.current || (isEnvironment('browser') && window.document.body) }) as any;
 
-      amauiTheme.id = value.id;
+      onesyTheme.id = value.id;
 
-      amauiTheme.subscriptions = value.subscriptions;
+      onesyTheme.subscriptions = value.subscriptions;
 
       // Init
-      setValue(amauiTheme);
+      setValue(onesyTheme);
 
       return value;
     }

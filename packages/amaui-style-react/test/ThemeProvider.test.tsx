@@ -3,19 +3,19 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import { assert } from '@amaui/test';
+import { assert } from '@onesy/test';
 
 import { evaluate } from '../../../utils/js/test/utils';
 
-import * as AmauiStyleReact from '../src';
+import * as OnesyStyleReact from '../src';
 
-group('@amaui/style-react/Theme', () => {
+group('@onesy/style-react/Theme', () => {
 
   to('ThemeContext', async () => {
     const valueBrowsers = await evaluate((window: any) => {
       return [
-        !!window.AmauiStyleReact.ThemeContext.Provider,
-        !!window.AmauiStyleReact.ThemeContext.Consumer
+        !!window.OnesyStyleReact.ThemeContext.Provider,
+        !!window.OnesyStyleReact.ThemeContext.Consumer
       ];
     });
 
@@ -30,13 +30,13 @@ group('@amaui/style-react/Theme', () => {
     const valueBrowsers = await evaluate(async (window: any) => {
       const value = [];
 
-      const { AmauiTheme, useAmauiTheme, Theme } = window.AmauiStyleReact;
+      const { OnesyTheme, useOnesyTheme, Theme } = window.OnesyStyleReact;
 
       const A = (props) => {
-        const amauiTheme = useAmauiTheme();
+        const onesyTheme = useOnesyTheme();
 
         window.React.useEffect(() => {
-          if (amauiTheme.element) value.push(amauiTheme);
+          if (onesyTheme.element) value.push(onesyTheme);
         });
 
         return (
@@ -91,11 +91,11 @@ group('@amaui/style-react/Theme', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         value.length === 2,
-        value.every(item => item instanceof AmauiTheme),
+        value.every(item => item instanceof OnesyTheme),
         value[0] !== value[1],
         value[0].id !== value[1].id,
         value[0].element !== value[1].element,
@@ -133,17 +133,17 @@ group('@amaui/style-react/Theme', () => {
     ]));
   });
 
-  to('useAmauiTheme', async () => {
+  to('useOnesyTheme', async () => {
     const valueBrowsers = await evaluate(async (window: any) => {
       const value = [];
 
-      const { AmauiTheme, useAmauiTheme, Theme } = window.AmauiStyleReact;
+      const { OnesyTheme, useOnesyTheme, Theme } = window.OnesyStyleReact;
 
       const A = (props) => {
-        const amauiTheme = useAmauiTheme();
+        const onesyTheme = useOnesyTheme();
 
         window.React.useEffect(() => {
-          if (amauiTheme.element) value.push(amauiTheme);
+          if (onesyTheme.element) value.push(onesyTheme);
         });
 
         return (
@@ -198,11 +198,11 @@ group('@amaui/style-react/Theme', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         value.length === 2,
-        value.every(item => item instanceof AmauiTheme),
+        value.every(item => item instanceof OnesyTheme),
         value[0] !== value[1],
         value[0].id !== value[1].id,
         value[0].element !== value[1].element,
@@ -246,27 +246,27 @@ group('@amaui/style-react/Theme', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         const value = [];
 
-        const { AmauiTheme, useAmauiTheme, Theme } = window.AmauiStyleReact;
+        const { OnesyTheme, useOnesyTheme, Theme } = window.OnesyStyleReact;
 
         const A = (props) => {
-          const amauiTheme = useAmauiTheme();
+          const onesyTheme = useOnesyTheme();
 
           window.React.useEffect(() => {
-            value.push(amauiTheme.palette.light);
+            value.push(onesyTheme.palette.light);
 
             setTimeout(() => {
-              amauiTheme.update({
+              onesyTheme.update({
                 palette: {
                   light: false
                 }
               });
 
-              value.push(amauiTheme.palette.light);
+              value.push(onesyTheme.palette.light);
             });
           }, []);
 
           window.React.useEffect(() => {
-            if (!amauiTheme.palette.light) value.push(amauiTheme.palette.light);
+            if (!onesyTheme.palette.light) value.push(onesyTheme.palette.light);
           });
 
           return (
@@ -321,7 +321,7 @@ group('@amaui/style-react/Theme', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(140);
+        await window.OnesyUtils.wait(140);
 
         return value;
       });
@@ -338,16 +338,16 @@ group('@amaui/style-react/Theme', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         const value = [];
 
-        const { AmauiTheme, useAmauiTheme, Theme } = window.AmauiStyleReact;
+        const { OnesyTheme, useOnesyTheme, Theme } = window.OnesyStyleReact;
 
         const A = (props) => {
-          const amauiTheme = useAmauiTheme();
+          const onesyTheme = useOnesyTheme();
 
           window.React.useEffect(() => {
-            value.push(amauiTheme.palette.light);
+            value.push(onesyTheme.palette.light);
 
             setTimeout(() => {
-              amauiTheme.updateWithRerender({
+              onesyTheme.updateWithRerender({
                 palette: {
                   light: false
                 }
@@ -356,7 +356,7 @@ group('@amaui/style-react/Theme', () => {
           }, []);
 
           window.React.useEffect(() => {
-            if (!amauiTheme.palette.light) value.push(amauiTheme.palette.light);
+            if (!onesyTheme.palette.light) value.push(onesyTheme.palette.light);
           });
 
           return (
@@ -411,7 +411,7 @@ group('@amaui/style-react/Theme', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(140);
+        await window.OnesyUtils.wait(140);
 
         return value;
       });
@@ -428,26 +428,26 @@ group('@amaui/style-react/Theme', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         const value = [];
 
-        const { AmauiTheme, useAmauiTheme, Theme } = window.AmauiStyleReact;
+        const { OnesyTheme, useOnesyTheme, Theme } = window.OnesyStyleReact;
 
         const A = (props) => {
-          const amauiTheme = useAmauiTheme();
+          const onesyTheme = useOnesyTheme();
 
           window.React.useEffect(() => {
             value.push([
-              amauiTheme.palette.light,
-              amauiTheme.palette.color.primary.main,
-              amauiTheme.palette.color.secondary.main
+              onesyTheme.palette.light,
+              onesyTheme.palette.color.primary.main,
+              onesyTheme.palette.color.secondary.main
             ]);
           }, []);
 
           window.React.useEffect(() => {
-            if (!amauiTheme.palette.light) value.push([
-              amauiTheme.palette.light,
-              amauiTheme.palette.color.primary.main,
-              amauiTheme.palette.color.secondary.main
+            if (!onesyTheme.palette.light) value.push([
+              onesyTheme.palette.light,
+              onesyTheme.palette.color.primary.main,
+              onesyTheme.palette.color.secondary.main
             ]);
-          }, [amauiTheme.palette.light]);
+          }, [onesyTheme.palette.light]);
 
           return (
             eval(window.Babel.transform(`
@@ -511,7 +511,7 @@ group('@amaui/style-react/Theme', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         return value;
       });
@@ -541,26 +541,26 @@ group('@amaui/style-react/Theme', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         const value = [];
 
-        const { AmauiTheme, useAmauiTheme, Theme } = window.AmauiStyleReact;
+        const { OnesyTheme, useOnesyTheme, Theme } = window.OnesyStyleReact;
 
         const A = (props) => {
-          const amauiTheme = useAmauiTheme();
+          const onesyTheme = useOnesyTheme();
 
           window.React.useEffect(() => {
             value.push([
-              amauiTheme.palette.light,
-              amauiTheme.palette.color.primary.main,
-              amauiTheme.palette.color.secondary.main
+              onesyTheme.palette.light,
+              onesyTheme.palette.color.primary.main,
+              onesyTheme.palette.color.secondary.main
             ]);
           }, []);
 
           window.React.useEffect(() => {
-            if (!amauiTheme.palette.light) value.push([
-              amauiTheme.palette.light,
-              amauiTheme.palette.color.primary.main,
-              amauiTheme.palette.color.secondary.main
+            if (!onesyTheme.palette.light) value.push([
+              onesyTheme.palette.light,
+              onesyTheme.palette.color.primary.main,
+              onesyTheme.palette.color.secondary.main
             ]);
-          }, [amauiTheme.palette.light]);
+          }, [onesyTheme.palette.light]);
 
           return (
             eval(window.Babel.transform(`
@@ -624,7 +624,7 @@ group('@amaui/style-react/Theme', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         return value;
       });
@@ -656,13 +656,13 @@ group('@amaui/style-react/Theme', () => {
     const valueBrowsers = await evaluate(async (window: any) => {
       window.value = [];
 
-      const { AmauiTheme, useAmauiTheme, Theme } = window.AmauiStyleReact;
+      const { OnesyTheme, useOnesyTheme, Theme } = window.OnesyStyleReact;
 
       const A = (props) => {
-        const amauiTheme = useAmauiTheme();
+        const onesyTheme = useOnesyTheme();
 
         window.React.useEffect(() => {
-          if (amauiTheme.element) window.value.push(amauiTheme);
+          if (onesyTheme.element) window.value.push(onesyTheme);
         });
 
         return (
@@ -675,11 +675,11 @@ group('@amaui/style-react/Theme', () => {
       };
 
       const App = () => {
-        const a = new AmauiTheme();
+        const a = new OnesyTheme();
 
         a.a = 'a';
 
-        const a1 = new AmauiTheme();
+        const a1 = new OnesyTheme();
 
         a1.a = 'a1';
 
@@ -703,11 +703,11 @@ group('@amaui/style-react/Theme', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         window.value.length === 2,
-        window.value.every(item => item instanceof AmauiTheme),
+        window.value.every(item => item instanceof OnesyTheme),
         window.value[0].a === 'a1',
         window.value[0].direction,
         window.value[0].options,
@@ -744,13 +744,13 @@ group('@amaui/style-react/Theme', () => {
   group('ssr', () => {
 
     to('renderToString', async () => {
-      const { AmauiTheme, useAmauiTheme, Theme } = AmauiStyleReact;
+      const { OnesyTheme, useOnesyTheme, Theme } = OnesyStyleReact;
 
-      const amauiTheme = new AmauiTheme();
+      const onesyTheme = new OnesyTheme();
 
       const App = () => {
         return (
-          <Theme value={amauiTheme}>
+          <Theme value={onesyTheme}>
             a
           </Theme>
         );

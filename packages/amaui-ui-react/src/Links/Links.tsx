@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { textToInnerHTML } from '@amaui/utils';
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
+import { textToInnerHTML } from '@onesy/utils';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialShare from '@amaui/icons-material-rounded-react/IconMaterialShareW100';
-import IconMaterialMoreVert from '@amaui/icons-material-rounded-react/IconMaterialMoreVertW100';
+import IconMaterialShare from '@onesy/icons-material-rounded-react/IconMaterialShareW100';
+import IconMaterialMoreVert from '@onesy/icons-material-rounded-react/IconMaterialMoreVertW100';
 
 import SectionElement from '../Section';
 import MenuElement from '../Menu';
@@ -69,7 +69,7 @@ const useStyle = style(theme => ({
   },
 
   link: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       whiteSpace: 'normal',
       wordBreak: 'break-word',
       flex: '1 1 auto !important'
@@ -79,7 +79,7 @@ const useStyle = style(theme => ({
   more: {
     flex: '0 0 auto'
   }
-}), { name: 'amaui-Links' });
+}), { name: 'onesy-Links' });
 
 export interface ILinksItem {
   version?: 'primary' | 'secondary' | 'default';
@@ -125,9 +125,9 @@ export interface ILinks extends IBaseElement {
 }
 
 const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLinks?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinks?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -209,7 +209,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Links', theme) && [
-          'amaui-Links-root'
+          'onesy-Links-root'
         ],
 
         className,
@@ -288,7 +288,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Links', theme) && [
-                    'amaui-Links-name'
+                    'onesy-Links-name'
                   ],
 
                   NameProps?.className,
@@ -315,7 +315,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Links', theme) && [
-                    'amaui-Links-short-description'
+                    'onesy-Links-short-description'
                   ],
 
                   ShortDescriptionProps?.className,
@@ -370,7 +370,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
                   {...LinkProps}
 
                   className={classNames([
-                    `amaui-Links-link-version-${item.version}`,
+                    `onesy-Links-link-version-${item.version}`,
 
                     LinkProps?.className,
                     item.props?.className,
@@ -453,7 +453,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Links', theme) && [
-                        'amaui-Links-more'
+                        'onesy-Links-more'
                       ],
 
                       IconButtonProps?.className,
@@ -484,6 +484,6 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Element.displayName = 'amaui-Links';
+Element.displayName = 'onesy-Links';
 
 export default Element;

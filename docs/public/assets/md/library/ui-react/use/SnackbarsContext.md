@@ -2,10 +2,10 @@
 
 ## API
 
-#### AmauiSnackbarsContext
+#### OnesySnackbarsContext
 
 ```ts
-const AmauiSnackbarsContext: any;
+const OnesySnackbarsContext: any;
 ```
 
 

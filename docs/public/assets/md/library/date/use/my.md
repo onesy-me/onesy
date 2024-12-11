@@ -1,13 +1,13 @@
 
 # my
 
-Returns user's local AmauiDate, and the timezone.
+Returns user's local OnesyDate, and the timezone.
 
 ```ts
 my();
 
 // {
-//     amauiDate: AmauiDate { },
+//     onesyDate: OnesyDate { },
 //     timezone: {
 //         label: 'Europe/Belgrade (GMT+01:00)',
 //         code: 'Europe/Belgrade',
@@ -24,7 +24,7 @@ my();
 
 ```ts
 interface IMy {
-    amauiDate: AmauiDate;
+    onesyDate: OnesyDate;
     timezone: ITimezone;
 }
 ```

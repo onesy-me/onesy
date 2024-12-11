@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, ITonal, IColor } from '../types';
@@ -255,7 +255,7 @@ const useStyle = styleMethod(theme => ({
   bufferDots_reverse: {
     animation: '$bufferDotsInverted .3s infinite linear',
   }
-}), { name: 'amaui-LinearProgress' });
+}), { name: 'onesy-LinearProgress' });
 
 export interface ILinearProress extends IBaseElement {
   tonal?: ITonal;
@@ -269,9 +269,9 @@ export interface ILinearProress extends IBaseElement {
 }
 
 const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLinearProgress?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinearProgress?.props?.default, ...props_ }), [props_]);
 
   const {
     tonal = true,
@@ -355,7 +355,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
 
       className={classNames([
         staticClassName('LinearProgress', theme) && [
-          'amaui-LinearProgress-root'
+          'onesy-LinearProgress-root'
         ],
 
         className,
@@ -377,7 +377,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
         <div
           className={classNames([
             staticClassName('LinearProgress', theme) && [
-              'amaui-LinearProgress-buffer-dots'
+              'onesy-LinearProgress-buffer-dots'
             ],
 
             classes.bufferDots,
@@ -391,7 +391,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
       <div
         className={classNames([
           staticClassName('LinearProgress', theme) && [
-            'amaui-LinearProgress-buffer'
+            'onesy-LinearProgress-buffer'
           ],
 
           classes.buffer
@@ -405,7 +405,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
           <div
             className={classNames([
               staticClassName('LinearProgress', theme) && [
-                'amaui-LinearProgress-line-indeterminate'
+                'onesy-LinearProgress-line-indeterminate'
               ],
 
               classes[!reverse ? 'lineIndeterminate' : 'lineIndeterminate_reverse']
@@ -414,7 +414,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
             <div
               className={classNames([
                 staticClassName('LinearProgress', theme) && [
-                  'amaui-LinearProgress-inner'
+                  'onesy-LinearProgress-inner'
                 ],
 
                 classes.inner
@@ -425,7 +425,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
           <div
             className={classNames([
               staticClassName('LinearProgress', theme) && [
-                'amaui-LinearProgress-line-indeterminate-1'
+                'onesy-LinearProgress-line-indeterminate-1'
               ],
 
               classes[!reverse ? 'lineIndeterminate1' : 'lineIndeterminate1_reverse']
@@ -434,7 +434,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
             <div
               className={classNames([
                 staticClassName('LinearProgress', theme) && [
-                  'amaui-LinearProgress-inner-1'
+                  'onesy-LinearProgress-inner-1'
                 ],
 
                 classes.inner1
@@ -446,7 +446,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
         <div
           className={classNames([
             staticClassName('LinearProgress', theme) && [
-              'amaui-LinearProgress-line'
+              'onesy-LinearProgress-line'
             ],
 
             classes.line
@@ -459,6 +459,6 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
   );
 });
 
-LinearProgress.displayName = 'amaui-LinearProgress';
+LinearProgress.displayName = 'onesy-LinearProgress';
 
 export default LinearProgress;

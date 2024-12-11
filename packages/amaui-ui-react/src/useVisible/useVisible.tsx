@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { hash, isEnvironment } from '@amaui/utils';
+import { hash, isEnvironment } from '@onesy/utils';
 
 export interface IUseVisibleResponse extends IntersectionObserverEntry {
   visible?: boolean;
@@ -40,7 +40,7 @@ const useVisible = (props: IUseVisible) => {
     addClasses,
 
     classes = {
-      in: 'amaui-visible'
+      in: 'onesy-visible'
     },
 
     addStyles,
@@ -96,7 +96,7 @@ const useVisible = (props: IUseVisible) => {
 
       // classes
       if (refs.addClasses.current) {
-        const visibleClass = refs.classes.current?.in || 'amaui-visible';
+        const visibleClass = refs.classes.current?.in || 'onesy-visible';
 
         if (responseNew.visible) target.classList.add(visibleClass);
         else target.classList.remove(visibleClass);
@@ -134,6 +134,6 @@ const useVisible = (props: IUseVisible) => {
   return response;
 };
 
-useVisible.displayName = 'amaui-UseVisible';
+useVisible.displayName = 'onesy-UseVisible';
 
 export default useVisible;

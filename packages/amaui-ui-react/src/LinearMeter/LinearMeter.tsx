@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, is, parse } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is, parse } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { staticClassName } from '../utils';
@@ -37,7 +37,7 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     height: 'auto'
   }
-}), { name: 'amaui-LinearMeter' });
+}), { name: 'onesy-LinearMeter' });
 
 export interface ILinearMeter extends IBaseElement {
   tonal?: ITonal;
@@ -113,9 +113,9 @@ export interface ILinearMeter extends IBaseElement {
 }
 
 const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLinearMeter?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinearMeter?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -670,8 +670,8 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('LinearMeter', theme) && [
-          'amaui-LinearMeter-root',
-          `amaui-LinearMeter-size-${size}`
+          'onesy-LinearMeter-root',
+          `onesy-LinearMeter-size-${size}`
         ],
 
         className,
@@ -704,7 +704,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
 
             className={classNames([
               staticClassName('LinearMeter', theme) && [
-                'amaui-LinearMeter-svg'
+                'onesy-LinearMeter-svg'
               ],
 
               SvgProps?.className,
@@ -748,7 +748,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
               <g
                 className={classNames([
                   staticClassName('LinearMeter', theme) && [
-                    'amaui-LinearMeter-arcs'
+                    'onesy-LinearMeter-arcs'
                   ],
 
                   classes.arcs
@@ -785,7 +785,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
 
                 className={classNames([
                   staticClassName('LinearMeter', theme) && [
-                    'amaui-LinearMeter-lines-progress'
+                    'onesy-LinearMeter-lines-progress'
                   ],
 
                   LinesProgressProps?.className,
@@ -821,7 +821,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
               <g
                 className={classNames([
                   staticClassName('LinearMeter', theme) && [
-                    'amaui-LinearMeter-children'
+                    'onesy-LinearMeter-children'
                   ],
 
                   classes.children
@@ -863,7 +863,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
 
                   className={classNames([
                     staticClassName('LinearMeter', theme) && [
-                      'amaui-LinearMeter-marks'
+                      'onesy-LinearMeter-marks'
                     ],
 
                     classes.marks
@@ -900,7 +900,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
 
                   className={classNames([
                     staticClassName('LinearMeter', theme) && [
-                      'amaui-LinearMeter-labels'
+                      'onesy-LinearMeter-labels'
                     ],
 
                     classes.labels
@@ -925,7 +925,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
 
                         className={classNames([
                           staticClassName('LinearMeter', theme) && [
-                            'amaui-LinearMeter-label'
+                            'onesy-LinearMeter-label'
                           ],
 
                           other_?.className,
@@ -958,6 +958,6 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
   );
 });
 
-LinearMeter.displayName = 'amaui-LinearMeter';
+LinearMeter.displayName = 'onesy-LinearMeter';
 
 export default LinearMeter;

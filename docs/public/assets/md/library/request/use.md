@@ -1,5 +1,5 @@
 
-# AmauiRequest
+# OnesyRequest
 
 ### Options
 
@@ -19,9 +19,9 @@ Default headers for all the requests.
 
 ##### zip
 
-###### amaui
+###### onesy
 
-If to use `@amaui/zip` library to zip request data.
+If to use `@onesy/zip` library to zip request data.
 
 - zip: If to zip.
 - unzip: If to unzip.
@@ -75,32 +75,32 @@ If to parse the JSON responses.
 
 ### defaults
 
-You can add overrides for the `AmauiRequest` per method in that instance, for all the same properties as above.
+You can add overrides for the `OnesyRequest` per method in that instance, for all the same properties as above.
 
 Methods `request`, `get`, `post`, `put`, `patch`, `delete`, `head`, `options`.
 
 ```ts
-AmauiRequest.defaults.get.request = { ... };
-AmauiRequest.defaults.get.response = { ... };
+OnesyRequest.defaults.get.request = { ... };
+OnesyRequest.defaults.get.response = { ... };
 ```
 
 ### Order of priority for options
 
 From top to bottom, highest to lowest priority for overriding options values.
 - Request options
-- `AmauiRequest` instance options.
-- `AmauiRequest` defaults method options.
+- `OnesyRequest` instance options.
+- `OnesyRequest` defaults method options.
 
 ### cancel
 
-Returns an instance of `@amaui/subscription` with a cancel method, which you can pass into a method as options, and on invoking it, it will cancel that request instance.
+Returns an instance of `@onesy/subscription` with a cancel method, which you can pass into a method as options, and on invoking it, it will cancel that request instance.
 
 ```ts
-const subscriptionCancel = AmauiRequest.cancel;
+const subscriptionCancel = OnesyRequest.cancel;
 
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-amauiRequest.get('url', { cancel: subscriptionCancel });
+onesyRequest.get('url', { cancel: subscriptionCancel });
 
 subscriptionCancel.cancel();
 
@@ -109,7 +109,7 @@ subscriptionCancel.cancel();
 
 ### interceptors
 
-Interceptors are very usefull if you want to ie. add an authentication token to every request your `AmauiRequest` instance will make, but on the fly, without presetting it in the options, since the token might change after initial creation of `AmauiRequest` instance.
+Interceptors are very usefull if you want to ie. add an authentication token to every request your `OnesyRequest` instance will make, but on the fly, without presetting it in the options, since the token might change after initial creation of `OnesyRequest` instance.
 
 #### request
 
@@ -118,9 +118,9 @@ Interceptors are very usefull if you want to ie. add an authentication token to 
 Emits the request options value that you can update as a reference value type, before the request is sent.
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-amauiRequest.interceptors.request.pre.subscribe(value => {
+onesyRequest.interceptors.request.pre.subscribe(value => {
   // Adds an Authorization token to every request on the fly
   value.request.headers['Authorization'] = `Bearer ...`;
 });
@@ -131,9 +131,9 @@ amauiRequest.interceptors.request.pre.subscribe(value => {
 Emits the request response value that you can update as a reference value type, after the request receives a response, before returning it from the method.
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-amauiRequest.interceptors.request.post.subscribe(value => {
+onesyRequest.interceptors.request.post.subscribe(value => {
   ...
 });
 ```
@@ -154,23 +154,23 @@ It will emit a response value for every request's fail response.
 
 ### interceptors static
 
-Same as interceptors on `AmauiRequest` instance, only they emit values for all `AmauiRequest` instances.
+Same as interceptors on `OnesyRequest` instance, only they emit values for all `OnesyRequest` instances.
 
 ```ts
-AmauiRequest.interceptors.request.pre.subscribe(value => {
+OnesyRequest.interceptors.request.pre.subscribe(value => {
   // Adds an Authorization token to every request on the fly
   value.request.headers['Authorization'] = `Bearer ...`;
 });
 ```
 
-### amauiRequest
+### onesyRequest
 
-Returns an `AmauiRequest` instance with default options.
+Returns an `OnesyRequest` instance with default options.
 
 ```ts
-AmauiRequest.amauiRequest;
+OnesyRequest.onesyRequest;
 
-// AmauiRequest { }
+// OnesyRequest { }
 ```
 
 ### reset
@@ -178,15 +178,15 @@ AmauiRequest.amauiRequest;
 Resets the static defaults to their default options.
 
 ```ts
-AmauiRequest.reset();
+OnesyRequest.reset();
 ```
 
-### AmauiRequestResponse
+### OnesyRequestResponse
 
 Model in which all responses will be in for all the methods.
 
 ```ts
-AmauiRequestResponse {
+OnesyRequestResponse {
   // Response value
   response;
   // Status code
@@ -211,9 +211,9 @@ Request method for making any HTTP method request in the same method.
 Methods `'GET' | 'POST' | 'PUT' | 'DELETE' | 'HEAD' | 'OPTIONS' | 'PATCH'`.
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.request({
+await onesyRequest.request({
   method: 'POST',
   url: ...,
   body: ...
@@ -225,9 +225,9 @@ await amauiRequest.request({
 Request method for making GET HTTP method request.
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.get(url);
+await onesyRequest.get(url);
 ```
 
 #### post
@@ -237,9 +237,9 @@ Request method for making GET HTTP method request.
 Body can be `Blob | BufferSource | FormData | URLSearchParams | Record<any, any> | string | any`;
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post(url, body);
+await onesyRequest.post(url, body);
 ```
 
 #### put
@@ -249,9 +249,9 @@ Request method for making PUT HTTP method request.
 Body can be `Blob | BufferSource | FormData | URLSearchParams | Record<any, any> | string | any`;
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.put(url, body);
+await onesyRequest.put(url, body);
 ```
 
 #### patch
@@ -261,9 +261,9 @@ Request method for making PATCH HTTP method request.
 Body can be `Blob | BufferSource | FormData | URLSearchParams | Record<any, any> | string | any`;
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.patch(url, body);
+await onesyRequest.patch(url, body);
 ```
 
 #### head
@@ -271,9 +271,9 @@ await amauiRequest.patch(url, body);
 Request method for making HEAD HTTP method request.
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.head(url);
+await onesyRequest.head(url);
 ```
 
 #### options
@@ -281,9 +281,9 @@ await amauiRequest.head(url);
 Request method for making OPTIONS HTTP method request.
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.options(url);
+await onesyRequest.options(url);
 ```
 
 #### delete
@@ -291,61 +291,61 @@ await amauiRequest.options(url);
 Request method for making DELETE HTTP method request.
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.delete(url);
+await onesyRequest.delete(url);
 ```
 
 ### Methods static
 
-They all do the same as the `AmauiRequest` instance methods, only they create an `AmauiRequest` instance with default options per each method call.
+They all do the same as the `OnesyRequest` instance methods, only they create an `OnesyRequest` instance with default options per each method call.
 
 #### request
 
 ```ts
-await AmauiRequest.request(...);
+await OnesyRequest.request(...);
 ```
 
 #### get
 
 ```ts
-await AmauiRequest.get(...);
+await OnesyRequest.get(...);
 ```
 
 #### post
 
 ```ts
-await AmauiRequest.post(...);
+await OnesyRequest.post(...);
 ```
 
 #### put
 
 ```ts
-await AmauiRequest.put(...);
+await OnesyRequest.put(...);
 ```
 
 #### delete
 
 ```ts
-await AmauiRequest.delete(...);
+await OnesyRequest.delete(...);
 ```
 
 #### head
 
 ```ts
-await AmauiRequest.head(...);
+await OnesyRequest.head(...);
 ```
 
 #### options
 
 ```ts
-await AmauiRequest.options(...);
+await OnesyRequest.options(...);
 ```
 
 #### patch
 
 ```ts
-await AmauiRequest.patch(...);
+await OnesyRequest.patch(...);
 ```
 
 ### Examples
@@ -353,22 +353,22 @@ await AmauiRequest.patch(...);
 #### json
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post('url', { a: 114 });
+await onesyRequest.post('url', { a: 114 });
 ```
 
 #### application/x-www-form-urlencoded
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
 const form = new URLSearchParams();
 
 form.append('a', 4);
 form.append('ad', 'a4');
 
-await amauiRequest.post('url', form.toString(), {
+await onesyRequest.post('url', form.toString(), {
   request: {
     headers: {
       'content-type': 'application/x-www-form-urlencoded'
@@ -380,9 +380,9 @@ await amauiRequest.post('url', form.toString(), {
 #### multipart/form-data
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-const file = await AmauiNode.file.get(filePath, false);
+const file = await OnesyNode.file.get(filePath, false);
 
 const form = new FormData();
 
@@ -390,7 +390,7 @@ form.append('a', 4);
 form.append('ad', 'a4');
 form.append('file', file);
 
-await amauiRequest.post('api', form.getBuffer(), {
+await onesyRequest.post('api', form.getBuffer(), {
   request: {
     headers: {
       ...form.getHeaders()
@@ -404,12 +404,12 @@ await amauiRequest.post('api', form.getBuffer(), {
 ##### blob
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
 const input = window.document.getElementById('a') as HTMLInputElement;
 const file = input.files[0];
 
-await amauiRequest.post('url', file, {
+await onesyRequest.post('url', file, {
   request: {
     headers: {
       'content-type': 'application/octet-stream'
@@ -421,9 +421,9 @@ await amauiRequest.post('url', file, {
 ##### uint8array
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post('url', new Uint8Array([97]), {
+await onesyRequest.post('url', new Uint8Array([97]), {
   request: {
     headers: {
       'content-type': 'text/plain'
@@ -435,11 +435,11 @@ await amauiRequest.post('url', new Uint8Array([97]), {
 ##### buffer
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-const file = await AmauiNode.file.get(filePath, false);
+const file = await OnesyNode.file.get(filePath, false);
 
-await amauiRequest.post('url', file, {
+await onesyRequest.post('url', file, {
   request: {
     headers: {
       'content-type': 'application/octet-stream'
@@ -457,9 +457,9 @@ In nodejs use `Buffer.from('')` to get the bytes value.
 ##### text/plain
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post('url', Buffer.from('a'), {
+await onesyRequest.post('url', Buffer.from('a'), {
   request: {
     headers: {
       'content-type': 'text/plain'
@@ -471,9 +471,9 @@ await amauiRequest.post('url', Buffer.from('a'), {
 ##### text/html
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post('url', Buffer.from('<a>a</a>'), {
+await onesyRequest.post('url', Buffer.from('<a>a</a>'), {
   request: {
     headers: {
       'content-type': 'text/html'
@@ -485,9 +485,9 @@ await amauiRequest.post('url', Buffer.from('<a>a</a>'), {
 ##### application/javascript
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post('url', Buffer.from('const a = 4;'), {
+await onesyRequest.post('url', Buffer.from('const a = 4;'), {
   request: {
     headers: {
       'content-type': 'application/javascript'
@@ -499,9 +499,9 @@ await amauiRequest.post('url', Buffer.from('const a = 4;'), {
 ##### application/json
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post('url', {
+await onesyRequest.post('url', {
   a: 4,
   ad: 'a4'
 });
@@ -510,9 +510,9 @@ await amauiRequest.post('url', {
 ##### application/xml
 
 ```ts
-const amauiRequest = new AmauiRequest();
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.post('url', Buffer.from('<a>a</a>'), {
+await onesyRequest.post('url', Buffer.from('<a>a</a>'), {
   request: {
     headers: {
       'content-type': 'application/xml'
@@ -571,8 +571,8 @@ type TXhrEvent = ProgressEvent<EventTarget>;
 
 ```ts
 interface IInterceptorsSetRequest {
-    pre: AmauiSubscription;
-    post: AmauiSubscription;
+    pre: OnesySubscription;
+    post: OnesySubscription;
 }
 ```
 
@@ -580,9 +580,9 @@ interface IInterceptorsSetRequest {
 
 ```ts
 interface IInterceptorsSetResponse {
-    success: AmauiSubscription;
-    error: AmauiSubscription;
-    fail: AmauiSubscription;
+    success: OnesySubscription;
+    error: OnesySubscription;
+    fail: OnesySubscription;
 }
 ```
 
@@ -602,14 +602,14 @@ interface IOptionsRequest extends IOptions {
     url?: string;
     method?: TMethodType;
     body?: TBody;
-    cancel?: AmauiSubscription;
+    cancel?: OnesySubscription;
 }
 ```
 
-#### IAmauiRequestResponse
+#### IOnesyRequestResponse
 
 ```ts
-interface IAmauiRequestResponse {
+interface IOnesyRequestResponse {
     response: any;
     status: number;
     headers: object;
@@ -618,10 +618,10 @@ interface IAmauiRequestResponse {
 }
 ```
 
-#### AmauiRequestResponse
+#### OnesyRequestResponse
 
 ```ts
-class AmauiRequestResponse implements IAmauiRequestResponse {
+class OnesyRequestResponse implements IOnesyRequestResponse {
     response: any;
     status: number;
     headers: object;
@@ -631,10 +631,10 @@ class AmauiRequestResponse implements IAmauiRequestResponse {
 }
 ```
 
-#### IOptionsZipAmaui
+#### IOptionsZipOnesy
 
 ```ts
-interface IOptionsZipAmaui {
+interface IOptionsZipOnesy {
     zip?: boolean;
     unzip?: boolean;
     only_positive?: boolean;
@@ -645,7 +645,7 @@ interface IOptionsZipAmaui {
 
 ```ts
 interface IOptionsZip {
-    amaui?: IOptionsZipAmaui;
+    onesy?: IOptionsZipOnesy;
 }
 ```
 
@@ -709,54 +709,54 @@ interface IOptions {
 }
 ```
 
-#### TAmauiRequestDefaults
+#### TOnesyRequestDefaults
 
 ```ts
-type TAmauiRequestDefaults = Record<string, IOptions>;
+type TOnesyRequestDefaults = Record<string, IOptions>;
 ```
 
-#### AmauiRequestDefaults
+#### OnesyRequestDefaults
 
 ```ts
-const AmauiRequestDefaults: TAmauiRequestDefaults;
+const OnesyRequestDefaults: TOnesyRequestDefaults;
 ```
 
-#### IAmauiRequestAmauiSub
+#### IOnesyRequestOnesySub
 
 ```ts
-interface IAmauiRequestAmauiSub extends AmauiSubscription {
+interface IOnesyRequestOnesySub extends OnesySubscription {
     cancel?(): void;
 }
 ```
 
-#### AmauiRequest
+#### OnesyRequest
 
 ```ts
-class AmauiRequest {
+class OnesyRequest {
     private options_;
     interceptors: IInterceptorsSet;
     static interceptors: IInterceptorsSet;
-    static defaults: TAmauiRequestDefaults;
-    static get cancel(): IAmauiRequestAmauiSub;
-    static get amauirequest(): AmauiRequest;
-    static request(...args: [IOptionsRequest]): Promise<IAmauiRequestResponse>;
-    static get(...args: [string, IOptionsRequest?]): Promise<IAmauiRequestResponse>;
-    static post(...args: [string, TBody, IOptionsRequest?]): Promise<IAmauiRequestResponse>;
-    static put(...args: [string, TBody, IOptionsRequest?]): Promise<IAmauiRequestResponse>;
-    static delete(...args: [string, IOptionsRequest?]): Promise<IAmauiRequestResponse>;
-    static head(...args: [string, IOptionsRequest?]): Promise<IAmauiRequestResponse>;
-    static options(...args: [string, IOptionsRequest?]): Promise<IAmauiRequestResponse>;
-    static patch(...args: [string, TBody, IOptionsRequest?]): Promise<IAmauiRequestResponse>;
+    static defaults: TOnesyRequestDefaults;
+    static get cancel(): IOnesyRequestOnesySub;
+    static get onesyrequest(): OnesyRequest;
+    static request(...args: [IOptionsRequest]): Promise<IOnesyRequestResponse>;
+    static get(...args: [string, IOptionsRequest?]): Promise<IOnesyRequestResponse>;
+    static post(...args: [string, TBody, IOptionsRequest?]): Promise<IOnesyRequestResponse>;
+    static put(...args: [string, TBody, IOptionsRequest?]): Promise<IOnesyRequestResponse>;
+    static delete(...args: [string, IOptionsRequest?]): Promise<IOnesyRequestResponse>;
+    static head(...args: [string, IOptionsRequest?]): Promise<IOnesyRequestResponse>;
+    static options(...args: [string, IOptionsRequest?]): Promise<IOnesyRequestResponse>;
+    static patch(...args: [string, TBody, IOptionsRequest?]): Promise<IOnesyRequestResponse>;
     static reset(): void;
     constructor(options?: IOptions);
-    request(options: IOptionsRequest): Promise<IAmauiRequestResponse>;
-    get(url: string, options?: IOptionsRequest): Promise<IAmauiRequestResponse>;
-    post(url: string, body: TBody, options?: IOptionsRequest): Promise<IAmauiRequestResponse>;
-    put(url: string, body: TBody, options?: IOptionsRequest): Promise<IAmauiRequestResponse>;
-    patch(url: string, body: TBody, options?: IOptionsRequest): Promise<IAmauiRequestResponse>;
-    head(url: string, options?: IOptionsRequest): Promise<IAmauiRequestResponse>;
-    options(url: string, options?: IOptionsRequest): Promise<IAmauiRequestResponse>;
-    delete(url: string, options?: IOptionsRequest): Promise<IAmauiRequestResponse>;
+    request(options: IOptionsRequest): Promise<IOnesyRequestResponse>;
+    get(url: string, options?: IOptionsRequest): Promise<IOnesyRequestResponse>;
+    post(url: string, body: TBody, options?: IOptionsRequest): Promise<IOnesyRequestResponse>;
+    put(url: string, body: TBody, options?: IOptionsRequest): Promise<IOnesyRequestResponse>;
+    patch(url: string, body: TBody, options?: IOptionsRequest): Promise<IOnesyRequestResponse>;
+    head(url: string, options?: IOptionsRequest): Promise<IOnesyRequestResponse>;
+    options(url: string, options?: IOptionsRequest): Promise<IOnesyRequestResponse>;
+    delete(url: string, options?: IOptionsRequest): Promise<IOnesyRequestResponse>;
     private onPre;
     private onPost;
     private onSuccess;

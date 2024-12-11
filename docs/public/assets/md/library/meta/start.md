@@ -1,26 +1,26 @@
 
-# amaui meta
+# onesy meta
 
 Add & query meta data related to various reference type values objects, classes, method, etc.
 
 ### Add
 
 ```sh
-yarn add @amaui/meta
+yarn add @onesy/meta
 ```
 
 ### Use
 
 ```ts
-import AmauiMeta from '@amaui/meta';
+import OnesyMeta from '@onesy/meta';
 
 const object = {};
 
-AmauiMeta.add('a', 'a', object);
-AmauiMeta.add('a', 'a4', object, 'p');
+OnesyMeta.add('a', 'a', object);
+OnesyMeta.add('a', 'a4', object, 'p');
 
-AmauiMeta.get('a', object);
-AmauiMeta.get('a', object, 'p');
+OnesyMeta.get('a', object);
+OnesyMeta.get('a', object, 'p');
 
 // Output
 // 'a'

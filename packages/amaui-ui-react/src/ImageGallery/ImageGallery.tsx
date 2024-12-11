@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { clamp, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
-import IconMaterialNavigateBefore from '@amaui/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialNavigateNext from '@onesy/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialNavigateBefore from '@onesy/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
 import ImageElement from '../Image';
 import LineElement from '../Line';
@@ -21,7 +21,7 @@ const useStyle = styleMethod(theme => ({
   root: {
     position: 'relative',
 
-    '&.amaui-Backdrop-root': {
+    '&.onesy-Backdrop-root': {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -29,7 +29,7 @@ const useStyle = styleMethod(theme => ({
       zIndex: '14000'
     },
 
-    '& .amaui-Backdrop-backdrop-root': {
+    '& .onesy-Backdrop-backdrop-root': {
       width: '100%',
       height: '100%',
       pointerEvents: 'none'
@@ -62,7 +62,7 @@ const useStyle = styleMethod(theme => ({
     height: '0',
     padding: theme.methods.space.value(5, 'px'),
 
-    '& .amaui-Image-root': {
+    '& .onesy-Image-root': {
       maxHeight: '100%',
       // pointerEvents: 'none'
     }
@@ -170,7 +170,7 @@ const useStyle = styleMethod(theme => ({
       opacity: '0'
     }
   }
-}), { name: 'amaui-ImageGallery' });
+}), { name: 'onesy-ImageGallery' });
 
 export interface IImageGallery extends ILine {
   version?: 'regular' | 'modal';
@@ -212,9 +212,9 @@ export interface IImageGallery extends ILine {
 }
 
 const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiImageGallery?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageGallery?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -566,8 +566,8 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('ImageGallery', theme) && [
-          'amaui-ImageGallery-arrow',
-          'amaui-ImageGallery-arrow-start'
+          'onesy-ImageGallery-arrow',
+          'onesy-ImageGallery-arrow-start'
         ],
 
         iconButtonProps?.className,
@@ -588,8 +588,8 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('ImageGallery', theme) && [
-          'amaui-ImageGallery-arrow',
-          'amaui-ImageGallery-arrow-end'
+          'onesy-ImageGallery-arrow',
+          'onesy-ImageGallery-arrow-end'
         ],
 
         iconButtonProps?.className,
@@ -620,7 +620,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('ImageGallery', theme) && [
-          'amaui-ImageGallery-main'
+          'onesy-ImageGallery-main'
         ],
 
         classes.main,
@@ -646,7 +646,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
         className={classNames([
           staticClassName('ImageGallery', theme) && [
-            'amaui-ImageGallery-image-wrapper'
+            'onesy-ImageGallery-image-wrapper'
           ],
 
           ImageWrapperProps?.className,
@@ -687,7 +687,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
             className={classNames([
               staticClassName('ImageGallery', theme) && [
-                'amaui-ImageGallery-image'
+                'onesy-ImageGallery-image'
               ],
 
               ImageProps?.className,
@@ -711,7 +711,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
         className={classNames([
           staticClassName('ImageGallery', theme) && [
-            'amaui-ImageGallery-footer'
+            'onesy-ImageGallery-footer'
           ],
 
           classes.footer
@@ -759,8 +759,8 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
                 className={classNames([
                   staticClassName('ImageGallery', theme) && [
-                    'amaui-ImageGallery-item',
-                    value === index && 'amaui-ImageGallery-item-selected'
+                    'onesy-ImageGallery-item',
+                    value === index && 'onesy-ImageGallery-item-selected'
                   ],
 
                   classes.item,
@@ -800,9 +800,9 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
         className={classNames([
           staticClassName('ImageGallery', theme) && [
-            'amaui-ImageGallery-root',
-            `amaui-ImageGallery-version-${version}`,
-            `amaui-ImageGallery-size-${size}`
+            'onesy-ImageGallery-root',
+            `onesy-ImageGallery-version-${version}`,
+            `onesy-ImageGallery-size-${size}`
           ],
 
           className,
@@ -834,8 +834,8 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('ImageGallery', theme) && [
-          'amaui-ImageGallery-root',
-          `amaui-ImageGallery-version-${version}`
+          'onesy-ImageGallery-root',
+          `onesy-ImageGallery-version-${version}`
         ],
 
         className,
@@ -861,7 +861,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
           className={classNames([
             staticClassName('ImageGallery', theme) && [
-              'amaui-ImageGallery-header'
+              'onesy-ImageGallery-header'
             ],
 
             classes.header
@@ -888,6 +888,6 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
   );
 });
 
-ImageGallery.displayName = 'amaui-ImageGallery';
+ImageGallery.displayName = 'onesy-ImageGallery';
 
 export default ImageGallery;

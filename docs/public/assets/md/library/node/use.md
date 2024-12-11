@@ -1,5 +1,5 @@
 
-# AmauiNode
+# OnesyNode
 
 ### File
 
@@ -10,7 +10,7 @@ File a static getter method, with util methods for files.
 Adds a file.
 
 ```ts
-await AmauiNode.file.add(path.resolve('a.txt'), 'a');
+await OnesyNode.file.add(path.resolve('a.txt'), 'a');
 ```
 
 #### Update
@@ -24,11 +24,11 @@ Gets a file.
 If native (default true), is false, it will return `utf-8` version of the file, meaning in the string value.
 
 ```ts
-await AmauiNode.file.get(path.resolve('a.txt'));
+await OnesyNode.file.get(path.resolve('a.txt'));
 
 // Buffer
 
-await AmauiNode.file.get(path.resolve('a.txt'), false);
+await OnesyNode.file.get(path.resolve('a.txt'), false);
 
 // Text
 ```
@@ -38,7 +38,7 @@ await AmauiNode.file.get(path.resolve('a.txt'), false);
 Removes a file.
 
 ```ts
-await AmauiNode.file.remove(path.resolve('a.txt'));
+await OnesyNode.file.remove(path.resolve('a.txt'));
 ```
 
 ## API
@@ -54,10 +54,10 @@ interface IFile {
 }
 ```
 
-#### AmauiNode
+#### OnesyNode
 
 ```ts
-class AmauiNode {
+class OnesyNode {
     static get file(): IFile;
 }
 ```

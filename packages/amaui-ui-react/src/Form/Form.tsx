@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import AccordionElement from '../Accordion';
@@ -16,7 +16,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   root_accordion: {
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: 'transparent'
     }
   },
@@ -59,7 +59,7 @@ const useStyle = styleMethod(theme => ({
   size_large_form_accordion: {
     marginTop: '32px'
   }
-}), { name: 'amaui-Form' });
+}), { name: 'onesy-Form' });
 
 export interface IForm extends ILine {
   accordion?: boolean;
@@ -92,9 +92,9 @@ export interface IForm extends ILine {
 }
 
 const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiForm?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyForm?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -214,7 +214,7 @@ const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Form', theme) && [
-            'amaui-Form-root'
+            'onesy-Form-root'
           ],
 
           AccordionProps?.className,
@@ -290,8 +290,8 @@ const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Form', theme) && [
-          'amaui-Form-root',
-          `amaui-Form-size-${size}`
+          'onesy-Form-root',
+          `onesy-Form-size-${size}`
         ],
 
         className,
@@ -390,6 +390,6 @@ const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Form.displayName = 'amaui-Form';
+Form.displayName = 'onesy-Form';
 
 export default Form;

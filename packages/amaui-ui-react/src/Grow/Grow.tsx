@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
 
@@ -10,9 +10,9 @@ export interface IGrow extends ITransition {
 }
 
 const Grow: React.FC<IGrow> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiGrow?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyGrow?.props?.default, ...props_ }), [props_]);
 
   const refs = {
     root: React.useRef<HTMLElement>(undefined)
@@ -170,6 +170,6 @@ const Grow: React.FC<IGrow> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Grow.displayName = 'amaui-Grow';
+Grow.displayName = 'onesy-Grow';
 
 export default Grow;

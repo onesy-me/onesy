@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment, textToInnerHTML } from '@amaui/utils';
-import { TPaletteVersion, classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, textToInnerHTML } from '@onesy/utils';
+import { TPaletteVersion, classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SectionElement, { ISection } from '../Section/Section';
 import LineElement from '../Line';
@@ -89,7 +89,7 @@ const useStyle = styleMethod(theme => ({
   backgroundOverlayBlur: {
     backdropFilter: 'blur(12px)'
   }
-}), { name: 'amaui-SectionCards' });
+}), { name: 'onesy-SectionCards' });
 
 export interface ISectionCardsItem {
   name?: any;
@@ -130,9 +130,9 @@ export interface ISectionCards extends ISection {
 }
 
 const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionCards?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionCards?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -242,7 +242,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionCards', theme) && [
-            'amaui-SectionCards-item'
+            'onesy-SectionCards-item'
           ],
 
           ItemProps?.className,
@@ -257,7 +257,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
           className={classNames([
             staticClassName('SectionCards', theme) && [
-              'amaui-SectionCards-item-image'
+              'onesy-SectionCards-item-image'
             ],
 
             item.propsImage?.className,
@@ -308,7 +308,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
           className={classNames([
             staticClassName('SectionCards', theme) && [
-              'amaui-SectionCards-item-main'
+              'onesy-SectionCards-item-main'
             ],
 
             item.propsMain?.className,
@@ -327,7 +327,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
               className={classNames([
                 staticClassName('SectionCards', theme) && [
-                  'amaui-SectionCards-item-wrapper-text'
+                  'onesy-SectionCards-item-wrapper-text'
                 ],
 
                 item.propsWrapperText?.className,
@@ -350,7 +350,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
                   className={classNames([
                     staticClassName('SectionCards', theme) && [
-                      'amaui-SectionCards-item-name'
+                      'onesy-SectionCards-item-name'
                     ],
 
                     item.propsName?.className
@@ -376,7 +376,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
                   className={classNames([
                     staticClassName('SectionCards', theme) && [
-                      'amaui-SectionCards-item-description'
+                      'onesy-SectionCards-item-description'
                     ],
 
                     item.propsDescription?.className
@@ -396,7 +396,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
               className={classNames([
                 staticClassName('SectionCards', theme) && [
-                  'amaui-SectionCards-item-actions'
+                  'onesy-SectionCards-item-actions'
                 ],
 
                 item.propsActions?.className,
@@ -416,7 +416,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
                 className={classNames([
                   staticClassName('SectionCards', theme) && [
-                    'amaui-SectionCards-item-button'
+                    'onesy-SectionCards-item-button'
                   ],
 
                   item.propsButton?.className,
@@ -452,8 +452,8 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
       className={classNames([
         staticClassName('SectionCards', theme) && [
-          'amaui-SectionCards-root',
-          `amaui-SectionCards-size-${size}`
+          'onesy-SectionCards-root',
+          `onesy-SectionCards-size-${size}`
         ],
 
         className,
@@ -475,7 +475,7 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionCards', theme) && [
-            'amaui-SectionCards-items'
+            'onesy-SectionCards-items'
           ],
 
           ItemsProps?.className,
@@ -488,6 +488,6 @@ const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => 
   );
 });
 
-Element.displayName = 'amaui-SectionCards';
+Element.displayName = 'onesy-SectionCards';
 
 export default Element;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
-import IconMaterialWidgets from '@amaui/icons-material-rounded-react/IconMaterialWidgetsW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialWidgets from '@onesy/icons-material-rounded-react/IconMaterialWidgetsW100';
 
 import SpeedDialElement from '../SpeedDial';
 import SpeedDialItemElement from '../SpeedDialItem';
@@ -90,11 +90,11 @@ const useStyle = styleMethod(theme => ({
     transform: `translateX(${theme.direction === 'ltr' ? '' : '-'}100%)`,
     zIndex: '1',
 
-    '&.amaui-IconButton-root': {
+    '&.onesy-IconButton-root': {
       position: 'absolute'
     }
   }
-}), { name: 'amaui-Widgets' });
+}), { name: 'onesy-Widgets' });
 
 export interface IWidgetsValue {
   open: (value?: string) => void;
@@ -127,9 +127,9 @@ export interface IWidgets extends IBaseElement {
 }
 
 const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiWidgets?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWidgets?.props?.default, ...props_ }), [props_]);
 
   const SpeedDial = React.useMemo(() => theme?.elements?.SpeedDial || SpeedDialElement, [theme]);
 
@@ -282,7 +282,7 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
                 <WidgetWrapper
                   className={classNames([
                     staticClassName('Widgets', theme) && [
-                      `amaui-Widgets-item`
+                      `onesy-Widgets-item`
                     ],
 
                     classes.item,
@@ -304,7 +304,7 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
 
                     className={classNames([
                       staticClassName('Widgets', theme) && [
-                        `amaui-Widgets-icon-button`
+                        `onesy-Widgets-icon-button`
                       ],
 
                       classes.iconButton
@@ -316,13 +316,13 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
                   {React.cloneElement(item.element, {
                     className: classNames([
                       staticClassName('Widgets', theme) && [
-                        `amaui-Widgets-widget`
+                        `onesy-Widgets-widget`
                       ],
 
                       classes.widget
                     ]),
 
-                    ...(((['amaui-Weather', 'amaui-Watch'].includes(item.element.type?.displayName))) ? {
+                    ...(((['onesy-Weather', 'onesy-Watch'].includes(item.element.type?.displayName))) ? {
                       shadow: true,
 
                       style: {
@@ -342,6 +342,6 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Widgets.displayName = 'amaui-Widgets';
+Widgets.displayName = 'onesy-Widgets';
 
 export default Widgets;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialArrowBack from '@amaui/icons-material-rounded-react/IconMaterialArrowBackW100';
-import IconMaterialArrowForward from '@amaui/icons-material-rounded-react/IconMaterialArrowForwardW100';
+import IconMaterialArrowBack from '@onesy/icons-material-rounded-react/IconMaterialArrowBackW100';
+import IconMaterialArrowForward from '@onesy/icons-material-rounded-react/IconMaterialArrowForwardW100';
 
 import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
@@ -22,7 +22,7 @@ const useStyle = styleMethod(theme => ({
     maxWidth: '1024px',
     padding: theme.methods.space.value(3, 'px'),
 
-    '& .amaui-overflow-y': {
+    '& .onesy-overflow-y': {
       height: '0px',
       flex: '1 1 auto',
       overflowX: 'hidden',
@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
   name: {
     maxWidth: '440px'
   }
-}), { name: 'amaui-Page' });
+}), { name: 'onesy-Page' });
 
 export interface IPageForward {
   to?: string;
@@ -54,9 +54,9 @@ export interface IPage extends ILine {
 }
 
 const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPage?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPage?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -190,7 +190,7 @@ const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Page', theme) && [
-          'amaui-Page-root'
+          'onesy-Page-root'
         ],
 
         className,
@@ -220,6 +220,6 @@ const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Page.displayName = 'amaui-Page';
+Page.displayName = 'onesy-Page';
 
 export default Page;

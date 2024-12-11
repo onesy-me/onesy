@@ -2,7 +2,7 @@ const fsNode = require('node:fs/promises');
 const path = require('path');
 const fs = require('fs');
 
-const AmauiNode = require('@amaui/node').default;
+const OnesyNode = require('@onesy/node').default;
 
 const wd = process.cwd();
 
@@ -13,7 +13,7 @@ const index = path.resolve(esm, 'index.js');
 const method = async () => {
   try {
     const values = {
-      index: await AmauiNode.file.get(index, false)
+      index: await OnesyNode.file.get(index, false)
     };
 
     const versions = ['two-tone'];
@@ -24,7 +24,7 @@ const method = async () => {
       values[item] = {
         value: `// @ts-nocheck
 import React from 'react';
-import { Icon } from '@amaui/ui-react';
+import { Icon } from '@onesy/ui-react';
 import _extends from '@babel/runtime/helpers/extends';
 
 `,
@@ -57,7 +57,7 @@ import _extends from '@babel/runtime/helpers/extends';
       // if (icon.endsWith('TwoTone')) version = 'two-tone';
 
       if (version) {
-        const esmFile = await AmauiNode.file.get(path.resolve(esm, `${icon}.js`), false);
+        const esmFile = await OnesyNode.file.get(path.resolve(esm, `${icon}.js`), false);
 
         const value = esmFile.match(/const [\s\S]+/)[0].split('export default')[0];
 
@@ -80,7 +80,7 @@ import _extends from '@babel/runtime/helpers/extends';
 
       values[item].value += `export default ${values[item].exports};`;
 
-      await AmauiNode.file.add(iconsFile, values[item].value);
+      await OnesyNode.file.add(iconsFile, values[item].value);
 
       resolve();
     })))

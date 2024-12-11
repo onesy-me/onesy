@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ChartElement from '../Chart';
 import ColumnChartItemElement from '../ColumnChartItem';
@@ -12,16 +12,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-ColumnChart' });
+}), { name: 'onesy-ColumnChart' });
 
 export interface IColumnChart extends IChart {
 
 }
 
 const ColumnChart: React.FC<IColumnChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiColumnChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChart?.props?.default, ...props_ }), [props_]);
 
   const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
 
@@ -61,7 +61,7 @@ const ColumnChart: React.FC<IColumnChart> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('ColumnChart', theme) && [
-          'amaui-ColumnChart-root'
+          'onesy-ColumnChart-root'
         ],
 
         className,
@@ -83,6 +83,6 @@ const ColumnChart: React.FC<IColumnChart> = React.forwardRef((props_, ref: any) 
   );
 });
 
-ColumnChart.displayName = 'amaui-ColumnChart';
+ColumnChart.displayName = 'onesy-ColumnChart';
 
 export default ColumnChart;

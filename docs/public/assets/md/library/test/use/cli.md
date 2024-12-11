@@ -1,16 +1,16 @@
 
  # cli
 
- Cli's `amaui-test` nodejs command is present once you install this library. \
+ Cli's `onesy-test` nodejs command is present once you install this library. \
 
 Invoking it, it will:
-- Look for options files, either `amaui-test.options.js`'s default exported module object, or in the `package.json`'s `amaui-test`'s property object value, or as command line arguments.
+- Look for options files, either `onesy-test.options.js`'s default exported module object, or in the `package.json`'s `onesy-test`'s property object value, or as command line arguments.
 - It will then import all the files where tests are, and in the process setup all the tests.
 - If there's at least 1 `to` test found, it will run the tests.
 
 ### Options
 
-Options values are in the AmauiTest page's API.
+Options values are in the OnesyTest page's API.
 
 ```ts
 {
@@ -39,15 +39,15 @@ Options values are in the AmauiTest page's API.
     }
   },
   // Where are the test files located, required in nodejs
-  // in browser this is not required since after the AmauiTest is instantiated
+  // in browser this is not required since after the OnesyTest is instantiated
   // all group, to methods that follow will setup the tests
-  // and then manually run amauiTest.run to run the tests
+  // and then manually run onesyTest.run to run the tests
   files: [
     'test/example/test/**/a.test.ts'
   ],
 
   // Default package.json file is looked for in the same path
-  // in which amaui-test command was ran
+  // in which onesy-test command was ran
   // optionally provide a custom path to the package.json file
   // package: '/folder/package.json'
 }

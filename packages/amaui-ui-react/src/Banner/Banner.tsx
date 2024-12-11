@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ListItemElement from '../ListItem';
 import GridElement from '../Grid';
@@ -12,7 +12,7 @@ const useStyle = styleMethod(theme => ({
   root: {
     width: '100%',
 
-    '&.amaui-ListItem-root': {
+    '&.onesy-ListItem-root': {
       padding: '0px'
     }
   },
@@ -35,7 +35,7 @@ const useStyle = styleMethod(theme => ({
   maxWidth_xl: { maxWidth: '1920px' },
 
   maxWidth_unset: { maxWidth: 'unset' }
-}), { name: 'amaui-Banner' });
+}), { name: 'onesy-Banner' });
 
 export interface IBanner extends IBaseElement {
   size?: ISize;
@@ -50,9 +50,9 @@ export interface IBanner extends IBaseElement {
 }
 
 const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBanner?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBanner?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -134,8 +134,8 @@ const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Banner', theme) && [
-          'amaui-Banner-root',
-          `amaui-Banner-size-${size}`
+          'onesy-Banner-root',
+          `onesy-Banner-size-${size}`
         ],
 
         className,
@@ -163,7 +163,7 @@ const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Banner', theme) && [
-            'amaui-Banner-list-item'
+            'onesy-Banner-list-item'
           ],
 
           classes.listItem,
@@ -180,6 +180,6 @@ const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Banner.displayName = 'amaui-Banner';
+Banner.displayName = 'onesy-Banner';
 
 export default Banner;

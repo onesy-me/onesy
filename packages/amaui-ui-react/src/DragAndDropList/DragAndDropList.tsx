@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { debounce, equalDeep, is, isEnvironment } from '@amaui/utils';
-import { style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { debounce, equalDeep, is, isEnvironment } from '@onesy/utils';
+import { style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { IBaseElement } from '../types';
 
@@ -9,7 +9,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-DragAndDropList' });
+}), { name: 'onesy-DragAndDropList' });
 
 export interface IDragAndDropList extends IBaseElement {
   onChange?: (indexPrevious: number, indexNew: number) => any;
@@ -29,9 +29,9 @@ export interface IDragAndDropList extends IBaseElement {
 }
 
 const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDragAndDropList?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDragAndDropList?.props?.default, ...props_ }), [props_]);
 
   const {
     onChange: onChange_,
@@ -120,7 +120,7 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
 
     if (onDragStart_) onDragStart_(item, event);
 
-    refs.dragging.current = draggedIsElement ? dragging : dragging?.dataset?.amauiDragAndDropListValue;
+    refs.dragging.current = draggedIsElement ? dragging : dragging?.dataset?.onesyDragAndDropListValue;
 
     refs.rectDragged.current = {
       height: dragging.clientHeight,
@@ -148,7 +148,7 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
 
     const over = event.currentTarget;
-    const dragging: any = draggedIsElement ? refs.dragging.current : rootDocument.body.querySelector(`[data-amaui-drag-and-drop-list-value="${refs.dragging.current}"]`);
+    const dragging: any = draggedIsElement ? refs.dragging.current : rootDocument.body.querySelector(`[data-onesy-drag-and-drop-list-value="${refs.dragging.current}"]`);
 
     if (!(over && dragging)) return;
 
@@ -173,8 +173,8 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
         const positionTopBottom = (partBottom + mousePosition.y) >= half ? 'bottom' : 'top';
         const positionBottomTop = (mousePosition.y - partTop) <= half ? 'top' : 'bottom';
 
-        const overIndex = items.findIndex((item: any) => isEqual ? isEqual(item, over.dataset.amauiDragAndDropListValue) : item === over.dataset.amauiDragAndDropListValue);
-        const draggedIndex = items.findIndex((item: any) => isEqual ? isEqual(item, dragging.dataset.amauiDragAndDropListValue) : item === dragging.dataset.amauiDragAndDropListValue);
+        const overIndex = items.findIndex((item: any) => isEqual ? isEqual(item, over.dataset.onesyDragAndDropListValue) : item === over.dataset.onesyDragAndDropListValue);
+        const draggedIndex = items.findIndex((item: any) => isEqual ? isEqual(item, dragging.dataset.onesyDragAndDropListValue) : item === dragging.dataset.onesyDragAndDropListValue);
 
         // if dragged is above over & bottom swap their indexes
         // if dragged is below over && top swap their indexes
@@ -191,8 +191,8 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
       }
     }
     else {
-      const overIndex = items.findIndex((item: any) => isEqual ? isEqual(item, over.dataset.amauiDragAndDropListValue) : item === over.dataset.amauiDragAndDropListValue);
-      const draggedIndex = items.findIndex((item: any) => isEqual ? isEqual(item, dragging.dataset.amauiDragAndDropListValue) : item === dragging.dataset.amauiDragAndDropListValue);
+      const overIndex = items.findIndex((item: any) => isEqual ? isEqual(item, over.dataset.onesyDragAndDropListValue) : item === over.dataset.onesyDragAndDropListValue);
+      const draggedIndex = items.findIndex((item: any) => isEqual ? isEqual(item, dragging.dataset.onesyDragAndDropListValue) : item === dragging.dataset.onesyDragAndDropListValue);
 
       if (!refs.previous.current || !equalDeep(refs.previous.current, [draggedIndex, overIndex])) {
         if (is('function', onChange)) onChange(draggedIndex, overIndex);
@@ -221,6 +221,6 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
   </>;
 });
 
-DragAndDropList.displayName = 'amaui-DragAndDropList';
+DragAndDropList.displayName = 'onesy-DragAndDropList';
 
 export default DragAndDropList;

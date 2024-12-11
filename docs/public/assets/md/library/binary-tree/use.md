@@ -1,22 +1,22 @@
 
-# AmauiBinaryTree
+# OnesyBinaryTree
 
-### AmauiNode
+### OnesyNode
 
 #### Properties
 
 - value `number`
-- left `AmauiNode`
-- right `AmauiNode`
+- left `OnesyNode`
+- right `OnesyNode`
 
 ### Methods
 
 #### Make
 
-Creates an AmauiBinaryTree from an array.
+Creates an OnesyBinaryTree from an array.
 
 ```ts
-new AmauiBinaryTree().make([4, 1, 7, 3, 5, 4, 7]);
+new OnesyBinaryTree().make([4, 1, 7, 3, 5, 4, 7]);
 ```
 
 #### Array
@@ -29,9 +29,9 @@ You can use the first argument for different order type:
 - postorder
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiBinaryTree.array();
+onesyBinaryTree.array();
 
 // [4, 1, 3, 7, 5]
 ```
@@ -41,13 +41,13 @@ amauiBinaryTree.array();
 Adds a node.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiBinaryTree.add(4);
-amauiBinaryTree.add(14);
-amauiBinaryTree.add(new AmauiNode(40));
+onesyBinaryTree.add(4);
+onesyBinaryTree.add(14);
+onesyBinaryTree.add(new OnesyNode(40));
 
-amauiBinaryTree.array();
+onesyBinaryTree.array();
 
 // [4, 1, 3, 7, 5, 14, 40]
 ```
@@ -57,9 +57,9 @@ amauiBinaryTree.array();
 Finds a node.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiBinaryTree.find(4);
+onesyBinaryTree.find(4);
 
 // {
 //     value: 4,
@@ -85,12 +85,12 @@ amauiBinaryTree.find(4);
 Removes a node.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiBinaryTree.remove(1);
-amauiBinaryTree.remove(5);
+onesyBinaryTree.remove(1);
+onesyBinaryTree.remove(5);
 
-amauiBinaryTree.array();
+onesyBinaryTree.array();
 
 // [4, 3, 7]
 ```
@@ -98,16 +98,16 @@ amauiBinaryTree.array();
 #### Remove node
 
 Remove a value from any node. \
-Unlike remove method that removes the value it finds within the root node of the entire amaui binary tree.
+Unlike remove method that removes the value it finds within the root node of the entire onesy binary tree.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiBinaryTree.removeNode(amauiBinaryTree.root, 3);
-amauiBinaryTree.removeNode(amauiBinaryTree.root, 7);
-amauiBinaryTree.removeNode(amauiBinaryTree.root, 5);
+onesyBinaryTree.removeNode(onesyBinaryTree.root, 3);
+onesyBinaryTree.removeNode(onesyBinaryTree.root, 7);
+onesyBinaryTree.removeNode(onesyBinaryTree.root, 5);
 
-amauiBinaryTree.array();
+onesyBinaryTree.array();
 
 // [4, 1]
 ```
@@ -116,10 +116,10 @@ amauiBinaryTree.array();
 
 #### make
 
-Makes an Amaui Binary Tree from an array of values.
+Makes an Onesy Binary Tree from an array of values.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 ```
 
 #### lowestCommonAncestor
@@ -127,9 +127,9 @@ const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 Finds a lowest common ancestor for two values, for any node.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-AmauiBinaryTree.lowestCommonAncestor(1, 7, amauiBinaryTree.root);
+OnesyBinaryTree.lowestCommonAncestor(1, 7, onesyBinaryTree.root);
 
 // {
 //     value: 4,
@@ -155,9 +155,9 @@ AmauiBinaryTree.lowestCommonAncestor(1, 7, amauiBinaryTree.root);
 Returns max depth for a provided node.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-AmauiBinaryTree.maxDepth(amauiBinaryTree.root);
+OnesyBinaryTree.maxDepth(onesyBinaryTree.root);
 
 // 3
 ```
@@ -167,23 +167,23 @@ AmauiBinaryTree.maxDepth(amauiBinaryTree.root);
 Returns true if the binary tree is valid.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-AmauiBinaryTree.valid(amauiBinaryTree);
+OnesyBinaryTree.valid(onesyBinaryTree);
 
 // true
 ```
 
 #### preorder
 
-Loops through all the AmauiNode values from a provided node, in preorder.
+Loops through all the OnesyNode values from a provided node, in preorder.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
 const values = [];
 
-AmauiBinaryTree.preorder(amauiBinaryTree.root, item => values.push(item.value));
+OnesyBinaryTree.preorder(onesyBinaryTree.root, item => values.push(item.value));
 
 values;
 
@@ -192,14 +192,14 @@ values;
 
 #### inorder
 
-Loops through all the AmauiNode values from a provided node, in inorder.
+Loops through all the OnesyNode values from a provided node, in inorder.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
 const values = [];
 
-AmauiBinaryTree.inorder(amauiBinaryTree.root, item => values.push(item.value));
+OnesyBinaryTree.inorder(onesyBinaryTree.root, item => values.push(item.value));
 
 values;
 
@@ -208,14 +208,14 @@ values;
 
 #### postorder
 
-Loops through all the AmauiNode values from a provided node, in postorder.
+Loops through all the OnesyNode values from a provided node, in postorder.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
 const values = [];
 
-AmauiBinaryTree.postorder(amauiBinaryTree.root, item => values.push(item.value));
+OnesyBinaryTree.postorder(onesyBinaryTree.root, item => values.push(item.value));
 
 values;
 
@@ -224,12 +224,12 @@ values;
 
 #### min
 
-Returns min AmauiNode for a provided node.
+Returns min OnesyNode for a provided node.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-AmauiBinaryTree.min(amauiBinaryTree.root);
+OnesyBinaryTree.min(onesyBinaryTree.root);
 
 // {
 //     value: 1,
@@ -242,12 +242,12 @@ AmauiBinaryTree.min(amauiBinaryTree.root);
 
 #### max
 
-Returns max AmauiNode for a provided node.
+Returns max OnesyNode for a provided node.
 
 ```ts
-const amauiBinaryTree = AmauiBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyBinaryTree = OnesyBinaryTree.make([4, 1, 7, 3, 5, 4, 7]);
 
-AmauiBinaryTree.max(amauiBinaryTree.root);
+OnesyBinaryTree.max(onesyBinaryTree.root);
 
 // {
 //     value: 7,
@@ -266,57 +266,57 @@ AmauiBinaryTree.max(amauiBinaryTree.root);
 type TArrayVariant = 'inorder' | 'preorder' | 'postorder';
 ```
 
-#### IAmauiNode
+#### IOnesyNode
 
 ```ts
-interface IAmauiNode {
+interface IOnesyNode {
     value: any;
-    left?: AmauiNode;
-    right?: AmauiNode;
+    left?: OnesyNode;
+    right?: OnesyNode;
     [p: string]: any;
 }
 ```
 
-#### AmauiNode
+#### OnesyNode
 
 ```ts
-class AmauiNode implements IAmauiNode {
+class OnesyNode implements IOnesyNode {
     value: any;
-    left?: AmauiNode;
-    right?: AmauiNode;
+    left?: OnesyNode;
+    right?: OnesyNode;
     [p: string]: any;
-    constructor(value: any, left?: AmauiNode, right?: AmauiNode);
+    constructor(value: any, left?: OnesyNode, right?: OnesyNode);
 }
 ```
 
-#### IAmauiBinaryTree
+#### IOnesyBinaryTree
 
 ```ts
-interface IAmauiBinaryTree {
-    root?: AmauiNode;
+interface IOnesyBinaryTree {
+    root?: OnesyNode;
 }
 ```
 
-#### AmauiBinaryTree
+#### OnesyBinaryTree
 
 ```ts
-class AmauiBinaryTree implements IAmauiBinaryTree {
-    root: AmauiNode;
-    static make(value: any[]): AmauiBinaryTree;
-    static lowestCommonAncestor(value: AmauiNode | any, value1: AmauiNode | any, root: AmauiNode): AmauiNode | undefined;
-    static maxDepth(amauiNode: AmauiNode): number;
-    static valid(value: AmauiBinaryTree): boolean;
-    static preorder(value: AmauiNode, method: TMethod): void;
-    static inorder(value: AmauiNode, method: TMethod): void;
-    static postorder(value: AmauiNode, method: TMethod): void;
-    static min(value: AmauiNode): AmauiNode;
-    static max(value: AmauiNode): AmauiNode;
+class OnesyBinaryTree implements IOnesyBinaryTree {
+    root: OnesyNode;
+    static make(value: any[]): OnesyBinaryTree;
+    static lowestCommonAncestor(value: OnesyNode | any, value1: OnesyNode | any, root: OnesyNode): OnesyNode | undefined;
+    static maxDepth(onesyNode: OnesyNode): number;
+    static valid(value: OnesyBinaryTree): boolean;
+    static preorder(value: OnesyNode, method: TMethod): void;
+    static inorder(value: OnesyNode, method: TMethod): void;
+    static postorder(value: OnesyNode, method: TMethod): void;
+    static min(value: OnesyNode): OnesyNode;
+    static max(value: OnesyNode): OnesyNode;
     array(variant?: TArrayVariant): Array<any>;
-    make(value: any[]): AmauiBinaryTree;
-    add(value: AmauiNode | any): AmauiBinaryTree;
-    find(value: any): AmauiNode | undefined;
+    make(value: any[]): OnesyBinaryTree;
+    add(value: OnesyNode | any): OnesyBinaryTree;
+    find(value: any): OnesyNode | undefined;
     remove(value: any): void;
-    removeNode(amauiNode: AmauiNode, value: any): AmauiNode | undefined;
+    removeNode(onesyNode: OnesyNode, value: any): OnesyNode | undefined;
 }
 ```
 

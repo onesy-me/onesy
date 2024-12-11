@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ChartElement from '../Chart';
 import ScatterChartItemElement from '../ScatterChartItem';
@@ -12,16 +12,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-ScatterChart' });
+}), { name: 'onesy-ScatterChart' });
 
 export interface IScatterChart extends IChart {
 
 }
 
 const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiScatterChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChart?.props?.default, ...props_ }), [props_]);
 
   const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
 
@@ -45,7 +45,7 @@ const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('ScatterChart', theme) && [
-          'amaui-ScatterChart-root'
+          'onesy-ScatterChart-root'
         ],
 
         className,
@@ -65,6 +65,6 @@ const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any
   );
 });
 
-ScatterChart.displayName = 'amaui-ScatterChart';
+ScatterChart.displayName = 'onesy-ScatterChart';
 
 export default ScatterChart;

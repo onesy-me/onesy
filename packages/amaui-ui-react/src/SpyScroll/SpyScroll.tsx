@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, IStyle } from '../types';
@@ -10,7 +10,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   },
-}), { name: 'amaui-SpyScroll' });
+}), { name: 'onesy-SpyScroll' });
 
 export interface ISpyScroll extends IBaseElement {
   ids?: Array<string>;
@@ -27,9 +27,9 @@ export interface ISpyScroll extends IBaseElement {
 }
 
 const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSpyScroll?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpyScroll?.props?.default, ...props_ }), [props_]);
 
   const {
     ids,
@@ -127,7 +127,7 @@ const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
           ...Array.from(refs.root.current.querySelectorAll(`[href$='#${id}']`)),
 
           // elements active for multiple ids
-          ...Array.from(refs.root.current.querySelectorAll(`[data-amaui-spy-scroll~=${id}]`))
+          ...Array.from(refs.root.current.querySelectorAll(`[data-onesy-spy-scroll~=${id}]`))
         ]).filter(Boolean) as Array<HTMLElement>;
 
         for (const element of refs.active.current) {
@@ -192,7 +192,7 @@ const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
 
         className: classNames([
           staticClassName('SpyScroll', theme) && [
-            'amaui-SpyScroll-root'
+            'onesy-SpyScroll-root'
           ],
 
           (children as any).props.className,
@@ -206,6 +206,6 @@ const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-SpyScroll.displayName = 'amaui-SpyScroll';
+SpyScroll.displayName = 'onesy-SpyScroll';
 
 export default SpyScroll;

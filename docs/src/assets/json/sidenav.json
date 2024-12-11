@@ -2,7 +2,7 @@
   {
     "url": "/library/ui-react",
     "label": "UI React",
-    "github": "/amaui/tree/main/packages/amaui-ui-react",
+    "github": "/onesy/tree/main/packages/onesy-ui-react",
     "default": "/library/ui-react/start",
     "menu": [
       {
@@ -696,7 +696,7 @@
   {
     "url": "/library/style-react",
     "label": "Style React",
-    "github": "/amaui/tree/main/packages/amaui-style-react",
+    "github": "/onesy/tree/main/packages/onesy-style-react",
     "default": "/library/style-react/start",
     "menu": [
       {
@@ -754,7 +754,7 @@
   {
     "url": "/library/icons-material-react",
     "label": "Icons Material React",
-    "github": "/amaui/tree/main/packages/amaui-icons-material-react",
+    "github": "/onesy/tree/main/packages/onesy-icons-material-react",
     "default": "/library/icons-material-react/start",
     "menu": [
       {
@@ -770,7 +770,7 @@
   {
     "url": "/library/algorithms",
     "label": "Algorithms",
-    "github": "/amaui-algorithms",
+    "github": "/onesy-algorithms",
     "default": "/library/algorithms/start",
     "menu": [
       {
@@ -848,7 +848,7 @@
   {
     "url": "/library/amqp",
     "label": "AMQP",
-    "github": "/amaui-amqp",
+    "github": "/onesy-amqp",
     "default": "/library/amqp/start",
     "menu": [
       {
@@ -864,7 +864,7 @@
   {
     "url": "/library/redis",
     "label": "Redis",
-    "github": "/amaui-redis",
+    "github": "/onesy-redis",
     "default": "/library/redis/start",
     "menu": [
       {
@@ -881,7 +881,7 @@
     "url": "/library/api",
     "label": "API",
     "default": "/library/api/start",
-    "github": "/amaui-api",
+    "github": "/onesy-api",
     "menu": [
       {
         "label": "Start",
@@ -897,7 +897,7 @@
     "url": "/library/aws",
     "label": "AWS",
     "default": "/library/aws/start",
-    "github": "/amaui-aws",
+    "github": "/onesy-aws",
     "menu": [
       {
         "label": "Start",
@@ -913,7 +913,7 @@
     "url": "/library/binary-tree",
     "label": "Binary Tree",
     "default": "/library/binary-tree/start",
-    "github": "/amaui-binary-tree",
+    "github": "/onesy-binary-tree",
     "menu": [
       {
         "label": "Start",
@@ -929,7 +929,7 @@
     "url": "/library/cache",
     "label": "Cache",
     "default": "/library/cache/start",
-    "github": "/amaui-cache",
+    "github": "/onesy-cache",
     "menu": [
       {
         "label": "Start",
@@ -945,7 +945,7 @@
     "url": "/library/cookie",
     "label": "Cookie",
     "default": "/library/cookie/start",
-    "github": "/amaui-cookie",
+    "github": "/onesy-cookie",
     "menu": [
       {
         "label": "Start",
@@ -961,7 +961,7 @@
     "url": "/library/date",
     "label": "Date",
     "default": "/library/date/start",
-    "github": "/amaui-date",
+    "github": "/onesy-date",
     "menu": [
       {
         "label": "Start",
@@ -980,8 +980,8 @@
             "url": "/library/date/use/ago"
           },
           {
-            "label": "AmauiDate",
-            "url": "/library/date/use/AmauiDate"
+            "label": "OnesyDate",
+            "url": "/library/date/use/OnesyDate"
           },
           {
             "label": "diff",
@@ -1059,7 +1059,7 @@
     "url": "/library/diff",
     "label": "Diff",
     "default": "/library/diff/start",
-    "github": "/amaui-diff",
+    "github": "/onesy-diff",
     "menu": [
       {
         "label": "Start",
@@ -1075,7 +1075,7 @@
     "url": "/library/errors",
     "label": "Errors",
     "default": "/library/errors/start",
-    "github": "/amaui-errors",
+    "github": "/onesy-errors",
     "menu": [
       {
         "label": "Start",
@@ -1091,7 +1091,7 @@
     "url": "/library/graph",
     "label": "Graph",
     "default": "/library/graph/start",
-    "github": "/amaui-graph",
+    "github": "/onesy-graph",
     "menu": [
       {
         "label": "Start",
@@ -1107,7 +1107,7 @@
     "url": "/library/hash-table",
     "label": "Hash Table",
     "default": "/library/hash-table/start",
-    "github": "/amaui-hash-table",
+    "github": "/onesy-hash-table",
     "menu": [
       {
         "label": "Start",
@@ -1123,7 +1123,7 @@
     "url": "/library/heap",
     "label": "Heap",
     "default": "/library/heap/start",
-    "github": "/amaui-heap",
+    "github": "/onesy-heap",
     "menu": [
       {
         "label": "Start",
@@ -1139,7 +1139,7 @@
     "url": "/library/huffman-code",
     "label": "Huffman Code",
     "default": "/library/huffman-code/start",
-    "github": "/amaui-huffman-code",
+    "github": "/onesy-huffman-code",
     "menu": [
       {
         "label": "Start",
@@ -1155,7 +1155,7 @@
     "url": "/library/linked-list",
     "label": "Linked List",
     "default": "/library/linked-list/start",
-    "github": "/amaui-linked-list",
+    "github": "/onesy-linked-list",
     "menu": [
       {
         "label": "Start",
@@ -1171,7 +1171,7 @@
     "url": "/library/log",
     "label": "Log",
     "default": "/library/log/start",
-    "github": "/amaui-log",
+    "github": "/onesy-log",
     "menu": [
       {
         "label": "Start",
@@ -1187,7 +1187,7 @@
     "url": "/library/lz77",
     "label": "LZ77",
     "default": "/library/lz77/start",
-    "github": "/amaui-lz77",
+    "github": "/onesy-lz77",
     "menu": [
       {
         "label": "Start",
@@ -1203,7 +1203,7 @@
     "url": "/library/meta",
     "label": "Meta",
     "default": "/library/meta/start",
-    "github": "/amaui-meta",
+    "github": "/onesy-meta",
     "menu": [
       {
         "label": "Start",
@@ -1219,7 +1219,7 @@
     "url": "/library/models",
     "label": "Models",
     "default": "/library/models/start",
-    "github": "/amaui-models",
+    "github": "/onesy-models",
     "menu": [
       {
         "label": "Start",
@@ -1289,7 +1289,7 @@
     "url": "/library/mongo",
     "label": "Mongo",
     "default": "/library/mongo/start",
-    "github": "/amaui-mongo",
+    "github": "/onesy-mongo",
     "menu": [
       {
         "label": "Start",
@@ -1300,8 +1300,8 @@
         "url": "/library/mongo/use",
         "menu": [
           {
-            "label": "AmauiMongo",
-            "url": "/library/mongo/use/AmauiMongo"
+            "label": "OnesyMongo",
+            "url": "/library/mongo/use/OnesyMongo"
           },
           {
             "label": "BaseCollection",
@@ -1319,7 +1319,7 @@
     "url": "/library/node",
     "label": "Node",
     "default": "/library/node/start",
-    "github": "/amaui-node",
+    "github": "/onesy-node",
     "menu": [
       {
         "label": "Start",
@@ -1335,7 +1335,7 @@
     "url": "/library/queue",
     "label": "Queue",
     "default": "/library/queue/start",
-    "github": "/amaui-queue",
+    "github": "/onesy-queue",
     "menu": [
       {
         "label": "Start",
@@ -1351,7 +1351,7 @@
     "url": "/library/request",
     "label": "Request",
     "default": "/library/request/start",
-    "github": "/amaui-request",
+    "github": "/onesy-request",
     "menu": [
       {
         "label": "Start",
@@ -1367,7 +1367,7 @@
     "url": "/library/stack",
     "label": "Stack",
     "default": "/library/stack/start",
-    "github": "/amaui-stack",
+    "github": "/onesy-stack",
     "menu": [
       {
         "label": "Start",
@@ -1383,7 +1383,7 @@
     "url": "/library/storage",
     "label": "Storage",
     "default": "/library/storage/start",
-    "github": "/amaui-storage",
+    "github": "/onesy-storage",
     "menu": [
       {
         "label": "Start",
@@ -1399,7 +1399,7 @@
     "url": "/library/style",
     "label": "Style",
     "default": "/library/style/start",
-    "github": "/amaui-style",
+    "github": "/onesy-style",
     "menu": [
       {
         "label": "Start",
@@ -1410,32 +1410,32 @@
         "url": "/library/style/use",
         "menu": [
           {
-            "label": "AmauiStyle",
-            "url": "/library/style/use/AmauiStyle"
+            "label": "OnesyStyle",
+            "url": "/library/style/use/OnesyStyle"
           },
           {
-            "label": "AmauiStyleRenderer",
-            "url": "/library/style/use/AmauiStyleRenderer"
+            "label": "OnesyStyleRenderer",
+            "url": "/library/style/use/OnesyStyleRenderer"
           },
           {
-            "label": "AmauiStyleRule",
-            "url": "/library/style/use/AmauiStyleRule"
+            "label": "OnesyStyleRule",
+            "url": "/library/style/use/OnesyStyleRule"
           },
           {
-            "label": "AmauiStyleRuleProperty",
-            "url": "/library/style/use/AmauiStyleRuleProperty"
+            "label": "OnesyStyleRuleProperty",
+            "url": "/library/style/use/OnesyStyleRuleProperty"
           },
           {
-            "label": "AmauiStyleSheet",
-            "url": "/library/style/use/AmauiStyleSheet"
+            "label": "OnesyStyleSheet",
+            "url": "/library/style/use/OnesyStyleSheet"
           },
           {
-            "label": "AmauiStyleSheetManager",
-            "url": "/library/style/use/AmauiStyleSheetManager"
+            "label": "OnesyStyleSheetManager",
+            "url": "/library/style/use/OnesyStyleSheetManager"
           },
           {
-            "label": "AmauiTheme",
-            "url": "/library/style/use/AmauiTheme"
+            "label": "OnesyTheme",
+            "url": "/library/style/use/OnesyTheme"
           },
           {
             "label": "classNames",
@@ -1505,7 +1505,7 @@
     "url": "/library/subscription",
     "label": "Subscription",
     "default": "/library/subscription/start",
-    "github": "/amaui-subscription",
+    "github": "/onesy-subscription",
     "menu": [
       {
         "label": "Start",
@@ -1521,7 +1521,7 @@
     "url": "/library/test",
     "label": "Test",
     "default": "/library/test/start",
-    "github": "/amaui-test",
+    "github": "/onesy-test",
     "menu": [
       {
         "label": "Start",
@@ -1532,20 +1532,20 @@
         "url": "/library/test/use",
         "menu": [
           {
-            "label": "AmauiGroup",
-            "url": "/library/test/use/AmauiGroup"
+            "label": "OnesyGroup",
+            "url": "/library/test/use/OnesyGroup"
           },
           {
-            "label": "AmauiMiddleware",
-            "url": "/library/test/use/AmauiMiddleware"
+            "label": "OnesyMiddleware",
+            "url": "/library/test/use/OnesyMiddleware"
           },
           {
-            "label": "AmauiTest",
-            "url": "/library/test/use/AmauiTest"
+            "label": "OnesyTest",
+            "url": "/library/test/use/OnesyTest"
           },
           {
-            "label": "AmauiTo",
-            "url": "/library/test/use/AmauiTo"
+            "label": "OnesyTo",
+            "url": "/library/test/use/OnesyTo"
           },
           {
             "label": "assert",
@@ -1567,7 +1567,7 @@
     "url": "/library/utils",
     "label": "Utils",
     "default": "/library/utils/start",
-    "github": "/amaui-utils",
+    "github": "/onesy-utils",
     "menu": [
       {
         "label": "Start",
@@ -2029,7 +2029,7 @@
     "url": "/library/zip",
     "label": "Zip",
     "default": "/library/zip/start",
-    "github": "/amaui-zip",
+    "github": "/onesy-zip",
     "menu": [
       {
         "label": "Start",

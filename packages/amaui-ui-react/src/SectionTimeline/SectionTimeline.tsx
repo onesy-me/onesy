@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, textToInnerHTML } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, textToInnerHTML } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SectionElement, { ISection } from '../Section/Section';
 import ListItemElement from '../ListItem';
@@ -21,15 +21,15 @@ const useStyle = styleMethod(theme => ({
   },
 
   timelineItem: {
-    '&.amaui-TimelineItem-root': {
+    '&.onesy-TimelineItem-root': {
       width: '100%'
     },
 
-    '& .amaui-TimelineItem-aside': {
+    '& .onesy-TimelineItem-aside': {
       width: 'calc(50% - 6px)'
     }
   }
-}), { name: 'amaui-SectionTimeline' });
+}), { name: 'onesy-SectionTimeline' });
 
 export interface ISectionTimelineItem {
   title?: string;
@@ -52,9 +52,9 @@ export interface ISectionTimeline extends ISection {
 }
 
 const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionTimeline?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTimeline?.props?.default, ...props_ }), [props_]);
 
   const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
 
@@ -103,8 +103,8 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
 
       className={classNames([
         staticClassName('SectionTimeline', theme) && [
-          'amaui-SectionTimeline-root',
-          `amaui-SectionTimeline-size-${size}`
+          'onesy-SectionTimeline-root',
+          `onesy-SectionTimeline-size-${size}`
         ],
 
         className,
@@ -120,7 +120,7 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
 
         className={classNames([
           staticClassName('SectionTimeline', theme) && [
-            'amaui-SectionTimeline-timeline'
+            'onesy-SectionTimeline-timeline'
           ],
 
           TimelineProps?.className,
@@ -141,7 +141,7 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
 
                 className={classNames([
                   staticClassName('SectionTimeline', theme) && [
-                    'amaui-SectionTimeline-item-start'
+                    'onesy-SectionTimeline-item-start'
                   ],
 
                   ItemStartProps?.className,
@@ -188,7 +188,7 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
 
                 className={classNames([
                   staticClassName('SectionTimeline', theme) && [
-                    'amaui-SectionTimeline-item-end'
+                    'onesy-SectionTimeline-item-end'
                   ],
 
                   ItemEndProps?.className,
@@ -203,7 +203,7 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
 
             className={classNames([
               staticClassName('SectionTimeline', theme) && [
-                'amaui-SectionTimeline-timeline-item'
+                'onesy-SectionTimeline-timeline-item'
               ],
 
               TimelineItemProps?.className,
@@ -216,6 +216,6 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
   );
 });
 
-SectionTimeline.displayName = 'amaui-SectionTimeline';
+SectionTimeline.displayName = 'onesy-SectionTimeline';
 
 export default SectionTimeline;

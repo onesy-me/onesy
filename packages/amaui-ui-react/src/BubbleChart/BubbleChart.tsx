@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ChartElement from '../Chart';
 import LineElement from '../Line';
@@ -13,7 +13,7 @@ import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '& .amaui-Chart-legend-icon': {
+    '& .onesy-Chart-legend-icon': {
       position: 'relative',
       background: 'none !important',
       border: '2px solid currentColor',
@@ -47,16 +47,16 @@ const useStyle = styleMethod(theme => ({
     height: '8px',
     borderRadius: theme.methods.shape.radius.value(40, 'px')
   }
-}), { name: 'amaui-BubbleChart' });
+}), { name: 'onesy-BubbleChart' });
 
 export interface IBubbleChart extends IChart {
 
 }
 
 const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBubbleChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBubbleChart?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -114,7 +114,7 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
 
           className={classNames([
             staticClassName('BubbleChart', theme) && [
-              'amaui-BubbleChart-append'
+              'onesy-BubbleChart-append'
             ],
 
             classes.append
@@ -234,7 +234,7 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
 
         className={classNames([
           staticClassName('BubbleChart', theme) && [
-            'amaui-BubbleChart-append'
+            'onesy-BubbleChart-append'
           ],
 
           classes.append
@@ -317,7 +317,7 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
                 <span
                   className={classNames([
                     staticClassName('BubbleChart', theme) && [
-                      'amaui-BubbleChart-append-icon'
+                      'onesy-BubbleChart-append-icon'
                     ],
 
                     classes.append_icon
@@ -409,7 +409,7 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('BubbleChart', theme) && [
-          'amaui-BubbleChart-root'
+          'onesy-BubbleChart-root'
         ],
 
         className,
@@ -437,6 +437,6 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
   );
 });
 
-BubbleChart.displayName = 'amaui-BubbleChart';
+BubbleChart.displayName = 'onesy-BubbleChart';
 
 export default BubbleChart;

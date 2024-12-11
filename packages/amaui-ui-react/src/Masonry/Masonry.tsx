@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import useMediaQuery from '../useMediaQuery';
@@ -13,7 +13,7 @@ const useStyle = styleMethod(theme => ({
   root: {
     position: 'relative'
   }
-}), { name: 'amaui-Masonry' });
+}), { name: 'onesy-Masonry' });
 
 export interface IMasonry extends Omit<ILine, 'gap'> {
   gap?: number | Partial<Record<IValueBreakpoints, number>>;
@@ -26,9 +26,9 @@ export interface IMasonry extends Omit<ILine, 'gap'> {
 }
 
 const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMasonry?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMasonry?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -226,8 +226,8 @@ const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Masonry', theme) && [
-            'amaui-Masonry-root',
-            'amaui-Masonry-noMasonry'
+            'onesy-Masonry-root',
+            'onesy-Masonry-noMasonry'
           ],
 
           NoMasonryProps?.className,
@@ -285,7 +285,7 @@ const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Masonry', theme) && [
-          'amaui-Masonry-root'
+          'onesy-Masonry-root'
         ],
 
         className,
@@ -319,7 +319,7 @@ const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Masonry', theme) && [
-              'amaui-Masonry-line-break'
+              'onesy-Masonry-line-break'
             ]
           ])}
 
@@ -333,6 +333,6 @@ const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Masonry.displayName = 'amaui-Masonry';
+Masonry.displayName = 'onesy-Masonry';
 
 export default Masonry;

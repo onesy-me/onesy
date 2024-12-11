@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { Transition, TTransitionStatus, ITransition } from '../';
 
@@ -10,9 +10,9 @@ export interface IZoom extends ITransition {
 }
 
 const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiZoom?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyZoom?.props?.default, ...props_ }), [props_]);
 
   const refs = {
     root: React.useRef<HTMLElement>(undefined)
@@ -160,6 +160,6 @@ const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Zoom.displayName = 'amaui-Zoom';
+Zoom.displayName = 'onesy-Zoom';
 
 export default Zoom;

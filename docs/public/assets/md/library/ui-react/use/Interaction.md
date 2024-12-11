@@ -22,7 +22,7 @@ interface IInteraction extends IBaseElement {
     dragged?: boolean;
     pulseOnMouseDown?: boolean;
     wave_version?: 'simple';
-    subscription?: AmauiSubscription;
+    subscription?: OnesySubscription;
     clear?: any;
     disabled?: boolean;
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { elementToCanvas, is, isEnvironment } from '@amaui/utils';
-import { classNames, colors, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { elementToCanvas, is, isEnvironment } from '@onesy/utils';
+import { classNames, colors, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialDeleteSweep from '@amaui/icons-material-rounded-react/IconMaterialDeleteSweepW100';
-import IconMaterialDownload from '@amaui/icons-material-rounded-react/IconMaterialDownloadW100';
-import IconMaterialCropLandscape from '@amaui/icons-material-rounded-react/IconMaterialCropLandscapeW100';
-import IconMaterialPalette from '@amaui/icons-material-rounded-react/IconMaterialPaletteW100';
+import IconMaterialDeleteSweep from '@onesy/icons-material-rounded-react/IconMaterialDeleteSweepW100';
+import IconMaterialDownload from '@onesy/icons-material-rounded-react/IconMaterialDownloadW100';
+import IconMaterialCropLandscape from '@onesy/icons-material-rounded-react/IconMaterialCropLandscapeW100';
+import IconMaterialPalette from '@onesy/icons-material-rounded-react/IconMaterialPaletteW100';
 
 import ListItemElement from '../ListItem';
 import SurfaceElement from '../Surface';
@@ -107,23 +107,23 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0'
     }
   },
 
   divider_middle: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       opacity: theme.palette.light ? '0.07' : '0.24'
     }
   },
 
   divider_end: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       opacity: theme.palette.light ? '0.14' : '0.4'
     }
   },
-}), { name: 'amaui-Drawing' });
+}), { name: 'onesy-Drawing' });
 
 export type TDrawingValue = Array<{
   d?: string;
@@ -183,9 +183,9 @@ export interface IDrawing extends ISurface {
 }
 
 const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDrawing?.props?.default, ...props__ }), [props__]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDrawing?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -229,7 +229,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
     exclude,
 
-    downloadName = `amaui-drawing.png`,
+    downloadName = `onesy-drawing.png`,
     downloadType = 'image/png',
     downloadQuality = 1,
 
@@ -502,7 +502,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
       await elementToCanvas(clone, {
         response: 'download',
 
-        filter: ['.amaui-Drawing-pointer'],
+        filter: ['.onesy-Drawing-pointer'],
 
         download: refs.download.current,
 
@@ -691,7 +691,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
       <span
         className={classNames([
           staticClassName('Drawing', theme) && [
-            'amaui-Drawing-palette-item'
+            'onesy-Drawing-palette-item'
           ],
 
           classes.paletteItem
@@ -732,7 +732,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
         className={classNames([
           staticClassName('Drawing', theme) && [
-            'amaui-Drawing-palette'
+            'onesy-Drawing-palette'
           ],
 
           classes.palette
@@ -836,7 +836,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
             className={classNames([
               staticClassName('Drawing', theme) && [
-                'amaui-Drawing-text-field-color'
+                'onesy-Drawing-text-field-color'
               ],
 
               ColorTextFieldProps?.className,
@@ -976,9 +976,9 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
       className={classNames([
         staticClassName('Drawing', theme) && [
-          'amaui-Drawing-root',
-          updates && `amaui-Drawing-updates`,
-          actions && `amaui-Drawing-actions`
+          'onesy-Drawing-root',
+          updates && `onesy-Drawing-updates`,
+          actions && `onesy-Drawing-actions`
         ],
 
         className,
@@ -1010,7 +1010,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
           className={classNames([
             staticClassName('Drawing', theme) && [
-              'amaui-Drawing-toolbars'
+              'onesy-Drawing-toolbars'
             ],
 
             ToolbarProps?.className,
@@ -1031,7 +1031,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
               className={classNames([
                 staticClassName('Drawing', theme) && [
-                  'amaui-Drawing-toolbar'
+                  'onesy-Drawing-toolbar'
                 ],
 
                 ToolbarUpdatesProps?.className,
@@ -1063,7 +1063,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
                       className={classNames([
                         staticClassName('Drawing', theme) && [
-                          'amaui-Drawing-select'
+                          'onesy-Drawing-select'
                         ],
 
                         SelectProps?.className,
@@ -1169,7 +1169,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
                             className={classNames([
                               staticClassName('Drawing', theme) && [
-                                'amaui-Drawing-modal'
+                                'onesy-Drawing-modal'
                               ],
 
                               classes.modal
@@ -1312,7 +1312,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
               className={classNames([
                 staticClassName('Drawing', theme) && [
-                  'amaui-Drawing-divider'
+                  'onesy-Drawing-divider'
                 ],
 
                 DividerProps?.className,
@@ -1336,7 +1336,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
               className={classNames([
                 staticClassName('Drawing', theme) && [
-                  'amaui-Drawing-toolbar'
+                  'onesy-Drawing-toolbar'
                 ],
 
                 ToolbarActionsProps?.className,
@@ -1429,7 +1429,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
             className={classNames([
               staticClassName('Drawing', theme) && [
-                'amaui-Drawing-divider'
+                'onesy-Drawing-divider'
               ],
 
               DividerProps?.className,
@@ -1455,7 +1455,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
         className={classNames([
           staticClassName('Drawing', theme) && [
-            'amaui-Drawing-svg'
+            'onesy-Drawing-svg'
           ],
 
           classes.svg
@@ -1478,7 +1478,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
         {/* Pointer  */}
         <circle
-          className='amaui-Drawing-pointer'
+          className='onesy-Drawing-pointer'
 
           cx={move?.x}
 
@@ -1493,6 +1493,6 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
   );
 });
 
-Drawing.displayName = 'amaui-Drawing';
+Drawing.displayName = 'onesy-Drawing';
 
 export default Drawing;

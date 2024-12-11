@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { reset } from '@amaui/style-react';
+import { reset } from '@onesy/style-react';
 
 import { IBaseElement } from '../types';
 
@@ -22,6 +22,6 @@ const Reset: React.FC<IReset> = (props) => {
   );
 };
 
-Reset.displayName = 'amaui-Reset';
+Reset.displayName = 'onesy-Reset';
 
 export default Reset;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialDraft from '@amaui/icons-material-rounded-react/IconMaterialDraftW100';
+import IconMaterialDraft from '@onesy/icons-material-rounded-react/IconMaterialDraftW100';
 
 import LinkElement from '../Link';
 import TypeElement from '../Type';
@@ -169,7 +169,7 @@ const useStyle = styleMethod(theme => ({
     aspectRatio: '3 / 6.84',
     width: '324px'
   }
-}), { name: 'amaui-Medias' });
+}), { name: 'onesy-Medias' });
 
 export interface IMediasItem {
   value: IMediaObject;
@@ -207,9 +207,9 @@ export interface IMedias extends ILine {
 }
 
 const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMedias?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMedias?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -417,7 +417,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Medias', theme) && [
-            'amaui-Medias-name'
+            'onesy-Medias-name'
           ],
 
           NameProps?.className,
@@ -445,8 +445,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Medias', theme) && [
-              'amaui-Medias-wrapper',
-              'amaui-Medias-wrapper-image'
+              'onesy-Medias-wrapper',
+              'onesy-Medias-wrapper-image'
             ],
 
             WrapperProps?.className,
@@ -466,8 +466,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Medias', theme) && [
-                'amaui-Medias-item',
-                'amaui-Medias-item-image'
+                'onesy-Medias-item',
+                'onesy-Medias-item-image'
               ],
 
               ImageProps?.className,
@@ -502,8 +502,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Medias', theme) && [
-              'amaui-Medias-wrapper',
-              'amaui-Medias-wrapper-audio'
+              'onesy-Medias-wrapper',
+              'onesy-Medias-wrapper-audio'
             ],
 
             WrapperProps?.className,
@@ -532,8 +532,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Medias', theme) && [
-                'amaui-Medias-item',
-                'amaui-Medias-item-audio'
+                'onesy-Medias-item',
+                'onesy-Medias-item-audio'
               ],
 
               VideoProps?.className,
@@ -559,8 +559,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Medias', theme) && [
-              'amaui-Medias-wrapper',
-              'amaui-Medias-wrapper-video'
+              'onesy-Medias-wrapper',
+              'onesy-Medias-wrapper-video'
             ],
 
             WrapperProps?.className,
@@ -589,8 +589,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Medias', theme) && [
-                'amaui-Medias-item',
-                'amaui-Medias-item-video'
+                'onesy-Medias-item',
+                'onesy-Medias-item-video'
               ],
 
               VideoProps?.className,
@@ -616,8 +616,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Medias', theme) && [
-              'amaui-Medias-wrapper',
-              'amaui-Medias-wrapper-other'
+              'onesy-Medias-wrapper',
+              'onesy-Medias-wrapper-other'
             ],
 
             WrapperProps?.className,
@@ -642,8 +642,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Medias', theme) && [
-                'amaui-Medias-item',
-                'amaui-Medias-item-other'
+                'onesy-Medias-item',
+                'onesy-Medias-item-other'
               ],
 
               OtherProps?.className,
@@ -692,8 +692,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Medias', theme) && [
-          'amaui-Medias-root',
-          `amaui-Medias-size-${size}`
+          'onesy-Medias-root',
+          `onesy-Medias-size-${size}`
         ],
 
         className,
@@ -728,8 +728,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Medias', theme) && [
-              'amaui-Medias-items',
-              `amaui-Medias-items-${item}`
+              'onesy-Medias-items',
+              `onesy-Medias-items-${item}`
             ],
 
             ItemsProps?.className,
@@ -770,6 +770,6 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Medias.displayName = 'amaui-Medias';
+Medias.displayName = 'onesy-Medias';
 
 export default Medias;

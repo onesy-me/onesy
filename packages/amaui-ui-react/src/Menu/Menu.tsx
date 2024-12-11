@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme, getID } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme, getID } from '@onesy/style-react';
 
 import ListElement from '../List';
 import TooltipElement from '../Tooltip';
@@ -14,7 +14,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-Menu' });
+}), { name: 'onesy-Menu' });
 
 export const MENUS = {
   open: [],
@@ -71,9 +71,9 @@ export interface IMenu extends Omit<ITooltip, 'name' | 'label'> {
 }
 
 const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMenu?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenu?.props?.default, ...props_ }), [props_]);
 
   const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
 
@@ -368,8 +368,8 @@ const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Menu', theme) && [
-            'amaui-Menu-root',
-            open && `amaui-Menu-open`
+            'onesy-Menu-root',
+            open && `onesy-Menu-open`
           ],
 
           className,
@@ -441,6 +441,6 @@ const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Menu.displayName = 'amaui-Menu';
+Menu.displayName = 'onesy-Menu';
 
 export default Menu;

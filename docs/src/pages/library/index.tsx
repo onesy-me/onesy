@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next';
 
-import { is } from '@amaui/utils';
+import { is } from '@onesy/utils';
 
 import sidenavJSON from '../../assets/json/sidenav.json';
 

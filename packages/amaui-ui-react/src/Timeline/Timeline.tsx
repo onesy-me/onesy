@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   },
-}), { name: 'amaui-Timeline' });
+}), { name: 'onesy-Timeline' });
 
 export interface ITimeline extends ILine {
   orientation?: 'vertical' | 'horizontal';
 }
 
 const Timeline: React.FC<ITimeline> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTimeline?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimeline?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -51,7 +51,7 @@ const Timeline: React.FC<ITimeline> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Timeline', theme) && [
-          'amaui-Timeline-root'
+          'onesy-Timeline-root'
         ],
 
         className,
@@ -69,6 +69,6 @@ const Timeline: React.FC<ITimeline> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Timeline.displayName = 'amaui-Timeline';
+Timeline.displayName = 'onesy-Timeline';
 
 export default Timeline;

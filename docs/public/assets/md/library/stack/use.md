@@ -1,5 +1,5 @@
 
-# AmauiStack
+# OnesyStack
 
 ### Options
 
@@ -18,7 +18,7 @@ Limit to how many values can be in the stack.
 Adds new value into the stack.
 
 ```ts
-const stack = new AmauiStack();
+const stack = new OnesyStack();
 
 stack.push(1114);
 
@@ -32,7 +32,7 @@ stack.length;
 Remove last added item from the stack, and returns it.
 
 ```ts
-const stack = new AmauiStack([1114]);
+const stack = new OnesyStack([1114]);
 
 stack.push(114);
 
@@ -49,7 +49,7 @@ stack.length;
 Makes the value [], clears the entire stack.
 
 ```ts
-const stack = new AmauiStack([1114]);
+const stack = new OnesyStack([1114]);
 
 stack.push(114);
 
@@ -71,7 +71,7 @@ Value of the stack (entire stack), as an array of items.
 Returns the first item in the stack.
 
 ```ts
-const stack = new AmauiStack([1114]);
+const stack = new OnesyStack([1114]);
 
 stack.push(114);
 
@@ -98,27 +98,27 @@ True if stack number of items is equal to the limit.
 
 ## API
 
-#### TAmauiStackValue
+#### TOnesyStackValue
 
 ```ts
-type TAmauiStackValue = Array<any>;
+type TOnesyStackValue = Array<any>;
 ```
 
-#### AmauiStack
+#### OnesyStack
 
 ```ts
-default class AmauiStack {
-    value: TAmauiStackValue;
+default class OnesyStack {
+    value: TOnesyStackValue;
     limit: number;
-    constructor(value: TAmauiStackValue, limit: number);
+    constructor(value: TOnesyStackValue, limit: number);
     get length(): number;
     get first(): any;
     get peak(): any;
     get empty(): boolean;
     get full(): boolean;
-    push(...values: TAmauiStackValue): boolean;
+    push(...values: TOnesyStackValue): boolean;
     pop(): any;
-    clear(): AmauiStack;
+    clear(): OnesyStack;
 }
 ```
 

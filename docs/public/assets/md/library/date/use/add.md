@@ -1,12 +1,12 @@
 
 # add
 
-Adds time unit to the AmauiDate value.
+Adds time unit to the OnesyDate value.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-add(14, 'day', amauiDate);
+add(14, 'day', onesyDate);
 ```
 
 ### Units
@@ -28,7 +28,7 @@ add(14, 'day', amauiDate);
 #### add
 
 ```ts
-default function add(value: number, unit: TTimeUnits, amauiDate_?: AmauiDate): AmauiDate;
+default function add(value: number, unit: TTimeUnits, onesyDate_?: OnesyDate): OnesyDate;
 ```
 
 

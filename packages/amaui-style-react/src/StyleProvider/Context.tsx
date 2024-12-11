@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { AmauiStyle } from '@amaui/style';
+import { OnesyStyle } from '@onesy/style';
 
-const StyleContext: any = React.createContext(new AmauiStyle());
+const StyleContext: any = React.createContext(new OnesyStyle());
 
 export default StyleContext;

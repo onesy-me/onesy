@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine, TLineAlign } from '../Line/Line';
@@ -14,16 +14,16 @@ const useStyle = styleMethod(theme => ({
     // // it will properly make it overflow auto
     // height: '0px'
   }
-}), { name: 'amaui-ModalMain' });
+}), { name: 'onesy-ModalMain' });
 
 export interface IModalMain extends ILine {
 
 }
 
 const ModalMain: React.FC<IModalMain> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiModalMain?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalMain?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -49,7 +49,7 @@ const ModalMain: React.FC<IModalMain> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('ModalMain', theme) && [
-          'amaui-ModalMain-root'
+          'onesy-ModalMain-root'
         ],
 
         className,
@@ -67,6 +67,6 @@ const ModalMain: React.FC<IModalMain> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-ModalMain.displayName = 'amaui-ModalMain';
+ModalMain.displayName = 'onesy-ModalMain';
 
 export default ModalMain;

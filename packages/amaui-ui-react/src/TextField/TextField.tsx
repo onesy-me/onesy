@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { clamp, is, isEnvironment, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import AmauiSubscription from '@amaui/subscription';
+import { clamp, is, isEnvironment, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import OnesySubscription from '@onesy/subscription';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
 import TypeElement from '../Type';
 import LineElement from '../Line';
@@ -528,7 +528,7 @@ const useStyle = styleMethod(theme => {
       cursor: 'default'
     }
   };
-}, { name: 'amaui-TextField' });
+}, { name: 'onesy-TextField' });
 
 export interface ITextField extends IBaseElement {
   tonal?: ITonal;
@@ -577,7 +577,7 @@ export interface ITextField extends IBaseElement {
   minWidth?: number;
   readOnly?: boolean;
   disabled?: boolean;
-  subscription?: AmauiSubscription;
+  subscription?: OnesySubscription;
   minimal?: boolean;
 
   onInput?: (event: InputEvent) => any;
@@ -597,9 +597,9 @@ export interface ITextField extends IBaseElement {
 }
 
 const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTextField?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextField?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -989,10 +989,10 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
     WrapperProps['className'] = classNames([
       staticClassName('TextField', theme) && [
-        'amaui-TextField-wrapper',
-        fullWidth && 'amaui-TextField-full-width',
-        disabled && 'amaui-TextField-disabled',
-        fullWidth && 'amaui-full-width'
+        'onesy-TextField-wrapper',
+        fullWidth && 'onesy-TextField-full-width',
+        disabled && 'onesy-TextField-disabled',
+        fullWidth && 'onesy-full-width'
       ],
 
       className,
@@ -1086,20 +1086,20 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('TextField', theme) && [
-            'amaui-TextField-root', ,
-            `amaui-TextField-version-${version}`,
-            `amaui-TextField-size-${size}`,
-            multiline && `amaui-TextField-multiline`,
-            valueWithData && 'amaui-TextField-value',
-            error && `amaui-TextField-error`,
-            required && 'amaui-TextField-required',
-            enabled && 'amaui-TextField-enabled',
-            hover && `amaui-TextField-hover`,
-            mouseDown && `amaui-TextField-mouse-down`,
-            focus && `amaui-TextField-focus`,
-            readOnly && `amaui-TextField-read-only`,
-            disabled && 'amaui-TextField-disabled',
-            fullWidth && 'amaui-full-width'
+            'onesy-TextField-root', ,
+            `onesy-TextField-version-${version}`,
+            `onesy-TextField-size-${size}`,
+            multiline && `onesy-TextField-multiline`,
+            valueWithData && 'onesy-TextField-value',
+            error && `onesy-TextField-error`,
+            required && 'onesy-TextField-required',
+            enabled && 'onesy-TextField-enabled',
+            hover && `onesy-TextField-hover`,
+            mouseDown && `onesy-TextField-mouse-down`,
+            focus && `onesy-TextField-focus`,
+            readOnly && `onesy-TextField-read-only`,
+            disabled && 'onesy-TextField-disabled',
+            fullWidth && 'onesy-full-width'
           ],
 
           ComponentProps.className,
@@ -1121,7 +1121,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('TextField', theme) && [
-                  'amaui-TextField-background'
+                  'onesy-TextField-background'
                 ],
 
                 classes.background,
@@ -1137,7 +1137,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('TextField', theme) && [
-                  'amaui-TextField-border'
+                  'onesy-TextField-border'
                 ],
 
                 classes.border,
@@ -1152,7 +1152,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
             <fieldset
               className={classNames([
                 staticClassName('TextField', theme) && [
-                  'amaui-TextField-fieldset'
+                  'onesy-TextField-fieldset'
                 ],
 
                 classes.fieldset,
@@ -1164,7 +1164,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
               <legend
                 className={classNames([
                   staticClassName('TextField', theme) && [
-                    'amaui-TextField-legend'
+                    'onesy-TextField-legend'
                   ],
 
                   classes.legend,
@@ -1187,7 +1187,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('TextField', theme) && [
-                'amaui-TextField-label'
+                'onesy-TextField-label'
               ],
 
               classes.label,
@@ -1218,8 +1218,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('TextField', theme) && [
-                  'amaui-TextField-icon',
-                  'amaui-TextField-icon-start'
+                  'onesy-TextField-icon',
+                  'onesy-TextField-icon-start'
                 ],
 
                 classes.icon,
@@ -1250,8 +1250,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
           <Type
             className={classNames([
               staticClassName('TextField', theme) && [
-                'amaui-TextField-addition',
-                'amaui-TextField-prefix'
+                'onesy-TextField-addition',
+                'onesy-TextField-prefix'
               ],
 
               classes.addition,
@@ -1275,7 +1275,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('TextField', theme) && [
-              'amaui-TextField-input-wrapper'
+              'onesy-TextField-input-wrapper'
             ],
 
             classes.inputWrapper,
@@ -1322,7 +1322,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('TextField', theme) && [
-                'amaui-TextField-input'
+                'onesy-TextField-input'
               ],
 
               classes.input,
@@ -1363,8 +1363,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
           <Type
             className={classNames([
               staticClassName('TextField', theme) && [
-                'amaui-TextField-addition',
-                'amaui-TextField-sufix'
+                'onesy-TextField-addition',
+                'onesy-TextField-sufix'
               ],
 
               classes.addition,
@@ -1387,8 +1387,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('TextField', theme) && [
-                  'amaui-TextField-icon',
-                  'amaui-TextField-icon-end'
+                  'onesy-TextField-icon',
+                  'onesy-TextField-icon-end'
                 ],
 
                 classes.icon,
@@ -1427,7 +1427,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('TextField', theme) && [
-                'amaui-TextField-footer'
+                'onesy-TextField-footer'
               ],
 
               classes.footer,
@@ -1442,8 +1442,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('TextField', theme) && [
-                    'amaui-TextField-helper-text',
-                    error && 'amaui-TextField-error'
+                    'onesy-TextField-helper-text',
+                    error && 'onesy-TextField-error'
                   ],
 
                   HelperTextProps?.className,
@@ -1461,7 +1461,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('TextField', theme) && [
-                    'amaui-TextField-counter'
+                    'onesy-TextField-counter'
                   ],
 
                   classes.counterText,
@@ -1480,6 +1480,6 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-TextField.displayName = 'amaui-TextField';
+TextField.displayName = 'onesy-TextField';
 
 export default TextField;

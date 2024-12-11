@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import useMediaQuery from '../useMediaQuery';
@@ -26,7 +26,7 @@ const useStyle = styleMethod(theme => ({
     display: 'block',
     height: 'auto'
   }
-}), { name: 'amaui-ImageListItem' });
+}), { name: 'onesy-ImageListItem' });
 
 export interface IImageListItem extends ILine {
   rows?: number | Partial<Record<IValueBreakpoints, number>>;
@@ -35,9 +35,9 @@ export interface IImageListItem extends ILine {
 }
 
 const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiImageListItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageListItem?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -120,7 +120,7 @@ const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('ImageListItem', theme) && [
-          'amaui-ImageListItem-root'
+          'onesy-ImageListItem-root'
         ],
 
         className,
@@ -141,6 +141,6 @@ const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: a
   );
 });
 
-ImageListItem.displayName = 'amaui-ImageListItem';
+ImageListItem.displayName = 'onesy-ImageListItem';
 
 export default ImageListItem;

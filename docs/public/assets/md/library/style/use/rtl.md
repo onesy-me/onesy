@@ -7,19 +7,19 @@ Usually used when `dir` is changed from `ltr` to `rtl`, makes a web app `rtl` re
 ### Add
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Add to plugins
-amauiStyle.plugins.add = rtl;
+onesyStyle.plugins.add = rtl;
 ```
 
 ### Remove
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Remove from plugins
-amauiStyle.plugins.remove = rtl;
+onesyStyle.plugins.remove = rtl;
 ```
 
 ### Use
@@ -50,7 +50,7 @@ interface IRtl {
 #### rtl
 
 ```ts
-function rtl(amauiStyle: AmauiStyle): {
+function rtl(onesyStyle: OnesyStyle): {
     methods: {
         method: (value_: {
             value: string;

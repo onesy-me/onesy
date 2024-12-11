@@ -2,10 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import LinkNext from 'next/link';
 
-import { clamp, parse, random, slugify, unique, copyToClipboard } from '@amaui/utils';
-import { Button, Interaction, Line, Markdown, SpyScroll, Type, useMainProgress, useMediaQuery, Placeholder, Fade, Tooltip, IconButton, sanitize, Accordion } from '@amaui/ui-react';
-import { classNames, style as styleMethod } from '@amaui/style-react';
-import AmauiRequest from '@amaui/request';
+import { clamp, parse, random, slugify, unique, copyToClipboard } from '@onesy/utils';
+import { Button, Interaction, Line, Markdown, SpyScroll, Type, useMainProgress, useMediaQuery, Placeholder, Fade, Tooltip, IconButton, sanitize, Accordion } from '@onesy/ui-react';
+import { classNames, style as styleMethod } from '@onesy/style-react';
+import OnesyRequest from '@onesy/request';
 
 import IconGithub from '../../../public/assets/svg/github.svg';
 
@@ -17,23 +17,23 @@ const useStyle = styleMethod(theme => ({
     marginTop: 'clamp(40px, 4vw, 114px)',
     marginInline: 'auto',
 
-    '& .amaui_string': {
+    '& .onesy_string': {
       color: 'hsl(114deg 54% 54%)'
     },
 
-    '& .amaui_number': {
+    '& .onesy_number': {
       color: 'hsl(214deg 54% 64%)'
     },
 
-    '& .amaui_boolean': {
+    '& .onesy_boolean': {
       color: 'hsl(170deg 54% 54%)'
     },
 
-    '& .amaui_other': {
+    '& .onesy_other': {
       color: 'hsl(57deg 54% 54%)'
     },
 
-    '& .amaui-Markdown-root, & .amaui-Accordion-root': {
+    '& .onesy-Markdown-root, & .onesy-Accordion-root': {
       color: 'inherit'
     }
   },
@@ -310,7 +310,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   accordion: {
-    '&.amaui-Accordion-root': {
+    '&.onesy-Accordion-root': {
       background: 'none',
       marginTop: '14px !important'
     }
@@ -393,7 +393,7 @@ export default function Library(props: any) {
     mainProgress.start();
 
     // page md
-    const response = await AmauiRequest.get(`/assets/md/library${url}.md`, { response: { type: 'text' } });
+    const response = await OnesyRequest.get(`/assets/md/library${url}.md`, { response: { type: 'text' } });
 
     if (response.status === 200) setValue(response.response);
     else {
@@ -451,7 +451,7 @@ export default function Library(props: any) {
   const onUpdate = React.useCallback(() => {
     const Prism = (window as any).Prism;
 
-    const markdowns = Array.from(refs.main.current!.querySelectorAll('.amaui-Markdown-root'));
+    const markdowns = Array.from(refs.main.current!.querySelectorAll('.onesy-Markdown-root'));
 
     markdowns.forEach(markdown => {
       let elements: Element[] = [];
@@ -463,12 +463,12 @@ export default function Library(props: any) {
       elements.forEach(item => {
         const text = item.textContent;
 
-        if (!(item as any).dataset.amaui) {
+        if (!(item as any).dataset.onesy) {
           // ClassName
           item.className = classNames([item.className, classes.pre]);
 
           // Mark
-          item.setAttribute('data-amaui', 'true');
+          item.setAttribute('data-onesy', 'true');
 
           const iconCopy = `<svg viewBox="0 0 24 24" width="1em" height="1em" focusable="false" aria-hidden="true" style="fill: currentcolor; font-size: 22px;"><path d="M9 18Q8.175 18 7.588 17.413Q7 16.825 7 16V4Q7 3.175 7.588 2.587Q8.175 2 9 2H18Q18.825 2 19.413 2.587Q20 3.175 20 4V16Q20 16.825 19.413 17.413Q18.825 18 18 18ZM9 16H18Q18 16 18 16Q18 16 18 16V4Q18 4 18 4Q18 4 18 4H9Q9 4 9 4Q9 4 9 4V16Q9 16 9 16Q9 16 9 16ZM5 22Q4.175 22 3.587 21.413Q3 20.825 3 20V7Q3 6.575 3.288 6.287Q3.575 6 4 6Q4.425 6 4.713 6.287Q5 6.575 5 7V20Q5 20 5 20Q5 20 5 20H15Q15.425 20 15.713 20.288Q16 20.575 16 21Q16 21.425 15.713 21.712Q15.425 22 15 22ZM9 4Q9 4 9 4Q9 4 9 4V16Q9 16 9 16Q9 16 9 16Q9 16 9 16Q9 16 9 16V4Q9 4 9 4Q9 4 9 4Z"/></svg>`;
 
@@ -563,9 +563,9 @@ export default function Library(props: any) {
       elements = Array.from(markdown?.querySelectorAll('pre > code') || []);
 
       elements.forEach(item => {
-        if (!(item as any).dataset.amaui) {
+        if (!(item as any).dataset.onesy) {
           // Mark
-          item.setAttribute('data-amaui', 'true');
+          item.setAttribute('data-onesy', 'true');
 
           const items = (item.textContent || '').split('\n').slice(0, -1);
 
@@ -619,12 +619,12 @@ export default function Library(props: any) {
       });
 
       // ID
-      if (!(item as any).dataset.amaui) {
+      if (!(item as any).dataset.onesy) {
         // ClassName
         item.className = classNames([item.className, classes.heading]);
 
         // Mark
-        item.setAttribute('data-amaui', 'true');
+        item.setAttribute('data-onesy', 'true');
 
         const iconAnchor = `<svg viewBox="0 0 24 24" width="1em" height="1em" focusable="false" aria-hidden="true" style="fill: currentcolor; font-size: 24px;"><path d="M7 17Q4.925 17 3.463 15.537Q2 14.075 2 12Q2 9.925 3.463 8.462Q4.925 7 7 7H10Q10.425 7 10.713 7.287Q11 7.575 11 8Q11 8.425 10.713 8.712Q10.425 9 10 9H7Q5.75 9 4.875 9.875Q4 10.75 4 12Q4 13.25 4.875 14.125Q5.75 15 7 15H10Q10.425 15 10.713 15.287Q11 15.575 11 16Q11 16.425 10.713 16.712Q10.425 17 10 17ZM9 13Q8.575 13 8.288 12.712Q8 12.425 8 12Q8 11.575 8.288 11.287Q8.575 11 9 11H15Q15.425 11 15.713 11.287Q16 11.575 16 12Q16 12.425 15.713 12.712Q15.425 13 15 13ZM14 17Q13.575 17 13.288 16.712Q13 16.425 13 16Q13 15.575 13.288 15.287Q13.575 15 14 15H17Q18.25 15 19.125 14.125Q20 13.25 20 12Q20 10.75 19.125 9.875Q18.25 9 17 9H14Q13.575 9 13.288 8.712Q13 8.425 13 8Q13 7.575 13.288 7.287Q13.575 7 14 7H17Q19.075 7 20.538 8.462Q22 9.925 22 12Q22 14.075 20.538 15.537Q19.075 17 17 17Z"/></svg>`;
 
@@ -802,7 +802,7 @@ export default function Library(props: any) {
       <title>{title}</title>
 
       <meta property='og:title' content={title} />
-      <meta property='og:url' content={`https://amaui.me${URL}`} />
+      <meta property='og:url' content={`https://onesy.me${URL}`} />
     </Head>
 
     <SpyScroll
@@ -941,7 +941,7 @@ export default function Library(props: any) {
 
                         Component='a'
 
-                        href={`https://github.com/amaui-org${props?.github}`}
+                        href={`https://github.com/onesy-org${props?.github}`}
 
                         target='_blank'
 
@@ -962,7 +962,7 @@ export default function Library(props: any) {
 
                       version='text'
 
-                      href={`https://github.com/amaui-org/amaui/tree/main/docs/public/assets/md${URL}.md`}
+                      href={`https://github.com/onesy-org/onesy/tree/main/docs/public/assets/md${URL}.md`}
 
                       target='_blank'
 
@@ -1020,7 +1020,7 @@ export default function Library(props: any) {
 
                       onClick={() => onClickSidenavHeading(heading)}
 
-                      data-amaui-spy-scroll={heading.id}
+                      data-onesy-spy-scroll={heading.id}
 
                       Component='button'
 

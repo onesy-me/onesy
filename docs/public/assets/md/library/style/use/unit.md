@@ -14,13 +14,13 @@ It will override existing default units.
 ### Add
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Add to plugins
-amauiStyle.plugins.add = unit;
+onesyStyle.plugins.add = unit;
 
 // Add to plugins with options
-amauiStyle.plugins.add = {
+onesyStyle.plugins.add = {
   method: unit,
   arguments: [
     {
@@ -35,10 +35,10 @@ amauiStyle.plugins.add = {
 ### Remove
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Remove from plugins
-amauiStyle.plugins.remove = unit;
+onesyStyle.plugins.remove = unit;
 ```
 
 ### Use
@@ -460,7 +460,7 @@ const unitsDefault: {
 #### unit
 
 ```ts
-function unit(amauiStyle: AmauiStyle, options_?: IOptions): {
+function unit(onesyStyle: OnesyStyle, options_?: IOptions): {
     methods: {
         method: (value_: {
             property: string;

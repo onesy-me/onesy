@@ -1,10 +1,10 @@
 
 # diff
 
-Difference between 2 AmauiDates in a provided time unit.
+Difference between 2 OnesyDates in a provided time unit.
 
 ```ts
-AmauiDate.diff(new AmauiDate('2014-04-14T14:04:14.147'), new AmauiDate('04/13/2014 14:04:14'), 'day');
+OnesyDate.diff(new OnesyDate('2014-04-14T14:04:14.147'), new OnesyDate('04/13/2014 14:04:14'), 'day');
 
 // 1
 ```
@@ -28,7 +28,7 @@ AmauiDate.diff(new AmauiDate('2014-04-14T14:04:14.147'), new AmauiDate('04/13/20
 #### diff
 
 ```ts
-default function diff(value: AmauiDate, value1: AmauiDate, unit?: TTimeUnits): number;
+default function diff(value: OnesyDate, value1: OnesyDate, unit?: TTimeUnits): number;
 ```
 
 
@@ -36,8 +36,8 @@ default function diff(value: AmauiDate, value1: AmauiDate, unit?: TTimeUnits): n
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Date: AmauiDate",
-      "to": "/library/date/use/AmauiDate"
+      "label": "Date: OnesyDate",
+      "to": "/library/date/use/OnesyDate"
     },
     "next": {
       "label": "Date: duration",

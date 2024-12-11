@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import SurfaceElement from '../Surface';
@@ -37,7 +37,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   figcaption: {
-    '&.amaui-Type-root': {
+    '&.onesy-Type-root': {
       padding: `${theme.methods.space.value(1.5, 'px')} ${theme.methods.space.value(2, 'px')}`
     }
   },
@@ -120,7 +120,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'default',
     userSelect: 'none'
   }
-}), { name: 'amaui-Image' });
+}), { name: 'onesy-Image' });
 
 export interface IImage extends IBaseElement {
   tonal?: ITonal;
@@ -153,9 +153,9 @@ export interface IImage extends IBaseElement {
 }
 
 const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiImage?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImage?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -315,7 +315,7 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
   const WrapperProps = (picture && description) ? {
     className: classNames([
       staticClassName('Image', theme) && [
-        'amaui-Image-picture'
+        'onesy-Image-picture'
       ],
 
       classes.picture
@@ -337,7 +337,7 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Image', theme) && [
-            'amaui-Image-img'
+            'onesy-Image-img'
           ],
 
           className,
@@ -375,7 +375,7 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Image', theme) && [
-              'amaui-Image-figcaption'
+              'onesy-Image-figcaption'
             ],
 
             DescriptionProps?.className,
@@ -419,9 +419,9 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Image', theme) && [
-          'amaui-Image-root',
-          noImage && 'amaui-Image-no-image',
-          (picture && !description) && `amaui-Image-picture`
+          'onesy-Image-root',
+          noImage && 'onesy-Image-no-image',
+          (picture && !description) && `onesy-Image-picture`
         ],
 
         RootProps?.className,
@@ -442,6 +442,6 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Image.displayName = 'amaui-Image';
+Image.displayName = 'onesy-Image';
 
 export default Image;

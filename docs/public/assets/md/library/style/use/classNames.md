@@ -24,8 +24,8 @@ function classNames(value?: any, prefix?: string, array?: boolean): string;
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Style: AmauiTheme",
-      "to": "/library/style/use/AmauiTheme"
+      "label": "Style: OnesyTheme",
+      "to": "/library/style/use/OnesyTheme"
     },
     "next": {
       "label": "Style: cli",

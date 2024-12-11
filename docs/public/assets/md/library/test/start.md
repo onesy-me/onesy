@@ -1,23 +1,23 @@
 
-# amaui test
+# onesy test
 
 Testing library for front end & back end.
 
 ### Add
 
 ```sh
-yarn add @amaui/test --dev
+yarn add @onesy/test --dev
 ```
 
 ### Use
 
 #### Nodejs
 
-You can have options either in `package.json` in `amaui-test` property or `amaui-test.options.js` file in root directory, where `amaui-test` command will be made.
+You can have options either in `package.json` in `onesy-test` property or `onesy-test.options.js` file in root directory, where `onesy-test` command will be made.
 
-In nodejs on amaui-test run errors amaui-test exits the process, so it's all good if the command is flow dependent.
+In nodejs on onesy-test run errors onesy-test exits the process, so it's all good if the command is flow dependent.
 
-*amaui-test.options.js*
+*onesy-test.options.js*
 
 ```ts
 module.exports = {
@@ -38,9 +38,9 @@ or \
   ...
 
   "scripts": {
-    test: "amaui-test"
+    test: "onesy-test"
   },
-  "amaui-test": {
+  "onesy-test": {
     imports: [
       'ts-node/register/transpile-only'
     ],
@@ -51,7 +51,7 @@ or \
 }
 ```
 
-And with yarn test or npm test command amaui-test will run all the tests based on the amaui-test options
+And with yarn test or npm test command onesy-test will run all the tests based on the onesy-test options
 
 ```bash
 yarn test
@@ -59,19 +59,19 @@ yarn test
 
 #### Browser
 
-Make an AmauiTest instance, which will prepare the environment, write all the tests below it, and run the tests with `amauiTest.run()` method, which on errors throws an error, so if the tests passing is flow dependent, running tests will obviously stop the method having thrown an error on tests not having passed.
+Make an OnesyTest instance, which will prepare the environment, write all the tests below it, and run the tests with `onesyTest.run()` method, which on errors throws an error, so if the tests passing is flow dependent, running tests will obviously stop the method having thrown an error on tests not having passed.
 
 ```ts
-import { AmauiTest, assert } from '@amaui/test';
-import { wait } from '@amaui/utils';
+import { OnesyTest, assert } from '@onesy/test';
+import { wait } from '@onesy/utils';
 
-const amauiTest = new AmauiTest();
+const onesyTest = new OnesyTest();
 
 to('a', () => {
   assert(4).eq(4);
 });
 
-group('@amaui/a1', () => {
+group('@onesy/a1', () => {
 
   pre(async () => {
     await wait(140);
@@ -85,7 +85,7 @@ group('@amaui/a1', () => {
     assert(4).eq(4);
   });
 
-  group('@amaui/a3', () => {
+  group('@onesy/a3', () => {
 
     to('a3', async () => {
       assert(function a() { }).eq(undefined);
@@ -101,7 +101,7 @@ group('@amaui/a1', () => {
     });
   });
 
-  group('@amaui/a5', () => {
+  group('@onesy/a5', () => {
     let a: any;
 
     pre(async () => {
@@ -209,37 +209,37 @@ group('@amaui/a1', () => {
 
   to('a11', async () => {
     const value = [
-      'AmauiError',
-      'AmauiError',
-      'AmauiAwsError',
-      'AmauiTestError',
-      'AmauiAmqpError',
+      'OnesyError',
+      'OnesyError',
+      'OnesyAwsError',
+      'OnesyTestError',
+      'OnesyAmqpError',
       'AuthenticationError',
       'AuthorizationError',
       'AssertError',
       'ValidationError',
       'PermissionError',
-      'AmauiMongoError',
+      'OnesyMongoError',
       'ConnectionError',
       'NotFoundError',
       'DeveloperError',
-      'AmauiError',
+      'OnesyError',
     ];
     const value1 = [
-      'AmauiError',
-      'AmauiError',
-      'AmauiAwsError',
-      'AmauiTestError',
-      'AmauiAmqpError',
+      'OnesyError',
+      'OnesyError',
+      'OnesyAwsError',
+      'OnesyTestError',
+      'OnesyAmqpError',
       'AuthenticationError',
       'AuthorizationError',
       'ValidationError',
       'PermissionError',
-      'AmauiMongoError',
+      'OnesyMongoError',
       'ConnectionError',
       'NotFoundError',
       'DeveloperError',
-      'AmauiError',
+      'OnesyError',
     ];
 
     assert(value).eql(value1);
@@ -286,7 +286,7 @@ to('a14', async () => {
   assert(timezones).eql([{ a: [function a() { }, { a: 4 }, 4] }]);
 });
 
-await amauiTest.run();
+await onesyTest.run();
 ```
 
 ### Dev
@@ -319,8 +319,8 @@ yarn build
       "to": "/library/subscription/start"
     },
     "next": {
-      "label": "Test: AmauiGroup",
-      "to": "/library/test/use/AmauiGroup"
+      "label": "Test: OnesyGroup",
+      "to": "/library/test/use/OnesyGroup"
     }
   }
 }~

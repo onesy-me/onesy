@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import FadeElement from '../Fade';
 import { IFade } from '../Fade/Fade';
@@ -12,7 +12,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   },
-}), { name: 'amaui-Reveal' });
+}), { name: 'onesy-Reveal' });
 
 export interface IReveal extends IFade {
   inDefault?: boolean;
@@ -40,9 +40,9 @@ export interface IReveal extends IFade {
 }
 
 const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiReveal?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyReveal?.props?.default, ...props_ }), [props_]);
 
   const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
 
@@ -150,9 +150,9 @@ const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
 
         className: classNames([
           staticClassName('Reveal', theme) && [
-            'amaui-Reveal-root',
-            unreveal && `amaui-Reveal-unreveal`,
-            inProp ? `amaui-Reveal-revealed` : `amaui-Reveal-unrevealed`
+            'onesy-Reveal-root',
+            unreveal && `onesy-Reveal-unreveal`,
+            inProp ? `onesy-Reveal-revealed` : `onesy-Reveal-unrevealed`
           ],
 
           className,
@@ -170,6 +170,6 @@ const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Reveal.displayName = 'amaui-Reveal';
+Reveal.displayName = 'onesy-Reveal';
 
 export default Reveal;

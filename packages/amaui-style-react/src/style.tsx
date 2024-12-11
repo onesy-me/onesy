@@ -1,12 +1,12 @@
 import React from 'react';
 
-import is from '@amaui/utils/is';
-import merge from '@amaui/utils/merge';
+import is from '@onesy/utils/is';
+import merge from '@onesy/utils/merge';
 
-import { IMethodResponse, IResponse, style as amauiStyleMethod, AmauiTheme, TValueObjectValue } from '@amaui/style';
-import { IOptions } from '@amaui/style/style';
+import { IMethodResponse, IResponse, style as onesyStyleMethod, OnesyTheme, TValueObjectValue } from '@onesy/style';
+import { IOptions } from '@onesy/style/style';
 
-import { useAmauiStyle, useAmauiTheme } from './';
+import { useOnesyStyle, useOnesyTheme } from './';
 
 export type TValueObject = Record<string, TValueObjectValue>;
 
@@ -14,14 +14,14 @@ type RecursiveRequired<T> = {
   [P in keyof T]-?: T[P] extends Function ? T[P] : RecursiveRequired<T[P]>;
 };
 
-export type ThemeRequired = RecursiveRequired<AmauiTheme>;
+export type ThemeRequired = RecursiveRequired<OnesyTheme>;
 
 export type TValueMethod = (theme: ThemeRequired) => TValueObject;
 
 export type TValue = TValueObject | TValueMethod;
 
 export interface IResponseStyle extends IMethodResponse {
-  amauiTheme?: AmauiTheme;
+  onesyTheme?: OnesyTheme;
 }
 
 export const propsAreNew = (props: any) => props && Object.keys(props).reduce((result, item) => result += item + String(props[item]), '');
@@ -39,28 +39,28 @@ export default function style(value: TValue, options_: IOptionsStyle = {}, respo
   } = options_;
 
   function useStyle(props_?: any) {
-    const amauiStyle = useAmauiStyle();
-    const amauiTheme = useAmauiTheme();
+    const onesyStyle = useOnesyStyle();
+    const onesyTheme = useOnesyTheme();
 
     const refs = {
       update: React.useRef<any>(undefined),
       remove: React.useRef(remove),
-      amauiStyle: React.useRef(amauiStyle),
-      amauiTheme: React.useRef(amauiTheme)
+      onesyStyle: React.useRef(onesyStyle),
+      onesyTheme: React.useRef(onesyTheme)
     };
 
-    refs.amauiStyle.current = amauiStyle;
+    refs.onesyStyle.current = onesyStyle;
 
-    refs.amauiTheme.current = amauiTheme;
+    refs.onesyTheme.current = onesyTheme;
 
-    const resolve = (theme: any = amauiTheme) => {
+    const resolve = (theme: any = onesyTheme) => {
       let valueNew: any = value;
 
       if (is('function', value)) valueNew = (value as TValueMethod)(theme);
 
       // Add style add & overrides
-      if (amauiTheme.ui?.elements?.[name as any]?.style) {
-        const { add, override } = amauiTheme.ui.elements[name as any].style;
+      if (onesyTheme.ui?.elements?.[name as any]?.style) {
+        const { add, override } = onesyTheme.ui.elements[name as any].style;
 
         // Add
         if (add) {
@@ -83,7 +83,7 @@ export default function style(value: TValue, options_: IOptionsStyle = {}, respo
       return valueNew;
     };
 
-    // Updates for amauiTheme
+    // Updates for onesyTheme
     const method = React.useCallback((updateValue: any, updatedTheme: any) => {
       if (is('function', value)) {
         const valueNew: any = resolve(updatedTheme);
@@ -100,34 +100,34 @@ export default function style(value: TValue, options_: IOptionsStyle = {}, respo
       if (response_) return response_;
 
       // Method
-      // If it's a new instance of amauiTheme
+      // If it's a new instance of onesyTheme
       // make a new responses with it
-      response_ = responses.find((item: any) => item.amauiTheme.id === amauiTheme.id);
+      response_ = responses.find((item: any) => item.onesyTheme.id === onesyTheme.id);
 
       if (response_) return response_;
 
       // If there's not add a new response and use it
       const options: any = {
-        amaui_style: { value: undefined },
-        amaui_theme: { value: undefined },
+        onesy_style: { value: undefined },
+        onesy_theme: { value: undefined },
       };
 
-      // AmauiStyle
-      if (amauiStyle !== undefined) options.amaui_style.value = amauiStyle;
+      // OnesyStyle
+      if (onesyStyle !== undefined) options.onesy_style.value = onesyStyle;
 
-      // AmauiTheme
-      if (amauiTheme !== undefined) options.amaui_theme.value = amauiTheme;
+      // OnesyTheme
+      if (onesyTheme !== undefined) options.onesy_theme.value = onesyTheme;
 
-      response_ = amauiStyleMethod(resolve(), merge(options, options_, { copy: true }));
+      response_ = onesyStyleMethod(resolve(), merge(options, options_, { copy: true }));
 
-      // Add the amauiTheme to the response_
-      response_.amauiTheme = amauiTheme;
+      // Add the onesyTheme to the response_
+      response_.onesyTheme = onesyTheme;
 
       // Add value to the responses
       responses.push(response_);
 
       // Update
-      if (amauiTheme) amauiTheme.subscriptions.update.subscribe(method);
+      if (onesyTheme) onesyTheme.subscriptions.update.subscribe(method);
 
       return response_;
     };
@@ -160,7 +160,7 @@ export default function style(value: TValue, options_: IOptionsStyle = {}, respo
       return () => {
         // If in the iframe
         // don't remove the elements by default
-        const toRemove = refs.remove.current !== undefined ? refs.remove.current : refs.amauiStyle.current.remove !== undefined ? refs.amauiStyle.current.remove : true;
+        const toRemove = refs.remove.current !== undefined ? refs.remove.current : refs.onesyStyle.current.remove !== undefined ? refs.onesyStyle.current.remove : true;
 
         // Remove
         if (toRemove) response?.remove(values?.ids?.dynamic);
@@ -169,15 +169,15 @@ export default function style(value: TValue, options_: IOptionsStyle = {}, respo
         refs.update.current = 'refresh';
 
         // Remove response from the responses
-        // if users is 0 in amauiStyleSheetManager
-        if (toRemove && !response?.amaui_style_sheet_manager?.users) {
-          const index = responses.findIndex((item: any) => item.amauiTheme.id === amauiTheme.id);
+        // if users is 0 in onesyStyleSheetManager
+        if (toRemove && !response?.onesy_style_sheet_manager?.users) {
+          const index = responses.findIndex((item: any) => item.onesyTheme.id === onesyTheme.id);
 
           if (index > -1) {
             responses.splice(index, 1);
 
             // Unsubscribe
-            if (amauiTheme) amauiTheme.subscriptions.update.unsubscribe(method);
+            if (onesyTheme) onesyTheme.subscriptions.update.unsubscribe(method);
           }
         }
       };

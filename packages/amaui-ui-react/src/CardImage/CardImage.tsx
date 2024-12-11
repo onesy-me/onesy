@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, ITonal, IColor, IVersion, IElevation } from '../types';
@@ -43,7 +43,7 @@ const useStyle = styleMethod(theme => ({
     width: 'calc(100% - 48px)',
     margin: '0 24px'
   }
-}), { name: 'amaui-CardImage' });
+}), { name: 'onesy-CardImage' });
 
 export interface ICardImage extends IBaseElement {
   tonal?: ITonal;
@@ -58,9 +58,9 @@ export interface ICardImage extends IBaseElement {
 }
 
 const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCardImage?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardImage?.props?.default, ...props_ }), [props_]);
 
   const {
     tonal = true,
@@ -94,7 +94,7 @@ const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('CardImage', theme) && [
-          `amaui-CardImage-root`
+          `onesy-CardImage-root`
         ],
 
         className,
@@ -108,6 +108,6 @@ const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-CardImage.displayName = 'amaui-CardImage';
+CardImage.displayName = 'onesy-CardImage';
 
 export default CardImage;

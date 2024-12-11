@@ -2,17 +2,17 @@
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 
-import { assert } from '@amaui/test';
+import { assert } from '@onesy/test';
 
 import { evaluate } from '../../../utils/js/test/utils';
 
-import * as AmauiStyleReact from '../src';
+import * as OnesyStyleReact from '../src';
 
-group('@amaui/style-react/string', () => {
+group('@onesy/style-react/string', () => {
 
   to('string', async () => {
     const valueBrowsers = await evaluate(async (window: any) => {
-      const { string } = window.AmauiStyleReact;
+      const { string } = window.OnesyStyleReact;
 
       const A = (props) => {
         const classNameProp = string`
@@ -44,7 +44,7 @@ group('@amaui/style-react/string', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         window.document.styleSheets.length,
@@ -68,7 +68,7 @@ group('@amaui/style-react/string', () => {
 
   to('sr', async () => {
     const valueBrowsers = await evaluate(async (window: any) => {
-      const { sr } = window.AmauiStyleReact;
+      const { sr } = window.OnesyStyleReact;
 
       const A = (props) => {
         const classNameProp = sr`
@@ -100,7 +100,7 @@ group('@amaui/style-react/string', () => {
       // Add to DOM
       window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-      await window.AmauiUtils.wait(140);
+      await window.OnesyUtils.wait(140);
 
       return [
         window.document.styleSheets.length,
@@ -126,7 +126,7 @@ group('@amaui/style-react/string', () => {
 
     to('add', async () => {
       const valueBrowsers = await evaluate(async (window: any) => {
-        const { string } = window.AmauiStyleReact;
+        const { string } = window.OnesyStyleReact;
 
         const A = (props) => {
           const classNameProp = string`
@@ -158,7 +158,7 @@ group('@amaui/style-react/string', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(140);
+        await window.OnesyUtils.wait(140);
 
         return [
           window.document.styleSheets.length,
@@ -184,13 +184,13 @@ group('@amaui/style-react/string', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { string, useAmauiTheme, AmauiThemeProvider } = window.AmauiStyleReact;
+        const { string, useOnesyTheme, OnesyThemeProvider } = window.OnesyStyleReact;
 
         const A = (props) => {
-          const amauiTheme = useAmauiTheme();
+          const onesyTheme = useOnesyTheme();
 
           const classNameProp = string`
-            color: ${amauiTheme.palette.text.default.primary}
+            color: ${onesyTheme.palette.text.default.primary}
           `;
 
           window.React.useEffect(() => {
@@ -199,7 +199,7 @@ group('@amaui/style-react/string', () => {
             });
 
             setTimeout(() => {
-              amauiTheme.updateWithRerender({
+              onesyTheme.updateWithRerender({
                 palette: {
                   light: false
                 }
@@ -219,11 +219,11 @@ group('@amaui/style-react/string', () => {
         const App = () => {
           return (
             eval(window.Babel.transform(`
-              <AmauiThemeProvider>
+              <OnesyThemeProvider>
                   <A>a</A>
 
                   <A>a</A>
-              </AmauiThemeProvider>
+              </OnesyThemeProvider>
           `, { presets: [window.Babel.availablePresets.es2015, window.Babel.availablePresets.react] }).code)
           );
         };
@@ -231,7 +231,7 @@ group('@amaui/style-react/string', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         window.value.push(window.document.styleSheets.length, Array.from(window.document.styleSheets).map((sheet: any) => Array.from(sheet.cssRules).map((rule: any) => rule.cssText)), window.document.getElementById('app').innerHTML);
 
@@ -247,21 +247,21 @@ group('@amaui/style-react/string', () => {
             ".a-0 { color: rgba(0, 0, 0, 0.87); }"
           ]
         ],
-        "<div data-amaui-theme=\"true\"><a class=\"a-0\">a</a><a class=\"a-0\">a</a></div>",
+        "<div data-onesy-theme=\"true\"><a class=\"a-0\">a</a><a class=\"a-0\">a</a></div>",
         1,
         [
           [
             ".a-0 { color: rgba(0, 0, 0, 0.87); }"
           ]
         ],
-        "<div data-amaui-theme=\"true\"><a class=\"a-0\">a</a><a class=\"a-0\">a</a></div>",
+        "<div data-onesy-theme=\"true\"><a class=\"a-0\">a</a><a class=\"a-0\">a</a></div>",
         1,
         [
           [
             ".a-0 { color: rgba(255, 255, 255, 0.87); }"
           ]
         ],
-        "<div data-amaui-theme=\"true\"><a class=\"a-0\">a</a><a class=\"a-0\">a</a></div>"
+        "<div data-onesy-theme=\"true\"><a class=\"a-0\">a</a><a class=\"a-0\">a</a></div>"
       ]));
     });
 
@@ -269,7 +269,7 @@ group('@amaui/style-react/string', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { string } = window.AmauiStyleReact;
+        const { string } = window.OnesyStyleReact;
 
         const A = (props) => {
           const classNameProp = string`
@@ -314,7 +314,7 @@ group('@amaui/style-react/string', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         return window.value;
       });
@@ -349,7 +349,7 @@ group('@amaui/style-react/string', () => {
       const valueBrowsers = await evaluate(async (window: any) => {
         window.value = [];
 
-        const { string } = window.AmauiStyleReact;
+        const { string } = window.OnesyStyleReact;
 
         const A = (props) => {
           const classNameProp = string`
@@ -398,7 +398,7 @@ group('@amaui/style-react/string', () => {
         // Add to DOM
         window.ReactDOM.render(window.React.createElement(App, null), window.document.getElementById('app'));
 
-        await window.AmauiUtils.wait(440);
+        await window.OnesyUtils.wait(440);
 
         return window.value;
       });
@@ -424,9 +424,9 @@ group('@amaui/style-react/string', () => {
   group('ssr', () => {
 
     to('renderToString', async () => {
-      const { AmauiStyle, AmauiStyleProvider, AmauiThemeProvider, string } = AmauiStyleReact;
+      const { OnesyStyle, OnesyStyleProvider, OnesyThemeProvider, string } = OnesyStyleReact;
 
-      const amauiStyle = new AmauiStyle();
+      const onesyStyle = new OnesyStyle();
 
       const A = (props) => {
         const classNameProp = string`
@@ -442,12 +442,12 @@ group('@amaui/style-react/string', () => {
 
       const App = () => {
         return (
-          <AmauiStyleProvider value={amauiStyle}>
-            <AmauiThemeProvider>
+          <OnesyStyleProvider value={onesyStyle}>
+            <OnesyThemeProvider>
               <A>a</A>
               <A>a1</A>
-            </AmauiThemeProvider>
-          </AmauiStyleProvider>
+            </OnesyThemeProvider>
+          </OnesyStyleProvider>
         );
       };
 
@@ -455,7 +455,7 @@ group('@amaui/style-react/string', () => {
 
       assert(value).eq('<div><div><a class="a-0">a</a><a class="a-0">a1</a></div></div>');
 
-      assert(amauiStyle.css).eq(`
+      assert(onesyStyle.css).eq(`
 
 .a-0 {
   color: yellow;

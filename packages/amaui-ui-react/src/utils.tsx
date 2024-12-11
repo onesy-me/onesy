@@ -1,4 +1,4 @@
-import { is, canvasFilterBrightness, canvasFilterContrast, canvasFilterSaturation, canvasFilterFade, canvasFilterInvert, canvasFilterOldPhoto, download, clamp, Try, isEnvironment } from '@amaui/utils';
+import { is, canvasFilterBrightness, canvasFilterContrast, canvasFilterSaturation, canvasFilterFade, canvasFilterInvert, canvasFilterOldPhoto, download, clamp, Try, isEnvironment } from '@onesy/utils';
 
 import { IPoint } from './types';
 
@@ -7,7 +7,7 @@ export function reflow(element: HTMLElement) {
 }
 
 export const staticClassName = (name: string, theme: any) => {
-  return theme?.ui?.elements?.[`amaui-${name}`]?.className?.static !== undefined ? theme?.ui?.elements?.[`amaui-${name}`]?.className?.static : theme?.ui?.className.static;
+  return theme?.ui?.elements?.[`onesy-${name}`]?.className?.static !== undefined ? theme?.ui?.elements?.[`onesy-${name}`]?.className?.static : theme?.ui?.className.static;
 };
 
 export const iconSizeToFontSize = (value: string | number) => {
@@ -315,7 +315,7 @@ export const importIframeStyles = (iframeDocument: Document) => {
   const styleSheets = window.document.styleSheets;
 
   for (const styleSheet of Array.from(styleSheets)) {
-    if (!(styleSheet.ownerNode as any).amaui) {
+    if (!(styleSheet.ownerNode as any).onesy) {
       iframeDocument.head.append((styleSheet.ownerNode as any)?.cloneNode(true));
 
       continue;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is, clamp, isBrowser, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, clamp, isBrowser, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
 import ZoomElement from '../Zoom';
 import FadeElement from '../Fade';
@@ -79,14 +79,14 @@ const useStyle = styleMethod(theme => ({
   },
 
   fab: {
-    '&.amaui-Fab-root': {
+    '&.onesy-Fab-root': {
       boxShadow: theme.shadows.values.default[6],
       transition: theme.methods.transitions.make('box-shadow')
     }
   },
 
   fab_open: {
-    '&.amaui-Fab-root': {
+    '&.onesy-Fab-root': {
       boxShadow: theme.shadows.values.default[8]
     }
   },
@@ -110,7 +110,7 @@ const useStyle = styleMethod(theme => ({
     position: 'absolute',
     inset: '0'
   }
-}), { name: 'amaui-SpeedDial' });
+}), { name: 'onesy-SpeedDial' });
 
 const IconWrapper = (props: any) => {
   return (
@@ -174,9 +174,9 @@ export interface ISpeedDial extends Omit<ILine, 'direction'> {
 }
 
 const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSpeedDial?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpeedDial?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -535,11 +535,11 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('SpeedDial', theme) && [
-          `amaui-SpeedDial-root`,
-          open && `amaui-SpeedDial-open`,
-          hover && `amaui-SpeedDial-hover`,
-          focus && `amaui-SpeedDial-focus`,
-          disabled && `amaui-SpeedDial-disabled`
+          `onesy-SpeedDial-root`,
+          open && `onesy-SpeedDial-open`,
+          hover && `onesy-SpeedDial-hover`,
+          focus && `onesy-SpeedDial-focus`,
+          disabled && `onesy-SpeedDial-disabled`
         ],
 
         className,
@@ -569,7 +569,7 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('SpeedDial', theme) && [
-              `amaui-SpeedDial-items`
+              `onesy-SpeedDial-items`
             ],
 
             classes.items,
@@ -660,7 +660,7 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('SpeedDial', theme) && [
-                  `amaui-SpeedDial-fab`
+                  `onesy-SpeedDial-fab`
                 ],
 
                 classes.fab,
@@ -674,7 +674,7 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
               <IconWrapper
                 className={classNames([
                   staticClassName('SpeedDial', theme) && [
-                    `amaui-SpeedDial-icon-wrapper`
+                    `onesy-SpeedDial-icon-wrapper`
                   ],
 
                   classes.iconWrapper,
@@ -713,6 +713,6 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-SpeedDial.displayName = 'amaui-SpeedDial';
+SpeedDial.displayName = 'onesy-SpeedDial';
 
 export default SpeedDial;

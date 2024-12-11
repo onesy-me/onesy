@@ -1,4 +1,4 @@
-import { style } from '@amaui/style-react';
+import { style } from '@onesy/style-react';
 
 const useStyle = style(theme => ({
    root: {

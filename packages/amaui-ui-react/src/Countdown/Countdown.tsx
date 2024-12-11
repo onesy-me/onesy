@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { clamp, getLeadingZerosNumber, is } from '@amaui/utils';
-import { AmauiDate, duration } from '@amaui/date';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, getLeadingZerosNumber, is } from '@onesy/utils';
+import { OnesyDate, duration } from '@onesy/date';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialAvTimer from '@amaui/icons-material-rounded-react/IconMaterialAvTimerW100';
-import IconMaterialPlayArrow from '@amaui/icons-material-rounded-react/IconMaterialPlayArrowW100';
-import IconMaterialPause from '@amaui/icons-material-rounded-react/IconMaterialPauseW100';
-import IconMaterialStop from '@amaui/icons-material-rounded-react/IconMaterialStopW100';
+import IconMaterialAvTimer from '@onesy/icons-material-rounded-react/IconMaterialAvTimerW100';
+import IconMaterialPlayArrow from '@onesy/icons-material-rounded-react/IconMaterialPlayArrowW100';
+import IconMaterialPause from '@onesy/icons-material-rounded-react/IconMaterialPauseW100';
+import IconMaterialStop from '@onesy/icons-material-rounded-react/IconMaterialStopW100';
 
 import FadeElement from '../Fade';
 import TypeElement from '../Type';
@@ -38,33 +38,33 @@ const useStyle = styleMethod(theme => ({
   linearProgress: {
     borderRadius: theme.methods.shape.radius.value(40, 'px'),
 
-    '&.amaui-LinearProgress-root': {
+    '&.onesy-LinearProgress-root': {
       height: '6px'
     },
 
-    '& .amaui-LinearProgress-line, & .amaui-LinearProgress-buffer': {
+    '& .onesy-LinearProgress-line, & .onesy-LinearProgress-buffer': {
       borderRadius: theme.methods.shape.radius.value(40, 'px')
     }
   },
 
   roundProgress: {
-    '&.amaui-RoundedProgress-root': {
+    '&.onesy-RoundedProgress-root': {
       position: 'absolute',
       inset: '0'
     },
 
-    '& .amaui-RoundedProgress-svg': {
+    '& .onesy-RoundedProgress-svg': {
       width: '100%',
       height: '100%',
       margin: '0'
     },
 
-    '& .amaui-RoundedProgress-path-background': {
+    '& .onesy-RoundedProgress-path-background': {
       stroke: 'currentColor',
       opacity: '0.24'
     },
 
-    '& .amaui-RoundedProgress-path, & .amaui-RoundedProgress-path-background': {
+    '& .onesy-RoundedProgress-path, & .onesy-RoundedProgress-path-background': {
       strokeLinecap: 'round'
     }
   },
@@ -77,28 +77,28 @@ const useStyle = styleMethod(theme => ({
   numericTextField: {
     width: '70px',
 
-    '& .amaui-TextField-input-wrapper': {
+    '& .onesy-TextField-input-wrapper': {
       paddingInline: '0px',
       paddingBlock: theme.methods.space.value(1, 'px'),
       height: 'auto'
     },
 
-    '&.amaui-TextField-value .amaui-TextField-label, &.amaui-TextField-focus .amaui-TextField-label': {
+    '&.onesy-TextField-value .onesy-TextField-label, &.onesy-TextField-focus .onesy-TextField-label': {
       insetInlineStart: '60%',
       transform: `translate(${theme.direction === 'ltr' ? '-' : ''}50%, -16px) scale(0.667)`
     },
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       ...theme.typography.values.h2,
 
       textAlign: 'center'
     },
 
-    '& .amaui-TextField-border': {
+    '& .onesy-TextField-border': {
       boxShadow: 'none'
     }
   }
-}), { name: 'amaui-Countdown' });
+}), { name: 'onesy-Countdown' });
 
 export interface ICountdown extends Omit<ISurface, 'version'> {
   version?: 'linear' | 'round';
@@ -126,9 +126,9 @@ export interface ICountdown extends Omit<ISurface, 'version'> {
 }
 
 const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCountdown?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCountdown?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -235,7 +235,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
       return clear();
     }
 
-    setValue(refs.valuePaused.current - (AmauiDate.milliseconds - refs.start.current));
+    setValue(refs.valuePaused.current - (OnesyDate.milliseconds - refs.start.current));
 
     refs.animationFrame.current = requestAnimationFrame(update);
   };
@@ -252,7 +252,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
     setStatus('running');
 
     setTimeout(() => {
-      refs.start.current = AmauiDate.milliseconds;
+      refs.start.current = OnesyDate.milliseconds;
 
       refs.animationFrame.current = requestAnimationFrame(update);
     }, 14);
@@ -289,7 +289,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
   const onResume = React.useCallback((event: React.MouseEvent<any>) => {
     // Update start, valuePaused value
-    refs.start.current = AmauiDate.milliseconds;
+    refs.start.current = OnesyDate.milliseconds;
 
     // ~60+ fps
     refs.animationFrame.current = requestAnimationFrame(update);
@@ -387,7 +387,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Countdown', theme) && [
-          'amaui-Countdown-root'
+          'onesy-Countdown-root'
         ],
 
         className,
@@ -445,7 +445,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Countdown', theme) && [
-                  'amaui-Countdown-numeric-text-field'
+                  'onesy-Countdown-numeric-text-field'
                 ],
 
                 NumericTextFieldProps?.className,
@@ -468,7 +468,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Countdown', theme) && [
-                  'amaui-Countdown-numeric-text-field'
+                  'onesy-Countdown-numeric-text-field'
                 ],
 
                 NumericTextFieldProps?.className,
@@ -491,7 +491,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Countdown', theme) && [
-                  'amaui-Countdown-numeric-text-field'
+                  'onesy-Countdown-numeric-text-field'
                 ],
 
                 NumericTextFieldProps?.className,
@@ -546,7 +546,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Countdown', theme) && [
-                    'amaui-Countdown-linear-progress'
+                    'onesy-Countdown-linear-progress'
                   ],
 
                   LinearProgressProps?.className,
@@ -575,7 +575,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Countdown', theme) && [
-                'amaui-Countdown-round-wrapper'
+                'onesy-Countdown-round-wrapper'
               ],
 
               classes.roundWrapper
@@ -590,7 +590,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Countdown', theme) && [
-                  'amaui-Countdown-round-progress'
+                  'onesy-Countdown-round-progress'
                 ],
 
                 RoundProgressProps?.className,
@@ -611,7 +611,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Countdown', theme) && [
-                  'amaui-Countdown-meta'
+                  'onesy-Countdown-meta'
                 ],
 
                 classes.meta
@@ -744,6 +744,6 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Countdown.displayName = 'amaui-Countdown';
+Countdown.displayName = 'onesy-Countdown';
 
 export default Countdown;

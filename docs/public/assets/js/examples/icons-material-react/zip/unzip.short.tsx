@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AmauiZip from '@amaui/zip';
+import OnesyZip from '@onesy/zip';
 
 const unzip = React.useCallback((value: string) => {
-  return AmauiZip.decode(value);
+  return OnesyZip.decode(value);
 }, []);

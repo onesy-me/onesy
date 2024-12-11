@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, TTypographyItem, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, TTypographyItem, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, IColor } from '../types';
@@ -154,7 +154,7 @@ const useStyle = styleMethod(theme => ({
     userSelect: 'none',
     opacity: theme.palette.visual_contrast.default.opacity.disabled
   }
-}), { name: 'amaui-Type' });
+}), { name: 'onesy-Type' });
 
 export interface IType extends IBaseElement {
   color?: IColor;
@@ -181,9 +181,9 @@ export interface IType extends IBaseElement {
 }
 
 const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiType?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyType?.props?.default, ...props_ }), [props_]);
 
   const {
     color = 'inherit',
@@ -256,10 +256,10 @@ const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Type', theme) && [
-          'amaui-Type-root',
-          `amaui-Type-version-${version}`,
-          `amaui-Type-size-${size}`,
-          disabled && `amaui-Type-disabled`
+          'onesy-Type-root',
+          `onesy-Type-version-${version}`,
+          `onesy-Type-size-${size}`,
+          disabled && `onesy-Type-disabled`
         ],
 
         className,
@@ -291,6 +291,6 @@ const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Type.displayName = 'amaui-Type';
+Type.displayName = 'onesy-Type';
 
 export default Type;

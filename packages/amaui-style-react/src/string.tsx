@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { hash, castParam } from '@amaui/utils';
+import { hash, castParam } from '@onesy/utils';
 
 import style from './style';
 

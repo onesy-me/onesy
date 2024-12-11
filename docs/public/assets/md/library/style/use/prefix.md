@@ -16,22 +16,22 @@ If true it will add all the prefixes to the property in the SSR environment, as 
 ### Add
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Add to plugins
-amauiStyle.plugins.add = prefix;
+onesyStyle.plugins.add = prefix;
 ```
 
 ### Remove
 
 ```ts
-const amauiStyle = new AmauiStyle();
+const onesyStyle = new OnesyStyle();
 
 // Remove from plugins
-amauiStyle.plugins.remove = prefix;
+onesyStyle.plugins.remove = prefix;
 
 // Add to plugins with options
-amauiStyle.plugins.add = {
+onesyStyle.plugins.add = {
   method: prefix,
   arguments: [
     {
@@ -92,7 +92,7 @@ interface IOptions {
 #### prefix
 
 ```ts
-function prefix(amauiStyle: AmauiStyle, options_?: IOptions): {
+function prefix(onesyStyle: OnesyStyle, options_?: IOptions): {
     methods: {
         method: (value_: {
             property: string;

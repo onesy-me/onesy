@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { AmauiDate, format as formatMethod, set, is as isAmauiDate } from '@amaui/date';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { OnesyDate, format as formatMethod, set, is as isOnesyDate } from '@onesy/date';
 
-import IconMaterialDateRange from '@amaui/icons-material-rounded-react/IconMaterialDateRangeW100Filled';
-import IconMaterialCalendarToday from '@amaui/icons-material-rounded-react/IconMaterialCalendarTodayW100Filled';
-import IconMaterialSchedule from '@amaui/icons-material-rounded-react/IconMaterialScheduleW100';
+import IconMaterialDateRange from '@onesy/icons-material-rounded-react/IconMaterialDateRangeW100Filled';
+import IconMaterialCalendarToday from '@onesy/icons-material-rounded-react/IconMaterialCalendarTodayW100Filled';
+import IconMaterialSchedule from '@onesy/icons-material-rounded-react/IconMaterialScheduleW100';
 
 import AdvancedTextFieldElement from '../AdvancedTextField';
 import ModalElement from '../Modal';
@@ -47,7 +47,7 @@ const useStyle = styleMethod(theme => ({
   middle: {
     width: '100%',
 
-    '& .amaui-DatePicker-root, & .amaui-TimePicker-root, & .amaui-TimePicker-main': {
+    '& .onesy-DatePicker-root, & .onesy-TimePicker-root, & .onesy-TimePicker-main': {
       margin: '0px'
     }
   },
@@ -56,9 +56,9 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     padding: `0px ${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(1.5, 'px')} ${theme.methods.space.value(1.5, 'px')}`,
   }
-}), { name: 'amaui-DateTimePicker' });
+}), { name: 'onesy-DateTimePicker' });
 
-export type TDateTimePicker = AmauiDate;
+export type TDateTimePicker = OnesyDate;
 
 export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
   tonal?: ITonal;
@@ -73,10 +73,10 @@ export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
   now?: boolean;
   range?: boolean;
   static?: boolean;
-  valid?: (value: AmauiDate, version: TCalendarUnit | TClockUnit) => boolean;
-  validate?: (value: AmauiDate) => boolean;
-  min?: AmauiDate;
-  max?: AmauiDate;
+  valid?: (value: OnesyDate, version: TCalendarUnit | TClockUnit) => boolean;
+  validate?: (value: OnesyDate) => boolean;
+  min?: OnesyDate;
+  max?: OnesyDate;
   headingText?: string;
   headingTextTime?: string;
   headingTextTimeRange?: string;
@@ -119,9 +119,9 @@ export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
 }
 
 const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDateTimePicker?.props?.default, ...props__ }), [props__]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDateTimePicker?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -244,11 +244,11 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
   const [value, setValue] = React.useState(() => {
-    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new AmauiDate(), new AmauiDate()] : [new AmauiDate()]));
+    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
-    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<AmauiDate>).filter(Boolean);
+    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<OnesyDate>).filter(Boolean);
   });
-  const [calendar, setCalendar] = React.useState<AmauiDate>(value[0]);
+  const [calendar, setCalendar] = React.useState<OnesyDate>(value[0]);
   const [open, setOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [tab, setTab] = React.useState('date');
@@ -258,11 +258,11 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   const valueToInput = React.useCallback((valueNew = refs.value.current) => {
     let result = '';
 
-    const [from, to] = valueNew as [AmauiDate, AmauiDate];
+    const [from, to] = valueNew as [OnesyDate, OnesyDate];
 
     if (!(from || to)) return '';
 
-    const method = (item: AmauiDate) => {
+    const method = (item: OnesyDate) => {
       let formatValue = `${formatMethod(item, 'DD')}/${formatMethod(item, 'MM')}/${formatMethod(item, 'YYYY')}`;
 
       formatValue += ' ';
@@ -326,7 +326,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     if (value_ !== undefined && value_ !== value) onUpdateValue(((is('array', value_) ? value_ : [value_] as any).filter(Boolean)));
   }, [value_]);
 
-  const onUpdate = React.useCallback((valueNew: AmauiDate) => {
+  const onUpdate = React.useCallback((valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
@@ -347,11 +347,11 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     if (valueNew !== value) setValue(valueNew as any);
   }, [value]);
 
-  const onChangeCalendar = React.useCallback((valueNew: AmauiDate) => {
+  const onChangeCalendar = React.useCallback((valueNew: OnesyDate) => {
     if (valueNew !== calendar) setCalendar(valueNew as any);
   }, [calendar]);
 
-  const textToAmauiDate = React.useCallback((valueNew: string) => {
+  const textToOnesyDate = React.useCallback((valueNew: string) => {
     const [date, ...valueOther] = valueNew.split(' ');
 
     const time = valueOther.join(' ');
@@ -362,9 +362,9 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
     let valueTime: any;
 
-    let amauiDate = new AmauiDate();
+    let onesyDate = new OnesyDate();
 
-    amauiDate = new AmauiDate(new Date(`${valueMonth}/${valueDay}/${valueYear}`));
+    onesyDate = new OnesyDate(new Date(`${valueMonth}/${valueDay}/${valueYear}`));
 
     if (hour) {
       valueTime = valuesTime[0];
@@ -373,7 +373,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
       valueTime = +valueTime;
 
-      amauiDate = set((format === '12' && dayTime === 'pm') ? valueTime + 12 : valueTime, 'hour', amauiDate);
+      onesyDate = set((format === '12' && dayTime === 'pm') ? valueTime + 12 : valueTime, 'hour', onesyDate);
     }
 
     if (minute) {
@@ -383,7 +383,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
       valueTime = +valueTime;
 
-      amauiDate = set(valueTime, 'minute', amauiDate);
+      onesyDate = set(valueTime, 'minute', onesyDate);
     }
 
     if (second) {
@@ -393,10 +393,10 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
       valueTime = +valueTime;
 
-      amauiDate = set(valueTime, 'second', amauiDate);
+      onesyDate = set(valueTime, 'second', onesyDate);
     }
 
-    return amauiDate;
+    return onesyDate;
   }, [format, hour, minute, second]);
 
   const inputToValue = React.useCallback((valueNew_: string = input) => {
@@ -404,9 +404,9 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
     let [from, to] = valueNew.split(SEPARATOR) as any;
 
-    from = textToAmauiDate(from);
+    from = textToOnesyDate(from);
 
-    if (to) to = textToAmauiDate(to);
+    if (to) to = textToOnesyDate(to);
 
     valueNew = [from, to].filter(Boolean) as any;
 
@@ -416,7 +416,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   const onInputChange = React.useCallback((valueNew_: any) => {
     const valueNew = inputToValue(valueNew_);
 
-    const validValues = (valueNew as [AmauiDate, AmauiDate]).every(item => item.valid);
+    const validValues = (valueNew as [OnesyDate, OnesyDate]).every(item => item.valid);
 
     // Only update values if input is valid
     // format used to make the value
@@ -442,7 +442,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   const onReset = React.useCallback(() => {
     let valueNew = inputToValue() as any;
 
-    const isValid = valueNew && (valueNew?.[0] as AmauiDate)?.valid;
+    const isValid = valueNew && (valueNew?.[0] as OnesyDate)?.valid;
 
     if (isValid) {
       // Update value
@@ -460,9 +460,9 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   }, [input]);
 
   const onToday = React.useCallback((event: React.MouseEvent) => {
-    const valueNew = [new AmauiDate()];
+    const valueNew = [new OnesyDate()];
 
-    if (range) valueNew.push(new AmauiDate());
+    if (range) valueNew.push(new OnesyDate());
 
     // Update value
     onUpdate(valueNew as any);
@@ -522,19 +522,19 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     if (is('function', onClose_)) onClose_(event);
   }, [onClose_]);
 
-  const valid = React.useCallback((...args: [AmauiDate, any?]) => {
+  const valid = React.useCallback((...args: [OnesyDate, any?]) => {
     if (is('function', valid_)) return valid_(...args);
 
-    const amauiDate = args[0];
+    const onesyDate = args[0];
 
     if (min || max || validate) {
       let response = true;
 
-      if (is('function', validate)) response = validate(amauiDate);
+      if (is('function', validate)) response = validate(onesyDate);
 
-      if (min !== undefined) response = response && isAmauiDate(amauiDate, 'after or same', min);
+      if (min !== undefined) response = response && isOnesyDate(onesyDate, 'after or same', min);
 
-      if (max !== undefined) response = response && isAmauiDate(amauiDate, 'before or same', max);
+      if (max !== undefined) response = response && isOnesyDate(onesyDate, 'before or same', max);
 
       return response;
     }
@@ -768,7 +768,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
       className={classNames([
         staticClassName('TimePicker', theme) && [
-          'amaui-TimePicker-footer'
+          'onesy-TimePicker-footer'
         ],
 
         classes.footer
@@ -895,7 +895,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
       className={classNames([
         staticClassName('DateTimePicker', theme) && [
-          'amaui-DateTimePicker-main'
+          'onesy-DateTimePicker-main'
         ],
 
         MainProps?.className,
@@ -908,7 +908,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('TimePicker', theme) && [
-            'amaui-TimePicker-heading'
+            'onesy-TimePicker-heading'
           ],
 
           classes.heading
@@ -923,7 +923,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
         className={classNames([
           staticClassName('TimePicker', theme) && [
-            'amaui-TimePicker-middle'
+            'onesy-TimePicker-middle'
           ],
 
           MiddleProps?.className,
@@ -1004,14 +1004,14 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
       className={classNames([
         staticClassName('DateTimePicker', theme) && [
-          'amaui-DateTimePicker-root',
-          `amaui-DateTimePicker-version-${version}`,
-          `amaui-DateTimePicker-size-${size}`,
+          'onesy-DateTimePicker-root',
+          `onesy-DateTimePicker-version-${version}`,
+          `onesy-DateTimePicker-size-${size}`,
           WrapperProps?.className,
-          range && `amaui-DateTimePicker-range`,
-          readOnly && `amaui-DateTimePicker-read-only`,
-          disabled && `amaui-DateTimePicker-disabled`,
-          fullWidth && 'amaui-full-width'
+          range && `onesy-DateTimePicker-range`,
+          readOnly && `onesy-DateTimePicker-read-only`,
+          disabled && `onesy-DateTimePicker-disabled`,
+          fullWidth && 'onesy-full-width'
         ],
 
         className,
@@ -1109,7 +1109,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
             <ClickListener
               onClickOutside={onCancel as any}
 
-              includeParentQueries={['.amaui-DateTimePicker-main', '.amaui-Calendar-list']}
+              includeParentQueries={['.onesy-DateTimePicker-main', '.onesy-Calendar-list']}
             >
               {element}
             </ClickListener>
@@ -1122,6 +1122,6 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   );
 });
 
-DateTimePicker.displayName = 'amaui-DateTimePicker';
+DateTimePicker.displayName = 'onesy-DateTimePicker';
 
 export default DateTimePicker;

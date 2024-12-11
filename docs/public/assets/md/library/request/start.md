@@ -1,26 +1,26 @@
 
-# amaui request
+# onesy request
 
 Request making library for front end & back end.
 
 ### Add
 
 ```sh
-yarn add @amaui/request
+yarn add @onesy/request
 ```
 
 ### Use
 
 ```ts
-import AmauiRequest from '@amaui/request';
+import OnesyRequest from '@onesy/request';
 
-// Make a new AmauiRequest instance
-const amauiRequest = new AmauiRequest();
+// Make a new OnesyRequest instance
+const onesyRequest = new OnesyRequest();
 
-await amauiRequest.get('https://jsonplaceholder.typicode.com/posts/4');
+await onesyRequest.get('https://jsonplaceholder.typicode.com/posts/4');
 
 // or as a static method without a new instance
-await AmauiRequest.get('https://jsonplaceholder.typicode.com/posts/4');
+await OnesyRequest.get('https://jsonplaceholder.typicode.com/posts/4');
 
 // {
 //     response: {

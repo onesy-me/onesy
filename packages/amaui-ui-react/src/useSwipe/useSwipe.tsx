@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { clamp, merge, percentageFromValueWithinRange } from '@amaui/utils';
+import { clamp, merge, percentageFromValueWithinRange } from '@onesy/utils';
 
 export interface IOptionsUseSwipe {
   open?: boolean;
@@ -200,6 +200,6 @@ const useSwipe = (element: HTMLElement, options_: IOptionsUseSwipe = {}) => {
   return response;
 };
 
-useSwipe.displayName = 'amaui-UseSwipe';
+useSwipe.displayName = 'onesy-UseSwipe';
 
 export default useSwipe;

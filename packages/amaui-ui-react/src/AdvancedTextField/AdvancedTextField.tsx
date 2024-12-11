@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, numberWithCommas, Try } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, numberWithCommas, Try } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TextFieldElement from '../TextField';
 import { ITextField } from '../TextField/TextField';
@@ -12,7 +12,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-AdvancedTextField' });
+}), { name: 'onesy-AdvancedTextField' });
 
 export interface IAdvancedTextField extends ITextField {
   validate?: (value: string) => boolean;
@@ -29,9 +29,9 @@ export interface IAdvancedTextField extends ITextField {
 }
 
 const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAdvancedTextField?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAdvancedTextField?.props?.default, ...props_ }), [props_]);
 
   const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
 
@@ -212,7 +212,7 @@ const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_
 
       className={classNames([
         staticClassName('AdvancedTextField', theme) && [
-          'amaui-AdvancedTextField-root'
+          'onesy-AdvancedTextField-root'
         ],
 
         className,
@@ -226,6 +226,6 @@ const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_
   );
 });
 
-AdvancedTextField.displayName = 'amaui-AdvancedTextField';
+AdvancedTextField.displayName = 'onesy-AdvancedTextField';
 
 export default AdvancedTextField;

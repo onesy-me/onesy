@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import LineElement from '../Line';
@@ -17,7 +17,7 @@ const useStyle = styleMethod(theme => ({
       flex: '0 0 auto'
     }
   }
-}), { name: 'amaui-Meta' });
+}), { name: 'onesy-Meta' });
 
 export interface IMeta extends ILine {
   values?: any[];
@@ -29,9 +29,9 @@ export interface IMeta extends ILine {
 }
 
 const Meta: React.FC<IMeta> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMeta?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMeta?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -102,7 +102,7 @@ const Meta: React.FC<IMeta> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Meta', theme) && [
-          'amaui-Meta-root'
+          'onesy-Meta-root'
         ],
 
         className,
@@ -116,6 +116,6 @@ const Meta: React.FC<IMeta> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Meta.displayName = 'amaui-Meta';
+Meta.displayName = 'onesy-Meta';
 
 export default Meta;

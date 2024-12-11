@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ButtonsElement from '../Buttons';
 import { IButtons } from '../Buttons/Buttons';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   },
-}), { name: 'amaui-ToggleButtons' });
+}), { name: 'onesy-ToggleButtons' });
 
 export interface IToggleButtons extends IButtons {
 
 }
 
 const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiToggleButtons?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButtons?.props?.default, ...props_ }), [props_]);
 
   const Buttons = React.useMemo(() => theme?.elements?.Buttons || ButtonsElement, [theme]);
 
@@ -37,7 +37,7 @@ const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('ToggleButtons', theme) && [
-          'amaui-ToggleButtons-root'
+          'onesy-ToggleButtons-root'
         ],
 
         className,
@@ -55,6 +55,6 @@ const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: a
   );
 });
 
-ToggleButtons.displayName = 'amaui-ToggleButtons';
+ToggleButtons.displayName = 'onesy-ToggleButtons';
 
 export default ToggleButtons;

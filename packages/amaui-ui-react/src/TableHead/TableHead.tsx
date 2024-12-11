@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
@@ -15,7 +15,7 @@ const useStyle = styleMethod(theme => ({
     display: 'table-header-group',
     background: 'inherit',
 
-    '& .amaui-TableCell-root': {
+    '& .onesy-TableCell-root': {
       whiteSpace: 'nowrap',
       wordBreak: 'normal'
     }
@@ -37,12 +37,12 @@ const useStyle = styleMethod(theme => ({
   },
 
   tdLoader: {
-    '&.amaui-LinearProgress-root': {
+    '&.onesy-LinearProgress-root': {
       position: 'absolute',
       inset: 0
     }
   }
-}), { name: 'amaui-TableHead' });
+}), { name: 'onesy-TableHead' });
 
 export interface ITableHead extends ISurface {
   size?: ISize;
@@ -58,9 +58,9 @@ export interface ITableHead extends ISurface {
 }
 
 const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTableHead?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableHead?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -151,10 +151,10 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('TableHead', theme) && [
-          `amaui-TableHead-root`,
-          `amaui-TableHead-size-${size}`,
-          sticky && `amaui-TableHead-sticky`,
-          stickyActive && `amaui-TableHead-sticky-active`
+          `onesy-TableHead-root`,
+          `onesy-TableHead-size-${size}`,
+          sticky && `onesy-TableHead-sticky`,
+          stickyActive && `onesy-TableHead-sticky-active`
         ],
 
         className,
@@ -191,7 +191,7 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('TableHead', theme) && [
-              `amaui-TableHead-row-loader`
+              `onesy-TableHead-row-loader`
             ],
 
             TableRowLoaderProps?.className,
@@ -211,7 +211,7 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('TableHead', theme) && [
-                `amaui-TableHead-td-loader`
+                `onesy-TableHead-td-loader`
               ],
 
               LinearGradientProps?.className,
@@ -224,6 +224,6 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-TableHead.displayName = 'amaui-TableHead';
+TableHead.displayName = 'onesy-TableHead';
 
 export default TableHead;

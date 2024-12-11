@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import LineElement from '../Line';
@@ -62,11 +62,11 @@ const useStyle = styleMethod(theme => ({
   },
 
   noBackground: {
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: 'none'
     }
   }
-}), { name: 'amaui-List' });
+}), { name: 'onesy-List' });
 
 export interface IList extends ISurface {
   size?: ISize;
@@ -85,9 +85,9 @@ export interface IList extends ISurface {
 }
 
 const List: React.FC<IList> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiList?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyList?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -176,8 +176,8 @@ const List: React.FC<IList> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('List', theme) && [
-          'amaui-List-root',
-          `amaui-List-size-${size}`
+          'onesy-List-root',
+          `onesy-List-size-${size}`
         ],
 
         SurfaceProps?.className,
@@ -226,6 +226,6 @@ const List: React.FC<IList> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-List.displayName = 'amaui-List';
+List.displayName = 'onesy-List';
 
 export default List;

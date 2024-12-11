@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { useOnesyTheme } from '@onesy/style-react';
 
 import { IBaseElement } from '../types';
 
@@ -24,9 +24,9 @@ export interface IFocus extends IBaseElement {
 }
 
 const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiFocus?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFocus?.props?.default, ...props_ }), [props_]);
 
   const refs = {
     focusStart: React.useRef<HTMLDivElement>(undefined),
@@ -121,6 +121,6 @@ const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Focus.displayName = 'amaui-Focus';
+Focus.displayName = 'onesy-Focus';
 
 export default Focus;

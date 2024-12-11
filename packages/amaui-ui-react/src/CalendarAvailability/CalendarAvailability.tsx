@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { capitalize, cleanValue, is, textToInnerHTML } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme, colors } from '@amaui/style-react';
-import { AmauiDate, add, endOf, format, remove, set, startOf } from '@amaui/date';
+import { capitalize, cleanValue, is, textToInnerHTML } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme, colors } from '@onesy/style-react';
+import { OnesyDate, add, endOf, format, remove, set, startOf } from '@onesy/date';
 
-import IconMaterialEdit from '@amaui/icons-material-rounded-react/IconMaterialEditW100';
-import IconMaterialKeyboardArrowDown from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
-import IconMaterialArrowForwardIos from '@amaui/icons-material-rounded-react/IconMaterialArrowForwardIosW100';
-import IconMaterialArrowBackIosNew from '@amaui/icons-material-rounded-react/IconMaterialArrowBackIosNewW100';
-import IconMaterialDelete from '@amaui/icons-material-rounded-react/IconMaterialDeleteW100';
+import IconMaterialEdit from '@onesy/icons-material-rounded-react/IconMaterialEditW100';
+import IconMaterialKeyboardArrowDown from '@onesy/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
+import IconMaterialArrowForwardIos from '@onesy/icons-material-rounded-react/IconMaterialArrowForwardIosW100';
+import IconMaterialArrowBackIosNew from '@onesy/icons-material-rounded-react/IconMaterialArrowBackIosNewW100';
+import IconMaterialDelete from '@onesy/icons-material-rounded-react/IconMaterialDeleteW100';
 
 import CalendarWeekElement from '../CalendarWeek';
 import SelectElement from '../Select';
@@ -35,7 +35,7 @@ const useStyle = styleMethod(theme => ({
     color: theme.methods.palette.color.value('primary', 10),
     background: theme.palette.background.default.primary,
 
-    '& .amaui-Label-text': {
+    '& .onesy-Label-text': {
       whiteSpace: 'nowrap'
     }
   },
@@ -85,13 +85,13 @@ const useStyle = styleMethod(theme => ({
   },
 
   simpleTimes: {
-    '&.amaui-Line-direction-row': {
+    '&.onesy-Line-direction-row': {
       '& > *': {
         flex: '1 1 auto'
       }
     },
 
-    '&.amaui-Line-direction-column': {
+    '&.onesy-Line-direction-column': {
       '& > *': {
         width: '100%'
       }
@@ -124,7 +124,7 @@ const useStyle = styleMethod(theme => ({
     padding: '2px 0',
     overflow: 'auto hidden'
   }
-}), { name: 'amaui-CalendarAvailability' });
+}), { name: 'onesy-CalendarAvailability' });
 
 export interface ICalendarEvent {
   id?: string;
@@ -143,9 +143,9 @@ export interface ICalendarEvent {
 export interface ICalendarAvailability extends ILine {
   name?: string | IElement;
 
-  date?: AmauiDate;
+  date?: OnesyDate;
 
-  dateDefault?: AmauiDate;
+  dateDefault?: OnesyDate;
 
   times?: any;
 
@@ -159,7 +159,7 @@ export interface ICalendarAvailability extends ILine {
 
   onRemove?: (object?: any) => any;
 
-  onChangeDate?: (value: AmauiDate) => any;
+  onChangeDate?: (value: OnesyDate) => any;
 
   startHeader?: any;
 
@@ -201,9 +201,9 @@ export interface ICalendarAvailability extends ILine {
 }
 
 const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCalendarAvailability?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -301,8 +301,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
   const { classes } = useStyle();
 
-  const [now, setNow] = React.useState(new AmauiDate());
-  const [date, setDate] = React.useState(dateDefault || date_ || new AmauiDate());
+  const [now, setNow] = React.useState(new OnesyDate());
+  const [date, setDate] = React.useState(dateDefault || date_ || new OnesyDate());
   const [view, setView] = React.useState<any>('week');
   const [displayTime, setDisplayTime] = React.useState(true);
   const [modal, setModal] = React.useState<any>();
@@ -352,7 +352,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   React.useEffect(() => {
     // 1 minute
     refs.interval.current = setInterval(() => {
-      setNow(new AmauiDate());
+      setNow(new OnesyDate());
     }, 60 * 1e3);
 
     return () => {
@@ -398,7 +398,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   }, []);
 
   const onToday = React.useCallback(() => {
-    const valueNew = new AmauiDate();
+    const valueNew = new OnesyDate();
 
     setDate(valueNew);
 
@@ -406,7 +406,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   }, [onChangeDateProps]);
 
   const onPrevious = React.useCallback(() => {
-    let valueNew = new AmauiDate();
+    let valueNew = new OnesyDate();
 
     setDate(previous => {
       valueNew = remove(1, ['week', 'simple'].includes(view) ? 'week' : view, previous);
@@ -418,7 +418,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   }, [view, onChangeDateProps]);
 
   const onNext = React.useCallback(() => {
-    let valueNew = new AmauiDate();
+    let valueNew = new OnesyDate();
 
     setDate(previous => {
       valueNew = add(1, ['week', 'simple'].includes(view) ? 'week' : view, previous);
@@ -435,9 +435,9 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     return values.map((item: any) => {
       if (item.entire) {
         if (item.from) {
-          let from = new AmauiDate(item.from);
+          let from = new OnesyDate(item.from);
 
-          let to: AmauiDate;
+          let to: OnesyDate;
 
           if (['day', 'week', 'month', 'year'].includes(item.entire)) from = startOf(from, 'day');
 
@@ -462,8 +462,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     const weekTo = endOf(date, 'week');
 
     return getDates(available).filter((item: any) => {
-      const from = new AmauiDate(item.from);
-      const to = new AmauiDate(item.to);
+      const from = new OnesyDate(item.from);
+      const to = new OnesyDate(item.to);
 
       return !(from.milliseconds >= weekTo.milliseconds || to.milliseconds <= weekFrom.milliseconds);
     });
@@ -579,8 +579,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
                 fullWidth
               >
                 {!!values.length ? values.map((itemValue: any, indexItem: number) => {
-                  const itemValueFrom = new AmauiDate(itemValue.from);
-                  const itemValueTo = new AmauiDate(itemValue.to);
+                  const itemValueFrom = new OnesyDate(itemValue.from);
+                  const itemValueTo = new OnesyDate(itemValue.to);
 
                   return (
                     <Line
@@ -624,7 +624,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                           className={classNames([
                             classes.timeDescription,
-                            !refs.displayTime.current && 'amaui-work-day-time'
+                            !refs.displayTime.current && 'onesy-work-day-time'
                           ])}
 
                           dangerouslySetInnerHTML={{
@@ -664,8 +664,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
       {items.map((itemValue: any, index: number) => {
         const day = set(index + 1, 'dayWeek');
 
-        const itemValueFrom = new AmauiDate(itemValue.from);
-        const itemValueTo = new AmauiDate(itemValue.to);
+        const itemValueFrom = new OnesyDate(itemValue.from);
+        const itemValueTo = new OnesyDate(itemValue.to);
 
         return (
           <Line
@@ -725,7 +725,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                 className={classNames([
                   classes.timeDescription,
-                  !refs.displayTime.current && 'amaui-work-day-time'
+                  !refs.displayTime.current && 'onesy-work-day-time'
                 ])}
 
                 dangerouslySetInnerHTML={{
@@ -804,7 +804,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
       className={classNames([
         staticClassName('CalendarAvailability', theme) && [
-          'amaui-CalendarAvailability-root'
+          'onesy-CalendarAvailability-root'
         ],
 
         className,
@@ -820,7 +820,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
         className={classNames([
           staticClassName('CalendarAvailability', theme) && [
-            'amaui-CalendarAvailability-header'
+            'onesy-CalendarAvailability-header'
           ]
         ])}
       >
@@ -1003,7 +1003,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
               className={classNames([
                 staticClassName('CalendarAvailability', theme) && [
-                  'amaui-CalendarAvailability-simple'
+                  'onesy-CalendarAvailability-simple'
                 ],
 
                 classes.calendar
@@ -1182,7 +1182,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                 weight={200}
               >
-                {format(modal?.day, 'dd')} {format(new AmauiDate(modal?.from), modal?.weekly ? `hh:mm a` : formats.entire)} — {format(new AmauiDate(modal?.to), modal?.weekly ? `hh:mm a` : formats.entire)}
+                {format(modal?.day, 'dd')} {format(new OnesyDate(modal?.from), modal?.weekly ? `hh:mm a` : formats.entire)} — {format(new OnesyDate(modal?.to), modal?.weekly ? `hh:mm a` : formats.entire)}
               </Type>
 
               {modal?.description && (
@@ -1202,6 +1202,6 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   );
 });
 
-CalendarAvailability.displayName = 'amaui-CalendarAvailability';
+CalendarAvailability.displayName = 'onesy-CalendarAvailability';
 
 export default CalendarAvailability;

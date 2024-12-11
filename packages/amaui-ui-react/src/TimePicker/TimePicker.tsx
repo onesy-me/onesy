@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { AmauiDate, format as formatDate, set, is as isAmauiDate } from '@amaui/date';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { OnesyDate, format as formatDate, set, is as isOnesyDate } from '@onesy/date';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialSchedule from '@amaui/icons-material-rounded-react/IconMaterialScheduleW100';
-import IconMaterialKeyboardAlt from '@amaui/icons-material-rounded-react/IconMaterialKeyboardAltW100';
+import IconMaterialSchedule from '@onesy/icons-material-rounded-react/IconMaterialScheduleW100';
+import IconMaterialKeyboardAlt from '@onesy/icons-material-rounded-react/IconMaterialKeyboardAltW100';
 
 import IconElement from '../Icon';
 import IconButtonElement from '../IconButton';
@@ -91,7 +91,7 @@ const useStyle = styleMethod(theme => ({
   input: {
     flex: '1 1 auto',
 
-    '& .amaui-TextField-helper-text': {
+    '& .onesy-TextField-helper-text': {
       color: theme.palette.text.default.primary
     }
   },
@@ -99,13 +99,13 @@ const useStyle = styleMethod(theme => ({
   input_size_small: {
     maxWidth: '72px',
 
-    '& .amaui-TextField-input-wrapper': {
+    '& .onesy-TextField-input-wrapper': {
       paddingInline: '0px',
       paddingBlock: `${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(0.5, 'px')}`,
       height: '64px'
     },
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       ...theme.typography.values.d3,
 
       lineHeight: '1',
@@ -113,7 +113,7 @@ const useStyle = styleMethod(theme => ({
       textAlign: 'center'
     },
 
-    '& .amaui-TextField-footer': {
+    '& .onesy-TextField-footer': {
       marginTop: '4px',
       padding: '0px'
     }
@@ -122,13 +122,13 @@ const useStyle = styleMethod(theme => ({
   input_size_regular: {
     maxWidth: '96px',
 
-    '& .amaui-TextField-input-wrapper': {
+    '& .onesy-TextField-input-wrapper': {
       paddingInline: '0px',
       paddingBlock: `${theme.methods.space.value(1.5, 'px')} ${theme.methods.space.value(1, 'px')}`,
       height: '72px'
     },
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       ...theme.typography.values.d2,
 
       lineHeight: '1',
@@ -136,7 +136,7 @@ const useStyle = styleMethod(theme => ({
       textAlign: 'center'
     },
 
-    '& .amaui-TextField-footer': {
+    '& .onesy-TextField-footer': {
       marginTop: '8px',
       padding: '0px'
     }
@@ -145,13 +145,13 @@ const useStyle = styleMethod(theme => ({
   input_size_large: {
     maxWidth: '120px',
 
-    '& .amaui-TextField-input-wrapper': {
+    '& .onesy-TextField-input-wrapper': {
       paddingInline: '0px',
       paddingBlock: `${theme.methods.space.value(2, 'px')} ${theme.methods.space.value(1.5, 'px')}`,
       height: '80px'
     },
 
-    '& .amaui-TextField-input': {
+    '& .onesy-TextField-input': {
       ...theme.typography.values.d1,
 
       lineHeight: '1',
@@ -159,7 +159,7 @@ const useStyle = styleMethod(theme => ({
       textAlign: 'center'
     },
 
-    '& .amaui-TextField-footer': {
+    '& .onesy-TextField-footer': {
       marginTop: '12px',
       padding: '0px'
     }
@@ -178,7 +178,7 @@ const useStyle = styleMethod(theme => ({
     height: '64px',
     width: '82px',
 
-    '& .amaui-Button-label': {
+    '& .onesy-Button-label': {
       ...theme.typography.values.d3,
 
       lineHeight: '1',
@@ -189,7 +189,7 @@ const useStyle = styleMethod(theme => ({
     height: '72px',
     width: '96px',
 
-    '& .amaui-Button-label': {
+    '& .onesy-Button-label': {
       ...theme.typography.values.d2,
 
       lineHeight: '1',
@@ -200,7 +200,7 @@ const useStyle = styleMethod(theme => ({
     height: '96px',
     width: '110px',
 
-    '& .amaui-Button-label': {
+    '& .onesy-Button-label': {
       ...theme.typography.values.d1,
 
       lineHeight: '1',
@@ -273,9 +273,9 @@ const useStyle = styleMethod(theme => ({
     padding: `0px ${theme.methods.space.value(3, 'px')} ${theme.methods.space.value(3, 'px')}`,
     marginTop: '32px'
   }
-}), { name: 'amaui-TimePicker' });
+}), { name: 'onesy-TimePicker' });
 
-export type TTimePickerValue = AmauiDate | [AmauiDate, AmauiDate];
+export type TTimePickerValue = OnesyDate | [OnesyDate, OnesyDate];
 
 export type TTimePickerSelecting = TClockUnit | [TClockUnit, TClockUnit];
 
@@ -295,10 +295,10 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   now?: boolean;
   range?: boolean;
   static?: boolean;
-  valid?: (value: AmauiDate, version: TClockUnit) => boolean;
-  validate?: (value: AmauiDate) => boolean;
-  min?: AmauiDate;
-  max?: AmauiDate;
+  valid?: (value: OnesyDate, version: TClockUnit) => boolean;
+  validate?: (value: OnesyDate) => boolean;
+  min?: OnesyDate;
+  max?: OnesyDate;
   autoNext?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
   autoCloseOnLast?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
   openMobile?: 'input' | 'select';
@@ -328,7 +328,7 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   onNow?: (event: React.MouseEvent<any>) => any;
   onOk?: (event: React.MouseEvent<any>) => any;
 
-  renderValue?: (value: AmauiDate, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
+  renderValue?: (value: OnesyDate, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
 
   Icon?: IElementReference;
   IconEnter?: IElementReference;
@@ -352,9 +352,9 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
 }
 
 const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTimePicker?.props?.default, ...props__ }), [props__]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimePicker?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -503,9 +503,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
   const [value, setValue] = React.useState(() => {
-    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new AmauiDate(), new AmauiDate()] : [new AmauiDate()]));
+    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
-    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<AmauiDate>).filter(Boolean);
+    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<OnesyDate>).filter(Boolean);
   });
   const [selecting, setSelecting] = React.useState(() => {
     const valueResult = (selectingDefault !== undefined ? selectingDefault : selecting_) || ['hour', 'hour'];
@@ -515,7 +515,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   const [open, setOpen] = React.useState(false);
   const [mode, setMode] = React.useState((touch ? openMobile : openDesktop) || 'select');
   const [error, setError] = React.useState(false);
-  const [dayTime, setDayTime] = React.useState<Array<'am' | 'pm'>>(Array.from({ length: 2 }).map(item => formatDate(new AmauiDate(), 'a') as any));
+  const [dayTime, setDayTime] = React.useState<Array<'am' | 'pm'>>(Array.from({ length: 2 }).map(item => formatDate(new OnesyDate(), 'a') as any));
   const [tab, setTab] = React.useState(0);
 
   refs.value.current = value;
@@ -531,7 +531,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
     if (!(from || to)) return '';
 
-    const method = (item: AmauiDate) => {
+    const method = (item: OnesyDate) => {
       let formatValue = '';
 
       if (format === '12') formatValue += `hh`;
@@ -591,7 +591,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     if (value_ !== undefined && value_ !== value) onUpdateValue(((is('array', value_) ? value_ : [value_] as any).filter(Boolean)));
   }, [value_]);
 
-  const onUpdate = React.useCallback((valueNew_: AmauiDate) => {
+  const onUpdate = React.useCallback((valueNew_: OnesyDate) => {
     const valueNew = resolve(valueNew_);
 
     // Inner update
@@ -611,19 +611,19 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     if (is('function', onChangeSelecting)) onChangeSelecting(valueNew as any);
   }, [onChangeSelecting]);
 
-  const valid = React.useCallback((...args: [AmauiDate, any?]) => {
+  const valid = React.useCallback((...args: [OnesyDate, any?]) => {
     if (is('function', valid_)) return valid_(...args);
 
-    const amauiDate = args[0];
+    const onesyDate = args[0];
 
     if (min || max || validate) {
       let response = true;
 
-      if (is('function', validate)) response = validate(amauiDate);
+      if (is('function', validate)) response = validate(onesyDate);
 
-      if (min !== undefined) response = response && isAmauiDate(amauiDate, 'after or same', min);
+      if (min !== undefined) response = response && isOnesyDate(onesyDate, 'after or same', min);
 
-      if (max !== undefined) response = response && isAmauiDate(amauiDate, 'before or same', max);
+      if (max !== undefined) response = response && isOnesyDate(onesyDate, 'before or same', max);
 
       return response;
     }
@@ -631,13 +631,13 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     return true;
   }, [valid_, min, max, validate]);
 
-  const textToAmauiDate = React.useCallback((valueNew: string) => {
+  const textToOnesyDate = React.useCallback((valueNew: string) => {
     const [times, dayTime_] = (valueNew || '').split(' ');
     const values = times.split(':');
 
     let valueTime: any;
 
-    let amauiDate = new AmauiDate();
+    let onesyDate = new OnesyDate();
 
     if (hour) {
       valueTime = values[0];
@@ -646,7 +646,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       valueTime = +valueTime;
 
-      amauiDate = set((format === '12' && dayTime_ === 'pm') ? valueTime + 12 : valueTime, 'hour', amauiDate);
+      onesyDate = set((format === '12' && dayTime_ === 'pm') ? valueTime + 12 : valueTime, 'hour', onesyDate);
     }
 
     if (minute) {
@@ -656,7 +656,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       valueTime = +valueTime;
 
-      amauiDate = set(valueTime, 'minute', amauiDate);
+      onesyDate = set(valueTime, 'minute', onesyDate);
     }
 
     if (second) {
@@ -666,10 +666,10 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       valueTime = +valueTime;
 
-      amauiDate = set(valueTime, 'second', amauiDate);
+      onesyDate = set(valueTime, 'second', onesyDate);
     }
 
-    return amauiDate;
+    return onesyDate;
   }, [format, hour, minute, second]);
 
   const onInputModalChange = React.useCallback((valueNew: string, unit: TClockUnit, index: number) => {
@@ -685,7 +685,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   }, [value, actions_, selecting]);
 
   const resolve = React.useCallback((valueNew = refs.value.current, dayTimeNew = refs.dayTime.current) => {
-    const values = valueNew.filter(Boolean).map((item: AmauiDate, index: number) => {
+    const values = valueNew.filter(Boolean).map((item: OnesyDate, index: number) => {
       // Resolve the range value
       const valueHour = item.hour;
 
@@ -721,11 +721,11 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
     let [from, to] = valueNew.split(SEPARATOR) as any;
 
-    from = textToAmauiDate(from);
+    from = textToOnesyDate(from);
 
-    if (to) to = textToAmauiDate(to);
+    if (to) to = textToOnesyDate(to);
 
-    valueNew = [from, to].filter(Boolean).filter((item: AmauiDate) => item?.valid) as any;
+    valueNew = [from, to].filter(Boolean).filter((item: OnesyDate) => item?.valid) as any;
 
     return valueNew as unknown as TTimePickerValue;
   }, [input]);
@@ -733,7 +733,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   const onInputChange = React.useCallback((valueNew_: any) => {
     const valueNew = inputToValue(valueNew_);
 
-    const validValues = (valueNew as [AmauiDate, AmauiDate]).every(item => item.valid);
+    const validValues = (valueNew as [OnesyDate, OnesyDate]).every(item => item.valid);
 
     // Only update values if input is valid
     // format used to make the value
@@ -818,9 +818,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   }, [input]);
 
   const onToday = React.useCallback((event: React.MouseEvent) => {
-    const valueNew: any = [new AmauiDate()];
+    const valueNew: any = [new OnesyDate()];
 
-    if (range) valueNew.push(new AmauiDate());
+    if (range) valueNew.push(new OnesyDate());
 
     // Update value
     onUpdate(valueNew as any);
@@ -982,9 +982,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       format={format}
 
-      value={value[index] || new AmauiDate()}
+      value={value[index] || new OnesyDate()}
 
-      dayTime={dayTime[index] || formatDate(new AmauiDate(), 'a') as any}
+      dayTime={dayTime[index] || formatDate(new OnesyDate(), 'a') as any}
 
       selecting={selecting[index]}
 
@@ -1049,7 +1049,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       className: classNames([
         staticClassName('TimePicker', theme) && [
-          'amaui-TimePicker-input'
+          'onesy-TimePicker-input'
         ],
 
         classes.input,
@@ -1074,7 +1074,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       className: classNames([
         staticClassName('TimePicker', theme) && [
-          'amaui-TimePicker-button'
+          'onesy-TimePicker-button'
         ],
 
         classes.button,
@@ -1092,7 +1092,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
         className={classNames([
           staticClassName('TimePicker', theme) && [
-            'amaui-TimePicker-input-separator'
+            'onesy-TimePicker-input-separator'
           ],
 
           classes.inputSeparator
@@ -1241,7 +1241,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
     className: classNames([
       staticClassName('TimePicker', theme) && [
-        'amaui-TimePicker-toggle-button'
+        'onesy-TimePicker-toggle-button'
       ],
 
       ToggleButtonProps?.className,
@@ -1282,7 +1282,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
           className={classNames([
             staticClassName('TimePicker', theme) && [
-              'amaui-TimePicker-inputs'
+              'onesy-TimePicker-inputs'
             ],
 
             classes.inputs
@@ -1308,7 +1308,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
               orientation={orientationValue}
 
-              value={dayTime[index] || formatDate(new AmauiDate(), 'a') as any}
+              value={dayTime[index] || formatDate(new OnesyDate(), 'a') as any}
 
               onChange={valueNew => updateDayTime(valueNew, index)}
 
@@ -1320,7 +1320,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
               className={classNames([
                 staticClassName('TimePicker', theme) && [
-                  'amaui-TimePicker-toggle-buttons'
+                  'onesy-TimePicker-toggle-buttons'
                 ],
 
                 ToggleButtonsProps?.className,
@@ -1367,7 +1367,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       className={classNames([
         staticClassName('TimePicker', theme) && [
-          'amaui-TimePicker-footer'
+          'onesy-TimePicker-footer'
         ],
 
         classes.footer,
@@ -1488,7 +1488,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       className={classNames([
         staticClassName('TimePicker', theme) && [
-          'amaui-TimePicker-main'
+          'onesy-TimePicker-main'
         ],
 
         MainProps?.className,
@@ -1503,7 +1503,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
           className={classNames([
             staticClassName('TimePicker', theme) && [
-              'amaui-TimePicker-heading'
+              'onesy-TimePicker-heading'
             ],
 
             classes.heading,
@@ -1531,7 +1531,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
           className={classNames([
             staticClassName('TimePicker', theme) && [
-              'amaui-TimePicker-tabs'
+              'onesy-TimePicker-tabs'
             ],
 
             TabsProps?.className,
@@ -1563,7 +1563,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
         className={classNames([
           staticClassName('TimePicker', theme) && [
-            'amaui-TimePicker-middle'
+            'onesy-TimePicker-middle'
           ],
 
           MiddleProps?.className,
@@ -1597,13 +1597,13 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       className={classNames([
         staticClassName('TimePicker', theme) && [
-          'amaui-TimePicker-root',
-          `amaui-TimePicker-version-${version}`,
-          `amaui-TimePicker-size-${size}`,
+          'onesy-TimePicker-root',
+          `onesy-TimePicker-version-${version}`,
+          `onesy-TimePicker-size-${size}`,
           WrapperProps?.className,
-          readOnly && `amaui-TimePicker-read-only`,
-          disabled && `amaui-TimePicker-disabled`,
-          fullWidth && 'amaui-full-width'
+          readOnly && `onesy-TimePicker-read-only`,
+          disabled && `onesy-TimePicker-disabled`,
+          fullWidth && 'onesy-full-width'
         ],
 
         className,
@@ -1699,7 +1699,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
             <ClickListener
               onClickOutside={onCancel as any}
 
-              includeParentQueries={['.amaui-TimePicker-main']}
+              includeParentQueries={['.onesy-TimePicker-main']}
             >
               {element}
             </ClickListener>
@@ -1712,6 +1712,6 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   );
 });
 
-TimePicker.displayName = 'amaui-TimePicker';
+TimePicker.displayName = 'onesy-TimePicker';
 
 export default TimePicker;

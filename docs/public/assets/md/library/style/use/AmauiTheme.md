@@ -1,16 +1,16 @@
 
-# AmauiTheme
+# OnesyTheme
 
 Used for creating, updating, maintaining a theme object.
 
 ### Use
 
-Value provided will be merged with defaults values using `@amaui/utils`'s `merge` method.
+Value provided will be merged with defaults values using `@onesy/utils`'s `merge` method.
 
-In the API part you can find more information of all available information in the `AmauiTheme` instance.
+In the API part you can find more information of all available information in the `OnesyTheme` instance.
 
 ```ts
-const amauiTheme = new AmauiTheme({
+const onesyTheme = new OnesyTheme({
   palette: {
     light: true,
     color: {
@@ -84,9 +84,9 @@ Updates the current theme object with new values.
 New values will be merged with previous, and override only values that have changed from previous values.
 
 ```ts
-const amauiTheme = new AmauiTheme();
+const onesyTheme = new OnesyTheme();
 
-amauiTheme.update(value);
+onesyTheme.update(value);
 ```
 
 ### Image
@@ -94,9 +94,9 @@ amauiTheme.update(value);
 Usefull method that creates theme palette for primary, secondary, tertiary & quaternary colors, from the provided image's `src` value, ie. url of the image.
 
 ```ts
-const amauiTheme = new AmauiTheme();
+const onesyTheme = new OnesyTheme();
 
-await amauiTheme.image(url);
+await onesyTheme.image(url);
 ```
 
 ### Methods
@@ -109,31 +109,31 @@ You can use the API part to get more information about it.
 
 #### attributes
 
-Defines array of attributes that will be added to an element, on which `AmauiTheme` instance will be attached to as a value.
+Defines array of attributes that will be added to an element, on which `OnesyTheme` instance will be attached to as a value.
 
-#### Find `AmauiTheme` instance from an element
+#### Find `OnesyTheme` instance from an element
 
-All these methods will try to find an element that has `AmauiTheme` instance attached to it, and return it.
+All these methods will try to find an element that has `OnesyTheme` instance attached to it, and return it.
 
 ```ts
-AmauiTheme.get(element, 0);
+OnesyTheme.get(element, 0);
 
-AmauiTheme.first(element);
+OnesyTheme.first(element);
 
-AmauiTheme.last(element);
+OnesyTheme.last(element);
 
-AmauiTheme.nearest(element);
+OnesyTheme.nearest(element);
 
-AmauiTheme.furthest(element);
+OnesyTheme.furthest(element);
 
-AmauiTheme.all(element);
+OnesyTheme.all(element);
 
-// AmauiTheme {}
-// AmauiTheme {}
-// AmauiTheme {}
-// AmauiTheme {}
-// AmauiTheme {}
-// [AmauiTheme {}, AmauiTheme {}, AmauiTheme {}]
+// OnesyTheme {}
+// OnesyTheme {}
+// OnesyTheme {}
+// OnesyTheme {}
+// OnesyTheme {}
+// [OnesyTheme {}, OnesyTheme {}, OnesyTheme {}]
 ```
 
 ### Other
@@ -144,10 +144,10 @@ Subscriptions that emit for various use cases.
 
 - update
 ```ts
-const amauiTheme = new AmauiTheme();
+const onesyTheme = new OnesyTheme();
 
 // Emits on every theme update
-amauiTheme.subscriptions.update.subscribe(method);
+onesyTheme.subscriptions.update.subscribe(method);
 ```
 
 ## API
@@ -640,10 +640,10 @@ interface IUi {
 }
 ```
 
-#### IAmauiTheme
+#### IOnesyTheme
 
 ```ts
-interface IAmauiTheme {
+interface IOnesyTheme {
     preference?: TPreference;
     mode?: TMode;
     palette?: IPalette;
@@ -659,14 +659,14 @@ interface IAmauiTheme {
 }
 ```
 
-#### AmauiTheme
+#### OnesyTheme
 
 ```ts
-class AmauiTheme {
+class OnesyTheme {
     options: IOptions;
     id?: string;
     subscriptions: {
-        update: AmauiSubscription;
+        update: OnesySubscription;
     };
     element?: HTMLElement;
     direction: TDirection;
@@ -727,22 +727,22 @@ class AmauiTheme {
     };
     ui?: IUi;
     [p: string]: any;
-    constructor(value?: IAmauiTheme, options?: IOptions);
-    init(value_?: IAmauiTheme | AmauiTheme): void;
+    constructor(value?: IOnesyTheme, options?: IOptions);
+    init(value_?: IOnesyTheme | OnesyTheme): void;
     image(value_: string, other?: any, options?: IMethodsPaletteImageOptions): Promise<void>;
-    update(value: IAmauiTheme): void;
-    static get amaui_theme(): AmauiTheme;
+    update(value: IOnesyTheme): void;
+    static get onesy_theme(): OnesyTheme;
     static get make(): {
         color: (value: string) => IColor;
         shadow: (value: string, opacities?: Array<number>) => IShadow;
     };
     static attributes: string[];
-    static get(value: HTMLElement, index?: number): AmauiTheme;
-    static first(value: HTMLElement): AmauiTheme;
-    static last(value: HTMLElement): AmauiTheme;
-    static nearest(value: HTMLElement): AmauiTheme;
-    static furthest(value: HTMLElement): AmauiTheme;
-    static all(value: HTMLElement): Array<AmauiTheme>;
+    static get(value: HTMLElement, index?: number): OnesyTheme;
+    static first(value: HTMLElement): OnesyTheme;
+    static last(value: HTMLElement): OnesyTheme;
+    static nearest(value: HTMLElement): OnesyTheme;
+    static furthest(value: HTMLElement): OnesyTheme;
+    static all(value: HTMLElement): Array<OnesyTheme>;
 }
 ```
 
@@ -751,8 +751,8 @@ class AmauiTheme {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Style: AmauiStyleSheetManager",
-      "to": "/library/style/use/AmauiStyleSheetManager"
+      "label": "Style: OnesyStyleSheetManager",
+      "to": "/library/style/use/OnesyStyleSheetManager"
     },
     "next": {
       "label": "Style: classNames",

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import { IType } from '../Type/Type';
@@ -87,7 +87,7 @@ const useStyle = styleMethod(theme => ({
   tonal_color_warning: { color: theme.methods.palette.color.value('warning', 30) },
 
   tonal_color_error: { color: theme.methods.palette.color.value('error', 30) }
-}), { name: 'amaui-Link' });
+}), { name: 'onesy-Link' });
 
 export interface ILink extends Omit<IType, 'color'> {
   color?: IColor;
@@ -96,9 +96,9 @@ export interface ILink extends Omit<IType, 'color'> {
 }
 
 const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLink?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLink?.props?.default, ...props_ }), [props_]);
 
   const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
 
@@ -190,9 +190,9 @@ const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Link', theme) && [
-          'amaui-Link-root',
-          hover && `amaui-Link-hover`,
-          focus && `amaui-Link-focus`
+          'onesy-Link-root',
+          hover && `onesy-Link-hover`,
+          focus && `onesy-Link-focus`
         ],
 
         className,
@@ -217,6 +217,6 @@ const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Link.displayName = 'amaui-Link';
+Link.displayName = 'onesy-Link';
 
 export default Link;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ChartElement from '../Chart';
 import LineChartItemElement from '../LineChartItem';
@@ -12,7 +12,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-LineChart' });
+}), { name: 'onesy-LineChart' });
 
 export interface ILineChart extends IChart {
   smooth?: boolean;
@@ -21,9 +21,9 @@ export interface ILineChart extends IChart {
 }
 
 const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLineChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLineChart?.props?.default, ...props_ }), [props_]);
 
   const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
 
@@ -51,7 +51,7 @@ const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('LineChart', theme) && [
-          'amaui-LineChart-root'
+          'onesy-LineChart-root'
         ],
 
         className,
@@ -75,6 +75,6 @@ const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-LineChart.displayName = 'amaui-LineChart';
+LineChart.displayName = 'onesy-LineChart';
 
 export default LineChart;

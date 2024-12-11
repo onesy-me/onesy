@@ -2,7 +2,7 @@ import { types as t } from '@babel/core';
 
 export default function () {
   return {
-    name: '@amaui',
+    name: '@onesy',
     visitor: {
       Program: {
         enter(path, state) {
@@ -10,15 +10,15 @@ export default function () {
 
           const { bindings } = path.scope;
 
-          // Add import for @amaui/style-react className method
-          if (!bindings.amauiStyleReactClassName) {
+          // Add import for @onesy/style-react className method
+          if (!bindings.onesyStyleReactClassName) {
             state.imports.push(
               t.variableDeclaration('var', [
                 t.variableDeclarator(
-                  t.identifier('amauiStyleReactClassName'),
+                  t.identifier('onesyStyleReactClassName'),
                   t.memberExpression(
                     t.callExpression(t.identifier('require'), [
-                      t.stringLiteral('@amaui/style-react'),
+                      t.stringLiteral('@onesy/style-react'),
                     ]),
                     t.identifier('className')
                   )
@@ -58,7 +58,7 @@ export default function () {
           t.jSXIdentifier('className'),
           t.jSXExpressionContainer(
             t.callExpression(
-              t.identifier('amauiStyleReactClassName'),
+              t.identifier('onesyStyleReactClassName'),
               args
             )
           )

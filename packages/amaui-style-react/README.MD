@@ -4,14 +4,14 @@
 
 <p align='center'>
   <a target='_blank' rel='noopener noreferrer' href='#'>
-    <img src='../../utils/images/logo.svg' alt='amaui logo' />
+    <img src='../../utils/images/logo.svg' alt='onesy logo' />
   </a>
 </p>
 
-<h1 align='center'>amaui Style React</h1>
+<h1 align='center'>onesy Style React</h1>
 
 <p align='center'>
-  Amaui Style for React
+  Onesy Style for React
 </p>
 
 <br />
@@ -38,14 +38,14 @@
 ### Add
 
 ```sh
-yarn add @amaui/style-react
+yarn add @onesy/style-react
 ```
 
 ### Use
 
 ```javascript
   // Import any of the methods
-  import { style } from '@amaui/style-react';
+  import { style } from '@onesy/style-react';
 
   const useStyle = style(theme => ({
     '@keyframes a': {

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { is, isEnvironment, wait } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment, wait } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialPause from '@amaui/icons-material-rounded-react/IconMaterialPauseW100';
-import IconMaterialTextToSpeech from '@amaui/icons-material-rounded-react/IconMaterialTextToSpeechW100';
+import IconMaterialPause from '@onesy/icons-material-rounded-react/IconMaterialPauseW100';
+import IconMaterialTextToSpeech from '@onesy/icons-material-rounded-react/IconMaterialTextToSpeechW100';
 
 import LineElement from '../Line';
 import TooltipElement from '../Tooltip';
@@ -19,7 +19,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   iconButton: {
-    '&.amaui-IconButton-root': {
+    '&.onesy-IconButton-root': {
       transition: theme.methods.transitions.make('transform'),
 
       '&:active': {
@@ -27,7 +27,7 @@ const useStyle = styleMethod(theme => ({
       }
     }
   }
-}), { name: 'amaui-TextToSpeech' });
+}), { name: 'onesy-TextToSpeech' });
 
 export interface ITextToSpeech extends ILine {
   size?: ISize;
@@ -61,9 +61,9 @@ export interface ITextToSpeech extends ILine {
 }
 
 const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTextToSpeech?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextToSpeech?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -245,8 +245,8 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
 
       className={classNames([
         staticClassName('TextToSpeech', theme) && [
-          `amaui-TextToSpeech-root`,
-          `amaui-TextToSpeech-size-${size}`
+          `onesy-TextToSpeech-root`,
+          `onesy-TextToSpeech-size-${size}`
         ],
 
         className,
@@ -271,7 +271,7 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
 
           className={classNames([
             staticClassName('TextToSpeech', theme) && [
-              `amaui-TextToSpeech-iconButton`
+              `onesy-TextToSpeech-iconButton`
             ],
 
             classes.iconButton
@@ -284,6 +284,6 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
   );
 });
 
-TextToSpeech.displayName = 'amaui-TextToSpeech';
+TextToSpeech.displayName = 'onesy-TextToSpeech';
 
 export default TextToSpeech;

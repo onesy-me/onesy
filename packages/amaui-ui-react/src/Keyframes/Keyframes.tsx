@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { is, wait } from '@amaui/utils';
-import AmauiSubscription from '@amaui/subscription';
-import { classNames, useAmauiTheme, TTransitionsDurationProperties } from '@amaui/style-react';
+import { is, wait } from '@onesy/utils';
+import OnesySubscription from '@onesy/subscription';
+import { classNames, useOnesyTheme, TTransitionsDurationProperties } from '@onesy/style-react';
 
 import KeyframesContext from './Context';
 import { reflow } from '../utils';
@@ -52,9 +52,9 @@ export interface IKeyframes extends Omit<IBaseElement, 'className'> {
 }
 
 const Keyframes: React.FC<IKeyframes> = (props_) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiKeyframes?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyKeyframes?.props?.default, ...props_ }), [props_]);
 
   const {
     ref,
@@ -91,7 +91,7 @@ const Keyframes: React.FC<IKeyframes> = (props_) => {
   });
 
   const subs = React.useRef({
-    status: new AmauiSubscription()
+    status: new OnesySubscription()
   });
 
   const refs = {
@@ -278,6 +278,6 @@ const Keyframes: React.FC<IKeyframes> = (props_) => {
   );
 };
 
-Keyframes.displayName = 'amaui-Keyframes';
+Keyframes.displayName = 'onesy-Keyframes';
 
 export default Keyframes;

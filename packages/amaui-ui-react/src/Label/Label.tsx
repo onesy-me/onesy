@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import LineElement from '../Line';
@@ -42,7 +42,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'default',
     pointerEvents: 'none'
   }
-}), { name: 'amaui-Label' });
+}), { name: 'onesy-Label' });
 
 export interface ILabel extends ILine {
   tonal?: ITonal;
@@ -76,9 +76,9 @@ export interface ILabel extends ILine {
 }
 
 const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLabel?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLabel?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -213,10 +213,10 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Label', theme) && [
-            'amaui-Label-root',
-            `amaui-Label-version-${version}`,
-            `amaui-Label-size-${size}`,
-            disabled && `amaui-Label-disabled`
+            'onesy-Label-root',
+            `onesy-Label-version-${version}`,
+            `onesy-Label-size-${size}`,
+            disabled && `onesy-Label-disabled`
           ],
 
           LabelProps?.className,
@@ -228,7 +228,7 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
         {Input && React.cloneElement(Input, {
           className: classNames([
             staticClassName('Label', theme) && [
-              'amaui-Label-input'
+              'onesy-Label-input'
             ],
 
             classes.input
@@ -263,7 +263,7 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Label', theme) && [
-                'amaui-Label-text'
+                'onesy-Label-text'
               ],
 
               TextProps?.className,
@@ -284,7 +284,7 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Label', theme) && [
-                'amaui-Label-text-wrapper'
+                'onesy-Label-text-wrapper'
               ],
 
               TextProps?.className
@@ -314,7 +314,7 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Label', theme) && [
-                'amaui-Label-footer'
+                'onesy-Label-footer'
               ],
 
               classes.footer
@@ -326,8 +326,8 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('Label', theme) && [
-                    'amaui-Label-helper-text',
-                    error && 'amaui-Label-error'
+                    'onesy-Label-helper-text',
+                    error && 'onesy-Label-error'
                   ],
 
                   classes.helperText,
@@ -346,6 +346,6 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Label.displayName = 'amaui-Label';
+Label.displayName = 'onesy-Label';
 
 export default Label;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TransitionElement, { TTransitionStatus } from '../Transition';
 import LineElement from '../Line';
@@ -45,19 +45,19 @@ const useStyle = styleMethod(theme => ({
   },
 
   orientation_horizontal_size_small: {
-    '&:not(.amaui-ToggleButtons-root) > *': {
+    '&:not(.onesy-ToggleButtons-root) > *': {
       height: '28px'
     }
   },
 
   orientation_horizontal_size_regular: {
-    '&:not(.amaui-ToggleButtons-root) > *': {
+    '&:not(.onesy-ToggleButtons-root) > *': {
       height: '42px'
     }
   },
 
   orientation_horizontal_size_large: {
-    '&:not(.amaui-ToggleButtons-root) > *': {
+    '&:not(.onesy-ToggleButtons-root) > *': {
       height: '63px'
     }
   },
@@ -162,12 +162,12 @@ const useStyle = styleMethod(theme => ({
   disabled: {
 
   }
-}), { name: 'amaui-Buttons' });
+}), { name: 'onesy-Buttons' });
 
 export const IconDoneAnimated = (props: any) => {
   const { classes } = useStyle();
 
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const Transition = React.useMemo(() => theme?.elements?.Transition || TransitionElement, [theme]);
 
@@ -265,9 +265,9 @@ export interface IButtons extends ILine {
 }
 
 const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiButtons?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButtons?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -482,10 +482,10 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Buttons', theme) && [
-          'amaui-Buttons-root',
-          `amaui-Buttons-version-${version}`,
-          `amaui-Buttons-size-${size}`,
-          disabled && `amaui-Buttons-disabled`,
+          'onesy-Buttons-root',
+          `onesy-Buttons-version-${version}`,
+          `onesy-Buttons-size-${size}`,
+          disabled && `onesy-Buttons-disabled`,
         ],
 
         className,
@@ -506,6 +506,6 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Buttons.displayName = 'amaui-Buttons';
+Buttons.displayName = 'onesy-Buttons';
 
 export default Buttons;

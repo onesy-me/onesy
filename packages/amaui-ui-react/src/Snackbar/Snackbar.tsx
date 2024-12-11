@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is, getID, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, getID, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
 import GrowElement from '../Grow';
 import TypeElement from '../Type';
@@ -76,7 +76,7 @@ const useStyle = styleMethod(theme => ({
     insetInlineEnd: '24px',
     insetInlineStart: 'auto'
   }
-}), { name: 'amaui-Snackbar' });
+}), { name: 'onesy-Snackbar' });
 
 export interface ISnackbar extends ISurface {
   size?: ISize;
@@ -109,9 +109,9 @@ export interface ISnackbar extends ISurface {
 const timeouts = {};
 
 const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSnackbar?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySnackbar?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -300,8 +300,8 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Snackbar', theme) && [
-            `amaui-Snackbar-root`,
-            `amaui-Snackbar-size-${size}`
+            `onesy-Snackbar-root`,
+            `onesy-Snackbar-size-${size}`
           ],
 
           className,
@@ -320,7 +320,7 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
           <div
             className={classNames([
               staticClassName('Snackbar', theme) && [
-                `amaui-Snackbar-primary`
+                `onesy-Snackbar-primary`
               ],
 
               classes.primary
@@ -352,7 +352,7 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('Snackbar', theme) && [
-                `amaui-Snackbar-end`
+                `onesy-Snackbar-end`
               ],
 
               classes.end
@@ -366,6 +366,6 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Snackbar.displayName = 'amaui-Snackbar';
+Snackbar.displayName = 'onesy-Snackbar';
 
 export default Snackbar;

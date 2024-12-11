@@ -1,16 +1,16 @@
 
-# AmauiStyleRule
+# OnesyStyleRule
 
 Used for creating 1 style selector, with its css values.
 
 ### Use
 
-- In the options you have to add `amauiStyle`, `amauiStyleSheet` instances as once instance of `AmauiStyleRule` is made, it will go through all properties in the value, and for make an instance of `AmauiStyleRuleProperty`, and add itself to the `AmauiStyleSheet` instance, ready to be added to the DOM.
+- In the options you have to add `onesyStyle`, `onesyStyleSheet` instances as once instance of `OnesyStyleRule` is made, it will go through all properties in the value, and for make an instance of `OnesyStyleRuleProperty`, and add itself to the `OnesyStyleSheet` instance, ready to be added to the DOM.
 - It will make a class name for the property if it's not a pure rule. It will use plugins for making a class name, if they are available.
-- If optimize is true in `AmauiStyle` instance as an option, it will hash the css value of this selector, and if one already exists within `AmauiStyle` instance, it will reuse that selector, instead of making the same one all over again.
+- If optimize is true in `OnesyStyle` instance as an option, it will hash the css value of this selector, and if one already exists within `OnesyStyle` instance, it will reuse that selector, instead of making the same one all over again.
 
 ```ts
-const amauiStyleRule = new AmauiStyleRule('a', { width: 1114, fontSize: '14px' }, options);
+const onesyStyleRule = new OnesyStyleRule('a', { width: 1114, fontSize: '14px' }, options);
 ```
 
 ## API
@@ -26,15 +26,15 @@ type TVersion = 'property' | 'at-rule';
 ```ts
 interface IRuleItemWithString {
     property: string;
-    value: AmauiStyleRule | AmauiStyleRuleProperty;
+    value: OnesyStyleRule | OnesyStyleRuleProperty;
 }
 ```
 
-#### IAmauiStyleRuleValue
+#### IOnesyStyleRuleValue
 
 ```ts
-interface IAmauiStyleRuleValue {
-    value: Array<string | (() => any) | AmauiSubscription>;
+interface IOnesyStyleRuleValue {
+    value: Array<string | (() => any) | OnesySubscription>;
     options?: {
         rule?: IOptionsRule;
     };
@@ -46,7 +46,7 @@ interface IAmauiStyleRuleValue {
 ```ts
 type TRules = Array<{
     property: string;
-    value: AmauiStyleRule | AmauiStyleRuleProperty;
+    value: OnesyStyleRule | OnesyStyleRuleProperty;
 }>;
 ```
 
@@ -59,17 +59,17 @@ interface IOptions extends IOptionsRule {
     version?: TVersion;
     pure?: boolean;
     index?: number;
-    owner?: AmauiStyleRule | AmauiStyleSheet;
-    parents?: Array<AmauiStyleSheet | AmauiStyleRule>;
-    amauiStyle?: AmauiStyle;
-    amauiStyleSheet?: AmauiStyleSheet;
+    owner?: OnesyStyleRule | OnesyStyleSheet;
+    parents?: Array<OnesyStyleSheet | OnesyStyleRule>;
+    onesyStyle?: OnesyStyle;
+    onesyStyleSheet?: OnesyStyleSheet;
 }
 ```
 
-#### AmauiStyleRule
+#### OnesyStyleRule
 
 ```ts
-class AmauiStyleRule {
+class OnesyStyleRule {
     value: any;
     property: string;
     options: IOptions;
@@ -79,10 +79,10 @@ class AmauiStyleRule {
     version: TVersion;
     pure: boolean;
     index: number;
-    owner: AmauiStyleRule | AmauiStyleSheet;
-    parents: Array<AmauiStyleSheet | AmauiStyleRule>;
-    amauiStyleSheet: AmauiStyleSheet;
-    amauiStyle: AmauiStyle;
+    owner: OnesyStyleRule | OnesyStyleSheet;
+    parents: Array<OnesyStyleSheet | OnesyStyleRule>;
+    onesyStyleSheet: OnesyStyleSheet;
+    onesyStyle: OnesyStyle;
     rule_: CSSStyleRule;
     status: TStatus;
     level: number;
@@ -90,7 +90,7 @@ class AmauiStyleRule {
     isVariable: boolean;
     hash_: string;
     static: boolean;
-    rules_owned: Array<AmauiStyleRule | AmauiStyleRuleProperty>;
+    rules_owned: Array<OnesyStyleRule | OnesyStyleRuleProperty>;
     ref: TRef;
     className_: string;
     selector_: string;
@@ -111,7 +111,7 @@ class AmauiStyleRule {
     get keyframesName(): string;
     set keyframesName(value: string);
     get hash(): string;
-    get parent(): AmauiStyleRule | AmauiStyleSheet;
+    get parent(): OnesyStyleRule | OnesyStyleSheet;
     get response(): IValuesVersion;
     get css(): string;
     get allOwnedCss(): string;
@@ -139,7 +139,7 @@ class AmauiStyleRule {
     set rule(rule: CSSStyleRule);
     private get unique();
     private clear;
-    static make(value: any, property: string, options?: IOptions): AmauiStyleRule;
+    static make(value: any, property: string, options?: IOptions): OnesyStyleRule;
 }
 ```
 
@@ -148,12 +148,12 @@ class AmauiStyleRule {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Style: AmauiStyleRenderer",
-      "to": "/library/style/use/AmauiStyleRenderer"
+      "label": "Style: OnesyStyleRenderer",
+      "to": "/library/style/use/OnesyStyleRenderer"
     },
     "next": {
-      "label": "Style: AmauiStyleRuleProperty",
-      "to": "/library/style/use/AmauiStyleRuleProperty"
+      "label": "Style: OnesyStyleRuleProperty",
+      "to": "/library/style/use/OnesyStyleRuleProperty"
     }
   }
 }~

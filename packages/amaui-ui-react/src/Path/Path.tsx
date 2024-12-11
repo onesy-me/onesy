@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement } from '../types';
@@ -9,16 +9,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-Path' });
+}), { name: 'onesy-Path' });
 
 export interface IPath extends IBaseElement {
   value?: any;
 }
 
 const Path: React.FC<IPath> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPath?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPath?.props?.default, ...props_ }), [props_]);
 
   const {
     value,
@@ -38,7 +38,7 @@ const Path: React.FC<IPath> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Path', theme) && [
-          'amaui-Path-root'
+          'onesy-Path-root'
         ],
 
         className,
@@ -50,6 +50,6 @@ const Path: React.FC<IPath> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Path.displayName = 'amaui-Path';
+Path.displayName = 'onesy-Path';
 
 export default Path;

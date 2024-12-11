@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, textToInnerHTML, unique } from '@amaui/utils';
-import { TPaletteVersion, classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, textToInnerHTML, unique } from '@onesy/utils';
+import { TPaletteVersion, classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement, { ILine } from '../Line/Line';
 import TypeElement from '../Type';
@@ -279,7 +279,7 @@ const useStyle = styleMethod(theme => ({
       padding: `${theme.methods.space.value(15, 'px')} ${theme.methods.space.value(3, 'px')}`
     }
   }
-}), { name: 'amaui-Section' });
+}), { name: 'onesy-Section' });
 
 export type ISize = 'extra_small' | 'small' | 'regular' | 'large' | 'extra_large' | 'extra_extra_large';
 
@@ -323,9 +323,9 @@ export interface ISection extends ILine {
 }
 
 const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSection?.props?.default, ...props_, ...props_?.AdditionalProps }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySection?.props?.default, ...props_, ...props_?.AdditionalProps }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -525,8 +525,8 @@ const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Section', theme) && [
-            'amaui-Section-root',
-            `amaui-Section-size-${size}`
+            'onesy-Section-root',
+            `onesy-Section-size-${size}`
           ],
 
           className,
@@ -635,7 +635,7 @@ const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Section', theme) && [
-              'amaui-Section-main'
+              'onesy-Section-main'
             ],
 
             MainProps?.className,
@@ -654,6 +654,6 @@ const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Section.displayName = 'amaui-Section';
+Section.displayName = 'onesy-Section';
 
 export default Section;

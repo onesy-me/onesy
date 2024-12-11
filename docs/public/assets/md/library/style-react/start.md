@@ -1,19 +1,19 @@
 
-# amaui style react
+# onesy style react
 
 CSS in JS styling solution for react.
 
 ### Add
 
 ```sh
-yarn add @amaui/style-react
+yarn add @onesy/style-react
 ```
 
 ### Use
 
 ```tsx
 // Import any of the methods
-import { style } from '@amaui/style-react';
+import { style } from '@onesy/style-react';
 
 const useStyle = style(theme => ({
   '@keyframes a': {
@@ -92,8 +92,8 @@ yarn build
       "to": "/library/ui-react/start"
     },
     "next": {
-      "label": "Style react: AmauiStyleProvider",
-      "to": "/library/style-react/use/AmauiStyleProvider"
+      "label": "Style react: OnesyStyleProvider",
+      "to": "/library/style-react/use/OnesyStyleProvider"
     }
   }
 }~

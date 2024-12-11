@@ -7,6 +7,6 @@ export interface ISnackbarsContext {
   remove: (id: string) => void;
 }
 
-const AmauiSnackbarsContext: any = React.createContext<ISnackbarsContext>({} as any);
+const OnesySnackbarsContext: any = React.createContext<ISnackbarsContext>({} as any);
 
-export default AmauiSnackbarsContext;
+export default OnesySnackbarsContext;

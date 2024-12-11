@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import NavigationDrawerElement from '../NavigationDrawer';
 import { INavigationDrawer } from '../NavigationDrawer/NavigationDrawer';
@@ -8,7 +8,7 @@ import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '&.amaui-Modal-root .amaui-Modal-surface': {
+    '&.onesy-Modal-root .onesy-Modal-surface': {
       paddingTop: theme.methods.space.value(6.25, 'px'),
       maxWidth: '640px',
 
@@ -27,22 +27,22 @@ const useStyle = styleMethod(theme => ({
     },
 
     '@media only screen and (min-width: 640px)': {
-      '&.amaui-Modal-root .amaui-Modal-surface': {
+      '&.onesy-Modal-root .onesy-Modal-surface': {
         marginTop: '72px',
         marginInline: '56px'
       }
     }
   },
-}), { name: 'amaui-BottomSheet' });
+}), { name: 'onesy-BottomSheet' });
 
 export interface IBottomSheet extends INavigationDrawer {
 
 }
 
 const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiBottomSheet?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBottomSheet?.props?.default, ...props_ }), [props_]);
 
   const NavigationDrawer = React.useMemo(() => theme?.elements?.NavigationDrawer || NavigationDrawerElement, [theme]);
 
@@ -62,7 +62,7 @@ const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('BottomSheet', theme) && [
-          'amaui-BottomSheet-root'
+          'onesy-BottomSheet-root'
         ],
 
         className,
@@ -74,6 +74,6 @@ const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) 
   );
 });
 
-BottomSheet.displayName = 'amaui-BottomSheet';
+BottomSheet.displayName = 'onesy-BottomSheet';
 
 export default BottomSheet;

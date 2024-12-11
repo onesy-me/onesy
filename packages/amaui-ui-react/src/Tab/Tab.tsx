@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import SurfaceElement from '../Surface';
@@ -77,7 +77,7 @@ const useStyle = styleMethod(theme => ({
     opacity: theme.palette.visual_contrast.default.opacity.disabled,
     cursor: 'default'
   }
-}), { name: 'amaui-Tab' });
+}), { name: 'onesy-Tab' });
 
 export interface ITab extends Omit<ISurface, 'version'> {
   version?: 'primary' | 'secondary';
@@ -107,9 +107,9 @@ export interface ITab extends Omit<ISurface, 'version'> {
 }
 
 const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTab?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTab?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -206,17 +206,17 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
 
       aria-selected={active}
 
-      data-amaui-tab-value={value}
+      data-onesy-tab-value={value}
 
       Component={Component}
 
       className={classNames([
         staticClassName('Tab', theme) && [
-          'amaui-Tab-root',
-          `amaui-Tab-version-${version}`,
-          `amaui-Tab-size-${size}`,
-          active && `amaui-Tab-active`,
-          disabled && `amaui-Tab-disabled`
+          'onesy-Tab-root',
+          `onesy-Tab-version-${version}`,
+          `onesy-Tab-size-${size}`,
+          active && `onesy-Tab-active`,
+          disabled && `onesy-Tab-disabled`
         ],
 
         className,
@@ -245,7 +245,7 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Tab', theme) && [
-            'amaui-Tab-line'
+            'onesy-Tab-line'
           ],
 
           LineProps?.className,
@@ -261,7 +261,7 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Tab', theme) && [
-                  'amaui-Tab-type'
+                  'onesy-Tab-type'
                 ],
 
                 classes[`type_${size}`]
@@ -279,7 +279,7 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Tab', theme) && [
-                  'amaui-Tab-type'
+                  'onesy-Tab-type'
                 ],
 
                 classes[`type_${size}`]
@@ -294,6 +294,6 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Tab.displayName = 'amaui-Tab';
+Tab.displayName = 'onesy-Tab';
 
 export default Tab;

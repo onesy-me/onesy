@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ButtonElement from '../Button';
 import { IButton } from '../Button/Button';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-IconButton' });
+}), { name: 'onesy-IconButton' });
 
 export interface IIconButton extends IButton {
 
 }
 
 const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiIconButton?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIconButton?.props?.default, ...props_ }), [props_]);
 
   const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
 
@@ -45,7 +45,7 @@ const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('IconButton', theme) && [
-          'amaui-IconButton-root'
+          'onesy-IconButton-root'
         ],
 
         className,
@@ -59,6 +59,6 @@ const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-IconButton.displayName = 'amaui-IconButton';
+IconButton.displayName = 'onesy-IconButton';
 
 export default IconButton;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, is, parse, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is, parse, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { angleToCoordinates, staticClassName, toNumber } from '../utils';
@@ -53,7 +53,7 @@ const useStyle = styleMethod(theme => ({
     width: '100%',
     height: 'auto'
   }
-}), { name: 'amaui-RoundMeter' });
+}), { name: 'onesy-RoundMeter' });
 
 export interface IRoundMeter extends IBaseElement {
   tonal?: ITonal;
@@ -125,9 +125,9 @@ export interface IRoundMeter extends IBaseElement {
 }
 
 const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiRoundMeter?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRoundMeter?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -845,7 +845,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
     <g
       className={classNames([
         staticClassName('RoundMeter', theme) && [
-          'amaui-RoundMeter-children'
+          'onesy-RoundMeter-children'
         ],
 
         classes.children
@@ -890,8 +890,8 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('RoundMeter', theme) && [
-          'amaui-RoundMeter-root',
-          `amaui-RoundMeter-size-${size}`
+          'onesy-RoundMeter-root',
+          `onesy-RoundMeter-size-${size}`
         ],
 
         className,
@@ -925,7 +925,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
 
             className={classNames([
               staticClassName('RoundMeter', theme) && [
-                'amaui-RoundMeter-svg'
+                'onesy-RoundMeter-svg'
               ],
 
               SvgProps?.className,
@@ -972,7 +972,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
               <g
                 className={classNames([
                   staticClassName('RoundMeter', theme) && [
-                    'amaui-RoundMeter-arcs'
+                    'onesy-RoundMeter-arcs'
                   ],
 
                   classes.arcs
@@ -1009,7 +1009,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
 
                 className={classNames([
                   staticClassName('RoundMeter', theme) && [
-                    'amaui-RoundMeter-arcs-progress'
+                    'onesy-RoundMeter-arcs-progress'
                   ],
 
                   ArcsProgressProps?.className,
@@ -1051,7 +1051,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
 
                   className={classNames([
                     staticClassName('RoundMeter', theme) && [
-                      'amaui-RoundMeter-marks'
+                      'onesy-RoundMeter-marks'
                     ],
 
                     classes.marks
@@ -1093,7 +1093,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
 
                     className={classNames([
                       staticClassName('RoundMeter', theme) && [
-                        'amaui-RoundMeter-labels'
+                        'onesy-RoundMeter-labels'
                       ],
 
                       classes.labels
@@ -1134,7 +1134,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
 
                           className={classNames([
                             staticClassName('RoundMeter', theme) && [
-                              'amaui-RoundMeter-label'
+                              'onesy-RoundMeter-label'
                             ],
 
                             other_?.className,
@@ -1161,6 +1161,6 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-RoundMeter.displayName = 'amaui-RoundMeter';
+RoundMeter.displayName = 'onesy-RoundMeter';
 
 export default RoundMeter;

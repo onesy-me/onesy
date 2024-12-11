@@ -4,14 +4,14 @@
 
 <p align='center'>
   <a target='_blank' rel='noopener noreferrer' href='#'>
-    <img src='../../utils/images/logo.svg' alt='amaui logo' />
+    <img src='../../utils/images/logo.svg' alt='onesy logo' />
   </a>
 </p>
 
-<h1 align='center'>amaui Icons Material Sharp React</h1>
+<h1 align='center'>onesy Icons Material Sharp React</h1>
 
 <p align='center'>
-  Amaui Icons Material Sharp for React <br />
+  Onesy Icons Material Sharp for React <br />
   11k+ icon versions including 100, 400 weights, with and without the fill
 </p>
 
@@ -39,7 +39,7 @@
 ### Add
 
 ```sh
-yarn add @amaui/icons-material-react
+yarn add @onesy/icons-material-react
 ```
 
 ### Use
@@ -48,7 +48,7 @@ yarn add @amaui/icons-material-react
   // Import any of the icons
   // best to import them as modules like this example
   // it's the most efficient way to import icons
-  import IconMaterialPottedPlantSharp from '@amaui/icons-material-sharp-react/IconMaterialPottedPlant';
+  import IconMaterialPottedPlantSharp from '@onesy/icons-material-sharp-react/IconMaterialPottedPlant';
 
   function A(props) {
 
@@ -87,5 +87,5 @@ yarn build
 
 Updates made to original icons:
 - A part of the icons are used not all of them.
-- Inner svg elements (children) are extracted from every icon, and put within the @amaui/ui-react Icon component as children.
+- Inner svg elements (children) are extracted from every icon, and put within the @onesy/ui-react Icon component as children.
 - Every icon from there is made into it's own React component as part of this UI library.

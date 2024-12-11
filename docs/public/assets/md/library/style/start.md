@@ -1,18 +1,18 @@
 
-# amaui style
+# onesy style
 
 CSS in JS implementation for front end & back end.
 
 ### Add
 
 ```sh
-yarn add @amaui/style
+yarn add @onesy/style
 ```
 
 ### Use
 
 ```ts
-import { style } from '@amaui/style';
+import { style } from '@onesy/style';
 
 const styles = style(theme => ({
   '@keyframes a': {
@@ -187,8 +187,8 @@ yarn build
       "to": "/library/storage/start"
     },
     "next": {
-      "label": "Style: AmauiStyle",
-      "to": "/library/style/use/AmauiStyle"
+      "label": "Style: OnesyStyle",
+      "to": "/library/style/use/OnesyStyle"
     }
   }
 }~

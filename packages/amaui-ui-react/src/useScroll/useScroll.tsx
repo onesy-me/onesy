@@ -79,6 +79,6 @@ const useScroll = (props: IUseScroll) => {
   return response;
 };
 
-useScroll.displayName = 'amaui-UseScroll';
+useScroll.displayName = 'onesy-UseScroll';
 
 export default useScroll;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, wait, random, clamp } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, wait, random, clamp } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import FadeElement from '../Fade';
 import LinearProgressElement from '../LinearProgress';
@@ -26,11 +26,11 @@ const useStyle = styleMethod(theme => ({
   root: {
     zIndex: theme.z_index.tooltip - 14,
 
-    '&.amaui-LinearProgress-root': {
+    '&.onesy-LinearProgress-root': {
       height: '2px'
     },
 
-    '& .amaui-LinearProgress-buffer': {
+    '& .onesy-LinearProgress-buffer': {
       background: 'transparent'
     }
   },
@@ -38,7 +38,7 @@ const useStyle = styleMethod(theme => ({
   fixed: {
     insetInline: '0',
 
-    '&.amaui-LinearProgress-root': {
+    '&.onesy-LinearProgress-root': {
       position: 'fixed'
     }
   },
@@ -50,7 +50,7 @@ const useStyle = styleMethod(theme => ({
   position_bottom: {
     bottom: '0'
   }
-}), { name: 'amaui-MainProgress' });
+}), { name: 'onesy-MainProgress' });
 
 export interface IMainProgress extends ILinearProress {
   min?: number;
@@ -79,9 +79,9 @@ export interface IMainProgress extends ILinearProress {
 }
 
 const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMainProgress?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMainProgress?.props?.default, ...props_ }), [props_]);
 
   const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
 
@@ -279,7 +279,7 @@ const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any
 
           className={classNames([
             staticClassName('MainProgress', theme) && [
-              `amaui-MainProgress-root`
+              `onesy-MainProgress-root`
             ],
 
             className,
@@ -299,6 +299,6 @@ const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any
   );
 });
 
-MainProgress.displayName = 'amaui-MainProgress';
+MainProgress.displayName = 'onesy-MainProgress';
 
 export default MainProgress;

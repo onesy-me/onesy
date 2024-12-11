@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -24,16 +24,16 @@ const useStyle = styleMethod(theme => ({
   size_large: {
     padding: `${theme.methods.space.value(4, 'px')} ${theme.methods.space.value(3, 'px')}`
   }
-}), { name: 'amaui-TableHeader' });
+}), { name: 'onesy-TableHeader' });
 
 export interface ITableHeader extends ISurface {
   size?: ISize;
 }
 
 const TableHeader: React.FC<ITableHeader> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTableHeader?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableHeader?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -67,8 +67,8 @@ const TableHeader: React.FC<ITableHeader> = React.forwardRef((props_, ref: any) 
 
       className={classNames([
         staticClassName('TableHeader', theme) && [
-          `amaui-TableHeader-root`,
-          `amaui-TableHeader-size-${size}`
+          `onesy-TableHeader-root`,
+          `onesy-TableHeader-size-${size}`
         ],
 
         className,
@@ -83,6 +83,6 @@ const TableHeader: React.FC<ITableHeader> = React.forwardRef((props_, ref: any) 
   );
 });
 
-TableHeader.displayName = 'amaui-TableHeader';
+TableHeader.displayName = 'onesy-TableHeader';
 
 export default TableHeader;

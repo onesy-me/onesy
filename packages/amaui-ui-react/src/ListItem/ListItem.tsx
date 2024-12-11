@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import InteractionElement from '../Interaction';
@@ -253,7 +253,7 @@ const useStyle = styleMethod(theme => {
     },
 
     noBackground: {
-      '&.amaui-Surface-root': {
+      '&.onesy-Surface-root': {
         background: 'none'
       }
     },
@@ -264,7 +264,7 @@ const useStyle = styleMethod(theme => {
       cursor: 'default'
     }
   };
-}, { name: 'amaui-ListItem' });
+}, { name: 'onesy-ListItem' });
 
 export interface IListItem extends ISurface {
   colorSelected?: IColor;
@@ -315,9 +315,9 @@ export interface IListItem extends ISurface {
 }
 
 const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiListItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyListItem?.props?.default, ...props_ }), [props_]);
 
   const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
 
@@ -443,7 +443,7 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('ListItem', theme) && [
-          'amaui-ListItem-wrapper'
+          'onesy-ListItem-wrapper'
         ],
 
         WrapperProps?.className,
@@ -475,12 +475,12 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('ListItem', theme) && [
-            'amaui-ListItem-root',
-            `amaui-ListItem-size-${size}`,
-            preselected && `amaui-ListItem-preselected`,
-            selected && `amaui-ListItem-selected`,
-            disabled && `amaui-ListItem-disabled`,
-            inset && !start && `amaui-ListItem-inset`
+            'onesy-ListItem-root',
+            `onesy-ListItem-size-${size}`,
+            preselected && `onesy-ListItem-preselected`,
+            selected && `onesy-ListItem-selected`,
+            disabled && `onesy-ListItem-disabled`,
+            inset && !start && `onesy-ListItem-inset`
           ],
 
           RootProps?.className,
@@ -527,9 +527,9 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('ListItem', theme) && [
-                'amaui-ListItem-aside',
-                'amaui-ListItem-start',
-                `amaui-ListItem-start-${['amaui-Avatar', 'amaui-IconButton', 'amaui-Checkbox', 'amaui-Radio'].includes((start as any)?.type?.displayName) ? 'button' : ['amaui-Switch'].includes((start as any)?.type?.displayName) ? 'switch' : 'icon'}`
+                'onesy-ListItem-aside',
+                'onesy-ListItem-start',
+                `onesy-ListItem-start-${['onesy-Avatar', 'onesy-IconButton', 'onesy-Checkbox', 'onesy-Radio'].includes((start as any)?.type?.displayName) ? 'button' : ['onesy-Switch'].includes((start as any)?.type?.displayName) ? 'switch' : 'icon'}`
               ],
 
               AsideProps?.className,
@@ -537,14 +537,14 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
               classes.aside,
               classes.start,
               classes[`align_${startAlign}`],
-              classes[`${menuItem ? 'menuItem_' : ''}start_${['amaui-Avatar', 'amaui-IconButton', 'amaui-Checkbox', 'amaui-Radio'].includes((start as any)?.type?.displayName) ? 'button' : ['amaui-Switch'].includes((start as any)?.type?.displayName) ? 'switch' : 'icon'}`],
-              classes[`${menuItem ? 'menuItem_' : ''}start_${['amaui-Avatar', 'amaui-IconButton', 'amaui-Checkbox', 'amaui-Radio'].includes((start as any)?.type?.displayName) ? 'button' : ['amaui-Switch'].includes((start as any)?.type?.displayName) ? 'switch' : 'icon'}_size_${size}`]
+              classes[`${menuItem ? 'menuItem_' : ''}start_${['onesy-Avatar', 'onesy-IconButton', 'onesy-Checkbox', 'onesy-Radio'].includes((start as any)?.type?.displayName) ? 'button' : ['onesy-Switch'].includes((start as any)?.type?.displayName) ? 'switch' : 'icon'}`],
+              classes[`${menuItem ? 'menuItem_' : ''}start_${['onesy-Avatar', 'onesy-IconButton', 'onesy-Checkbox', 'onesy-Radio'].includes((start as any)?.type?.displayName) ? 'button' : ['onesy-Switch'].includes((start as any)?.type?.displayName) ? 'switch' : 'icon'}_size_${size}`]
             ])}
           >
             {is('string', start) ? start : React.cloneElement(start as any, {
               color: (start as any).props?.color || 'inherit',
 
-              size: (start as any).props?.size !== undefined ? (start as any).props?.size : ['amaui-Switch'].includes((start as any)?.type?.displayName) ? 'small' : 'regular',
+              size: (start as any).props?.size !== undefined ? (start as any).props?.size : ['onesy-Switch'].includes((start as any)?.type?.displayName) ? 'small' : 'regular',
 
               disabled
             })}
@@ -556,7 +556,7 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('ListItem', theme) && [
-              'amaui-ListItem-middle'
+              'onesy-ListItem-middle'
             ],
 
             MainProps?.className,
@@ -576,8 +576,8 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('ListItem', theme) && [
-                    'amaui-ListItem-text',
-                    'amaui-ListItem-text-primary'
+                    'onesy-ListItem-text',
+                    'onesy-ListItem-text-primary'
                   ],
 
                   PrimaryProps?.className,
@@ -610,8 +610,8 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('ListItem', theme) && [
-                    'amaui-ListItem-text',
-                    'amaui-ListItem-text-secondary'
+                    'onesy-ListItem-text',
+                    'onesy-ListItem-text-secondary'
                   ],
 
                   SecondaryProps?.className,
@@ -641,8 +641,8 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
                 className={classNames([
                   staticClassName('ListItem', theme) && [
-                    'amaui-ListItem-text',
-                    'amaui-ListItem-text-tertiary'
+                    'onesy-ListItem-text',
+                    'onesy-ListItem-text-tertiary'
                   ],
 
                   TertiaryProps?.className,
@@ -670,9 +670,9 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
 
             className={classNames([
               staticClassName('ListItem', theme) && [
-                'amaui-ListItem-aside',
-                'amaui-ListItem-end',
-                `amaui-ListItem-end-${['amaui-Avatar', 'amaui-IconButton', 'amaui-Checkbox', 'amaui-Radio'].includes((end as any)?.type?.displayName) ? 'button' : ['amaui-Switch'].includes((end as any)?.type?.displayName) ? 'switch' : 'icon'}`
+                'onesy-ListItem-aside',
+                'onesy-ListItem-end',
+                `onesy-ListItem-end-${['onesy-Avatar', 'onesy-IconButton', 'onesy-Checkbox', 'onesy-Radio'].includes((end as any)?.type?.displayName) ? 'button' : ['onesy-Switch'].includes((end as any)?.type?.displayName) ? 'switch' : 'icon'}`
               ],
 
               AsideProps?.className,
@@ -680,14 +680,14 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
               classes.aside,
               classes.end,
               classes[`align_${endAlign}`],
-              classes[`${menuItem ? 'menuItem_' : ''}end_${['amaui-Avatar', 'amaui-IconButton', 'amaui-Checkbox', 'amaui-Radio'].includes((end as any)?.type?.displayName) ? 'button' : ['amaui-Switch'].includes((end as any)?.type?.displayName) ? 'switch' : 'icon'}`],
-              classes[`${menuItem ? 'menuItem_' : ''}end_${['amaui-Avatar', 'amaui-IconButton', 'amaui-Checkbox', 'amaui-Radio'].includes((end as any)?.type?.displayName) ? 'button' : ['amaui-Switch'].includes((end as any)?.type?.displayName) ? 'switch' : 'icon'}_size_${size}`]
+              classes[`${menuItem ? 'menuItem_' : ''}end_${['onesy-Avatar', 'onesy-IconButton', 'onesy-Checkbox', 'onesy-Radio'].includes((end as any)?.type?.displayName) ? 'button' : ['onesy-Switch'].includes((end as any)?.type?.displayName) ? 'switch' : 'icon'}`],
+              classes[`${menuItem ? 'menuItem_' : ''}end_${['onesy-Avatar', 'onesy-IconButton', 'onesy-Checkbox', 'onesy-Radio'].includes((end as any)?.type?.displayName) ? 'button' : ['onesy-Switch'].includes((end as any)?.type?.displayName) ? 'switch' : 'icon'}_size_${size}`]
             ])}
           >
             {is('string', end) ? end : React.cloneElement(end as any, {
               color: (end as any).props?.color || 'inherit',
 
-              size: (end as any).props?.size !== undefined ? (end as any).props?.size : ['amaui-Switch'].includes((end as any)?.type?.displayName) ? 'small' : 'regular',
+              size: (end as any).props?.size !== undefined ? (end as any).props?.size : ['onesy-Switch'].includes((end as any)?.type?.displayName) ? 'small' : 'regular',
 
               disabled
             })}
@@ -700,6 +700,6 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-ListItem.displayName = 'amaui-ListItem';
+ListItem.displayName = 'onesy-ListItem';
 
 export default ListItem;

@@ -1,19 +1,19 @@
 
-# amaui api
+# onesy api
 
 API util methods for easier API making.
 
 ### Add
 
 ```bash
-yarn add @amaui/api
+yarn add @onesy/api
 ```
 
 ### Use
 
 ```ts
 import express from 'express';
-import { Route, Method, IRouteClassInstance, Routes } from '@amaui/api';
+import { Route, Method, IRouteClassInstance, Routes } from '@onesy/api';
 
 class Base implements IRouteClassInstance {
 

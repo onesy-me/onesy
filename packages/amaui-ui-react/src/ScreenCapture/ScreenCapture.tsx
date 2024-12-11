@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { canvasCrop, download, is, isEnvironment, isOS, wait } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { canvasCrop, download, is, isEnvironment, isOS, wait } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialFitScreen from '@amaui/icons-material-rounded-react/IconMaterialFitScreenW100';
-import IconMaterialDocumentScanner from '@amaui/icons-material-rounded-react/IconMaterialDocumentScannerW100';
-import IconMaterialCropFree from '@amaui/icons-material-rounded-react/IconMaterialCropFreeW100';
-import IconMaterialDownload from '@amaui/icons-material-rounded-react/IconMaterialDownloadW100';
+import IconMaterialFitScreen from '@onesy/icons-material-rounded-react/IconMaterialFitScreenW100';
+import IconMaterialDocumentScanner from '@onesy/icons-material-rounded-react/IconMaterialDocumentScannerW100';
+import IconMaterialCropFree from '@onesy/icons-material-rounded-react/IconMaterialCropFreeW100';
+import IconMaterialDownload from '@onesy/icons-material-rounded-react/IconMaterialDownloadW100';
 
 import TooltipElement from '../Tooltip';
 import SurfaceElement from '../Surface';
@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
     background: '#000',
     zIndex: theme.z_index.tooltip + 4
   }
-}), { name: 'amaui-ScreenCapture' });
+}), { name: 'onesy-ScreenCapture' });
 
 export type TTrackValueVersion = 'image' | 'canvas';
 
@@ -69,9 +69,9 @@ export interface IScreenCapture extends ISurface {
 }
 
 const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiScreenCapture?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScreenCapture?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -92,7 +92,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
     color = 'primary',
 
     nameDefault,
-    name: name_ = `amaui-screenshot.${props.type !== undefined ? props.type.split('/')[1] : 'png'}`,
+    name: name_ = `onesy-screenshot.${props.type !== undefined ? props.type.split('/')[1] : 'png'}`,
 
     onChangeName,
 
@@ -262,8 +262,8 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
     canvasElement.height = height || window.innerHeight;
 
     // Hide elements
-    const elements = Array.from(rootDocument.body.querySelectorAll('.amaui-ScreenCapture-root')).map((element: HTMLElement) => {
-      if (element.parentElement.classList.contains('amaui-Move-root')) return element.parentElement;
+    const elements = Array.from(rootDocument.body.querySelectorAll('.onesy-ScreenCapture-root')).map((element: HTMLElement) => {
+      if (element.parentElement.classList.contains('onesy-Move-root')) return element.parentElement;
 
       return element;
     });
@@ -362,7 +362,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
   //     await elementToCanvas(rootDocument.body, {
   //       response: 'download',
 
-  //       filter: ['.amaui-Widgets-root', '#amaui-screen-capture'],
+  //       filter: ['.onesy-Widgets-root', '#onesy-screen-capture'],
 
   //       download: {
   //         name,
@@ -472,7 +472,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
         refs.root.current = item;
       }}
 
-      id='amaui-screen-capture'
+      id='onesy-screen-capture'
 
       tonal={tonal}
 
@@ -492,7 +492,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('ScreenCapture', theme) && [
-          'amaui-ScreenCapture-root'
+          'onesy-ScreenCapture-root'
         ],
 
         className,
@@ -602,7 +602,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
           <div
             className={classNames([
               staticClassName('ScreenCapture', theme) && [
-                'amaui-ScreenCapture-image-wrapper'
+                'onesy-ScreenCapture-image-wrapper'
               ],
 
               classes.wrapper
@@ -626,6 +626,6 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
   );
 });
 
-ScreenCapture.displayName = 'amaui-ScreenCapture';
+ScreenCapture.displayName = 'onesy-ScreenCapture';
 
 export default ScreenCapture;

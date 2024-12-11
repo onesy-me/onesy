@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { clamp, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ModalElement from '../Modal';
 import SlideElement from '../Slide';
@@ -13,7 +13,7 @@ import { IMethodTransition, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       display: 'flex',
       flexDirection: 'column',
       margin: '0',
@@ -34,30 +34,30 @@ const useStyle = styleMethod(theme => ({
   },
 
   version_modal_position_fixed: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       position: 'fixed'
     }
   },
 
   version_modal_position_absolute: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       position: 'absolute'
     }
   },
 
   version_standard: {
-    '&.amaui-Modal-root': {
+    '&.onesy-Modal-root': {
       position: 'unset',
       inset: 'unset'
     },
 
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       position: 'relative'
     }
   },
 
   direction_top: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       top: '0',
       width: '100%',
       borderRadius: `0 0 ${theme.methods.shape.radius.value(2, 'px')} ${theme.methods.shape.radius.value(2, 'px')}`
@@ -65,7 +65,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   direction_left: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       left: '0',
       height: '100%',
       borderRadius: `0 ${theme.methods.shape.radius.value(2, 'px')} ${theme.methods.shape.radius.value(2, 'px')} 0`
@@ -73,7 +73,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   direction_right: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       right: '0',
       height: '100%',
       borderRadius: `${theme.methods.shape.radius.value(2, 'px')} 0 0 ${theme.methods.shape.radius.value(2, 'px')}`
@@ -81,13 +81,13 @@ const useStyle = styleMethod(theme => ({
   },
 
   direction_bottom: {
-    '& .amaui-Modal-surface': {
+    '& .onesy-Modal-surface': {
       bottom: '0',
       width: '100%',
       borderRadius: `${theme.methods.shape.radius.value(2, 'px')} ${theme.methods.shape.radius.value(2, 'px')} 0 0`
     }
   }
-}), { name: 'amaui-NavigationDrawer' });
+}), { name: 'onesy-NavigationDrawer' });
 
 export interface INavigationDrawer extends IModal {
   version?: 'modal' | 'standard';
@@ -103,9 +103,9 @@ export interface INavigationDrawer extends IModal {
 }
 
 const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiNavigationDrawer?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationDrawer?.props?.default, ...props_ }), [props_]);
 
   const Modal = React.useMemo(() => theme?.elements?.Modal || ModalElement, [theme]);
 
@@ -309,7 +309,7 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
 
       className={classNames([
         staticClassName('NavigationDrawer', theme) && [
-          'amaui-NavigationDrawer-root'
+          'onesy-NavigationDrawer-root'
         ],
 
         className,
@@ -327,6 +327,6 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
   );
 });
 
-NavigationDrawer.displayName = 'amaui-NavigationDrawer';
+NavigationDrawer.displayName = 'onesy-NavigationDrawer';
 
 export default NavigationDrawer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { AmauiStyle, Style, valueObject, prefix, sort, rtl, unit, makeClassName } from '@amaui/style-react';
+import { OnesyStyle, Style, valueObject, prefix, sort, rtl, unit, makeClassName } from '@onesy/style-react';
 
 export default class CustomDocument extends Document {
   render() {
@@ -25,8 +25,8 @@ export default class CustomDocument extends Document {
           <meta property='og:image:height' content='1257' />
           <meta property='og:image:width' content='2400' />
           <meta property='og:description' content='Make Modern Web &amp; Mobile Apps Quickly 100+ UI elements' />
-          <meta property='og:title' content='amaui' />
-          <meta property='og:url' content='https://amaui.me' />
+          <meta property='og:title' content='onesy' />
+          <meta property='og:url' content='https://onesy.me' />
 
           <meta name='HandheldFriendly' content='True' />
           <meta name='MobileOptimized' content='320' />
@@ -39,7 +39,7 @@ export default class CustomDocument extends Document {
           <meta name='apple-touch-fullscreen' content='yes' />
           <meta name='apple-mobile-web-app-status-bar-style' content='#fafa00' />
 
-          <script src='https://unpkg.com/@amaui/date@latest/umd/amaui-date.dev.js' />
+          <script src='https://unpkg.com/@onesy/date@latest/umd/onesy-date.dev.js' />
 
           {/* Other */}
           {/* Prism */}
@@ -58,9 +58,9 @@ export default class CustomDocument extends Document {
 }
 
 CustomDocument.getInitialProps = async ctx => {
-  const amauiStyle = new AmauiStyle();
+  const onesyStyle = new OnesyStyle();
 
-  amauiStyle.plugins.add = [
+  onesyStyle.plugins.add = [
     unit,
     prefix,
     sort,
@@ -83,7 +83,7 @@ CustomDocument.getInitialProps = async ctx => {
       enhanceApp: App => props => {
         return (
           <Style
-            value={amauiStyle}
+            value={onesyStyle}
           >
             <App {...props} />
           </Style>
@@ -122,11 +122,11 @@ CustomDocument.getInitialProps = async ctx => {
       />,
 
       <style
-        id='amaui-initial-css'
+        id='onesy-initial-css'
 
         key={1}
 
-        dangerouslySetInnerHTML={{ __html: amauiStyle.css }}
+        dangerouslySetInnerHTML={{ __html: onesyStyle.css }}
       />
     ],
   };

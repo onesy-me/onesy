@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialExpandMore from '@amaui/icons-material-rounded-react/IconMaterialExpandMoreW100';
+import IconMaterialExpandMore from '@onesy/icons-material-rounded-react/IconMaterialExpandMoreW100';
 
 import GrowElement from '../Grow';
 import AppendElement from '../Append';
@@ -108,10 +108,10 @@ const useStyle = styleMethod(theme => ({
   indicator_open: {
     transform: 'rotate(-180deg)'
   }
-}), { name: 'amaui-MenuDesktop' });
+}), { name: 'onesy-MenuDesktop' });
 
 const Wrapper = React.forwardRef((props: any, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const {
     onMouseEnter,
@@ -190,9 +190,9 @@ export interface IMenuDesktop extends ILine {
 }
 
 const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiMenuDesktop?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuDesktop?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -554,7 +554,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
 
         className={classNames([
           staticClassName('MenuDesktop', theme) && [
-            'amaui-MenuDesktop-root'
+            'onesy-MenuDesktop-root'
           ],
 
           className,
@@ -612,9 +612,9 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
 
                 className={classNames([
                   staticClassName('MenuDesktop', theme) && [
-                    'amaui-MenuDesktop-item',
-                    open === item.value && `amaui-MenuDesktop-open`,
-                    item.disabled && `amaui-MenuDesktop-disabled`
+                    'onesy-MenuDesktop-item',
+                    open === item.value && `onesy-MenuDesktop-open`,
+                    item.disabled && `onesy-MenuDesktop-disabled`
                   ],
 
                   ItemProps?.className,
@@ -636,7 +636,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
 
                     className={classNames([
                       staticClassName('MenuDesktop', theme) && [
-                        'amaui-MenuDesktop-indicator'
+                        'onesy-MenuDesktop-indicator'
                       ],
 
                       classes.indicator,
@@ -730,7 +730,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
 
                     className={classNames([
                       staticClassName('MenuDesktop', theme) && [
-                        'amaui-MenuDesktop-menu-wrapper'
+                        'onesy-MenuDesktop-menu-wrapper'
                       ],
 
                       WrapperMenuProps?.className,
@@ -760,7 +760,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
 
                                 className: classNames([
                                   staticClassName('MenuDesktop', theme) && [
-                                    'amaui-MenuDesktop-menu',
+                                    'onesy-MenuDesktop-menu',
 
                                     status
                                   ],
@@ -796,7 +796,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
 
                         className: classNames([
                           staticClassName('MenuDesktop', theme) && [
-                            'amaui-MenuDesktop-menu'
+                            'onesy-MenuDesktop-menu'
                           ],
 
                           classes.menu
@@ -824,6 +824,6 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
   );
 });
 
-MenuDesktop.displayName = 'amaui-MenuDesktop';
+MenuDesktop.displayName = 'onesy-MenuDesktop';
 
 export default MenuDesktop;

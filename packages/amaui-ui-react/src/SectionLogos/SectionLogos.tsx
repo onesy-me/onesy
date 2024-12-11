@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { cleanValue, is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { cleanValue, is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import SectionElement, { ISection } from '../Section/Section';
@@ -50,7 +50,7 @@ const useStyle = styleMethod(theme => ({
   gray: {
     filter: 'grayscale(1)'
   }
-}), { name: 'amaui-SectionLogos' });
+}), { name: 'onesy-SectionLogos' });
 
 export interface ISectionLogos extends ISection {
   values?: IMediaObject[];
@@ -68,9 +68,9 @@ export interface ISectionLogos extends ISection {
 }
 
 const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionLogos?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionLogos?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -121,8 +121,8 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
 
       className={classNames([
         staticClassName('SectionLogos', theme) && [
-          'amaui-SectionLogos-root',
-          `amaui-SectionLogos-size-${size}`
+          'onesy-SectionLogos-root',
+          `onesy-SectionLogos-size-${size}`
         ],
 
         className,
@@ -142,7 +142,7 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
 
         className={classNames([
           staticClassName('SectionLogos', theme) && [
-            'amaui-SectionLogos-items'
+            'onesy-SectionLogos-items'
           ],
 
           classes.items,
@@ -159,7 +159,7 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
 
             className={classNames([
               staticClassName('SectionLogos', theme) && [
-                'amaui-SectionLogos-wrapper'
+                'onesy-SectionLogos-wrapper'
               ],
 
               WrapperProps?.className,
@@ -174,7 +174,7 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
 
               className={classNames([
                 staticClassName('SectionLogos', theme) && [
-                  'amaui-SectionLogos-item'
+                  'onesy-SectionLogos-item'
                 ],
 
                 ItemProps?.className,
@@ -196,7 +196,7 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
 
                 className={classNames([
                   staticClassName('SectionLogos', theme) && [
-                    'amaui-SectionLogos-name'
+                    'onesy-SectionLogos-name'
                   ],
 
                   classes.name
@@ -212,6 +212,6 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
   );
 });
 
-Element.displayName = 'amaui-SectionLogos';
+Element.displayName = 'onesy-SectionLogos';
 
 export default Element;

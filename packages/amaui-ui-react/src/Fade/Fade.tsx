@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
 
@@ -10,9 +10,9 @@ export interface IFade extends ITransition {
 }
 
 const Fade: React.FC<IFade> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiFade?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFade?.props?.default, ...props_ }), [props_]);
 
   const {
     in: inProp,
@@ -167,6 +167,6 @@ const Fade: React.FC<IFade> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Fade.displayName = 'amaui-Fade';
+Fade.displayName = 'onesy-Fade';
 
 export default Fade;

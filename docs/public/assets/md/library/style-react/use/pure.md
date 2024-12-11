@@ -16,7 +16,7 @@ Additionally
 - Once element instance is removed, its specific dynamic style sheet will be removed from the DOM.
 
 ```tsx
-import { pure } from '@amaui/style-react';
+import { pure } from '@onesy/style-react';
 
 const usePure = pure(theme => ({
   a: {

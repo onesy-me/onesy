@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SectionElement, { ISection } from '../Section/Section';
 import ButtonElement from '../Button';
@@ -13,7 +13,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-SectionAction' });
+}), { name: 'onesy-SectionAction' });
 
 export interface ISectionAction extends ISection {
   text?: string;
@@ -26,9 +26,9 @@ export interface ISectionAction extends ISection {
 }
 
 const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionAction?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionAction?.props?.default, ...props_ }), [props_]);
 
   const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
 
@@ -71,8 +71,8 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('SectionAction', theme) && [
-          'amaui-SectionAction-root',
-          `amaui-SectionAction-size-${size}`
+          'onesy-SectionAction-root',
+          `onesy-SectionAction-size-${size}`
         ],
 
         className,
@@ -94,7 +94,7 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
 
         className={classNames([
           staticClassName('SectionAction', theme) && [
-            'amaui-SectionAction-item-button'
+            'onesy-SectionAction-item-button'
           ],
 
           ButtonProps?.className,
@@ -107,6 +107,6 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-Element.displayName = 'amaui-SectionAction';
+Element.displayName = 'onesy-SectionAction';
 
 export default Element;

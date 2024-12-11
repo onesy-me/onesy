@@ -1,12 +1,12 @@
 import React from 'react';
 
-import AmauiZip from '@amaui/zip';
-import { copyToClipboard, stringify } from '@amaui/utils';
-import { Button, IconButton, Line, TextField, Tooltip, Type } from '@amaui/ui-react';
-import { style } from '@amaui/style-react';
+import OnesyZip from '@onesy/zip';
+import { copyToClipboard, stringify } from '@onesy/utils';
+import { Button, IconButton, Line, TextField, Tooltip, Type } from '@onesy/ui-react';
+import { style } from '@onesy/style-react';
 
-import IconMaterialContentCopyRounded from '@amaui/icons-material-rounded-react/IconMaterialContentCopy';
-import IconMaterialDoneRounded from '@amaui/icons-material-rounded-react/IconMaterialDone';
+import IconMaterialContentCopyRounded from '@onesy/icons-material-rounded-react/IconMaterialContentCopy';
+import IconMaterialDoneRounded from '@onesy/icons-material-rounded-react/IconMaterialDone';
 
 const useStyle = style(theme => ({
   root: {
@@ -38,7 +38,7 @@ const unzip = React.forwardRef((props: any, ref: any) => {
 
   const onUnzip = React.useCallback(() => {
     try {
-      setResponse(AmauiZip.decode(value as any));
+      setResponse(OnesyZip.decode(value as any));
     }
     catch (error) {
       console.log('Unzip error', error);

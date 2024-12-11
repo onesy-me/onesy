@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
 import { IBaseElement, ITonal, IColor, IVersion, IElevation, IPropsAny } from '../types';
@@ -703,7 +703,7 @@ const useStyle = styleMethod(theme => ({
   noOutline: {
     boxShadow: 'none'
   }
-}), { name: 'amaui-Surface' });
+}), { name: 'onesy-Surface' });
 
 export interface ISurface extends Omit<IBaseElement, 'children'> {
   tonal?: ITonal;
@@ -722,9 +722,9 @@ export interface ISurface extends Omit<IBaseElement, 'children'> {
 }
 
 const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSurface?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySurface?.props?.default, ...props_ }), [props_]);
 
   const { classes } = useStyle();
 
@@ -978,7 +978,7 @@ const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Surface', theme) && [
-          'amaui-Surface-root'
+          'onesy-Surface-root'
         ],
 
         AdditionalProps?.className,
@@ -1015,6 +1015,6 @@ const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Surface.displayName = 'amaui-Surface';
+Surface.displayName = 'onesy-Surface';
 
 export default Surface;

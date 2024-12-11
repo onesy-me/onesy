@@ -1,38 +1,38 @@
 
-# amaui cookie
+# onesy cookie
 
 Cookie storage management utils.
 
 ### Add
 
 ```sh
-yarn add @amaui/cookie
+yarn add @onesy/cookie
 ```
 
 ### Use
 
 ```ts
-import AmauiCookie from '@amaui/cookie';
+import OnesyCookie from '@onesy/cookie';
 
-const amauiCookie = new AmauiCookie();
+const onesyCookie = new OnesyCookie();
 
 // Add
-amauiCookie.add('a', 4);
+onesyCookie.add('a', 4);
 
 // Has
-amauiCookie.has('a');
+onesyCookie.has('a');
 
 // true
 
 // Get
-amauiCookie.get('a');
+onesyCookie.get('a');
 
 // 4
 
 // Remove
-amauiCookie.remove('a');
+onesyCookie.remove('a');
 
-amauiCookie.get('a');
+onesyCookie.get('a');
 
 // undefined
 ```

@@ -1,12 +1,12 @@
 
-# amaui aws
+# onesy aws
 
 Utils for easier using of `aws-sdk` library, for AWS.
 
 ### Add
 
 ```bash
-yarn add @amaui/aws
+yarn add @onesy/aws
 ```
 
 <br />
@@ -19,13 +19,13 @@ yarn add @aws-sdk/client-s3
 ### Use
 
 ```ts
-import AmauiAws from '@amaui/aws';
+import OnesyAws from '@onesy/aws';
 // Make if you wanna a config file and
 // inside of it add all the process.env aws related props
 import Config from './config';
 
 // Make a new aws instance
-const amauiAws = new AmauiAws({
+const onesyAws = new OnesyAws({
   s3: {
     access: {
       endpoint: Config.aws.s3.endpoint,
@@ -45,17 +45,17 @@ const amauiAws = new AmauiAws({
 });
 
 // Add
-await amauiAws.s3.add('a', 4);
+await onesyAws.s3.add('a', 4);
 
 // Get
-await amauiAws.s3.get('a');
+await onesyAws.s3.get('a');
 
 // 4
 
 // Remove
-await amauiAws.s3.remove('a');
+await onesyAws.s3.remove('a');
 
-await amauiAws.s3.get('a');
+await onesyAws.s3.get('a');
 
 // undefined
 ```

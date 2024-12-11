@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import { TMethod } from '@amaui/models';
+import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { TMethod } from '@onesy/models';
 
 import PathElement from '../Path';
 import LineElement from '../Line';
@@ -39,7 +39,7 @@ const useStyle = styleMethod(theme => ({
       opacity: '0.14'
     }
   }
-}), { name: 'amaui-AreaChartItem' });
+}), { name: 'onesy-AreaChartItem' });
 
 export interface IAreaChartItem extends IChart {
   name?: string;
@@ -68,9 +68,9 @@ export interface IAreaChartItem extends IChart {
 }
 
 const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiAreaChartItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChartItem?.props?.default, ...props_ }), [props_]);
 
   const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
 
@@ -180,7 +180,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
 
         className={classNames([
           staticClassName('AreaChartItem', theme) && [
-            'amaui-AreaChartItem-legend-item'
+            'onesy-AreaChartItem-legend-item'
           ],
 
           legendItemProps?.className,
@@ -191,7 +191,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
         <span
           className={classNames([
             staticClassName('AreaChartItem', theme) && [
-              'amaui-AreaChartItem-legend-icon'
+              'onesy-AreaChartItem-legend-icon'
             ],
 
             classes.legend_icon
@@ -495,6 +495,6 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-AreaChartItem.displayName = 'amaui-AreaChartItem';
+AreaChartItem.displayName = 'onesy-AreaChartItem';
 
 export default AreaChartItem;

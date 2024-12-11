@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialCloudUpload from '@amaui/icons-material-rounded-react/IconMaterialCloudUploadW100';
+import IconMaterialCloudUpload from '@onesy/icons-material-rounded-react/IconMaterialCloudUploadW100';
 
 import FileChooseElement from '../FileChoose';
 import SurfaceElement from '../Surface';
@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
   label: {
     position: 'relative',
 
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       width: '100%',
       height: '174px',
       outlineStyle: 'dashed',
@@ -48,7 +48,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'default',
     pointerEvents: 'none'
   }
-}), { name: 'amaui-DropZone' });
+}), { name: 'onesy-DropZone' });
 
 export interface IDropZone extends IFileChoose {
   version?: IVersion;
@@ -65,9 +65,9 @@ export interface IDropZone extends IFileChoose {
 }
 
 const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDropZone?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDropZone?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -300,7 +300,7 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('DropZone', theme) && [
-          'amaui-DropZone-root'
+          'onesy-DropZone-root'
         ],
 
         className,
@@ -319,7 +319,7 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
 
         className: classNames([
           staticClassName('DropZone', theme) && [
-            'amaui-DropZone-label'
+            'onesy-DropZone-label'
           ],
 
           ComponentProps?.className,
@@ -332,7 +332,7 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
 
         className: classNames([
           staticClassName('DropZone', theme) && [
-            'amaui-DropZone-wrapper'
+            'onesy-DropZone-wrapper'
           ],
 
           WrapperProps?.className,
@@ -356,7 +356,7 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('DropZone', theme) && [
-              'amaui-DropZone-wrapper-text'
+              'onesy-DropZone-wrapper-text'
             ],
 
             classes.wrapperText
@@ -375,6 +375,6 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-DropZone.displayName = 'amaui-DropZone';
+DropZone.displayName = 'onesy-DropZone';
 
 export default DropZone;

@@ -1,5 +1,5 @@
 import React from 'react';
 
-const AmauiMainProgressContext: any = React.createContext(undefined);
+const OnesyMainProgressContext: any = React.createContext(undefined);
 
-export default AmauiMainProgressContext;
+export default OnesyMainProgressContext;

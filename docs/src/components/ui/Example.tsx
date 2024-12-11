@@ -1,14 +1,14 @@
 import React from 'react';
 import Dynamic from 'next/dynamic';
 
-import { is, copyToClipboard } from '@amaui/utils';
-import { IconButton, Line, Markdown, sanitize, Surface, Tooltip, Type } from '@amaui/ui-react';
-import { classNames, style } from '@amaui/style-react';
-import AmauiRequest from '@amaui/request';
+import { is, copyToClipboard } from '@onesy/utils';
+import { IconButton, Line, Markdown, sanitize, Surface, Tooltip, Type } from '@onesy/ui-react';
+import { classNames, style } from '@onesy/style-react';
+import OnesyRequest from '@onesy/request';
 
-import IconMaterialTempPreferencesCustomRounded from '@amaui/icons-material-rounded-react/IconMaterialTempPreferencesCustom';
-import IconMaterialDataObjectRounded from '@amaui/icons-material-rounded-react/IconMaterialDataObject';
-import IconMaterialDraftRounded from '@amaui/icons-material-rounded-react/IconMaterialDraft';
+import IconMaterialTempPreferencesCustomRounded from '@onesy/icons-material-rounded-react/IconMaterialTempPreferencesCustom';
+import IconMaterialDataObjectRounded from '@onesy/icons-material-rounded-react/IconMaterialDataObject';
+import IconMaterialDraftRounded from '@onesy/icons-material-rounded-react/IconMaterialDraft';
 
 import IFrame from './IFrame';
 
@@ -278,8 +278,8 @@ const Example = React.forwardRef((props: any, ref: any) => {
     }
 
     const files_ = {
-      long: mainSrc && (await AmauiRequest.get(mainSrc, { response: { type: 'text' } })).response,
-      short: shortSrc && (await AmauiRequest.get(shortSrc, { response: { type: 'text' } })).response
+      long: mainSrc && (await OnesyRequest.get(mainSrc, { response: { type: 'text' } })).response,
+      short: shortSrc && (await OnesyRequest.get(shortSrc, { response: { type: 'text' } })).response
     };
 
     // Element
@@ -297,7 +297,7 @@ const Example = React.forwardRef((props: any, ref: any) => {
     for (const iframe of iframes) {
       const bodyIframe = iframe.contentWindow?.document.body;
 
-      const markdowns = Array.from(bodyIframe!.querySelectorAll('.amaui-Markdown-root'));
+      const markdowns = Array.from(bodyIframe!.querySelectorAll('.onesy-Markdown-root'));
 
       for (const markdown of markdowns) {
         // Update all headings within the markdown inner html
@@ -307,12 +307,12 @@ const Example = React.forwardRef((props: any, ref: any) => {
         elements.forEach(item => {
           const text = item.textContent;
 
-          if (!(item as any).dataset.amaui) {
+          if (!(item as any).dataset.onesy) {
             // ClassName
             item.className = classNames([item.className, classes.pre]);
 
             // Mark
-            item.setAttribute('data-amaui', 'true');
+            item.setAttribute('data-onesy', 'true');
 
             const iconCopy = `<svg viewBox="0 0 24 24" width="1em" height="1em" focusable="false" aria-hidden="true" style="fill: currentcolor; font-size: 18px;"><path d="M9 18Q8.175 18 7.588 17.413Q7 16.825 7 16V4Q7 3.175 7.588 2.587Q8.175 2 9 2H18Q18.825 2 19.413 2.587Q20 3.175 20 4V16Q20 16.825 19.413 17.413Q18.825 18 18 18ZM9 16H18Q18 16 18 16Q18 16 18 16V4Q18 4 18 4Q18 4 18 4H9Q9 4 9 4Q9 4 9 4V16Q9 16 9 16Q9 16 9 16ZM5 22Q4.175 22 3.587 21.413Q3 20.825 3 20V7Q3 6.575 3.288 6.287Q3.575 6 4 6Q4.425 6 4.713 6.287Q5 6.575 5 7V20Q5 20 5 20Q5 20 5 20H15Q15.425 20 15.713 20.288Q16 20.575 16 21Q16 21.425 15.713 21.712Q15.425 22 15 22ZM9 4Q9 4 9 4Q9 4 9 4V16Q9 16 9 16Q9 16 9 16Q9 16 9 16Q9 16 9 16V4Q9 4 9 4Q9 4 9 4Z"/></svg>`;
 
@@ -372,9 +372,9 @@ const Example = React.forwardRef((props: any, ref: any) => {
         elements = Array.from(markdown?.querySelectorAll('pre > code') || []);
 
         elements.forEach(item => {
-          if (!(item as any).dataset.amaui) {
+          if (!(item as any).dataset.onesy) {
             // Mark
-            item.setAttribute('data-amaui', 'true');
+            item.setAttribute('data-onesy', 'true');
 
             const items = (item.textContent || '').split('\n').slice(0, -1);
 

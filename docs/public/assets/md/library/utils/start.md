@@ -1,19 +1,19 @@
 
-# amaui utils
+# onesy utils
 
 Library with various util methods for front end & back end.
 
 ### Add
 
 ```sh
-yarn add @amaui/utils
+yarn add @onesy/utils
 ```
 
 ### Use
 
 ```ts
 // Import any of the methods
-import { encode, equalDeep } from '@amaui/utils';
+import { encode, equalDeep } from '@onesy/utils';
 
 const value = { a: 'a', b: [{ a: 4 }] };
 

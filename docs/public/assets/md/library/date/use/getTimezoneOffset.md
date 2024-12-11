@@ -4,9 +4,9 @@
 Returns timezone offset.
 
 ```ts
-const amauiDate = new AmauiDate();
+const onesyDate = new OnesyDate();
 
-getTimezoneOffset(amauiDate);
+getTimezoneOffset(onesyDate);
 
 // +02:00
 ```
@@ -16,7 +16,7 @@ getTimezoneOffset(amauiDate);
 #### getTimezoneOffset
 
 ```ts
-default function getTimezoneOffset(value?: AmauiDate, divider?: string): string;
+default function getTimezoneOffset(value?: OnesyDate, divider?: string): string;
 ```
 
 

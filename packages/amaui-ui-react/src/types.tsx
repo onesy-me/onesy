@@ -1,4 +1,4 @@
-import { IBreakpoint, TPaletteVersion } from '@amaui/style-react';
+import { IBreakpoint, TPaletteVersion } from '@onesy/style-react';
 
 export type IPoint = [number, number];
 

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialCircle from '@amaui/icons-material-rounded-react/IconMaterialCircleW100Filled';
-import IconMaterialNightlight from '@amaui/icons-material-rounded-react/IconMaterialNightlightW100Filled';
-import IconMaterialCloud from '@amaui/icons-material-rounded-react/IconMaterialCloudW100Filled';
-import IconMaterialRainy from '@amaui/icons-material-rounded-react/IconMaterialRainyW100Filled';
-import IconMaterialCloudySnowing from '@amaui/icons-material-rounded-react/IconMaterialCloudySnowingW100Filled';
+import IconMaterialCircle from '@onesy/icons-material-rounded-react/IconMaterialCircleW100Filled';
+import IconMaterialNightlight from '@onesy/icons-material-rounded-react/IconMaterialNightlightW100Filled';
+import IconMaterialCloud from '@onesy/icons-material-rounded-react/IconMaterialCloudW100Filled';
+import IconMaterialRainy from '@onesy/icons-material-rounded-react/IconMaterialRainyW100Filled';
+import IconMaterialCloudySnowing from '@onesy/icons-material-rounded-react/IconMaterialCloudySnowingW100Filled';
 
 import SurfaceElement from '../Surface';
 import TypeElement from '../Type';
@@ -18,7 +18,7 @@ import { staticClassName } from '../utils';
 import { ISize, IElementReference, IPropsAny } from '../types';
 
 const IconWeather = React.forwardRef((props: any, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -70,7 +70,7 @@ const useStyle = styleMethod(theme => ({
     aspectRatio: '1',
     width: '100vw',
 
-    '&.amaui-Surface-root': {
+    '&.onesy-Surface-root': {
       background: 'transparent'
     }
   },
@@ -100,7 +100,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   icon_background: {
-    '&.amaui-Icon-root': {
+    '&.onesy-Icon-root': {
       width: '100%',
       height: 'auto'
     }
@@ -111,7 +111,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   icon_dayTime: {
-    '&.amaui-Icon-root': {
+    '&.onesy-Icon-root': {
       position: 'absolute',
       zIndex: '1',
       bottom: '21%',
@@ -122,13 +122,13 @@ const useStyle = styleMethod(theme => ({
   },
 
   icon_dayTime_day: {
-    '&.amaui-Icon-root': {
+    '&.onesy-Icon-root': {
       color: '#fcc21d'
     }
   },
 
   icon_dayTime_night: {
-    '&.amaui-Icon-root': {
+    '&.onesy-Icon-root': {
       color: '#dfe0e2'
     }
   },
@@ -152,19 +152,19 @@ const useStyle = styleMethod(theme => ({
   },
 
   icon_weather_cloudy: {
-    '&.amaui-Icon-root': {
+    '&.onesy-Icon-root': {
       color: '#f1f3f4'
     }
   },
 
   icon_weather_rainy: {
-    '&.amaui-Icon-root': {
+    '&.onesy-Icon-root': {
       color: '#e6f5fc'
     }
   },
 
   icon_weather_snowy: {
-    '&.amaui-Icon-root': {
+    '&.onesy-Icon-root': {
       color: '#dcf0ff'
     }
   },
@@ -180,7 +180,7 @@ const useStyle = styleMethod(theme => ({
   size_large: {
     maxWidth: '240px'
   }
-}), { name: 'amaui-Weather' });
+}), { name: 'onesy-Weather' });
 
 export type TWeatherDayTime = 'day' | 'night';
 
@@ -220,9 +220,9 @@ export interface IWeather extends ISurface {
 }
 
 const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiWeather?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWeather?.props?.default, ...props_ }), [props_]);
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
@@ -378,9 +378,9 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Weather', theme) && [
-          'amaui-Weather-root',
-          `amaui-Weather-version-${version}`,
-          `amaui-Weather-size-${size}`
+          'onesy-Weather-root',
+          `onesy-Weather-version-${version}`,
+          `onesy-Weather-size-${size}`
         ],
 
         className,
@@ -403,7 +403,7 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Weather', theme) && [
-            'amaui-Weather-icon-background'
+            'onesy-Weather-icon-background'
           ],
 
           classes.icon_background,
@@ -419,7 +419,7 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Weather', theme) && [
-              'amaui-Weather-text'
+              'onesy-Weather-text'
             ],
 
             classes.text,
@@ -445,8 +445,8 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Weather', theme) && [
-                  'amaui-Weather-icon',
-                  'amaui-Weather-icon-day-time'
+                  'onesy-Weather-icon',
+                  'onesy-Weather-icon-day-time'
                 ],
 
                 IconProps?.className,
@@ -469,8 +469,8 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Weather', theme) && [
-                  'amaui-Weather-icon',
-                  'amaui-Weather-icon-weather'
+                  'onesy-Weather-icon',
+                  'onesy-Weather-icon-weather'
                 ],
 
                 IconProps?.className,
@@ -486,6 +486,6 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Weather.displayName = 'amaui-Weather';
+Weather.displayName = 'onesy-Weather';
 
 export default Weather;

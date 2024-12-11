@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
 
@@ -15,9 +15,9 @@ export interface ISlide extends ITransition {
 }
 
 const Slide: React.FC<ISlide> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSlide?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySlide?.props?.default, ...props_ }), [props_]);
 
   const {
     in: inProp,
@@ -243,6 +243,6 @@ const Slide: React.FC<ISlide> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Slide.displayName = 'amaui-Slide';
+Slide.displayName = 'onesy-Slide';
 
 export default Slide;

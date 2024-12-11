@@ -1,32 +1,32 @@
 
-# AmauiMiddleware
+# OnesyMiddleware
 
 Use to run a method priror or post running of specific methods. \
-Types of middleware methods, and order in which they run is explained in the AmauiGroup page.
+Types of middleware methods, and order in which they run is explained in the OnesyGroup page.
 
 ## API
 
-#### IAmauiMiddleware
+#### IOnesyMiddleware
 
 ```ts
-interface IAmauiMiddleware {
+interface IOnesyMiddleware {
     name: string;
     method: TMethod;
-    parent: AmauiGroup;
+    parent: OnesyGroup;
     file?: string;
-    responses?: Array<IAmauiResponse>;
+    responses?: Array<IOnesyResponse>;
 }
 ```
 
-#### AmauiMiddleware
+#### OnesyMiddleware
 
 ```ts
-class AmauiMiddleware implements IAmauiMiddleware {
+class OnesyMiddleware implements IOnesyMiddleware {
     name: string;
     method: TMethod;
-    parent: AmauiGroup;
+    parent: OnesyGroup;
     file?: string;
-    responses: Array<IAmauiResponse>;
+    responses: Array<IOnesyResponse>;
     constructor(name: string, method: TMethod);
 }
 ```
@@ -36,12 +36,12 @@ class AmauiMiddleware implements IAmauiMiddleware {
   "element": "BottomNavigation",
   "props": {
     "previous": {
-      "label": "Test: AmauiGroup",
-      "to": "/library/test/use/AmauiGroup"
+      "label": "Test: OnesyGroup",
+      "to": "/library/test/use/OnesyGroup"
     },
     "next": {
-      "label": "Test: AmauiTest",
-      "to": "/library/test/use/AmauiTest"
+      "label": "Test: OnesyTest",
+      "to": "/library/test/use/OnesyTest"
     }
   }
 }~

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SectionElement from '../Section';
 import TypeElement from '../Type';
@@ -18,7 +18,7 @@ const useStyle = styleMethod(theme => ({
   fullHeight: {
     height: '100vh'
   }
-}), { name: 'amaui-NotFound' });
+}), { name: 'onesy-NotFound' });
 
 export interface INotFound extends ISection {
   name?: any;
@@ -38,9 +38,9 @@ export interface INotFound extends ISection {
 }
 
 const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiNotFound?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNotFound?.props?.default, ...props_ }), [props_]);
 
   const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
 
@@ -93,7 +93,7 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('NotFound', theme) && [
-          `amaui-NotFound-root`
+          `onesy-NotFound-root`
         ],
 
         className,
@@ -114,7 +114,7 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('NotFound', theme) && [
-            `amaui-NotFound-type`
+            `onesy-NotFound-type`
           ],
 
           TypeProps?.className
@@ -137,7 +137,7 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('NotFound', theme) && [
-              `amaui-NotFound-button`
+              `onesy-NotFound-button`
             ],
 
             ButtonProps?.className,
@@ -153,6 +153,6 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-NotFound.displayName = 'amaui-NotFound';
+NotFound.displayName = 'onesy-NotFound';
 
 export default NotFound;

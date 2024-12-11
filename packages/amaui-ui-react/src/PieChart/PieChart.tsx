@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, copy, percentageFromValueWithinRange, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, copy, percentageFromValueWithinRange, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import TypeElement from '../Type';
@@ -14,7 +14,7 @@ import { angleToCoordinates, staticClassName, valueBreakpoints } from '../utils'
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '& .amaui-Chart-wrapper': {
+    '& .onesy-Chart-wrapper': {
       aspectRatio: '1',
       maxWidth: '240px',
       height: 'unset',
@@ -53,16 +53,16 @@ const useStyle = styleMethod(theme => ({
     height: '8px',
     borderRadius: theme.methods.shape.radius.value(40, 'px')
   }
-}), { name: 'amaui-PieChart' });
+}), { name: 'onesy-PieChart' });
 
 export interface IPieChart extends IChart {
 
 }
 
 const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPieChart?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPieChart?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -171,7 +171,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('PieChart', theme) && [
-            'amaui-PieChart-legend-item'
+            'onesy-PieChart-legend-item'
           ],
 
           className_,
@@ -184,7 +184,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
         <span
           className={classNames([
             staticClassName('PieChart', theme) && [
-              'amaui-PieChart-legend-icon'
+              'onesy-PieChart-legend-icon'
             ],
 
             classes.legend_icon
@@ -367,7 +367,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('PieChart', theme) && [
-                      'amaui-PieChart-text'
+                      'onesy-PieChart-text'
                     ],
 
                     classes.text
@@ -479,7 +479,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('PieChart', theme) && [
-              'amaui-PieChart-append'
+              'onesy-PieChart-append'
             ],
 
             classes.append
@@ -495,7 +495,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
             <span
               className={classNames([
                 staticClassName('PieChart', theme) && [
-                  'amaui-LineChart-append-icon'
+                  'onesy-LineChart-append-icon'
                 ],
 
                 classes.append_icon
@@ -610,7 +610,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('PieChart', theme) && [
-          'amaui-PieChart-root'
+          'onesy-PieChart-root'
         ],
 
         className,
@@ -622,6 +622,6 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-PieChart.displayName = 'amaui-PieChart';
+PieChart.displayName = 'onesy-PieChart';
 
 export default PieChart;

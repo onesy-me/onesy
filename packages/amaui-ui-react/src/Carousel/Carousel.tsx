@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { is, unique, clamp, debounce, equalDeep, TMethod, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
-import AmauiSubscription from '@amaui/subscription';
+import { is, unique, clamp, debounce, equalDeep, TMethod, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import OnesySubscription from '@onesy/subscription';
 
-import IconMaterialNavigateBefore from '@amaui/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
-import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialNavigateBefore from '@onesy/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
+import IconMaterialNavigateNext from '@onesy/icons-material-rounded-react/IconMaterialNavigateNextW100';
 
 import IconElement from '../Icon';
 import LineElement from '../Line';
@@ -160,7 +160,7 @@ const useStyle = styleMethod(theme => ({
   icon_next_orientation_vertical: {
     transform: 'rotate(90deg)'
   }
-}), { name: 'amaui-Carousel' });
+}), { name: 'onesy-Carousel' });
 
 export interface ICarouselValue {
   index?: number;
@@ -231,10 +231,10 @@ export interface ICarousel extends Omit<ISurface, 'version'> {
 
   momentum?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
 
-  // AmauiSubscription methods
-  previousSub?: AmauiSubscription;
-  nextSub?: AmauiSubscription;
-  updateSub?: AmauiSubscription;
+  // OnesySubscription methods
+  previousSub?: OnesySubscription;
+  nextSub?: OnesySubscription;
+  updateSub?: OnesySubscription;
 
   // on mobile visible
   arrowsVisibility?: 'hover' | 'visible' | Partial<Record<IValueBreakpoints, 'hover' | 'visible'>>;
@@ -296,9 +296,9 @@ export interface ICarousel extends Omit<ISurface, 'version'> {
 }
 
 const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiCarousel?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCarousel?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -370,7 +370,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
     momentum: momentum_,
 
-    // AmauiSubscription methods
+    // OnesySubscription methods
     previousSub,
     nextSub,
     updateSub,
@@ -1105,34 +1105,34 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
     start();
   }, [items, value, autoPlay, autoPlayInterval]);
 
-  // AmauiSubscription methods
+  // OnesySubscription methods
   React.useEffect(() => {
     const method = (...args: any[]) => onUpdate(...args);
 
-    if (is('function', updateSub?.subscribe)) (updateSub as AmauiSubscription)?.subscribe(method);
+    if (is('function', updateSub?.subscribe)) (updateSub as OnesySubscription)?.subscribe(method);
 
     return () => {
-      if (is('function', updateSub?.unsubscribe)) (updateSub as AmauiSubscription)?.unsubscribe(method);
+      if (is('function', updateSub?.unsubscribe)) (updateSub as OnesySubscription)?.unsubscribe(method);
     };
   }, [updateSub]);
 
   React.useEffect(() => {
     const method = (...args: any[]) => onUpdate(...args);
 
-    if (is('function', previousSub?.subscribe)) (previousSub as AmauiSubscription)?.subscribe(method);
+    if (is('function', previousSub?.subscribe)) (previousSub as OnesySubscription)?.subscribe(method);
 
     return () => {
-      if (is('function', previousSub?.unsubscribe)) (previousSub as AmauiSubscription)?.unsubscribe(method);
+      if (is('function', previousSub?.unsubscribe)) (previousSub as OnesySubscription)?.unsubscribe(method);
     };
   }, [previousSub]);
 
   React.useEffect(() => {
     const method = (...args: any[]) => onUpdate(...args);
 
-    if (is('function', nextSub?.subscribe)) (nextSub as AmauiSubscription)?.subscribe(method);
+    if (is('function', nextSub?.subscribe)) (nextSub as OnesySubscription)?.subscribe(method);
 
     return () => {
-      if (is('function', nextSub?.unsubscribe)) (nextSub as AmauiSubscription)?.unsubscribe(method);
+      if (is('function', nextSub?.unsubscribe)) (nextSub as OnesySubscription)?.unsubscribe(method);
     };
   }, [nextSub]);
 
@@ -1287,7 +1287,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
         <div
           className={classNames([
             staticClassName('Carousel', theme) && [
-              'amaui-Carousel-background'
+              'onesy-Carousel-background'
             ],
 
             classes.background
@@ -1348,7 +1348,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Carousel', theme) && [
-          'amaui-Carousel-root'
+          'onesy-Carousel-root'
         ],
 
         className,
@@ -1391,7 +1391,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Carousel', theme) && [
-              'amaui-Carousel-carousel'
+              'onesy-Carousel-carousel'
             ],
 
             CarouselProps?.className,
@@ -1427,7 +1427,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Carousel', theme) && [
-                  'amaui-Carousel-item'
+                  'onesy-Carousel-item'
                 ],
 
                 ItemWrapperProps?.className,
@@ -1473,7 +1473,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Carousel', theme) && [
-              'amaui-Carousel-carousel'
+              'onesy-Carousel-carousel'
             ],
 
             CarouselProps?.className,
@@ -1512,7 +1512,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('Carousel', theme) && [
-                      'amaui-Carousel-item-transition'
+                      'onesy-Carousel-item-transition'
                     ],
 
                     classes.item_transition,
@@ -1550,7 +1550,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
               className={classNames([
                 staticClassName('Carousel', theme) && [
-                  'amaui-Carousel-progress'
+                  'onesy-Carousel-progress'
                 ],
 
                 classes.progress,
@@ -1565,8 +1565,8 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('Carousel', theme) && [
-                      'amaui-Carousel-progress-item',
-                      indexActive === index && 'amaui-Carousel-progress-item-active'
+                      'onesy-Carousel-progress-item',
+                      indexActive === index && 'onesy-Carousel-progress-item-active'
                     ],
 
                     classes.progress_item,
@@ -1610,8 +1610,8 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
                   className: classNames([
                     staticClassName('Carousel', theme) && [
-                      'amaui-Carousel-arrow',
-                      'amaui-Carousel-arrow-previous'
+                      'onesy-Carousel-arrow',
+                      'onesy-Carousel-arrow-previous'
                     ],
 
                     ArrowProps?.className,
@@ -1641,8 +1641,8 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('Carousel', theme) && [
-                      'amaui-Carousel-arrow',
-                      'amaui-Carousel-arrow-previous'
+                      'onesy-Carousel-arrow',
+                      'onesy-Carousel-arrow-previous'
                     ],
 
                     ArrowProps?.className,
@@ -1693,8 +1693,8 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
                   className: classNames([
                     staticClassName('Carousel', theme) && [
-                      'amaui-Carousel-arrow',
-                      'amaui-Carousel-arrow-next'
+                      'onesy-Carousel-arrow',
+                      'onesy-Carousel-arrow-next'
                     ],
 
                     ArrowProps?.className,
@@ -1724,8 +1724,8 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
                   className={classNames([
                     staticClassName('Carousel', theme) && [
-                      'amaui-Carousel-arrow',
-                      'amaui-Carousel-arrow-next'
+                      'onesy-Carousel-arrow',
+                      'onesy-Carousel-arrow-next'
                     ],
 
                     ArrowProps?.className,
@@ -1752,6 +1752,6 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Carousel.displayName = 'amaui-Carousel';
+Carousel.displayName = 'onesy-Carousel';
 
 export default Carousel;

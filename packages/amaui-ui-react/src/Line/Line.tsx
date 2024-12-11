@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import DividerElement from '../Divider';
 import useMediaQuery from '../useMediaQuery';
@@ -140,7 +140,7 @@ const useStyle = styleMethod(theme => ({
   'columnGap_12': { columnGap: `${12 * theme.space.unit}px` },
 
   'columnGap_16': { columnGap: `${16 * theme.space.unit}px` }
-}), { name: 'amaui-Line' });
+}), { name: 'onesy-Line' });
 
 export type TLineAlign = 'inherit' | 'initial' | 'flex-start' | 'center' | 'flex-end' | 'baseline' | 'stretch' | 'unset';
 
@@ -177,9 +177,9 @@ export interface ILine extends IBaseElement {
 }
 
 const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLine?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLine?.props?.default, ...props_ }), [props_]);
 
   const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
 
@@ -286,8 +286,8 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Line', theme) && [
-          'amaui-Line-root',
-          `amaui-Line-direction-${direction}`
+          'onesy-Line-root',
+          `onesy-Line-direction-${direction}`
         ],
 
         className,
@@ -318,6 +318,6 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Line.displayName = 'amaui-Line';
+Line.displayName = 'onesy-Line';
 
 export default Line;

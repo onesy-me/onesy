@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is, unique } from '@amaui/utils';
-import { useAmauiTheme } from '@amaui/style-react';
+import { is, unique } from '@onesy/utils';
+import { useOnesyTheme } from '@onesy/style-react';
 
 import { STATUS, TTransitionStatus } from '..';
 import { IPropsAny } from '../types';
@@ -19,9 +19,9 @@ export interface ITransitions {
 }
 
 const Transitions: React.FC<ITransitions> = (props_) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTransitions?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTransitions?.props?.default, ...props_ }), [props_]);
 
   const {
     mode = 'out-in',
@@ -298,6 +298,6 @@ const Transitions: React.FC<ITransitions> = (props_) => {
   return children_;
 };
 
-Transitions.displayName = 'amaui-Transitions';
+Transitions.displayName = 'onesy-Transitions';
 
 export default Transitions;

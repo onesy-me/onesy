@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import ImageGalleryElement from '../ImageGallery';
 import SectionElement, { ISection } from '../Section/Section';
@@ -13,7 +13,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-SectionImageGallery' });
+}), { name: 'onesy-SectionImageGallery' });
 
 export interface ISectionImageGallery extends ISection {
   values?: IMediaObject[];
@@ -24,9 +24,9 @@ export interface ISectionImageGallery extends ISection {
 }
 
 const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSectionImageGallery?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionImageGallery?.props?.default, ...props_ }), [props_]);
 
   const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
 
@@ -63,7 +63,7 @@ const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('ImageGallery', theme) && [
-          'amaui-SectionImageGallery-root'
+          'onesy-SectionImageGallery-root'
         ],
 
         className,
@@ -87,6 +87,6 @@ const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: a
   );
 });
 
-Element.displayName = 'amaui-SectionImageGallery';
+Element.displayName = 'onesy-SectionImageGallery';
 
 export default Element;

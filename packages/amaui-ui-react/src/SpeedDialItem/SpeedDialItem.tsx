@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TooltipElement from '../Tooltip';
 import IconButtonElement from '../IconButton';
@@ -16,19 +16,19 @@ const useStyle = styleMethod(theme => ({
   },
 
   no_render: {
-    '& .amaui-Button-root': {
+    '& .onesy-Button-root': {
       boxShadow: theme.shadows.values.default[6],
 
       '&:hover': {
         boxShadow: theme.shadows.values.default[8]
       },
 
-      '&.amaui-Button-focus': {
+      '&.onesy-Button-focus': {
         boxShadow: theme.shadows.values.default[8]
       }
     }
   }
-}), { name: 'amaui-SpeedDialItem' });
+}), { name: 'onesy-SpeedDialItem' });
 
 export interface ISpeedDialItem extends IIconButton {
   open?: boolean;
@@ -54,9 +54,9 @@ export interface ISpeedDialItem extends IIconButton {
 }
 
 const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiSpeedDialItem?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpeedDialItem?.props?.default, ...props_ }), [props_]);
 
   const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
 
@@ -106,7 +106,7 @@ const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: a
 
       className={classNames([
         staticClassName('SpeedDialItem', theme) && [
-          `amaui-SpeedDialItem-root`
+          `onesy-SpeedDialItem-root`
         ],
 
         className,
@@ -145,6 +145,6 @@ const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: a
   );
 });
 
-SpeedDialItem.displayName = 'amaui-SpeedDialItem';
+SpeedDialItem.displayName = 'onesy-SpeedDialItem';
 
 export default SpeedDialItem;

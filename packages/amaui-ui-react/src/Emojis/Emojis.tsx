@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { is, debounce, clamp, capitalize } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, debounce, clamp, capitalize } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialMood from '@amaui/icons-material-rounded-react/IconMaterialMoodW100';
-import IconMaterialEmojiNature from '@amaui/icons-material-rounded-react/IconMaterialEmojiNatureW100';
-import IconMaterialEmojiFoodBeverage from '@amaui/icons-material-rounded-react/IconMaterialEmojiFoodBeverageW100';
-import IconMaterialHiking from '@amaui/icons-material-rounded-react/IconMaterialHikingW100';
-import IconMaterialEmojiTransportation from '@amaui/icons-material-rounded-react/IconMaterialEmojiTransportationW100';
-import IconMaterialEmojiObjects from '@amaui/icons-material-rounded-react/IconMaterialEmojiObjectsW100';
-import IconMaterialEmojiSymbols from '@amaui/icons-material-rounded-react/IconMaterialEmojiSymbolsW100';
-import IconMaterialEmojiFlags from '@amaui/icons-material-rounded-react/IconMaterialEmojiFlagsW100';
+import IconMaterialMood from '@onesy/icons-material-rounded-react/IconMaterialMoodW100';
+import IconMaterialEmojiNature from '@onesy/icons-material-rounded-react/IconMaterialEmojiNatureW100';
+import IconMaterialEmojiFoodBeverage from '@onesy/icons-material-rounded-react/IconMaterialEmojiFoodBeverageW100';
+import IconMaterialHiking from '@onesy/icons-material-rounded-react/IconMaterialHikingW100';
+import IconMaterialEmojiTransportation from '@onesy/icons-material-rounded-react/IconMaterialEmojiTransportationW100';
+import IconMaterialEmojiObjects from '@onesy/icons-material-rounded-react/IconMaterialEmojiObjectsW100';
+import IconMaterialEmojiSymbols from '@onesy/icons-material-rounded-react/IconMaterialEmojiSymbolsW100';
+import IconMaterialEmojiFlags from '@onesy/icons-material-rounded-react/IconMaterialEmojiFlagsW100';
 
 import MenuElement, { IMenu } from '../Menu/Menu';
 import LineElement from '../Line';
@@ -123,45 +123,45 @@ const useStyle = styleMethod(theme => ({
     backdropFilter: 'blur(2px)',
     background: 'transparent',
 
-    '&.amaui-ListSubheader-root': {
+    '&.onesy-ListSubheader-root': {
       zIndex: 14
     }
   },
 
   tabs: {
-    '&.amaui-Tabs-root': {
+    '&.onesy-Tabs-root': {
       background: 'transparent'
     },
 
-    '& .amaui-Tabs-tabs': {
+    '& .onesy-Tabs-tabs': {
       minWidth: '100%'
     }
   },
 
   tab: {
-    '&.amaui-Tab-root': {
+    '&.onesy-Tab-root': {
       minWidth: 'unset'
     }
   },
 
   tab_size_small: {
-    '&.amaui-Tab-root': {
+    '&.onesy-Tab-root': {
       padding: `${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(0.75, 'px')}`
     }
   },
 
   tab_size_regular: {
-    '&.amaui-Tab-root': {
+    '&.onesy-Tab-root': {
       padding: `${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(1.25, 'px')}`
     }
   },
 
   tab_size_large: {
-    '&.amaui-Tab-root': {
+    '&.onesy-Tab-root': {
       padding: `${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(1.25, 'px')}`
     }
   }
-}), { name: 'amaui-Emojis' });
+}), { name: 'onesy-Emojis' });
 
 export interface IEmojiCategory {
   name: string;
@@ -190,9 +190,9 @@ export interface IEmojis extends IMenu {
 }
 
 const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiEmojis?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyEmojis?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -362,7 +362,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
     const elements = Array.from(refs.main.current?.children || []) as HTMLElement[];
 
     if (!!elements.length) {
-      const element = elements.find((item: HTMLElement) => item.dataset.amauiCategory === valueNew);
+      const element = elements.find((item: HTMLElement) => item.dataset.onesyCategory === valueNew);
 
       if (element) {
         const top = element.offsetTop;
@@ -467,7 +467,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
                       onClick={() => onTabClick(item.value)}
 
-                      data-amaui-spy-scroll={categoryToID(item.value)}
+                      data-onesy-spy-scroll={categoryToID(item.value)}
 
                       className={classNames([
                         classes.tab,
@@ -505,7 +505,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
                 SurfaceProps={{
                   id: categoryToID(item),
-                  'data-amaui-category': item
+                  'data-onesy-category': item
                 }}
               >
                 <ListSubheader
@@ -573,8 +573,8 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Emojis', theme) && [
-          'amaui-Emojis-root',
-          `amaui-Emojis-size-${size}`
+          'onesy-Emojis-root',
+          `onesy-Emojis-size-${size}`
         ],
 
         className,
@@ -586,6 +586,6 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Emojis.displayName = 'amaui-Emojis';
+Emojis.displayName = 'onesy-Emojis';
 
 export default Emojis;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { is, clamp, numberWithCommas, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is, clamp, numberWithCommas, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialKeyboardArrowUp from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowUpW100';
-import IconMaterialKeyboardArrowDown from '@amaui/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
+import IconMaterialKeyboardArrowUp from '@onesy/icons-material-rounded-react/IconMaterialKeyboardArrowUpW100';
+import IconMaterialKeyboardArrowDown from '@onesy/icons-material-rounded-react/IconMaterialKeyboardArrowDownW100';
 
 import AdvancedTextFieldElement from '../AdvancedTextField';
 import IconButtonElement from '../IconButton';
@@ -16,7 +16,7 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-NumericTextField' });
+}), { name: 'onesy-NumericTextField' });
 
 export interface INumericTextField extends IAdvancedTextField {
   min?: number;
@@ -35,9 +35,9 @@ export interface INumericTextField extends IAdvancedTextField {
 }
 
 const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiNumericTextField?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNumericTextField?.props?.default, ...props_ }), [props_]);
 
   const AdvancedTextField = React.useMemo(() => theme?.elements?.AdvancedTextField || AdvancedTextFieldElement, [theme]);
 
@@ -333,9 +333,9 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
 
       className={classNames([
         staticClassName('NumericTextField', theme) && [
-          'amaui-NumericTextField-root',
-          `amaui-NumericTextField-version-${version}`,
-          `amaui-NumericTextField-size-${size}`
+          'onesy-NumericTextField-root',
+          `onesy-NumericTextField-version-${version}`,
+          `onesy-NumericTextField-size-${size}`
         ],
 
         className,
@@ -347,6 +347,6 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
   );
 });
 
-NumericTextField.displayName = 'amaui-NumericTextField';
+NumericTextField.displayName = 'onesy-NumericTextField';
 
 export default NumericTextField;

@@ -1,5 +1,5 @@
 
-# AmauiHeap
+# OnesyHeap
 
 ### Options
 
@@ -14,9 +14,9 @@
 Min heap.
 
 ```ts
-const amauiHeap = new AmauiHeap('min').make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = new OnesyHeap('min').make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7]
 ```
@@ -26,9 +26,9 @@ amauiHeap.array;
 Max heap.
 
 ```ts
-const amauiHeap = new AmauiHeap('max').make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = new OnesyHeap('max').make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [7, 5, 7, 3, 1, 4, 4]
 ```
@@ -38,9 +38,9 @@ amauiHeap.array;
 Returns an array representation of the heap.
 
 ```ts
-const amauiHeap = new AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = new OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7]
 ```
@@ -50,9 +50,9 @@ amauiHeap.array;
 Returns priority value in the heap, first value (root node).
 
 ```ts
-const amauiHeap = new AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = new OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.first.value;
+onesyHeap.first.value;
 
 // 1
 ```
@@ -64,9 +64,9 @@ Returns all the leafs.
 Leafs are nodes with no children.
 
 ```ts
-const amauiHeap = new AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = new OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.leafs.map(item => item.value);
+onesyHeap.leafs.map(item => item.value);
 
 // [4, 5, 7, 7]
 ```
@@ -76,15 +76,15 @@ amauiHeap.leafs.map(item => item.value);
 Removes the priority (first) value, and remakes the entire heap tree, and puts new priority value as a root node.
 
 ```ts
-const amauiHeap = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7]
 
-amauiHeap.remove.value;
+onesyHeap.remove.value;
 
-amauiHeap.array;
+onesyHeap.array;
 
 // 1
 // [3, 4, 4, 7, 5, 7]
@@ -95,15 +95,15 @@ amauiHeap.array;
 Adds a new value (node) to the heap graph, and it remakes the entire heap starting from root to properly add the new value.
 
 ```ts
-const amauiHeap = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7]
 
-amauiHeap.add(4);
+onesyHeap.add(4);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7, 4]
 ```
@@ -113,9 +113,9 @@ amauiHeap.array;
 Makes a heap graph, from array of values.
 
 ```ts
-const amauiHeap = new AmauiHeap().make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = new OnesyHeap().make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7]
 ```
@@ -125,9 +125,9 @@ amauiHeap.array;
 It loops through the entire heap array of values, and for each node returns all the mentioned properties in the `type TMethodForEach`.
 
 ```ts
-const amauiHeap = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.forEach((value, index, parent, left, right, isPriority, isLeaf, isLeft, isRight) => { });
+onesyHeap.forEach((value, index, parent, left, right, isPriority, isLeaf, isLeft, isRight) => { });
 ```
 
 ### Util methods
@@ -137,9 +137,9 @@ amauiHeap.forEach((value, index, parent, left, right, isPriority, isLeaf, isLeft
 Min heap.
 
 ```ts
-const amauiHeap = AmauiHeap.min.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = OnesyHeap.min.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7]
 ```
@@ -149,9 +149,9 @@ amauiHeap.array;
 Max heap.
 
 ```ts
-const amauiHeap = AmauiHeap.max.make([4, 1, 7, 3, 5, 4, 7]);
+const onesyHeap = OnesyHeap.max.make([4, 1, 7, 3, 5, 4, 7]);
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [7, 5, 7, 3, 1, 4, 4]
 ```
@@ -163,9 +163,9 @@ amauiHeap.array;
 Min heap.
 
 ```ts
-const amauiHeap = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7], 'min');
+const onesyHeap = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7], 'min');
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [1, 3, 4, 4, 5, 7, 7]
 ```
@@ -175,9 +175,9 @@ amauiHeap.array;
 Max heap.
 
 ```ts
-const amauiHeap = AmauiHeap.make([4, 1, 7, 3, 5, 4, 7], 'max');
+const onesyHeap = OnesyHeap.make([4, 1, 7, 3, 5, 4, 7], 'max');
 
-amauiHeap.array;
+onesyHeap.array;
 
 // [7, 5, 7, 3, 1, 4, 4]
 ```
@@ -187,7 +187,7 @@ amauiHeap.array;
 Returns the index for a left child of a provided index of a node.
 
 ```ts
-AmauiHeap.left(1);
+OnesyHeap.left(1);
 
 // 3
 ```
@@ -197,7 +197,7 @@ AmauiHeap.left(1);
 Returns the index for a right child of a provided index of a node.
 
 ```ts
-AmauiHeap.right(1);
+OnesyHeap.right(1);
 
 // 4
 ```
@@ -207,7 +207,7 @@ AmauiHeap.right(1);
 Returns the index for a parent node of a provided index of a node.
 
 ```ts
-AmauiHeap.parent(4);
+OnesyHeap.parent(4);
 
 // 1
 ```
@@ -217,7 +217,7 @@ AmauiHeap.parent(4);
 Returns true if index is a priority node index.
 
 ```ts
-AmauiHeap.isPriority(0);
+OnesyHeap.isPriority(0);
 
 // true
 ```
@@ -227,7 +227,7 @@ AmauiHeap.isPriority(0);
 Returns true if index is a left node index.
 
 ```ts
-AmauiHeap.isLeft(1);
+OnesyHeap.isLeft(1);
 
 // true
 ```
@@ -237,7 +237,7 @@ AmauiHeap.isLeft(1);
 Returns true if index is a right node index.
 
 ```ts
-AmauiHeap.isRight(4);
+OnesyHeap.isRight(4);
 
 // true
 ```
@@ -247,12 +247,12 @@ AmauiHeap.isRight(4);
 Returns true if index is a leaf node index.
 
 ```ts
-AmauiHeap.isLeaf(4, [1, 2, 3, 4, 5]);
+OnesyHeap.isLeaf(4, [1, 2, 3, 4, 5]);
 
 // true
 ```
 
-### AmauiNode
+### OnesyNode
 
 #### value
 
@@ -260,19 +260,19 @@ Value of the node.
 
 ## API
 
-#### IAmauiNode
+#### IOnesyNode
 
 ```ts
-interface IAmauiNode {
+interface IOnesyNode {
     value?: any;
     [p: string]: any;
 }
 ```
 
-#### AmauiNode
+#### OnesyNode
 
 ```ts
-class AmauiNode implements IAmauiNode {
+class OnesyNode implements IOnesyNode {
     value?: any;
     [p: string]: any;
     constructor(value?: any);
@@ -288,18 +288,18 @@ type TVariant = 'min' | 'max';
 #### TMethodForEach
 
 ```ts
-type TMethodForEach = (value: AmauiNode, index: number, parent: AmauiNode, left: AmauiNode, right: AmauiNode, isPriority: boolean, isLeaf: boolean, isLeft: boolean, isRight: boolean) => any;
+type TMethodForEach = (value: OnesyNode, index: number, parent: OnesyNode, left: OnesyNode, right: OnesyNode, isPriority: boolean, isLeaf: boolean, isLeft: boolean, isRight: boolean) => any;
 ```
 
-#### AmauiHeap
+#### OnesyHeap
 
 ```ts
-class AmauiHeap {
+class OnesyHeap {
     variant: TVariant;
-    values: Array<AmauiNode>;
-    static get min(): AmauiHeap;
-    static get max(): AmauiHeap;
-    static make(value: any[], variant?: TVariant): AmauiHeap;
+    values: Array<OnesyNode>;
+    static get min(): OnesyHeap;
+    static get max(): OnesyHeap;
+    static make(value: any[], variant?: TVariant): OnesyHeap;
     static left(index: number): number;
     static right(index: number): number;
     static parent(index: number): number;
@@ -309,12 +309,12 @@ class AmauiHeap {
     static isLeaf(index: number, values: Array<any>): boolean;
     constructor(variant?: TVariant);
     get array(): any[];
-    get first(): AmauiNode;
-    get leafs(): Array<AmauiNode>;
-    get remove(): AmauiNode;
-    add(value: AmauiNode | any): AmauiHeap;
-    swap(index: number, index1: number): AmauiHeap;
-    make(value: Array<any>): AmauiHeap;
+    get first(): OnesyNode;
+    get leafs(): Array<OnesyNode>;
+    get remove(): OnesyNode;
+    add(value: OnesyNode | any): OnesyHeap;
+    swap(index: number, index1: number): OnesyHeap;
+    make(value: Array<any>): OnesyHeap;
     forEach(method: TMethodForEach): void;
     heapifyUp(index_?: number): void;
     heapifyDown(index_?: number): void;

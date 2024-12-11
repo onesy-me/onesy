@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
 import LineElement from '../Line';
@@ -22,7 +22,7 @@ const useStyle = styleMethod(theme => ({
     cursor: 'default',
     userSelect: 'none'
   }
-}), { name: 'amaui-Labels' });
+}), { name: 'onesy-Labels' });
 
 export interface ILabels extends ILine {
   tonal?: ITonal;
@@ -49,9 +49,9 @@ export interface ILabels extends ILine {
 }
 
 const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiLabels?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLabels?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -154,11 +154,11 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Labels', theme) && [
-          'amaui-Labels-root',
-          `amaui-Labels-version-${version}`,
-          `amaui-Labels-size-${size}`,
-          `amaui-Labels-version-${version}`,
-          disabled && `amaui-Labels-disabled`
+          'onesy-Labels-root',
+          `onesy-Labels-version-${version}`,
+          `onesy-Labels-size-${size}`,
+          `onesy-Labels-version-${version}`,
+          disabled && `onesy-Labels-disabled`
         ],
 
         className,
@@ -178,7 +178,7 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Labels', theme) && [
-              'amaui-Labels-label'
+              'onesy-Labels-label'
             ],
 
             LabelProps?.className,
@@ -227,6 +227,6 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Labels.displayName = 'amaui-Labels';
+Labels.displayName = 'onesy-Labels';
 
 export default Labels;

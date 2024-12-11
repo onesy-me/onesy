@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { is } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialClose from '@amaui/icons-material-rounded-react/IconMaterialCloseW100';
+import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
 import ButtonElement from '../Button';
 import { IconDoneAnimated } from '../Buttons/Buttons';
@@ -12,15 +12,15 @@ import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    '&.amaui-Button-root': {
+    '&.onesy-Button-root': {
       maxWidth: '100%'
     },
 
-    '& .amaui-Icon-root': {
+    '& .onesy-Icon-root': {
       pointerEvents: 'unset !important'
     }
   },
-}), { name: 'amaui-Chip' });
+}), { name: 'onesy-Chip' });
 
 export interface IChip extends IButton {
   input?: boolean;
@@ -35,9 +35,9 @@ export interface IChip extends IButton {
 }
 
 const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiChip?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChip?.props?.default, ...props_ }), [props_]);
 
   const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
 
@@ -170,8 +170,8 @@ const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Chip', theme) && [
-          'amaui-Chip-root',
-          selected && `amaui-Chip-selected`
+          'onesy-Chip-root',
+          selected && `onesy-Chip-selected`
         ],
 
         className,
@@ -187,6 +187,6 @@ const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Chip.displayName = 'amaui-Chip';
+Chip.displayName = 'onesy-Chip';
 
 export default Chip;

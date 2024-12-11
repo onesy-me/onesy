@@ -1,7 +1,7 @@
 
 # is
 
-Asserts the query between AmauiDate values.
+Asserts the query between OnesyDate values.
 
 ### Time units
 
@@ -31,14 +31,14 @@ Asserts the query between AmauiDate values.
 ### Examples
 
 ```ts
-is(new AmauiDate('2014-04-14T14:04:14.144'), 'before', new AmauiDate('2014-04-14T14:04:14.147'));
-is(new AmauiDate('2014-04-14T14:04:14.147'), 'before or same', new AmauiDate('2014-04-14T14:04:14.147'));
-is(new AmauiDate('2014-04-14T14:04:14.147'), 'same', new AmauiDate('2014-04-14T14:04:14.147'));
-is(new AmauiDate('2014-04-14T14:04:14.147'), 'between', new AmauiDate('2014-04-04T14:04:14.147'), 'day', new AmauiDate('2014-04-10T14:04:14.147'));
-is(new AmauiDate('2014-04-14T14:04:14.147'), 'after or same', new AmauiDate('2014-04-14T14:04:14.147'));
-is(new AmauiDate('2014-04-14T14:04:14.147'), 'after', new AmauiDate('2014-04-14T14:04:14.144'));
-is(new AmauiDate('2020-04-14T14:04:14.147'), 'leap-year');
-is(new AmauiDate('2020-02-14T14:04:14.147'), 'leap-month');
+is(new OnesyDate('2014-04-14T14:04:14.144'), 'before', new OnesyDate('2014-04-14T14:04:14.147'));
+is(new OnesyDate('2014-04-14T14:04:14.147'), 'before or same', new OnesyDate('2014-04-14T14:04:14.147'));
+is(new OnesyDate('2014-04-14T14:04:14.147'), 'same', new OnesyDate('2014-04-14T14:04:14.147'));
+is(new OnesyDate('2014-04-14T14:04:14.147'), 'between', new OnesyDate('2014-04-04T14:04:14.147'), 'day', new OnesyDate('2014-04-10T14:04:14.147'));
+is(new OnesyDate('2014-04-14T14:04:14.147'), 'after or same', new OnesyDate('2014-04-14T14:04:14.147'));
+is(new OnesyDate('2014-04-14T14:04:14.147'), 'after', new OnesyDate('2014-04-14T14:04:14.144'));
+is(new OnesyDate('2020-04-14T14:04:14.147'), 'leap-year');
+is(new OnesyDate('2020-02-14T14:04:14.147'), 'leap-month');
 
 // true
 // true
@@ -67,7 +67,7 @@ type TIsQuery = 'before' | 'after' | 'same' | 'between' | 'before or same' | 'af
 #### is
 
 ```ts
-default function is(value: AmauiDate, query: TIsQuery, value1?: AmauiDate, unit?: TTimeUnits, value2?: AmauiDate): boolean;
+default function is(value: OnesyDate, query: TIsQuery, value1?: OnesyDate, unit?: TTimeUnits, value2?: OnesyDate): boolean;
 ```
 
 

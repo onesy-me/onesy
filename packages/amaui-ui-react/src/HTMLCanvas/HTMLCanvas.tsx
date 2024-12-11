@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { clamp, debounce, is, isEnvironment } from '@amaui/utils';
-import { classNames, style, useAmauiTheme } from '@amaui/style-react';
+import { clamp, debounce, is, isEnvironment } from '@onesy/utils';
+import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialCenterFocusWeak from '@amaui/icons-material-rounded-react/IconMaterialCenterFocusWeakW100';
+import IconMaterialCenterFocusWeak from '@onesy/icons-material-rounded-react/IconMaterialCenterFocusWeakW100';
 
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
@@ -90,7 +90,7 @@ const useStyle = style(theme => ({
   },
 
   menu: {
-    '& .amaui-List-root': {
+    '& .onesy-List-root': {
       maxHeight: 240,
       overflow: 'hidden auto'
     }
@@ -101,7 +101,7 @@ const useStyle = style(theme => ({
     opacity: 0.54,
     cursor: 'default'
   }
-}), { name: 'amaui-HTMLCanvas' });
+}), { name: 'onesy-HTMLCanvas' });
 
 export interface IHTMLCanvasOnChangeValue {
   zoom: number;
@@ -162,9 +162,9 @@ export interface IHTMLCanvas extends IBaseElement {
 }
 
 const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiHTMLCanvas?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyHTMLCanvas?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -855,7 +855,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
       className={classNames([
         staticClassName('HTMLCanvas', theme) && [
-          'amaui-HTMLCanvas-root'
+          'onesy-HTMLCanvas-root'
         ],
 
         className,
@@ -880,7 +880,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
           className={classNames([
             staticClassName('HTMLCanvas', theme) && [
-              'amaui-HTMLCanvas-actions'
+              'onesy-HTMLCanvas-actions'
             ],
 
             classes.actions
@@ -1002,7 +1002,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
         className={classNames([
           staticClassName('HTMLCanvas', theme) && [
-            'amaui-HTMLCanvas-container'
+            'onesy-HTMLCanvas-container'
           ],
 
           ContainerProps?.className,
@@ -1027,6 +1027,6 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
   );
 });
 
-HTMLCanvas.displayName = 'amaui-HTMLCanvas';
+HTMLCanvas.displayName = 'onesy-HTMLCanvas';
 
 export default HTMLCanvas;

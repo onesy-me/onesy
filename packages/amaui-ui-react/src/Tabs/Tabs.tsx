@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { is, wait } from '@amaui/utils';
-import { style as styleMethod, classNames, useAmauiTheme } from '@amaui/style-react';
+import { is, wait } from '@onesy/utils';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialExpandLess from '@amaui/icons-material-rounded-react/IconMaterialExpandLessW100';
-import IconMaterialExpandMore from '@amaui/icons-material-rounded-react/IconMaterialExpandMoreW100';
-import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
-import IconMaterialNavigateBefore from '@amaui/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
+import IconMaterialExpandLess from '@onesy/icons-material-rounded-react/IconMaterialExpandLessW100';
+import IconMaterialExpandMore from '@onesy/icons-material-rounded-react/IconMaterialExpandMoreW100';
+import IconMaterialNavigateNext from '@onesy/icons-material-rounded-react/IconMaterialNavigateNextW100';
+import IconMaterialNavigateBefore from '@onesy/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
 
 import SurfaceElement from '../Surface';
 import LineElement from '../Line';
@@ -143,7 +143,7 @@ const useStyle = styleMethod(theme => ({
   divider: {
     position: 'absolute',
 
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       margin: '0px',
       background: 'currentColor',
       opacity: '0.14',
@@ -152,7 +152,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider_orientation_horizontal: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       left: '0',
       right: '0',
       bottom: '0'
@@ -160,7 +160,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   divider_orientation_vertical: {
-    '&.amaui-Divider-root': {
+    '&.onesy-Divider-root': {
       top: '0',
       bottom: '0',
       insetInlineEnd: '0'
@@ -172,7 +172,7 @@ const useStyle = styleMethod(theme => ({
     top: '0',
     insetInline: '0'
   }
-}), { name: 'amaui-Tabs' });
+}), { name: 'onesy-Tabs' });
 
 export interface ITabs extends Omit<ISurface, 'version'> {
   version?: 'primary' | 'secondary';
@@ -209,9 +209,9 @@ export interface ITabs extends Omit<ISurface, 'version'> {
 }
 
 const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiTabs?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTabs?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -386,9 +386,9 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
 
     const valueProp = refs.value.current;
 
-    const tabs = Array.from((refs.tabsRoot.current as HTMLElement)?.querySelectorAll(`[data-amaui-tab-value]`) || []) as HTMLElement[];
+    const tabs = Array.from((refs.tabsRoot.current as HTMLElement)?.querySelectorAll(`[data-onesy-tab-value]`) || []) as HTMLElement[];
 
-    const tab: HTMLElement = tabs.find(item => is('function', refs.isActive.current) ? refs.isActive.current(valueProp, item.dataset.amauiTabValue) : String(item.dataset.amauiTabValue) === String(valueProp));
+    const tab: HTMLElement = tabs.find(item => is('function', refs.isActive.current) ? refs.isActive.current(valueProp, item.dataset.onesyTabValue) : String(item.dataset.onesyTabValue) === String(valueProp));
 
     if (tab) {
       const rect = {
@@ -450,7 +450,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Tabs', theme) && [
-          'amaui-Tabs-arrow'
+          'onesy-Tabs-arrow'
         ],
 
         classes.arrow
@@ -470,7 +470,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Tabs', theme) && [
-          'amaui-Tabs-arrow'
+          'onesy-Tabs-arrow'
         ],
 
         classes.arrow
@@ -527,9 +527,9 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Tabs', theme) && [
-          'amaui-Tabs-root',
-          `amaui-Tabs-version-${version}`,
-          `amaui-Tabs-size-${size}`
+          'onesy-Tabs-root',
+          `onesy-Tabs-version-${version}`,
+          `onesy-Tabs-size-${size}`
         ],
 
         SurfaceProps?.className,
@@ -554,7 +554,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
 
           className={classNames([
             staticClassName('Tabs', theme) && [
-              'amaui-Tabs-divider'
+              'onesy-Tabs-divider'
             ],
 
             classes.divider,
@@ -578,7 +578,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
 
         className={classNames([
           staticClassName('Tabs', theme) && [
-            'amaui-Tabs-tabs'
+            'onesy-Tabs-tabs'
           ],
 
           classes.tabs,
@@ -589,7 +589,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
           <span
             className={classNames([
               staticClassName('Tabs', theme) && [
-                'amaui-Tabs-line'
+                'onesy-Tabs-line'
               ],
 
               classes.line,
@@ -643,6 +643,6 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Tabs.displayName = 'amaui-Tabs';
+Tabs.displayName = 'onesy-Tabs';
 
 export default Tabs;

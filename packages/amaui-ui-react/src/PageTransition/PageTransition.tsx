@@ -1,8 +1,8 @@
 import React from 'react';
 import { Location, useLocation } from 'react-router-dom';
 
-import { hash } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { hash } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -40,7 +40,7 @@ const useStyle = styleMethod(theme => ({
   out: {
     animation: '$fadeOut 0.24s forwards'
   }
-}), { name: 'amaui-PageTransition' });
+}), { name: 'onesy-PageTransition' });
 
 export interface IPageTransition extends ILine {
   add?: boolean;
@@ -54,9 +54,9 @@ export interface IPageTransition extends ILine {
 }
 
 const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiPageTransition?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPageTransition?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -150,8 +150,8 @@ const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref:
 
       className={classNames([
         staticClassName('PageTransition', theme) && [
-          `amaui-PageTransition-root`,
-          `amaui-PageTransition-transition-${transition}`
+          `onesy-PageTransition-root`,
+          `onesy-PageTransition-transition-${transition}`
         ],
 
         className,
@@ -168,6 +168,6 @@ const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref:
   );
 });
 
-PageTransition.displayName = 'amaui-PageTransition';
+PageTransition.displayName = 'onesy-PageTransition';
 
 export default PageTransition;

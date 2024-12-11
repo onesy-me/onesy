@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import DateTimePickerElement from '../DateTimePicker';
 import { IDateTimePicker } from '../DateTimePicker/DateTimePicker';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-DateTimeRangePicker' });
+}), { name: 'onesy-DateTimeRangePicker' });
 
 export interface IDateTimeRangePicker extends IDateTimePicker {
 
 }
 
 const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiDateTimeRangePicker?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDateTimeRangePicker?.props?.default, ...props_ }), [props_]);
 
   const DateTimePicker = React.useMemo(() => theme?.elements?.DateTimePicker || DateTimePickerElement, [theme]);
 
@@ -39,7 +39,7 @@ const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((pr
 
       className={classNames([
         staticClassName('DateTimeRangePicker', theme) && [
-          'amaui-DateTimeRangePicker-root'
+          'onesy-DateTimeRangePicker-root'
         ],
 
         className,
@@ -51,6 +51,6 @@ const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((pr
   );
 });
 
-DateTimeRangePicker.displayName = 'amaui-DateTimeRangePicker';
+DateTimeRangePicker.displayName = 'onesy-DateTimeRangePicker';
 
 export default DateTimeRangePicker;

@@ -1,5 +1,5 @@
 
-# AmauiCache
+# OnesyCache
 
 All methods are static methods.
 
@@ -26,9 +26,9 @@ You can add a value, based on a key, where key can be any value or even list of 
 ```ts
 const args = [4, { a: 4, ab: 4 }];
 
-AmauiCache.add(1114, ...args);
+OnesyCache.add(1114, ...args);
 
-AmauiCache.get(...args);
+OnesyCache.get(...args);
 
 // 1114
 ```
@@ -40,13 +40,13 @@ Updates key's value.
 ```ts
 const args = [4, { a: 4, ab: 4 }];
 
-AmauiCache.add(114, ...args);
+OnesyCache.add(114, ...args);
 
-AmauiCache.get(...args);
+OnesyCache.get(...args);
 
-AmauiCache.update(1114, ...args);
+OnesyCache.update(1114, ...args);
 
-AmauiCache.get(...args);
+OnesyCache.get(...args);
 
 // 114
 // 1114
@@ -59,9 +59,9 @@ Returns a value from a key.
 ```ts
 const args = [4, { a: 4, ab: 4 }];
 
-AmauiCache.add(1114, ...args);
+OnesyCache.add(1114, ...args);
 
-AmauiCache.get(...args);
+OnesyCache.get(...args);
 
 // 1114
 ```
@@ -73,9 +73,9 @@ Returns true if there's a key.
 ```ts
 const args = [4, { a: 4, ab: 4 }];
 
-AmauiCache.add(1114, ...args);
+OnesyCache.add(1114, ...args);
 
-AmauiCache.has(...args);
+OnesyCache.has(...args);
 
 // true
 ```
@@ -87,11 +87,11 @@ Removes a key.
 ```ts
 const args = [4, { a: 4, ab: 4 }];
 
-AmauiCache.add(1114, ...args);
+OnesyCache.add(1114, ...args);
 
-AmauiCache.remove(...args);
+OnesyCache.remove(...args);
 
-AmauiCache.get(...args);
+OnesyCache.get(...args);
 
 // undefined
 ```
@@ -103,11 +103,11 @@ Resets the entire cache value, to its empty value.
 ```ts
 const args = [4, { a: 4, ab: 4 }];
 
-AmauiCache.add(1114, ...args);
+OnesyCache.add(1114, ...args);
 
-AmauiCache.reset();
+OnesyCache.reset();
 
-AmauiCache.get(...args);
+OnesyCache.get(...args);
 
 // undefined
 ```
@@ -149,10 +149,10 @@ interface IOptions {
 }
 ```
 
-#### AmauiCache
+#### OnesyCache
 
 ```ts
-class AmauiCache {
+class OnesyCache {
     static caches: Record<string, ICacheItem>;
     private static options_;
     static get options(): IOptions;

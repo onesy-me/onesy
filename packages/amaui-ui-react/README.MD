@@ -4,14 +4,14 @@
 
 <p align='center'>
   <a target='_blank' rel='noopener noreferrer' href='#'>
-    <img src='../../utils/images/logo.svg' alt='amaui logo' />
+    <img src='../../utils/images/logo.svg' alt='onesy logo' />
   </a>
 </p>
 
-<h1 align='center'>amaui UI React</h1>
+<h1 align='center'>onesy UI React</h1>
 
 <p align='center'>
-  Amaui UI for React
+  Onesy UI for React
 </p>
 
 <br />
@@ -37,14 +37,14 @@
 ### Add
 
 ```sh
-yarn add @amaui/ui-react
+yarn add @onesy/ui-react
 ```
 
 ### Use
 
 ```javascript
   // Import any of the ui
-  import { Button } from '@amaui/ui-react';
+  import { Button } from '@onesy/ui-react';
 
   function A(props) {
 
@@ -82,4 +82,4 @@ yarn build
 
 ## Disclaimer
 
-amaui UI elements library is mostly based on the UI design rules of Open Source Google Material Design 3 design principles. The project is not in any way affiliated with Alphabet Inc., Google Inc. or any of their projects.
+onesy UI elements library is mostly based on the UI design rules of Open Source Google Material Design 3 design principles. The project is not in any way affiliated with Alphabet Inc., Google Inc. or any of their projects.

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { style as styleMethod, classNames, useAmauiTheme } from '@amaui/style-react';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
@@ -10,16 +10,16 @@ const useStyle = styleMethod(theme => ({
   root: {
 
   }
-}), { name: 'amaui-Forms' });
+}), { name: 'onesy-Forms' });
 
 export interface IForms extends ILine {
   divider?: boolean;
 }
 
 const Forms: React.FC<IForms> = React.forwardRef((props_, ref: any) => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiForms?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyForms?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -55,7 +55,7 @@ const Forms: React.FC<IForms> = React.forwardRef((props_, ref: any) => {
 
       className={classNames([
         staticClassName('Forms', theme) && [
-          'amaui-Forms-root'
+          'onesy-Forms-root'
         ],
 
         className,
@@ -73,6 +73,6 @@ const Forms: React.FC<IForms> = React.forwardRef((props_, ref: any) => {
   );
 });
 
-Forms.displayName = 'amaui-Forms';
+Forms.displayName = 'onesy-Forms';
 
 export default Forms;

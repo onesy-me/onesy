@@ -1,11 +1,11 @@
 // @ts-nocheck
 import React from 'react';
 
-import { copyToClipboard, debounce } from '@amaui/utils';
-import { Chips, Chip, Line, LinearProgress, TextField, Type } from '@amaui/ui-react';
-import { style } from '@amaui/style-react';
+import { copyToClipboard, debounce } from '@onesy/utils';
+import { Chips, Chip, Line, LinearProgress, TextField, Type } from '@onesy/ui-react';
+import { style } from '@onesy/style-react';
 
-import IconMaterialRefreshRounded from '@amaui/icons-material-rounded-react/IconMaterialRefresh';
+import IconMaterialRefreshRounded from '@onesy/icons-material-rounded-react/IconMaterialRefresh';
 
 const useStyle = style(theme => ({
   root: {
@@ -82,7 +82,7 @@ const IconElement = React.forwardRef((props: any, ref: any) => {
     timeout: React.useRef<any>(undefined)
   };
 
-  const fullName = children?.displayName?.replace(/^Amaui/, '');
+  const fullName = children?.displayName?.replace(/^Onesy/, '');
 
   const name = fullName?.replace(/^IconMaterial/, '').replace(/Rounded|Sharp|W100|Filled/gi, '').split(/(?=[A-Z])/).join(' ');
 
@@ -102,7 +102,7 @@ const IconElement = React.forwardRef((props: any, ref: any) => {
 
     if (version.includes('Two Tone')) toAdd = { name: 'TwoTone', url: 'two-tone' };
 
-    await copyToClipboard(`import ${fullName}${toAdd.name} from '@amaui/icons-material-${toAdd.url}-react/${fullName}';`);
+    await copyToClipboard(`import ${fullName}${toAdd.name} from '@onesy/icons-material-${toAdd.url}-react/${fullName}';`);
 
     setCopied(true);
 
@@ -291,7 +291,7 @@ const element = React.forwardRef((props: any, ref: any) => {
 
     // Filter
     items = items.filter(item => {
-      const name = item.displayName?.replace(/AmauiIconMaterial|Filled|W100/g, '')?.toLowerCase();
+      const name = item.displayName?.replace(/OnesyIconMaterial|Filled|W100/g, '')?.toLowerCase();
 
       return !refs.search.current || name?.includes(refs.search.current?.toLowerCase());
     });

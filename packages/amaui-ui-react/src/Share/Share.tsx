@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { clamp, copyToClipboard, is, isEnvironment } from '@amaui/utils';
-import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
+import { clamp, copyToClipboard, is, isEnvironment } from '@onesy/utils';
+import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
-import IconMaterialLink from '@amaui/icons-material-rounded-react/IconMaterialLinkW100';
-import IconMaterialMail from '@amaui/icons-material-rounded-react/IconMaterialMailW100';
-import IconMaterialPrint from '@amaui/icons-material-rounded-react/IconMaterialPrintW100';
-import IconMaterialMoreHoriz from '@amaui/icons-material-rounded-react/IconMaterialMoreHorizW100';
+import IconMaterialLink from '@onesy/icons-material-rounded-react/IconMaterialLinkW100';
+import IconMaterialMail from '@onesy/icons-material-rounded-react/IconMaterialMailW100';
+import IconMaterialPrint from '@onesy/icons-material-rounded-react/IconMaterialPrintW100';
+import IconMaterialMoreHoriz from '@onesy/icons-material-rounded-react/IconMaterialMoreHorizW100';
 
 import LineElement from '../Line';
 import IconElement, { IIcon } from '../Icon';
@@ -226,7 +226,7 @@ const useStyle = styleMethod(theme => ({
       display: 'none'
     }
   }
-}), { name: 'amaui-Share' });
+}), { name: 'onesy-Share' });
 
 export interface IShare extends ILine {
   version?: 'fixed' | 'absolute' | 'static' | 'menu-items';
@@ -285,9 +285,9 @@ export interface IShare extends ILine {
 }
 
 const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
-  const theme = useAmauiTheme();
+  const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.amauiShare?.props?.default, ...props_ }), [props_]);
+  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyShare?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
 
@@ -577,9 +577,9 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
 
       className={classNames([
         staticClassName('Share', theme) && [
-          `amaui-Share-root`,
-          `amaui-Share-version-${version}`,
-          `amaui-Share-size-${size}`
+          `onesy-Share-root`,
+          `onesy-Share-version-${version}`,
+          `onesy-Share-size-${size}`
         ],
 
         classes.root,
@@ -611,8 +611,8 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
 
               className={classNames([
                 staticClassName('Share', theme) && [
-                  'amaui-Share-item',
-                  'amaui-Share-visible',
+                  'onesy-Share-item',
+                  'onesy-Share-visible',
                 ],
 
                 itemProps_?.className,
@@ -669,8 +669,8 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
               <Line
                 className={classNames([
                   staticClassName('Share', theme) && [
-                    'amaui-Share-item',
-                    'amaui-Share-visible',
+                    'onesy-Share-item',
+                    'onesy-Share-visible',
                   ],
 
                   classes.item,
@@ -703,8 +703,8 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
             onClick={onOpenBottomSheet}
 
             className={classNames([
-              'amaui-Share-item',
-              'amaui-Share-visible',
+              'onesy-Share-item',
+              'onesy-Share-visible',
               classes.item,
               classes[`item_size_${size}`]
             ])}
@@ -744,6 +744,6 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
   );
 });
 
-Share.displayName = 'amaui-Share';
+Share.displayName = 'onesy-Share';
 
 export default Share;
