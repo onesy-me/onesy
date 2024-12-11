@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is, percentageFromValueWithinRange, valueFromPercentageWithinRange } from '@amaui/utils';
+import { is, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 import { TMethod } from '@amaui/models';
 
@@ -103,10 +103,21 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
     init: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [animate_, animateTimeout_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [animate_, animateTimeout_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.path.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.path.current });
   });
 
   const animate = valueBreakpoints(animate_, true, breakpoints, theme);

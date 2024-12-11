@@ -213,11 +213,8 @@ const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
         gap={2}
 
         direction={row ? responsive ? {
-          xxs: 'column',
-          xs: 'column',
-          sm: 'column',
-          md: 'column',
-          default: 'row'
+          default: 'row',
+          1400: 'column'
         } : 'row' : 'column'}
 
         fullWidth

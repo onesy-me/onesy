@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is, textToInnerHTML } from '@amaui/utils';
+import { is, isEnvironment, textToInnerHTML, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import TypeElement from '../Type';
@@ -96,24 +96,36 @@ const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
     root: React.useRef<any>(undefined)
   };
 
-  const breakpoints: any = {};
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [columns_];
 
-  theme.breakpoints.keys.forEach(key => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [columns_]);
+
+  const breakpoints = {};
+
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   let columns = valueBreakpoints(columns_, 1, breakpoints, theme);
 
-  if (responsive) {
+  if (isEnvironment('browser') && responsive) {
+    const width = window.innerWidth;
+
     // 0 - 479px
-    if (breakpoints.min || breakpoints.xxs || breakpoints.xs) columns = Math.min(columns, 1);
+    if (width < 480) columns = Math.min(columns, 1);
 
     // 480px - 1023px
-    if (breakpoints.sm || breakpoints.md) columns = Math.min(columns, 2);
+    if (width >= 480 && width < 1024) columns = Math.min(columns, 2);
 
     // 1024px - 1439px
-    if (breakpoints.lg) columns = Math.min(columns, 3);
+    if (width >= 1024) columns = Math.min(columns, 3);
   }
 
   let value = value_ !== undefined ? value_ : children;

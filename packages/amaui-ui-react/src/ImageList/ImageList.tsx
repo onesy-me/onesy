@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
+import { is, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import useMediaQuery from '../useMediaQuery';
@@ -73,16 +73,27 @@ const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
     root: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [gap_, rowGap_, columnGap_, columns_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [gap_, rowGap_, columnGap_, columns_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const gap = valueBreakpoints(gap_, 0.5, breakpoints, theme);
   const rowGap = valueBreakpoints(rowGap_, undefined, breakpoints, theme);
   const columnGap = valueBreakpoints(columnGap_, undefined, breakpoints, theme);
-  const columns = valueBreakpoints(columns_, { xxs: 1, xs: 2, sm: 3, md: 4, lg: 5, xl: 6, xxl: 7, default: 4 }, breakpoints, theme);
+  const columns = valueBreakpoints(columns_, { 400: 1, 500: 2, 700: 3, 1100: 4, 1400: 5, 1700: 6, 2000: 7, default: 4 }, breakpoints, theme);
 
   const styles: any = {
     root: {

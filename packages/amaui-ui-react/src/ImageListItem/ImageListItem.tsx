@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
+import { is, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import LineElement from '../Line';
@@ -62,10 +62,21 @@ const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: a
     root: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [rows_, columns_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [rows_, columns_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const rows = valueBreakpoints(rows_, 1, breakpoints, theme);

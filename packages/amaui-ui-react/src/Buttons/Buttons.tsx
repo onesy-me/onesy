@@ -314,10 +314,21 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
     noCheckIcon: React.useRef(noCheckIcon)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [orientation_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [orientation_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const orientation = valueBreakpoints(orientation_, 'horizontal', breakpoints, theme);

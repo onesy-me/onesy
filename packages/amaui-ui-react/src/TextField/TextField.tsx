@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { clamp, is, isEnvironment } from '@amaui/utils';
+import { clamp, is, isEnvironment, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 import AmauiSubscription from '@amaui/subscription';
 
@@ -699,10 +699,21 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
   refs.controlled.current = controlled;
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [fullWidth_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [fullWidth_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const label = name !== undefined ? name : label_;

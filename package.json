@@ -12,6 +12,7 @@
     "dev": "cd docs && yarn dev"
   },
   "devDependencies": {
+    "@amaui/date": "^1.1.16",
     "@amaui/models": "^1.0.11114",
     "@amaui/test": "^1.0.11150",
     "@babel/cli": "^7.16.0",

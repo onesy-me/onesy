@@ -375,16 +375,14 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
         <Grid
           gap={{
-            xxs: 0.5,
-            xs: 0.5,
-            default: 3
-          } as any}
+            default: 3,
+            700: 0.5
+          }}
 
           direction={{
-            xxs: 'column',
-            xs: 'column',
-            default: 'row'
-          } as any}
+            default: 'row',
+            700: 'column'
+          }}
 
           {...HeaderProps}
 

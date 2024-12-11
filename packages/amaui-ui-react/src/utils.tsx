@@ -29,12 +29,15 @@ export const valueBreakpoints = (item: any, value: any, breakpoints: any, theme:
   // Simple
   if (!is('object', item) && item !== undefined) return item;
 
+  const breakpointsKeysTheme = Object.keys(theme.breakpoints.media);
+  const breakpointsKeys = Object.keys(breakpoints || {});
+
   // No breakpoints object
-  if (is('object', item) && !Object.keys(item).every(prop => ['default', ...theme.breakpoints.keys].includes(prop))) return item;
+  if (is('object', item) && !Object.keys(item).every(prop => ['default', ...breakpointsKeysTheme].includes(prop))) return item;
 
   // Item
   if (is('object', item)) {
-    for (const breakpoint of theme.breakpoints.keys) {
+    for (const breakpoint of breakpointsKeys) {
       if (breakpoints[breakpoint] && item?.[breakpoint] !== undefined) return item[breakpoint];
     }
 
@@ -43,7 +46,7 @@ export const valueBreakpoints = (item: any, value: any, breakpoints: any, theme:
 
   // Value
   if (is('object', value)) {
-    for (const breakpoint of theme.breakpoints.keys) {
+    for (const breakpoint of breakpointsKeys) {
       if (breakpoints[breakpoint] && value?.[breakpoint] !== undefined) return value[breakpoint];
     }
 

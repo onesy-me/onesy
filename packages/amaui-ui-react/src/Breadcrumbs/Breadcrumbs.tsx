@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { clamp, is } from '@amaui/utils';
+import { clamp, is, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import IconMaterialNavigateNext from '@amaui/icons-material-rounded-react/IconMaterialNavigateNextW100';
@@ -8,7 +8,6 @@ import IconMaterialMoreHoriz from '@amaui/icons-material-rounded-react/IconMater
 
 import LineElement from '../Line';
 import TypeElement from '../Type';
-import IconElement from '../Icon';
 import IconButtonElement from '../IconButton';
 import useMediaQuery from '../useMediaQuery';
 import { ILine } from '../Line/Line';
@@ -81,10 +80,21 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
     root: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [max_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [max_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   let max = valueBreakpoints(max_, undefined, breakpoints, theme);

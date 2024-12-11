@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
+import { is, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 import { AmauiDate, format as formatMethod, set, is as isAmauiDate } from '@amaui/date';
 
@@ -222,10 +222,21 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     value: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [useHelperText_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [useHelperText_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const useHelperText = valueBreakpoints(useHelperText_, undefined, breakpoints, theme);

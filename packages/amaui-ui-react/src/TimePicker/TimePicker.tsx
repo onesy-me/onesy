@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
+import { is, unique } from '@amaui/utils';
 import { AmauiDate, format as formatDate, set, is as isAmauiDate } from '@amaui/date';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
@@ -478,10 +478,21 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     dayTime: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [switch__, orientation_, autoNext_, autoCloseOnLast_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [switch__, orientation_, autoNext_, autoCloseOnLast_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const switch_ = valueBreakpoints(switch__, true, breakpoints, theme);

@@ -346,11 +346,8 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
         gap={5}
 
         direction={{
-          xxs: 'column',
-          xs: 'column',
-          sm: 'column',
-          md: 'column',
-          default: ['left', 'right'].includes(mediaPosition) ? 'row' : 'column'
+          default: ['left', 'right'].includes(mediaPosition) ? 'row' : 'column',
+          1100: 'column'
         }}
 
         align={['left', 'right'].includes(mediaPosition) ? 'flex-start' : 'center'}

@@ -438,12 +438,8 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
         fullWidth
 
         direction={responsive ? {
-          min: 'column',
-          xxs: 'column',
-          xs: 'column',
-          sm: 'column',
-          md: 'column',
-          default: 'row'
+          default: 'row',
+          1100: 'column'
         } : 'row'}
 
         {...ItemsProps}

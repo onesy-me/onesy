@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
+import { is, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import LineElement from '../Line';
@@ -143,10 +143,21 @@ const Grid: React.FC<IGrid> = React.forwardRef((props_, ref: any) => {
     responsiveIFrame: React.useRef<any>({})
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [gap_, rowGap_, columnGap_, direction_, responsive_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [gap_, rowGap_, columnGap_, direction_, responsive_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const gap = valueBreakpoints(gap_, 2, breakpoints, theme);
@@ -190,7 +201,7 @@ const Grid: React.FC<IGrid> = React.forwardRef((props_, ref: any) => {
   // that is true
   const breakpoint = is('object', values) && ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'].find(item => !!values[item] && breakpoints[item]);
 
-  let width = values?.[breakpoint] || values?.default || (is('number', values) && values) || columns;
+  let width: any = values?.[breakpoint] || values?.default || (is('number', values) && values) || columns;
 
   // responsive
   // value provided, override

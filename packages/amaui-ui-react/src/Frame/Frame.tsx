@@ -233,9 +233,8 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
         align='center'
 
         justify={{
-          xxs: 'flex-start',
-          xs: 'flex-start',
-          default: 'flex-end'
+          default: 'flex-end',
+          700: 'flex-start'
         }}
 
         fullWidth

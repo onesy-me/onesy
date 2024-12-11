@@ -517,11 +517,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
         gap={3}
 
         direction={{
-          xxs: 'column',
-          xs: 'column',
-          sm: 'column',
-          md: 'column',
-          default: 'row'
+          default: 'row',
+          1400: 'column'
         }}
 
         className={classes.simpleTimes}

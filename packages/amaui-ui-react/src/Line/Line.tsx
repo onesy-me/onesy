@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is } from '@amaui/utils';
+import { is, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import DividerElement from '../Divider';
@@ -215,10 +215,21 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
     root: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [display_, align_, justify_, direction_, gap_, rowGap_, columnGap_, divider_, wrap_, flex_, flexNo_, fullWidth_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [display_, align_, justify_, direction_, gap_, rowGap_, columnGap_, divider_, wrap_, flex_, flexNo_, fullWidth_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const display = valueBreakpoints(display_, 'flex', breakpoints, theme);
@@ -302,9 +313,7 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
 
       {...other}
     >
-      {(
-        React.Children.toArray(children).flatMap((item: any, index: number) => (!divider || index === (children as any).length - 1) ? [item] : [item, Divider_])
-      )}
+      {React.Children.toArray(children).flatMap((item: any, index: number) => (!divider || index === (children as any).length - 1) ? [item] : [item, Divider_])}
     </Component>
   );
 });

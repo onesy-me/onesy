@@ -1,4 +1,4 @@
-import { TBreakpoint, TPaletteVersion } from '@amaui/style-react';
+import { IBreakpoint, TPaletteVersion } from '@amaui/style-react';
 
 export type IPoint = [number, number];
 
@@ -52,7 +52,7 @@ export interface IBaseElement {
 
 export type IMethodTransition = (element?: IHTMLElement) => any;
 
-export type IValueBreakpoints = TBreakpoint | 'default';
+export type IValueBreakpoints = IBreakpoint | 'default';
 
 export interface IMediaObject {
   id?: string;

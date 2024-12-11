@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is, clamp } from '@amaui/utils';
+import { is, clamp, unique } from '@amaui/utils';
 import { classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import useMediaQuery from '../useMediaQuery';
@@ -76,10 +76,21 @@ const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
     disabled: React.useRef<any>(undefined)
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [disabled_];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [disabled_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const disabled = valueBreakpoints(disabled_, false, breakpoints, theme);

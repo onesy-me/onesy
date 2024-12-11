@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { castParam, clamp, copy, is, isEnvironment, percentageFromValueWithinRange, valueFromPercentageWithinRange } from '@amaui/utils';
+import { castParam, clamp, copy, is, isEnvironment, percentageFromValueWithinRange, unique, valueFromPercentageWithinRange } from '@amaui/utils';
 import { classNames, style as styleMethod, TColorValues, useAmauiTheme } from '@amaui/style-react';
 
 import SurfaceElement from '../Surface';
@@ -702,10 +702,21 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
     theme: React.useRef<any>([])
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [nameX_, nameY_, tooltip_, tooltipIndividually_, tooltipCloseOnMouseLeave_, elementTooltip_, guidelines_, guidelinesAppend_, guidelinesDisplayInactive_, animate_, animateTimeout_, legend___, labels___, labelsX_, labelsY_, labelDecimalPlaces_, labelsAutoNumber_, labelsYAutoNumber_, labelsXAutoNumber_, marks___, marksX_, marksY_, marksAutoNumber_, marksYAutoNumber_, marksXAutoNumber_, grid___, gridX_, gridY_, gridAutoNumber_, gridYAutoNumber_, gridXAutoNumber_, points___, pointsVisibility_,];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [nameX_, nameY_, tooltip_, tooltipIndividually_, tooltipCloseOnMouseLeave_, elementTooltip_, guidelines_, guidelinesAppend_, guidelinesDisplayInactive_, animate_, animateTimeout_, legend___, labels___, labelsX_, labelsY_, labelDecimalPlaces_, labelsAutoNumber_, labelsYAutoNumber_, labelsXAutoNumber_, marks___, marksX_, marksY_, marksAutoNumber_, marksYAutoNumber_, marksXAutoNumber_, grid___, gridX_, gridY_, gridAutoNumber_, gridYAutoNumber_, gridXAutoNumber_, points___, pointsVisibility_, borders_, borderStart_, borderLeft_, borderEnd_, borderRight_, borderTop_, borderBottom_, minX_, maxX_, minY_, maxY_, minMaxPadding__, minPadding__, maxPadding__, minPaddingX__, minPaddingY__, maxPaddingX__, maxPaddingY__]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const nameX = valueBreakpoints(nameX_, undefined, breakpoints, theme);

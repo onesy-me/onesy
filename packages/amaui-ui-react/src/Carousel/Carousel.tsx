@@ -480,10 +480,21 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
     }
   };
 
+  const keys = React.useMemo(() => {
+    const result = [];
+    const properties = [version_, orientation_, itemSize_, gap_, move_, moveValue_, moveItems_, moveBeyondEdge_, swipe_, background_, autoPlay_, autoHeight_, round_, arrows_, arrowsVisibility_, arrowHideOnStartEnd_, progress_, progressVisibility_, noTransition_];
+
+    properties.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [version_, orientation_, itemSize_, gap_, move_, moveValue_, moveItems_, moveBeyondEdge_, swipe_, background_, autoPlay_, autoHeight_, round_, arrows_, arrowsVisibility_, arrowHideOnStartEnd_, progress_, progressVisibility_, noTransition_]);
+
   const breakpoints = {};
 
-  theme.breakpoints.keys.forEach(key => {
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const version = valueBreakpoints(version_, 'regular', breakpoints, theme);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is, textToInnerHTML } from '@amaui/utils';
+import { is, textToInnerHTML, unique } from '@amaui/utils';
 import { TPaletteVersion, classNames, style as styleMethod, useAmauiTheme } from '@amaui/style-react';
 
 import LineElement, { ILine } from '../Line/Line';
@@ -387,11 +387,21 @@ const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
     root: React.useRef<any>(undefined)
   };
 
-  const breakpoints: any = {};
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [title_, description_, show_, size_, margin_, marginVertical_, padding_, maxWidth_];
 
-  theme.breakpoints.keys.forEach(key => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    if (theme.breakpoints.media[key]) breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [title_, description_, show_, size_, margin_, marginVertical_, padding_, maxWidth_]);
+
+  const breakpoints = {};
+
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
   const title = valueBreakpoints(title_, undefined, breakpoints, theme);
