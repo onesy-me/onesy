@@ -55,6 +55,23 @@ export default function App(props: AppProps) {
   const valueOnesyTheme = React.useMemo(() => {
 
     return new OnesyTheme({
+      palette: {
+        color: {
+          primary: {
+            main: '#5FE11E'
+          },
+          secondary: {
+            main: colors.yellow[500]
+          },
+          tertiary: {
+            main: colors.lightblue[500]
+          },
+          quaternary: {
+            main: colors.amber[500]
+          }
+        }
+      },
+
       typography: {
         font_family: {
           primary: FONT_FAMILY.primary,

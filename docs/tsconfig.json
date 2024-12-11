@@ -18,38 +18,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "paths": {
-      "@onesy/style-react": [
-        "../packages/onesy-style-react/build"
-      ],
-      "@onesy/style-react/*": [
-        "../packages/onesy-style-react/build/*"
-      ],
-      "@onesy/icons-material-rounded-react": [
-        "../packages/onesy-icons-material-rounded-react/build"
-      ],
-      "@onesy/icons-material-rounded-react/*": [
-        "../packages/onesy-icons-material-rounded-react/build/*"
-      ],
-      "@onesy/icons-material-sharp-react": [
-        "../packages/onesy-icons-material-sharp-react/build"
-      ],
-      "@onesy/icons-material-sharp-react/*": [
-        "../packages/onesy-icons-material-sharp-react/build/*"
-      ],
-      "@onesy/icons-material-two-tone-react": [
-        "../packages/onesy-icons-material-two-tone-react/build"
-      ],
-      "@onesy/icons-material-two-tone-react/*": [
-        "../packages/onesy-icons-material-two-tone-react/build/*"
-      ],
-      "@onesy/ui-react": [
-        "../packages/onesy-ui-react/build"
-      ],
-      "@onesy/ui-react/*": [
-        "../packages/onesy-ui-react/build/*"
-      ]
-    },
     "plugins": [
       {
         "name": "next"
@@ -57,10 +25,8 @@
     ]
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

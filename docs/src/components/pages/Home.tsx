@@ -1104,11 +1104,11 @@ export default function Root(props: any) {
             >
               {[
                 { name: 'UI', desc: 'UI React library, based on Material Design 3', url: 'https://github.com/onesy-org/onesy' },
-                { name: 'Utils', desc: 'Utils for front-end, back-end', url: 'https://github.com/onesy-org/onesy-utils' },
-                { name: 'Style', desc: 'Onesy CSS in JS library', url: 'https://github.com/onesy-org/onesy-style' },
-                { name: 'Date', desc: 'Date & time utils', url: 'https://github.com/onesy-org/onesy-date' },
-                { name: 'Request', desc: 'Request making for front-end, back-end', url: 'https://github.com/onesy-org/onesy-request' },
-                { name: 'Test', desc: 'Test framework for front-end, back-end', url: 'https://github.com/onesy-org/onesy-test' }
+                { name: 'Utils', desc: 'Utils for front-end, back-end', url: 'https://github.com/onesy-me/utils' },
+                { name: 'Style', desc: 'Onesy CSS in JS library', url: 'https://github.com/onesy-me/style' },
+                { name: 'Date', desc: 'Date & time utils', url: 'https://github.com/onesy-me/date' },
+                { name: 'Request', desc: 'Request making for front-end, back-end', url: 'https://github.com/onesy-me/request' },
+                { name: 'Test', desc: 'Test framework for front-end, back-end', url: 'https://github.com/onesy-me/test' }
               ].map((item: any, index: number) => (
                 <Tooltip
                   key={index}
