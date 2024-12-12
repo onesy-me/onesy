@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialFormatStrikethroughW100 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='FormatStrikethroughW100'
+
+      short_name='FormatStrikethrough'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M132-427v-28h696v28H132Zm334-106v-186H253v-29h455v29H495v186h-29Zm0 321v-137h29v137h-29Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialFormatStrikethroughW100.displayName = 'OnesyIconMaterialFormatStrikethroughW100';
+
+export default IconMaterialFormatStrikethroughW100;

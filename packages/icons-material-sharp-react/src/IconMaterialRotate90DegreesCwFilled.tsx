@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialRotate90DegreesCwFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='Rotate90DegreesCwFilled'
+
+      short_name='Rotate90DegreesCw'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M440-80q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T80-440q0-150 105-255t255-105h6l-62-62 56-58 160 160-160 160-56-58 62-62h-6q-117 0-198.5 81.5T160-440q0 117 81.5 198.5T440-160q35 0 69-8.5t65-25.5l58 58q-43 28-92 42T440-80Zm240-120L440-440l240-240 240 240-240 240Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialRotate90DegreesCwFilled.displayName = 'OnesyIconMaterialRotate90DegreesCwFilled';
+
+export default IconMaterialRotate90DegreesCwFilled;

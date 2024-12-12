@@ -12,21 +12,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "declaration": false,
-    "allowJs": true,
-    "paths": {
-      "@onesy/style-react": [
-        "./packages/onesy-style-react/src"
-      ],
-      "@onesy/style-react/*": [
-        "./packages/onesy-style-react/src/*"
-      ],
-      "@onesy/ui-react": [
-        "./packages/onesy-ui-react/src"
-      ],
-      "@onesy/ui-react/*": [
-        "./packages/onesy-ui-react/src/*"
-      ]
-    }
+    "allowJs": true
   },
   "exclude": [
     "build",
