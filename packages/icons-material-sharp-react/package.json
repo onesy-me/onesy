@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Icons material sharp for React",
   "repository": "https://github.com/onesy-org/onesy.git",
-  "author": "Lazar <lazareric.com@gmail.com>",
+  "author": "Lazar <lazareric2@gmail.com>",
   "license": "MIT",
   "private": false,
   "main": "./build/index.js",
