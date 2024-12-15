@@ -207,6 +207,7 @@ export interface IDatePicker extends ILine {
   ButtonProps?: IPropsAny;
   ModalProps?: IPropsAny;
   IconProps?: IPropsAny;
+  MobileSurfaceProps?: IPropsAny;
 }
 
 const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) => {
@@ -308,6 +309,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     ButtonProps,
     ModalProps,
     IconProps,
+    MobileSurfaceProps,
 
     className,
 
@@ -827,9 +829,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
   const mobile = (
     <Surface
-      tonal={tonal}
+      color='default'
 
-      color={color}
+      tonal={tonal}
 
       gap={0}
 
@@ -845,6 +847,8 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
         classes.mobile,
         fullScreen && classes.mobile_fullScreen
       ])}
+
+      {...MobileSurfaceProps}
     >
       {/* Header */}
       <Line
