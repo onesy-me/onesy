@@ -13,18 +13,17 @@ import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-    overflow: 'hidden'
+    overflow: 'auto hidden',
+    padding: '0px 16px 24px',
   },
 
   reviews: {
-    overflowX: 'auto',
-    padding: '0px 4px 12px',
     maxWidth: '100%'
   },
 
   review: {
-    flex: '0 0 auto',
-    background: theme.palette.background.primary.secondary
+    background: theme.palette.background.primary.secondary,
+    boxShadow: '0px 4px 32px 0px rgba(0, 0, 0, 0.024)'
   },
 
   review_size_small: {
@@ -121,6 +120,8 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
       align='center'
 
+      fullWidth
+
       className={classNames([
         staticClassName('SectionReviews', theme) && [
           'onesy-SectionReviews-root',
@@ -138,9 +139,9 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
 
         direction='row'
 
-        align='flex-start'
+        justify='flex-start'
 
-        fullWidth
+        align='flex-start'
 
         {...ReviewsProps}
 
@@ -160,6 +161,8 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
             gap={1.4}
 
             direction='column'
+
+            flexNo
 
             {...ReviewProps}
 

@@ -230,9 +230,11 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
       ])}
 
       style={{
+        opacity,
+
         ...style,
 
-        ...styles.root
+        ...styles.root,
       }}
 
       {...other}

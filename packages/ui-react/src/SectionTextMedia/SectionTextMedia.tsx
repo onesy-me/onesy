@@ -1,7 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-import { is, isEnvironment, textToInnerHTML } from '@onesy/utils';
+import { is, textToInnerHTML } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TextElement from '../Text';
@@ -125,8 +124,6 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
   };
 
   const mime = media?.mime || '';
-
-  const navigate = isEnvironment('browser') && useNavigate();
 
   if (mime.includes('image')) {
     mediaElement = (
@@ -298,7 +295,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
           size={size}
 
-          onClick={(button.to || button.link) ? () => button.to ? navigate(button.to) : window.open(button.link, 'blank') : undefined}
+          onClick={(button.to || button.link) && window.open(button.to || button.link, 'blank')}
 
           {...button.props}
 
@@ -314,7 +311,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
           {button.text || 'Click here'}
         </Button>
       )}
-    </Line>
+    </Line >
   );
 
   return (
