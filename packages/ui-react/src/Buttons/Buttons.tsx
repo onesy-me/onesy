@@ -41,7 +41,8 @@ export const IconMaterialDone = React.forwardRef((props: any, ref) => {
 const useStyle = styleMethod(theme => ({
   root: {
     position: 'relative',
-    borderRadius: theme.methods.shape.radius.value('xl', 'px')
+    borderRadius: theme.methods.shape.radius.value('xl', 'px'),
+    maxWidth: '100%'
   },
 
   orientation_horizontal_size_small: {
@@ -60,6 +61,10 @@ const useStyle = styleMethod(theme => ({
     '&:not(.onesy-ToggleButtons-root) > *': {
       height: '63px'
     }
+  },
+
+  orientation_horizontal: {
+    overflow: 'auto hidden'
   },
 
   orientation_vertical: {
