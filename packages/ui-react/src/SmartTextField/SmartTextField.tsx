@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { innerHTMLToText, is, isEnvironment, parse, stringToColor, textToInnerHTML } from '@onesy/utils';
+import { hash, innerHTMLToText, is, isEnvironment, parse, stringToColor, textToInnerHTML } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import IconMaterialFormatItalic from '@onesy/icons-material-rounded-react/IconMaterialFormatItalicW100';
@@ -321,8 +321,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   }, []);
 
   React.useEffect(() => {
-    if (optionsMention !== optionsMention_) setOptionsMention(optionsMention_);
-  }, [optionsMention_]);
+    setOptionsMention([...(optionsMention_ || [])]);
+  }, [hash(optionsMention_)]);
 
   React.useEffect(() => {
     const valuePrevious = (refs.root.current!.innerHTML || '').replaceAll('&nbsp;', ' ');
@@ -695,7 +695,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   React.useEffect(() => {
     if (mention) {
       if (refs.openMenu.current && !optionsMention.length) onCloseSearch();
-      else if (!refs.openMenu.current && refs.search.current && !!optionsMention.length) onOpenSearch();
+      else if (!refs.openMenu.current && !!optionsMention.length) onOpenSearch();
     }
   }, [mention, optionsMention]);
 
