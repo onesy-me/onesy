@@ -933,7 +933,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
             {['week', 'day'].includes(view) && (
               <Label
-                value={displayTime}
+                checked={displayTime}
 
                 onChange={onChangeDisplayTime}
               >

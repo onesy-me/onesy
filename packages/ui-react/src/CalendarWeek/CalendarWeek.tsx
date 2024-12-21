@@ -423,7 +423,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
       } : undefined;
 
       const itemProps = {
-        onClicl: (event: MouseEvent) => onOpen({ ...item, day, weekly }, event),
+        onClick: (event: MouseEvent) => onOpen({ ...item, day, weekly }, event),
         className: classes.range
       };
 
