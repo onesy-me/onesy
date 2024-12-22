@@ -695,7 +695,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   React.useEffect(() => {
     if (mention) {
       if (refs.openMenu.current && !optionsMention.length) onCloseSearch();
-      else if (!refs.openMenu.current && !!optionsMention.length) onOpenSearch();
+      else if (!refs.openMenu.current && refs.search.current && !!optionsMention.length) onOpenSearch();
     }
   }, [mention, optionsMention]);
 
@@ -721,7 +721,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   }, [error_]);
 
   const label = React.useCallback(() => (
-    is('function', mentionLabel) ? mentionLabel!(refs.optionsMention.current, { addTag }) :
+    is('function', mentionLabel) ? mentionLabel!(optionsMention, { addTag }) :
       <Line
         className={classes.menu}
       >
@@ -731,7 +731,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
           className={classes.list}
         >
           {/* Users */}
-          {refs.optionsMention.current?.map((item: any, index: number) => (
+          {optionsMention?.map((item: any, index: number) => (
             <ListItem
               key={index}
 
@@ -760,7 +760,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
           ))}
         </List>
       </Line>
-  ), []);
+  ), [optionsMention]);
 
   const paste = async () => {
     const valueClipboard = await navigator.clipboard.read();
@@ -1434,7 +1434,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         interactive
       />
     );
-  }, [openMenu, selectionMenu, label]);
+  }, [openMenu, optionsMention, selectionMenu, label]);
 
   let main = (
     <TextField
