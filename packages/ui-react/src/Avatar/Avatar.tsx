@@ -31,7 +31,9 @@ const useStyle = styleMethod(theme => ({
   },
 
   image: {
-    objectFit: 'cover'
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%'
   }
 }), { name: 'onesy-Avatar' });
 

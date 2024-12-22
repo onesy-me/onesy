@@ -12,7 +12,8 @@ const useStyle = styleMethod(theme => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     objectFit: 'cover',
-    width: '100%'
+    width: '100%',
+    height: '100%'
   },
 
   shape_top: {
