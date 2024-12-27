@@ -2,7 +2,7 @@
   "name": "@onesy/style-react",
   "version": "1.0.1",
   "description": "Onesy CSS in JS styling solution for React",
-  "repository": "https://github.com/onesy-org/onesy.git",
+  "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
   "license": "MIT",
   "private": false,
