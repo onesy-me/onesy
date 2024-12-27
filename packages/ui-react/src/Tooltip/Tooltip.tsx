@@ -260,7 +260,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     transformOriginRtl,
     transformOriginRtlSwitch,
     click,
-    touch: touch_ = true,
+    touch: touch_,
     longPress: longPress_ = false,
     hover: hover_ = true,
     focus: focus_ = false,
@@ -301,10 +301,12 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   const [inProp, setInProp] = React.useState(open_);
 
   const refs = {
+    root: React.useRef<HTMLElement>(null),
     open: React.useRef(false),
     inProp: React.useRef(inProp),
     longPress: React.useRef(false),
-    longPressTimer: React.useRef<any>(undefined),
+    longPressTimer: React.useRef<any>(null),
+    touchProps: React.useRef(touch_),
     props: React.useRef<any>(undefined)
   };
 
@@ -313,6 +315,8 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   refs.open.current = open;
 
   refs.inProp.current = inProp;
+
+  refs.touchProps.current = touch_;
 
   const { classes } = useStyle();
 
@@ -361,16 +365,20 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   }, []);
 
   const onTouchStart = React.useCallback((event: React.MouseEvent<any>) => {
-    if (touch_) setTouch(true);
+    if (!refs.touchProps.current) return;
+
+    setTouch(true);
 
     if (is('function', (children as any)?.props.onTouchStart)) (children as any).props.onTouchStart(event);
-  }, []);
+  }, [touch_]);
 
   const onTouchEnd = React.useCallback((event: React.MouseEvent<any>) => {
-    if (touch_) setTouch(false);
+    if (!refs.touchProps.current) return;
+
+    setTouch(false);
 
     if (is('function', (children as any)?.props.onTouchEnd)) (children as any).props.onTouchEnd(event);
-  }, []);
+  }, [touch_]);
 
   const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_) setFocus(true);
@@ -433,6 +441,14 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
   React.useEffect(() => {
     setInit(true);
+
+    const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
+
+    rootDocument.addEventListener('touchend', onTouchEnd as any);
+
+    return () => {
+      rootDocument.removeEventListener('touchend', onTouchEnd as any);
+    };
   }, []);
 
   React.useEffect(() => {
@@ -677,6 +693,15 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     >
       {children && (
         React.cloneElement(children, {
+          ref: item => {
+            if (children?.ref) {
+              if (is('function', children?.ref)) children?.ref(item);
+              else children.ref.current = item;
+            }
+
+            refs.root.current = item;
+          },
+
           onMouseMove,
 
           ...(click && {
