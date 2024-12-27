@@ -350,7 +350,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
       setLongPress(false);
 
       if (refs.props.current.open === undefined) {
-        if (!inProp) onClose();
+        if (!refs.inProp.current) onClose();
         else setInProp(false);
       }
     }
@@ -383,7 +383,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
       setLongPress(false);
 
       if (refs.props.current.open === undefined) {
-        if (!inProp) onClose();
+        if (!refs.inProp.current) onClose();
         else setInProp(false);
       }
     }
@@ -409,7 +409,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   const onOpen = () => {
     if (!open) setOpen(true);
 
-    if (!inProp) setInProp(true);
+    if (!refs.inProp.current) setInProp(true);
 
     if (is('function', onOpen_) && !open) onOpen_();
   };
@@ -454,7 +454,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
       if (refs.open.current) onOpen();
       else {
-        if (!inProp) onClose();
+        if (!refs.inProp.current) onClose();
         else setInProp(false);
       }
     }
@@ -466,7 +466,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
       if (refs.open.current) onOpen();
       else {
-        if (!inProp) onClose();
+        if (!refs.inProp.current) onClose();
         else setInProp(false);
       }
     }
@@ -681,6 +681,8 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
           ...(click && {
             onClick: (event: Event) => {
+              event.stopPropagation();
+
               if (is('function', children?.props?.onClick)) children?.props?.onClick(event);
 
               onClick(event);
