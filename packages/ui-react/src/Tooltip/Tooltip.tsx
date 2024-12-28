@@ -706,8 +706,6 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
           ...(click && {
             onClick: (event: Event) => {
-              event.stopPropagation();
-
               if (is('function', children?.props?.onClick)) children?.props?.onClick(event);
 
               onClick(event);
