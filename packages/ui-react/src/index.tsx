@@ -633,3 +633,6 @@ export * from './CalendarWeek';
 
 export { default as CalendarMenu } from './CalendarMenu';
 export * from './CalendarMenu';
+
+export { default as Whiteboard } from './Whiteboard';
+export * from './Whiteboard';
