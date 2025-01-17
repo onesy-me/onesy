@@ -27,7 +27,7 @@ const Wrapper = React.forwardRef((props: any, ref: any) => {
         ...style
       }}
     >
-      {props.children}
+      {children}
     </div>
   );
 });
