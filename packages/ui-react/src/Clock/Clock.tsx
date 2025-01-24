@@ -372,7 +372,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   }, [selecting]);
 
   const onUpdate = React.useCallback((valueNew: TClockValue) => {
-    const newValue = valueNew.milliseconds;
+    const newValue = valueNew?.milliseconds || null;
     const previousValue = refs.value.current.milliseconds;
 
     if (newValue === previousValue) return;
