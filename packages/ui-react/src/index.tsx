@@ -636,3 +636,6 @@ export * from './CalendarMenu';
 
 export { default as Whiteboard } from './Whiteboard';
 export * from './Whiteboard';
+
+export { default as CookieBanner } from './CookieBanner';
+export * from './CookieBanner';
