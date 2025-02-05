@@ -63,6 +63,8 @@ export interface ICookieBanner extends ISurface {
 
   DescriptionProps?: IPropsAny;
 
+  ButtonProps?: IPropsAny;
+
   RejectButtonProps?: IPropsAny;
 
   AllowButtonProps?: IPropsAny;
@@ -112,6 +114,8 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
 
     DescriptionProps,
 
+    ButtonProps,
+
     RejectButtonProps,
 
     AllowButtonProps,
@@ -136,7 +140,9 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
   };
 
   const buttonProps: any = {
-    size
+    size,
+
+    ...ButtonProps
   };
 
   return (
