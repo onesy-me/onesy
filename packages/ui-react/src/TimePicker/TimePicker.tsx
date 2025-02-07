@@ -690,7 +690,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
       const valueHour = item.hour;
 
       if (format === '12') {
-        if (dayTimeNew[index] === 'am' && valueHour > 12) return set(valueHour - 12, 'hour', item);
+        if (dayTimeNew[index] === 'am' && valueHour >= 12) return set(valueHour - 12, 'hour', item);
 
         if (dayTimeNew[index] === 'pm' && valueHour < 12) return set(valueHour + 12, 'hour', item);
       }
