@@ -1,6 +1,7 @@
 import React from 'react';
+import audioFix from 'webm-duration-fix';
 
-import { getLeadingZerosNumber, is, isEnvironment } from '@onesy/utils';
+import { getLeadingZerosNumber, is, isEnvironment, wait } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 import { OnesyDate, duration } from '@onesy/date';
 
@@ -82,7 +83,7 @@ export interface IAudioRecorder extends ILine {
   IconPause?: IElementReference;
   IconStop?: IElementReference;
 
-  onConfirm?: (value: Blob) => any;
+  onConfirm?: (value: Blob, meta: { duration: number; }) => any;
   onData?: (value: Blob) => any;
   onStart?: (event: React.MouseEvent<any>) => any;
   onPause?: (event: React.MouseEvent<any>) => any;
@@ -155,11 +156,15 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     root: React.useRef<any>(null),
     mediaRecorder: React.useRef<MediaRecorder>(null),
     mediaRecorderBytes: React.useRef<any>([]),
-    start: React.useRef<number>(0),
+    startedAt: React.useRef<number>(0),
     valuePaused: React.useRef<any>(0),
     value: React.useRef<any>(null),
     animationFrame: React.useRef<any>(null),
-    onData: React.useRef<any>(null)
+    onData: React.useRef<any>(null),
+    previousAction: React.useRef('start'),
+    // fallback to duration calculation on desktop
+    // ie. for mobile where we can't easily determine duration
+    duration: React.useRef<number>(0)
   };
 
   refs.onData.current = onData;
@@ -178,7 +183,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
   }, []);
 
   const update = () => {
-    setValue(refs.valuePaused.current + (OnesyDate.milliseconds - refs.start.current));
+    setValue(refs.valuePaused.current + (OnesyDate.milliseconds - refs.startedAt.current));
 
     refs.animationFrame.current = requestAnimationFrame(update);
   };
@@ -219,7 +224,11 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
       return;
     }
 
-    refs.start.current = OnesyDate.milliseconds;
+    // reset duration
+    refs.duration.current = 0;
+
+    // started at milliseconds
+    refs.startedAt.current = OnesyDate.milliseconds;
 
     // ~60+ fps
     refs.animationFrame.current = requestAnimationFrame(update);
@@ -227,13 +236,17 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     setStatus('running');
 
     if (is('function', onStart_)) onStart_(event);
+
+    // previous action
+    refs.previousAction.current = 'start';
   }, [onStart_, onError]);
 
   const onPause = React.useCallback((event: React.MouseEvent<any>) => {
     // media recorder
-    if (refs.mediaRecorder.current) {
-      refs.mediaRecorder.current.pause();
-    }
+    if (refs.mediaRecorder.current) refs.mediaRecorder.current.pause();
+
+    // add so far to duration
+    refs.duration.current += OnesyDate.milliseconds - refs.startedAt.current;
 
     clear();
 
@@ -243,21 +256,20 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     setStatus('paused');
 
     if (is('function', onPause_)) onPause_(event);
+
+    // previous action
+    refs.previousAction.current = 'pause';
   }, [onPause_]);
 
   const onStop = React.useCallback((event: React.MouseEvent<any>) => {
     // media recorder
-    if (refs.mediaRecorder.current) {
-      refs.mediaRecorder.current.stop();
-    }
+    if (refs.mediaRecorder.current) refs.mediaRecorder.current.stop();
 
     clear();
 
     setStatus('initial');
 
     setValue(0);
-
-    refs.start.current = 0;
 
     refs.valuePaused.current = 0;
 
@@ -270,38 +282,53 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     // Stop
     onStop(event);
 
-    setTimeout(() => {
-      // Get the blob
-      const mimeType = refs.mediaRecorder.current?.mimeType;
+    // duration
+    if (refs.previousAction.current === 'resume') {
+      // add so far to duration
+      refs.duration.current += OnesyDate.milliseconds - refs.startedAt.current;
+    }
 
-      console.log('AudioRecorder onConfirm', mimeType);
+    const meta = {
+      // duration in seconds
+      duration: refs.duration.current / 1e3
+    };
 
-      const blob = new Blob(refs.mediaRecorderBytes.current, { type: mimeType });
+    await wait(40);
 
-      // clean up
-      refs.mediaRecorderBytes.current = [];
+    // Get the blob
+    const mimeType = refs.mediaRecorder.current?.mimeType;
 
-      console.log('AudioRecorder blob', blob, blob.size);
+    let blob = new Blob(refs.mediaRecorderBytes.current, { type: mimeType });
 
-      if (is('function', onConfirm_)) onConfirm_(blob);
-    }, 14);
+    try {
+      blob = await audioFix(blob);
+    }
+    catch (error) {
+      console.log('AudioRecorder onConfirm error', error);
+    }
+
+    // clean up
+    refs.mediaRecorderBytes.current = [];
+
+    if (is('function', onConfirm_)) onConfirm_(blob, meta);
   }, [onStop, onConfirm_]);
 
   const onResume = React.useCallback((event: React.MouseEvent<any>) => {
     // media recorder
-    if (refs.mediaRecorder.current) {
-      refs.mediaRecorder.current.resume();
-    }
+    if (refs.mediaRecorder.current) refs.mediaRecorder.current.resume();
+
+    // record at milliseconds
+    refs.startedAt.current = OnesyDate.milliseconds;
 
     // ~60+ fps
     refs.animationFrame.current = requestAnimationFrame(update);
 
-    // Update start, valuePaused value
-    refs.start.current = OnesyDate.milliseconds;
-
     setStatus('running');
 
     if (is('function', onResume_)) onResume_(event);
+
+    // previous action
+    refs.previousAction.current = 'resume';
   }, [onResume_]);
 
   const valueFormat = (valueNew_: number) => {

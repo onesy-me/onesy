@@ -1,6 +1,6 @@
 {
   "name": "@onesy/ui-react",
-  "version": "1.0.24",
+  "version": "1.0.29",
   "description": "UI for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
@@ -53,7 +53,8 @@
     "@onesy/icons-material-rounded-react": "^1.0.2",
     "@onesy/log": "^1.0.0",
     "@onesy/subscription": "^1.0.0",
-    "@onesy/utils": "^1.0.0"
+    "@onesy/utils": "^1.0.2",
+    "webm-duration-fix": "^1.0.4"
   },
   "devDependencies": {
     "@amaui/style-react": "^1.1.35",
