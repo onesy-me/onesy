@@ -434,6 +434,11 @@ const useStyle = styleMethod(theme => {
       }
     },
 
+    tooltipLabelText: {
+      minWidth: '40px',
+      textAlign: 'center'
+    },
+
     disabled: {
       cursor: 'default',
       pointerEvents: 'none',
@@ -1261,6 +1266,10 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
               style: styles.label
             }}
 
+            LabelTextProps={{
+              className: classes.tooltipLabelText
+            }}
+
             {...TooltipProps}
           >
             <IconButton
@@ -1332,7 +1341,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
           </Tooltip>
         );
       })}
-    </Component >
+    </Component>
   );
 });
 

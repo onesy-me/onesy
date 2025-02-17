@@ -217,6 +217,7 @@ export interface ITooltip extends Omit<IModal, 'maxWidth'> {
   AppendProps?: IPropsAny;
   ModalProps?: IPropsAny;
   LabelProps?: IPropsAny;
+  LabelTextProps?: IPropsAny;
 }
 
 const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
@@ -279,6 +280,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     AppendProps,
     ModalProps,
     LabelProps,
+    LabelTextProps,
 
     // other
     elevation,
@@ -665,10 +667,14 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
                     }}
                   >
                     <span
+                      {...LabelTextProps}
+
                       className={classNames([
                         staticClassName('Tooltip', theme) && [
                           'onesy-Tooltip-name-text'
                         ],
+
+                        LabelTextProps?.className
                       ])}
                     >
                       {label}
