@@ -109,7 +109,6 @@ const useStyle = styleMethod(theme => ({
       ...theme.typography.values.d3,
 
       lineHeight: '1',
-
       textAlign: 'center'
     },
 
@@ -132,7 +131,6 @@ const useStyle = styleMethod(theme => ({
       ...theme.typography.values.d2,
 
       lineHeight: '1',
-
       textAlign: 'center'
     },
 
@@ -155,7 +153,6 @@ const useStyle = styleMethod(theme => ({
       ...theme.typography.values.d1,
 
       lineHeight: '1',
-
       textAlign: 'center'
     },
 

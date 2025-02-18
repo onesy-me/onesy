@@ -23,12 +23,7 @@ import { IElement, IElementReference, IPropsAny } from '../types';
 const useStyle = styleMethod(theme => ({
   root: {
     width: '100%',
-    flex: 'unset',
-
-    '& .onesy-TextField-input': {
-      flex: '1 1 auto',
-      width: 'auto'
-    }
+    flex: 'unset'
   },
 
   wrapper: {
