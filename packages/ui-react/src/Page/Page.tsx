@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
   name: {
     maxWidth: '440px'
   }
-}), { name: 'onesy-Page' });
+}), { name: 'onesy' });
 
 export interface IPageForward {
   to?: string;

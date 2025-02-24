@@ -40,7 +40,7 @@ const useStyle = styleMethod(theme => ({
   out: {
     animation: '$fadeOut 0.24s forwards'
   }
-}), { name: 'onesy-PageTransition' });
+}), { name: 'onesyTransition' });
 
 export interface IPageTransition extends ILine {
   add?: boolean;
