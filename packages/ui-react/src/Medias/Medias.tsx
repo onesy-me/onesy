@@ -168,6 +168,10 @@ const useStyle = styleMethod(theme => ({
   aspectRatioTiktok: {
     aspectRatio: '3 / 6.84',
     width: '324px'
+  },
+
+  customEmbed: {
+    maxWidth: '750px'
   }
 }), { name: 'onesy-Medias' });
 
@@ -310,99 +314,136 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
   }, [values]);
 
   const getLink = React.useCallback((item: IMediaObject, index: number) => {
-    if (!item?.urlEmbed) return null;
+    const urlEmbed = item?.urlEmbed;
 
-    let url: URL;
+    if (!urlEmbed) return null;
 
-    try {
-      url = new URL(item.urlEmbed);
-    }
-    catch (error) {
-      console.log('Invalid embed URL', item);
+    const otherProps: any = {
+      key: index
+    };
 
-      return null;
-    }
+    const urlEmbedStart = urlEmbed.replace('http://', '').replace('https://', '');
 
-    const id = url.pathname?.split('/').filter(Boolean).slice(-1)[0];
+    const isPlatform = (
+      urlEmbedStart.startsWith('youtu') ||
+      urlEmbedStart.startsWith('www.youtu') ||
+      urlEmbedStart.startsWith('instagram') ||
+      urlEmbedStart.startsWith('www.instagram') ||
+      urlEmbedStart.startsWith('tiktok') ||
+      urlEmbedStart.startsWith('www.tiktok') ||
+      urlEmbedStart.startsWith('vimeo') ||
+      urlEmbedStart.startsWith('www.vimeo')
+    );
 
-    if (!url?.hostname || !id) return null;
+    // predefined
+    if (isPlatform) {
+      let url: URL;
 
-    if (item.urlEmbed.includes('youtu.be')) {
+      try {
+        url = new URL(item.urlEmbed);
+      }
+      catch (error) {
+        console.log('Invalid embed URL', item);
+
+        return null;
+      }
+
+      const id = url.pathname?.split('/').filter(Boolean).slice(-1)[0];
+
+      if (!url?.hostname || !id) return null;
+
+      if (item.urlEmbed.includes('youtu.be')) {
+        return (
+          <iframe
+            {...otherProps}
+
+            title={item.name || ''}
+
+            src={`https://www.youtube.com/embed/${id}`}
+
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+
+            allowFullScreen
+
+            className={classes.aspectRatioYoutube}
+          />
+        );
+      }
+
+      if (item.urlEmbed.includes('instagram.com')) {
+        return (
+          <iframe
+            {...otherProps}
+
+            title={item.name || ''}
+
+            src={`https://www.instagram.com/reel/${id}/embed`}
+
+            allowFullScreen
+
+            className={classes.aspectRatioInstagram}
+          />
+        );
+      }
+
+      if (item.urlEmbed.includes('tiktok.com')) {
+        return (
+          <iframe
+            {...otherProps}
+
+            title={item.name || ''}
+
+            src={`https://www.tiktok.com/embed/v2/${id}`}
+
+            allowFullScreen
+
+            className={classes.aspectRatioTiktok}
+          />
+        );
+      }
+
+      if (item.urlEmbed.includes('vimeo.com')) {
+        return (
+          <iframe
+            {...otherProps}
+
+            title={item.name || ''}
+
+            src={`https://player.vimeo.com/video/${id}`}
+
+            allowFullScreen
+
+            className={classes.aspectRatioVimeo}
+          />
+        );
+      }
+
       return (
-        <iframe
-          key={index}
+        <Link
+          {...otherProps}
 
-          title={item.name || ''}
+          href={item?.urlEmbed}
 
-          src={`https://www.youtube.com/embed/${id}`}
-
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-
-          allowFullScreen
-
-          className={classes.aspectRatioYoutube}
-        />
+          target='blank'
+        >
+          {item.name || item.urlEmbed}
+        </Link>
       );
     }
 
-    if (item.urlEmbed.includes('instagram.com')) {
-      return (
-        <iframe
-          key={index}
-
-          title={item.name || ''}
-
-          src={`https://www.instagram.com/reel/${id}/embed`}
-
-          allowFullScreen
-
-          className={classes.aspectRatioInstagram}
-        />
-      );
-    }
-
-    if (item.urlEmbed.includes('tiktok.com')) {
-      return (
-        <iframe
-          key={index}
-
-          title={item.name || ''}
-
-          src={`https://www.tiktok.com/embed/v2/${id}`}
-
-          allowFullScreen
-
-          className={classes.aspectRatioTiktok}
-        />
-      );
-    }
-
-    if (item.urlEmbed.includes('vimeo.com')) {
-      return (
-        <iframe
-          key={index}
-
-          title={item.name || ''}
-
-          src={`https://player.vimeo.com/video/${id}`}
-
-          allowFullScreen
-
-          className={classes.aspectRatioVimeo}
-        />
-      );
-    }
-
+    // custom embed code
     return (
-      <Link
-        key={index}
+      <Line
+        {...otherProps}
 
-        href={item?.urlEmbed}
+        className={classes.customEmbed}
 
-        target='blank'
-      >
-        {item.name || item.urlEmbed}
-      </Link>
+        fullWidth
+
+        dangerouslySetInnerHTML={{
+          __html: urlEmbed
+        }}
+      />
     );
   }, []);
 
