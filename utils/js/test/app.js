@@ -34,11 +34,11 @@ const run = async () => {
 
       'https://unpkg.com/vue@3',
 
-      'https://unpkg.com/@amaui/utils@latest/umd/amaui-utils.dev.js',
+      'https://unpkg.com/@onesy/utils@latest/umd/onesy-utils.dev.js',
 
-      'https://unpkg.com/@amaui/date@latest/umd/amaui-date.dev.js',
+      'https://unpkg.com/@onesy/date@latest/umd/onesy-date.dev.js',
 
-      'https://unpkg.com/@amaui/style@latest/umd/amaui-style.dev.js'
+      'https://unpkg.com/@onesy/style@latest/umd/onesy-style.dev.js'
     );
 
     let value = `<!DOCTYPE html>

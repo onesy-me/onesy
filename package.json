@@ -1,19 +1,20 @@
 {
-  "name": "@amaui/monorepo",
+  "name": "@onesy/monorepo",
   "version": "1.0.0",
   "description": "MIT / Open source framework agnostic UI elements and utils, for building quality and production ready modern front end web apps",
-  "repository": "https://github.com/amaui-org/amaui.git",
+  "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "lerna bootstrap --scope='@amaui/docs' --include-dependencies && lerna run build --scope='@amaui/docs' --include-dependencies --stream",
+    "build": "lerna bootstrap --scope='@onesy/docs' --include-dependencies && lerna run build --scope='@onesy/docs' --include-dependencies --stream",
     "start": "cd docs && cross-env NODE_ENV=production node ./src",
     "dev": "cd docs && yarn dev"
   },
   "devDependencies": {
-    "@amaui/models": "^1.0.11114",
-    "@amaui/test": "^1.0.11150",
+    "@onesy/date": "^1.0.0",
+    "@onesy/models": "^1.0.0",
+    "@onesy/test": "^1.0.0",
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.17.12",
@@ -29,8 +30,8 @@
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-replace": "^3.0.0",
     "@types/node": "^20.10.4",
-    "@types/react": "^18.0.13",
-    "@types/react-dom": "^18.0.5",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.1",
     "@types/vue": "^2.0.0",
     "@vue/babel-plugin-jsx": "^1.1.1",
     "compression": "^1.7.4",
@@ -60,9 +61,7 @@
     "wait-on": "^6.0.0"
   },
   "workspaces": [
-    "packages/*",
-    "apps/*",
-    "docs"
+    "packages/*"
   ],
   "engines": {
     "node": ">=12.0.0",

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialForkLeftW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='ForkLeftW100Filled'
+
+      short_name='ForkLeft'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M546-172v-136q-20-76-70-113.5T367-459q-25 0-51 2.5t-50 6.5l90 90-20 20-124-124 124-124 20 20-90 90q24-4 49-6t52-2q58 0 103.5 27t75.5 81v-355l-90 90-20-20 124-124 124 124-20 20-90-90v561h-28Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialForkLeftW100Filled.displayName = 'OnesyIconMaterialForkLeftW100Filled';
+
+export default IconMaterialForkLeftW100Filled;

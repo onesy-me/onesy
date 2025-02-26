@@ -12,39 +12,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "declaration": false,
-    "allowJs": true,
-    "paths": {
-      "@amaui/style-react": [
-        "./packages/amaui-style-react/src"
-      ],
-      "@amaui/style-react/*": [
-        "./packages/amaui-style-react/src/*"
-      ],
-      "@amaui/icons-material-rounded-react": [
-        "./packages/amaui-icons-material-rounded-react/src"
-      ],
-      "@amaui/icons-material-rounded-react/*": [
-        "./packages/amaui-icons-material-rounded-react/src/*"
-      ],
-      "@amaui/icons-material-sharp-react": [
-        "./packages/amaui-icons-material-sharp-react/src"
-      ],
-      "@amaui/icons-material-sharp-react/*": [
-        "./packages/amaui-icons-material-sharp-react/src/*"
-      ],
-      "@amaui/icons-material-two-tone-react": [
-        "./packages/amaui-icons-material-two-tone-react/src"
-      ],
-      "@amaui/icons-material-two-tone-react/*": [
-        "./packages/amaui-icons-material-two-tone-react/src/*"
-      ],
-      "@amaui/ui-react": [
-        "./packages/amaui-ui-react/src"
-      ],
-      "@amaui/ui-react/*": [
-        "./packages/amaui-ui-react/src/*"
-      ]
-    }
+    "allowJs": true
   },
   "exclude": [
     "build",

@@ -1,14 +1,14 @@
 
-</br >
-</br >
+</br>
+</br>
 
 <p align='center'>
   <a target='_blank' rel='noopener noreferrer' href='#'>
-    <img src='utils/images/logo.svg' alt='amaui logo' />
+    <img src='utils/images/logo.svg' alt='onesy logo' />
   </a>
 </p>
 
-<h1 align='center'>amaui</h1>
+<h1 align='center'>onesy</h1>
 
 <div align='center'>
    MIT / Open source framework agnostic<br />UI elements and utils, for building quality and production ready<br />modern front end web apps

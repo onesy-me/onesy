@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build",
+    "declaration": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@onesy/ui-react": [
+        "../onesy-ui-react/src"
+      ],
+      "@onesy/ui-react/*": [
+        "../onesy-ui-react/src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.tsx"
+  ]
+}

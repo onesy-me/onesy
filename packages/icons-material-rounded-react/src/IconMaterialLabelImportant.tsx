@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialLabelImportant = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='LabelImportant'
+
+      short_name='LabelImportant'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M267-200q-48 0-71-41.5t3-81.5l101-157-101-157q-26-40-3-81.5t71-41.5h333q20 0 37.5 9t28.5 25l141 200q15 21 15 46t-15 46L666-234q-11 16-28.5 25t-37.5 9H267Zm333-80 142-200-142-200H266l102 156q13 20 13 44t-13 44L266-280h334Zm-96-200Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialLabelImportant.displayName = 'OnesyIconMaterialLabelImportant';
+
+export default IconMaterialLabelImportant;
