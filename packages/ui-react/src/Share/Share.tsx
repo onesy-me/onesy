@@ -545,6 +545,8 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
 
         onClick={(event: MouseEvent) => onClick(item.value, event)}
 
+        noBackground
+
         menuCloseOnClick
 
         button
