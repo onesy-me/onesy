@@ -14,7 +14,12 @@ const useStyle = styleMethod(theme => ({
     '&.onesy-Button-root': {
       cursor: 'default',
       overflow: 'hidden',
-      borderRadius: theme.methods.shape.radius.value(40, 'px')
+      borderRadius: theme.methods.shape.radius.value(40, 'px'),
+
+      '& .onesy-Button-icon-root': {
+        width: '100%',
+        height: '100%'
+      }
     }
   },
 
@@ -22,18 +27,12 @@ const useStyle = styleMethod(theme => ({
     borderRadius: '0px'
   },
 
-  imageWrapper: {
-    display: 'inline-flex',
-    height: '100%',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
   image: {
-    objectFit: 'cover',
     width: '100%',
-    height: '100%'
+    height: '100%',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
   }
 }), { name: 'onesy-Avatar' });
 
@@ -95,18 +94,19 @@ const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
 
     children = (
       <span
-        className={classes.imageWrapper}
-      >
-        <img
-          className={classes.image}
+        {...imageProps}
 
-          src={image}
+        className={classNames([
+          imageProps?.className,
+          classes.image
+        ])}
 
-          alt={alt}
+        style={{
+          backgroundImage: `url(${image})`,
 
-          {...imageProps}
-        />
-      </span>
+          ...imageProps?.style
+        }}
+      />
     );
   }
   else if (!React.isValidElement(children)) {
