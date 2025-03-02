@@ -755,6 +755,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
           justify={item === 'embed' ? 'center' : 'flex-start'}
 
+          fullWidth
+
           {...ItemsProps}
 
           {...(item === 'embed' && EmbedItemsProps)}
