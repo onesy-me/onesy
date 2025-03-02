@@ -319,7 +319,9 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
     if (!urlEmbed) return null;
 
     const otherProps: any = {
-      key: index
+      key: index,
+
+      ...EmbedProps
     };
 
     const urlEmbedStart = urlEmbed.replace('http://', '').replace('https://', '');
@@ -365,7 +367,10 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             allowFullScreen
 
-            className={classes.aspectRatioYoutube}
+            className={classNames([
+              otherProps?.className,
+              classes.aspectRatioYoutube
+            ])}
           />
         );
       }
@@ -381,7 +386,10 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             allowFullScreen
 
-            className={classes.aspectRatioInstagram}
+            className={classNames([
+              otherProps?.className,
+              classes.aspectRatioInstagram
+            ])}
           />
         );
       }
@@ -397,7 +405,10 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             allowFullScreen
 
-            className={classes.aspectRatioTiktok}
+            className={classNames([
+              otherProps?.className,
+              classes.aspectRatioTiktok
+            ])}
           />
         );
       }
@@ -413,7 +424,10 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
             allowFullScreen
 
-            className={classes.aspectRatioVimeo}
+            className={classNames([
+              otherProps?.className,
+              classes.aspectRatioVimeo
+            ])}
           />
         );
       }
@@ -436,7 +450,10 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
       <Line
         {...otherProps}
 
-        className={classes.customEmbed}
+        className={classNames([
+          otherProps?.className,
+          classes.customEmbed
+        ])}
 
         fullWidth
 
@@ -445,7 +462,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
         }}
       />
     );
-  }, []);
+  }, [EmbedProps]);
 
   const getItem = (version: IMediasMediaVersion, item: IMediasItem, index: number) => {
     const media = item.value;
