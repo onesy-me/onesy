@@ -298,7 +298,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
       embed: []
     };
 
-    (values as IMediasItem[]).filter(Boolean).forEach(item => {
+    (values as IMediasItem[]).filter(item => item?.value && !!Object.keys(item.value).length).forEach(item => {
       const media = item.value;
 
       if (media) {
