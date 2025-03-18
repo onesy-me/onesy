@@ -452,6 +452,10 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
     >
       <IconItem
         className={classNames([
+          staticClassName('Checkbox', theme) && [
+            'onesy-Checkbox-icon-item'
+          ],
+
           classes.iconItem,
           value && classes.iconItem_checked,
           indeterminate && classes.iconItem_indeterminate,
@@ -465,6 +469,10 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
         Component='div'
 
         className={classNames([
+          staticClassName('Checkbox', theme) && [
+            'onesy-Checkbox-icon-box'
+          ],
+
           classes.icon,
           classes.iconBox,
           value && [
@@ -487,6 +495,11 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
       {indeterminate && (
         <IconItem
           className={classNames([
+            staticClassName('Checkbox', theme) && [
+              'onesy-Checkbox-icon',
+              'onesy-Checkbox-icon-indeterminate'
+            ],
+
             classes.icon,
             classes.iconDone,
             indeterminate && classes.indeterminate
@@ -503,6 +516,11 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
       {value && (
         <IconDoneAnimated
           className={classNames([
+            staticClassName('Checkbox', theme) && [
+              'onesy-Checkbox-icon',
+              'onesy-Checkbox-icon-done'
+            ],
+
             classes.icon,
             classes.iconDone
           ])}
