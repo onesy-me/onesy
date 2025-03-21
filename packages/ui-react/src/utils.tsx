@@ -1522,3 +1522,9 @@ export const currencies = [
     name_plural: 'Zambian kwachas'
   }
 ];
+
+export const decodeHTMLEntities = (html: string): string => {
+  const document = new DOMParser().parseFromString(html, 'text/html');
+
+  return document.documentElement.textContent || '';
+};

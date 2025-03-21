@@ -26,7 +26,7 @@ import ToggleButtonElement from '../ToggleButton';
 import ClickListenerElement from '../ClickListener';
 import ToggleButtonsElement from '../ToggleButtons';
 import MenuElement from '../Menu';
-import { sanitize, caret, keyboardStyleCommands, staticClassName } from '../utils';
+import { sanitize, caret, keyboardStyleCommands, staticClassName, decodeHTMLEntities } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -325,7 +325,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   }, [hash(optionsMention_)]);
 
   React.useEffect(() => {
-    const valuePrevious = (refs.root.current!.innerHTML || '').replaceAll('&nbsp;', ' ');
+    const valuePrevious = (decodeHTMLEntities(refs.root.current!.innerHTML || '') as any).replaceAll('&nbsp;', ' ');
 
     const valueNew = textToInnerHTML(value_);
 
@@ -441,7 +441,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
   const onInput = React.useCallback((event?: Event) => {
     if (refs.root.current) {
-      let valueInput = refs.root.current!.innerHTML || '';
+      let valueInput = decodeHTMLEntities(refs.root.current!.innerHTML || '');
 
       if (refs.root.current.textContent === '') {
         valueInput = '';
@@ -673,7 +673,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       textNode.remove();
 
       // Invoke onChange method with new value
-      const valueInput = innerHTMLToText(refs.root.current.innerHTML);
+      const valueInput = innerHTMLToText(decodeHTMLEntities(refs.root.current.innerHTML));
 
       if (is('function', refs.onChange.current)) refs.onChange.current!(valueInput, { target: refs.root.current } as any);
 
