@@ -307,6 +307,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
     setTimeout(() => {
       setOpenElement(null);
+      setSearch('');
     }, 140);
   }, []);
 
@@ -432,6 +433,8 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
                   name='Search'
 
                   version='outlined'
+
+                  value={search || ''}
 
                   onChange={onChangeSearch}
 
