@@ -15,7 +15,8 @@ import { ICalendarViewsView } from '../CalendarViews/CalendarViews';
 const useStyle = styleMethod(theme => ({
   root: {
     color: theme.methods.palette.color.value('primary', 10),
-    background: theme.palette.background.default.primary
+    background: theme.palette.background.default.primary,
+    paddingLeft: '12px'
   },
 
   weekDay: {
