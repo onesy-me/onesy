@@ -283,7 +283,7 @@ const useStyle = styleMethod(theme => ({
 
 export type ISize = 'extra_small' | 'small' | 'regular' | 'large' | 'extra_large' | 'extra_extra_large';
 
-export interface ISection extends ILine {
+export type ISection = ILine & {
   themed?: boolean;
 
   title?: string | Partial<Record<IValueBreakpoints, string>>;
@@ -320,7 +320,7 @@ export interface ISection extends ILine {
   HeaderProps?: IPropsAny;
   RevealProps?: IPropsAny;
   AdditionalProps?: IPropsAny;
-}
+};
 
 const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

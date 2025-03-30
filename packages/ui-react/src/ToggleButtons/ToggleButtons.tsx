@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   },
 }), { name: 'onesy-ToggleButtons' });
 
-export interface IToggleButtons extends IButtons {
+export type IToggleButtons = IButtons & {
 
-}
+};
 
 const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

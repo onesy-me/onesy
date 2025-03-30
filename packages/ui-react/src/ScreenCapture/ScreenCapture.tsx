@@ -37,7 +37,7 @@ const useStyle = styleMethod(theme => ({
 
 export type TTrackValueVersion = 'image' | 'canvas';
 
-export interface IScreenCapture extends ISurface {
+export type IScreenCapture = ISurface & {
   nameDefault?: string;
   name?: string;
 
@@ -66,7 +66,7 @@ export interface IScreenCapture extends ISurface {
   TooltipProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   ImageCropProps?: IPropsAny;
-}
+};
 
 const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

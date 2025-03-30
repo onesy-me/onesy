@@ -16,9 +16,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-DonutChart' });
 
-export interface IDonutChart extends IPieChart {
+export type IDonutChart = IPieChart & {
 
-}
+};
 
 const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

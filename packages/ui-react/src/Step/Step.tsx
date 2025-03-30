@@ -12,7 +12,7 @@ import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { IconDoneAnimated } from '../Buttons/Buttons';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IVersion, IElement, IPropsAny } from '../types';
+import { IColor, IVersion, IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -89,9 +89,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Step' });
 
-export interface IStep extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type IStep = ILine & {
   version?: IVersion;
 
   iconColor?: IColor;
@@ -115,7 +113,7 @@ export interface IStep extends ILine {
 
   ListItemProps?: IPropsAny;
   DividerProps?: IPropsAny;
-}
+};
 
 const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

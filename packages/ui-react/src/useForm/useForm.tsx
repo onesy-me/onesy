@@ -5,7 +5,7 @@ import { ValidationError } from '@onesy/errors';
 
 import validateModel, { IValidateVales } from './validate';
 
-export interface IUseForm {
+export type IUseForm = {
   values: IValidateVales;
 
   validate?: (values: IValidateVales, form: any) => boolean;
@@ -15,11 +15,11 @@ export interface IUseForm {
 
   valueDefault?: any;
   validDefault?: boolean;
-}
+};
 
-export interface IUseFormOnChangeOptions {
+export type IUseFormOnChangeOptions = {
   rerenderOnUpdate?: boolean;
-}
+};
 
 const useForm = (props: IUseForm) => {
   const {

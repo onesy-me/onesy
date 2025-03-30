@@ -4,7 +4,6 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
-import { ISize } from '../types';
 import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
@@ -25,9 +24,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TableFooter' });
 
-export interface ITableFooter extends ISurface {
-  size?: ISize;
-}
+export type ITableFooter = ISurface & {
+
+};
 
 const TableFooter: React.FC<ITableFooter> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

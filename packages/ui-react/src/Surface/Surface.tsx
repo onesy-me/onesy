@@ -4,7 +4,7 @@ import { is } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, IVersion, IElevation, IPropsAny } from '../types';
+import { IBaseElement, IVersion, IElevation, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -705,9 +705,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Surface' });
 
-export interface ISurface extends Omit<IBaseElement, 'children'> {
-  tonal?: ITonal;
-  color?: IColor;
+export type ISurface = IBaseElement & {
   version?: IVersion;
   elevation?: IElevation;
 
@@ -717,9 +715,7 @@ export interface ISurface extends Omit<IBaseElement, 'children'> {
   noOutline?: boolean;
 
   AdditionalProps?: IPropsAny;
-
-  children?: any;
-}
+};
 
 const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

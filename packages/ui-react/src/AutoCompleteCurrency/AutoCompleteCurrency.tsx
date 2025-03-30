@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AutoCompleteCurrency' });
 
-export interface IAutoCompleteCurrency extends IAutoComplete {
+export type IAutoCompleteCurrency = IAutoComplete & {
 
-}
+};
 
 const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

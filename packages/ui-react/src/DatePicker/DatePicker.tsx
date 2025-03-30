@@ -25,7 +25,8 @@ import { ILine } from '../Line/Line';
 import { TCalendarUnit } from '../Calendar/Calendar';
 import { TCalendarMonthCalendar, TCalendarMonthValue } from '../CalendarMonth/CalendarMonth';
 import { valueBreakpoints, staticClassName } from '../utils';
-import { ITonal, IColor, ISize, IValueBreakpoints, IElement, IElementReference, IPropsAny } from '../types';
+import { IValueBreakpoints, IElement, IElementReference, IPropsAny } from '../types';
+import { ITextField } from '../TextField/TextField';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -138,13 +139,8 @@ export const SEPARATOR_SYMBOL = `–`;
 
 export const SEPARATOR = ` ${SEPARATOR_SYMBOL} `;
 
-export interface IDatePicker extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IDatePicker = Omit<ILine, 'onChange'> & ITextField & {
   version?: 'auto' | 'mobile' | 'desktop';
-
-  size?: ISize;
 
   value?: TCalendarMonthValue;
   valueDefault?: TCalendarMonthValue;
@@ -164,6 +160,7 @@ export interface IDatePicker extends ILine {
   calendars?: number;
   placeholder?: string;
   openMobile?: 'input' | 'select';
+  weekStartDay?: string;
   modeModalSubHeadingText?: string;
   modeModalSubHeadingTextRange?: string;
   selectModeHeadingText?: string;
@@ -182,8 +179,6 @@ export interface IDatePicker extends ILine {
   heading?: boolean;
   actions?: boolean;
   fullWidth?: boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
 
   onClick?: (event: React.MouseEvent<any>) => any;
   onClose?: (event: React.MouseEvent<any>) => any;
@@ -208,7 +203,7 @@ export interface IDatePicker extends ILine {
   ModalProps?: IPropsAny;
   IconProps?: IPropsAny;
   MobileSurfaceProps?: IPropsAny;
-}
+};
 
 const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();

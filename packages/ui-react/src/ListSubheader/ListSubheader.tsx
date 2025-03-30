@@ -19,9 +19,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ListSubheader' });
 
-export interface IListSubheader extends IListItem {
+export type IListSubheader = IListItem & {
 
-}
+};
 
 const ListSubheader: React.FC<IListSubheader> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

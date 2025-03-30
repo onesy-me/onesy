@@ -174,7 +174,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Tabs' });
 
-export interface ITabs extends Omit<ISurface, 'version'> {
+export type ITabs = Omit<ISurface, 'version' | 'onChange'> & {
   version?: 'primary' | 'secondary';
 
   value?: any;
@@ -206,7 +206,7 @@ export interface ITabs extends Omit<ISurface, 'version'> {
   IconBottom?: IElementReference;
 
   SurfaceProps?: IPropsAny;
-}
+};
 
 const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -117,7 +117,7 @@ const IconItem = (props: any) => {
   );
 };
 
-export interface IRadio extends IIconButton {
+export type IRadio = Omit<IIconButton, 'onChange'> & {
   inputRef?: IRef;
 
   colorUnchecked?: IColor;
@@ -133,7 +133,7 @@ export interface IRadio extends IIconButton {
   onChange?: (value: boolean, event: React.ChangeEvent<any>) => any;
 
   disabled?: boolean;
-}
+};
 
 const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -225,11 +225,11 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
     // Text
     // Outlined
     if (['text', 'outlined', undefined].includes(version)) {
-      styles.iconBox.color = styles.iconBox.color = theme.methods.palette.color.value(color, 30, true, palette);
+      styles.iconBox.color = styles.iconBox.color = theme.methods.palette.color.value(color as any, 30, true, palette);
     }
 
     // Outlined
-    if (version === 'outlined') styles.iconBox.color = styles.iconBox.color = theme.methods.palette.color.value(color, 40, true, palette);
+    if (version === 'outlined') styles.iconBox.color = styles.iconBox.color = theme.methods.palette.color.value(color as any, 40, true, palette);
   }
 
   let colorValue = color;

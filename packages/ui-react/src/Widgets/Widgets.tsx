@@ -96,15 +96,15 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Widgets' });
 
-export interface IWidgetsValue {
+export type IWidgetsValue = {
   open: (value?: string) => void;
   openAll: () => void;
 
   close: (value?: string) => void;
   closeAll: () => void;
-}
+};
 
-export interface IWidgets extends IBaseElement {
+export type IWidgets = IBaseElement & {
   widgets?: IElement;
 
   position?: 'top' | 'bottom';
@@ -124,7 +124,7 @@ export interface IWidgets extends IBaseElement {
 
   Icon?: IElementReference;
   IconCloseItem?: IElementReference;
-}
+};
 
 const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

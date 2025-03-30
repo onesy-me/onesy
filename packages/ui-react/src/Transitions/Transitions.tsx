@@ -8,7 +8,7 @@ import { IPropsAny } from '../types';
 
 export type TTransitionsMode = 'in-out' | 'in-out-follow' | 'out-in';
 
-export interface ITransitions {
+export type ITransitions = {
   id?: string;
   mode?: TTransitionsMode;
   switch?: boolean;
@@ -16,7 +16,7 @@ export interface ITransitions {
   TransitionProps?: IPropsAny;
 
   children?: any;
-}
+};
 
 const Transitions: React.FC<ITransitions> = (props_) => {
   const theme = useOnesyTheme();

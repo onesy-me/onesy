@@ -14,7 +14,7 @@ import ModalElement from '../Modal';
 import { staticClassName } from '../utils';
 import { IBaseElement } from '../types';
 
-export interface IConfirmOpen {
+export type IConfirmOpen = {
   modal?: (promise: IConfirmPromiseArgument) => React.ReactElement;
 
   name?: string | boolean | React.ReactElement;
@@ -34,17 +34,17 @@ export interface IConfirmOpen {
   ButtonPositiveProps?: any;
 
   [p: string]: any;
-}
+};
 
-export interface IConfirmPromiseArgument {
+export type IConfirmPromiseArgument = {
   resolve: TMethod;
   reject: TMethod;
-}
+};
 
-export interface IConfirmValue {
+export type IConfirmValue = {
   open: (value?: IConfirmOpen) => Promise<any>;
   close: (confirmed?: boolean) => void;
-}
+};
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -69,13 +69,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Confirm' });
 
-export interface IConfirm extends IBaseElement {
+export type IConfirm = IBaseElement & {
   throwError?: boolean;
 
   onOpen?: () => any;
 
   onClose?: () => any;
-}
+};
 
 const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

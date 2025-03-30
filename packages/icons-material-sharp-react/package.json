@@ -1,6 +1,6 @@
 {
   "name": "@onesy/icons-material-sharp-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Icons material sharp for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
@@ -45,11 +45,11 @@
     "clear": "node utils/js/clear"
   },
   "peerDependencies": {
-    "@onesy/ui-react": "^1.0.0",
+    "@onesy/ui-react": "^1.0.48",
     "react": "^18.1.0"
   },
   "devDependencies": {
-    "@onesy/ui-react": "^1.0.0"
+    "@onesy/ui-react": "^1.0.48"
   },
   "publishConfig": {
     "access": "public",

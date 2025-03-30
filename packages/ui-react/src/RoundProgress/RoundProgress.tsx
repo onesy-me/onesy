@@ -4,7 +4,7 @@ import { is } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, IColor, IPropsAny, ISize, ITonal } from '../types';
+import { IBaseElement, IPropsAny } from '../types';
 
 const noShrinkStrokeDashOffset = 194;
 
@@ -139,11 +139,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-RoundProgress' });
 
-export interface IRoundProgress extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
-
+export type IRoundProgress = IBaseElement & {
   version?: 'determinate' | 'indeterminate';
 
   value?: number;
@@ -153,7 +149,7 @@ export interface IRoundProgress extends IBaseElement {
 
   pathProps?: IPropsAny;
   pathBackgroundProps?: IPropsAny;
-}
+};
 
 const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -261,7 +257,7 @@ const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: a
           ...style
         }}
 
-        {...other}
+        {...other as any}
       >
         <circle
           fill='none'

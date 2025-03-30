@@ -15,7 +15,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionAction' });
 
-export interface ISectionAction extends ISection {
+export type ISectionAction = ISection & {
   text?: string;
 
   link?: string;
@@ -23,7 +23,7 @@ export interface ISectionAction extends ISection {
   to?: string;
 
   ButtonProps?: IPropsAny;
-}
+};
 
 const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

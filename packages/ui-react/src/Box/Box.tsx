@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Box' });
 
-export interface IBox extends IBaseElement {
+export type IBox = IBaseElement & {
   styles?: string | TValue;
-}
+};
 
 const Box: React.FC<IBox> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

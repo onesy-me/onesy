@@ -12,7 +12,7 @@ const useStyle = styleMethod(theme => ({
   },
 }), { name: 'onesy-SpyScroll' });
 
-export interface ISpyScroll extends IBaseElement {
+export type ISpyScroll = IBaseElement & {
   ids?: Array<string>;
 
   offset?: number;
@@ -24,7 +24,7 @@ export interface ISpyScroll extends IBaseElement {
   addStyle?: IStyle;
 
   onActive?: (value: string) => any;
-}
+};
 
 const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

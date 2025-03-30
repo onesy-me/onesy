@@ -30,7 +30,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SpeedDialItem' });
 
-export interface ISpeedDialItem extends IIconButton {
+export type ISpeedDialItem = IIconButton & {
   open?: boolean;
 
   name?: IElement;
@@ -51,7 +51,7 @@ export interface ISpeedDialItem extends IIconButton {
   Icon?: IElementReference;
 
   TooltipProps?: IPropsAny;
-}
+};
 
 const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

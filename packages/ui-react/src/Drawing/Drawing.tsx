@@ -131,7 +131,7 @@ export type TDrawingValue = Array<{
   strokeWidth?: number;
 }>;
 
-export interface IDrawing extends ISurface {
+export type IDrawing = Omit<ISurface, 'onChange' | 'onMouseDown'> & {
   render?: (element: string, props: IPropsAny, value: TDrawingValue) => IElement;
 
   svgRef?: IRef;
@@ -180,7 +180,7 @@ export interface IDrawing extends ISurface {
   PaletteProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   ColorTextFieldProps?: IPropsAny;
-}
+};
 
 const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();

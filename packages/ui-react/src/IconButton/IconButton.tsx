@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-IconButton' });
 
-export interface IIconButton extends IButton {
+export type IIconButton = IButton & {
 
-}
+};
 
 const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

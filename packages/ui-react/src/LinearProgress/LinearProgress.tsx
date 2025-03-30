@@ -4,7 +4,7 @@ import { clamp, is } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor } from '../types';
+import { IBaseElement } from '../types';
 
 const other_ = {
   position: 'absolute',
@@ -257,16 +257,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-LinearProgress' });
 
-export interface ILinearProress extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type ILinearProress = IBaseElement & {
   value?: number | { progress?: number; buffer?: number; };
 
   version?: 'determinate' | 'indeterminate';
   buffer?: boolean;
   reverse?: boolean;
-}
+};
 
 const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

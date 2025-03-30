@@ -35,7 +35,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Property' });
 
-export interface IProperty extends ILine {
+export type IProperty = ILine & {
   name?: any;
 
   value?: any;
@@ -54,7 +54,7 @@ export interface IProperty extends ILine {
   NameProps?: IPropsAny;
   NameWrapperProps?: IPropsAny;
   ValueProps?: IPropsAny;
-}
+};
 
 const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

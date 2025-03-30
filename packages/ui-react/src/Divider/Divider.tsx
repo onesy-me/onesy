@@ -141,7 +141,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Divider' });
 
-export interface IDivider extends ISurface {
+export type IDivider = ISurface & {
   inset?: boolean;
   middle?: boolean;
   padding?: number;
@@ -149,7 +149,7 @@ export interface IDivider extends ISurface {
   alignment?: 'start' | 'center' | 'end';
   orientation?: 'vertical' | 'horizontal';
   flex?: boolean;
-}
+};
 
 const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

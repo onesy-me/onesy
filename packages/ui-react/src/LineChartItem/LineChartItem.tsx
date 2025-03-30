@@ -26,7 +26,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-LineChartItem' });
 
-export interface ILineChartItem extends IChart {
+export type ILineChartItem = IChart & {
   name?: string;
 
   refs?: {
@@ -48,7 +48,10 @@ export interface ILineChartItem extends IChart {
   smooth?: boolean;
 
   smoothRatio?: number;
-}
+
+  BackgroundProps?: any;
+  BorderProps?: any;
+};
 
 const LineChartItem: React.FC<ILineChartItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -202,7 +205,7 @@ const LineChartItem: React.FC<ILineChartItem> = React.forwardRef((props_, ref: a
         // Sort for x from smallest to largest
         .sort((a, b) => a[0] - b[0])
         .map(itemValue => {
-          const [x, y] = itemValue;
+          const [x, y] = itemValue as any;
 
           const values__ = {
             x: percentageFromValueWithinRange(x, minMax.min.x, minMax.max.x),

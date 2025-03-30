@@ -44,18 +44,17 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Card' });
 
-export interface ICard extends ISurface {
+export type ICard = ISurface & {
   focus?: boolean;
   selected?: boolean;
   button?: boolean;
   href?: boolean;
-  disabled?: boolean;
 
   onFocus?: (event: React.FocusEvent<any>) => any;
   onBlur?: (event: React.FocusEvent<any>) => any;
 
   InteractionProps?: IPropsAny;
-}
+};
 
 const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -50,7 +50,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-DropZone' });
 
-export interface IDropZone extends IFileChoose {
+export type IDropZone = IFileChoose & {
   version?: IVersion;
 
   start?: IElement;
@@ -62,7 +62,7 @@ export interface IDropZone extends IFileChoose {
   onDragOver?: (event: React.DragEvent<any>) => any;
   onDragEnter?: (event: React.DragEvent<any>) => any;
   onDragLeave?: (event: React.DragEvent<any>) => any;
-}
+};
 
 const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -114,8 +114,10 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
 
     className,
 
-    ...other
+    ...otherProps
   } = props;
+
+  const other: any = otherProps;
 
   const { classes } = useStyle();
 

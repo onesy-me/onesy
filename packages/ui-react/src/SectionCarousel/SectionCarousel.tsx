@@ -118,7 +118,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionCarousel' });
 
-export interface ISectionCarouselItem {
+export type ISectionCarouselItem = {
   name?: any;
   description?: any;
 
@@ -143,9 +143,9 @@ export interface ISectionCarouselItem {
 
   propsButton?: any;
   propsButtonWrapper?: any;
-}
+};
 
-export interface ISectionCarousel extends ISection {
+export type ISectionCarousel = ISection & {
   size?: 'small' | 'regular' | 'large';
 
   values?: ISectionCarouselItem[];
@@ -156,7 +156,7 @@ export interface ISectionCarousel extends ISection {
 
   ItemProps?: IPropsAny;
   CarouselProps?: IPropsAny;
-}
+};
 
 const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

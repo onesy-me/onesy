@@ -7,7 +7,7 @@ import TransitionElement, { TTransitionStatus } from '../Transition';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { staticClassName, valueBreakpoints } from '../utils';
-import { IColor, ISize, ITonal, IValueBreakpoints, IVersion } from '../types';
+import { IColor, IValueBreakpoints, IVersion } from '../types';
 import useMediaQuery from '../useMediaQuery';
 import Icon from '../Icon';
 
@@ -247,12 +247,9 @@ export const IconDoneAnimated = (props: any) => {
   );
 };
 
-export interface IButtons extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type IButtons = Omit<ILine, 'onChange'> & {
   version?: IVersion;
   colorSelected?: IColor;
-  size?: ISize;
 
   value?: any;
   valueDefault?: any;
@@ -266,8 +263,7 @@ export interface IButtons extends ILine {
   border?: boolean;
   chip?: boolean;
   fullWidth?: boolean;
-  disabled?: boolean;
-}
+};
 
 const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

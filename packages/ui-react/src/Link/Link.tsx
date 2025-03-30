@@ -5,7 +5,6 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import TypeElement from '../Type';
 import { IType } from '../Type/Type';
 import { staticClassName } from '../utils';
-import { IColor } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -89,11 +88,13 @@ const useStyle = styleMethod(theme => ({
   tonal_color_error: { color: theme.methods.palette.color.value('error', 30) }
 }), { name: 'onesy-Link' });
 
-export interface ILink extends Omit<IType, 'color'> {
-  color?: IColor;
-
+export type ILink = IType & {
   underline?: true | 'hover';
-}
+
+  href?: string;
+
+  target?: string;
+};
 
 const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

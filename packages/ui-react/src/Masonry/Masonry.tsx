@@ -15,7 +15,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Masonry' });
 
-export interface IMasonry extends Omit<ILine, 'gap'> {
+export type IMasonry = Omit<ILine, 'gap'> & {
   gap?: number | Partial<Record<IValueBreakpoints, number>>;
 
   columns?: number | Partial<Record<IValueBreakpoints, number>>;
@@ -23,7 +23,7 @@ export interface IMasonry extends Omit<ILine, 'gap'> {
   noMasonry?: boolean;
 
   NoMasonryProps?: any;
-}
+};
 
 const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

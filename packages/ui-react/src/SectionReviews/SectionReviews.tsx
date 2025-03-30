@@ -45,15 +45,15 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionReviews' });
 
-export interface ISectionReviewsItem {
+export type ISectionReviewsItem = {
   name: string;
   meta?: string;
   description: string;
   rating?: number;
   image?: string | IMediaObject;
-}
+};
 
-export interface ISectionReviews extends ISection {
+export type ISectionReviews = ISection & {
   values?: ISectionReviewsItem[];
 
   size?: 'small' | 'regular' | 'large';
@@ -65,7 +65,8 @@ export interface ISectionReviews extends ISection {
   DescriptionProps?: IPropsAny;
   RatingProps?: IPropsAny;
   ReviewProps?: IPropsAny;
-}
+  ReviewsProps?: IPropsAny;
+};
 
 const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -39,7 +39,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Text' });
 
-export interface IText extends IBaseElement {
+export type IText = IBaseElement & {
   value?: any;
 
   columns?: number;
@@ -55,7 +55,7 @@ export interface IText extends IBaseElement {
 
   TypeProps?: IPropsAny;
   HorizontalProps?: IPropsAny;
-}
+};
 
 const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

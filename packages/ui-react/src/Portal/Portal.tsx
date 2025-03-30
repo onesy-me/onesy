@@ -6,9 +6,9 @@ import { useOnesyTheme } from '@onesy/style-react';
 
 import { IBaseElement } from '../types';
 
-export interface IPortal extends IBaseElement {
+export type IPortal = IBaseElement & {
   element?: Element | DocumentFragment;
-}
+};
 
 const Portal: React.FC<IPortal> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

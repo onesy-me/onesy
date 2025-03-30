@@ -7,7 +7,6 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import IconMaterialSchedule from '@onesy/icons-material-rounded-react/IconMaterialScheduleW100';
 import IconMaterialKeyboardAlt from '@onesy/icons-material-rounded-react/IconMaterialKeyboardAltW100';
 
-import IconElement from '../Icon';
 import IconButtonElement from '../IconButton';
 import AdvancedTextFieldElement from '../AdvancedTextField';
 import ModalElement from '../Modal';
@@ -28,7 +27,7 @@ import { SEPARATOR, SEPARATOR_SYMBOL } from '../DatePicker/DatePicker';
 import { TClockUnit } from '../Clock/Clock';
 import { IAdvancedTextField } from '../AdvancedTextField/AdvancedTextField';
 import { valueBreakpoints, staticClassName } from '../utils';
-import { ISize, IValueBreakpoints, IElementReference, IPropsAny } from '../types';
+import { IValueBreakpoints, IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -276,7 +275,7 @@ export type TTimePickerValue = OnesyDate | [OnesyDate, OnesyDate];
 
 export type TTimePickerSelecting = TClockUnit | [TClockUnit, TClockUnit];
 
-export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
+export type ITimePicker = Omit<IAdvancedTextField, 'version' | 'onChange'> & {
   version?: 'auto' | 'mobile' | 'desktop';
 
   value?: TTimePickerValue;
@@ -286,8 +285,6 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   selecting?: TTimePickerSelecting;
   selectingDefault?: TTimePickerSelecting;
   onChangeSelecting?: (value: TTimePickerSelecting) => any;
-
-  size?: ISize;
 
   now?: boolean;
   range?: boolean;
@@ -316,14 +313,14 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   heading?: boolean;
   actions?: boolean;
   fullWidth?: boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
 
   onClick?: (event: React.MouseEvent<any>) => any;
   onClose?: (event: React.MouseEvent<any>) => any;
   onCancel?: (event: React.MouseEvent<any>) => any;
   onNow?: (event: React.MouseEvent<any>) => any;
   onOk?: (event: React.MouseEvent<any>) => any;
+  onToday?: (event: React.MouseEvent<any>) => any;
+  onClear?: (event: React.MouseEvent<any>) => any;
 
   renderValue?: (value: OnesyDate, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
 
@@ -346,7 +343,7 @@ export interface ITimePicker extends Omit<IAdvancedTextField, 'version'> {
   TabToProps?: IPropsAny;
   AdvancedTextFieldProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+};
 
 const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
@@ -1305,7 +1302,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
               orientation={orientationValue}
 
-              value={dayTime[index] || formatDate(new OnesyDate(), 'a') as any}
+              value={dayTime[index] || formatDate(new OnesyDate(), 'a')}
 
               onChange={valueNew => updateDayTime(valueNew, index)}
 

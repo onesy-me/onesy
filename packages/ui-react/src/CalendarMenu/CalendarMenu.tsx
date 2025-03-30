@@ -117,7 +117,7 @@ const useStyle = style(theme => ({
   }
 }), { name: 'onesy-CalendarMenu' });
 
-export interface ICalendarMenu extends IMenu {
+export type ICalendarMenu = Omit<IMenu, 'onChange'> & {
   value?: any;
 
   onChange?: (...args: any) => any;
@@ -141,7 +141,7 @@ export interface ICalendarMenu extends IMenu {
   endBottom?: any;
 
   noRemove?: boolean;
-}
+};
 
 const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

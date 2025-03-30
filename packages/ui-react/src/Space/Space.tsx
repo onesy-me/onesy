@@ -42,7 +42,7 @@ import SurfaceElement from '../Surface';
 import HTMLCanvasElement, { IHTMLCanvasOnChangeValue } from '../HTMLCanvas';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, ISize } from '../types';
+import { IBaseElement } from '../types';
 
 // items
 // furniture
@@ -326,10 +326,8 @@ const useStyle = style(theme => ({
   }
 }), { name: 'onesy-Space' });
 
-export interface ISpace extends IBaseElement {
+export type ISpace = IBaseElement & {
   unitDefault?: 'm' | 'px';
-
-  size?: ISize;
 
   minSize?: number;
 
@@ -346,8 +344,6 @@ export interface ISpace extends IBaseElement {
     value: string;
     url: string;
   }>;
-
-  disabled?: boolean;
 
   IconAdd?: any;
 
@@ -376,9 +372,7 @@ export interface ISpace extends IBaseElement {
   IconUngroup?: any;
 
   IconGroupSelect?: any;
-
-  Component?: any;
-}
+};
 
 // info
 // 1. icons (freecads.com)

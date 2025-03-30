@@ -6,9 +6,9 @@ import { IBaseElement } from '../types';
 
 const useReset = reset();
 
-export interface IReset extends IBaseElement {
+export type IReset = IBaseElement & {
 
-}
+};
 
 const Reset: React.FC<IReset> = (props) => {
   const { children, ...other } = props;

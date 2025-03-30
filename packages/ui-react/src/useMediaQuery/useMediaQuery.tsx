@@ -2,10 +2,10 @@ import React from 'react';
 
 import { isEnvironment } from '@onesy/utils';
 
-export interface IOptionsUseMediaQuery {
+export type IOptionsUseMediaQuery = {
   element?: any;
   initial?: boolean;
-}
+};
 
 const useMediaQuery = (props: string, options?: IOptionsUseMediaQuery) => {
   const element = options?.element;

@@ -52,7 +52,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionLogos' });
 
-export interface ISectionLogos extends ISection {
+export type ISectionLogos = ISection & {
   values?: IMediaObject[];
 
   version?: 'regular';
@@ -65,7 +65,7 @@ export interface ISectionLogos extends ISection {
 
   ItemProps?: IPropsAny;
   WrapperProps?: IPropsAny;
-}
+};
 
 const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

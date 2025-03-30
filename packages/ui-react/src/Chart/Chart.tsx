@@ -12,7 +12,7 @@ import GrowElement from '../Grow';
 import useMediaQuery from '../useMediaQuery';
 import { ISurface } from '../Surface/Surface';
 import { valueBreakpoints, staticClassName, minMaxBetweenNumbers } from '../utils';
-import { IColor, IStyle, ITonal, IElementAny, IElement, IValueBreakpoints, IPropsAny } from '../types';
+import { IStyle, IElementAny, IElement, IValueBreakpoints, IPropsAny, IColor } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -324,15 +324,15 @@ const useStyle = styleMethod(theme => ({
 
 export type IChartValueValues = Array<any>;
 
-export interface IItemValue {
+export type IItemValue = {
   value: number;
   label: number;
   percentage: number;
   axis: 'x' | 'y';
   props?: any;
-}
+};
 
-export interface IChartValue {
+export type IChartValue = {
   color?: IColor;
   tone?: TColorValues;
   name?: string;
@@ -341,11 +341,9 @@ export interface IChartValue {
   percentage?: string | number;
 
   values: IChartValueValues | Array<IChartValueValues>;
-}
+};
 
-export interface IChart extends ISurface {
-  tonal?: ITonal;
-  color?: IColor;
+export type IChart = ISurface & {
   title?: IElementAny;
   subtitle?: IElementAny;
 
@@ -457,6 +455,7 @@ export interface IChart extends ISurface {
   minPaddingY?: number | Partial<Record<IValueBreakpoints, number>>;
   maxPaddingX?: number | Partial<Record<IValueBreakpoints, number>>;
   maxPaddingY?: number | Partial<Record<IValueBreakpoints, number>>;
+  minMax?: any;
 
   noMain?: boolean;
 
@@ -486,7 +485,7 @@ export interface IChart extends ISurface {
   LegendItemProps?: IPropsAny;
   GuidelineProps?: IPropsAny;
   WrapperProps?: IPropsAny;
-}
+};
 
 const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

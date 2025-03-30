@@ -15,7 +15,7 @@ import FadeElement from '../Fade';
 import TransitionsElement from '../Transitions';
 import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
-import { ISize, IElementReference, IPropsAny } from '../types';
+import { IElementReference, IPropsAny } from '../types';
 
 const IconWeather = React.forwardRef((props: any, ref: any) => {
   const theme = useOnesyTheme();
@@ -188,9 +188,7 @@ export type TWeather = 'clear' | 'partly clear' | 'rainy' | 'partly rainy' | 'sn
 
 export type TTemperature = number;
 
-export interface IWeather extends ISurface {
-  size?: ISize;
-
+export type IWeather = ISurface & {
   shadow?: boolean;
 
   dayTime?: TWeatherDayTime;
@@ -217,7 +215,7 @@ export interface IWeather extends ISurface {
   IconSnow?: IElementReference;
 
   IconProps?: IPropsAny;
-}
+};
 
 const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -331,7 +329,7 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
     }));
   }, [temperature_]);
 
-  if (!['small', 'regular', 'large'].includes(size)) styles.root.maxWidth = size;
+  if (!['small', 'regular', 'large'].includes(size as any)) styles.root.maxWidth = size;
 
   const IconProps: any = {
     color: 'unset',

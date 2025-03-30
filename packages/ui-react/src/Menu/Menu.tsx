@@ -38,7 +38,7 @@ export const MENUS = {
   }
 };
 
-export interface IMenu extends Omit<ITooltip, 'name' | 'label'> {
+export type IMenu = Omit<ITooltip, 'name' | 'label'> & {
   open?: boolean;
 
   openDefault?: boolean;
@@ -68,7 +68,7 @@ export interface IMenu extends Omit<ITooltip, 'name' | 'label'> {
   ModalProps?: IPropsAny;
   WrapperProps?: IPropsAny;
   ClickListenerProps?: IPropsAny;
-}
+};
 
 const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

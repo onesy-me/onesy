@@ -6,7 +6,7 @@ import DividerElement from '../Divider';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IVersion, IPropsAny } from '../types';
+import { IColor, IVersion, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -78,9 +78,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Stepper' });
 
-export interface IStepper extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type IStepper = ILine & {
   version?: IVersion;
 
   iconColor?: IColor;
@@ -91,6 +89,7 @@ export interface IStepper extends ILine {
 
   active?: number;
   completed?: Record<any, boolean>;
+  free?: boolean;
 
   stepDirection?: 'row' | 'column';
   orientation?: 'vertical' | 'horizontal';
@@ -98,7 +97,7 @@ export interface IStepper extends ILine {
   individualDividers?: boolean;
 
   DividerProps?: IPropsAny;
-}
+};
 
 const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

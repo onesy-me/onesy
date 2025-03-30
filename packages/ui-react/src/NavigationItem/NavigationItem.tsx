@@ -10,7 +10,7 @@ import TooltipElement from '../Tooltip';
 import TransitionElement, { TTransitionStatus } from '../Transition';
 import { ITooltip } from '../Tooltip/Tooltip';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IElement, IElementReference, IPropsAny } from '../types';
+import { IElement, IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -127,9 +127,7 @@ const useStyle = styleMethod(theme => ({
 
 export type INavigationItemVersion = 'regular' | 'auto';
 
-export interface INavigationItem extends ITooltip {
-  tonal?: ITonal;
-  color?: IColor;
+export type INavigationItem = ITooltip & {
   version?: 'regular' | 'auto';
 
   value?: any;
@@ -153,7 +151,7 @@ export interface INavigationItem extends ITooltip {
 
   TooltipProps?: IPropsAny;
   IconWrapperProps?: IPropsAny;
-}
+};
 
 const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -256,7 +254,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
   const onKeyDown = React.useCallback((event: React.KeyboardEvent<any>) => {
     if (!disabled) {
       if (event.key === 'Enter') {
-        if (is('function', props.onClick)) props.onClick(event);
+        if (is('function', props.onClick)) props.onClick(event as any);
       }
     }
 

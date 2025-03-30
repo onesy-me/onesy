@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ModalFooter' });
 
-export interface IModalFooter extends ILine {
+export type IModalFooter = ILine & {
 
-}
+};
 
 const ModalFooter: React.FC<IModalFooter> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

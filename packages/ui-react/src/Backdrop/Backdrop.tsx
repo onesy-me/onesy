@@ -41,7 +41,7 @@ const useStyle = styleMethod(theme => ({
 
 let BACKDROPS_OPEN = 0;
 
-export interface IBackdrop extends ILine {
+export type IBackdrop = ILine & {
   open?: boolean;
   invisible?: boolean;
 
@@ -55,7 +55,7 @@ export interface IBackdrop extends ILine {
   ModalProps?: IPropsAny;
 
   onClose?: TMethod;
-}
+};
 
 const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

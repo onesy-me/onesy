@@ -8,7 +8,7 @@ import LineElement from '../Line';
 import useMediaQuery from '../useMediaQuery';
 import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
-import { ISize, IElement } from '../types';
+import { IElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -68,11 +68,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-List' });
 
-export interface IList extends ISurface {
-  size?: ISize;
+export type IList = ISurface & {
+  gap?: any;
 
   menu?: IElement;
   menuOpen?: boolean;
+
+  onMenuDesktopClose?: any;
 
   noMaxWidth?: boolean;
   noChildrenTransform?: boolean;
@@ -82,7 +84,7 @@ export interface IList extends ISurface {
   noBackground?: boolean;
 
   SurfaceProps?: any;
-}
+};
 
 const List: React.FC<IList> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

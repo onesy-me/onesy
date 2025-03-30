@@ -41,7 +41,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AreaChartItem' });
 
-export interface IAreaChartItem extends IChart {
+export type IAreaChartItem = IChart & {
   name?: string;
 
   refs?: {
@@ -65,7 +65,10 @@ export interface IAreaChartItem extends IChart {
   smoothRatio?: number;
 
   linearGradient?: boolean;
-}
+
+  BackgroundProps?: any;
+  BorderProps?: any;
+};
 
 const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -254,7 +257,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
         // Sort for x from smallest to largest
         .sort((a, b) => a[0] - b[0])
         .map(item_ => {
-          const [x, y] = item_;
+          const [x, y] = item_ as any;
 
           const values__ = {
             x: percentageFromValueWithinRange(x, minMax.min.x, minMax.max.x),

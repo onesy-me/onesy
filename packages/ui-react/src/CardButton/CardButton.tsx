@@ -14,17 +14,16 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-CardButton' });
 
-export interface ICardButton extends IBaseElement {
+export type ICardButton = IBaseElement & {
   focus?: boolean;
   selected?: boolean;
   href?: boolean;
-  disabled?: boolean;
 
   onFocus?: (event: React.FocusEvent<any>) => any;
   onBlur?: (event: React.FocusEvent<any>) => any;
 
   InteractionProps?: IPropsAny;
-}
+};
 
 const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

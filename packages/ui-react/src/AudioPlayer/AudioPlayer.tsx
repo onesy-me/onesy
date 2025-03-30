@@ -24,7 +24,7 @@ import MenuElement from '../Menu';
 import ListItemElement from '../ListItem';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IColor, IElementReference, IPropsAny, ISize, ITonal } from '../types';
+import { IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -136,17 +136,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AudioPlayer' });
 
-export interface IAudioPlayer extends ILine {
+export type IAudioPlayer = ILine & {
   name?: string;
   src?: string;
   mime?: string;
   meta?: any;
   versions?: any;
   duration?: number;
-
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
 
   start?: any;
   end?: any;
@@ -156,6 +152,8 @@ export interface IAudioPlayer extends ILine {
   endButtons?: any;
   startEnd?: any;
   endEnd?: any;
+  startButtonsEnd?: any;
+  endButtonsEnd?: any;
 
   forward?: boolean;
   backward?: boolean;
@@ -164,8 +162,6 @@ export interface IAudioPlayer extends ILine {
   playbackSpeed?: boolean;
 
   startMediaSessionOnPlay?: boolean;
-
-  disabled?: boolean;
 
   IconPlay?: IElementReference;
   IconPause?: IElementReference;
@@ -190,7 +186,7 @@ export interface IAudioPlayer extends ILine {
   SettingsButtonProps?: IPropsAny;
   SettingsMenuProps?: IPropsAny;
   QualityButtonProps?: IPropsAny;
-}
+};
 
 const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -1047,7 +1043,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
 
                       {...sliderProps}
 
-                      size={['small', 'regular'].includes(size) ? 'small' : 'regular'}
+                      size={['small', 'regular'].includes(size as any) ? 'small' : 'regular'}
 
                       {...VolumeProps}
 

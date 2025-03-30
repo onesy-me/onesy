@@ -12,7 +12,7 @@ import TooltipElement from '../Tooltip';
 import LineElement from '../Line';
 import { ILine, TLineDirection } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IVersion, IElement, IElementReference, IPropsAny } from '../types';
+import { IVersion, IElement, IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -130,9 +130,7 @@ const IconWrapper = (props: any) => {
   );
 };
 
-export interface ISpeedDial extends Omit<ILine, 'direction'> {
-  tonal?: ITonal;
-  color?: IColor;
+export type ISpeedDial = Omit<ILine, 'direction'> & {
   version?: IVersion;
 
   open?: boolean;
@@ -158,8 +156,6 @@ export interface ISpeedDial extends Omit<ILine, 'direction'> {
 
   onKeyDown?: (event: React.KeyboardEvent<any>) => any;
 
-  disabled?: boolean;
-
   IconOpen?: IElementReference;
   Icon?: IElementReference;
   FabTransitionComponent?: IElementReference;
@@ -171,7 +167,7 @@ export interface ISpeedDial extends Omit<ILine, 'direction'> {
   FabWrapperProps?: IPropsAny;
   FabTransitionComponentProps?: IPropsAny;
   SpeeDialItemTransitionComponentProps?: IPropsAny;
-}
+};
 
 const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

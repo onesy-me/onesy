@@ -19,9 +19,9 @@ export const matches = (value: Element) => {
 
 export const queryMatchFocusable = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)';
 
-export interface IFocus extends IBaseElement {
+export type IFocus = IBaseElement & {
 
-}
+};
 
 const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

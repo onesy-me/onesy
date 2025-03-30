@@ -7,7 +7,7 @@ import IconMaterialGrade from '@onesy/icons-material-rounded-react/IconMaterialG
 import IconMaterialGradeFilled from '@onesy/icons-material-rounded-react/IconMaterialGradeW100Filled';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, ISize, IElement } from '../types';
+import { IBaseElement, IColor, IElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -64,11 +64,8 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Rating' });
 
-export interface IRating extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
+export type IRating = Omit<IBaseElement, 'onChange'> & {
   colorInactive?: IColor;
-  size?: ISize;
 
   value?: number;
   valueDefault?: number;
@@ -81,8 +78,6 @@ export interface IRating extends IBaseElement {
   values?: number;
   precision?: number;
   onlyValue?: boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
 
   icon?: IElement;
   icons?: {
@@ -96,7 +91,7 @@ export interface IRating extends IBaseElement {
   IconProps?: any;
   IconActiveProps?: any;
   IconInactiveProps?: any;
-}
+};
 
 const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

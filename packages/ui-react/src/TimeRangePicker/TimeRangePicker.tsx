@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TimeRangePicker' });
 
-export interface ITimeRangePicker extends ITimePicker {
+export type ITimeRangePicker = ITimePicker & {
 
-}
+};
 
 const TimeRangePicker: React.FC<ITimeRangePicker> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

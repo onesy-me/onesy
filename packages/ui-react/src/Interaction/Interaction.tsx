@@ -155,7 +155,7 @@ const useStyle = styleMethod(theme => ({
 
 export type TMethodsVersion = 'add' | 'pulse' | 'remove';
 
-export interface IInteraction extends IBaseElement {
+export type IInteraction = IBaseElement & {
   wave?: boolean;
   background?: boolean;
   border?: boolean;
@@ -169,8 +169,7 @@ export interface IInteraction extends IBaseElement {
   wave_version?: 'simple';
   subscription?: OnesySubscription;
   clear?: any;
-  disabled?: boolean;
-}
+};
 
 const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -35,13 +35,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy' });
 
-export interface IPageForward {
+export type IPageForward = {
   to?: string;
   name?: string;
   label?: string;
-}
+};
 
-export interface IPage extends ILine {
+export type IPage = ILine & {
   back?: IPageForward;
   forward?: IPageForward;
 
@@ -51,7 +51,7 @@ export interface IPage extends ILine {
 
   IconBack?: IElementReference;
   IconForward?: IElementReference;
-}
+};
 
 const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

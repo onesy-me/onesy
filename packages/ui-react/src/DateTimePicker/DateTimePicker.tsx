@@ -27,7 +27,8 @@ import { TCalendarMonthValue } from '../CalendarMonth/CalendarMonth';
 import { TCalendarUnit } from '../Calendar/Calendar';
 import { TClockUnit } from '../Clock/Clock';
 import { valueBreakpoints, staticClassName } from '../utils';
-import { ITonal, IColor, IValueBreakpoints, IElementReference, IPropsAny } from '../types';
+import { IValueBreakpoints, IElementReference, IPropsAny } from '../types';
+import { ITextField } from '../TextField/TextField';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -60,10 +61,7 @@ const useStyle = styleMethod(theme => ({
 
 export type TDateTimePicker = OnesyDate;
 
-export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IDateTimePicker = Omit<IAdvancedTextField, 'version' | 'onChange'> & ITextField & {
   version?: 'auto' | 'mobile' | 'desktop';
 
   value?: TCalendarMonthValue;
@@ -91,8 +89,6 @@ export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
   clear?: boolean;
   placeholder?: string;
   fullWidth?: boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
 
   onClose?: (event: React.MouseEvent<any>) => any;
   onCancel?: (event: React.MouseEvent<any>) => any;
@@ -116,7 +112,9 @@ export interface IDateTimePicker extends Omit<IAdvancedTextField, 'version'> {
   MiddleProps?: IPropsAny;
   MainProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+  ModeDesktopProps?: IPropsAny;
+  ModeMobileProps?: IPropsAny;
+};
 
 const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();

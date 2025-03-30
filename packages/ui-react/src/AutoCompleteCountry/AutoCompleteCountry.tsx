@@ -15,9 +15,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AutoCompleteCountry' });
 
-export interface IAutoCompleteCountry extends IAutoComplete {
+export type IAutoCompleteCountry = IAutoComplete & {
 
-}
+};
 
 const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

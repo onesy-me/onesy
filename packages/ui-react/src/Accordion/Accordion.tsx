@@ -15,7 +15,7 @@ import TypeElement from '../Type';
 import { ITransition, TTransitionStatus } from '../Transition';
 import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
-import { IColor, IElement, IElementReference, IElevation, IPropsAny, ITonal } from '../types';
+import { IElement, IElementReference, IElevation, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -129,9 +129,7 @@ const useStyle = styleMethod(theme => ({
 
 type TPadding = 'start' | 'end' | 'both' | 'none';
 
-export interface IAccordion extends ISurface {
-  tonal?: ITonal;
-  color?: IColor;
+export type IAccordion = Omit<ISurface, 'onChange'> & {
   elevation?: IElevation;
 
   primary?: IElement;
@@ -154,7 +152,6 @@ export interface IAccordion extends ISurface {
   mainPaddingHorizontal?: TPadding;
   noExpand?: boolean;
   noTransition?: boolean;
-  disabled?: boolean;
 
   ExpandProps?: IPropsAny;
   TransitionComponentProps?: IPropsAny;
@@ -166,7 +163,7 @@ export interface IAccordion extends ISurface {
 
   ExpandIcon?: IElementReference;
   TransitionComponent?: IElementReference;
-}
+};
 
 const AccordionDelays = {
   Transition: {

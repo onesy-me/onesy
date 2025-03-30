@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ModalTitle' });
 
-export interface IModalTitle extends IType {
+export type IModalTitle = IType & {
 
-}
+};
 
 const ModalTitle: React.FC<IModalTitle> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

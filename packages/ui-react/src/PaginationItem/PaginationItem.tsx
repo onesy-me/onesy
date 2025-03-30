@@ -39,9 +39,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-PaginationItem' });
 
-export interface IPaginationItem extends IButton {
+export type IPaginationItem = IButton & {
   TypeProps?: IPropsAny;
-}
+};
 
 const PaginationItem: React.FC<IPaginationItem> = React.forwardRef((props_, ref) => {
   const theme = useOnesyTheme();

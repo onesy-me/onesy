@@ -162,17 +162,17 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Carousel' });
 
-export interface ICarouselValue {
+export type ICarouselValue = {
   index?: number;
   x?: number;
   y?: number;
-}
+};
 
 export type TCarouselItem = string | null | IElement | { element: IElement; };
 
 export type TCarouseOnUpdate = (to: string | number, values: TCarouselItem[]) => any;
 
-export interface ICarousel extends Omit<ISurface, 'version'> {
+export type ICarousel = Omit<ISurface, 'version' | 'onChange'> & {
   version?: 'regular' | 'transition' | Partial<Record<IValueBreakpoints, 'regular' | 'transition'>>;
 
   valueDefault?: ICarouselValue;
@@ -293,7 +293,7 @@ export interface ICarousel extends Omit<ISurface, 'version'> {
   ArrowNextTransitionComponentProps?: IPropsAny;
   ProgressTransitionComponentProps?: IPropsAny;
   ItemWrapperProps?: IPropsAny;
-}
+};
 
 const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

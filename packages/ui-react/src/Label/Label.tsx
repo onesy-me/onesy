@@ -7,7 +7,7 @@ import TypeElement from '../Type';
 import LineElement from '../Line';
 import { ILine, TLineAlign } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IVersion, ISize, IElement, IPropsAny } from '../types';
+import { IColor, IVersion, IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -44,12 +44,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Label' });
 
-export interface ILabel extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type ILabel = Omit<ILine, 'onChange'> & {
   colorUnchecked?: IColor;
   version?: IVersion;
-  size?: ISize;
 
   position?: 'start' | 'top' | 'bottom' | 'end';
 
@@ -58,6 +55,7 @@ export interface ILabel extends ILine {
   label?: IElement;
   name?: IElement;
 
+  valueDefault?: boolean;
   checkedDefault?: boolean;
 
   value?: any;
@@ -69,11 +67,10 @@ export interface ILabel extends ILine {
   helperText?: string;
   footer?: IElement;
 
-  disabled?: boolean;
-
   LabelProps?: IPropsAny;
   TypeProps?: IPropsAny;
-}
+  TextProps?: IPropsAny;
+};
 
 const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

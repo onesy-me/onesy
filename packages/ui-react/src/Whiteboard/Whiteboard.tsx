@@ -68,16 +68,16 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Whiteboard' });
 
-export interface IWhiteboardAction {
+export type IWhiteboardAction = {
   v: 'a' | 'r';
   i: IWhiteboardItem | IWhiteboardItem[];
-}
+};
 
 export type IWhiteboardTool = 'pen' | 'eraser' | 'pan' | 'zoom' | 'select' | 'circle' | 'rectangle' | 'triangle' | 'line' | 'line-arrow' | 'text' | 'image';
 
 export type IWhiteboardValue = IWhiteboardItem[];
 
-export interface IWhiteboard extends IBaseElement {
+export type IWhiteboard = Omit<IBaseElement, 'onChange'> & {
   valueDefault?: IWhiteboardValue;
 
   onChange?: (value: IWhiteboardValue) => any;
@@ -89,9 +89,9 @@ export interface IWhiteboard extends IBaseElement {
   grid?: boolean;
 
   settings?: any;
-}
+};
 
-export interface IWhiteboardItem {
+export type IWhiteboardItem = {
   // id,
   i: string;
   // version: draw line, draw point, object (circle, ellipse, rectangle, square, triangle, line, arrow), image, text
@@ -119,7 +119,7 @@ export interface IWhiteboardItem {
   // added at
   // in order to do real time replay of what the board had in it at specific timestamp
   a: number;
-}
+};
 
 const colorSelect = 'hsl(244deg 64% 64%)';
 const colorSelectBackground = 'hsla(244deg 64% 64% / 4%)';

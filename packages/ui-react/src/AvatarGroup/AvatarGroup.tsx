@@ -6,7 +6,7 @@ import LineElement from '../Line';
 import AvatarElement from '../Avatar';
 import { IAvatar } from '../Avatar/Avatar';
 import { staticClassName } from '../utils';
-import { IColor, IElement, IPropsAny, ISizeAny, ITonal } from '../types';
+import { IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -28,19 +28,14 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AvatarGroup' });
 
-export interface IAvatarGroup extends IAvatar {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISizeAny;
-
+export type IAvatarGroup = IAvatar & {
   total?: number;
   max?: number;
-  disabled?: boolean;
 
   AdditionalAvatar?: IElement;
 
   AdditionalAvatarProps?: IPropsAny;
-}
+};
 
 const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -92,7 +87,7 @@ const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) 
     else styles.item.outlineWidth = Math.ceil(size / 20);
   }
 
-  other.style = styles.item;
+  (other as any).style = styles.item;
 
   if ((total !== undefined && total - (children_ as any).length >= 1) || max < (children_ as any).length) {
     let value: any;

@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Fab' });
 
-export interface IFab extends IButton {
+export type IFab = IButton & {
 
-}
+};
 
 const Fab: React.FC<IFab> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

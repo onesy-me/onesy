@@ -100,7 +100,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Countdown' });
 
-export interface ICountdown extends Omit<ISurface, 'version'> {
+export type ICountdown = Omit<ISurface, 'version'> & {
   version?: 'linear' | 'round';
 
   renderValue?: (value: string) => IElement;
@@ -123,7 +123,7 @@ export interface ICountdown extends Omit<ISurface, 'version'> {
   IconButtonProps?: IPropsAny;
   LinearProgressProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+};
 
 const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

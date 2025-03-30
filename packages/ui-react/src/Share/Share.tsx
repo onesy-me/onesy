@@ -20,7 +20,6 @@ import ListElement from '../List';
 import useMediaQuery from '../useMediaQuery';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ISize } from '../types';
 
 const IconCustomFacebook = React.forwardRef((props: IIcon, ref) => {
 
@@ -228,12 +227,10 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Share' });
 
-export interface IShare extends ILine {
+export type IShare = ILine & {
   version?: 'fixed' | 'absolute' | 'static' | 'menu-items';
 
   position?: 'start' | 'end' | 'top' | 'bottom';
-
-  size?: ISize;
 
   name?: string;
 
@@ -270,6 +267,7 @@ export interface IShare extends ILine {
   onOpen?: (value: any, event: MouseEvent) => any;
 
   ListItemProps?: any;
+  MenuItemProps?: any;
 
   IconFacebook?: any;
   IconX?: any;
@@ -282,7 +280,7 @@ export interface IShare extends ILine {
   IconEmail?: any;
   IconPrint?: any;
   IconMore?: any;
-}
+};
 
 const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
   const theme = useOnesyTheme();

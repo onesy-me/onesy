@@ -11,7 +11,7 @@ import DividerElement from '../Divider';
 import IconButtonElement from '../IconButton';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IElement, IPropsAny } from '../types';
+import { IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -95,10 +95,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-WindowSplit' });
 
-export interface IWindowSplit extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IWindowSplit = Omit<ILine, 'onChange'> & {
   valueDefault?: number;
   value?: number;
 
@@ -127,7 +124,8 @@ export interface IWindowSplit extends ILine {
 
   IconButtonProps?: IPropsAny;
   DividerProps?: IPropsAny;
-}
+  SeparatorProps?: IPropsAny;
+};
 
 const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

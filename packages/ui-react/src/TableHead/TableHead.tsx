@@ -6,7 +6,6 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
 import { getOverflowParent, staticClassName } from '../utils';
-import { ISize } from '../types';
 import TableRowElement from '../TableRow';
 import LinearProgressElement from '../LinearProgress';
 
@@ -44,9 +43,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TableHead' });
 
-export interface ITableHead extends ISurface {
-  size?: ISize;
-
+export type ITableHead = ISurface & {
   sticky?: boolean;
 
   stickyOffset?: number;
@@ -55,7 +52,7 @@ export interface ITableHead extends ISurface {
 
   LinearGradientProps?: any;
   TableRowLoaderProps?: any;
-}
+};
 
 const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

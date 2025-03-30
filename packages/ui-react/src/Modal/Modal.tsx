@@ -9,7 +9,7 @@ import FadeElement from '../Fade';
 import SurfaceElement from '../Surface';
 import useMediaQuery from '../useMediaQuery';
 import { staticClassName } from '../utils';
-import { IBaseElement, IColor, IElementReference, IPropsAny, IRef, ISize, ITonal } from '../types';
+import { IBaseElement, IElementReference, IPropsAny, IRef } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -125,11 +125,7 @@ let MODALS_OPEN = 0;
 
 // 1. Add padding right for freezeScroll for the scroll bar if it exists and width that it is
 
-export interface IModal extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
-
+export type IModal = IBaseElement & {
   open?: boolean;
   openDefault?: boolean;
 
@@ -169,7 +165,7 @@ export interface IModal extends IBaseElement {
 
   BackgroundComponent?: IElementReference;
   TransitionComponent?: IElementReference;
-}
+};
 
 const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

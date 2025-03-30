@@ -32,7 +32,7 @@ import ChipElement from '../Chip';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { canvasBrightness, staticClassName, image as imageMethod, canvasContrast, canvasSaturation, canvasFade, canvasInvert, canvasOldPhoto } from '../utils';
-import { IElementReference, IElement, ITonal, IColor, IPropsAny } from '../types';
+import { IElementReference, IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -152,10 +152,7 @@ export type TImageEditFilter = {
   renderSlider: (value: string, filterValuesCopy: any, onFilterSliderChange: TMethod) => IElement;
 };
 
-export interface IImageEdit extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IImageEdit = Omit<ILine, 'onChange'> & {
   image?: string | HTMLCanvasElement;
 
   name?: string;
@@ -215,7 +212,7 @@ export interface IImageEdit extends ILine {
   TooltipProps?: IPropsAny;
   ImageCropProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
-}
+};
 
 const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

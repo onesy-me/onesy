@@ -126,7 +126,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-CalendarAvailability' });
 
-export interface ICalendarEvent {
+export type ICalendarEvent = {
   id?: string;
 
   description?: string;
@@ -138,9 +138,9 @@ export interface ICalendarEvent {
   status?: string;
 
   color?: string;
-}
+};
 
-export interface ICalendarAvailability extends ILine {
+export type ICalendarAvailability = ILine & {
   name?: string | IElement;
 
   date?: OnesyDate;
@@ -182,23 +182,17 @@ export interface ICalendarAvailability extends ILine {
   endRightModal?: any;
 
   IconPrevious?: any;
-
   IconNext?: any;
-
   IconDescription?: any;
-
+  IconEdit?: any;
   IconRemove?: any;
-
   IconClose?: any;
 
   WeekProps?: any;
-
   DayProps?: any;
-
   IconProps?: any;
-
   IconButtonProps?: any;
-}
+};
 
 const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

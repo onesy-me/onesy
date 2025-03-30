@@ -89,7 +89,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-NavigationDrawer' });
 
-export interface INavigationDrawer extends IModal {
+export type INavigationDrawer = IModal & {
   version?: 'modal' | 'standard';
   position?: 'fixed' | 'absolute';
   direction?: 'top' | 'left' | 'bottom' | 'right';
@@ -100,7 +100,7 @@ export interface INavigationDrawer extends IModal {
   removeOnExited?: IMethodTransition;
 
   TransitionComponentProps?: IPropsAny;
-}
+};
 
 const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -266,7 +266,7 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
 
   if (min !== undefined) {
     other.freezeScroll = other.freezeScroll !== undefined ? other.freezeScroll : false;
-    other.openDefault = false;
+    (other as any).openDefault = false;
 
     TransitionComponentProps.min = TransitionComponentProps.min !== undefined ? TransitionComponentProps.min : min;
   }

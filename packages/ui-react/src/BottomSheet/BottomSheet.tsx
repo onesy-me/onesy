@@ -35,9 +35,9 @@ const useStyle = styleMethod(theme => ({
   },
 }), { name: 'onesy-BottomSheet' });
 
-export interface IBottomSheet extends INavigationDrawer {
+export type IBottomSheet = INavigationDrawer & {
 
-}
+};
 
 const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

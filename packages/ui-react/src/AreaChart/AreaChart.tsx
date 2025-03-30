@@ -14,13 +14,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AreaChart' });
 
-export interface IAreaChart extends IChart {
+export type IAreaChart = IChart & {
   smooth?: boolean;
 
   smoothRatio?: number;
 
   linearGradient?: boolean;
-}
+};
 
 const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

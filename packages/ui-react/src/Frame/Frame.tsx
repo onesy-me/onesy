@@ -55,7 +55,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Frame' });
 
-export interface IFrame extends ILine {
+export type IFrame = ILine & {
   url?: string;
   src?: string;
 
@@ -65,7 +65,7 @@ export interface IFrame extends ILine {
   endOptions?: any;
 
   IconMobile?: any;
-  IconTable?: any;
+  IconTablet?: any;
   IconLaptop?: any;
   IconDesktop?: any;
 
@@ -75,7 +75,7 @@ export interface IFrame extends ILine {
   OptionsProps?: any;
   OptionsWrapperProps?: any;
   WrapperProps?: any;
-}
+};
 
 const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

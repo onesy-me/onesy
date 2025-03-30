@@ -31,13 +31,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionTimeline' });
 
-export interface ISectionTimelineItem {
+export type ISectionTimelineItem = {
   title?: string;
   heading?: string;
   description?: string;
-}
+};
 
-export interface ISectionTimeline extends ISection {
+export type ISectionTimeline = ISection & {
   size?: 'small' | 'regular' | 'large';
 
   values?: ISectionTimelineItem[];
@@ -49,7 +49,7 @@ export interface ISectionTimeline extends ISection {
   DescriptionProps?: IPropsAny;
   ItemStartProps?: IPropsAny;
   ItemEndProps?: IPropsAny;
-}
+};
 
 const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

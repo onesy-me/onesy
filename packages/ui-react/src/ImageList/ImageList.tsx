@@ -35,14 +35,14 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ImageList' });
 
-export interface IImageList extends IBaseElement {
+export type IImageList = IBaseElement & {
   version?: 'standard' | 'vowen' | 'masonry';
 
   gap?: number | Partial<Record<IValueBreakpoints, number>>;
   rowGap?: number | Partial<Record<IValueBreakpoints, number>>;
   columnGap?: number | Partial<Record<IValueBreakpoints, number>>;
   columns?: number | Partial<Record<IValueBreakpoints, number>>;
-}
+};
 
 const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -66,8 +66,10 @@ const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
 
     children,
 
-    ...other
+    ...otherProps
   } = props;
+
+  const other: any = otherProps;
 
   const refs = {
     root: React.useRef<any>(undefined)

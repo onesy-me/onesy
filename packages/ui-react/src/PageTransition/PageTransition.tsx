@@ -42,7 +42,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesyTransition' });
 
-export interface IPageTransition extends ILine {
+export type IPageTransition = ILine & {
   add?: boolean;
 
   duration?: number;
@@ -51,7 +51,7 @@ export interface IPageTransition extends ILine {
     in?: string;
     out?: string;
   };
-}
+};
 
 const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

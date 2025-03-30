@@ -8,7 +8,7 @@ import SurfaceElement from '../Surface';
 import LineElement from '../Line';
 import useVisible, { IUseVisible } from '../useVisible/useVisible';
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, IPropsAny } from '../types';
+import { IBaseElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -122,11 +122,10 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Image' });
 
-export interface IImage extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IImage = IBaseElement & {
   src?: string;
+  url?: string;
+  urlSmall?: string;
   sources?: Array<string>;
   alt?: string;
   description?: string;
@@ -150,7 +149,7 @@ export interface IImage extends IBaseElement {
   NoImageProps?: IPropsAny;
   DescriptionProps?: IPropsAny;
   UseVisibleProps?: IUseVisible;
-}
+};
 
 const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -197,8 +196,10 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
 
     children: children_,
 
-    ...other
+    ...otherProps
   } = props;
+
+  const other: any = otherProps;
 
   const { classes } = useStyle();
 

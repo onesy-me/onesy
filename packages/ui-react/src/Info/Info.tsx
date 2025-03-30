@@ -32,7 +32,7 @@ const useStyle = style(theme => ({
   }
 }), { name: 'onesy-Info' });
 
-export interface IInfo extends IMenu {
+export type IInfo = IMenu & {
   name?: string;
 
   title?: string;
@@ -46,7 +46,7 @@ export interface IInfo extends IMenu {
   TitleProps?: any;
   ContainerProps?: any;
   TooltipProps?: any;
-}
+};
 
 const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

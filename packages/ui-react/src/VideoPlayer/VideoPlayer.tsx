@@ -27,7 +27,7 @@ import MenuElement from '../Menu';
 import ListItemElement from '../ListItem';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, ISize, IElementReference, IPropsAny } from '../types';
+import { IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -183,7 +183,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-VideoPlayer' });
 
-export interface IVideoPlayer extends ILine {
+export type IVideoPlayer = ILine & {
   name?: string;
   src?: string;
   mime?: string;
@@ -191,10 +191,6 @@ export interface IVideoPlayer extends ILine {
   versions?: any;
   thumbnails?: any;
   duration?: number;
-
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
 
   start?: any;
   end?: any;
@@ -204,6 +200,8 @@ export interface IVideoPlayer extends ILine {
   endButtons?: any;
   startEnd?: any;
   endEnd?: any;
+  startButtonsEnd?: any;
+  endButtonsEnd?: any;
 
   forward?: boolean;
   backward?: boolean;
@@ -214,8 +212,6 @@ export interface IVideoPlayer extends ILine {
   fullScreen?: boolean;
 
   startMediaSessionOnPlay?: boolean;
-
-  disabled?: boolean;
 
   IconPlay?: IElementReference;
   IconPause?: IElementReference;
@@ -245,7 +241,7 @@ export interface IVideoPlayer extends ILine {
   QualityButtonProps?: IPropsAny;
   PictureInPictureButtonProps?: IPropsAny;
   FullScreenButtonProps?: IPropsAny;
-}
+};
 
 const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -1294,7 +1290,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
                       {...sliderProps}
 
-                      size={['small', 'regular'].includes(size) ? 'small' : 'regular'}
+                      size={['small', 'regular'].includes(size as any) ? 'small' : 'regular'}
 
                       {...VolumeProps}
 

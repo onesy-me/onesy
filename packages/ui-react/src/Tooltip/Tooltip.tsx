@@ -9,7 +9,7 @@ import AppendElement from '../Append';
 import SurfaceElement from '../Surface';
 import { IModal } from '../Modal/Modal';
 import { staticClassName } from '../utils';
-import { IColor, IElement, IElementReference, IHTMLElement, IMethodTransition, IPropsAny, ITonal } from '../types';
+import { IElement, IElementReference, IHTMLElement, IMethodTransition, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -170,10 +170,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Tooltip' });
 
-export interface ITooltip extends Omit<IModal, 'maxWidth'> {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type ITooltip = Omit<IModal, 'maxWidth'> & {
   open?: boolean;
 
   openDefault?: boolean;
@@ -206,6 +203,7 @@ export interface ITooltip extends Omit<IModal, 'maxWidth'> {
   nowrap?: boolean;
   follow?: boolean;
   interactive?: boolean;
+  elevation?: boolean;
 
   onOpen?: () => any;
   onClose?: () => any;
@@ -218,7 +216,7 @@ export interface ITooltip extends Omit<IModal, 'maxWidth'> {
   ModalProps?: IPropsAny;
   LabelProps?: IPropsAny;
   LabelTextProps?: IPropsAny;
-}
+};
 
 const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

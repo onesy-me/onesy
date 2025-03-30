@@ -7,7 +7,6 @@ import SectionElement, { ISection } from '../Section/Section';
 import WatchElement from '../Watch';
 import { IWatch } from '../Watch/Watch';
 import { staticClassName } from '../utils';
-import { ISize } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -15,17 +14,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionWatch' });
 
-export interface ISectionWatch extends ISection {
-  tonal?: boolean;
-
+export type ISectionWatch = ISection & {
   version?: 'regular' | 'analog' | 'modern' | 'minimal';
-
-  size?: ISize;
 
   color?: TPaletteVersion;
 
   WatchProps?: IWatch;
-}
+};
 
 const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

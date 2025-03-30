@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   },
 }), { name: 'onesy-Timeline' });
 
-export interface ITimeline extends ILine {
+export type ITimeline = ILine & {
   orientation?: 'vertical' | 'horizontal';
-}
+};
 
 const Timeline: React.FC<ITimeline> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

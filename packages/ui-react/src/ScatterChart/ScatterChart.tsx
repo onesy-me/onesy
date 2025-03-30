@@ -14,9 +14,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ScatterChart' });
 
-export interface IScatterChart extends IChart {
+export type IScatterChart = IChart & {
 
-}
+};
 
 const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

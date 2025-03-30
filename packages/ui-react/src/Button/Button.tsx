@@ -9,7 +9,7 @@ import RoundProgressElement from '../RoundProgress';
 import TypeElement from '../Type';
 import { ISurface } from '../Surface/Surface';
 import { iconSizeToFontSize, staticClassName } from '../utils';
-import { IElement, IElementReference, IPropsAny, ISizeAny } from '../types';
+import { IElement, IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -275,11 +275,10 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Button' });
 
-export interface IButton extends Omit<ISurface, 'elevation'> {
+export type IButton = Omit<ISurface, 'elevation'> & {
   name?: any;
 
-  size?: ISizeAny;
-
+  type?: string;
   fullWidth?: boolean;
   fontSize?: string | number;
   selected?: boolean;
@@ -303,8 +302,7 @@ export interface IButton extends Omit<ISurface, 'elevation'> {
   noIconRootFontSize?: boolean;
   firstLevelChildren?: IElement;
   noFontSize?: boolean;
-
-  disabled?: boolean;
+  href?: string;
 
   onFocus?: (event: React.FocusEvent<any>) => any;
   onBlur?: (event: React.FocusEvent<any>) => any;
@@ -314,7 +312,7 @@ export interface IButton extends Omit<ISurface, 'elevation'> {
   InteractionProps?: IPropsAny;
   IconWrapperProps?: IPropsAny;
   LabelProps?: IPropsAny;
-}
+};
 
 const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

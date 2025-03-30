@@ -2,12 +2,12 @@ import React from 'react';
 
 export type TUseScrollDirection = 'up' | 'down';
 
-export interface IUseScroll {
+export type IUseScroll = {
   offset?: number;
   direction?: TUseScrollDirection;
   target?: HTMLElement | Window;
   element?: any;
-}
+};
 
 const useScroll = (props: IUseScroll) => {
   const {

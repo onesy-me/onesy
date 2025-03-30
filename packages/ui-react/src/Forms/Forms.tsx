@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Forms' });
 
-export interface IForms extends ILine {
+export type IForms = ILine & {
   divider?: boolean;
-}
+};
 
 const Forms: React.FC<IForms> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

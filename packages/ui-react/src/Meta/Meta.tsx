@@ -19,14 +19,14 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Meta' });
 
-export interface IMeta extends ILine {
+export type IMeta = ILine & {
   values?: any[];
 
   separator?: any;
 
   ItemProps?: IPropsAny;
   SeparatorProps?: IPropsAny;
-}
+};
 
 const Meta: React.FC<IMeta> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

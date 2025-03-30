@@ -16,9 +16,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ModalMain' });
 
-export interface IModalMain extends ILine {
+export type IModalMain = ILine & {
 
-}
+};
 
 const ModalMain: React.FC<IModalMain> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

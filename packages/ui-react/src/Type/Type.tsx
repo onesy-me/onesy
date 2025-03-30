@@ -3,7 +3,7 @@ import React from 'react';
 import { classNames, style as styleMethod, TTypographyItem, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, IColor } from '../types';
+import { IBaseElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -156,9 +156,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Type' });
 
-export interface IType extends IBaseElement {
-  color?: IColor;
-
+export type IType = IBaseElement & {
   responsive?: boolean;
 
   priority?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
@@ -176,9 +174,7 @@ export interface IType extends IBaseElement {
   whiteSpace?: '-moz-pre-wrap' | 'break-spaces' | 'normal' | 'nowrap' | 'pre' | 'pre-line' | 'pre-wrap';
 
   fullWidth?: boolean;
-
-  disabled?: boolean;
-}
+};
 
 const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

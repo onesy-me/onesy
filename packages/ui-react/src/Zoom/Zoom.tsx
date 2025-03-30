@@ -5,9 +5,9 @@ import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { Transition, TTransitionStatus, ITransition } from '..';
 
-export interface IZoom extends ITransition {
+export type IZoom = ITransition & {
 
-}
+};
 
 const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

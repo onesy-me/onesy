@@ -14,7 +14,7 @@ import IconButtonElement from '../IconButton';
 import PaginationItemElement from '../PaginationItem';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IVersion, ISize, IElement, IElementReference } from '../types';
+import { IVersion, IElement, IElementReference } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -39,12 +39,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Pagination' });
 
-export interface IPagination extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type IPagination = Omit<ILine, 'onChange'> & {
   version?: IVersion;
   elevation?: boolean;
-  size?: ISize;
 
   value?: number;
   valueDefault?: number;
@@ -60,7 +57,6 @@ export interface IPagination extends ILine {
   last?: boolean;
 
   disableSelected?: boolean;
-  disabled?: boolean;
 
   renderItem?: (value: number, item: string | number, index: number) => IElement;
 
@@ -68,7 +64,7 @@ export interface IPagination extends ILine {
   IconBefore?: IElementReference;
   IconNext?: IElementReference;
   IconLast?: IElementReference;
-}
+};
 
 const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

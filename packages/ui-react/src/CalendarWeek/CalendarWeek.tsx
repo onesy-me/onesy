@@ -141,7 +141,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-CalendarWeek' });
 
-export interface ICalendarWeek extends ILine {
+export type ICalendarWeek = ILine & {
   date?: OnesyDate;
 
   times?: any;
@@ -159,7 +159,7 @@ export interface ICalendarWeek extends ILine {
   displayTime?: any;
 
   day?: boolean;
-}
+};
 
 const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

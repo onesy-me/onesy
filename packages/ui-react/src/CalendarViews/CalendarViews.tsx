@@ -119,7 +119,7 @@ const useStyle = styleMethod(theme => ({
 
 export type ICalendarViewsView = 'day' | 'week' | 'month';
 
-export interface ICalendarViews extends ICalendar {
+export type ICalendarViews = ICalendar & {
   viewDefault?: ICalendarViewsView;
 
   dateDefault?: OnesyDate;
@@ -161,7 +161,7 @@ export interface ICalendarViews extends ICalendar {
   DayProps?: any;
 
   CalendarMonthProps?: any;
-}
+};
 
 const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

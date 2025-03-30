@@ -13,10 +13,10 @@ import { TLineAlign } from '../Line/Line';
 import { staticClassName } from '../utils';
 import { IBaseElement, IPropsAny } from '../types';
 
-export interface ISnackbarsValue {
+export type ISnackbarsValue = {
   add: (value: ISnackbar) => void;
   remove: (value: 'first' | 'last' | string) => void;
-}
+};
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -71,13 +71,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Snackbars' });
 
-export interface ISnackbars extends IBaseElement {
+export type ISnackbars = IBaseElement & {
   max?: number;
   position?: 'top' | 'bottom';
   alignment?: 'start' | 'left' | 'center' | 'right' | 'end';
 
   SnackbarProps?: IPropsAny;
-}
+};
 
 const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

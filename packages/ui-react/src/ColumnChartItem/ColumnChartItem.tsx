@@ -27,7 +27,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ColumnChartItem' });
 
-export interface IColumnChartItem extends IChart {
+export type IColumnChartItem = IChart & {
   name?: string;
 
   refs?: {
@@ -47,7 +47,10 @@ export interface IColumnChartItem extends IChart {
   updateDefs?: TMethod;
 
   updateLegend?: TMethod;
-}
+
+  BackgroundProps?: any;
+  BorderProps?: any;
+};
 
 const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

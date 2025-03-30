@@ -61,7 +61,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionMedia' });
 
-export interface ISectionMedia extends ISection {
+export type ISectionMedia = ISection & {
   value?: IMediaObject;
 
   size?: 'small' | 'regular' | 'large';
@@ -75,7 +75,7 @@ export interface ISectionMedia extends ISection {
   AudioProps?: IPropsAny;
   VideoProps?: IPropsAny;
   OtherProps?: IPropsAny;
-}
+};
 
 const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

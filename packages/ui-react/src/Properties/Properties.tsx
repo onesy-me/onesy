@@ -37,24 +37,23 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Properties' });
 
-export interface IPropertiesValue {
+export type IPropertiesValue = {
   name: any;
   value: any;
   separator?: any;
   props?: any;
-}
+};
 
-export interface IProperties extends ILine {
+export type IProperties = ILine & {
   version?: 'row' | 'row-20' | 'row-50' | 'row-between' | 'column';
 
-  size?: 'small' | 'regular' | 'large';
-
   values?: (boolean | IPropertiesValue)[];
+  onlyWithValues?: boolean;
 
   maxWidth?: 'extra_small' | 'small' | 'regular' | 'large' | 'extra_large' | 'extra_extra_large';
 
   PropertyProps?: IPropsAny;
-}
+};
 
 const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

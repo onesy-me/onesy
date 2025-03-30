@@ -54,7 +54,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Timer' });
 
-export interface ITimer extends ISurface {
+export type ITimer = ISurface & {
   renderValue?: (value: string) => any;
 
   icon?: boolean;
@@ -75,7 +75,7 @@ export interface ITimer extends ISurface {
   TooltipProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+};
 
 const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

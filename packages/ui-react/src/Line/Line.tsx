@@ -152,7 +152,7 @@ export type TLineWrap = 'inherit' | 'wrap' | 'nowrap' | 'wrap-reverse';
 
 export type TLineDisplay = 'inherit' | 'flex' | 'inline-flex';
 
-export interface ILine extends IBaseElement {
+export type ILine = IBaseElement & {
   display?: TLineDisplay | Partial<Record<IValueBreakpoints, TLineDisplay>>;
 
   direction?: TLineDirection | Partial<Record<IValueBreakpoints, TLineDirection>>;
@@ -174,7 +174,7 @@ export interface ILine extends IBaseElement {
   divider?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
 
   DividerProps?: IPropsAny;
-}
+};
 
 const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

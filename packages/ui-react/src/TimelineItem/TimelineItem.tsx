@@ -72,7 +72,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TimelineItem' });
 
-export interface ITimelineItem extends ILine {
+export type ITimelineItem = ILine & {
   orientation?: 'vertical' | 'horizontal';
 
   start?: IElement;
@@ -83,7 +83,7 @@ export interface ITimelineItem extends ILine {
 
   Icon?: IElementReference;
   Divider?: any;
-}
+};
 
 const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

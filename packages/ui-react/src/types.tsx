@@ -18,7 +18,11 @@ export type IVersion = 'filled' | 'outlined' | 'outlined-without-background' | '
 
 export type ISize = 'small' | 'regular' | 'large';
 
+export type ISizeExtended = 'very small' | 'small' | 'regular' | 'medium' | 'large' | 'very large';
+
 export type ISizeAny = ISize | number;
+
+export type ISizeExtendedAny = ISizeExtended | number;
 
 export type IElevation = 0 | 1 | 2 | 3 | 4 | 6 | 8 | 9 | 12 | 16 | 24;
 
@@ -38,23 +42,45 @@ export type IChildren = React.ReactNode | React.ReactNode[];
 
 export type IRef = React.MutableRefObject<any>;
 
-export interface IBaseElement {
+export type IBaseElement<P = {}, T = HTMLElement> = Omit<
+  React.HTMLAttributes<T>,
+  | 'onClick'
+  | 'onChange'
+  | 'onInput'
+  | 'onKeyDown'
+  | 'onMouseEnter'
+  | 'onMouseLeave'
+  | 'onDoubleClick'
+  | 'onSubmit'
+> & {
+  tonal?: ITonal;
+  color?: IColor;
+  size?: ISizeAny;
+
+  onClick?: any;
+  onChange?: any;
+  onInput?: any;
+  onKeyDown?: any;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
+  onDoubleClick?: any;
+  onSubmit?: any;
+
+  readOnly?: boolean;
+  disabled?: boolean;
+
+  children?: any;
+
   Component?: any;
 
-  className?: string;
-
-  style?: IStyle;
-
-  children?: IChildren;
-
-  [property: string]: any;
-}
+  ref?: any;
+} & P;
 
 export type IMethodTransition = (element?: IHTMLElement) => any;
 
 export type IValueBreakpoints = IBreakpoint | 'default';
 
-export interface IMediaObject {
+export type IMediaObject = {
   id?: string;
 
   name?: string;
@@ -66,4 +92,4 @@ export interface IMediaObject {
   urlSmall?: string;
 
   urlEmbed?: string;
-}
+};

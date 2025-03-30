@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ModalText' });
 
-export interface IModalText extends IType {
+export type IModalText = IType & {
 
-}
+};
 
 const ModalText: React.FC<IModalText> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

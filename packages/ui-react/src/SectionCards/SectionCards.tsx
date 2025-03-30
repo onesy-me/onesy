@@ -91,7 +91,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionCards' });
 
-export interface ISectionCardsItem {
+export type ISectionCardsItem = {
   name?: any;
   description?: any;
 
@@ -118,16 +118,16 @@ export interface ISectionCardsItem {
   propsButton?: any;
   propsWrapperText?: any;
   propsActions?: any;
-}
+};
 
-export interface ISectionCards extends ISection {
+export type ISectionCards = ISection & {
   size?: 'small' | 'regular' | 'large';
 
   values?: ISectionCardsItem[];
 
   ItemProps?: IPropsAny;
   ItemsProps?: IPropsAny;
-}
+};
 
 const Element: React.FC<ISectionCards> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -10,17 +10,17 @@ import { ILinearProress } from '../LinearProgress/LinearProgress';
 import { staticClassName } from '../utils';
 import { IElementReference, IPropsAny } from '../types';
 
-export interface IMainProgressStartArgument {
+export type IMainProgressStartArgument = {
   tonal?: boolean;
   color?: string;
-}
+};
 
-export interface IMainProgressValue {
+export type IMainProgressValue = {
   start: (value?: IMainProgressStartArgument) => void;
   increment: () => void;
   update: (value: number) => void;
   done: () => void;
-}
+};
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -52,7 +52,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-MainProgress' });
 
-export interface IMainProgress extends ILinearProress {
+export type IMainProgress = ILinearProress & {
   min?: number;
   max?: number;
 
@@ -76,7 +76,7 @@ export interface IMainProgress extends ILinearProress {
   TransitionComponent?: IElementReference;
 
   TransitionComponentProps?: IPropsAny;
-}
+};
 
 const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

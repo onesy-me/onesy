@@ -85,7 +85,7 @@ const useStyle = styleMethod(theme => ({
   },
 }), { name: 'onesy-Container' });
 
-export interface IContainer extends ILine {
+export type IContainer = ILine & {
   alignment?: 'start' | 'center' | 'end' | Partial<Record<IValueBreakpoints, 'start' | 'center' | 'end'>>;
 
   paddingVertical?: 'both' | 'start' | 'end' | 'none' | Partial<Record<IValueBreakpoints, 'both' | 'start' | 'end' | 'none'>>;
@@ -95,7 +95,7 @@ export interface IContainer extends ILine {
   fullWidth?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
 
   maxWidth?: 'xxs' | 'xs' | 'sm' | 'rg' | 'lg' | 'xl' | 'unset' | Partial<Record<IValueBreakpoints, 'xxs' | 'xs' | 'sm' | 'rg' | 'lg' | 'xl' | 'unset'>>;
-}
+};
 
 const Container: React.FC<IContainer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

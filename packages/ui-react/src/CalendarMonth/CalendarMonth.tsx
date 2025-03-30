@@ -12,7 +12,7 @@ import TransitionsElement from '../Transitions';
 import TransitionElement, { TTransitionStatus } from '../Transition';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IColor, IPropsAny, ISize, ITonal } from '../types';
+import { IPropsAny } from '../types';
 import { ICalendarViewsView } from '../CalendarViews/CalendarViews';
 
 const useStyle = style(theme => ({
@@ -215,7 +215,7 @@ export type TCalendarMonthValue = OnesyDate | [OnesyDate, OnesyDate];
 
 export type TCalendarMonthCalendar = OnesyDate;
 
-export interface ICalendarMonthValuesValue {
+export type ICalendarMonthValuesValue = {
   day: string;
   month: string;
   year: string;
@@ -225,16 +225,11 @@ export interface ICalendarMonthValuesValue {
   date: OnesyDate;
   previous: OnesyDate;
   move: 'previous' | 'next';
-}
+};
 
 export type TCalendarMonthValues = [ICalendarMonthValuesValue, ICalendarMonthValuesValue];
 
-export interface ICalenarDays extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
-
-  size?: ISize;
-
+export type ICalenarDays = Omit<ILine, 'onChange'> & {
   value?: TCalendarMonthValue;
   valueDefault?: TCalendarMonthValue;
   onChange?: (value: TCalendarMonthValue) => any;
@@ -265,7 +260,7 @@ export interface ICalenarDays extends ILine {
   PaginationItemProps?: IPropsAny;
   TransitionProps?: IPropsAny;
   TransitionsProps?: IPropsAny;
-}
+};
 
 const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();

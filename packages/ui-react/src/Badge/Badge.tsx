@@ -4,7 +4,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 
 import SurfaceElement from '../Surface';
 import { staticClassName } from '../utils';
-import { IBaseElement, IColor, ITonal } from '../types';
+import { IBaseElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -67,10 +67,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Badge' });
 
-export interface IBadge extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IBadge = IBaseElement & {
   value?: number;
 
   max?: number;
@@ -79,7 +76,7 @@ export interface IBadge extends IBaseElement {
   indicator?: boolean;
 
   element?: any;
-}
+};
 
 const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -101,11 +98,9 @@ const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
     indicator,
 
     element,
-
     Component = 'span',
 
     className,
-
     children,
 
     ...other

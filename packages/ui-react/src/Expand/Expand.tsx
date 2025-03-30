@@ -32,7 +32,7 @@ const Wrapper = React.forwardRef((props: any, ref: any) => {
   );
 });
 
-export interface IExpand extends Omit<ITransition, 'className'> {
+export type IExpand = Omit<ITransition, 'className'> & {
   value?: number;
 
   expandSize?: number;
@@ -42,7 +42,7 @@ export interface IExpand extends Omit<ITransition, 'className'> {
   WrapperProps?: IPropsAny;
 
   className?: string;
-}
+};
 
 const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

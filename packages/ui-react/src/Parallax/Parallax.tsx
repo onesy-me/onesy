@@ -15,7 +15,7 @@ const useStyle = styleMethod(theme => ({
 
 export type TParallaxDirection = 'vertical' | 'horizontal';
 
-export interface IParallax extends IBaseElement {
+export type IParallax = IBaseElement & {
   value?: number;
 
   // element
@@ -32,7 +32,7 @@ export interface IParallax extends IBaseElement {
   transition?: string;
 
   disabled?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
-}
+};
 
 const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -6,7 +6,7 @@ import ListItemElement from '../ListItem';
 import GridElement from '../Grid';
 import LineElement from '../Line';
 import { staticClassName } from '../utils';
-import { IBaseElement, IElement, ISize } from '../types';
+import { IBaseElement, IElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -37,17 +37,16 @@ const useStyle = styleMethod(theme => ({
   maxWidth_unset: { maxWidth: 'unset' }
 }), { name: 'onesy-Banner' });
 
-export interface IBanner extends IBaseElement {
-  size?: ISize;
-
+export type IBanner = IBaseElement & {
   maxWidth?: string | number;
-
   actions?: IElement;
-
   start?: any;
-
   end?: any;
-}
+  footer?: any;
+  line?: any;
+
+  RootProps?: any;
+};
 
 const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

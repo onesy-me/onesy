@@ -10,7 +10,7 @@ import TypeElement from '../Type';
 import LineElement from '../Line';
 import useMediaQuery from '../useMediaQuery';
 import { valueBreakpoints, staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, IVersion, ISize, IRef, IElement, IValueBreakpoints, IPropsAny, IElementReference } from '../types';
+import { IBaseElement, IVersion, IRef, IElement, IValueBreakpoints, IPropsAny, IElementReference } from '../types';
 
 const useStyle = styleMethod(theme => {
   const other = {
@@ -530,11 +530,8 @@ const useStyle = styleMethod(theme => {
   };
 }, { name: 'onesy-TextField' });
 
-export interface ITextField extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
+export type ITextField = Omit<IBaseElement, 'onChange'> & {
   version?: IVersion;
-  size?: ISize;
 
   rootRef?: IRef;
 
@@ -575,8 +572,6 @@ export interface ITextField extends IBaseElement {
   controlled?: boolean;
   restoreSelection?: boolean;
   minWidth?: number;
-  readOnly?: boolean;
-  disabled?: boolean;
   subscription?: OnesySubscription;
   minimal?: boolean;
 
@@ -594,7 +589,9 @@ export interface ITextField extends IBaseElement {
   InputComponent?: IElementReference;
   WrapperComponent?: IElementReference;
   IconProps?: IPropsAny;
-}
+
+  colorUnchecked?: any;
+};
 
 const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -80,7 +80,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionBoxes' });
 
-export interface ISectionBoxesItem {
+export type ISectionBoxesItem = {
   name?: any;
   description?: any;
 
@@ -106,9 +106,9 @@ export interface ISectionBoxesItem {
   propsButton?: any;
   propsWrapperText?: any;
   propsActions?: any;
-}
+};
 
-export interface ISectionBoxes extends ISection {
+export type ISectionBoxes = ISection & {
   size?: 'small' | 'regular' | 'large';
 
   values?: ISectionBoxesItem[];
@@ -117,7 +117,7 @@ export interface ISectionBoxes extends ISection {
 
   ItemProps?: IPropsAny;
   ItemsProps?: IPropsAny;
-}
+};
 
 const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

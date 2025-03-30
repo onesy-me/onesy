@@ -3,7 +3,7 @@ import React from 'react';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, IVersion, IElevation } from '../types';
+import { IBaseElement, IVersion, IElevation } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -46,9 +46,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-CardImage' });
 
-export interface ICardImage extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
+export type ICardImage = IBaseElement & {
   version?: IVersion;
   elevation?: IElevation;
 
@@ -56,7 +54,7 @@ export interface ICardImage extends IBaseElement {
   image?: string;
   shape?: 'all' | 'none' | 'top' | 'left' | 'bottom' | 'right';
   marginHorizontal?: boolean;
-}
+};
 
 const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

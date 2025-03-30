@@ -11,7 +11,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-DragAndDropList' });
 
-export interface IDragAndDropList extends IBaseElement {
+export type IDragAndDropList = Omit<IBaseElement, 'onChange'> & {
   onChange?: (indexPrevious: number, indexNew: number) => any;
 
   items?: any[];
@@ -26,7 +26,7 @@ export interface IDragAndDropList extends IBaseElement {
   onDraggedElement?: (value: any) => any;
 
   onDragStart?: (item: any, event: DragEvent) => any;
-}
+};
 
 const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

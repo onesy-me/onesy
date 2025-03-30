@@ -10,12 +10,12 @@ import { IBaseElement, IRef } from '../types';
 
 export type TKeyframesStatus = 'appended' | 'add' | 'adding' | 'added' | 'removed';
 
-export interface IKeyframe {
+export type IKeyframe = {
   name: string;
   timeout: number;
-}
+};
 
-export interface IKeyframes extends Omit<IBaseElement, 'className'> {
+export type IKeyframes = Omit<IBaseElement, 'className'> & {
   ref?: IRef;
 
   className?: boolean;
@@ -49,7 +49,7 @@ export interface IKeyframes extends Omit<IBaseElement, 'className'> {
   onAdded?: (element: HTMLElement) => void;
 
   onRemoved?: (element: HTMLElement) => void;
-}
+};
 
 const Keyframes: React.FC<IKeyframes> = (props_) => {
   const theme = useOnesyTheme();

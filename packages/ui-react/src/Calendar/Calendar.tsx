@@ -25,7 +25,7 @@ import { ICalenarDays, TCalendarMonthCalendar, TCalendarMonthValue } from '../Ca
 import { TTransitionStatus } from '../Transition';
 import { ISurface } from '../Surface/Surface';
 import { iconFontSize, staticClassName } from '../utils';
-import { IColor, IElementReference, IPropsAny, ISize, ITonal } from '../types';
+import { IElementReference, IPropsAny } from '../types';
 
 const useStyle = style(theme => ({
   root: {
@@ -171,12 +171,8 @@ export type TGetOnesyDates = (value: TCalendarMonthValue, calendar: TCalendarMon
 
 export type TCalendarUnit = 'day' | 'month' | 'year';
 
-export interface ICalendar extends Omit<ISurface, 'version'> {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type ICalendar = Omit<ISurface, 'version' | 'onChange'> & {
   version?: 'regular' | 'year';
-  size?: ISize;
 
   value?: TCalendarMonthValue;
   valueDefault?: TCalendarMonthValue;
@@ -200,8 +196,10 @@ export interface ICalendar extends Omit<ISurface, 'version'> {
   menu_month_next_unit?: TCalendarUnit;
 
   valid?: (value: OnesyDate, version: TCalendarUnit) => boolean;
-  geMonths?: TGetOnesyDates;
-  geYears?: TGetOnesyDates;
+  getMonths?: TGetOnesyDates;
+  getYears?: TGetOnesyDates;
+  renderDay?: (value: OnesyDate, props: any, day: any, outside: boolean) => React.ReactNode;
+  renderDayName?: (order: number) => any;
 
   belowCalendars?: any;
 
@@ -212,7 +210,8 @@ export interface ICalendar extends Omit<ISurface, 'version'> {
   CalendarMonthProps?: any;
   CalendarDayProps?: ICalenarDays;
   OptionButtonProps?: any;
-}
+  PaginationItemsProps?: any;
+};
 
 const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();

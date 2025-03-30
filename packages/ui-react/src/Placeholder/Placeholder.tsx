@@ -4,7 +4,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 
 import SurfaceElement from '../Surface';
 import { staticClassName } from '../utils';
-import { IBaseElement, IColor } from '../types';
+import { IBaseElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   '@keyframes move': {
@@ -90,15 +90,14 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Placeholder' });
 
-export interface IPlaceholder extends Omit<IBaseElement, 'version'> {
-  color?: IColor;
+export type IPlaceholder = Omit<IBaseElement, 'version'> & {
   version?: 'rectangle' | 'rounded' | 'circle';
 
   width?: string | number;
   height?: string | number;
   animation?: 'wave' | 'pulse' | boolean;
   text?: boolean;
-}
+};
 
 const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

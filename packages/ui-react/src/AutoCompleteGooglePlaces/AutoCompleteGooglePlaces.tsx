@@ -15,9 +15,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AutoCompleteGooglePlaces' });
 
-export interface IAutoCompleteGooglePlaces extends IAutoComplete {
-
-}
+export type IAutoCompleteGooglePlaces = IAutoComplete & {
+  optionsGoogle?: any;
+};
 
 const AutoCompleteGooglePlaces: React.FC<IAutoCompleteGooglePlaces> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

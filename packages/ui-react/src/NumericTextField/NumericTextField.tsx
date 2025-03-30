@@ -18,7 +18,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-NumericTextField' });
 
-export interface INumericTextField extends IAdvancedTextField {
+export type INumericTextField = IAdvancedTextField & {
   min?: number;
   max?: number;
 
@@ -32,7 +32,7 @@ export interface INumericTextField extends IAdvancedTextField {
   IconDecrement?: IElementReference;
 
   IconButtonProps?: IPropsAny;
-}
+};
 
 const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -55,9 +55,10 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-PieChart' });
 
-export interface IPieChart extends IChart {
-
-}
+export type IPieChart = IChart & {
+  gap?: number;
+  innerOffset?: number;
+};
 
 const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

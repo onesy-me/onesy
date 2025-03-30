@@ -28,7 +28,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionTextMedia' });
 
-export interface ISectionTextMedia extends ISection {
+export type ISectionTextMedia = ISection & {
   title?: string | Partial<Record<IValueBreakpoints, string>>;
   description?: string | Partial<Record<IValueBreakpoints, string>>;
 
@@ -54,7 +54,7 @@ export interface ISectionTextMedia extends ISection {
   AudioProps?: IPropsAny;
   VideoProps?: IPropsAny;
   OtherProps?: IPropsAny;
-}
+};
 
 const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

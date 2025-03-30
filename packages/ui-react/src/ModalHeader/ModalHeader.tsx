@@ -11,9 +11,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ModalHeader' });
 
-export interface IModalHeader extends ILine {
+export type IModalHeader = ILine & {
   align?: TLineAlign;
-}
+};
 
 const ModalHeader: React.FC<IModalHeader> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

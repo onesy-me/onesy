@@ -7,7 +7,7 @@ import TypeElement from '../Type';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, IVersion, ISize, IElement, IPropsAny } from '../types';
+import { IColor, IVersion, IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -24,12 +24,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Radios' });
 
-export interface IRadios extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type IRadios = Omit<ILine, 'onChange'> & {
   colorUnchecked?: IColor;
   version?: IVersion;
-  size?: ISize;
 
   name?: IElement;
   label?: IElement;
@@ -44,11 +41,9 @@ export interface IRadios extends ILine {
 
   onChange?: (value: any) => any;
 
-  disabled?: boolean;
-
   WrapperProps?: IPropsAny;
   LabelProps?: IPropsAny;
-}
+};
 
 const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -11,7 +11,7 @@ import RoundMeterElement from '../RoundMeter';
 import LineElement from '../Line';
 import { ISurface } from '../Surface/Surface';
 import { staticClassName, angleToCoordinates } from '../utils';
-import { ISize, IElement, IPropsAny } from '../types';
+import { IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -102,10 +102,8 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Watch' });
 
-export interface IWatch extends Omit<ISurface, 'version'> {
+export type IWatch = Omit<ISurface, 'version'> & {
   version?: 'regular' | 'analog' | 'modern' | 'minimal';
-
-  size?: ISize;
 
   start?: boolean;
 
@@ -125,7 +123,7 @@ export interface IWatch extends Omit<ISurface, 'version'> {
   RegularProps?: IPropsAny;
   MinimalProps?: IPropsAny;
   ModernProps?: IPropsAny;
-}
+};
 
 const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -11,7 +11,7 @@ import TypeElement from '../Type';
 import DividerElement from '../Divider';
 import { TLineAlign, TLineJustify } from '../Line/Line';
 import { getOverflowParent, staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, ISize, IPropsAny } from '../types';
+import { IBaseElement, IPropsAny } from '../types';
 import Tooltip from '../Tooltip';
 
 const useStyle = styleMethod(theme => ({
@@ -120,11 +120,7 @@ const useStyle = styleMethod(theme => ({
 
 export type ITableCellSort = 'asc' | 'desc';
 
-export interface ITableCell extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
-
+export type ITableCell = IBaseElement & {
   sort?: boolean;
   sortedByDefault?: ITableCellSort;
   sortedBy?: ITableCellSort;
@@ -140,14 +136,12 @@ export interface ITableCell extends IBaseElement {
   stickyPosition?: 'left' | 'right';
   stickyOffset?: number;
 
-  disabled?: boolean;
-
   IconArrow?: any;
 
   IconButtonSortProps?: any;
   TypeProps?: any;
   DividerProps?: IPropsAny;
-}
+};
 
 const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

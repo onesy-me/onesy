@@ -8,7 +8,7 @@ import SurfaceElement from '../Surface';
 import TypeElement from '../Type';
 import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
-import { ISize, IElement } from '../types';
+import { IElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -122,17 +122,16 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TopAppBar' });
 
-export interface ITopAppBar extends Omit<ISurface, 'version'> {
+export type ITopAppBar = Omit<ISurface, 'version'> & {
   position?: 'relative' | 'absolute' | 'static' | 'sticky' | 'fixed' | 'unset';
   version?: 'small' | 'center' | 'medium' | 'large';
-  size?: ISize;
 
   center?: boolean;
 
   title?: IElement;
   start?: IElement;
   end?: IElement;
-}
+};
 
 const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

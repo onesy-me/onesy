@@ -25,7 +25,7 @@ const useStyle = styleMethod(theme => ({
 
 export type TNavigationBarValue = Array<string>;
 
-export interface INavigationBar extends Omit<ISurface, 'version'> {
+export type INavigationBar = Omit<ISurface, 'version' | 'onChange'> & {
   value?: TNavigationBarValue;
   valueDefault?: TNavigationBarValue;
   onChange?: (value: TNavigationBarValue) => any;
@@ -33,7 +33,7 @@ export interface INavigationBar extends Omit<ISurface, 'version'> {
   version?: INavigationItemVersion;
 
   fixed?: boolean;
-}
+};
 
 const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -8,7 +8,7 @@ import { IBaseElement, IHTMLElement } from '../types';
 
 const resolve = (value: string) => value.replace(/^on/, '').toLowerCase();
 
-export interface IClickListener extends IBaseElement {
+export type IClickListener = IBaseElement & {
   mouseEvent?: 'onClick' | 'onMove' | 'onMouseDown' | 'onMouseUp' | 'onMouseEnter' | 'onMouseLeave';
 
   touchEvent?: 'onTouchStart' | 'onTouchEnd' | 'onTouchMove';
@@ -19,12 +19,12 @@ export interface IClickListener extends IBaseElement {
 
   includeQueries?: Array<string>;
 
-  ignoreNonExistin?: boolean;
+  ignoreNonExisting?: boolean;
 
   onClickInside?: () => any;
 
   onClickOutside?: () => any;
-}
+};
 
 const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

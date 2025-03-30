@@ -28,14 +28,14 @@ export const STATUS: Record<TTransitionStatus, TTransitionStatus> = {
   removed: 'removed'
 };
 
-export interface ITransitionDelay {
+export type ITransitionDelay = {
   default?: number;
   add?: number;
   enter?: number;
   exit?: number;
-}
+};
 
-export interface ITransition extends Omit<IBaseElement, 'children' | 'className'> {
+export type ITransition = Omit<IBaseElement, 'className'> & {
   in?: boolean;
 
   name?: string;
@@ -88,7 +88,7 @@ export interface ITransition extends Omit<IBaseElement, 'children' | 'className'
   children?: any;
 
   [p: string]: any;
-}
+};
 
 const Transition: React.FC<ITransition> = (props_) => {
   const theme = useOnesyTheme();

@@ -24,11 +24,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-IFrame' });
 
-export interface IIFrame extends ILine {
+export type IIFrame = ILine & {
   id?: string;
 
+  src?: string;
+
   WrapperProps?: IPropsAny;
-}
+};
 
 const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

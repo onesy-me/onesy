@@ -11,9 +11,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Path' });
 
-export interface IPath extends IBaseElement {
+export type IPath = IBaseElement & {
   value?: any;
-}
+};
 
 const Path: React.FC<IPath> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

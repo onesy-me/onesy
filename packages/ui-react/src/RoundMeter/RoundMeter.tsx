@@ -5,7 +5,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 
 import SurfaceElement from '../Surface';
 import { angleToCoordinates, staticClassName, toNumber } from '../utils';
-import { IBaseElement, ITonal, IColor, ISize, IStyle, IElement, IPropsAny } from '../types';
+import { IBaseElement, IStyle, IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -55,11 +55,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-RoundMeter' });
 
-export interface IRoundMeter extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
-
+export type IRoundMeter = IBaseElement & {
   // in how many parts boundary is separated in
   parts?: number;
 
@@ -122,7 +118,7 @@ export interface IRoundMeter extends IBaseElement {
   ArcMainProps?: IPropsAny;
   ArcsProgressProps?: IPropsAny;
   ArcProgressProps?: IPropsAny;
-}
+};
 
 const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -261,7 +257,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
     yViewBox = -60;
   }
 
-  if (!['small', 'regular', 'large'].includes(size)) styles.root.maxWidth = size;
+  if (!['small', 'regular', 'large'].includes(size as any)) styles.root.maxWidth = size;
 
   const marks = React.useMemo(() => {
     const values = [];

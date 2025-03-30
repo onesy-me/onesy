@@ -33,7 +33,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-FormRow' });
 
-export interface IFormRow extends ILine {
+export type IFormRow = ILine & {
   name?: string | IElement;
   description?: string | IElement;
 
@@ -51,7 +51,7 @@ export interface IFormRow extends ILine {
   AsideProps?: any;
   StartProps?: any;
   EndProps?: any;
-}
+};
 
 const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

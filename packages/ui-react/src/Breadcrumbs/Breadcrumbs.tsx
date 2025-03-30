@@ -31,13 +31,17 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Breadcrumbs' });
 
-export interface IBreadcrumbs extends ILine {
+export type IBreadcrumbs = ILine & {
   separator?: IElement | string;
 
   max?: number;
 
   renderMore?: (onExpandMore: () => void) => IElement;
-}
+
+  IconMore?: any;
+
+  MoreProps?: any;
+};
 
 const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

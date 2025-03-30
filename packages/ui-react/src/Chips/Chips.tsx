@@ -59,15 +59,17 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Chips' });
 
-export interface IChips extends ILine {
+export type IChips = ILine & {
   total?: number;
 
+  showAllDefault?: boolean;
   max?: number;
+  moreShowAll?: boolean;
 
   AdditionalChip?: IElement;
 
   AdditionalChipProps?: IPropsAny;
-}
+};
 
 const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -92,7 +94,7 @@ const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
 
     showAllDefault,
 
-    onMoreShowAll = true,
+    moreShowAll = true,
 
     AdditionalChip,
 
@@ -142,7 +144,7 @@ const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
 
           {...AdditionalChipProps}
 
-          onClick={(onMoreShowAll ? onClickMore : undefined) as any}
+          onClick={moreShowAll ? onClickMore : undefined}
         >
           {value}
         </Chip>

@@ -163,19 +163,19 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Emojis' });
 
-export interface IEmojiCategory {
+export type IEmojiCategory = {
   name: string;
   groups: string[];
   icon: any;
-}
+};
 
-export interface IEmoji {
+export type IEmoji = {
   alias: string | string[];
   unicode: string;
   category: string;
-}
+};
 
-export interface IEmojis extends IMenu {
+export type IEmojis = Omit<IMenu, 'onSelect'> & {
   emojis?: IEmoji[];
 
   categories?: IEmojiCategory[];
@@ -187,7 +187,7 @@ export interface IEmojis extends IMenu {
   search?: boolean;
 
   tabs?: boolean;
-}
+};
 
 const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -438,7 +438,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
                   onChange={onChangeSearch}
 
-                  size={['small', 'regular'].includes(size) ? 'small' : 'regular'}
+                  size={['small', 'regular'].includes(size as any) ? 'small' : 'regular'}
 
                   fullWidth
 
@@ -478,7 +478,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
                       ])}
                     >
                       {React.cloneElement(item.name, {
-                        size: ['small', 'regular'].includes(size) ? 'small' : 'regular'
+                        size: ['small', 'regular'].includes(size as any) ? 'small' : 'regular'
                       })}
                     </Tab>
                   ))}

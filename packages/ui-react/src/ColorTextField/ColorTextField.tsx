@@ -142,7 +142,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ColorTextField' });
 
-export interface IColorTextField extends ITextField {
+export type IColorTextField = ITextField & {
   name?: any;
 
   valueColor?: string;
@@ -154,7 +154,7 @@ export interface IColorTextField extends ITextField {
   onChangeOpacity?: (valueNew: string | number) => any;
 
   opacity?: boolean;
-}
+};
 
 const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -5,7 +5,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IColor, IElevation, ITonal, IVersion } from '../types';
+import { IElevation, IVersion } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -13,12 +13,10 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-CardHeader' });
 
-export interface ICardHeader extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type ICardHeader = ILine & {
   version?: IVersion;
   elevation?: IElevation;
-}
+};
 
 const CardHeader: React.FC<ICardHeader> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -1,12 +1,11 @@
 import React from 'react';
 
+import { is } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
-import { ISize } from '../types';
 import { staticClassName } from '../utils';
-import { is } from '@onesy/utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -29,13 +28,11 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TableRow' });
 
-export interface ITableRow extends ISurface {
-  size?: ISize;
-
+export type ITableRow = ISurface & {
   hover?: boolean;
   selected?: boolean;
   position?: 'head' | 'body';
-}
+};
 
 const TableRow: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

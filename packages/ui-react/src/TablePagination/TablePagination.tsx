@@ -15,7 +15,7 @@ import ListItemElement from '../ListItem';
 import IconButtonElement from '../IconButton';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IColor, IElementReference, ISize, ITonal, IVersion } from '../types';
+import { IElementReference, IVersion } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -31,12 +31,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TablePagination' });
 
-export interface ITableRow extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type ITableRow = Omit<ILine, 'onChange'> & {
   version?: IVersion;
   elevation?: boolean;
-  size?: ISize;
 
   page?: number;
   pageDefault?: number;
@@ -60,7 +57,7 @@ export interface ITableRow extends ILine {
   IconBefore?: IElementReference;
   IconNext?: IElementReference;
   IconLast?: IElementReference;
-}
+};
 
 const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

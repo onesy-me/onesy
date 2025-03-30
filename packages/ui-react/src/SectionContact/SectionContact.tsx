@@ -38,7 +38,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionContact' });
 
-export interface ISectionContact extends ISection {
+export type ISectionContact = ISection & {
   map?: {
     latitude: number;
     longitude: number;
@@ -65,7 +65,7 @@ export interface ISectionContact extends ISection {
   HeadingProps?: IPropsAny;
   SummaryProps?: IPropsAny;
   PropertiesProps?: IPropsAny;
-}
+};
 
 const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

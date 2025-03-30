@@ -49,9 +49,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-BubbleChart' });
 
-export interface IBubbleChart extends IChart {
+export type IBubbleChart = IChart & {
 
-}
+};
 
 const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

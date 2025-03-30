@@ -5,7 +5,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import SurfaceElement from '../Surface';
 import LineElement from '../Line';
 import { ISurface } from '../Surface/Surface';
-import { ISize, IElement, IPropsAny, IElementReference } from '../types';
+import { IElement, IPropsAny, IElementReference } from '../types';
 import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
@@ -30,9 +30,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Table' });
 
-export interface ITable extends ISurface {
-  size?: ISize;
-
+export type ITable = ISurface & {
   header?: IElement;
   footer?: IElement;
 
@@ -40,7 +38,7 @@ export interface ITable extends ISurface {
 
   TableComponent?: IElementReference;
   WrapperComponent?: IElementReference;
-}
+};
 
 const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

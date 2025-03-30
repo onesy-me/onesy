@@ -81,10 +81,14 @@ const useStyle = styleMethod(theme => ({
 
 export type IGridValues = Partial<Record<IValueBreakpoints, number>>;
 
-export interface IGrid extends ILine {
+export type IGrid = ILine & {
   auto?: boolean;
 
   columns?: number | IGridValues;
+
+  parentGap?: any;
+  parentRowGap?: any;
+  parentColumnGap?: any;
 
   offsets?: IGridValues;
 
@@ -93,7 +97,7 @@ export interface IGrid extends ILine {
   values?: IGridValues;
 
   RootProps?: IPropsAny;
-}
+};
 
 const Grid: React.FC<IGrid> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -133,8 +137,10 @@ const Grid: React.FC<IGrid> = React.forwardRef((props_, ref: any) => {
 
     children,
 
-    ...other
+    ...otherProps
   } = props;
+
+  const other: any = otherProps;
 
   const { classes } = useStyle();
 

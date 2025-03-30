@@ -5,9 +5,9 @@ import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
 
-export interface IFade extends ITransition {
+export type IFade = ITransition & {
 
-}
+};
 
 const Fade: React.FC<IFade> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

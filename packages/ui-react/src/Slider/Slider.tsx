@@ -8,7 +8,7 @@ import TooltipElement from '../Tooltip';
 import ZoomElement from '../Zoom';
 import TypeElement from '../Type';
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, ISize, IElement, IPropsAny } from '../types';
+import { IBaseElement, IElement, IPropsAny, ISizeAny } from '../types';
 
 const useStyle = styleMethod(theme => {
   const rail = {
@@ -449,11 +449,7 @@ const useStyle = styleMethod(theme => {
 
 export type TSliderValue = number | Array<number>;
 
-export interface ISlider extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
-
+export type ISlider = Omit<IBaseElement, 'onChange'> & {
   value?: TSliderValue;
   valueDefault?: TSliderValue;
   onChange?: (value: TSliderValue) => any;
@@ -472,20 +468,18 @@ export interface ISlider extends IBaseElement {
   labels?: boolean;
   onlyMarks?: boolean;
   labelTooltipResolve?: (value: number) => IElement;
-  iconButtonPositionResolve?: (value: number, normalized: number, size: ISize) => string;
+  iconButtonPositionResolve?: (value: number, normalized: number, size: ISizeAny) => string;
   noTrack?: boolean;
   noButtons?: boolean;
   square?: boolean;
   inverted?: boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
 
   icon?: any;
 
   IconButtonProps?: IPropsAny;
   LabelProps?: IPropsAny;
   TooltipProps?: IPropsAny;
-}
+};
 
 const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -893,7 +887,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
       move(x, y);
     }
 
-    if (is('function', onMouseDown_)) onMouseDown_(event);
+    if (is('function', onMouseDown_)) onMouseDown_(event as any);
   }, [disabled, readOnly, onMouseDown_]);
 
   const onTouchStart = React.useCallback((event: React.TouchEvent<any> | React.MouseEvent<any>) => {
@@ -907,7 +901,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
       move(x, y);
     }
 
-    if (is('function', onMouseDown_)) onMouseDown_(event);
+    if (is('function', onMouseDown_)) onMouseDown_(event as any);
   }, [disabled, readOnly, onTouchStart_]);
 
   const styles: any = {

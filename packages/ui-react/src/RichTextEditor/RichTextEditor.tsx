@@ -61,7 +61,7 @@ import ListItemElement from '../ListItem';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { print, save, staticClassName } from '../utils';
-import { ITonal, IColor, IVersion, IPropsAny, IElement, IElementReference } from '../types';
+import { IVersion, IPropsAny, IElement, IElementReference } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -266,9 +266,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-RichTextEditor' });
 
-export interface IRichTextEditor extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type IRichTextEditor = Omit<ILine, 'onChange'> & {
   version?: IVersion;
 
   value?: string;
@@ -364,7 +362,7 @@ export interface IRichTextEditor extends ILine {
   DrawingProps?: IPropsAny;
   IconProps?: IPropsAny;
   ColorTextFieldProps?: IPropsAny;
-}
+};
 
 const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();

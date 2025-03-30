@@ -79,7 +79,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Tab' });
 
-export interface ITab extends Omit<ISurface, 'version'> {
+export type ITab = Omit<ISurface, 'version' | 'onChange'> & {
   version?: 'primary' | 'secondary';
 
   size?: 'small' | 'regular' | 'large';
@@ -98,13 +98,11 @@ export interface ITab extends Omit<ISurface, 'version'> {
 
   activateOnFocus?: boolean;
 
-  disabled?: boolean;
-
   onBlur?: (event: React.FocusEvent<any>) => any;
   onFocus?: (event: React.FocusEvent<any>) => any;
 
   LineProps?: IPropsAny;
-}
+};
 
 const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

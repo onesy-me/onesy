@@ -10,7 +10,7 @@ import NavigationBarElement from '../NavigationBar';
 import { ISurface } from '../Surface/Surface';
 import { INavigationItemVersion } from '../NavigationItem/NavigationItem';
 import { staticClassName } from '../utils';
-import { ISize, IElement, IPropsAny } from '../types';
+import { IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -60,9 +60,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-NavigationRail' });
 
-export interface INavigationRail extends Omit<ISurface, 'version'> {
-  size?: ISize;
-
+export type INavigationRail = Omit<ISurface, 'version' | 'onChange'> & {
   value?: any;
   valueDefault?: any;
 
@@ -80,7 +78,7 @@ export interface INavigationRail extends Omit<ISurface, 'version'> {
 
   NavigationBarProps?: IPropsAny;
   DividerProps?: IPropsAny;
-}
+};
 
 const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

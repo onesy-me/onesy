@@ -81,7 +81,7 @@ const useStyle = style(theme => ({
   }
 }), { name: 'onesy-Links' });
 
-export interface ILinksItem {
+export type ILinksItem = {
   version?: 'primary' | 'secondary' | 'default';
 
   name?: any;
@@ -93,9 +93,9 @@ export interface ILinksItem {
   share?: boolean;
 
   props?: any;
-}
+};
 
-export interface ILinks extends IBaseElement {
+export type ILinks = IBaseElement & {
   name?: any;
 
   short_description?: any;
@@ -122,7 +122,7 @@ export interface ILinks extends IBaseElement {
   ShortDescriptionProps?: any;
   LinkProps?: any;
   LinkTypeProps?: any;
-}
+};
 
 const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

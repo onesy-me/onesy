@@ -2,20 +2,20 @@ import React from 'react';
 
 import { clamp, merge, percentageFromValueWithinRange } from '@onesy/utils';
 
-export interface IOptionsUseSwipe {
+export type IOptionsUseSwipe = {
   open?: boolean;
   min?: number;
   direction?: 'top' | 'left' | 'right' | 'bottom';
   touchAnywhere?: boolean;
   flick?: boolean;
   flickTreshold?: number;
-}
+};
 
-export interface IResponseUseSwipe {
+export type IResponseUseSwipe = {
   value?: number;
   valuePercentage?: number;
   position?: string;
-}
+};
 
 const optionsDefault: IOptionsUseSwipe = {
   flick: true,

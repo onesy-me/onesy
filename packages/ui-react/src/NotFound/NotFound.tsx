@@ -20,11 +20,12 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-NotFound' });
 
-export interface INotFound extends ISection {
+export type INotFound = ISection & {
   name?: any;
 
   href?: string;
   to?: string;
+  link?: string;
 
   start?: any;
   end?: any;
@@ -35,7 +36,7 @@ export interface INotFound extends ISection {
 
   ButtonProps?: any;
   TypeProps?: any;
-}
+};
 
 const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

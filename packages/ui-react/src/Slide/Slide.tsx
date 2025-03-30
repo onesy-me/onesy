@@ -5,14 +5,14 @@ import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
 
-export interface ISlide extends ITransition {
+export type ISlide = ITransition & {
   root?: HTMLElement;
   min?: number;
   direction?: 'top' | 'left' | 'bottom' | 'right';
   timing_function?: string | Record<string, string>;
   addTransition?: string;
   delay?: number;
-}
+};
 
 const Slide: React.FC<ISlide> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

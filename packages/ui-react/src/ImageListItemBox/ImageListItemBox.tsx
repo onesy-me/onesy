@@ -26,10 +26,10 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ImageListItemBox' });
 
-export interface IImageListItemBox extends IListItem {
+export type IImageListItemBox = IListItem & {
   position?: 'top' | 'bottom';
   backgroundOpacity?: number;
-}
+};
 
 const ImageListItemBox: React.FC<IImageListItemBox> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

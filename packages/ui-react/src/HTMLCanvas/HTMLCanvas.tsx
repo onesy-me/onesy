@@ -16,7 +16,7 @@ import LabelElement from '../Label';
 import SwitchElement from '../Switch';
 
 import { staticClassName } from '../utils';
-import { IBaseElement, ISize } from '../types';
+import { IBaseElement } from '../types';
 
 const useStyle = style(theme => ({
   root: {
@@ -103,17 +103,15 @@ const useStyle = style(theme => ({
   }
 }), { name: 'onesy-HTMLCanvas' });
 
-export interface IHTMLCanvasOnChangeValue {
+export type IHTMLCanvasOnChangeValue = {
   zoom: number;
   top: number;
   left: number;
   boundaries: { x: number; y: number; };
   root: { width: number; height: number; };
-}
+};
 
-export interface IHTMLCanvas extends IBaseElement {
-  size?: ISize;
-
+export type IHTMLCanvas = Omit<IBaseElement, 'onWheel' | 'onMouseDown' | 'onTouchStart' | 'onChange'> & {
   minZoom?: number;
 
   maxZoom?: number;
@@ -142,7 +140,7 @@ export interface IHTMLCanvas extends IBaseElement {
 
   noActions?: boolean;
 
-  noGuidelines?: boolean;
+  noGuideLines?: boolean;
 
   noFitCenter?: boolean;
 
@@ -150,16 +148,12 @@ export interface IHTMLCanvas extends IBaseElement {
 
   methods?: any;
 
-  disabled?: boolean;
-
   IconCenter?: any;
 
   ContainerProps?: any;
 
   IconButtonProps?: any;
-
-  Component?: any;
-}
+};
 
 const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

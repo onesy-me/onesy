@@ -14,11 +14,11 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-LineChart' });
 
-export interface ILineChart extends IChart {
+export type ILineChart = IChart & {
   smooth?: boolean;
 
   smoothRatio?: number;
-}
+};
 
 const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

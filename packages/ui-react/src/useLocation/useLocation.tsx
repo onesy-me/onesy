@@ -3,9 +3,9 @@ import { useLocation as useLocationReactRouterDOM } from 'react-router-dom';
 
 import { debounce, isEnvironment } from '@onesy/utils';
 
-export interface IUseLocation {
+export type IUseLocation = {
 
-}
+};
 
 const useLocation = (props?: IUseLocation): Location => {
   const {

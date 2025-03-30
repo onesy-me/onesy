@@ -4,9 +4,9 @@ import { useOnesyTheme } from '@onesy/style-react';
 
 import { IIcon } from '../Icon/Icon';
 
-export interface IModalIcon extends IIcon {
+export type IModalIcon = IIcon & {
 
-}
+};
 
 const ModalIcon: React.FC<IModalIcon> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

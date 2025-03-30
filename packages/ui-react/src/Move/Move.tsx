@@ -13,7 +13,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Move' });
 
-export interface IMove extends IBaseElement {
+export type IMove = IBaseElement & {
   version?: 'regular' | 'fixed';
   manage?: boolean;
 
@@ -21,7 +21,7 @@ export interface IMove extends IBaseElement {
 
   onMouseDown?: (event: React.MouseEvent<any>) => any;
   onTouchStart?: (event: React.TouchEvent<any>) => any;
-}
+};
 
 const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

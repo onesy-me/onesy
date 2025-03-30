@@ -5,7 +5,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 
 import SurfaceElement from '../Surface';
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, ISize, IStyle, IElement, IPropsAny } from '../types';
+import { IBaseElement, IStyle, IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -39,12 +39,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-LinearMeter' });
 
-export interface ILinearMeter extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-
-  size?: ISize;
-
+export type ILinearMeter = IBaseElement & {
   parts?: number;
 
   lineCap?: 'inherit' | 'round' | 'square' | 'butt';
@@ -110,7 +105,7 @@ export interface ILinearMeter extends IBaseElement {
   LineMainProps?: IPropsAny;
   LinesProgressProps?: IPropsAny;
   LineProgressProps?: IPropsAny;
-}
+};
 
 const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -222,7 +217,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
     y: paddingVertical !== undefined ? paddingVertical : outsidePadding || 0
   };
 
-  if (!['small', 'regular', 'large'].includes(size)) styles.root.maxWidth = size;
+  if (!['small', 'regular', 'large'].includes(size as any)) styles.root.maxWidth = size;
 
   const marks = React.useMemo(() => {
     const values = [];

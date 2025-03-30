@@ -15,13 +15,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SectionImageGallery' });
 
-export interface ISectionImageGallery extends ISection {
+export type ISectionImageGallery = ISection & {
   values?: IMediaObject[];
 
   value?: number;
 
   ImageGalleryProps?: IImageGallery;
-}
+};
 
 const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -18,7 +18,7 @@ import TooltipElement from '../Tooltip';
 import IconButtonElement from '../IconButton';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IElementReference, IPropsAny, ISize } from '../types';
+import { IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   '@keyframes pulse': {
@@ -66,16 +66,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AudioRecorder' });
 
-export interface IAudioRecorder extends ILine {
-  size?: ISize;
-
+export type IAudioRecorder = ILine & {
   pause?: boolean;
 
   renderMain?: (props: { onStart: () => any; supported: boolean; }) => any;
   renderTime?: (value: string) => any;
 
   loading?: any;
-  disabled?: any;
 
   Icon?: IElementReference;
   IconConfirm?: IElementReference;
@@ -94,7 +91,7 @@ export interface IAudioRecorder extends ILine {
   TooltipProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+};
 
 const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -217,7 +217,7 @@ const useStyle = styleMethod(theme => ({
 
 const escapeRegExp = (value: string) => value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
-export interface IMarkdown extends IBaseElement {
+export type IMarkdown = IBaseElement & {
   value?: string;
 
   render?: (element: string, className: string, style: string, ...args: any[]) => string;
@@ -229,7 +229,7 @@ export interface IMarkdown extends IBaseElement {
   onAdded?: () => any;
   onUpdate?: () => any;
   onStart?: () => any;
-}
+};
 
 const Markdown: React.FC<IMarkdown> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

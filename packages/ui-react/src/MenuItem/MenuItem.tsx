@@ -26,7 +26,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ListItem' });
 
-export interface IMenuItem extends IListItem {
+export type IMenuItem = IListItem & {
   menu?: IElement;
   menuId?: string;
 
@@ -53,7 +53,7 @@ export interface IMenuItem extends IListItem {
   ListTransitionComponentProps?: IPropsAny;
   MenuProps?: IPropsAny;
   ExpandProps?: IPropsAny;
-}
+};
 
 const ListItemDelays = {
   Transition: {

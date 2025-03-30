@@ -3,7 +3,7 @@ import React from 'react';
 import { OnesyTheme, classNames, style as styleMethod, TTone, useOnesyTheme } from '@onesy/style-react';
 
 import { iconSizeToFontSize, staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor } from '../types';
+import { IBaseElement, ISizeExtendedAny } from '../types';
 
 export const rtl_icons = [
   'ArrowForwardIos', 'ArrowBackIos', 'ArrowBack', 'ArrowForward', 'ArrowLeft', 'ArrowRight', 'AssignmentReturn', 'CallMade', 'CallMissedOutgoing', 'ChevronLeft', 'ChevronRight', 'DeviceUnknown', 'FeaturedPlayList', 'FlightLand', 'FormatIndentIncrease', 'Functions', 'Input', 'Label', 'LastPage', 'LiveHelp', 'NavigateBefore', 'Note', 'QueueMusic', 'ReplyAll', 'ShortText', 'StarHalf', 'Toc', 'Undo', 'WrapText', 'FirstPage', 'LastPage', 'NavigateNext', 'NavigateBefore'
@@ -37,10 +37,8 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Icon' });
 
-export interface IIcon extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: 'very small' | 'small' | 'regular' | 'medium' | 'large' | 'very large' | number;
+export type IIcon = Omit<IBaseElement, 'size'> & {
+  size?: ISizeExtendedAny;
 
   tone?: TTone;
 
@@ -50,9 +48,7 @@ export interface IIcon extends IBaseElement {
   short_name?: string;
 
   noRtl?: boolean;
-
-  disabled?: boolean;
-}
+};
 
 const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

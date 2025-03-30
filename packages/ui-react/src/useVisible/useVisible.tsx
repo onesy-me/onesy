@@ -2,13 +2,13 @@ import React from 'react';
 
 import { hash, isEnvironment } from '@onesy/utils';
 
-export interface IUseVisibleResponse extends IntersectionObserverEntry {
+export type IUseVisibleResponse = IntersectionObserverEntry & {
   visible?: boolean;
 
   percentage?: number;
-}
+};
 
-export interface IUseVisible {
+export type IUseVisible = {
   element: HTMLElement;
 
   visibleDefault?: boolean;
@@ -27,7 +27,7 @@ export interface IUseVisible {
     in?: any;
     out?: any;
   };
-}
+};
 
 const useVisible = (props: IUseVisible) => {
   const {

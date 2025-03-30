@@ -8,7 +8,7 @@ import InteractionElement from '../Interaction';
 import TypeElement from '../Type';
 import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
-import { IColor, IElement, ISize, IElementReference, IPropsAny } from '../types';
+import { IColor, IElement, IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => {
   const overflow = {
@@ -266,7 +266,7 @@ const useStyle = styleMethod(theme => {
   };
 }, { name: 'onesy-ListItem' });
 
-export interface IListItem extends ISurface {
+export type IListItem = ISurface & {
   colorSelected?: IColor;
 
   inset?: boolean;
@@ -279,7 +279,6 @@ export interface IListItem extends ISurface {
   startAlign?: 'start' | 'center' | 'end';
   end?: IElement;
   endAlign?: 'start' | 'center' | 'end';
-  size?: ISize;
   noPadding?: boolean;
   href?: string;
   button?: boolean;
@@ -291,7 +290,8 @@ export interface IListItem extends ISurface {
   interaction?: boolean;
   noBackground?: boolean;
   noOutline?: boolean;
-  disabled?: boolean;
+
+  value?: any;
 
   onClick?: (event: React.MouseEvent<any>) => any;
   onFocus?: (event: React.FocusEvent<any>) => any;
@@ -312,7 +312,7 @@ export interface IListItem extends ISurface {
   AsideProps?: IPropsAny;
   AsideStartProps?: IPropsAny;
   AsideEndProps?: IPropsAny;
-}
+};
 
 const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -27,7 +27,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ScatterChartItem' });
 
-export interface IScatterChartItem extends IChart {
+export type IScatterChartItem = IChart & {
   name?: string;
 
   refs?: {
@@ -45,7 +45,10 @@ export interface IScatterChartItem extends IChart {
   updateDefs?: TMethod;
 
   updateLegend?: TMethod;
-}
+
+  BackgroundProps?: any;
+  BorderProps?: any;
+};
 
 const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -190,7 +193,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
         // Sort for x from smallest to largest
         .sort((a, b) => a[0] - b[0])
         .map(itemValue => {
-          const [x, y] = itemValue;
+          const [x, y] = itemValue as any;
 
           const values__ = {
             x: percentageFromValueWithinRange(x, minMax.min.x, minMax.max.x),

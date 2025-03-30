@@ -14,7 +14,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AdvancedTextField' });
 
-export interface IAdvancedTextField extends ITextField {
+export type IAdvancedTextField = ITextField & {
   validate?: (value: string) => boolean;
 
   mask?: Array<any>;
@@ -26,7 +26,7 @@ export interface IAdvancedTextField extends ITextField {
   thousandSeparator?: ',' | '.';
 
   TextFieldProps?: IPropsAny;
-}
+};
 
 const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

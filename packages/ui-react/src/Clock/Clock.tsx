@@ -8,7 +8,6 @@ import RoundMeterElement from '../RoundMeter';
 import PathElement from '../Path';
 import { IRoundMeter } from '../RoundMeter/RoundMeter';
 import { staticClassName } from '../utils';
-import { ITonal, IColor, ISize } from '../types';
 
 const useStyle = style(theme => ({
   root: {
@@ -39,10 +38,7 @@ export type TClockUnit = 'hour' | 'minute' | 'second';
 
 export type TClockDayTime = 'am' | 'pm';
 
-export interface IClock extends IRoundMeter {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IClock = Omit<IRoundMeter, 'onChange'> & {
   value?: TClockValue;
   valueDefault?: TClockValue;
   onChange?: (value: TClockValue) => any;
@@ -50,8 +46,6 @@ export interface IClock extends IRoundMeter {
   selecting?: TClockUnit;
   selectingDefault?: TClockUnit;
   onChangeSelecting?: (value: TClockUnit) => any;
-
-  size?: ISize;
 
   format?: TClockFormat;
   dayTime?: TClockDayTime;
@@ -62,13 +56,11 @@ export interface IClock extends IRoundMeter {
   min?: OnesyDate;
   max?: OnesyDate;
   validate?: (value: OnesyDate) => boolean;
-  readOnly?: boolean;
-  disabled?: boolean;
 
   valid?: (value: OnesyDate, selecting: TClockUnit) => any;
   renderValue?: (value: TClockValue, version: TClockUnit, x: number, y: number, valueNumber: number, otherProps: any) => React.ReactNode;
   onDoneSelecting?: (value: TClockValue, selecting: TClockUnit) => any;
-}
+};
 
 const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
@@ -418,7 +410,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     setMouseDown(true);
   }, []);
 
-  const onClick = React.useCallback((event: React.MouseEvent) => {
+  const onClick = React.useCallback((event: React.MouseEvent<any, any>) => {
     const { clientX: x, clientY: y } = event;
 
     onMove(x, y);

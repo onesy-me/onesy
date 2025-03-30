@@ -12,9 +12,9 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-DateTimeRangePicker' });
 
-export interface IDateTimeRangePicker extends IDateTimePicker {
+export type IDateTimeRangePicker = IDateTimePicker & {
 
-}
+};
 
 const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

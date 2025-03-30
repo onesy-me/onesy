@@ -297,7 +297,7 @@ export type TImageCrop = {
   height?: number;
 };
 
-export interface IImageCrop extends IBaseElement {
+export type IImageCrop = IBaseElement & {
   image?: string | HTMLCanvasElement;
 
   minWidth?: number;
@@ -320,7 +320,7 @@ export interface IImageCrop extends IBaseElement {
   onBlur?: (event: React.FocusEvent<any>) => any;
 
   TooltipProps?: IPropsAny;
-}
+};
 
 const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

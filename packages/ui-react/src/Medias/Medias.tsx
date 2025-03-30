@@ -175,14 +175,14 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Medias' });
 
-export interface IMediasItem {
+export type IMediasItem = {
   value: IMediaObject;
   props?: any;
-}
+};
 
 export type IMediasMediaVersion = 'embed' | 'image' | 'audio' | 'video' | 'other';
 
-export interface IMedias extends ILine {
+export type IMedias = ILine & {
   size?: 'small' | 'regular' | 'large';
 
   values?: IMediasItem | IMediasItem[];
@@ -208,7 +208,7 @@ export interface IMedias extends ILine {
   AudioItemsProps?: IPropsAny;
   VideoItemsProps?: IPropsAny;
   OtherItemsProps?: IPropsAny;
-}
+};
 
 const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

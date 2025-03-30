@@ -3,28 +3,28 @@ import isValid, { TIsValidType, IOptions as IIsValidOptions } from '@onesy/utils
 import { capitalize, cleanValue, equalDeep, merge, stringify } from '@onesy/utils';
 import { ValidationError } from '@onesy/errors';
 
-export interface IValidateOptions {
+export type IValidateOptions = {
   message?: string;
   uriDecode?: boolean;
   parse?: boolean;
-}
+};
 
-export interface IValidateModelValueIs {
+export type IValidateModelValueIs = {
   type?: TIsType;
   options?: IIsOptions;
-}
+};
 
-export interface IValidateModelValueIsValid {
+export type IValidateModelValueIsValid = {
   type?: TIsValidType;
   options?: IIsValidOptions;
-}
+};
 
-export interface IValidateModelValueMethodOptions {
+export type IValidateModelValueMethodOptions = {
   form: IForm;
   property: string;
   object: IValidateModelValue;
   options: IValidateOptions;
-}
+};
 
 export type IValidateModelValueMethod = (value: any, options: IValidateModelValueMethodOptions) => Promise<any> | any;
 
@@ -34,7 +34,7 @@ export type IValidateModelMessages = {
   [p in IValidateModelValueValidations]?: string;
 };
 
-export interface IValidateModelValue {
+export type IValidateModelValue = {
   name: string;
 
   value?: any;
@@ -89,15 +89,15 @@ export interface IValidateModelValue {
   capitalize?: boolean;
 
   propertyNameUpdate?: (value: any) => string;
-}
+};
 
 export type IUseFormValues = Record<string, IValidateModelValue>;
 
-export interface IForm {
+export type IForm = {
   value: any;
   values: IUseFormValues;
   valid: boolean;
-}
+};
 
 export type IValidateValidation = (property: IValidateModelValue, form: IForm) => void | Error | Promise<void | Error>;
 

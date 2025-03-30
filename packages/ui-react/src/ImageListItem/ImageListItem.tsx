@@ -28,11 +28,11 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ImageListItem' });
 
-export interface IImageListItem extends ILine {
+export type IImageListItem = ILine & {
   rows?: number | Partial<Record<IValueBreakpoints, number>>;
   columns?: number | Partial<Record<IValueBreakpoints, number>>;
   version?: 'standard' | 'vowen' | 'masonry';
-}
+};
 
 const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

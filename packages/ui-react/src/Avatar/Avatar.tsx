@@ -36,7 +36,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Avatar' });
 
-export interface IAvatar extends Omit<IButton, 'elevation'> {
+export type IAvatar = Omit<IButton, 'elevation'> & {
   image?: string;
   alt?: string;
   square?: boolean;
@@ -44,7 +44,7 @@ export interface IAvatar extends Omit<IButton, 'elevation'> {
 
   TypeProps?: IPropsAny;
   InteractionProps?: IPropsAny;
-}
+};
 
 const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
   const theme = useOnesyTheme();
@@ -115,7 +115,7 @@ const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
     if (size === 'small') typeProps.size = '0.75rem';
     else if (size === 'regular') typeProps.size = '1rem';
     else if (size === 'large') typeProps.size = '1.25rem';
-    else if (!['small', 'regular', 'large'].includes(size)) typeProps.size = `${(size * 0.4) / 16}rem`;
+    else if (!['small', 'regular', 'large'].includes(size as any)) typeProps.size = `${(size * 0.4) / 16}rem`;
 
     children = (
       <Type

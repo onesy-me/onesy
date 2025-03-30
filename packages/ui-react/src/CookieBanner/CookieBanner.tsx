@@ -38,7 +38,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-CookieBanner' });
 
-export interface ICookieBanner extends ISurface {
+export type ICookieBanner = ISurface & {
   name?: any;
 
   description?: any;
@@ -70,7 +70,7 @@ export interface ICookieBanner extends ISurface {
   AllowButtonProps?: IPropsAny;
 
   TransitionProps?: IPropsAny;
-}
+};
 
 const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

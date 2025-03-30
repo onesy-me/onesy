@@ -14,7 +14,7 @@ import InteractionElement from '../Interaction';
 import LineElement from '../Line';
 import { TTransitionStatus } from '../Transition';
 import { staticClassName } from '../utils';
-import { IBaseElement, IElement, IPropsAny, IElementReference } from '../types';
+import { IBaseElement, IElement, IPropsAny, IElementReference, IVersion } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -111,9 +111,11 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Tree' });
 
-export interface ITree extends Omit<IBaseElement, 'children'> {
+export type ITree = Omit<IBaseElement, 'onChange'> & {
   open?: boolean;
   openDefault?: boolean;
+
+  version?: IVersion;
 
   onChange?: (value: boolean) => any;
 
@@ -141,7 +143,6 @@ export interface ITree extends Omit<IBaseElement, 'children'> {
 
   parent?: HTMLElement;
   parentDisabled?: boolean;
-  disabled?: boolean;
 
   ExpandProps?: IPropsAny;
   MainProps?: IPropsAny;
@@ -150,12 +151,11 @@ export interface ITree extends Omit<IBaseElement, 'children'> {
   EndProps?: IPropsAny;
   IndicatorProps?: IPropsAny;
   TransitionComponentProps?: IPropsAny;
+  TreeProps?: IPropsAny;
 
   IconArrow?: IElementReference;
   TransitionComponent?: IElementReference;
-
-  children?: any;
-}
+};
 
 const TreeDelays = {
   Transition: {

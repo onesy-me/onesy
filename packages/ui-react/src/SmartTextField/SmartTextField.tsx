@@ -114,7 +114,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-SmartTextField' });
 
-export interface ISmartTextField extends ITextField {
+export type ISmartTextField = ITextField & {
   placeholder?: any;
 
   edit?: boolean;
@@ -122,8 +122,6 @@ export interface ISmartTextField extends ITextField {
   mention?: boolean;
 
   multiline?: boolean;
-
-  readOnly?: boolean;
 
   onChangeMention?: (value?: string, version?: '@') => any;
 
@@ -136,7 +134,7 @@ export interface ISmartTextField extends ITextField {
   pasteText?: boolean;
 
   HelperTextProps?: any;
-}
+};
 
 const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -593,7 +591,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       event.preventDefault();
     }
 
-    if (is('function', onKeyDown_)) onKeyDown_(event);
+    if (is('function', onKeyDown_)) onKeyDown_(event as any);
   }, [onKeyDown_]);
 
   const onPaste = React.useCallback((event: ClipboardEvent) => {

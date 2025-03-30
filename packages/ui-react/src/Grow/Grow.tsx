@@ -5,9 +5,9 @@ import { classNames, useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
 
-export interface IGrow extends ITransition {
+export type IGrow = ITransition & {
 
-}
+};
 
 const Grow: React.FC<IGrow> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

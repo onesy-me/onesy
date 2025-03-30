@@ -134,7 +134,7 @@ const useStyle = styleMethod(theme => {
   };
 }, { name: 'onesy-Select' });
 
-export interface ISelect extends ITextField {
+export type ISelect = ITextField & {
   options?: Array<{
     name: any;
     value: any;
@@ -161,7 +161,7 @@ export interface ISelect extends ITextField {
   MenuProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+};
 
 const getValue = (value: any) => value?.value !== undefined ? value.value : value;
 

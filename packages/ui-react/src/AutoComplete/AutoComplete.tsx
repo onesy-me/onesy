@@ -122,7 +122,7 @@ export type TAutoCompleteOption = {
   noOptions?: boolean;
 };
 
-export interface IAutoComplete extends ITextField {
+export type IAutoComplete = Omit<ITextField, 'onChange'> & {
   value?: any;
   valueDefault?: any;
   onChange?: (value: any) => any;
@@ -133,7 +133,6 @@ export interface IAutoComplete extends ITextField {
 
   multiple?: boolean;
   autoWidth?: boolean;
-  readOnly?: boolean;
   getLabel?: (item: any, props?: any) => any;
   equal?: (value1: any, value2: any) => boolean;
   equalInput?: (input: string, value: any) => boolean;
@@ -165,8 +164,6 @@ export interface IAutoComplete extends ITextField {
   clearOnBlur?: boolean;
   noInputValue?: boolean;
 
-  disabled?: boolean;
-
   IconClear?: IElementReference;
   IconDropdown?: IElementReference;
 
@@ -177,7 +174,7 @@ export interface IAutoComplete extends ITextField {
   IconButtonProps?: IPropsAny;
   InputProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+};
 
 const getText = (value: any) => {
   const value_ = value?.name || value?.label || value?.primary || value?.secondary || value?.tertiary || value?.children || value?.value || value;

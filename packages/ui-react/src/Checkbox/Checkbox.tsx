@@ -212,7 +212,7 @@ const IconItem = (props: any) => {
   );
 };
 
-export interface ICheckbox extends IIconButton {
+export type ICheckbox = Omit<IIconButton, 'onChange'> & {
   inputRef?: IRef;
 
   colorIndeterminate?: IColor;
@@ -229,7 +229,7 @@ export interface ICheckbox extends IIconButton {
   indeterminate?: boolean;
 
   disabled?: boolean;
-}
+};
 
 const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
@@ -335,7 +335,7 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const color_ = indeterminate ? colorIndeterminate : color;
+  const color_: any = indeterminate ? colorIndeterminate : color;
   let palette: any;
 
   if (!theme.palette.color[color]) palette = theme.methods.color(color_);

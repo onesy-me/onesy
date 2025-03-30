@@ -15,14 +15,14 @@ const valuesDefault = {
 
 export type TAppendPadding = Array<number>;
 
-export interface IAppendValue {
+export type IAppendValue = {
   x?: number;
   y?: number;
   switch?: boolean;
   init?: boolean;
-}
+};
 
-export interface IAppend {
+export type IAppend = {
   open?: boolean;
   portal?: boolean;
   accelerated?: boolean;
@@ -46,7 +46,7 @@ export interface IAppend {
   children?: IChildren;
 
   [property: string]: any;
-}
+};
 
 const Append: React.FC<IAppend> = (props_) => {
   const theme = useOnesyTheme();

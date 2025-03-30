@@ -5,9 +5,9 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import LineElement from '../Line';
 import SurfaceElement from '../Surface';
 import TransitionElement, { TTransitionStatus } from '../Transition';
-import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
-import { IElement, ISize } from '../types';
+import { ISurface } from '../Surface/Surface';
+import { IElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -103,13 +103,11 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-BottomAppBar' });
 
-export interface IBottomAppBar extends ISurface {
-  size?: ISize;
-
+export type IBottomAppBar = ISurface & {
   main?: IElement;
   fixed?: boolean;
   noTransition?: boolean;
-}
+};
 
 const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

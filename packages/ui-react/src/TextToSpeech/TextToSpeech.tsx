@@ -11,7 +11,7 @@ import TooltipElement from '../Tooltip';
 import IconButtonElement from '../IconButton';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IElementReference, IPropsAny, ISize } from '../types';
+import { IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -29,9 +29,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TextToSpeech' });
 
-export interface ITextToSpeech extends ILine {
-  size?: ISize;
-
+export type ITextToSpeech = ILine & {
   read?: string;
 
   speechSynthesisUtterance?: any;
@@ -44,7 +42,6 @@ export interface ITextToSpeech extends ILine {
   volume?: number;
 
   loading?: any;
-  disabled?: any;
 
   Icon?: IElementReference;
   IconPause?: IElementReference;
@@ -58,7 +55,7 @@ export interface ITextToSpeech extends ILine {
   TooltipProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   IconProps?: IPropsAny;
-}
+};
 
 const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

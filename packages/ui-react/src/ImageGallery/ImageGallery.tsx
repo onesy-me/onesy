@@ -172,7 +172,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-ImageGallery' });
 
-export interface IImageGallery extends ILine {
+export type IImageGallery = ILine & {
   version?: 'regular' | 'modal';
 
   open?: boolean;
@@ -209,7 +209,7 @@ export interface IImageGallery extends ILine {
   IconStart?: IElementReference;
   IconEnd?: IElementReference;
   IconClose?: IElementReference;
-}
+};
 
 const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

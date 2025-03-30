@@ -16,7 +16,7 @@ import LineElement from '../Line';
 import useMediaQuery from '../useMediaQuery';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IElement, ITonal, IStyle, IElementReference, IPropsAny, IVersion, IColor } from '../types';
+import { IElement, IStyle, IElementReference, IPropsAny, IVersion } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -146,12 +146,9 @@ export type TMenuDesktopItem = {
   label?: IElement;
   name?: IElement;
   menu?: IElement;
-  disabled?: boolean;
 };
 
-export interface IMenuDesktop extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
+export type IMenuDesktop = Omit<ILine, 'onChange'> & {
   version?: IVersion;
 
   items?: Array<TMenuDesktopItem>;
@@ -187,7 +184,7 @@ export interface IMenuDesktop extends ILine {
   TransitionComponentProps?: IPropsAny;
   WrapperProps?: IPropsAny;
   WrapperMenuProps?: IPropsAny;
-}
+};
 
 const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

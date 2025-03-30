@@ -19,11 +19,11 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-MoreOptions' });
 
-export interface IMoreOptions extends IMenu {
+export type IMoreOptions = IMenu & {
   Icon?: any;
 
   IconButtonProps?: IPropsAny;
-}
+};
 
 const MoreOptions: React.FC<IMoreOptions> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

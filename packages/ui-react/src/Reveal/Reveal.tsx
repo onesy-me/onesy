@@ -14,7 +14,7 @@ const useStyle = styleMethod(theme => ({
   },
 }), { name: 'onesy-Reveal' });
 
-export interface IReveal extends IFade {
+export type IReveal = Omit<IFade, 'onChange'> & {
   inDefault?: boolean;
 
   offset?: number;
@@ -37,7 +37,7 @@ export interface IReveal extends IFade {
   noTransition?: boolean;
 
   UseVisibleProps?: IUseVisible;
-}
+};
 
 const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -12,7 +12,7 @@ import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
 import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
-import { ISize, IElement, IElementReference, IPropsAny } from '../types';
+import { IElement, IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -78,9 +78,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Snackbar' });
 
-export interface ISnackbar extends ISurface {
-  size?: ISize;
-
+export type ISnackbar = ISurface & {
   open?: boolean;
 
   primary?: IElement;
@@ -104,7 +102,7 @@ export interface ISnackbar extends ISurface {
   IconProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   TransitionComponentProps?: IPropsAny;
-}
+};
 
 const timeouts = {};
 

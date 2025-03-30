@@ -22,7 +22,7 @@ const useStyle = styleMethod(theme => ({
   },
 }), { name: 'onesy-Chip' });
 
-export interface IChip extends IButton {
+export type IChip = IButton & {
   input?: boolean;
   filter?: boolean;
 
@@ -32,7 +32,7 @@ export interface IChip extends IButton {
   onRemove?: (event: MouseEvent) => any;
   onSelected?: () => any;
   onUnselected?: () => any;
-}
+};
 
 const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

@@ -8,7 +8,7 @@ import AccordionElement from '../Accordion';
 import TypeElement from '../Type';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IElement, ISize } from '../types';
+import { IElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -61,15 +61,13 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Form' });
 
-export interface IForm extends ILine {
+export type IForm = Omit<ILine, 'onSubmit'> & {
   accordion?: boolean;
 
   divider?: boolean;
 
   name?: string | IElement;
   description?: string | IElement;
-
-  size?: ISize;
 
   start?: any;
   end?: any;
@@ -89,7 +87,7 @@ export interface IForm extends ILine {
   EndProps?: any;
   AccordionProps?: any;
   AccordionMainProps?: any;
-}
+};
 
 const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

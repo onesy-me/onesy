@@ -6,7 +6,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import KeyframesElement from '../Keyframes';
 import IconButtonElement from '../IconButton';
 import { staticClassName } from '../utils';
-import { IBaseElement, ITonal, IColor, ISize, IRef, IElement } from '../types';
+import { IBaseElement, IRef, IElement } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -193,12 +193,10 @@ const Icon = (props: any) => {
   );
 };
 
-export interface ISwitch extends IBaseElement {
-  tonal?: ITonal;
-  color?: IColor;
-  size?: ISize;
-
+export type ISwitch = Omit<IBaseElement, 'onChange'> & {
   inputRef?: IRef;
+
+  version?: any;
 
   valueDefault?: boolean;
   checkedDefault?: boolean;
@@ -208,11 +206,11 @@ export interface ISwitch extends IBaseElement {
 
   onChange?: (value: boolean, event: React.ChangeEvent<any>) => any;
 
+  colorUnchecked?: string;
+
   OnIcon?: IElement;
   OffIcon?: IElement;
-
-  disabled?: boolean;
-}
+};
 
 const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();

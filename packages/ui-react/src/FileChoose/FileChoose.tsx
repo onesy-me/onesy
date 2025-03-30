@@ -16,7 +16,7 @@ import TreeElement from '../Tree';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { iconFontSize, staticClassName } from '../utils';
-import { ITonal, IColor, IRef, IElementReference, IPropsAny, ISize } from '../types';
+import { IRef, IElementReference, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -45,13 +45,8 @@ const useStyle = styleMethod(theme => ({
 
 export type TFileChooseValue = File | Array<File>;
 
-export interface IFileChoose extends ILine {
-  tonal?: ITonal;
-  color?: IColor;
-
+export type IFileChoose = Omit<ILine, 'onClick' | 'onChange'> & {
   inputRef?: IRef;
-
-  size?: ISize;
 
   max?: number;
   allowedTypes?: Array<string>;
@@ -78,7 +73,7 @@ export interface IFileChoose extends ILine {
   inputProps?: IPropsAny;
   WrapperProps?: IPropsAny;
   ComponentProps?: IPropsAny;
-}
+};
 
 const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
