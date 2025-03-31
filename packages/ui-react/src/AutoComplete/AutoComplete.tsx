@@ -159,6 +159,7 @@ export type IAutoComplete = Omit<ITextField, 'onChange'> & {
   clearOnEscape?: boolean;
   groupBy?: (value: TAutoCompleteOption) => string;
   limit?: number;
+  openOnInputUpdate?: boolean;
   filterOutSelectedOptions?: boolean;
   selectOnFocus?: boolean;
   clearOnBlur?: boolean;
@@ -256,6 +257,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
     clearOnEscape,
     groupBy,
     limit,
+    openOnInputUpdate,
     filterOutSelectedOptions,
     selectOnFocus,
     clearOnBlur,
@@ -359,8 +361,8 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
   React.useEffect(() => {
     const option = (refs.optionsProps.current || []).find(item_ => isEqualToInput(refs.valueInput.current, item_));
 
-    if (!!valueInput?.length && !open && !option && !disabled && !readOnly) setOpen(!free);
-  }, [valueInput, free]);
+    if (!!valueInput?.length && openOnInputUpdate && !open && !option && !disabled && !readOnly) setOpen(!free);
+  }, [valueInput, openOnInputUpdate, free]);
 
   React.useEffect(() => {
     if (value_ !== undefined && value_ !== value) setValue(value_);
