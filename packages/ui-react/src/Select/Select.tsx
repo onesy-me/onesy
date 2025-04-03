@@ -219,6 +219,8 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
     IconClear = IconMaterialClose,
     IconDropdown = IconMaterialArrowDropDown,
 
+    inputProps,
+    InputWrapperProps,
     WrapperProps,
     ChipProps,
     ChiProps,
@@ -628,11 +630,20 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
         disabled={disabled}
 
         InputWrapperProps={{
+          onMouseDown,
+          onMouseUp,
+
+          onClick,
+          onKeyDown: onEnterKeyDown,
+
+          ...InputWrapperProps,
+
           className: classNames([
             staticClassName('Select', theme) && [
               'onesy-Select-input-wrapper'
             ],
 
+            InputWrapperProps?.className,
             classes.inputWrapper,
             chip && [
               classes.chip,
@@ -640,19 +651,14 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
             ],
             open && classes.open,
             readOnly && classes.readOnly
-          ]),
-
-          onMouseDown,
-          onMouseUp,
-
-          onClick,
-          onKeyDown: onEnterKeyDown
+          ])
         }}
 
         inputProps={{
           disabled: true,
+          readOnly: true,
 
-          readOnly: true
+          ...inputProps
         }}
 
         style={{
