@@ -55,6 +55,8 @@ export type IDropZone = IFileChoose & {
 
   start?: IElement;
 
+  dropText?: any;
+
   onFocus?: (event: React.FocusEvent<any>) => any;
   onBlur?: (event: React.FocusEvent<any>) => any;
 
@@ -66,6 +68,8 @@ export type IDropZone = IFileChoose & {
 
 const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
+
+  const l = theme.l;
 
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDropZone?.props?.default, ...props_ }), [props_]);
 
@@ -92,6 +96,8 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
 
     max,
     allowedTypes,
+
+    dropText = l('Drop files here'),
 
     valueDefault,
     value: value_,
@@ -369,7 +375,7 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
           <Type
             version='t1'
           >
-            Drop files here
+            {dropText}
           </Type>
         </Line>
       )}

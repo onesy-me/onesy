@@ -96,6 +96,8 @@ export type IAudioRecorder = ILine & {
 const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAudioRecorder?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -443,7 +445,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
             {is('function', renderMain) ? renderMain({ onStart, supported } as any) : <>
               {/* Start */}
               <Tooltip
-                label='Voice record'
+                name={l('Voice record')}
 
                 {...TooltipProps}
               >
@@ -473,7 +475,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
           <span>
             {/* Cancel */}
             <Tooltip
-              label='Cancel'
+              name={l('Cancel')}
 
               {...TooltipProps}
             >
@@ -491,7 +493,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
             {/* Pause */}
             {pause && (
               <Tooltip
-                label='Pause'
+                name={l('Pause')}
 
                 {...TooltipProps}
               >
@@ -509,7 +511,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
             {/* Confirm */}
             <Tooltip
-              label='Confirm'
+              name={l('Confirm')}
 
               {...TooltipProps}
             >
@@ -536,7 +538,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
           <span>
             {/* Cancel */}
             <Tooltip
-              label='Cancel'
+              name={l('Cancel')}
 
               {...TooltipProps}
             >
@@ -553,7 +555,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
             {/* Resume */}
             <Tooltip
-              label='Resume'
+              name={l('Resume')}
 
               {...TooltipProps}
             >
@@ -570,7 +572,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
             {/* Confirm */}
             <Tooltip
-              label='Confirm'
+              name={l('Confirm')}
 
               {...TooltipProps}
             >

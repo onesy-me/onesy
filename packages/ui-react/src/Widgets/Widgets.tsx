@@ -129,6 +129,8 @@ export type IWidgets = IBaseElement & {
 const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWidgets?.props?.default, ...props_ }), [props_]);
 
   const SpeedDial = React.useMemo(() => theme?.elements?.SpeedDial || SpeedDialElement, [theme]);
@@ -236,6 +238,8 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
           noRotate
 
           {...SpeedDialProps}
+
+          {...other}
         >
           {(widgets as any).map((item: any, index: number) => {
             const valueItem = item.value !== undefined ? item.value : item.label;
@@ -246,7 +250,7 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
 
                 onClick={() => !openItems.includes(valueItem) ? open(valueItem) : close(valueItem)}
 
-                label={!openItems.includes(valueItem) ? item.label : `Close ${item.label}`}
+                label={!openItems.includes(valueItem) ? item.label : `${l('Close')} ${item.label}`}
 
                 Icon={item.Icon}
               />

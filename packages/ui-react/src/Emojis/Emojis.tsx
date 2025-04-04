@@ -192,6 +192,8 @@ export type IEmojis = Omit<IMenu, 'onSelect'> & {
 const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyEmojis?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -214,48 +216,50 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
-  const EMOJI_CATEGORIES = [
-    {
-      "name": "Smileys and People",
-      "groups": ["Smiley", "Gesture", "Person", "Clothing"],
-      "icon": <IconMaterialMood />
-    },
-    {
-      "name": "Animals and Nature",
-      "groups": ["Animal", "Nature"],
-      "icon": <IconMaterialEmojiNature />
-    },
-    {
-      "name": "Food and Drink",
-      "groups": ["Food"],
-      "icon": <IconMaterialEmojiFoodBeverage />
-    },
-    {
-      "name": "Activity",
-      "groups": ["Activity"],
-      "icon": <IconMaterialHiking />
-    },
-    {
-      "name": "Travel and Places",
-      "groups": ["Travel"],
-      "icon": <IconMaterialEmojiTransportation />
-    },
-    {
-      "name": "Objects",
-      "groups": ["Object"],
-      "icon": <IconMaterialEmojiObjects />
-    },
-    {
-      "name": "Symbols",
-      "groups": ["Symbol"],
-      "icon": <IconMaterialEmojiSymbols />
-    },
-    {
-      "name": "Flags and Countries",
-      "groups": ["Flag", "Country"],
-      "icon": <IconMaterialEmojiFlags />
-    }
-  ];
+  const EMOJI_CATEGORIES = React.useMemo(() => {
+    return [
+      {
+        "name": l("Smileys and People"),
+        "groups": ["Smiley", "Gesture", "Person", "Clothing"],
+        "icon": <IconMaterialMood />
+      },
+      {
+        "name": l("Animals and Nature"),
+        "groups": ["Animal", "Nature"],
+        "icon": <IconMaterialEmojiNature />
+      },
+      {
+        "name": l("Food and Drink"),
+        "groups": ["Food"],
+        "icon": <IconMaterialEmojiFoodBeverage />
+      },
+      {
+        "name": l("Activity"),
+        "groups": ["Activity"],
+        "icon": <IconMaterialHiking />
+      },
+      {
+        "name": l("Travel and Places"),
+        "groups": ["Travel"],
+        "icon": <IconMaterialEmojiTransportation />
+      },
+      {
+        "name": l("Objects"),
+        "groups": ["Object"],
+        "icon": <IconMaterialEmojiObjects />
+      },
+      {
+        "name": l("Symbols"),
+        "groups": ["Symbol"],
+        "icon": <IconMaterialEmojiSymbols />
+      },
+      {
+        "name": l("Flags and Countries"),
+        "groups": ["Flag", "Country"],
+        "icon": <IconMaterialEmojiFlags />
+      }
+    ];
+  }, []);
 
   const {
     tonal = true,
@@ -384,7 +388,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
   const categoriesUsedIDs = categoriesUsed.map(item => categoryToID(item));
 
-  const tabs = categories.filter(item => categoriesUsed.some(item_ => item.name === item_)).map(item => ({
+  const tabs = (categories as any).filter(item => categoriesUsed.some(item_ => item.name === item_)).map(item => ({
     name: item.icon,
     value: item.name
   }));
@@ -430,7 +434,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
             >
               {search_ && (
                 <TextField
-                  name='Search'
+                  name={l('Search')}
 
                   version='outlined'
 

@@ -80,6 +80,8 @@ export type IFrame = ILine & {
 const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFrame?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -131,10 +133,10 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
   }, []);
 
   const responsiveOptions = [
-    { name: 'Mobile', icon: IconMobile, disabled: isEnvironment('browser') && window.innerWidth < 375 },
-    { name: 'Tablet', icon: IconTablet, disabled: isEnvironment('browser') && window.innerWidth < 768 },
-    { name: 'Laptop', icon: IconLaptop, disabled: isEnvironment('browser') && window.innerWidth < 1440 },
-    { name: 'Desktop', icon: IconDesktop, disabled: isEnvironment('browser') && window.innerWidth < 1920 }
+    { name: l('Mobile'), icon: IconMobile, disabled: isEnvironment('browser') && window.innerWidth < 375 },
+    { name: l('Tablet'), icon: IconTablet, disabled: isEnvironment('browser') && window.innerWidth < 768 },
+    { name: l('Laptop'), icon: IconLaptop, disabled: isEnvironment('browser') && window.innerWidth < 1440 },
+    { name: l('Desktop'), icon: IconDesktop, disabled: isEnvironment('browser') && window.innerWidth < 1920 }
   ];
 
   const WrapperStyle: any = {};
@@ -275,7 +277,7 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
             <Tooltip
               key={index}
 
-              label={item.name}
+              name={item.name}
             >
               <IconButton
                 size='small'

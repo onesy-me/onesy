@@ -265,6 +265,8 @@ export type ICalenarDays = Omit<ILine, 'onChange'> & {
 const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarMonth?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -446,13 +448,13 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
   const renderDayNameMethod = is('function', renderDayName) ? renderDayName : (order_: number) => {
     const values = {
-      1: dayNamesFull ? 'Monday' : 'M',
-      2: dayNamesFull ? 'Tuesday' : 'T',
-      3: dayNamesFull ? 'Wednesday' : 'W',
-      4: dayNamesFull ? 'Thursday' : 'T',
-      5: dayNamesFull ? 'Friday' : 'F',
-      6: dayNamesFull ? 'Saturday' : 'S',
-      7: dayNamesFull ? 'Sunday' : 'S'
+      1: dayNamesFull ? l('Monday') : l('Mo'),
+      2: dayNamesFull ? l('Tuesday') : l('Tu'),
+      3: dayNamesFull ? l('Wednesday') : l('We'),
+      4: dayNamesFull ? l('Thursday') : l('Th'),
+      5: dayNamesFull ? l('Friday') : l('Fr'),
+      6: dayNamesFull ? l('Saturday') : l('Sa'),
+      7: dayNamesFull ? l('Sunday') : l('Su')
     };
 
     return values[order_];

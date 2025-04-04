@@ -191,6 +191,8 @@ export type IAudioPlayer = ILine & {
 const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAudioPlayer?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -644,7 +646,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              Back
+              l('Back')
             </Type>
           )}
 
@@ -670,7 +672,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              Playback speed
+              l('Playback speed')
             </Type>
           )}
 
@@ -704,7 +706,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              Quality
+              l('Quality')
             </Type>
           )}
 
@@ -714,7 +716,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
 
               priority='secondary'
             >
-              {!quality ? 'Original' : `${quality?.meta?.resolution}p`}
+              {!quality ? l('Original') : `${quality?.meta?.resolution}p`}
             </Type>
           )}
 
@@ -733,7 +735,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              Original
+              l('Original')
             </Type>
           )}
 
@@ -744,30 +746,6 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
           {...itemProps}
         />
       );
-
-      // versions?.forEach((version: any, index: number) => {
-      //   const isSelected = quality?.id === version?.id;
-
-      //   items.push(
-      //     <ListItem
-      //       key={index}
-
-      //       primary={(
-      //         <Type
-      //           version='b3'
-      //         >
-      //           {version?.meta?.resolution}p
-      //         </Type>
-      //       )}
-
-      //       onClick={() => !isSelected ? onQuality(version) : undefined}
-
-      //       selected={isSelected}
-
-      //       {...itemProps}
-      //     />
-      //   );
-      // });
     }
     else if (openMenu === 'playbackSpeed') {
       const options = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -781,7 +759,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
               <Type
                 version='b3'
               >
-                {option === 1 ? 'Normal' : option}
+                {option === 1 ? l('Normal') : option}
               </Type>
             )}
 

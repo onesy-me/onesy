@@ -60,6 +60,8 @@ export type ITextToSpeech = ILine & {
 const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextToSpeech?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -214,14 +216,14 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
   if (!supported) return null;
 
   let IconToUse = Icon_;
-  let name = 'Text to speech';
+  let name = l('Text to speech');
 
   if (['started', 'resumed'].includes(status)) {
     IconToUse = IconPause;
-    name = 'Pause';
+    name = l('Pause');
   }
 
-  if (status === 'paused') name = 'Resume';
+  if (status === 'paused') name = l('Resume');
 
   return (
     <Line

@@ -62,6 +62,8 @@ export type ITableRow = Omit<ILine, 'onChange'> & {
 const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTablePagination?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -238,7 +240,7 @@ const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any)
           classes.text
         ])}
       >
-        <span>{(page * rowsPerPage) + 1} - {((page + 1) * rowsPerPage) || total}</span> <span>of</span> <span>{total}</span>
+        <span>{(page * rowsPerPage) + 1} - {((page + 1) * rowsPerPage) || total}</span> <span>{l('of')}</span> <span>{total}</span>
       </Type>
 
       <Line

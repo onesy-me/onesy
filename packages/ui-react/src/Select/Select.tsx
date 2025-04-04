@@ -15,7 +15,7 @@ import TextFieldElement from '../TextField';
 import IconButtonElement from '../IconButton';
 import LineElement from '../Line';
 import { ITextField } from '../TextField/TextField';
-import { iconFontSize, staticClassName } from '../utils';
+import { staticClassName } from '../utils';
 import { IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => {
@@ -167,6 +167,8 @@ const getValue = (value: any) => value?.value !== undefined ? value.value : valu
 
 const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
+
+  const l = theme.l;
 
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySelect?.props?.default, ...props_ }), [props_]);
 
@@ -485,7 +487,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
         size='small'
 
-        aria-label='Input clear'
+        aria-label={l('Input clear')}
 
         {...IconButtonProps}
       >

@@ -63,6 +63,8 @@ export type IPieChart = IChart & {
 const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPieChart?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -211,7 +213,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
 
     // invert y so 0, 0 is at bottom left
     if (refs.rects.current && values) {
-      const { width, height } = refs.rects.current.wrapper;
+      const { width } = refs.rects.current.wrapper;
 
       // Legend
       const legend_ = values.map((item: any) => {
@@ -533,7 +535,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
                   fontWeight: 600
                 }}
               >
-                {names?.value || 'Value'}
+                {names?.value || l('Value')}
               </Type>
 
               <Type
@@ -557,7 +559,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
                   fontWeight: 600
                 }}
               >
-                {names?.percentage || 'Percentage'}
+                {names?.percentage || l('Percentage')}
               </Type>
 
               <Type

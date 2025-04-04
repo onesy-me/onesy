@@ -59,6 +59,8 @@ export type ISectionTextMedia = ISection & {
 const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTextMedia?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -308,7 +310,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
             classes.button
           ])}
         >
-          {button.text || 'Click here'}
+          {button.text || l('Click here')}
         </Button>
       )}
     </Line >

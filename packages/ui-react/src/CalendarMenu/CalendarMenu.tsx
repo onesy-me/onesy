@@ -146,6 +146,8 @@ export type ICalendarMenu = Omit<IMenu, 'onChange'> & {
 const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -275,10 +277,10 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
   };
 
   const shortcuts = [
-    { name: 'Today', onClick: () => onChangeDate(new OnesyDate()), icon: <IconMaterialWbSunnyRounded {...iconProps} /> },
-    { name: 'Tomorrow', onClick: () => onChangeDate(add(1, 'day')), icon: <IconMaterialWbTwilightRounded {...iconProps} /> },
-    { name: '7 days', onClick: () => onChangeDate(add(7, 'day')), icon: <IconMaterialCounter7Rounded {...iconProps} /> },
-    { name: '1 month', onClick: () => onChangeDate(add(1, 'month')), icon: <IconMaterialCalendarMonthRounded {...iconProps} /> }
+    { name: l('Today'), onClick: () => onChangeDate(new OnesyDate()), icon: <IconMaterialWbSunnyRounded {...iconProps} /> },
+    { name: l('Tomorrow'), onClick: () => onChangeDate(add(1, 'day')), icon: <IconMaterialWbTwilightRounded {...iconProps} /> },
+    { name: l('7 days'), onClick: () => onChangeDate(add(7, 'day')), icon: <IconMaterialCounter7Rounded {...iconProps} /> },
+    { name: l('1 month'), onClick: () => onChangeDate(add(1, 'month')), icon: <IconMaterialCalendarMonthRounded {...iconProps} /> }
   ];
 
   const onClear = React.useCallback((event: MouseEvent) => {
@@ -565,12 +567,12 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
 
                   disabled={!value?.[dateProperty]}
                 >
-                  Clear
+                  {l('Clear')}
                 </Button>
 
                 {!noRemove && (
                   <Tooltip
-                    name='Remove'
+                    name={l('Remove')}
                   >
                     <IconButton
                       size='small'

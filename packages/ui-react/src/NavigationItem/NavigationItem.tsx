@@ -336,7 +336,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
   return (
     <Tooltip
-      label={label || value}
+      name={label || value}
 
       position='top'
 

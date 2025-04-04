@@ -19,6 +19,8 @@ export type IAutoCompleteCurrency = IAutoComplete & {
 const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCurrency?.props?.default, ...props_ }), [props_]);
 
   const AutoComplete = React.useMemo(() => theme?.elements?.AutoComplete || AutoCompleteElement, [theme]);
@@ -48,7 +50,7 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((
   // }
   const options = React.useMemo(() => {
     return [
-      { name: 'No currency', value: '' },
+      { name: l('No currency'), value: '' },
 
       ...currencies.map(item => ({
         name: `${item.code} ${item.name} (${item.symbol})`,

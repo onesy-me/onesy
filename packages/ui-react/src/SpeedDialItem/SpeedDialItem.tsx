@@ -122,7 +122,7 @@ const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: a
           ...other
         }) :
         <Tooltip
-          label={label}
+          name={label}
 
           portal
 

@@ -56,6 +56,8 @@ export type IPage = ILine & {
 const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPage?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -106,7 +108,7 @@ const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
     >
       {back ? (
         <Tooltip
-          name={(back?.name !== undefined ? back.name : back?.label) || 'Back'}
+          name={(back?.name !== undefined ? back.name : back?.label) || l('Back')}
         >
           <IconButton
             onClick={() => navigate(back?.to)}
@@ -120,7 +122,7 @@ const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
 
       {forward ? (
         <Tooltip
-          name={(forward?.name !== undefined ? forward.name : forward?.label) || 'Forward'}
+          name={(forward?.name !== undefined ? forward.name : forward?.label) || l('Forward')}
         >
           <IconButton
             onClick={() => navigate(forward?.to)}

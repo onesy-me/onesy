@@ -139,6 +139,8 @@ export type ISmartTextField = ITextField & {
 const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySmartTextField?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -1009,7 +1011,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
           }}
         >
           <InputComponent
-            label={labelInput}
+            name={labelInput}
 
             version='outlined'
 
@@ -1105,7 +1107,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     const {
       open: open_,
 
-      label: labelWrapperToogleButton,
+      name: nameWrapperToogleButton,
 
       children: childrenWrapperToggleButton,
 
@@ -1116,7 +1118,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       <Tooltip
         open={open_ !== undefined ? open_ : undefined}
 
-        label={labelWrapperToogleButton}
+        name={nameWrapperToogleButton}
 
         {...TooltipProps}
       >
@@ -1132,7 +1134,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   const updateElements = {
     'italic': (
       <WrapperToggleButton
-        label='Italic'
+        name={l('Italic')}
       >
         <ToggleButton
           {...ToggleButtonProps}
@@ -1147,7 +1149,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     ),
     'underline': (
       <WrapperToggleButton
-        label='Underline'
+        name={l('Underline')}
       >
         <ToggleButton
           {...ToggleButtonProps}
@@ -1162,7 +1164,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     ),
     'bold': (
       <WrapperToggleButton
-        label='Bold'
+        name={l('Bold')}
 
         onClick={textMethod('bold')}
       >
@@ -1177,7 +1179,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     ),
     'strike-line': (
       <WrapperToggleButton
-        label='Strike Line'
+        name={l('Strike Line')}
 
         onClick={textMethod('strike-line')}
       >
@@ -1206,9 +1208,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
             <Input
               ref={refs.miniMenuElements.linkAddInput}
 
-              label='Link'
+              name={l('Link')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.link}
 
@@ -1237,7 +1239,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         )}
       >
         <WrapperToggleButton
-          label='Insert Link'
+          name={l('Insert Link')}
 
           open={refs.open.current.linkMiniMenu ? false : undefined}
         >
@@ -1257,7 +1259,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     ),
     'link-remove': (
       <WrapperToggleButton
-        label='Remove Link'
+        name={l('Remove Link')}
       >
         <ToggleButton
           {...ToggleButtonProps}
@@ -1273,7 +1275,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   const actionElements = {
     'clear': (
       <WrapperToggleButton
-        label='Clear'
+        name={l('Clear')}
       >
         <ToggleButton
           {...ToggleButtonProps}
@@ -1354,7 +1356,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
                       color='themed'
 
-                      aria-label='Mini menu'
+                      aria-label={l('Mini menu')}
 
                       Component={Surface}
 

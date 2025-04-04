@@ -246,6 +246,8 @@ export type IVideoPlayer = ILine & {
 const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyVideoPlayer?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -849,7 +851,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              Back
+              {l('Back')}
             </Type>
           )}
 
@@ -875,7 +877,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              Playback speed
+              {l('Playback speed')}
             </Type>
           )}
 
@@ -885,7 +887,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
               priority='secondary'
             >
-              {playbackSpeed === 1 ? 'Normal' : playbackSpeed}
+              {playbackSpeed === 1 ? l('Normal') : playbackSpeed}
             </Type>
           )}
 
@@ -909,7 +911,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              Quality
+              {l('Quality')}
             </Type>
           )}
 
@@ -919,7 +921,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
 
               priority='secondary'
             >
-              {!quality ? 'Original' : `${quality?.meta?.resolution}p`}
+              {!quality ? l('Original') : `${quality?.meta?.resolution}p`}
             </Type>
           )}
 
@@ -986,7 +988,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
               <Type
                 version='b3'
               >
-                {option === 1 ? 'Normal' : option}
+                {option === 1 ? l('Normal') : option}
               </Type>
             )}
 

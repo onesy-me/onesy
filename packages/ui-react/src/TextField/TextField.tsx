@@ -571,6 +571,7 @@ export type ITextField = Omit<IBaseElement, 'onChange'> & {
   footer?: IElement;
   controlled?: boolean;
   restoreSelection?: boolean;
+  maxLength?: number;
   minWidth?: number;
   subscription?: OnesySubscription;
   minimal?: boolean;

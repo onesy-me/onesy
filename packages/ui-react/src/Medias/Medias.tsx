@@ -213,6 +213,8 @@ export type IMedias = ILine & {
 const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMedias?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -482,7 +484,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
           classes.name
         ])}
       >
-        {media?.name || 'No name'}
+        {media?.name || l('No name')}
       </Type>
     );
 

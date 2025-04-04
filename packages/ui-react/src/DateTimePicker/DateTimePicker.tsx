@@ -119,6 +119,8 @@ export type IDateTimePicker = Omit<IAdvancedTextField, 'version' | 'onChange'> &
 const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDateTimePicker?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -163,7 +165,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
     min,
     max,
     validate,
-    headingText = 'Select date & time',
+    headingText = l('Select date & time'),
     headingTextTime,
     headingTextTimeRange,
     headingTextDate,
@@ -780,7 +782,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
         align='center'
       >
         <Tooltip
-          label={tab === 'date' ? 'Time' : 'Date'}
+          name={tab === 'date' ? l('Time') : l('Date')}
         >
           <IconButton
             tonal={tonal}
@@ -789,7 +791,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
             onClick={onPickSwitch}
 
-            aria-label={tab === 'date' ? 'Time' : 'Date'}
+            aria-label={tab === 'date' ? l('Time') : l('Date')}
 
             {...iconButtonProps}
           >
@@ -803,7 +805,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
             {...buttonProps}
           >
-            Today
+            {l('Today')}
           </Button>
         )}
 
@@ -813,7 +815,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
             {...buttonProps}
           >
-            Clear
+            {l('Clear')}
           </Button>
         )}
       </Line>
@@ -836,7 +838,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
           {...buttonProps}
         >
-          Cancel
+          {l('Cancel')}
         </Button>
 
         <Button
@@ -850,7 +852,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
           {...buttonProps}
         >
-          Ok
+          {l('Ok')}
         </Button>
       </Line>
     </Line>
@@ -973,7 +975,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
         onClick={onOpen}
 
-        aria-label='Choose date and time'
+        aria-label={l('Choose date and time')}
 
         disabled={disabled || readOnly}
 
@@ -1032,7 +1034,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
         version='outlined'
 
-        label={label}
+        name={label}
 
         mask={mask}
 
@@ -1103,7 +1105,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
 
           noMargin
 
-          label={(
+          name={(
             <ClickListener
               onClickOutside={onCancel as any}
 

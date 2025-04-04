@@ -80,6 +80,8 @@ export type ITimer = ISurface & {
 const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimer?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -371,7 +373,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
                 <Tree
                   openDefault
 
-                  middle='Flags'
+                  middle={l('Flags')}
 
                   indicator
 
@@ -482,7 +484,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
             <span>
               {/* Start */}
               <Tooltip
-                label='Start'
+                name={l('Start')}
 
                 {...TooltipProps}
               >
@@ -507,7 +509,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
             <span>
               {/* Flag */}
               <Tooltip
-                label='Flag'
+                name={l('Flag')}
 
                 {...TooltipProps}
               >
@@ -522,7 +524,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
 
               {/* Pause */}
               <Tooltip
-                label='Pause'
+                name={l('Pause')}
 
                 {...TooltipProps}
               >
@@ -547,7 +549,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
             <span>
               {/* Stop */}
               <Tooltip
-                label='Stop'
+                name={l('Stop')}
 
                 {...TooltipProps}
               >
@@ -562,7 +564,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
 
               {/* Resume */}
               <Tooltip
-                label='Resume'
+                name={l('Resume')}
 
                 {...TooltipProps}
               >

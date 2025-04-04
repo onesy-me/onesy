@@ -208,6 +208,8 @@ export type IDatePicker = Omit<ILine, 'onChange'> & ITextField & {
 const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDatePicker?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -263,12 +265,12 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     nameFrom,
     nameTo,
     label: label_,
-    labelFrom: labelFrom_ = `Date from`,
-    labelTo: labelTo_ = `Date to`,
-    modeModalSubHeadingText = 'Select date',
-    modeModalSubHeadingTextRange = `Date from${SEPARATOR}Date to`,
-    selectModeHeadingText = 'Select date',
-    inputModeHeadingText = 'Enter date',
+    labelFrom: labelFrom_ = l('Date from'),
+    labelTo: labelTo_ = l('Date to'),
+    modeModalSubHeadingText = l('Select date'),
+    modeModalSubHeadingTextRange = `${l('Date from')}${SEPARATOR}${l('Date to')}`,
+    selectModeHeadingText = l('Select date'),
+    inputModeHeadingText = l('Enter date'),
     useHelperText: useHelperText_,
     weekStartDay = 'Monday',
     switch: switch__,
@@ -742,7 +744,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
               {...buttonProps}
             >
-              Today
+              {l('Today')}
             </Button>
           )}
 
@@ -752,7 +754,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
               {...buttonProps}
             >
-              Clear
+              {l('Clear')}
             </Button>
           )}
         </Line>
@@ -770,7 +772,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
           {...buttonProps}
         >
-          Cancel
+          {l('Cancel')}
         </Button>
 
         <Button
@@ -778,7 +780,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
           {...buttonProps}
         >
-          Ok
+          {l('Ok')}
         </Button>
       </Line>
     </Line>
@@ -797,7 +799,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
         onClick={onOpen}
 
-        aria-label={`Choose date${range ? ' range' : ''}`}
+        aria-label={`${l('Choose date')}${range ? ' range' : ''}`}
 
         disabled={disabled || readOnly}
 
@@ -820,7 +822,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     textHeading = `${format(value[0], 'MMM')} ${format(value[0], 'DD')}${SEPARATOR}${format(value[1], 'MMM')} ${format(value[1], 'DD')}`;
   }
 
-  const dayNames = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+  const dayNames = [l('Mo'), l('Tu'), l('We'), l('Th'), l('Fr'), l('Sa'), l('Su')];
 
   const mobile = (
     <Surface
@@ -884,7 +886,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
               onClick={onClose}
 
-              aria-label='Close'
+              aria-label={l('Close')}
 
               {...iconButtonProps}
             >
@@ -898,7 +900,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
               {...buttonProps}
             >
-              Save
+              {l('Save')}
             </Button>
           </Line>
         )}
@@ -947,7 +949,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
             {switch_ && (
               <Tooltip
-                label='Enter date'
+                name={l('Enter date')}
               >
                 <IconButton
                   tonal={tonal}
@@ -956,7 +958,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
                   onClick={() => onMode('input')}
 
-                  aria-label='Enter date'
+                  aria-label={l('Enter date')}
 
                   {...iconButtonProps}
                 >
@@ -995,7 +997,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
             {switch_ && (
               <Tooltip
-                label='Select date'
+                name={l('Select date')}
               >
                 <IconButton
                   tonal={tonal}
@@ -1004,7 +1006,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
                   onClick={() => onMode('select')}
 
-                  aria-label='Choose date'
+                  aria-label={l('Select date')}
 
                   {...iconButtonProps}
                 >
@@ -1165,7 +1167,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
             size={size}
 
-            label={label}
+            name={label}
 
             mask={mask}
 
@@ -1311,7 +1313,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
         size={size}
 
-        label={label}
+        name={label}
 
         mask={mask}
 
@@ -1382,7 +1384,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
           noMargin
 
-          label={(
+          name={(
             <ClickListener
               onClickOutside={onCancel as any}
 

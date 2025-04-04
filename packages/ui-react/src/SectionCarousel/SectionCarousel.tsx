@@ -161,6 +161,8 @@ export type ISectionCarousel = ISection & {
 const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionCarousel?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -445,7 +447,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
                   classes.button
                 ])}
               >
-                {item.buttonText || 'Click here'}
+                {item.buttonText || l('Click here')}
               </Button>
             </Line>
           )}

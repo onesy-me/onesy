@@ -30,6 +30,8 @@ export type INotFound = ISection & {
   start?: any;
   end?: any;
 
+  buttonText?: any;
+
   renderButton?: (props: any) => any;
 
   fullHeight?: any;
@@ -41,6 +43,8 @@ export type INotFound = ISection & {
 const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNotFound?.props?.default, ...props_ }), [props_]);
 
   const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
@@ -50,7 +54,7 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
   const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
 
   const {
-    name = 'Page not found 🫠',
+    name = l('Page not found'),
 
     to = '/',
 
@@ -62,6 +66,8 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
 
     start,
     end,
+
+    buttonText = l('Back'),
 
     ButtonProps,
     TypeProps,
@@ -145,7 +151,7 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
             classes.button
           ])}
         >
-          Back
+          {buttonText}
         </Button>
       )}
 

@@ -146,6 +146,8 @@ export type ITableCell = IBaseElement & {
 const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableCell?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -368,7 +370,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
         {sort && (
           <Tooltip
-            name={sortedBy === 'asc' ? 'Ascending' : 'Descending'}
+            name={sortedBy === 'asc' ? l('Ascending') : l('Descending')}
           >
             <IconButton
               size='small'

@@ -80,6 +80,8 @@ export type IConfirm = IBaseElement & {
 const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyConfirm?.props?.default, ...props_ }), [props_]);
 
   const ModalHeader = React.useMemo(() => theme?.elements?.ModalHeader || ModalHeaderElement, [theme]);
@@ -138,8 +140,8 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
       if (refs.modal.current.buttons?.positive?.text === undefined) setObjectValue(refs.modal.current, 'buttons.positive.text', '');
 
-      refs.modal.current.buttons.negative.text = value?.buttons?.negative?.text !== undefined ? value?.buttons?.negative?.text : 'Cancel';
-      refs.modal.current.buttons.positive.text = value?.buttons?.positive?.text !== undefined ? value?.buttons?.positive?.text : 'Confirm';
+      refs.modal.current.buttons.negative.text = value?.buttons?.negative?.text !== undefined ? value?.buttons?.negative?.text : l('Cancel');
+      refs.modal.current.buttons.positive.text = value?.buttons?.positive?.text !== undefined ? value?.buttons?.positive?.text : l('Confirm');
 
       refs.modal.current.throwError = value?.throwError !== undefined ? value.throwError : refs.props.current.throwError;
 
@@ -235,7 +237,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
                   weight={500}
                 >
-                  {name || 'Confirmation'}
+                  {name || l('Confirmation')}
                 </ModalTitle>
               </ModalHeader>
             )}
@@ -246,7 +248,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
                 weight={200}
               >
-                {description !== undefined ? description : 'Are you sure you want to proceed?'}
+                {description !== undefined ? description : l('Are you sure you want to proceed?')}
               </ModalText>
             </ModalMain>
 
@@ -262,7 +264,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
                 {...ButtonNegativeProps}
               >
-                {buttons?.negative?.text !== undefined ? buttons?.negative?.text : 'Cancel'}
+                {buttons?.negative?.text !== undefined ? buttons?.negative?.text : l('Cancel')}
               </Button>
 
               <Button
@@ -276,7 +278,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
                 {...ButtonPositiveProps}
               >
-                {buttons?.positive?.text !== undefined ? buttons?.positive?.text : 'Confirm'}
+                {buttons?.positive?.text !== undefined ? buttons?.positive?.text : l('Confirm')}
               </Button>
             </ModalFooter>
           </>)

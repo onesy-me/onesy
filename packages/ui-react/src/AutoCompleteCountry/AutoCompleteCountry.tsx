@@ -22,6 +22,8 @@ export type IAutoCompleteCountry = IAutoComplete & {
 const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCountry?.props?.default, ...props_ }), [props_]);
 
   const AutoComplete = React.useMemo(() => theme?.elements?.AutoComplete || AutoCompleteElement, [theme]);
@@ -62,6 +64,8 @@ const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((pr
   const options = React.useMemo(() => {
     return countries.map(item => ({
       ...item,
+
+      name: l(item.name),
 
       value: item['alpha-2']
     }));

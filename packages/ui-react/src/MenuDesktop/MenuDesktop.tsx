@@ -258,7 +258,6 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
   const [openItem, setOpenItem] = React.useState<any>();
   const [focus, setFocus] = React.useState<any>();
   const [append, setAppend] = React.useState<any>();
-  const [menuOpened, setMenuOpened] = React.useState<any>();
   const [menu, setMenu] = React.useState<any>();
 
   const refs = {
@@ -731,8 +730,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
                       ],
 
                       WrapperMenuProps?.className,
-                      classes.menuWrapper,
-                      menuOpened && classes.menuWrapper_open
+                      classes.menuWrapper
                     ])}
 
                     style={{

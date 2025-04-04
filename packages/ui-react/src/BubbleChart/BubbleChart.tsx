@@ -56,6 +56,8 @@ export type IBubbleChart = IChart & {
 const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBubbleChart?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -263,7 +265,7 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
                 fontWeight: 600
               }}
             >
-              Label
+              {l('Label')}
             </Type>
 
             <Type
@@ -293,7 +295,7 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
                 fontWeight: 600
               }}
             >
-              {names?.size || 'Size'}
+              {names?.size || l('Size')}
             </Type>
           </Line>
 

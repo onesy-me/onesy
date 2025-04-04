@@ -46,6 +46,8 @@ export type IBreadcrumbs = ILine & {
 const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBreadcrumbs?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -133,7 +135,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
 
           onClick={onExpandMore}
 
-          aria-label='Expand more path'
+          aria-label={l('Expand more path')}
 
           {...MoreProps}
 
@@ -204,7 +206,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
 
       wrap='wrap'
 
-      aria-label='Breadcrumb'
+      aria-label={l('Breadcrumb')}
 
       Component={Component}
 

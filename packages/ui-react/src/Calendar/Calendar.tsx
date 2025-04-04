@@ -216,6 +216,8 @@ export type ICalendar = Omit<ISurface, 'version' | 'onChange'> & {
 const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendar?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -732,7 +734,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                 size={size}
 
-                aria-label='Previous month'
+                aria-label={l('Previous month')}
 
                 disabled={open || (+year <= 1970 && month === 'Jan')}
 
@@ -772,7 +774,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                 </Fade>
               )}
 
-              aria-label={`Select month, current ${month}`}
+              aria-label={`${l('Select month')}, ${l('current')} ${month}`}
 
               {...optionButtonProps}
 
@@ -797,7 +799,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                 size={size}
 
-                aria-label='Next month'
+                aria-label={l('Next month')}
 
                 disabled={open || (+year === 2099 && month === 'Dec')}
 
@@ -826,7 +828,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                 size={size}
 
-                aria-label='Previous year'
+                aria-label={l('Previous year')}
 
                 disabled={open || +year <= 1970}
 
@@ -866,7 +868,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                 </Fade>
               )}
 
-              aria-label={`Select year, current ${year}`}
+              aria-label={`${l('Select year')}, ${l('current')} ${year}`}
 
               {...optionButtonProps}
 
@@ -891,7 +893,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                 size={size}
 
-                aria-label='Next year'
+                aria-label={l('Next year')}
 
                 disabled={open || +year === 2099}
 
@@ -967,7 +969,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                 onClick={() => move(false, menu_month_previous_unit || 'month')}
 
-                aria-label='Previous month'
+                aria-label={l('Previous month')}
 
                 disabled={!!(open || (+year === 1970 && month === 'Jan'))}
               >
@@ -989,7 +991,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                 onClick={() => move(true, menu_month_next_unit || 'month')}
 
-                aria-label='Next month'
+                aria-label={l('Next month')}
 
                 disabled={!!(open || (+year === 2099 && month === 'Dec'))}
               >

@@ -15,6 +15,8 @@ export interface IThemeValue extends ThemeRequired {
   updateWithRerender: (value: IOnesyTheme) => ThemeRequired;
 }
 
+const l = (value: string) => value;
+
 const hashValue = (value: OnesyTheme) => {
   const allowed = ['direction', 'preference', 'mode', 'palette', 'shape', 'breakpoints', 'space', 'shadows', 'typography', 'transitions', 'z_index'];
 
@@ -64,7 +66,7 @@ const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
     root: React.useRef<any>(undefined),
     init: React.useRef<any>(undefined),
     id: React.useId(),
-    styleSheet: React.useRef<Element>()
+    styleSheet: React.useRef<Element>(undefined)
   };
 
   refs.init.current = init;
@@ -215,6 +217,9 @@ ${values.map(item => `\t${item};`).join('\n')}
 
   // Update method
   (value as any).updateWithRerender = update;
+
+  // locale method
+  value.l = value.l || l;
 
   if (root) {
     return (

@@ -71,6 +71,8 @@ export type IScreenCapture = ISurface & {
 const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScreenCapture?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -512,7 +514,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
       >
         {view && (
           <Tooltip
-            label='View'
+            name={l('View')}
 
             {...tooltipProps}
 
@@ -536,7 +538,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
 
         {/* {entirePage && (
           <Tooltip
-            label='Entire page'
+            name={l('Entire page')}
 
             {...tooltipProps}
 
@@ -560,7 +562,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
 
         {free && (
           <Tooltip
-            label={canvas ? 'Save' : 'Free form'}
+            name={canvas ? l('Save') : l('Free form')}
 
             {...tooltipProps}
 
@@ -584,7 +586,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
       </Line>
 
       <TextField
-        label='Name'
+        name={l('Name')}
 
         value={name}
 

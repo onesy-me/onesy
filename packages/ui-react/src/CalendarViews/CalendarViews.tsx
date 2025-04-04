@@ -128,7 +128,7 @@ export type ICalendarViews = ICalendar & {
 
   events?: ICalendarEvent[];
 
-  views?: ICalendarViewsView[];
+  views?: { name: string, value: ICalendarViewsView }[];
 
   render?: (date: OnesyDate, view: ICalendarViewsView) => any;
 
@@ -166,6 +166,8 @@ export type ICalendarViews = ICalendar & {
 const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarViews?.props?.default, ...props_ }), [props_]);
 
   const CalendarMonth = React.useMemo(() => theme?.elements?.CalendarMonth || CalendarMonthElement, [theme]);
@@ -193,7 +195,11 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
     events,
 
-    views: viewsProps = ['month', 'week', 'day'],
+    views: viewsProps = [
+      { name: l('Month'), value: 'month' },
+      { name: l('Week'), value: 'week' },
+      { name: l('Day'), value: 'day' }
+    ],
 
     render,
 
@@ -270,8 +276,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
   const viewOptions = React.useMemo(() => {
     return viewsProps?.map(item => ({
-      name: capitalize(item),
-      value: item
+      name: item?.name,
+      value: item?.value
     }));
   }, [viewsProps]);
 
@@ -375,13 +381,13 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
   const renderDayName = React.useCallback((order: number) => {
     const values: any = {
-      1: 'Mon',
-      2: 'Tue',
-      3: 'Wed',
-      4: 'Thu',
-      5: 'Fri',
-      6: 'Sat',
-      7: 'Sun'
+      1: l('Mo'),
+      2: l('Tu'),
+      3: l('We'),
+      4: l('Th'),
+      5: l('Fr'),
+      6: l('Sa'),
+      7: l('Su')
     };
 
     return values[order];
@@ -536,7 +542,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
               selected={now.days === date.days}
             >
-              Today
+              {l('Today')}
             </Button>
 
             <Line
@@ -547,7 +553,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
               align='center'
             >
               <Tooltip
-                name={`Previous ${view}`}
+                name={`${l('Previous')} ${view}`}
               >
                 <IconButton
                   onClick={onPrevious}
@@ -561,7 +567,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
               </Tooltip>
 
               <Tooltip
-                name={`Next ${view}`}
+                name={`${l('Next')} ${view}`}
               >
                 <IconButton
                   onClick={onNext}
@@ -606,7 +612,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
             {!noViews && (
               <Select
-                name='View'
+                name={l('View')}
 
                 value={view}
 

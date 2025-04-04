@@ -75,6 +75,8 @@ export type ICookieBanner = ISurface & {
 const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBanner?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -164,7 +166,7 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
 
         role='region'
 
-        aria-label='Cookie Banner'
+        aria-label={l('Cookie Banner')}
 
         className={classNames([
           staticClassName('CookieBanner', theme) && [
@@ -247,7 +249,7 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
 
               {...RejectButtonProps}
             >
-              Reject All
+              {l('Reject All')}
             </Button>
 
             <Button
@@ -261,14 +263,14 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
 
               {...AllowButtonProps}
             >
-              Accept All
+              {l('Accept All')}
             </Button>
 
             {endActions}
           </Line>
         </Line>
       </Line>
-    </TransitionElement >
+    </TransitionElement>
   );
 });
 

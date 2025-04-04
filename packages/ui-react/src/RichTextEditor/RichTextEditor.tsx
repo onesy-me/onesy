@@ -367,6 +367,8 @@ export type IRichTextEditor = Omit<ILine, 'onChange'> & {
 const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRichTextEditor?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -1002,7 +1004,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     const {
       open: open_,
 
-      label,
+      name,
 
       children: children_,
 
@@ -1013,7 +1015,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
       <Tooltip
         open={open_ !== undefined ? open_ : undefined}
 
-        label={label}
+        name={name}
 
         {...TooltipProps}
       >
@@ -1248,7 +1250,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
             color={color}
 
-            label='Custom color'
+            name={l('Custom color')}
 
             version='outlined'
 
@@ -1358,7 +1360,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
             color={color}
 
-            label={label}
+            name={label}
 
             version='outlined'
 
@@ -1414,12 +1416,12 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
   ];
 
   const font_versions = [
-    { label: <Type version='b2'>Normal text</Type>, value: 'p' },
-    { label: <Type version='h1'>Heading 1</Type>, value: 'h1' },
-    { label: <Type version='h2'>Heading 2</Type>, value: 'h2' },
-    { label: <Type version='h3'>Heading 3</Type>, value: 'h3' },
-    { label: <Type version='t1'>Heading 4</Type>, value: 'h4' },
-    { label: <Type version='t2'>Heading 5</Type>, value: 'h5' }
+    { label: <Type version='b2'>{l('Normal text')}</Type>, value: 'p' },
+    { label: <Type version='h1'>{l('Heading 1')}</Type>, value: 'h1' },
+    { label: <Type version='h2'>{l('Heading 2')}</Type>, value: 'h2' },
+    { label: <Type version='h3'>{l('Heading 3')}</Type>, value: 'h3' },
+    { label: <Type version='t1'>{l('Heading 4')}</Type>, value: 'h4' },
+    { label: <Type version='t2'>{l('Heading 5')}</Type>, value: 'h5' }
   ];
 
   const queryValueUpdate = () => {
@@ -1492,7 +1494,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
   const updateElements = {
     'font-version': (
       <Select
-        label='Font Version'
+        name={l('Font Version')}
 
         valueDefault={font_versions.find(item => item.value.includes('p')).value}
 
@@ -1540,7 +1542,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'font-family': (
       <Select
-        label='Font Family'
+        name={l('Font Family')}
 
         valueDefault={font_families.find(item => item.label.includes('DM Sans')).value}
 
@@ -1592,7 +1594,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'font-size': (
       <Select
-        label='Font Size'
+        name={l('Font Size')}
 
         valueDefault={+font_sizes.find(item => item.label.includes('14')).value}
 
@@ -1637,7 +1639,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
     'italic': (
       <WrapperToggleButton
-        label='Italic'
+        name={l('Italic')}
       >
         {is('function', render) ? render('italic', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1654,7 +1656,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'underline': (
       <WrapperToggleButton
-        label='Underline'
+        name={l('Underline')}
       >
         {is('function', render) ? render('underline', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1671,7 +1673,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'bold': (
       <WrapperToggleButton
-        label='Bold'
+        name={l('Bold')}
 
         onClick={method('bold')}
       >
@@ -1688,7 +1690,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'strike-line': (
       <WrapperToggleButton
-        label='Strike Line'
+        name={l('Strike Line')}
 
         onClick={method('strike-line')}
       >
@@ -1727,7 +1729,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Text Color'
+          name={l('Text Color')}
 
           open={refs.open.current.color ? false : undefined}
         >
@@ -1772,7 +1774,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Text Color'
+          name={l('Text Color')}
 
           open={refs.open.current.colorMiniMenu ? false : undefined}
         >
@@ -1815,7 +1817,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Background Color'
+          name={l('Background Color')}
 
           open={refs.open.current.background ? false : undefined}
         >
@@ -1860,7 +1862,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Text Color'
+          name={l('Text Color')}
 
           open={refs.open.current.backgroundMiniMenu ? false : undefined}
         >
@@ -1883,7 +1885,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
     'align-left': (
       <WrapperToggleButton
-        label='Align Left'
+        name={l('Align Left')}
       >
         {is('function', render) ? render('align-left', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1900,7 +1902,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'align-center': (
       <WrapperToggleButton
-        label='Align Center'
+        name={l('Align Center')}
       >
         {is('function', render) ? render('align-center', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1917,7 +1919,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'align-right': (
       <WrapperToggleButton
-        label='Align Right'
+        name={l('Align Right')}
       >
         {is('function', render) ? render('align-right', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1934,7 +1936,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'align-justify': (
       <WrapperToggleButton
-        label='Align Justify'
+        name={l('Align Justify')}
       >
         {is('function', render) ? render('align-justify', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1952,7 +1954,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
     'indent': (
       <WrapperToggleButton
-        label='Indent'
+        name={l('Indent')}
       >
         {is('function', render) ? render('indent', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1967,7 +1969,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'outdent': (
       <WrapperToggleButton
-        label='Outdent'
+        name={l('Outdent')}
       >
         {is('function', render) ? render('outdent', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -1983,7 +1985,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
     'superscript': (
       <WrapperToggleButton
-        label='Superscript'
+        name={l('Superscript')}
       >
         {is('function', render) ? render('superscript', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -2000,7 +2002,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'subscript': (
       <WrapperToggleButton
-        label='Subscript'
+        name={l('Subscript')}
       >
         {is('function', render) ? render('subscript', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -2018,7 +2020,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
     'list-ordered': (
       <WrapperToggleButton
-        label='List Ordered'
+        name={l('List Ordered')}
       >
         {is('function', render) ? render('list-ordered', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -2035,7 +2037,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'list-unordered': (
       <WrapperToggleButton
-        label='List Unordered'
+        name={l('List Unordered')}
       >
         {is('function', render) ? render('list-unordered', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -2053,7 +2055,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
     'horizontal-rule': (
       <WrapperToggleButton
-        label='Insert Horizontal Rule'
+        name={l('Insert Horizontal Rule')}
 
         onClick={method('horizontal-rule')}
       >
@@ -2080,9 +2082,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
             include={[refs.elements.linkAdd.current]}
           >
             <Input
-              label='Link'
+              name={l('Link')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.link}
 
@@ -2107,7 +2109,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Link'
+          name={l('Insert Link')}
 
           open={refs.open.current.link ? false : undefined}
         >
@@ -2142,9 +2144,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
             <Input
               ref={refs.miniMenuElements.linkAddInput}
 
-              label='Link'
+              name={l('Link')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.link}
 
@@ -2169,7 +2171,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Link'
+          name={l('Insert Link')}
 
           open={refs.open.current.linkMiniMenu ? false : undefined}
         >
@@ -2191,7 +2193,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ),
     'link-remove': (
       <WrapperToggleButton
-        label='Remove Link'
+        name={l('Remove Link')}
       >
         {is('function', render) ? render('link-remove', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -2218,9 +2220,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
             include={[refs.elements.quote.current]}
           >
             <Input
-              label='Quote'
+              name={l('Quote')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.quote}
 
@@ -2249,7 +2251,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Quote'
+          name={l('Insert Quote')}
 
           open={refs.open.current.quote ? false : undefined}
         >
@@ -2308,7 +2310,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                 justify='center'
               >
                 <NumericTextField
-                  label='Rows'
+                  name={l('Rows')}
 
                   tonal={tonal}
 
@@ -2330,7 +2332,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                 ×
 
                 <NumericTextField
-                  label='Columns'
+                  name={l('Columns')}
 
                   tonal={tonal}
 
@@ -2376,7 +2378,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                     onChange={valueNew => updateInputValues('tableHeader', valueNew)}
                   />
 
-                  Header
+                  {l('Header')}
                 </Label>
 
                 <Button
@@ -2423,7 +2425,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                     updateInputValues('tableHeader', '');
                   }}
                 >
-                  Add
+                  {l('Add')}
                 </Button>
               </Line>
             </Line>
@@ -2431,7 +2433,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Table'
+          name={l('Insert Table')}
 
           open={refs.open.current.table ? false : undefined}
         >
@@ -2464,9 +2466,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
             include={[refs.elements.image.current]}
           >
             <Input
-              label='Image'
+              name={l('Image')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.image}
 
@@ -2491,7 +2493,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Image'
+          name={l('Insert Image')}
 
           open={refs.open.current.image ? false : undefined}
         >
@@ -2524,9 +2526,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
             include={[refs.elements.video.current]}
           >
             <Input
-              label='Video'
+              name={l('Video')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.video}
 
@@ -2551,7 +2553,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Video'
+          name={l('Insert Video')}
 
           open={refs.open.current.video ? false : undefined}
         >
@@ -2584,9 +2586,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
             include={[refs.elements.videoYoutube.current]}
           >
             <Input
-              label='Youtube Video ID'
+              name={l('Youtube Video ID')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.videoYoutube}
 
@@ -2611,7 +2613,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Youtube Video'
+          name={l('Insert Youtube Video')}
 
           open={refs.open.current.videoYoutube ? false : undefined}
         >
@@ -2750,7 +2752,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                     updateOpen('drawing', false);
                   }}
                 >
-                  Add
+                  {l('Add')}
                 </Button>
               </Line>
             </Line>
@@ -2758,7 +2760,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Drawing'
+          name={l('Insert Drawing')}
 
           open={refs.open.current.drawing ? false : undefined}
         >
@@ -2791,9 +2793,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
             include={[refs.elements.code.current]}
           >
             <Input
-              label='Code'
+              name={l('Code')}
 
-              labelButton='Add'
+              labelButton={l('Add')}
 
               value={refs.inputValues.current.code}
 
@@ -2822,7 +2824,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         )}
       >
         <WrapperToggleButton
-          label='Insert Code'
+          name={l('Insert Code')}
 
           open={refs.open.current.code ? false : undefined}
         >
@@ -2847,7 +2849,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
   const actionElements = {
     'clear': (
       <WrapperToggleButton
-        label='Clear'
+        name={l('Clear')}
       >
         {is('function', render) ? render('clear', ToggleButtonProps, refs.value.current, method) : (
           <ToggleButton
@@ -2929,7 +2931,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
               role='toolbar'
 
-              aria-label='Updates'
+              aria-label={l('Updates')}
 
               {...ToolbarUpdatesProps}
 
@@ -3097,7 +3099,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
               role='toolbar'
 
-              aria-label='Actions'
+              aria-label={l('Actions')}
 
               {...ToolbarActionsProps}
 
@@ -3137,7 +3139,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                     >
                       {includes('copy') && (
                         <WrapperToggleButton
-                          label='Copy'
+                          name={l('Copy')}
                         >
                           {is('function', render) ? render('copy', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3153,7 +3155,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       {includes('cut') && (
                         <WrapperToggleButton
-                          label='Cut'
+                          name={l('Cut')}
                         >
                           {is('function', render) ? render('cut', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3169,7 +3171,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       {includes('paste') && (
                         <WrapperToggleButton
-                          label='Paste'
+                          name={l('Paste')}
                         >
                           {is('function', render) ? render('paste', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3185,7 +3187,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       {includes('delete') && (
                         <WrapperToggleButton
-                          label='Delete'
+                          name={l('Delete')}
                         >
                           {is('function', render) ? render('delete', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3219,7 +3221,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       {includes('select-all') && (
                         <WrapperToggleButton
-                          label='Select All'
+                          name={l('Select All')}
                         >
                           {is('function', render) ? render('select-all', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3241,7 +3243,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                     >
                       {includes('undo') && (
                         <WrapperToggleButton
-                          label='Undo'
+                          name={l('Undo')}
                         >
                           {is('function', render) ? render('undo', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3257,7 +3259,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       {includes('redo') && (
                         <WrapperToggleButton
-                          label='Redo'
+                          name={l('Redo')}
                         >
                           {is('function', render) ? render('redo', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3279,7 +3281,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
                     >
                       {includes('save') && (
                         <WrapperToggleButton
-                          label='Save'
+                          name={l('Save')}
                         >
                           {is('function', render) ? render('save', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3295,7 +3297,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       {includes('print') && (
                         <WrapperToggleButton
-                          label='Print'
+                          name={l('Print')}
                         >
                           {is('function', render) ? render('print', ToggleButtonProps, refs.value.current, method) : (
                             <ToggleButton
@@ -3378,7 +3380,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
                       role='toolbar'
 
-                      aria-label='Mini menu'
+                      aria-label={l('Mini menu')}
 
                       Component={Surface}
 

@@ -28,6 +28,8 @@ export type ISectionAction = ISection & {
 const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionAction?.props?.default, ...props_ }), [props_]);
 
   const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
@@ -101,7 +103,7 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
           classes.button
         ])}
       >
-        {text || 'Click here'}
+        {text || l('Click here')}
       </Button>
     </Section>
   );

@@ -217,6 +217,8 @@ export type IImageEdit = Omit<ILine, 'onChange'> & {
 const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageEdit?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -800,7 +802,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
   let filters = React.useMemo(() => [
     {
-      label: 'Brightness',
+      label: l('Brightness'),
       Icon: IconBrightness,
       value: 'brightness',
 
@@ -810,7 +812,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
         <Tooltip
           key={value__}
 
-          label='Brightness'
+          name={l('Brightness')}
 
           {...TooltipProps}
         >
@@ -871,7 +873,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
     },
 
     {
-      label: 'Contrast',
+      label: l('Contrast'),
       Icon: IconContrast,
       value: 'contrast',
 
@@ -881,7 +883,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
         <Tooltip
           key={value__}
 
-          label='Contrast'
+          name={l('Contrast')}
 
           {...TooltipProps}
         >
@@ -942,7 +944,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
     },
 
     {
-      label: 'Saturation',
+      label: l('Saturation'),
       Icon: IconSaturation,
       value: 'saturation',
 
@@ -952,7 +954,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
         <Tooltip
           key={value__}
 
-          label='Saturation'
+          name={l('Saturation')}
 
           {...TooltipProps}
         >
@@ -1013,7 +1015,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
     },
 
     {
-      label: 'Fade',
+      label: l('Fade'),
       Icon: IconFade,
       value: 'fade',
 
@@ -1023,7 +1025,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
         <Tooltip
           key={value__}
 
-          label='Fade'
+          name={l('Fade')}
 
           {...TooltipProps}
         >
@@ -1083,7 +1085,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
     },
 
     {
-      label: 'Invert',
+      label: l('Invert'),
       Icon: IconInvert,
       value: 'invert',
 
@@ -1093,7 +1095,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
         <Tooltip
           key={value__}
 
-          label='Invert'
+          name={l('Invert')}
 
           {...TooltipProps}
         >
@@ -1153,7 +1155,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
     },
 
     {
-      label: 'Old photo',
+      label: l('Old photo'),
       Icon: IconOldPhoto,
       value: 'old_photo',
 
@@ -1163,7 +1165,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
         <Tooltip
           key={value__}
 
-          label='Old photo'
+          name={l('Old photo')}
 
           {...TooltipProps}
         >
@@ -1269,10 +1271,10 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
   ];
 
   const options = [
-    filtersOption && { label: 'Filters', value: 'filters', Icon: IconFilters },
-    cropOption && { label: 'Crop', value: 'crop', Icon: IconCrop },
-    resizeOption && { label: 'Resize', value: 'resize', Icon: IconResize },
-    qualityOption && { label: 'Quality', value: 'quality', Icon: IconQuality }
+    filtersOption && { label: l('Filters'), value: 'filters', Icon: IconFilters },
+    cropOption && { label: l('Crop'), value: 'crop', Icon: IconCrop },
+    resizeOption && { label: l('Resize'), value: 'resize', Icon: IconResize },
+    qualityOption && { label: l('Quality'), value: 'quality', Icon: IconQuality }
   ]
     .filter(Boolean);
 
@@ -1583,7 +1585,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
                   <NumericTextField
                     tonal={tonal}
 
-                    label='Width'
+                    name={l('Width')}
 
                     color='default'
 
@@ -1607,7 +1609,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
                   <NumericTextField
                     tonal={tonal}
 
-                    label='Height'
+                    name={l('Height')}
 
                     color='default'
 
@@ -1729,7 +1731,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
             >
               {is('function', renderSave) ? renderSave(onSave) : (
                 <Tooltip
-                  label='Save'
+                  name={l('Save')}
 
                   {...TooltipProps}
                 >
@@ -1747,7 +1749,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
               {is('function', renderCancel) ? renderCancel(onSave) : (
                 <Tooltip
-                  label='Cancel'
+                  name={l('Cancel')}
 
                   {...TooltipProps}
                 >
@@ -1805,7 +1807,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
                 <Tooltip
                   key={index}
 
-                  label={item.label}
+                  name={item.label}
 
                   {...TooltipProps}
                 >
@@ -1833,7 +1835,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
             >
               {downloadOption && is('function', renderDownload) ? renderDownload(onDownload) : (
                 <Tooltip
-                  label='Download'
+                  name={l('Download')}
 
                   {...TooltipProps}
                 >
@@ -1851,7 +1853,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
               {is('function', renderOptionClear) ? renderOptionClear(onReset) : (
                 <Tooltip
-                  label='Reset'
+                  name={l('Reset')}
 
                   {...TooltipProps}
                 >
@@ -1907,7 +1909,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
           <Type
             {...MetaTypeProps}
           >
-            Dimensions: {(!open ? value : valueCopy)?.width}x{(!open ? value : valueCopy)?.height}
+            {l('Dimensions')}: {(!open ? value : valueCopy)?.width}x{(!open ? value : valueCopy)?.height}
           </Type>
 
           <Type
@@ -1919,7 +1921,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
           <Type
             {...MetaTypeProps}
           >
-            Size: {size}
+            {l('Size')}: {size}
           </Type>
         </Line>
       </>}

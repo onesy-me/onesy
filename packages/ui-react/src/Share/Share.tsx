@@ -285,6 +285,8 @@ export type IShare = ILine & {
 const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyShare?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -471,19 +473,19 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
   const size = props.size !== undefined ? props.size : mobile ? 'small' : 'regular';
 
   const options: any = [
-    { name: 'Facebook', Icon: IconFacebook, color: '#316FF6' },
-    { name: 'X', Icon: IconX, color: '#000000' },
-    { name: 'Linkedin', Icon: IconLinkedin, color: '#0077b5' },
-    { name: 'Pinterest', Icon: IconPinterest, color: '#bd081c' },
-    { name: 'Reddit', Icon: IconReddit, color: '#ff4500' },
-    { name: 'Whatsapp', Icon: IconWhatsapp, color: '#25d366' },
-    { name: 'Viber', Icon: IconViber, color: '#7360f2' },
-    { name: 'Email', Icon: IconEmail, title: 'Send email', color: theme.palette.color.info[50] },
-    { name: 'Copy', Icon: IconCopy, title: 'Copy', color: theme.palette.color.secondary[50] },
-    { name: 'Print', Icon: IconPrint, title: 'Print', color: theme.palette.color.neutral[70] }
+    { name: l('Facebook'), Icon: IconFacebook, color: '#316FF6' },
+    { name: l('X'), Icon: IconX, color: '#000000' },
+    { name: l('Linkedin'), Icon: IconLinkedin, color: '#0077b5' },
+    { name: l('Pinterest'), Icon: IconPinterest, color: '#bd081c' },
+    { name: l('Reddit'), Icon: IconReddit, color: '#ff4500' },
+    { name: l('Whatsapp'), Icon: IconWhatsapp, color: '#25d366' },
+    { name: l('Viber'), Icon: IconViber, color: '#7360f2' },
+    { name: l('Email'), Icon: IconEmail, title: 'Send email', color: theme.palette.color.info[50] },
+    { name: l('Copy'), Icon: IconCopy, title: 'Copy', color: theme.palette.color.secondary[50] },
+    { name: l('Print'), Icon: IconPrint, title: 'Print', color: theme.palette.color.neutral[70] }
   ];
 
-  const optionMore = { name: 'More', Icon: IconMore, title: 'More', color: theme.palette.color.quaternary[40] };
+  const optionMore = { name: l('More'), Icon: IconMore, title: l('More'), color: theme.palette.color.quaternary[40] };
 
   const exclude = [...(exclude_ || [])];
 
@@ -598,7 +600,7 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
 
         return (
           <Tooltip
-            label={(item.name === 'Copy' && copied) ? 'Copied!' : item.title || `Share to ${item.name}`}
+            label={(item.name === l('Copy') && copied) ? l('Copied!') : item.title || `${l('Share to')} ${item.name}`}
 
             {...AppendProps}
           >
@@ -662,7 +664,7 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
         >
           <Line>
             <Tooltip
-              label={optionMore.title || 'More'}
+              name={optionMore.title || l('More')}
 
               {...AppendProps}
             >
@@ -695,7 +697,7 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
 
       {!!moreOptions?.length && mobile && (
         <Tooltip
-          label={optionMore.title || 'More'}
+          name={optionMore.title || l('More')}
 
           {...AppendProps}
         >

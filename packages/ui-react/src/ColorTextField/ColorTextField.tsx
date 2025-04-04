@@ -159,6 +159,8 @@ export type IColorTextField = ITextField & {
 const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColorTextField?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -346,7 +348,7 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
         {root}
 
         <SliderInput
-          name='Opacity'
+          name={l('Opacity')}
 
           value={valueOpacity}
 

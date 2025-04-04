@@ -128,6 +128,8 @@ export type ICountdown = Omit<ISurface, 'version'> & {
 const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCountdown?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -431,7 +433,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
             }}
           >
             <NumericTextField
-              label='Hours'
+              name={l('Hours')}
 
               min={0}
 
@@ -454,7 +456,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
             />
 
             <NumericTextField
-              label='Minutes'
+              name={l('Minutes')}
 
               min={0}
 
@@ -477,7 +479,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
             />
 
             <NumericTextField
-              label='Seconds'
+              name={l('Seconds')}
 
               min={0}
 
@@ -617,7 +619,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
                 classes.meta
               ])}
             >
-              Total {duration(refs.total.current, false)}
+              {l('Total')} {duration(refs.total.current, false)}
             </Type>
           </Line>
         </Fade>
@@ -642,7 +644,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
             <span>
               {/* Start */}
               <Tooltip
-                label='Start'
+                name={l('Start')}
 
                 {...TooltipProps}
               >
@@ -669,7 +671,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
             <span>
               {/* Stop */}
               <Tooltip
-                label='Stop'
+                name={l('Stop')}
 
                 {...TooltipProps}
               >
@@ -684,7 +686,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
               {/* Pause */}
               <Tooltip
-                label='Pause'
+                name={l('Pause')}
 
                 {...TooltipProps}
               >
@@ -709,7 +711,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
             <span>
               {/* Stop */}
               <Tooltip
-                label='Stop'
+                name={l('Stop')}
 
                 {...TooltipProps}
               >
@@ -724,7 +726,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
               {/* Resume */}
               <Tooltip
-                label='Resume'
+                name={l('Resume')}
 
                 {...TooltipProps}
               >

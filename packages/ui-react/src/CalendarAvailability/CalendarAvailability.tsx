@@ -153,7 +153,7 @@ export type ICalendarAvailability = ILine & {
 
   meta?: boolean;
 
-  views?: ICalendarViewsView[];
+  views?: { name: string; value: ICalendarViewsView }[];
 
   onUpdate?: (object?: any) => any;
 
@@ -197,6 +197,8 @@ export type ICalendarAvailability = ILine & {
 const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -238,7 +240,11 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
     meta,
 
-    views: viewsProps = ['week', 'day', 'simple'],
+    views: viewsProps = [
+      { name: l('Week'), value: 'week' },
+      { name: l('Day'), value: 'day' },
+      { name: l('Simple'), value: 'simple' }
+    ],
 
     onUpdate,
 
@@ -381,13 +387,13 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
   const optionsStatus = React.useMemo(() => {
     return [
-      { name: 'Working', value: 'working' },
-      { name: 'Not working', value: 'not-working' },
-      { name: 'On a break', value: 'break' },
-      { name: 'Scheduled', value: 'pending' },
-      { name: 'Rescheduled', value: 'rescheduled' },
-      { name: 'Cancelled', value: 'canceled' },
-      { name: 'Other', value: 'other' }
+      { name: l('Working'), value: 'working' },
+      { name: l('Not working'), value: 'not-working' },
+      { name: l('On a break'), value: 'break' },
+      { name: l('Scheduled'), value: 'pending' },
+      { name: l('Rescheduled'), value: 'rescheduled' },
+      { name: l('Cancelled'), value: 'canceled' },
+      { name: l('Other'), value: 'other' }
     ];
   }, []);
 
@@ -493,8 +499,8 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
   const viewOptions = React.useMemo(() => {
     return viewsProps?.map(item => ({
-      name: capitalize(item),
-      value: item
+      name: capitalize(item?.name),
+      value: item?.value
     }));
   }, [viewsProps]);
 
@@ -632,7 +638,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
                   <Type
                     version='b2'
                   >
-                    No information for this day
+                    {l('No information for this day')}
                   </Type>
                 )}
               </Line>
@@ -650,7 +656,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
       <Type
         version='b1'
       >
-        No exceptions this week
+        {l('No exceptions this week')}
       </Type>
     );
 
@@ -857,7 +863,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
               selected={now.days === date.days}
             >
-              Today
+              {l('Today')}
             </Button>
 
             <Line
@@ -868,7 +874,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               align='center'
             >
               <Tooltip
-                name={`Previous ${view}`}
+                name={`${l('Previous')} ${view}`}
               >
                 <IconButton
                   onClick={onPrevious}
@@ -882,7 +888,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               </Tooltip>
 
               <Tooltip
-                name={`Next ${view}`}
+                name={`${l('Next')} ${view}`}
               >
                 <IconButton
                   onClick={onNext}
@@ -933,12 +939,12 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               >
                 <Switch />
 
-                Display time
+                {l('Display time')}
               </Label>
             )}
 
             <Select
-              name='View'
+              name={l('View')}
 
               value={view}
 
@@ -1013,7 +1019,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
                 <Type
                   version='t2'
                 >
-                  Exceptions this week
+                  {l('Exceptions this week')}
                 </Type>
 
                 <Line
@@ -1111,7 +1117,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
               {onUpdate && (
                 <Tooltip
-                  name='Update'
+                  name={l('Update')}
                 >
                   <IconButton
                     onClick={() => {
@@ -1129,7 +1135,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
               {onRemove && (
                 <Tooltip
-                  name='Remove'
+                  name={l('Remove')}
                 >
                   <IconButton
                     onClick={() => {
@@ -1146,7 +1152,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               )}
 
               <Tooltip
-                name='Close'
+                name={l('Close')}
               >
                 <IconButton
                   onClick={onClose}

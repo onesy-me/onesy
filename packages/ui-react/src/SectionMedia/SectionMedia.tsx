@@ -80,6 +80,8 @@ export type ISectionMedia = ISection & {
 const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionMedia?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -295,7 +297,7 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
               classes.name
             ])}
           >
-            {cleanValue(value?.name || 'No name', { capitalize: true })}
+            {cleanValue(value?.name || l('No name'), { capitalize: true })}
           </Type>
         )}
       </Line>

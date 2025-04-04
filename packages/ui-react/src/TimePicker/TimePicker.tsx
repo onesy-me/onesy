@@ -348,6 +348,8 @@ export type ITimePicker = Omit<IAdvancedTextField, 'version' | 'onChange'> & {
 const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimePicker?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -406,10 +408,10 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     autoCloseOnLast: autoCloseOnLast_,
     openMobile = 'select',
     openDesktop = 'select',
-    selectModalSubHeadingText = 'Select time',
-    selectModalSubHeadingTextRange = `Select from${SEPARATOR}to time`,
-    inputModalSubHeadingText = 'Enter time',
-    inputModalSubHeadingTextRange = `Enter from${SEPARATOR}to time`,
+    selectModalSubHeadingText = l('Select time'),
+    selectModalSubHeadingTextRange = `${l('Select from')}${SEPARATOR}${l('to time')}`,
+    inputModalSubHeadingText = l('Enter time'),
+    inputModalSubHeadingTextRange = `${l('Enter from')}${SEPARATOR}${l('to time')}`,
     orientation: orientation_,
     format = '12',
     hour = true,
@@ -1021,7 +1023,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
         onClick={onOpen}
 
-        aria-label='Choose time'
+        aria-label={l('Choose time')}
 
         disabled={disabled || readOnly}
 
@@ -1121,7 +1123,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       inputs.push(
         <AdvancedTextField
-          helperText='Hour'
+          helperText={l('Hour')}
 
           value={formatDate(value[index], format === '12' ? 'hh' : 'HH')}
 
@@ -1166,7 +1168,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       inputs.push(
         <AdvancedTextField
-          helperText='Minute'
+          helperText={l('Minute')}
 
           value={formatDate(value[index], 'mm')}
 
@@ -1205,7 +1207,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
       inputs.push(
         <AdvancedTextField
-          helperText='Second'
+          helperText={l('Second')}
 
           value={formatDate(value[index], 'ss')}
 
@@ -1377,7 +1379,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
       >
         {switch_ && (
           <Tooltip
-            label={mode === 'select' ? 'Enter time' : 'Select time'}
+            name={mode === 'select' ? l('Enter time') : l('Select time')}
           >
             <IconButton
               tonal={tonal}
@@ -1388,7 +1390,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
               onClick={onModeSwitch}
 
-              aria-label={mode === 'select' ? 'Enter time' : 'Select time'}
+              aria-label={mode === 'select' ? l('Enter time') : l('Select time')}
 
               {...iconButtonProps}
             >
@@ -1407,7 +1409,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
             {...buttonProps}
           >
-            Now
+            {l('Now')}
           </Button>
         )}
 
@@ -1421,7 +1423,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
             {...buttonProps}
           >
-            Clear
+            {l('Clear')}
           </Button>
         )}
       </Line>
@@ -1446,7 +1448,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
           {...buttonProps}
         >
-          Cancel
+          {l('Cancel')}
         </Button>
 
         <Button
@@ -1462,7 +1464,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
           {...buttonProps}
         >
-          Ok
+          {l('Ok')}
         </Button>
       </Line>
     </Line>
@@ -1536,7 +1538,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
           <Tab
             value={0}
 
-            label='From'
+            name={l('From')}
 
             {...TabFromProps}
           />
@@ -1544,7 +1546,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
           <Tab
             value={1}
 
-            label='To'
+            name={l('To')}
 
             {...TabToProps}
           />
@@ -1622,7 +1624,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
         size={size}
 
-        label={label}
+        name={label}
 
         mask={mask}
 
@@ -1689,7 +1691,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
           noMargin
 
-          label={(
+          name={(
             <ClickListener
               onClickOutside={onCancel as any}
 

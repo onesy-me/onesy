@@ -631,7 +631,7 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
           {start}
 
           <Tooltip
-            label={tooltipLabel}
+            name={tooltipLabel}
 
             {...TooltipProps}
           >

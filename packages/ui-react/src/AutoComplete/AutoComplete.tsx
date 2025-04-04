@@ -188,6 +188,8 @@ const getValue = (value: any) => value?.value !== undefined ? value.value : valu
 const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoComplete?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -390,12 +392,12 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
     // reset
     setFree(false);
 
-    if (loading) optionsValue = [{ label: 'Loading...', version: 'text' }];
+    if (loading) optionsValue = [{ label: l('Loading...'), version: 'text' }];
     else if (newOptions) optionsValue = newOptions;
     else optionsValue = is('function', filter) ? filter(valueInputNew, refs.optionsProps.current) : refs.optionsProps.current.filter(option => isEqualToInput(valueInputNew, option));
 
     if (!optionsValue.length) {
-      if (noOptions) optionsValue.push(noOptionsObject !== undefined ? noOptionsObject : { primary: 'No options', version: 'text', noOptions: true });
+      if (noOptions) optionsValue.push(noOptionsObject !== undefined ? noOptionsObject : { primary: l('No options'), version: 'text', noOptions: true });
       else {
         setOpen(false);
 
@@ -675,7 +677,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
   if (is('function', groupBy)) {
     optionsToUse.forEach(option => {
-      const valueForGroupBy = groupBy(option) || 'Other';
+      const valueForGroupBy = groupBy(option) || l('Other');
 
       if (!groups[valueForGroupBy]) groups[valueForGroupBy] = [];
 
@@ -816,7 +818,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
           fontSize={iconFontSize}
 
-          aria-label='Input clear'
+          aria-label={l('Input clear')}
 
           {...IconButtonProps}
         >

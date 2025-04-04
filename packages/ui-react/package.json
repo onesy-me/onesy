@@ -1,6 +1,6 @@
 {
   "name": "@onesy/ui-react",
-  "version": "1.0.59",
+  "version": "1.0.60",
   "description": "UI for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
@@ -42,7 +42,7 @@
     "test": "yarn lint && yarn type && yarn build && yarn test:pre && yarn cov && yarn test:post"
   },
   "peerDependencies": {
-    "@onesy/style-react": "^1.0.1",
+    "@onesy/style-react": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0"
@@ -58,7 +58,7 @@
     "webm-duration-fix": "^1.0.4"
   },
   "devDependencies": {
-    "@onesy/style-react": "^1.0.1",
+    "@onesy/style-react": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0"

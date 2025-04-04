@@ -106,6 +106,9 @@ export type ILinks = IBaseElement & {
 
   profile?: IMediaObject;
 
+  sensitiveText?: any;
+  sensitiveDescription?: any;
+
   share?: boolean;
 
   start?: any;
@@ -126,6 +129,8 @@ export type ILinks = IBaseElement & {
 
 const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
+
+  const l = theme.l;
 
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinks?.props?.default, ...props_ }), [props_]);
 
@@ -163,6 +168,9 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
     start,
     end,
 
+    sensitiveText = l('Sensitive URL'),
+    sensitiveDescription = l('This is URL might contain sensitive information, confirm you are 18+ to continue.'),
+
     IconMore = IconMaterialMoreVert,
     IconShare = IconMaterialShare,
 
@@ -184,14 +192,14 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
   const onOpenLink = React.useCallback(async (item: ILinksItem): Promise<any> => {
     const confirmed = (item.sensitivity && !['none'].includes(item.sensitivity as any)) ? await confirm.open({
-      name: 'Sensitive URL',
-      description: `This is URL might contain sensitive information, confirm you are 18+ to continue.`
+      name: sensitiveText,
+      description: sensitiveDescription
     }) : true;
 
     if (confirmed) {
       window.open(item.url, 'blank');
     }
-  }, []);
+  }, [sensitiveText, sensitiveDescription]);
 
   return (
     <Section
@@ -384,7 +392,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
                     {...LinkTypeProps}
                   >
-                    {item.name || 'Link'}
+                    {item.name || l('Link')}
                   </Type>
                 </Button>
 
@@ -405,7 +413,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
                         <Type
                           version='b3'
                         >
-                          Share
+                          {l('Share')}
                         </Type>
                       )}
 

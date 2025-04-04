@@ -185,6 +185,8 @@ export type IDrawing = Omit<ISurface, 'onChange' | 'onMouseDown'> & {
 const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDrawing?.props?.default, ...props__ }), [props__]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -617,7 +619,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
       <Tooltip
         open={open_ !== undefined ? open_ : undefined}
 
-        label={label}
+        name={label}
 
         {...TooltipProps}
       >
@@ -822,7 +824,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
             color={color}
 
-            label='Custom color'
+            name={l('Custom color')}
 
             version='outlined'
 
@@ -859,7 +861,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
               onClose();
             }}
           >
-            Apply
+            {l('Apply')}
           </Button>
         </Line>
       </Line>
@@ -1051,7 +1053,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
                 >
                   {includes('stroke-width') && (
                     <Select
-                      label='Stroke Width'
+                      name={l('Stroke Width')}
 
                       valueDefault={stroke_width.find(item => String(item.value).includes('1')).value}
 
@@ -1119,7 +1121,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
                       )}
                     >
                       <WrapperToggleButton
-                        label='Stroke Color'
+                        name={l('Stroke Color')}
 
                         open={refs.open.current.strokeColor ? false : undefined}
                       >
@@ -1187,7 +1189,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
                               justify='center'
                             >
                               <NumericTextField
-                                label='Width'
+                                name={l('Width')}
 
                                 tonal={tonal}
 
@@ -1211,7 +1213,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
                               ×
 
                               <NumericTextField
-                                label='Height'
+                                name={l('Height')}
 
                                 tonal={tonal}
 
@@ -1281,7 +1283,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
                       )}
                     >
                       <WrapperToggleButton
-                        label='Size'
+                        name={l('Size')}
 
                         open={refs.open.current.size ? false : undefined}
                       >
@@ -1370,7 +1372,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
                     >
                       {includes('clear') && (
                         <WrapperToggleButton
-                          label='Clear'
+                          name={l('Clear')}
                         >
                           {is('function', render) ? render('clear', ToggleButtonProps, refs.value.current) : (
                             <ToggleButton
@@ -1402,7 +1404,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
                     >
                       {includes('download') && (
                         <WrapperToggleButton
-                          label='Download'
+                          name={l('Download')}
                         >
                           {is('function', render) ? render('download', ToggleButtonProps, refs.value.current) : (
                             <ToggleButton

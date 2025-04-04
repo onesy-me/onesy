@@ -51,6 +51,8 @@ export type IInfo = IMenu & {
 const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyInfo?.props?.default, ...props_ }), [props_]);
 
   const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
@@ -140,7 +142,7 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
     >
       <span>
         <Tooltip
-          name={name !== undefined ? name : 'Info'}
+          name={name !== undefined ? name : l('Info')}
 
           {...TooltipProps}
         >
