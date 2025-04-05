@@ -553,7 +553,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
               align='center'
             >
               <Tooltip
-                name={`${l('Previous')} ${view}`}
+                name={`${l('Previous')} ${l(view)}`}
               >
                 <IconButton
                   onClick={onPrevious}
@@ -567,7 +567,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
               </Tooltip>
 
               <Tooltip
-                name={`${l('Next')} ${view}`}
+                name={`${l('Next')} ${l(view)}`}
               >
                 <IconButton
                   onClick={onNext}

@@ -133,8 +133,8 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
       refs.modal.current = { ...value };
 
       // Defaults
-      refs.modal.current.name = value?.name !== undefined ? value?.name : 'Confirmation';
-      refs.modal.current.description = value?.description !== undefined ? value?.description : 'Are you sure you want to proceed?';
+      refs.modal.current.name = value?.name !== undefined ? value?.name : l('Confirmation');
+      refs.modal.current.description = value?.description !== undefined ? value?.description : l('Are you sure you want to proceed?');
 
       if (refs.modal.current.buttons?.negative?.text === undefined) setObjectValue(refs.modal.current, 'buttons.negative.text', '');
 
