@@ -414,7 +414,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
       if (valueItem !== undefined) return valueItem;
     }
 
-    return noSelectText || 'Select an option';
+    return l(noSelectText) || l('Select an option');
   };
 
   const renderValue = (itemValue: any = value) => {
