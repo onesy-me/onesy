@@ -159,6 +159,8 @@ export type ISelect = ITextField & {
   ChiProps?: IPropsAny;
   ListProps?: IPropsAny;
   MenuProps?: IPropsAny;
+  ListItemProps?: IPropsAny;
+  ListItemTypeProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   IconProps?: IPropsAny;
 };
@@ -233,9 +235,9 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
         overflowX: 'hidden'
       }
     },
-    MenuProps = {
-      portal: true
-    },
+    MenuProps: MenuPropsProps,
+    ListItemProps,
+    ListItemTypeProps,
     IconButtonProps,
     IconProps,
 
@@ -278,6 +280,12 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
     menu: {
 
     }
+  };
+
+  const MenuProps: any = {
+    portal: true,
+
+    ...MenuPropsProps
   };
 
   if (MenuProps?.portal && autoWidth) {
@@ -731,6 +739,8 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
                 primary={(
                   <Type
                     version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
+
+                    {...ListItemTypeProps}
                   >
                     {item.name}
                   </Type>
@@ -741,6 +751,8 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
                 size={MenuProps?.size || size}
 
                 button
+
+                {...ListItemProps}
 
                 {...item.props}
 
@@ -779,12 +791,18 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
             })
           ))}
 
+          {...MenuProps}
+
           AppendProps={{
-            alignment: 'start'
+            alignment: 'start',
+
+            ...MenuProps?.AppendProps
           }}
 
           ModalProps={{
-            // focus: !MenuProps.portal
+            // focus: !MenuProps.portal,
+
+            ...MenuProps?.ModalProps
           }}
 
           ListProps={{
@@ -798,10 +816,10 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
             'aria-label': name,
 
-            ...ListProps
-          }}
+            ...ListProps,
 
-          {...MenuProps}
+            ...MenuProps?.ListProps
+          }}
 
           style={{
             ...styles.menu,
