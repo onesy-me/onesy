@@ -3,6 +3,8 @@ import React from 'react';
 import { hash, innerHTMLToText, is, isEnvironment, parse, stringToColor, textToInnerHTML } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
+import IconMaterialSuperscript from '@onesy/icons-material-rounded-react/IconMaterialSuperscriptW100';
+import IconMaterialSubscript from '@onesy/icons-material-rounded-react/IconMaterialSubscriptW100';
 import IconMaterialFormatItalic from '@onesy/icons-material-rounded-react/IconMaterialFormatItalicW100';
 import IconMaterialFormatUnderlined from '@onesy/icons-material-rounded-react/IconMaterialFormatUnderlinedW100';
 import IconMaterialStrikethroughS from '@onesy/icons-material-rounded-react/IconMaterialStrikethroughSW100';
@@ -26,7 +28,7 @@ import ToggleButtonElement from '../ToggleButton';
 import ClickListenerElement from '../ClickListener';
 import ToggleButtonsElement from '../ToggleButtons';
 import MenuElement from '../Menu';
-import { sanitize, caret, keyboardStyleCommands, staticClassName, decodeHTMLEntities } from '../utils';
+import { sanitize, caret, keyboardStyleCommands, staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -325,7 +327,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   }, [hash(optionsMention_)]);
 
   React.useEffect(() => {
-    const valuePrevious = (decodeHTMLEntities(refs.root.current!.innerHTML || '') as any).replaceAll('&nbsp;', ' ');
+    const valuePrevious = (refs.root.current!.innerHTML || '').replaceAll('&nbsp;', ' ');
 
     const valueNew = textToInnerHTML(value_);
 
@@ -441,7 +443,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
   const onInput = React.useCallback((event?: Event) => {
     if (refs.root.current) {
-      let valueInput = decodeHTMLEntities(refs.root.current!.innerHTML || '');
+      let valueInput = refs.root.current!.innerHTML || '';
 
       if (refs.root.current.textContent === '') {
         valueInput = '';
@@ -673,7 +675,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       textNode.remove();
 
       // Invoke onChange method with new value
-      const valueInput = innerHTMLToText(decodeHTMLEntities(refs.root.current.innerHTML));
+      const valueInput = innerHTMLToText(refs.root.current.innerHTML);
 
       if (is('function', refs.onChange.current)) refs.onChange.current!(valueInput, { target: refs.root.current } as any);
 
@@ -861,6 +863,22 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
         if (query('strikeThrough')) setTextSelected((values: any) => [...values, 'strike-line']);
         else setTextSelected((values: any) => values.filter((item: any) => item !== 'strike-line'));
+
+        break;
+
+      case 'superscript':
+        refs.rootDocument.current.execCommand('superscript');
+
+        if (query('superscript')) setTextSelected(values => [...values, 'superscript']);
+        else setTextSelected(values => values.filter(item => item !== 'superscript'));
+
+        break;
+
+      case 'subscript':
+        refs.rootDocument.current.execCommand('subscript');
+
+        if (query('subscript')) setTextSelected(values => [...values, 'subscript']);
+        else setTextSelected(values => values.filter(item => item !== 'subscript'));
 
         break;
 
@@ -1177,6 +1195,38 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         </ToggleButton>
       </WrapperToggleButton>
     ),
+
+    'superscript': (
+      <WrapperToggleButton
+        name={l('Superscript')}
+
+        onClick={textMethod('superscript')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('superscript')}
+        >
+          <IconMaterialSuperscript {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+    'subscript': (
+      <WrapperToggleButton
+        name={l('Subscript')}
+
+        onClick={textMethod('subscript')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('subscript')}
+        >
+          <IconMaterialSubscript {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+
     'strike-line': (
       <WrapperToggleButton
         name={l('Strike Line')}
@@ -1374,6 +1424,14 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
                         {updateElements['bold']}
 
                         {updateElements['strike-line']}
+                      </ToggleButtons>
+
+                      <ToggleButtons
+                        {...ToggleButtonsProps}
+                      >
+                        {updateElements['superscript']}
+
+                        {updateElements['subscript']}
                       </ToggleButtons>
 
                       <ToggleButtons
