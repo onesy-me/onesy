@@ -213,6 +213,14 @@ export type ICalendar = Omit<ISurface, 'version' | 'onChange'> & {
   PaginationItemsProps?: any;
 };
 
+// [l('millisecond'), l('milliseconds'), l('second'), l('minute'), l('minutes'), l('hour'), l('hours'), l('day'), l('days'), l('week'), l('weeks'), l('month'), l('months'), l('year')];
+
+// [l('January'), l('February'), l('March'), l('April'), l('May'), l('June'), l('July'), l('August'), l('September'), l('October'), l('November'), l('December')];
+// [l('Jan'), l('Feb'), l('Mar'), l('Apr'), l('May'), l('Jun'), l('Jul'), l('Aug'), l('Sep'), l('Oct'), l('Nov'), l('Dec')];
+
+// [l('Monday'), l('Tuesday'), l('Wednesday'), l('Thursday'), l('Friday'), l('Saturday'), l('Sunday'];
+// ['Mon'), l('Tue'), l('Wed'), l('Thu'), l('Fri'), l('Sat'), l('Sun')];
+
 const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
@@ -604,7 +612,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                           paddingInlineStart: '16px'
                         }}
                       >
-                        {format(calendarOnesyDate, 'MMMM')}
+                        {l(format(calendarOnesyDate, 'MMMM'))}
                       </Type>
                     )}
 
@@ -774,7 +782,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                 </Fade>
               )}
 
-              aria-label={`${l('Select month')}, ${l('current')} ${month}`}
+              aria-label={`${l('Select month')}, ${l('current')} ${l(month)}`}
 
               {...optionButtonProps}
 
@@ -788,7 +796,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                 open === 'year' && classes.option_secondary
               ])}
             >
-              {month}
+              {l(month)}
             </Button>
 
             <Fade
@@ -1062,7 +1070,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                     onClick={() => onUpdateCalendarOption(onesyDate)}
 
-                    primary={format(onesyDate, 'MMMM')}
+                    primary={l(format(onesyDate, 'MMMM'))}
 
                     inset={!selected}
 
