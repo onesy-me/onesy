@@ -144,6 +144,7 @@ export type ISelect = ITextField & {
   multiple?: boolean;
   autoWidth?: boolean;
   getLabel?: (item: any, props: any) => any;
+  getOptionName?: (name: any, item: any, index: number) => any;
   chip?: boolean;
   clear?: boolean;
   noSelectText?: any;
@@ -210,6 +211,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
     end,
     autoWidth = true,
     getLabel: getLabel_,
+    getOptionName,
     fullWidth,
     chip,
     clear,
@@ -736,7 +738,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
                 onMouseDown={onMouseDown}
 
-                primary={(
+                primary={getOptionName ? getOptionName(item.name, item, index) : (
                   <Type
                     version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
 
