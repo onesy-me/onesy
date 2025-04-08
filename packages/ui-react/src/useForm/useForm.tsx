@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { capitalize, copy, is, setObjectValue } from '@onesy/utils';
+import { useOnesyTheme } from '@onesy/style-react';
 import { ValidationError } from '@onesy/errors';
 
 import validateModel, { IValidateVales } from './validate';
@@ -32,8 +33,13 @@ const useForm = (props: IUseForm) => {
     autoValidate,
 
     valueDefault,
+
     validDefault
   } = props;
+
+  const theme = useOnesyTheme();
+
+  const l = theme.l;
 
   const [form, setForm] = React.useState({
     value: valueDefault !== undefined ? valueDefault : {},
@@ -124,14 +130,14 @@ const useForm = (props: IUseForm) => {
         if (property.required && property.value === undefined) {
           const name = is('function', property.propertyNameUpdate) ? property.propertyNameUpdate(property.name!) : property.capitalize !== false ? capitalize(property.name!) : property.name!;
 
-          property.error = `${name} is required`;
+          property.error = `${name} ${l('is required')}`;
         }
         else {
           property.error = undefined;
 
           // validations
           try {
-            await validateModel(property, property_, formNew);
+            await validateModel(property, property_, formNew, { l });
           }
           catch (error) {
             property.error = (error as ValidationError).message;
@@ -199,14 +205,14 @@ const useForm = (props: IUseForm) => {
       if (property.required && property.value === undefined) {
         const name = is('function', property.propertyNameUpdate) ? property.propertyNameUpdate(property.name!) : property.capitalize !== false ? capitalize(property.name!) : property.name!;
 
-        property.error = `${name} is required`;
+        property.error = `${name} ${l('is required')}`;
       }
       else {
         property.error = undefined;
 
         // validations
         try {
-          await validateModel(property, item, formNew);
+          await validateModel(property, item, formNew, { l });
 
           property.error = undefined;
         }

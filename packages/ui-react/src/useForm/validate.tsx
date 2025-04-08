@@ -7,14 +7,17 @@ export type IValidateOptions = {
   message?: string;
   uriDecode?: boolean;
   parse?: boolean;
+  l?: any;
 };
 
 export type IValidateModelValueIs = {
+  // l('string') | l('number') | l('boolean') | l('array') | l('object') | 'object-like' | l('class') | l('function') | 'async' | 'map' | 'weakmap' | 'set' | 'weakset' | 'promise' | 'int8array' | 'uint8array' | 'uint8clampedarray' | 'int16array' | 'uint16array' | 'int32array' | 'uint32array' | 'float32array' | 'float64array' | 'bigint64array' | 'biguint64array' | 'typedarray' | 'dataview' | 'arraybuffer' | 'sharedarraybuffer' | 'symbol' | 'error' | 'date' | 'regexp' | 'arguments' | 'null' | 'undefined' | 'blob' | 'buffer' | 'element' | 'simple' | 'not-array-object'
   type?: TIsType;
   options?: IIsOptions;
 };
 
 export type IValidateModelValueIsValid = {
+  // l('date') | 'unix' | 'timestamp' | 'uuid' | 'binary-string' | 'hexadecimal-string' | l('url') | 'url-path' | 'domain-name' | 'compare' | 'semver' | 'semver-compare' | l('mobile') | l('email') | l('password') | 'hash' | l('color') | 'color-rgb' | 'color-hex' | 'color-hsl' | 'json' | 'min' | 'max' | 'min-max' | 'same-origin' | 'js-chunk' | 'http-method' | 'base64' | 'datauri' | 'pascal-case' | 'camel-case'
   type?: TIsValidType;
   options?: IIsValidOptions;
 };
@@ -118,6 +121,8 @@ export const onValidateError = (options: IValidateOptions, model: IValidateModel
 const validate = async (model: IValidateModelValue, property: string, form: IForm, options_?: IValidateOptions) => {
   const options = merge((options_ && is('object', options_)) ? options_ : {}, { uriDecode: true, parse: true });
 
+  const l = options?.l || (item => item);
+
   const name = is('function', model.propertyNameUpdate) ? model.propertyNameUpdate(model.name!) : model.capitalize !== false ? capitalize(model.name!) : model.name!;
 
   const value = model.value;
@@ -129,7 +134,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
   if (model.required) {
     const response = value;
 
-    if (response === undefined) onValidateError(options, model, model.messages?.required || `${name} is required`);
+    if (response === undefined) onValidateError(options, model, model.messages?.required || `${name} ${l('is required')}`);
   }
 
   // only validate
@@ -147,7 +152,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
 
       const response = is(itemType as TIsType, value, itemOptions);
 
-      if (!response) onValidateError(options, model, model.messages?.is || `${name} has to be a valid ${cleanValue(itemType as string)}`);
+      if (!response) onValidateError(options, model, model.messages?.is || `${name} ${l('has to be a valid')} ${cleanValue(l(itemType) as string)}`);
     }
   }
 
@@ -161,7 +166,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
 
       const response = isValid(itemType as TIsValidType, value, itemOptions);
 
-      if (!response) onValidateError(options, model, model.messages?.isValid || `${name} has to be a valid ${cleanValue(itemType as string)}`);
+      if (!response) onValidateError(options, model, model.messages?.isValid || `${name} ${l('has to be a valid')} ${cleanValue(l(itemType) as string)}`);
     }
   }
 
@@ -179,7 +184,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
         });
       });
 
-      if (!response) onValidateError(options, model, model.messages?.of || `${name} items have to be one of ${of_.map(item => item?.type || item).join(', ')}`);
+      if (!response) onValidateError(options, model, model.messages?.of || `${name} ${l('items have to be one of')} ${of_.map(item => l(item?.type || item)).join(', ')}`);
     }
   }
 
@@ -197,7 +202,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
         });
       });
 
-      if (!response) onValidateError(options, model, model.messages?.ofValid || `${name} items have to be one of valid ${ofValid.map(item => item?.type || item).join(', ')}`);
+      if (!response) onValidateError(options, model, model.messages?.ofValid || `${name} ${l('items have to be one of valid')} ${ofValid.map(item => l(item?.type || item)).join(', ')}`);
     }
   }
 
@@ -205,28 +210,28 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
   if (model.equal !== undefined) {
     const response = value === model.equal;
 
-    if (!response) onValidateError(options, model, model.messages?.equal || `${name} has to be equal to ${stringify(model.equal)}`);
+    if (!response) onValidateError(options, model, model.messages?.equal || `${name} ${l('has to be equal to')} ${stringify(model.equal)}`);
   }
 
   // not equal
   if (model.notEqual !== undefined) {
     const response = value !== model.equal;
 
-    if (!response) onValidateError(options, model, model.messages?.notEqual || `${name} has to not be equal to ${stringify(model.equal)}`);
+    if (!response) onValidateError(options, model, model.messages?.notEqual || `${name} ${l('has to not be equal to')} ${stringify(model.equal)}`);
   }
 
   // equal deep
   if (model.equalDeep !== undefined) {
     const response = equalDeep(value, model.equalDeep);
 
-    if (!response) onValidateError(options, model, model.messages?.equalDeep || `${name} has to be equal to ${stringify(model.equalDeep)}`);
+    if (!response) onValidateError(options, model, model.messages?.equalDeep || `${name} ${l('has to be equal to')} ${stringify(model.equalDeep)}`);
   }
 
   // not equal deep
   if (model.notEqualDeep !== undefined) {
     const response = !equalDeep(value, model.notEqualDeep);
 
-    if (!response) onValidateError(options, model, model.messages?.notEqualDeep || `${name} has to not be equal to ${stringify(model.notEqualDeep)}`);
+    if (!response) onValidateError(options, model, model.messages?.notEqualDeep || `${name} ${l('has to not be equal to')} ${stringify(model.notEqualDeep)}`);
   }
 
   // some
@@ -236,12 +241,12 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
     if (is('string', value)) {
       response = !!model.some.find(item => equalDeep(value, item));
 
-      if (!response) onValidateError(options, model, model.messages?.some || `${name} has to be one of ${model.some.map(item => stringify(item)).join(', ')}`);
+      if (!response) onValidateError(options, model, model.messages?.some || `${name} ${l('has to be one of')} ${model.some.map(item => stringify(item)).join(', ')}`);
     }
     else if (is('array', value)) {
       response = value.some(item => !!model.some.find(item_ => equalDeep(item, item_)));
 
-      if (!response) onValidateError(options, model, model.messages?.some || `${name} has to include some of ${model.some.map(item => stringify(item)).join(', ')}`);
+      if (!response) onValidateError(options, model, model.messages?.some || `${name} ${l('has to include some of')} ${model.some.map(item => stringify(item)).join(', ')}`);
     }
   }
 
@@ -255,12 +260,12 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
     if (is('string', value)) {
       response = !!every.find(item => equalDeep(value, item));
 
-      if (!response) onValidateError(options, model, model.messages?.in || model.messages?.every || `${name} has to be one of ${every.map(item => stringify(item)).join(', ')}`);
+      if (!response) onValidateError(options, model, model.messages?.in || model.messages?.every || `${name} ${l('has to be one of')} ${every.map(item => stringify(item)).join(', ')}`);
     }
     else if (is('array', value)) {
       response = value.every(item => !!every.find(item_ => equalDeep(item, item_)));
 
-      if (!response) onValidateError(options, model, model.messages?.in || model.messages?.every || `${name} has to include one of ${every.map(item => stringify(item)).join(', ')}`);
+      if (!response) onValidateError(options, model, model.messages?.in || model.messages?.every || `${name} ${l('has to include one of')} ${every.map(item => stringify(item)).join(', ')}`);
     }
   }
 
@@ -272,7 +277,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
 
     const response = keys.every(item => allowed.includes(item));
 
-    if (!response) onValidateError(options, model, model.messages?.properties || `${name} allowed properties are ${allowed.join(', ')}`);
+    if (!response) onValidateError(options, model, model.messages?.properties || `${name} ${l('allowed properties are')} ${allowed.join(', ')}`);
   }
 
   // not properties
@@ -283,7 +288,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
 
     const response = keys.every(item => !notAllowed.includes(item));
 
-    if (!response) onValidateError(options, model, model.messages?.notProperties || `${name} includes not allowed property. Not allowed properties are ${notAllowed.join(', ')}`);
+    if (!response) onValidateError(options, model, model.messages?.notProperties || `${name} ${l('includes not allowed property')}. ${l('Not allowed properties are')} ${notAllowed.join(', ')}`);
   }
 
   // min
@@ -311,19 +316,19 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
     if (is('number', model.min)) {
       const response = length >= model.min;
 
-      if (!response) onValidateError(options, model, model.messages?.min || `${name} has to be minimum ${model.min}`);
+      if (!response) onValidateError(options, model, model.messages?.min || `${name} ${l('has to be minimum')} ${model.min}`);
     }
 
     if (is('number', model.max)) {
       const response = length <= model.max;
 
-      if (!response) onValidateError(options, model, model.messages?.max || `${name} can be maximum ${model.max}`);
+      if (!response) onValidateError(options, model, model.messages?.max || `${name} ${l('can be maximum')} ${model.max}`);
     }
 
     if (is('number', model.length)) {
       const response = length === model.length;
 
-      if (!response) onValidateError(options, model, model.messages?.length || `${name} has to be exactly ${model.length} in length/size`);
+      if (!response) onValidateError(options, model, model.messages?.length || `${name} ${l('has to be exactly')} ${model.length} ${l('in length/size')}`);
     }
   }
 
@@ -344,7 +349,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
       );
 
       if (response !== undefined) {
-        if (!response) throw new ValidationError(`${name} is invalid`);
+        if (!response) throw new ValidationError(`${name} ${l('is invalid')}`);
       }
     }
     catch (error) {
