@@ -128,6 +128,8 @@ export type IWatch = Omit<ISurface, 'version'> & {
 const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWatch?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -371,7 +373,7 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
                     <Type
                       version={size === 'large' ? 'h1' : size === 'regular' ? 'h2' : 'h3'}
                     >
-                      {format(value, timeFormatString)}
+                      {format(value, timeFormatString, { l })}
                     </Type>
                   )
                 )}
@@ -383,7 +385,7 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
 
                       priority='secondary'
                     >
-                      {format(value, dateFormatString)}
+                      {format(value, dateFormatString, { l })}
                     </Type>
                   )
                 )}
@@ -654,7 +656,7 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
                       fontSize: 19
                     }}
                   >
-                    {format(value, `d DD`)}
+                    {format(value, `d DD`, { l })}
                   </text>
                 </Path>
 

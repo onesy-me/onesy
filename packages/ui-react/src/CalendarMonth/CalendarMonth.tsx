@@ -742,7 +742,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                               priority: !day.selected ? !day.weekend ? 'primary' : 'secondary' : undefined
                             }}
 
-                            aria-label={format(day.onesyDate, 'DD-MM-YYYY')}
+                            aria-label={format(day.onesyDate, 'DD-MM-YYYY', { l })}
 
                             {...PaginationItemProps}
 

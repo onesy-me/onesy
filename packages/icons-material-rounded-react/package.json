@@ -1,6 +1,6 @@
 {
   "name": "@onesy/icons-material-rounded-react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Icons material rounded for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
@@ -45,11 +45,11 @@
     "clear": "node utils/js/clear"
   },
   "peerDependencies": {
-    "@onesy/ui-react": "^1.0.56",
+    "@onesy/ui-react": "^1.0.74",
     "react": "^18.1.0"
   },
   "devDependencies": {
-    "@onesy/ui-react": "^1.0.56"
+    "@onesy/ui-react": "^1.0.74"
   },
   "publishConfig": {
     "access": "public",

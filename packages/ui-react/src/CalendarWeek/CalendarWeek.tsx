@@ -164,6 +164,8 @@ export type ICalendarWeek = ILine & {
 const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarWeek?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -466,7 +468,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
                 background: getColor(item)
               }}
             >
-              {format(from, 'hh:mm a')} - {renderTo(format(to, 'hh:mm a'))}
+              {format(from, 'hh:mm a', { l })} - {renderTo(format(to, 'hh:mm a', { l }))}
             </Type>
           )}
 
@@ -635,7 +637,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
                   whiteSpace='nowrap'
                 >
-                  {format(itemHour, 'h A')}
+                  {format(itemHour, 'h A', { l })}
                 </Type>
               </Line>
             ))}
@@ -672,7 +674,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
                 weight={200}
               >
-                {format(date, 'd')}
+                {format(date, 'd', { l })}
               </Type>
 
               <Line
@@ -692,7 +694,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
                   align='center'
                 >
-                  {format(date, 'D')}
+                  {format(date, 'D', { l })}
                 </Type>
               </Line>
             </Line>
@@ -772,7 +774,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
                   weight={200}
                 >
-                  {format(itemDay, 'd')}
+                  {format(itemDay, 'd', { l })}
                 </Type>
 
                 <Line
@@ -792,7 +794,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
                     align='center'
                   >
-                    {format(itemDay, 'D')}
+                    {format(itemDay, 'D', { l })}
                   </Type>
                 </Line>
               </Line>

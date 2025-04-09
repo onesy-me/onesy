@@ -45,11 +45,11 @@
     "clear": "node utils/js/clear"
   },
   "peerDependencies": {
-    "@onesy/ui-react": "^1.0.48",
+    "@onesy/ui-react": "^1.0.74",
     "react": "^18.1.0"
   },
   "devDependencies": {
-    "@onesy/ui-react": "^1.0.48"
+    "@onesy/ui-react": "^1.0.74"
   },
   "publishConfig": {
     "access": "public",

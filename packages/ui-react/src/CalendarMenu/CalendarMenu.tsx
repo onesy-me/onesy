@@ -526,7 +526,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
 
                         color='inherit'
                       >
-                        {format(date, 'HH:mm')}
+                        {format(date, 'HH:mm', { l })}
                       </Type>
                     )}
 
@@ -611,7 +611,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
                     priority: !day.selected ? !day.weekend ? 'primary' : 'secondary' : undefined
                   }}
 
-                  aria-label={format(dayOnesyDate, 'DD-MM-YYYY')}
+                  aria-label={format(dayOnesyDate, 'DD-MM-YYYY', { l })}
 
                   className={classNames([
                     classes.dayValue,

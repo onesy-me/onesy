@@ -1,6 +1,6 @@
 {
   "name": "@onesy/ui-react",
-  "version": "1.0.74",
+  "version": "1.0.77",
   "description": "UI for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
@@ -48,10 +48,10 @@
     "react-router-dom": "^6.15.0"
   },
   "dependencies": {
-    "@onesy/date": "^1.0.0",
+    "@onesy/date": "^1.0.2",
     "@onesy/errors": "^1.0.0",
-    "@onesy/icons-material-rounded-react": "^1.0.4",
-    "@onesy/log": "^1.0.0",
+    "@onesy/icons-material-rounded-react": "1.0.4",
+    "@onesy/log": "^1.0.1",
     "@onesy/models": "^1.0.0",
     "@onesy/subscription": "^1.0.0",
     "@onesy/utils": "^1.0.5",

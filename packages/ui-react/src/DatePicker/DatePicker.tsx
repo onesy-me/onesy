@@ -360,7 +360,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
     if (!(from || to)) return '';
 
-    const method = (item: OnesyDate) => `${format(item, 'DD')}/${format(item, 'MM')}/${format(item, 'YYYY')}`;
+    const method = (item: OnesyDate) => `${format(item, 'DD', { l })}/${format(item, 'MM', { l })}/${format(item, 'YYYY', { l })}`;
 
     result += `${method(from)}`;
 
@@ -816,10 +816,10 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     if (!(readOnly || disabled)) moreProps.onClick = onOpen;
   }
 
-  let textHeading = `${format(value[0], 'd')}, ${format(value[0], 'MMM')} ${format(value[0], 'DD')}`;
+  let textHeading = `${format(value[0], 'd', { l })}, ${format(value[0], 'MMM', { l })} ${format(value[0], 'DD', { l })}`;
 
   if (range) {
-    textHeading = `${format(value[0], 'MMM')} ${format(value[0], 'DD')}${SEPARATOR}${format(value[1], 'MMM')} ${format(value[1], 'DD')}`;
+    textHeading = `${format(value[0], 'MMM', { l })} ${format(value[0], 'DD', { l })}${SEPARATOR}${format(value[1], 'MMM', { l })} ${format(value[1], 'DD', { l })}`;
   }
 
   const dayNames = [l('Mo'), l('Tu'), l('We'), l('Th'), l('Fr'), l('Sa'), l('Su')];

@@ -550,7 +550,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                   weight={400}
                 >
-                  {format(itemDay, 'dd')}
+                  {format(itemDay, 'dd', { l })}
                 </Type>
 
                 <Line
@@ -568,7 +568,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                     weight={200}
                   >
-                    {format(itemDay, 'DD.MM.')}
+                    {format(itemDay, 'DD.MM.', { l })}
                   </Type>
                 </Line>
               </Line>
@@ -610,7 +610,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                           weight={300}
                         >
-                          {format(itemValueFrom, 'hh:mm a')} — {format(itemValueTo, 'hh:mm a')}
+                          {format(itemValueFrom, 'hh:mm a', { l })} — {format(itemValueTo, 'hh:mm a', { l })}
                         </Type>
                       </Line>
 
@@ -704,13 +704,13 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                   weight={400}
                 >
-                  {format(day, 'dd')}
+                  {format(day, 'dd', { l })}
                 </Type>
 
                 <Type
                   version='b2'
                 >
-                  {format(itemValueFrom, formats.entire)} — {format(itemValueTo, formats.entire)}
+                  {format(itemValueFrom, formats.entire, { l })} — {format(itemValueTo, formats.entire, { l })}
                 </Type>
               </Line>
             </Line>
@@ -740,9 +740,9 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   };
 
   const formattedDate = React.useMemo(() => {
-    if (view === 'day') return format(date, `MMMM DD, YYYY`);
+    if (view === 'day') return format(date, `MMMM DD, YYYY`, { l });
 
-    if (['week', 'simple'].includes(view)) return `${format(startOf(date, 'week'), `MMM DD, YYYY`)} – ${format(endOf(date, 'week'), `MMM DD, YYYY`)}`;
+    if (['week', 'simple'].includes(view)) return `${format(startOf(date, 'week'), `MMM DD, YYYY`, { l })} – ${format(endOf(date, 'week'), `MMM DD, YYYY`, { l })}`;
   }, [view, date]);
 
   const legend = React.useMemo(() => {
@@ -1182,7 +1182,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
                 weight={200}
               >
-                {format(modal?.day, 'dd')} {format(new OnesyDate(modal?.from), modal?.weekly ? `hh:mm a` : formats.entire)} — {format(new OnesyDate(modal?.to), modal?.weekly ? `hh:mm a` : formats.entire)}
+                {format(modal?.day, 'dd', { l })} {format(new OnesyDate(modal?.from), modal?.weekly ? `hh:mm a` : formats.entire, { l })} — {format(new OnesyDate(modal?.to), modal?.weekly ? `hh:mm a` : formats.entire, { l })}
               </Type>
 
               {modal?.description && (

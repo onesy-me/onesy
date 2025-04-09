@@ -282,11 +282,11 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
   }, [viewsProps]);
 
   const formattedDate = React.useMemo(() => {
-    if (view === 'day') return format(date, `MMMM DD, YYYY`);
+    if (view === 'day') return format(date, `MMMM DD, YYYY`, { l });
 
-    if (view === 'week') return `${format(startOf(date, 'week'), `MMM DD, YYYY`)} – ${format(endOf(date, 'week'), `MMM DD, YYYY`)}`;
+    if (view === 'week') return `${format(startOf(date, 'week'), `MMM DD, YYYY`, { l })} – ${format(endOf(date, 'week'), `MMM DD, YYYY`, { l })}`;
 
-    if (view === 'month') return format(date, `MMMM YYYY`);
+    if (view === 'month') return format(date, `MMMM YYYY`, { l });
   }, [view, date]);
 
   const onChangeView = React.useCallback((valueNew: any) => {
@@ -360,7 +360,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
           <Type
             version='b2'
           >
-            {format(valueCalendarMonth, 'D')}
+            {format(valueCalendarMonth, 'D', { l })}
           </Type>
         </Line>
 

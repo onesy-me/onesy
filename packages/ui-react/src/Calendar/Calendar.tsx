@@ -493,7 +493,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                       classes.carousel_item_label
                     ])}
                   >
-                    {format(calendarOnesyDate, 'MMMM')} {format(calendarOnesyDate, 'YYYY')}
+                    {format(calendarOnesyDate, 'MMMM', { l })} {format(calendarOnesyDate, 'YYYY', { l })}
                   </Type>
 
                   <CalendarMonth
@@ -612,7 +612,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
                           paddingInlineStart: '16px'
                         }}
                       >
-                        {l(format(calendarOnesyDate, 'MMMM'))}
+                        {format(calendarOnesyDate, 'MMMM', { l })}
                       </Type>
                     )}
 
@@ -954,7 +954,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
               classes.option
             ])}
           >
-            {format(calendar, 'MMMM')} {format(calendar, 'YYYY')}
+            {format(calendar, 'MMMM', { l })} {format(calendar, 'YYYY', { l })}
           </Button>
 
           {/* Arrows */}
@@ -1070,7 +1070,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
                     onClick={() => onUpdateCalendarOption(onesyDate)}
 
-                    primary={l(format(onesyDate, 'MMMM'))}
+                    primary={format(onesyDate, 'MMMM', { l })}
 
                     inset={!selected}
 
