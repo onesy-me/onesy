@@ -232,24 +232,28 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
           (<>
             {name !== false && (
               <ModalHeader>
-                <ModalTitle
-                  version='t1'
+                {is('string', name) ? (
+                  <ModalTitle
+                    version='t1'
 
-                  weight={500}
-                >
-                  {name || l('Confirmation')}
-                </ModalTitle>
+                    weight={500}
+                  >
+                    {name || l('Confirmation')}
+                  </ModalTitle>
+                ) : name}
               </ModalHeader>
             )}
 
             <ModalMain>
-              <ModalText
-                version='b1'
+              {is('string', description) ? (
+                <ModalText
+                  version='b1'
 
-                weight={200}
-              >
-                {description !== undefined ? description : l('Are you sure you want to proceed?')}
-              </ModalText>
+                  weight={200}
+                >
+                  {description !== undefined ? description : l('Are you sure you want to proceed?')}
+                </ModalText>
+              ) : description}
             </ModalMain>
 
             <ModalFooter>
