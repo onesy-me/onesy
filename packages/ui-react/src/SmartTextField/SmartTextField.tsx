@@ -329,7 +329,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   React.useEffect(() => {
     const valuePrevious = (refs.root.current!.innerHTML || '').replaceAll('&nbsp;', ' ');
 
-    const valueNew = textToInnerHTML(value_);
+    const valueNew = textToInnerHTML(value_ as string);
 
     if (value_ !== undefined && valuePrevious !== valueNew) validate(!value_ ? '' : sanitize(value_ as string));
   }, [value_]);

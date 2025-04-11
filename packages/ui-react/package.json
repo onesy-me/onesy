@@ -1,6 +1,6 @@
 {
   "name": "@onesy/ui-react",
-  "version": "1.0.78",
+  "version": "1.0.79",
   "description": "UI for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar <lazareric2@gmail.com>",
@@ -54,7 +54,7 @@
     "@onesy/log": "^1.0.1",
     "@onesy/models": "^1.0.0",
     "@onesy/subscription": "^1.0.0",
-    "@onesy/utils": "^1.0.5",
+    "@onesy/utils": "^1.0.12",
     "webm-duration-fix": "^1.0.4"
   },
   "devDependencies": {

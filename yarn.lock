@@ -2117,13 +2117,24 @@
     "@babel/runtime" "^7.18.3"
     "@onesy/utils" "^1.0.0"
 
-"@onesy/utils@^1.0.0", "@onesy/utils@^1.0.5", "@onesy/utils@^1.0.7":
+"@onesy/utils@^1.0.0", "@onesy/utils@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@onesy/utils/-/utils-1.0.7.tgz#f10f264559f1a1ed60a75279186e62cab674b015"
   integrity sha512-5dcOJve8otK8N90jaZCnUztGPqWN89wgejqQvB8nm8/NFndR5PF9ir204OHNCF8oxGSx+ghUXxx5lgRKcqUN6A==
   dependencies:
     "@babel/runtime" "^7.18.3"
     crypto-js "^4.1.1"
+    path-to-regexp "^6.2.0"
+    uuid "^8.3.2"
+
+"@onesy/utils@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@onesy/utils/-/utils-1.0.12.tgz#45a28cd626a5fb97ad24fd4c1c1a709bcbe59a91"
+  integrity sha512-omdC0EenAS3DOcITfZOP3HPCh00O5rLG9ZeEjrwwDGf4fxm9gjqLOUfjTDN8rxsXKVxiYrqBOlmKnr+6eUmzOA==
+  dependencies:
+    "@babel/runtime" "^7.18.3"
+    crypto-js "^4.1.1"
+    he "^1.2.0"
     path-to-regexp "^6.2.0"
     uuid "^8.3.2"
 
@@ -5409,6 +5420,11 @@ hasown@^2.0.0, hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
+he@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
+  integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+
 helmet@^6.0.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/helmet/-/helmet-6.2.0.tgz#c29d62014be4c70b8ef092c9c5e54c8c26b8e16e"
@@ -6439,7 +6455,7 @@ micromatch@^3.1.10, micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-micromatch@^4.0.4, micromatch@^4.0.8:
+micromatch@^4.0.4:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.8.tgz#d66fa18f3a47076789320b9b1af32bd86d9fa202"
   integrity sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==
