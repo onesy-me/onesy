@@ -275,6 +275,18 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     });
   }, [times]);
 
+  const optionsStatus = React.useMemo(() => {
+    return [
+      { name: l('Working'), value: 'working' },
+      { name: l('Not working'), value: 'not-working' },
+      { name: l('On a break'), value: 'break' },
+      { name: l('Scheduled'), value: 'pending' },
+      { name: l('Rescheduled'), value: 'rescheduled' },
+      { name: l('Cancelled'), value: 'canceled' },
+      { name: l('Other'), value: 'other' }
+    ];
+  }, []);
+
   const getColor = React.useCallback((item: any) => {
     let palette = theme.palette.color.neutral;
 
@@ -298,11 +310,11 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
   }, [rangeShade, colors, theme]);
 
   const itemToText = React.useCallback((item: any) => {
-    if (item === 'pending') return 'scheduled';
+    if (item === 'pending') return l('Scheduled');
 
-    if (item === 'not-count-workout-session') return `don't count workout session`;
+    if (item === 'not-count-workout-session') return l(`Don't count workout session`);
 
-    return item;
+    return optionsStatus?.find(itemStatus => itemStatus.value === item)?.name ?? l(item);
   }, []);
 
   const renderTimes = (day: OnesyDate, valuesAll: any, weekly = true, itemDay?: any) => {

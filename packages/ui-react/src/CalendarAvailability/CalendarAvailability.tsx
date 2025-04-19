@@ -490,11 +490,11 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
   }, [rangeShade, colors, theme]);
 
   const itemToText = React.useCallback((item: any) => {
-    if (item === 'pending') return 'scheduled';
+    if (item === 'pending') return l('Scheduled');
 
-    if (item === 'not-count-workout-session') return `don't count workout session`;
+    if (item === 'not-count-workout-session') return l(`Don't count workout session`);
 
-    return item;
+    return optionsStatus?.find(itemStatus => itemStatus.value === item)?.name ?? l(item);
   }, []);
 
   const viewOptions = React.useMemo(() => {
@@ -874,7 +874,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               align='center'
             >
               <Tooltip
-                name={`${l('Previous')} ${view}`}
+                name={`${l('Previous')} ${l(view)}`}
               >
                 <IconButton
                   onClick={onPrevious}
@@ -888,7 +888,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               </Tooltip>
 
               <Tooltip
-                name={`${l('Next')} ${view}`}
+                name={`${l('Next')} ${l(view)}`}
               >
                 <IconButton
                   onClick={onNext}
@@ -957,18 +957,6 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
               MenuProps={{
                 portal: true,
                 size: 'regular'
-              }}
-
-              WrapperProps={{
-                style: {
-                  width: 170,
-                  minWidth: 'unset'
-                }
-              }}
-
-              style={{
-                width: 170,
-                minWidth: 'unset'
               }}
             />
 
