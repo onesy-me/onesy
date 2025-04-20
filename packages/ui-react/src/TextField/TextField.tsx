@@ -274,7 +274,7 @@ const useStyle = styleMethod(theme => {
       background: 'currentColor',
       borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
       opacity: theme.palette.light ? theme.palette.visual_contrast.default.opacity.hover : theme.palette.visual_contrast.default.opacity.selected,
-
+      zIndex: '-1',
       transition: theme.methods.transitions.make(['opacity'])
     },
 
