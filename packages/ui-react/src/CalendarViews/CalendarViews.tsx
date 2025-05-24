@@ -161,6 +161,8 @@ export type ICalendarViews = ICalendar & {
   DayProps?: any;
 
   CalendarMonthProps?: any;
+
+  TypeDateFormattedProps?: any;
 };
 
 const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: any) => {
@@ -232,6 +234,8 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     DayProps,
 
     CalendarMonthProps,
+
+    TypeDateFormattedProps,
 
     className,
 
@@ -582,11 +586,13 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
             </Line>
 
             <Type
-              version='h2'
+              version='h3'
 
-              weight={500}
+              weight={300}
 
               whiteSpace='nowrap'
+
+              {...TypeDateFormattedProps}
             >
               {formattedDate}
             </Type>
