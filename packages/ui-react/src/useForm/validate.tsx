@@ -38,7 +38,7 @@ export type IValidateModelMessages = {
 };
 
 export type IValidateModelValue = {
-  name: string;
+  name?: string;
 
   value?: any;
 
