@@ -125,6 +125,8 @@ export type IWindowSplit = Omit<ILine, 'onChange'> & {
   IconButtonProps?: IPropsAny;
   DividerProps?: IPropsAny;
   SeparatorProps?: IPropsAny;
+  StartProps?: IPropsAny;
+  EndProps?: IPropsAny;
 };
 
 const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) => {
@@ -174,6 +176,8 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
     },
     SeparatorProps: SeparatorProps_,
     DividerProps = {},
+    StartProps,
+    EndProps,
 
     className,
 
@@ -498,17 +502,22 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
             justify='unset'
 
+            {...StartProps}
+
             className={classNames([
               staticClassName('WindowSplit', theme) && [
                 'onesy-WindowSplit-start'
               ],
 
+              StartProps?.className,
               classes.item,
               classes.start
             ])}
 
             style={{
-              ...styles.start
+              ...styles.start,
+
+              ...StartProps?.style
             }}
           >
             {children[0]}
@@ -523,17 +532,22 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
 
             justify='unset'
 
+            {...EndProps}
+
             className={classNames([
               staticClassName('WindowSplit', theme) && [
                 'onesy-WindowSplit-end'
               ],
 
+              EndProps?.className,
               classes.item,
               classes.end
             ])}
 
             style={{
-              ...styles.end
+              ...styles.end,
+
+              ...EndProps?.style
             }}
           >
             {children[1]}
