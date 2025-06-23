@@ -646,7 +646,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              l('Back')
+              {l('Back')}
             </Type>
           )}
 
@@ -672,7 +672,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              l('Playback speed')
+              {l('Playback speed')}
             </Type>
           )}
 
@@ -706,7 +706,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              l('Quality')
+              {l('Quality')}
             </Type>
           )}
 
@@ -735,7 +735,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
             <Type
               version='b3'
             >
-              l('Original')
+              {l('Original')}
             </Type>
           )}
 
