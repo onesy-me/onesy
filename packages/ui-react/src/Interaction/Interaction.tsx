@@ -179,10 +179,10 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
   const {
     wave = true,
     background = true,
-    border: border_,
+    border: hasBorder,
     pulse,
 
-    origin: origin_,
+    origin: originProps,
     preselected,
     selected,
     dragged,
@@ -196,7 +196,6 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
 
   const { classes } = useStyle();
 
-  const [init, setInit] = React.useState(false);
   const [interactions, setInteractions] = React.useState([]);
   const [border, setBorder] = React.useState(false);
   const [waves, setWaves] = React.useState([]);
@@ -208,7 +207,12 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
     pulse: React.useRef<any>(undefined),
     touch: React.useRef<any>(undefined),
     interactions: React.useRef<any>(undefined),
-    props: React.useRef<any>(undefined)
+    border: React.useRef(border),
+    props: React.useRef<any>(undefined),
+    init: React.useRef(false),
+    waves: React.useRef(waves),
+    origin: React.useRef(originProps),
+    hasBorder: React.useRef(hasBorder)
   };
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
@@ -223,10 +227,18 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
 
   refs.interactions.current = interactions;
 
+  refs.border.current = border;
+
+  refs.waves.current = waves;
+
+  refs.origin.current = originProps;
+
+  refs.hasBorder.current = hasBorder;
+
   React.useEffect(() => {
     const parent = refs.root.current.parentNode;
 
-    const onMouseIn = (event: any) => {
+    const onMouseIn = () => {
       if (refs.touch.current) return;
 
       add('mouse-in');
@@ -234,7 +246,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
       removeWaves();
     };
 
-    const onMouseOut = (event: any) => {
+    const onMouseOut = () => {
       if (refs.touch.current) return;
 
       refs.mouse.current.up = new Date().getTime();
@@ -255,22 +267,21 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
       addWave(event);
     };
 
-    const updateBorder = debounce(() => setBorder(false), theme.transitions.duration.sm);
+    const updateBorder = debounce(() => {
+      if (refs.border.current) setBorder(false);
+    }, theme.transitions.duration.sm);
 
     const onMouseUp = () => {
+      if (!(has('mouse-down') || refs.waves.current.length)) return;
+
       refs.mouse.current.up = new Date().getTime();
       refs.mouse.current.press = refs.mouse.current.down ? Math.round(refs.mouse.current.up - refs.mouse.current.down) : 0;
 
-      setInteractions(items => {
-        if (items.indexOf('mouse-down') > -1) {
-          // Border
-          setBorder(true);
+      if (refs.hasBorder.current && has('mouse-down')) {
+        setBorder(true);
 
-          updateBorder();
-        }
-
-        return items;
-      });
+        updateBorder();
+      }
 
       remove('mouse-down');
 
@@ -292,7 +303,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
       // parent.addEventListener('touchend', onMouseOut, { passive: true });
     }
 
-    setInit(true);
+    refs.init.current = true;
 
     return () => {
       if (parent) {
@@ -311,8 +322,8 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
   }, []);
 
   React.useEffect(() => {
-    if (init) {
-      setInteractions([]);
+    if (refs.init.current) {
+      if (refs.interactions.current.length) setInteractions([]);
 
       removeWaves();
     }
@@ -345,11 +356,11 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
   }, [subscription]);
 
   React.useEffect(() => {
-    if (disabled) setInteractions([]);
+    if (disabled && refs.interactions.current.length) setInteractions([]);
   }, [disabled]);
 
   const addWave = React.useCallback((event?: MouseEvent | TouchEvent, overrides: IInteraction = {}) => {
-    const origin = overrides.origin !== undefined ? overrides.origin : origin_;
+    const origin = overrides.origin !== undefined ? overrides.origin : refs.origin.current;
 
     if (refs.wave.current && !refs.props.current.disabled) {
       let top = 0;
@@ -431,7 +442,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
     if (refs.pulse.current && !refs.props.current.disabled) {
       // Remove previous wave
       // if there is one
-      if (waves.length) removeWaves();
+      if (refs.waves.current.length) removeWaves();
 
       const root = (refs.root.current.parentNode as any).getBoundingClientRect() as DOMRect;
       const w = root.width;
@@ -477,23 +488,19 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
     }
   }, []);
 
-  const removeWaves = React.useCallback(() => setWaves([]), []);
+  const removeWaves = React.useCallback(() => {
+    if (refs.waves.current.length) setWaves([]);
+  }, []);
 
   const add = React.useCallback((value: string) => {
-    if (!refs.props.current.disabled) {
-      setInteractions(items => {
-        const newItems = [...items];
-
-        if (newItems.indexOf(value) === -1) newItems.push(value);
-
-        return newItems;
-      });
-    }
+    if (!refs.props.current.disabled && !has(value)) setInteractions(items => [...items, value]);
   }, []);
 
   const has = React.useCallback((value: string) => refs.interactions.current.includes(value), []);
 
-  const remove = React.useCallback((value: string) => setInteractions(items => [...items].filter(item => item !== value)), []);
+  const remove = React.useCallback((value: string) => {
+    if (has(value)) setInteractions(items => [...items].filter(item => item !== value));
+  }, []);
 
   return (
     <span
@@ -551,7 +558,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
       </Transitions>
 
       {/* Border */}
-      {border_ && (
+      {hasBorder && (
         <Transition in={border}>
           {(status: TTransitionStatus) => (
             <span
