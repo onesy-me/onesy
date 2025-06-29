@@ -3,11 +3,13 @@ import React from 'react';
 import { is } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
+import TooltipElement from '../Tooltip';
 import TypeElement from '../Type';
 import SurfaceElement from '../Surface';
 import LineElement from '../Line';
 import InteractionElement from '../Interaction';
 import { ISurface } from '../Surface/Surface';
+import { ITooltip } from '../Tooltip/Tooltip';
 import { staticClassName } from '../utils';
 import { IElement, IPropsAny } from '../types';
 
@@ -96,12 +98,15 @@ export type ITab = Omit<ISurface, 'version' | 'onChange'> & {
   icon?: IElement;
   iconPosition?: 'start' | 'top' | 'bottom' | 'end';
 
+  tooltip?: any;
+
   activateOnFocus?: boolean;
 
   onBlur?: (event: React.FocusEvent<any>) => any;
   onFocus?: (event: React.FocusEvent<any>) => any;
 
   LineProps?: IPropsAny;
+  TooltipProps?: ITooltip;
 };
 
 const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
@@ -116,6 +121,8 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
   const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
 
   const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+
+  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
 
   const {
     tonal = true,
@@ -139,12 +146,15 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
 
     activateOnFocus,
 
+    tooltip,
+
     disabled,
 
     onBlur: onBlur_,
     onFocus: onFocus_,
 
     LineProps = {},
+    TooltipProps,
 
     Component = 'button',
 
@@ -186,109 +196,119 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
   if (size === 'large') typeVersion = 'l1';
   else if (size === 'small') typeVersion = 'l3';
 
+  const hasTooltip = ![null, undefined].includes(tooltip);
+
+  const Wrapper = hasTooltip ? Tooltip : React.Fragment;
+
+  const wrapperProps: any = hasTooltip ? { name: tooltip, ...TooltipProps } : undefined;
+
   return (
-    <Surface
-      ref={ref}
-
-      tabIndex={!disabled ? 0 : -1}
-
-      tonal={tonal}
-
-      color={color}
-
-      onBlur={onBlur}
-
-      onFocus={onFocus}
-
-      role='tab'
-
-      aria-selected={active}
-
-      data-onesy-tab-value={value}
-
-      Component={Component}
-
-      className={classNames([
-        staticClassName('Tab', theme) && [
-          'onesy-Tab-root',
-          `onesy-Tab-version-${version}`,
-          `onesy-Tab-size-${size}`,
-          active && `onesy-Tab-active`,
-          disabled && `onesy-Tab-disabled`
-        ],
-
-        className,
-        classes.root,
-        classes[`size_${size}`],
-        active && classes.active,
-        disabled && classes.disabled
-      ])}
-
-      {...other}
+    <Wrapper
+      {...wrapperProps}
     >
-      <Interaction
-        pulse={focus}
-      />
+      <Surface
+        ref={ref}
 
-      <Line
-        gap={1}
+        tabIndex={!disabled ? 0 : -1}
 
-        direction='row'
+        tonal={tonal}
 
-        align='center'
+        color={color}
 
-        justify='center'
+        onBlur={onBlur}
 
-        {...LineProps}
+        onFocus={onFocus}
+
+        role='tab'
+
+        aria-selected={active}
+
+        data-onesy-tab-value={value}
+
+        Component={Component}
 
         className={classNames([
           staticClassName('Tab', theme) && [
-            'onesy-Tab-line'
+            'onesy-Tab-root',
+            `onesy-Tab-version-${version}`,
+            `onesy-Tab-size-${size}`,
+            active && `onesy-Tab-active`,
+            disabled && `onesy-Tab-disabled`
           ],
 
-          LineProps?.className,
-          classes.line
+          className,
+          classes.root,
+          classes[`size_${size}`],
+          active && classes.active,
+          disabled && classes.disabled
         ])}
+
+        {...other}
       >
-        {icon}
+        <Interaction
+          pulse={focus}
+        />
 
-        {label !== undefined && (
-          is('simple', label) ? (
-            <Type
-              version={typeVersion as any}
+        <Line
+          gap={1}
 
-              className={classNames([
-                staticClassName('Tab', theme) && [
-                  'onesy-Tab-type'
-                ],
+          direction='row'
 
-                classes[`type_${size}`]
-              ])}
-            >
-              {label}
-            </Type>
-          ) : label
-        )}
+          align='center'
 
-        {children !== undefined && (
-          is('simple', children) ? (
-            <Type
-              version={typeVersion as any}
+          justify='center'
 
-              className={classNames([
-                staticClassName('Tab', theme) && [
-                  'onesy-Tab-type'
-                ],
+          {...LineProps}
 
-                classes[`type_${size}`]
-              ])}
-            >
-              {children}
-            </Type>
-          ) : children
-        )}
-      </Line>
-    </Surface>
+          className={classNames([
+            staticClassName('Tab', theme) && [
+              'onesy-Tab-line'
+            ],
+
+            LineProps?.className,
+            classes.line
+          ])}
+        >
+          {icon}
+
+          {label !== undefined && (
+            is('simple', label) ? (
+              <Type
+                version={typeVersion as any}
+
+                className={classNames([
+                  staticClassName('Tab', theme) && [
+                    'onesy-Tab-type'
+                  ],
+
+                  classes[`type_${size}`]
+                ])}
+              >
+                {label}
+              </Type>
+            ) : label
+          )}
+
+          {children !== undefined && (
+            is('simple', children) ? (
+              <Type
+                version={typeVersion as any}
+
+                className={classNames([
+                  staticClassName('Tab', theme) && [
+                    'onesy-Tab-type'
+                  ],
+
+                  classes[`type_${size}`]
+                ])}
+              >
+                {children}
+              </Type>
+            ) : children
+          )}
+        </Line>
+      </Surface>
+    </Wrapper>
   );
 });
 
