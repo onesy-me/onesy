@@ -97,6 +97,7 @@ const useStyle = styleMethod(theme => ({
 
   input_size_small: {
     maxWidth: '72px',
+    width: '100%',
 
     '& .onesy-TextField-input-wrapper': {
       paddingInline: '0px',
@@ -119,6 +120,7 @@ const useStyle = styleMethod(theme => ({
 
   input_size_regular: {
     maxWidth: '96px',
+    width: '100%',
 
     '& .onesy-TextField-input-wrapper': {
       paddingInline: '0px',
@@ -141,6 +143,7 @@ const useStyle = styleMethod(theme => ({
 
   input_size_large: {
     maxWidth: '120px',
+    width: '100%',
 
     '& .onesy-TextField-input-wrapper': {
       paddingInline: '0px',
@@ -1042,6 +1045,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
       color,
       version: 'outlined',
       size,
+      fullWidth: true,
 
       className: classNames([
         staticClassName('TimePicker', theme) && [
@@ -1292,6 +1296,8 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
             align='center'
 
             justify='center'
+
+            fullWidth
           >
             {makeInputs(index)}
           </Line>
