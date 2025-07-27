@@ -131,6 +131,8 @@ export type ITopAppBar = Omit<ISurface, 'version'> & {
   title?: IElement;
   start?: IElement;
   end?: IElement;
+
+  WrapperProps?: any;
 };
 
 const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
@@ -156,6 +158,8 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
     start: start_,
     end: end_,
     position,
+
+    WrapperProps,
 
     Component = 'div',
 
@@ -301,11 +305,14 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
         gap={0}
 
+        {...WrapperProps}
+
         className={classNames([
           staticClassName('TopAppBar', theme) && [
             'onesy-TopAppBar-wrapper'
           ],
 
+          WrapperProps?.className,
           classes.wrapper,
           classes[`version_small_size_${size}`]
         ])}
