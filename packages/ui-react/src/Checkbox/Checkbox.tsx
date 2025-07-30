@@ -373,7 +373,7 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
   let colorValue = color;
 
-  if (!value) colorValue = colorUnchecked;
+  if (!value && tonal) colorValue = colorUnchecked;
 
   if (indeterminate) colorValue = colorIndeterminate;
 
