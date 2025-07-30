@@ -141,6 +141,8 @@ export type ICalendarMenu = Omit<IMenu, 'onChange'> & {
   endBottom?: any;
 
   noRemove?: boolean;
+
+  TimePickerProps?: any;
 };
 
 const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any) => {
@@ -194,6 +196,8 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
     endBottom,
 
     noRemove,
+
+    TimePickerProps,
 
     children,
 
@@ -497,7 +501,11 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
                           elevation: theme.palette.light ? 8 : 0
                         }}
 
+                        size='small'
+
                         static
+
+                        {...TimePickerProps}
                       />
                     </Line>
                   ) as any}
