@@ -113,7 +113,7 @@ const useStyle = styleMethod(theme => ({
     fontSize: '100%',
     background: 'transparent',
     boxSizing: 'border-box',
-    touchAction: 'manipulation',
+    touchAction: 'manipulation'
   },
 
   inputColor: {
@@ -154,6 +154,8 @@ export type IColorTextField = ITextField & {
   onChangeOpacity?: (valueNew: string | number) => any;
 
   opacity?: boolean;
+
+  WrapperProps?: any;
 };
 
 const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref: any) => {
@@ -188,9 +190,13 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
 
     onChangeOpacity: onChangeOpacity_,
 
+    WrapperProps,
+
     opacity,
 
     className,
+
+    style,
 
     ...other
   } = props;
@@ -320,10 +326,13 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
           `onesy-ColorTextField-size-${size}`
         ],
 
+        className,
         classes.root
       ])}
 
       fullWidth={opacity}
+
+      style={style}
 
       {...(!opacity && other)}
     />
@@ -338,12 +347,7 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
 
         fullWidth
 
-        className={classNames([
-          className,
-          classes.root
-        ])}
-
-        {...other}
+        {...WrapperProps}
       >
         {root}
 

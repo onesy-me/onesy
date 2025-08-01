@@ -245,24 +245,6 @@ const useStyle = styleMethod(theme => ({
 
   textFieldColor: {
     flex: '1 1 auto'
-  },
-
-  inputColor: {
-    border: 'none',
-    borderRadius: theme.methods.shape.radius.value(40, 'px'),
-    overflow: 'hidden',
-    width: '17px',
-    height: '17px',
-    cursor: 'pointer',
-    boxShadow: theme.shadows.values.default[1],
-
-    '&::-webkit-color-swatch-wrapper': {
-      padding: '0px'
-    },
-
-    '&::-webkit-color-swatch': {
-      border: 'none'
-    }
   }
 }), { name: 'onesy-RichTextEditor' });
 
@@ -558,7 +540,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
       backgroundPalette: React.useRef<any>(null),
       linkAdd: React.useRef<any>(null),
       linkAddInput: React.useRef<any>(null),
-      linkRemove: React.useRef<any>(null),
+      linkRemove: React.useRef<any>(null)
     },
     elements: {
       color: React.useRef<any>(null),
@@ -608,6 +590,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     const selection_ = refs.rootWindow.current.getSelection();
 
     if (
+      selection_ &&
       selection_.anchorNode &&
       !(selection_.anchorNode as any)?.className?.includes('TextField')
     ) refs.range.current = selection_.getRangeAt(0);

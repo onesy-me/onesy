@@ -1,8 +1,16 @@
 import React from 'react';
 
 import { hash, innerHTMLToText, is, isEnvironment, parse, stringToColor, textToInnerHTML } from '@onesy/utils';
-import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { classNames, colors, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
+import IconMaterialFormatAlignLeft from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignLeftW100';
+import IconMaterialFormatAlignCenter from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignCenterW100';
+import IconMaterialFormatAlignRight from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignRightW100';
+import IconMaterialFormatAlignJustify from '@onesy/icons-material-rounded-react/IconMaterialFormatAlignJustifyW100';
+import IconMaterialFormatColorText from '@onesy/icons-material-rounded-react/IconMaterialFormatColorTextW100';
+import IconMaterialFormatColorFill from '@onesy/icons-material-rounded-react/IconMaterialFormatColorFillW100';
+import IconMaterialFormatListNumbered from '@onesy/icons-material-rounded-react/IconMaterialFormatListNumberedW100';
+import IconMaterialFormatListBulleted from '@onesy/icons-material-rounded-react/IconMaterialFormatListBulletedW100';
 import IconMaterialSuperscript from '@onesy/icons-material-rounded-react/IconMaterialSuperscriptW100';
 import IconMaterialSubscript from '@onesy/icons-material-rounded-react/IconMaterialSubscriptW100';
 import IconMaterialFormatItalic from '@onesy/icons-material-rounded-react/IconMaterialFormatItalicW100';
@@ -13,6 +21,7 @@ import IconMaterialAddLink from '@onesy/icons-material-rounded-react/IconMateria
 import IconMaterialLinkOff from '@onesy/icons-material-rounded-react/IconMaterialLinkOffW100';
 import IconMaterialFormatClear from '@onesy/icons-material-rounded-react/IconMaterialFormatClearW100';
 
+import ColorTextFieldElement from '../ColorTextField';
 import TextFieldElement, { ITextField } from '../TextField/TextField';
 import LineElement from '../Line';
 import ListElement from '../List';
@@ -28,7 +37,9 @@ import ToggleButtonElement from '../ToggleButton';
 import ClickListenerElement from '../ClickListener';
 import ToggleButtonsElement from '../ToggleButtons';
 import MenuElement from '../Menu';
+import DividerElement from '../Divider';
 import { sanitize, caret, keyboardStyleCommands, staticClassName } from '../utils';
+import { IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -40,6 +51,10 @@ const useStyle = styleMethod(theme => ({
       color: theme.methods.palette.color.value('primary', 10),
 
       ...theme.typography.values.b2
+    },
+
+    '& ul, & ol': {
+      listStylePosition: 'inside'
     }
   },
 
@@ -80,7 +95,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   textMiniMenuAdditionalMenu: {
-    width: 'clamp(140px, 90%, 250px)',
+    minWidth: 'clamp(140px, 90%, 250px)',
     zIndex: '1514'
   },
 
@@ -95,9 +110,35 @@ const useStyle = styleMethod(theme => ({
     overflow: 'hidden'
   },
 
-  inputLink: {
+  input: {
     '&.onesy-TextField-root': {
       flex: '1 1 auto !important'
+    }
+  },
+
+  palette: {
+    padding: theme.methods.space.value(1.5, 'px'),
+    borderRadius: theme.methods.shape.radius.value(1, 'px'),
+    boxShadow: theme.shadows.values.default[2]
+  },
+
+  paletteItem: {
+    position: 'relative',
+    width: '17px',
+    height: '17px',
+    cursor: 'pointer',
+    borderRadius: theme.methods.shape.radius.value(40, 'px'),
+    boxShadow: theme.shadows.values.default[1],
+    transition: theme.methods.transitions.make('box-shadow'),
+
+    '&:hover': {
+      boxShadow: theme.shadows.values.default[2],
+    }
+  },
+
+  textFieldColor: {
+    '&.onesy-ColorTextField-root': {
+      flex: '1 1 auto'
     }
   },
 
@@ -133,9 +174,13 @@ export type ISmartTextField = ITextField & {
 
   additional?: any;
 
+  miniMenuExtended?: boolean;
+
   pasteText?: boolean;
 
   HelperTextProps?: any;
+
+  ColorTextFieldProps?: IPropsAny;
 };
 
 const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref: any) => {
@@ -175,7 +220,15 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
   const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
 
+  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+
+  const ColorTextField = React.useMemo(() => theme?.elements?.ColorTextField || ColorTextFieldElement, [theme]);
+
   const {
+    tonal = true,
+
+    color = 'default',
+
     version = 'text',
 
     size = 'regular',
@@ -218,7 +271,11 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
     additional,
 
+    miniMenuExtended,
+
     HelperTextProps,
+
+    ColorTextFieldProps,
 
     className,
 
@@ -263,6 +320,23 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       linkAddInput: React.useRef<any>(null),
       linkRemove: React.useRef<any>(null)
     },
+    elements: {
+      color: React.useRef<any>(null),
+      background: React.useRef<any>(null),
+      linkAdd: React.useRef<any>(null),
+      linkRemove: React.useRef<any>(null),
+      quote: React.useRef<any>(null),
+      image: React.useRef<any>(null),
+      video: React.useRef<any>(null),
+      videoYoutube: React.useRef<any>(null),
+      table: React.useRef<any>(null),
+      drawing: React.useRef<any>(null),
+      drawingSvg: React.useRef<any>(null),
+      drawingSize: React.useRef<any>(null),
+      drawingSelect: React.useRef<any>(null),
+      drawingPalette: React.useRef<any>(null),
+      code: React.useRef<any>(null)
+    },
     textSelected: React.useRef<any>(null),
     textSelection: React.useRef<any>(null),
     rootDocument: React.useRef<Document>(null),
@@ -270,7 +344,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     edit: React.useRef(edit),
     multiline: React.useRef(multiline),
     readOnly: React.useRef(readOnly),
-    onChange: React.useRef(onChange)
+    onChange: React.useRef(onChange),
+    props: React.useRef(props)
   };
 
   refs.value.current = value;
@@ -298,6 +373,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   refs.readOnly.current = readOnly;
 
   refs.onChange.current = onChange;
+
+  refs.props.current = props;
 
   const rootDocument = isEnvironment('browser') && (refs.root.current?.ownerDocument || window.document);
 
@@ -835,34 +912,66 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     switch (command) {
       // updates
       case 'italic':
-        refs.rootDocument.current!.execCommand('italic');
+        refs.rootDocument.current.execCommand('italic');
 
-        if (query('italic')) setTextSelected((values: any) => [...values, 'italic']);
-        else setTextSelected((values: any) => values.filter((item: any) => item !== 'italic'));
+        if (query('italic')) setTextSelected(values => [...values, 'italic']);
+        else setTextSelected(values => values.filter(item => item !== 'italic'));
 
         break;
 
       case 'underline':
-        refs.rootDocument.current!.execCommand('underline');
+        refs.rootDocument.current.execCommand('underline');
 
-        if (query('underline')) setTextSelected((values: any) => [...values, 'underline']);
-        else setTextSelected((values: any) => values.filter((item: any) => item !== 'underline'));
+        if (query('underline')) setTextSelected(values => [...values, 'underline']);
+        else setTextSelected(values => values.filter(item => item !== 'underline'));
 
         break;
 
       case 'bold':
-        refs.rootDocument.current!.execCommand('bold');
+        refs.rootDocument.current.execCommand('bold');
 
-        if (query('bold')) setTextSelected((values: any) => [...values, 'bold']);
-        else setTextSelected((values: any) => values.filter((item: any) => item !== 'bold'));
+        if (query('bold')) setTextSelected(values => [...values, 'bold']);
+        else setTextSelected(values => values.filter(item => item !== 'bold'));
 
         break;
 
       case 'strike-line':
-        refs.rootDocument.current!.execCommand('strikeThrough');
+        refs.rootDocument.current.execCommand('strikeThrough');
 
-        if (query('strikeThrough')) setTextSelected((values: any) => [...values, 'strike-line']);
-        else setTextSelected((values: any) => values.filter((item: any) => item !== 'strike-line'));
+        if (query('strikeThrough')) setTextSelected(values => [...values, 'strike-line']);
+        else setTextSelected(values => values.filter(item => item !== 'strike-line'));
+
+        break;
+
+      case 'align-left':
+        refs.rootDocument.current.execCommand('justifyLeft');
+
+        if (query('justifyLeft')) setTextSelected(values => [...values.filter(item => !item.includes('align')), 'align-left']);
+        else setTextSelected(values => values.filter(item => item !== 'align-left'));
+
+        break;
+
+      case 'align-center':
+        refs.rootDocument.current.execCommand('justifyCenter');
+
+        if (query('justifyCenter')) setTextSelected(values => [...values.filter(item => !item.includes('align')), 'align-center']);
+        else setTextSelected(values => values.filter(item => item !== 'align-center'));
+
+        break;
+
+      case 'align-right':
+        refs.rootDocument.current.execCommand('justifyRight');
+
+        if (query('justifyRight')) setTextSelected(values => [...values.filter(item => !item.includes('align')), 'align-right']);
+        else setTextSelected(values => values.filter(item => item !== 'align-right'));
+
+        break;
+
+      case 'align-justify':
+        refs.rootDocument.current.execCommand('justifyFull');
+
+        if (query('justifyFull')) setTextSelected(values => [...values.filter(item => !item.includes('align')), 'align-justify']);
+        else setTextSelected(values => values.filter(item => item !== 'align-justify'));
 
         break;
 
@@ -882,55 +991,137 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
         break;
 
+      case 'indent':
+        refs.rootDocument.current.execCommand('indent');
+
+        break;
+
+      case 'outdent':
+        refs.rootDocument.current.execCommand('outdent');
+
+        break;
+
+      case 'font-version':
+        refs.rootDocument.current.execCommand('formatBlock', undefined, argument);
+
+        break;
+
+      case 'font-family':
+        refs.rootDocument.current.execCommand('styleWithCSS', true);
+
+        refs.rootDocument.current.execCommand('fontName', undefined, argument);
+
+        refs.rootDocument.current.execCommand('styleWithCSS', false);
+
+        break;
+
+      case 'font-size':
+        refs.rootDocument.current.execCommand('styleWithCSS', true);
+
+        refs.rootDocument.current.execCommand('fontSize', undefined, argument);
+
+        refs.rootDocument.current.execCommand('styleWithCSS', false);
+
+        break;
+
+      case 'font-color':
+        refs.rootDocument.current.execCommand('styleWithCSS', true);
+
+        refs.rootDocument.current.execCommand('foreColor', undefined, argument);
+
+        refs.rootDocument.current.execCommand('styleWithCSS', false);
+
+        break;
+
+      case 'font-background':
+        refs.rootDocument.current.execCommand('styleWithCSS', true);
+
+        refs.rootDocument.current.execCommand('backColor', undefined, argument);
+
+        refs.rootDocument.current.execCommand('styleWithCSS', false);
+
+        break;
+
+      case 'list-ordered':
+        refs.rootDocument.current.execCommand('insertOrderedList');
+
+        if (query('insertOrderedList')) setTextSelected(values => [...values.filter(item => !item.includes('list')), 'list-ordered']);
+        else setTextSelected(values => values.filter(item => item !== 'list-ordered'));
+
+        break;
+
+      case 'list-unordered':
+        refs.rootDocument.current.execCommand('insertUnorderedList');
+
+        if (query('insertUnorderedList')) setTextSelected(values => [...values.filter(item => !item.includes('list')), 'list-unordered']);
+        else setTextSelected(values => values.filter(item => item !== 'list-unordered'));
+
+        break;
+
+      case 'horizontal-rule':
+        refs.rootDocument.current.execCommand('insertHorizontalRule');
+
+        break;
+
       case 'link-add':
-        refs.rootDocument.current!.execCommand('createLink', undefined, argument);
+        refs.rootDocument.current.execCommand('createLink', undefined, argument);
 
         break;
 
       case 'link-remove':
-        refs.rootDocument.current!.execCommand('unlink');
+        refs.rootDocument.current.execCommand('unlink');
+
+        break;
+
+      case 'image':
+        refs.rootDocument.current.execCommand('insertImage', undefined, argument);
+
+        break;
+
+      case 'html':
+        refs.rootDocument.current.execCommand('insertHTML', undefined, argument);
 
         break;
 
       // actions
       case 'copy':
-        refs.rootDocument.current!.execCommand('copy');
+        refs.rootDocument.current.execCommand('copy');
 
         break;
 
       case 'cut':
-        refs.rootDocument.current!.execCommand('cut');
+        refs.rootDocument.current.execCommand('cut');
 
         break;
 
       case 'paste':
-        if (refs.rootDocument.current!.queryCommandSupported('paste')) refs.rootDocument.current!.execCommand('paste');
+        if (refs.rootDocument.current.queryCommandSupported('paste')) refs.rootDocument.current.execCommand('paste');
         else paste();
 
         break;
 
       case 'delete':
-        refs.rootDocument.current!.execCommand('delete');
+        refs.rootDocument.current.execCommand('delete');
 
         break;
 
       case 'clear':
-        refs.rootDocument.current!.execCommand('removeFormat');
+        refs.rootDocument.current.execCommand('removeFormat');
 
         break;
 
       case 'select-all':
-        refs.rootDocument.current!.execCommand('selectAll');
+        refs.rootDocument.current.execCommand('selectAll');
 
         break;
 
       case 'undo':
-        refs.rootDocument.current!.execCommand('undo');
+        refs.rootDocument.current.execCommand('undo');
 
         break;
 
       case 'redo':
-        refs.rootDocument.current!.execCommand('redo');
+        refs.rootDocument.current.execCommand('redo');
 
         break;
 
@@ -954,6 +1145,215 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
     textQueryUpdate();
   }, []);
+
+  const PaletteItem = React.useCallback((propsItem: any) => {
+    const {
+      color: color_,
+
+      ...other_
+    } = propsItem;
+
+    return (
+      <span
+        className={classNames([
+          staticClassName('RichTextEditor', theme) && [
+            'onesy-RichTextEditor-palette-item'
+          ],
+
+          classes.paletteItem
+        ])}
+
+        style={{
+          background: color_
+        }}
+
+        {...other_}
+      />
+    );
+  }, []);
+
+  const Palette = React.useCallback(React.forwardRef((propsPalette: any, ref_: any) => {
+    const {
+      version: version_,
+
+      onUpdate: onUpdate_,
+
+      onClose,
+
+      ...other_
+    } = propsPalette;
+
+    return (
+      <Line
+        ref={ref_}
+
+        gap={1}
+
+        direction='column'
+
+        tonal={tonal}
+
+        color={refs.props.current.color !== undefined ? refs.props.current.color : 'themed'}
+
+        Component={Surface}
+
+        className={classNames([
+          staticClassName('RichTextEditor', theme) && [
+            'onesy-RichTextEditor-palette'
+          ],
+
+          classes.palette
+        ])}
+
+        {...other_}
+      >
+        {/* Colors */}
+        <Line
+          gap={0.5}
+
+          style={{
+            maxHeight: 136,
+            padding: '10px 10px 0',
+            overflow: 'hidden auto'
+          }}
+        >
+          <Line
+            gap={0.5}
+
+            direction='row'
+
+            style={{
+              width: '100%'
+            }}
+          >
+            <PaletteItem
+              color='#000000'
+
+              onClick={() => {
+                onUpdate_('#000000');
+
+                onClose();
+              }}
+            />
+
+            <PaletteItem
+              color='#ffffff'
+
+              onClick={() => {
+                onUpdate_('#ffffff');
+
+                onClose();
+              }}
+            />
+          </Line>
+
+          {Object.keys(colors).filter(item => !['black', 'white'].includes(item)).map((item: string, index: number) => (
+            <Line
+              key={index}
+
+              gap={0.5}
+
+              direction='row'
+
+              style={{
+                width: '100%'
+              }}
+            >
+              {Object.keys(colors[item]).map((item_: string, index_: number) => (
+                <PaletteItem
+                  key={index_}
+
+                  color={colors[item][item_]}
+
+                  onClick={() => {
+                    if (refs.range.current) {
+                      const selection_ = refs.rootWindow.current.getSelection();
+
+                      selection_.removeAllRanges();
+                      selection_.addRange(refs.range.current);
+                    }
+
+                    onUpdate_(colors[item][item_]);
+
+                    onClose();
+                  }}
+                />
+              ))}
+            </Line>
+          ))}
+        </Line>
+
+        {/* Input color value */}
+        <Divider />
+
+        <Line
+          gap={0.5}
+
+          direction='row'
+
+          align='center'
+
+          fullWidth
+
+          style={{
+            padding: '0px 10px 10px'
+          }}
+        >
+          <ColorTextField
+            tonal={tonal}
+
+            color={color}
+
+            name={l('Custom color')}
+
+            version='outlined'
+
+            size='small'
+
+            value={refs.inputValues.current[version_]}
+
+            onChange={valueNew => updateInputValues(version_, valueNew)}
+
+            {...ColorTextFieldProps}
+
+            className={classNames([
+              staticClassName('RichTextEditor', theme) && [
+                'onesy-RichTextEditor-text-field-color'
+              ],
+
+              ColorTextFieldProps?.className,
+              classes.textFieldColor
+            ])}
+          />
+
+          <Button
+            tonal={tonal}
+
+            color='inherit'
+
+            version='text'
+
+            size='small'
+
+            onClick={() => {
+              if (refs.range.current) {
+                const selection_ = refs.rootWindow.current.getSelection();
+
+                selection_.removeAllRanges();
+                selection_.addRange(refs.range.current);
+              }
+
+              onUpdate_(refs.inputValues.current[version_]);
+
+              onClose();
+            }}
+          >
+            Apply
+          </Button>
+        </Line>
+      </Line>
+    );
+  }), []);
 
   const AppendProps: any = {
     padding: [14, 14]
@@ -990,6 +1390,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       onChange: onChange__,
 
       onClick,
+
+      placeholder: placeholderInputProps,
 
       InputComponent = TextField,
 
@@ -1038,6 +1440,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
             valueDefault={value__}
 
             onChange={onChange__}
+
+            placeholder={placeholderInputProps}
+
+            flex
 
             {...InputProps}
 
@@ -1266,6 +1672,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
               onChange={(valueNew: any) => updateInputValues('link', valueNew)}
 
+              placeholder={l('URL')}
+
               onClick={() => {
                 if (refs.range.current) {
                   const selection_ = refs.rootWindow.current!.getSelection();
@@ -1283,7 +1691,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
                 updateInputValues('link', '');
               }}
 
-              className={classes.inputLink}
+              className={classes.input}
             />
           </ClickListener>
         )}
@@ -1317,6 +1725,276 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
           onClick={textMethod('link-remove')}
         >
           <IconMaterialLinkOff {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+
+    'font-color': (
+      <WrapperAppend
+        open={refs.open.current.color}
+
+        anchorElement={refs.elements.color.current}
+
+        element={(
+          <ClickListener
+            onClickOutside={() => updateOpen('color', false)}
+
+            include={[refs.elements.color.current]}
+          >
+            <Palette
+              version='font-color'
+
+              onClose={() => updateOpen('color', false)}
+
+              onUpdate={() => {
+                if (refs.range.current) {
+                  const selection_ = refs.rootWindow.current.getSelection();
+
+                  selection_.removeAllRanges();
+                  selection_.addRange(refs.range.current);
+                }
+
+                textMethod('font-color');
+              }}
+            />
+          </ClickListener>
+        )}
+      >
+        <WrapperToggleButton
+          name={l('Text Color')}
+
+          open={refs.open.current.color ? false : undefined}
+        >
+          <ToggleButton
+            ref={refs.elements.color}
+
+            {...ToggleButtonProps}
+
+            selected={refs.open.current.color}
+
+            onClick={() => updateOpen('color', !refs.open.current.color)}
+          >
+            <IconMaterialFormatColorText {...IconProps} />
+          </ToggleButton>
+        </WrapperToggleButton>
+      </WrapperAppend>
+    ),
+    'font-color-mini-menu': (
+      <WrapperAppend
+        open={refs.open.current.colorMiniMenu}
+
+        anchorElement={refs.miniMenuElements.color}
+
+        element={(
+          <ClickListener
+            onClickOutside={() => updateOpen('colorMiniMenu', false)}
+
+            include={[refs.miniMenuElements.color as any]}
+          >
+            <Palette
+              ref={refs.miniMenuElements.colorPalette}
+
+              version='font-color'
+
+              onClose={() => updateOpen('colorMiniMenu', false)}
+
+              onUpdate={textMethod('font-color')}
+            />
+          </ClickListener>
+        )}
+      >
+        <WrapperToggleButton
+          name={l('Text Color')}
+
+          open={refs.open.current.colorMiniMenu ? false : undefined}
+        >
+          <ToggleButton
+            ref={refs.miniMenuElements.color}
+
+            {...ToggleButtonProps}
+
+            selected={refs.open.current.colorMiniMenu}
+
+            onClick={() => updateOpen('colorMiniMenu', !refs.open.current.colorMiniMenu)}
+          >
+            <IconMaterialFormatColorText {...IconProps} />
+          </ToggleButton>
+        </WrapperToggleButton>
+      </WrapperAppend>
+    ),
+    'font-background': (
+      <WrapperAppend
+        open={refs.open.current.background}
+
+        anchorElement={refs.elements.background.current}
+
+        element={(
+          <ClickListener
+            onClickOutside={() => updateOpen('background', false)}
+
+            include={[refs.elements.background.current]}
+          >
+            <Palette
+              version='font-background'
+
+              onClose={() => updateOpen('background', false)}
+
+              onUpdate={textMethod('font-background')}
+            />
+          </ClickListener>
+        )}
+      >
+        <WrapperToggleButton
+          name={l('Background Color')}
+
+          open={refs.open.current.background ? false : undefined}
+        >
+          <ToggleButton
+            ref={refs.elements.background}
+
+            {...ToggleButtonProps}
+
+            selected={refs.open.current.background}
+
+            onClick={() => updateOpen('background', !refs.open.current.background)}
+          >
+            <IconMaterialFormatColorFill {...IconProps} />
+          </ToggleButton>
+        </WrapperToggleButton>
+      </WrapperAppend>
+    ),
+    'font-background-mini-menu': (
+      <WrapperAppend
+        open={refs.open.current.backgroundMiniMenu}
+
+        anchorElement={refs.miniMenuElements.background}
+
+        element={(
+          <ClickListener
+            onClickOutside={() => updateOpen('backgroundMiniMenu', false)}
+
+            include={[refs.miniMenuElements.background as any]}
+          >
+            <Palette
+              ref={refs.miniMenuElements.backgroundPalette}
+
+              version='font-background'
+
+              onClose={() => updateOpen('backgroundMiniMenu', false)}
+
+              onUpdate={textMethod('font-background')}
+            />
+          </ClickListener>
+        )}
+      >
+        <WrapperToggleButton
+          name={l('Text Color')}
+
+          open={refs.open.current.backgroundMiniMenu ? false : undefined}
+        >
+          <ToggleButton
+            ref={refs.miniMenuElements.background}
+
+            {...ToggleButtonProps}
+
+            selected={refs.open.current.backgroundMiniMenu}
+
+            onClick={() => updateOpen('backgroundMiniMenu', !refs.open.current.backgroundMiniMenu)}
+          >
+            <IconMaterialFormatColorFill {...IconProps} />
+          </ToggleButton>
+        </WrapperToggleButton>
+      </WrapperAppend>
+    ),
+
+    'align-left': (
+      <WrapperToggleButton
+        name={l('Align Left')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('align-left')}
+
+          onClick={textMethod('align-left')}
+        >
+          <IconMaterialFormatAlignLeft {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+    'align-center': (
+      <WrapperToggleButton
+        name={l('Align Center')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('align-center')}
+
+          onClick={textMethod('align-center')}
+        >
+          <IconMaterialFormatAlignCenter {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+    'align-right': (
+      <WrapperToggleButton
+        name={l('Align Right')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('align-right')}
+
+          onClick={textMethod('align-right')}
+        >
+          <IconMaterialFormatAlignRight {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+    'align-justify': (
+      <WrapperToggleButton
+        name={l('Align Justify')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('align-justify')}
+
+          onClick={textMethod('align-justify')}
+        >
+          <IconMaterialFormatAlignJustify {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+
+    'list-ordered': (
+      <WrapperToggleButton
+        name={l('List Ordered')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('list-ordered')}
+
+          onClick={textMethod('list-ordered')}
+        >
+          <IconMaterialFormatListNumbered {...IconProps} />
+        </ToggleButton>
+      </WrapperToggleButton>
+    ),
+    'list-unordered': (
+      <WrapperToggleButton
+        name={l('List Unordered')}
+      >
+        <ToggleButton
+          {...ToggleButtonProps}
+
+          selected={refs.textSelected.current.includes('list-unordered')}
+
+          onClick={textMethod('list-unordered')}
+        >
+          <IconMaterialFormatListBulleted {...IconProps} />
         </ToggleButton>
       </WrapperToggleButton>
     )
@@ -1391,7 +2069,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
                       setTextSelection(null as any);
                     }}
 
-                    include={[refs.miniMenu, refs.miniMenu.current, refs.miniMenuElements.linkAddInput, refs.miniMenuElements.linkAddInput.current]}
+                    include={[refs.miniMenu, refs.miniMenu.current, refs.miniMenuElements.colorPalette, refs.miniMenuElements.colorPalette.current, refs.miniMenuElements.backgroundPalette, refs.miniMenuElements.backgroundPalette.current, refs.miniMenuElements.linkAddInput, refs.miniMenuElements.linkAddInput.current]}
                   >
                     <Line
                       gap={2}
@@ -1425,6 +2103,40 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
                         {updateElements['strike-line']}
                       </ToggleButtons>
+
+                      {miniMenuExtended && (
+                        <ToggleButtons
+                          {...ToggleButtonsProps}
+                        >
+                          {updateElements['align-left']}
+
+                          {updateElements['align-center']}
+
+                          {updateElements['align-right']}
+
+                          {updateElements['align-justify']}
+                        </ToggleButtons>
+                      )}
+
+                      {miniMenuExtended && (
+                        <ToggleButtons
+                          {...ToggleButtonsProps}
+                        >
+                          {updateElements['font-color-mini-menu']}
+
+                          {updateElements['font-background-mini-menu']}
+                        </ToggleButtons>
+                      )}
+
+                      {miniMenuExtended && (
+                        <ToggleButtons
+                          {...ToggleButtonsProps}
+                        >
+                          {updateElements['list-ordered']}
+
+                          {updateElements['list-unordered']}
+                        </ToggleButtons>
+                      )}
 
                       <ToggleButtons
                         {...ToggleButtonsProps}
@@ -1504,6 +2216,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
         refs.root.current = item;
       }}
+
+      color={color}
+
+      tonal={tonal}
 
       version='text'
 
@@ -1593,6 +2309,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         refs.root.current = item;
         refs.input.current = item;
       }}
+
+      color={color}
+
+      tonal={tonal}
 
       onInput={onInput}
 
