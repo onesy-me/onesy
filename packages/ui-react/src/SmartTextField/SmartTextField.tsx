@@ -1190,6 +1190,19 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       ...other_
     } = propsPalette;
 
+    const onUpdateColor = itemColor => {
+      if (refs.range.current) {
+        const selection_ = refs.rootWindow.current.getSelection();
+
+        selection_.removeAllRanges();
+        selection_.addRange(refs.range.current);
+      }
+
+      onUpdate_(itemColor);
+
+      onClose();
+    };
+
     return (
       <Line
         ref={ref_}
@@ -1237,9 +1250,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
               color='#000000'
 
               onClick={() => {
-                onUpdate_('#000000');
-
-                onClose();
+                onUpdateColor('#000000');
               }}
             />
 
@@ -1247,9 +1258,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
               color='#ffffff'
 
               onClick={() => {
-                onUpdate_('#ffffff');
-
-                onClose();
+                onUpdateColor('#ffffff');
               }}
             />
           </Line>
@@ -1273,16 +1282,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
                   color={colors[item][item_]}
 
                   onClick={() => {
-                    if (refs.range.current) {
-                      const selection_ = refs.rootWindow.current.getSelection();
-
-                      selection_.removeAllRanges();
-                      selection_.addRange(refs.range.current);
-                    }
-
-                    onUpdate_(colors[item][item_]);
-
-                    onClose();
+                    onUpdateColor(colors[item][item_]);
                   }}
                 />
               ))}
