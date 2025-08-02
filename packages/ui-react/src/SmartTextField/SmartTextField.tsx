@@ -68,6 +68,10 @@ const useStyle = styleMethod(theme => ({
       color: theme.methods.palette.color.value('primary', 10),
 
       ...theme.typography.values.b2
+    },
+
+    '& ul, & ol': {
+      listStylePosition: 'inside'
     }
   },
 
@@ -91,12 +95,15 @@ const useStyle = styleMethod(theme => ({
   textMiniMenu: {
     padding: theme.methods.space.value(1.5, 'px'),
     borderRadius: theme.methods.shape.radius.value(140, 'px'),
-    boxShadow: theme.shadows.values.default[2]
+    boxShadow: theme.shadows.values.default[2],
+    maxWidth: 'calc(100vw - 24px)',
+    rowGap: '4px'
   },
 
   textMiniMenuAdditionalMenu: {
     minWidth: 'clamp(140px, 90%, 250px)',
-    zIndex: '1514'
+    zIndex: '1514',
+    boxShadow: theme.shadows.values.default[2]
   },
 
   inputWrapper: {
@@ -2079,6 +2086,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
                       align='center'
 
                       justify='flex-start'
+
+                      wrap='wrap'
 
                       role='toolbar'
 

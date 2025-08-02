@@ -40,6 +40,7 @@ export type IAppend = {
   style?: IStyle;
   update?: any;
   element?: any;
+  onScreen?: boolean;
   parent?: IHTMLElement;
   additional?: (rects: { root: DOMRect; element: DOMRect; }, rectsOffset: { root: DOMRect; element: DOMRect; }) => any;
 
@@ -70,6 +71,7 @@ const Append: React.FC<IAppend> = (props_) => {
     switch: switch_ = true,
     overflow = true,
     unfollow = false,
+    onScreen = true,
     style: style_,
     update,
     element,
@@ -662,6 +664,12 @@ const Append: React.FC<IAppend> = (props_) => {
 
         ...additional(rect, rectOffset as any)
       };
+    }
+
+    if (portal) {
+      const paddingX = padding[1] || 0;
+
+      refs.values.current.x = clamp(refs.values.current.x, paddingX, (window.innerWidth - rect.element.width - paddingX));
     }
 
     // Update
