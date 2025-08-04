@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { is, isEnvironment } from '@onesy/utils';
-import { style as styleMethod, classNames, useOnesyTheme, getID } from '@onesy/style-react';
+import { style as styleMethod, classNames, useOnesyTheme } from '@onesy/style-react';
 
 import ListElement from '../List';
 import TooltipElement from '../Tooltip';
@@ -13,12 +13,6 @@ import { IElement, IHTMLElement, IPropsAny } from '../types';
 const useStyle = styleMethod(theme => ({
   root: {
 
-  },
-
-  list: {
-    '&.onesy-List-root': {
-      border: `0 0 ${theme.shape.radius.unit / 2}px ${theme.shape.radius.unit / 2}px`
-    }
   }
 }), { name: 'onesy-Menu' });
 
