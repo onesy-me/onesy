@@ -13,6 +13,12 @@ import { IElement, IHTMLElement, IPropsAny } from '../types';
 const useStyle = styleMethod(theme => ({
   root: {
 
+  },
+
+  list: {
+    '&.onesy-List-root': {
+      border: `0 0 ${theme.shape.radius.unit / 2}px ${theme.shape.radius.unit / 2}px`
+    }
   }
 }), { name: 'onesy-Menu' });
 
@@ -393,6 +399,13 @@ const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
             role='menu'
 
             {...ListProps}
+
+            className={classNames([
+              'onesy-Menu-list',
+
+              ListProps?.className,
+              classes.list
+            ])}
           >
             {ListProps?.noChildrenTransform ? menuItems : React.Children.toArray(menuItems).map((item: any, index: number) => (
               React.cloneElement(item, methodItem(item, index))
