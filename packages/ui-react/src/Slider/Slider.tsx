@@ -40,7 +40,7 @@ const useStyle = styleMethod(theme => {
 
     root_orientation_horizontal: {
       width: '100vw',
-      maxWidth: 400,
+      maxWidth: 'clamp(100px, 400px, 100%)',
       height: 4,
       margin: '16px 0 28px'
     },

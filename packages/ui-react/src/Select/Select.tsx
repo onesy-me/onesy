@@ -162,6 +162,8 @@ export type ISelect = ITextField & {
   MenuProps?: IPropsAny;
   ListItemProps?: IPropsAny;
   ListItemTypeProps?: IPropsAny;
+  ListItemTypePrimaryProps?: IPropsAny;
+  ListItemTypeSecondaryProps?: IPropsAny;
   IconButtonProps?: IPropsAny;
   IconProps?: IPropsAny;
 };
@@ -240,6 +242,8 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
     MenuProps: MenuPropsProps,
     ListItemProps,
     ListItemTypeProps,
+    ListItemTypePrimaryProps,
+    ListItemTypeSecondaryProps,
     IconButtonProps,
     IconProps,
 
@@ -743,10 +747,41 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
                     version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
 
                     {...ListItemTypeProps}
+
+                    {...ListItemTypePrimaryProps}
+
+                    className={classNames([
+                      ListItemTypeProps?.className,
+                      ListItemTypePrimaryProps?.className,
+
+                      'onesy-Select-option',
+                      'onesy-Select-option-primary',
+                      !(item.description || item.secondary || item.tertiary) && 'onesy-Select-option-primary-only'
+                    ])}
                   >
                     {item.name}
                   </Type>
                 )}
+
+                secondary={item.description ? is('string', item.description) ? (
+                  <Type
+                    version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
+
+                    {...ListItemTypeProps}
+
+                    {...ListItemTypeSecondaryProps}
+
+                    className={classNames([
+                      ListItemTypeProps?.className,
+                      ListItemTypeSecondaryProps?.className,
+
+                      'onesy-Select-option',
+                      'onesy-Select-option-secondary'
+                    ])}
+                  >
+                    {item.description}
+                  </Type>
+                ) : item.description : null}
 
                 value={item.value}
 
