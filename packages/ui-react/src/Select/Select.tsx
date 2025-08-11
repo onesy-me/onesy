@@ -49,6 +49,7 @@ const useStyle = styleMethod(theme => {
     },
 
     inputWrapper: {
+      overflow: 'hidden',
       cursor: 'pointer',
 
       '&.onesy-TextField-input-wrapper': {
