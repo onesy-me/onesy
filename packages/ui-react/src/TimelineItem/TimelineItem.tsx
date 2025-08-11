@@ -11,6 +11,8 @@ import { IElement, IPropsAny, IElementReference } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
+    maxWidth: '100%',
+
     '&:last-of-type': {
       '& $divider': {
         display: 'none'
@@ -31,6 +33,10 @@ const useStyle = styleMethod(theme => ({
     width: '12px',
     height: '12px',
     borderRadius: theme.methods.shape.radius.value(40, 'px')
+  },
+
+  end: {
+    overflow: 'auto hidden'
   },
 
   aside_orientation_vertical: {

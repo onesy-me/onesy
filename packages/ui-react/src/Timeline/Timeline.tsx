@@ -8,7 +8,7 @@ import { staticClassName } from '../utils';
 
 const useStyle = styleMethod(theme => ({
   root: {
-
+    maxWidth: '100%'
   },
 }), { name: 'onesy-Timeline' });
 
