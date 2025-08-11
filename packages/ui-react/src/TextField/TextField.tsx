@@ -99,7 +99,6 @@ const useStyle = styleMethod(theme => {
       borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
       cursor: 'text',
 
-      width: '0',
       flex: '1 1 auto',
 
       ...theme.typography.values.b2
