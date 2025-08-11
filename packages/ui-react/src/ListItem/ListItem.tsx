@@ -19,6 +19,10 @@ const useStyle = styleMethod(theme => {
 
   return {
     wrapper: {
+
+    },
+
+    wrapper_fullWidth: {
       width: '100%'
     },
 
@@ -290,6 +294,7 @@ export type IListItem = ISurface & {
   interaction?: boolean;
   noBackground?: boolean;
   noOutline?: boolean;
+  fullWidth?: boolean;
 
   value?: any;
 
@@ -350,6 +355,7 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
     footer,
     tabIndex,
     interaction,
+    fullWidth = true,
     noOutline,
     noBackground,
     disabled,
@@ -449,12 +455,17 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
         WrapperProps?.className,
         className,
         classes.wrapper,
+        fullWidth && classes.wrapper_fullWidth,
         noBackground && classes.noBackground
       ])}
 
       noOutline={noOutline}
 
-      style={styles.wrapper}
+      style={{
+        ...styles.wrapper,
+
+        ...WrapperProps?.style
+      }}
 
       {...other}
     >
