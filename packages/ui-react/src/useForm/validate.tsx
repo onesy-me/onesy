@@ -123,7 +123,7 @@ const validate = async (model: IValidateModelValue, property: string, form: IFor
 
   const l = options?.l || (item => item);
 
-  const name = is('function', model.propertyNameUpdate) ? model.propertyNameUpdate(model.name!) : model.capitalize !== false ? capitalize(model.name!) : model.name!;
+  const name = l(is('function', model.propertyNameUpdate) ? model.propertyNameUpdate(model.name!) : model.capitalize !== false ? capitalize(model.name!) : model.name!);
 
   const value = model.value;
 

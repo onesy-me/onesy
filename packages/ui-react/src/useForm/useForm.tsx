@@ -130,7 +130,7 @@ const useForm = (props: IUseForm) => {
         if (property.required && property.value === undefined) {
           const name = is('function', property.propertyNameUpdate) ? property.propertyNameUpdate(property.name!) : property.capitalize !== false ? capitalize(property.name!) : property.name!;
 
-          property.error = `${name} ${l('is required')}`;
+          property.error = `${l(name)} ${l('is required')}`;
         }
         else {
           property.error = undefined;
@@ -205,7 +205,7 @@ const useForm = (props: IUseForm) => {
       if (property.required && property.value === undefined) {
         const name = is('function', property.propertyNameUpdate) ? property.propertyNameUpdate(property.name!) : property.capitalize !== false ? capitalize(property.name!) : property.name!;
 
-        property.error = `${name} ${l('is required')}`;
+        property.error = `${l(name)} ${l('is required')}`;
       }
       else {
         property.error = undefined;
