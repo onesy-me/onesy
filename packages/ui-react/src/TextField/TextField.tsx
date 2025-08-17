@@ -596,6 +596,8 @@ export type ITextField = Omit<IBaseElement, 'onChange'> & {
 const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
+  const l = theme.l;
+
   const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextField?.props?.default, ...props_ }), [props_]);
 
   const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
@@ -1448,7 +1450,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
                   error && classes.error_color
                 ])}
               >
-                {helperText !== undefined ? helperText : required ? '*required' : ''}
+                {helperText !== undefined ? helperText : required ? `*${l('required')}` : ''}
               </Type>
             )}
 
