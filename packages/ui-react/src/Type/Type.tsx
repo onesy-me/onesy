@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { is } from '@onesy/utils';
 import { classNames, style as styleMethod, TTypographyItem, useOnesyTheme } from '@onesy/style-react';
 
 import { staticClassName } from '../utils';
@@ -253,8 +254,8 @@ const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
       className={classNames([
         staticClassName('Type', theme) && [
           'onesy-Type-root',
-          `onesy-Type-version-${version}`,
-          `onesy-Type-size-${size}`,
+          version && `onesy-Type-version-${version}`,
+          size && is('string', size) && `onesy-Type-size-${size}`,
           disabled && `onesy-Type-disabled`
         ],
 
