@@ -54,9 +54,7 @@ const useStyle = styleMethod(theme => ({
     fontWeight: 'bold'
   },
 
-  body: {
-
-  },
+  body: {},
 
   divider: {
     '&.onesy-Divider-root': {

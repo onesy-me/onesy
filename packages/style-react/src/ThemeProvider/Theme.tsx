@@ -93,15 +93,15 @@ const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
     // Palette
     // Color
     Object.keys(value.palette.color).forEach(item => {
-      Object.keys(value.palette.color[item]).forEach(itemValue => {
-        values.push(`--${prefix}-palette-color-${item}-${itemValue}: ${value.palette.color[item][itemValue]}`);
-      });
+      const itemValue = value.palette.color[item]?.main || value.palette.color[item]?.[50];
+
+      if (itemValue) values.push(`--${prefix}-palette-color-${item}: ${itemValue}`);
     });
 
     // Text
-    Object.keys(value.palette.text).filter(item => !['active', 'divider', 'disabled', 'hover', 'focus', 'selected'].includes(item)).forEach(item => {
+    Object.keys(value.palette.text).filter(item => ['default'].includes(item)).forEach(item => {
       Object.keys(value.palette.text[item]).forEach(itemValue => {
-        values.push(`--${prefix}-palette-text-${item}-${itemValue}: ${value.palette.text[item][itemValue]}`);
+        values.push(`--${prefix}-palette-text-${itemValue}: ${value.palette.text[item][itemValue]}`);
       });
     });
 
@@ -110,37 +110,37 @@ const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
     });
 
     // Background
-    Object.keys(value.palette.background).forEach(item => {
+    Object.keys(value.palette.background).filter(item => ['default'].includes(item)).forEach(item => {
       Object.keys(value.palette.background[item]).forEach(itemValue => {
-        values.push(`--${prefix}-palette-background-${item}-${itemValue}: ${value.palette.background[item][itemValue]}`);
+        values.push(`--${prefix}-palette-background-${itemValue}: ${value.palette.background[item][itemValue]}`);
       });
     });
 
     // Visual contrast
-    Object.keys(value.palette.visual_contrast).forEach(item => {
-      Object.keys(value.palette.visual_contrast[item].opacity).forEach(itemValue => {
-        values.push(`--${prefix}-palette-visual-contrast-${item}-opacity-${itemValue}: ${value.palette.visual_contrast[item].opacity[itemValue]}`);
-      });
-    });
+    // Object.keys(value.palette.visual_contrast).forEach(item => {
+    //   Object.keys(value.palette.visual_contrast[item].opacity).forEach(itemValue => {
+    //     values.push(`--${prefix}-palette-visual-contrast-${item}-opacity-${itemValue}: ${value.palette.visual_contrast[item].opacity[itemValue]}`);
+    //   });
+    // });
 
     // Shape
     values.push(`--${prefix}-shape-radius-unit: ${value.shape.radius.unit}`);
 
     Object.keys(value.shape.radius.values).forEach(item => {
-      values.push(`--${prefix}-shape-radius-values-${item}: ${value.shape.radius.values[item]}`);
+      values.push(`--${prefix}-shape-radius-${item}: ${value.shape.radius.values[item]}`);
     });
 
     // Space
     values.push(`--${prefix}-space-unit: ${value.space.unit}`);
 
     Object.keys(value.space.values).forEach(item => {
-      values.push(`--${prefix}-space-values-${item}: ${value.space.values[item]}`);
+      values.push(`--${prefix}-space-${item}: ${value.space.values[item]}`);
     });
 
     // Shadows
-    Object.keys(value.shadows.values).forEach(item => {
+    Object.keys(value.shadows.values).filter(item => ['default'].includes(item)).forEach(item => {
       Object.keys(value.shadows.values[item]).forEach(itemValue => {
-        values.push(`--${prefix}-shadows-${item}-${itemValue}: ${value.shadows.values[item][itemValue]}`);
+        values.push(`--${prefix}-shadows-${itemValue}: ${value.shadows.values[item][itemValue]}`);
       });
     });
 
