@@ -1,14 +1,15 @@
-# dev
+
+# dependencies
 node_modules
+
+# dependencies lock
+package-lock.json
 
 # build
 build
 
 # other
-size-snapshot.json
-
-# dependencies lock
-package-lock.json
+.DS_Store
 
 #debug
 npm-debug.log*
