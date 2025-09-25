@@ -3,21 +3,17 @@ node_modules
 
 # build
 build
-*.tgz
 
-# env
-.env.prod
-*.prod
-.env.production
-*.production
+# other
+size-snapshot.json
 
-# yarn
-.yarn
-.yarnrc
+# dependencies lock
+package-lock.json
 
+#debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# other
-size-snapshot.json
+# env
+.env*

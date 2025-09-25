@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Icons material two tone for React",
   "repository": "https://github.com/onesy-me/onesy.git",
-  "author": "Lazar <lazareric2@gmail.com>",
+  "author": "Lazar Erić <lazareric1@proton.me>",
   "license": "MIT",
   "private": false,
   "main": "./build/index.js",
