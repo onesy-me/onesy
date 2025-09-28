@@ -36,7 +36,8 @@
   "scripts": {
     "prebuild": "rimraf build",
     "build": "yarn lint && yarn type && cross-env ENV=babel node ../../utils/js/build.js",
-    "release": "yarn test && yarn build && yarn version --patch --no-git-tag-version && cd ./build && npm publish",
+    "vi": "yarn version --patch --no-git-tag-version",
+    "release": "yarn test && yarn build && yarn vi && yarn vi --cwd ./build && cd ./build && npm publish --tag latest",
     "lint": "tslint -c ../../tslint.json -p tsconfig.json",
     "type": "tsc --noEmit -p tsconfig.json",
     "cov": "cross-env NODE_ENV=test onesy-test",
