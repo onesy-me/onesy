@@ -32,8 +32,6 @@
 
 <br />
 
-## Getting started
-
 ### Add
 
 ```sh
