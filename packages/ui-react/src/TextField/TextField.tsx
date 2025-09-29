@@ -4,8 +4,12 @@ import { clamp, is, isEnvironment, unique } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 import OnesySubscription from '@onesy/subscription';
 
+import IconMaterialPassword2 from '@onesy/icons-material-rounded-react/IconMaterialPassword2W100';
+import IconMaterialPassword2Off from '@onesy/icons-material-rounded-react/IconMaterialPassword2OffW100';
 import IconMaterialClose from '@onesy/icons-material-rounded-react/IconMaterialCloseW100';
 
+import TooltipElement from '../Tooltip';
+import IconButtonElement from '../IconButton';
 import TypeElement from '../Type';
 import LineElement from '../Line';
 import useMediaQuery from '../useMediaQuery';
@@ -98,6 +102,7 @@ const useStyle = styleMethod(theme => {
       transition: theme.methods.transitions.make('opacity'),
       borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
       cursor: 'text',
+      zIndex: '1',
 
       flex: '1 1 auto',
 
@@ -208,6 +213,7 @@ const useStyle = styleMethod(theme => {
       transition: theme.methods.transitions.make(['color', 'inset', 'margin', 'transform']),
       pointerEvents: 'none',
       userSelect: 'none',
+      zIndex: '1',
 
       ...overflow,
 
@@ -273,7 +279,7 @@ const useStyle = styleMethod(theme => {
       background: 'currentColor',
       borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
       opacity: theme.palette.light ? theme.palette.visual_contrast.default.opacity.hover : theme.palette.visual_contrast.default.opacity.selected,
-      zIndex: '-1',
+      zIndex: '0',
       transition: theme.methods.transitions.make(['opacity'])
     },
 
@@ -290,6 +296,7 @@ const useStyle = styleMethod(theme => {
 
       borderRadius: `${theme.shape.radius.unit}px ${theme.shape.radius.unit}px 0 0`,
       boxShadow: 'inset 0px -1px 0px 0px currentColor',
+      zIndex: '1',
 
       transition: theme.methods.transitions.make(['box-shadow'])
     },
@@ -379,6 +386,42 @@ const useStyle = styleMethod(theme => {
 
     icon_size_large: {
       paddingBlock: '24px'
+    },
+
+    icon_version_text_size_small: {
+      paddingBlock: '6px'
+    },
+
+    icon_version_text_size_regular: {
+      paddingBlock: '8px'
+    },
+
+    icon_version_text_size_large: {
+      paddingBlock: '12px'
+    },
+
+    icon_version_outlined_size_small: {
+      paddingBlock: '9px'
+    },
+
+    icon_version_outlined_size_regular: {
+      paddingBlock: '12px'
+    },
+
+    icon_version_outlined_size_large: {
+      paddingBlock: '17px'
+    },
+
+    icon_version_filled_size_small: {
+      paddingBlock: '9px'
+    },
+
+    icon_version_filled_size_regular: {
+      paddingBlock: '12px'
+    },
+
+    icon_version_filled_size_large: {
+      paddingBlock: '17px'
     },
 
     icon_button_size_small: {
@@ -604,6 +647,10 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
   const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
 
+  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+
+  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+
   const {
     tonal = true,
     color = 'primary',
@@ -620,7 +667,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
     label: label_,
     align,
     start,
-    startVerticalAlign = 'start',
+    startVerticalAlign: startVerticalAlign_ = 'start',
     end: end_,
     endVerticalAlign: endVerticalAlign_ = 'start',
     placeholder,
@@ -717,6 +764,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
   const label = name !== undefined ? name : label_;
 
+  let startVerticalAlign = startVerticalAlign_;
   let endVerticalAlign = endVerticalAlign_;
 
   const fullWidth = valueBreakpoints(fullWidth_, undefined, breakpoints, theme);
@@ -741,8 +789,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
   const [hover, setHover] = React.useState(false);
   const [row, setRow] = React.useState(rowValue);
   const [rows, setRows] = React.useState<any>(1);
-
-  let end = end_;
+  const [visible, setVisible] = React.useState(false);
 
   let type = type_;
 
@@ -810,6 +857,10 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
       if (subscription) subscription.unsubscribe(method);
     };
   }, [subscription]);
+
+  const onToggleVisible = React.useCallback(() => {
+    setVisible((item: any) => !item);
+  }, []);
 
   const onUpdateRows = () => {
     if (multiline && row !== undefined) {
@@ -944,34 +995,6 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
   let WrapperProps: any = {};
 
-  if (value && clear) {
-    if (!Array.isArray(end)) end = [end].filter(Boolean);
-
-    const exists = (end as any[])?.find(item => item.key === refs.ids.clear);
-
-    if (!exists) {
-      if (props.endVerticalAlign === undefined) endVerticalAlign = 'center';
-
-      (end as any).push(
-        <IconClear
-          key={refs.ids.clear}
-
-          color='inherit'
-
-          onClick={onClear}
-
-          {...IconProps}
-
-          className={classNames([
-            IconProps?.className,
-
-            classes.clear
-          ])}
-        />
-      );
-    }
-  }
-
   if (footer) {
     WrapperProps = {
       ...other
@@ -1058,6 +1081,64 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
   // onInput
   if (!['input', 'textarea'].includes(InputComponent)) {
     inputProps.onInput = onInput;
+  }
+
+  const iconProps: any = {
+    size
+  };
+
+  const isTypePassword = type === 'password';
+
+  const end = (Array.isArray(end_) ? end_ : [end_]).filter(Boolean);
+
+  if (value && clear) {
+    const exists = (end as any[])?.find(item => item.key === refs.ids.clear);
+
+    if (!exists) {
+      (end as any).push(
+        <IconClear
+          key={refs.ids.clear}
+
+          color='inherit'
+
+          onClick={onClear}
+
+          {...IconProps}
+
+          className={classNames([
+            IconProps?.className,
+
+            classes.clear
+          ])}
+        />
+      );
+    }
+  }
+
+  if (value && isTypePassword) {
+    end.unshift(
+      <Tooltip
+        name={visible ? l('Hide password') : l('View password')}
+
+        color='inverted'
+      >
+        <IconButton
+          onClick={onToggleVisible}
+
+          color='default'
+
+          size={size === 'large' ? 'regular' : 'small'}
+        >
+          {visible ? <IconMaterialPassword2Off {...iconProps} /> : <IconMaterialPassword2 {...iconProps} />}
+        </IconButton>
+      </Tooltip>
+    );
+  }
+
+  if (!multiline) {
+    if (props.startVerticalAlign === undefined) startVerticalAlign = version === 'text' ? 'end' : 'center';
+
+    if (props.endVerticalAlign === undefined) endVerticalAlign = version === 'text' ? 'end' : 'center';
   }
 
   const valueWithData = value !== undefined && String(value);
@@ -1225,6 +1306,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
                 classes.icon_start,
                 classes[`icon${(start as any)?.type?.displayName?.includes('IconButton') ? '_button' : ''}_size_${size}`],
                 classes[`icon_version_${version}`],
+                classes[`icon_version_${version}_size_${size}`],
                 classes[`icon_vertical_align_${startVerticalAlign}`]
               ])}
             >
@@ -1340,7 +1422,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
             value={value !== undefined ? value : ''}
 
-            type={type}
+            type={type === 'password' && visible ? 'text' : type}
 
             autoFocus={autoFocus}
 
@@ -1394,6 +1476,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
                 classes.icon_end,
                 classes[`icon${(end as any)?.type?.displayName?.includes('IconButton') ? '_button' : ''}_size_${size}`],
                 classes[`icon_version_${version}`],
+                classes[`icon_version_${version}_size_${size}`],
                 classes[`icon_vertical_align_${endVerticalAlign}`]
               ])}
             >

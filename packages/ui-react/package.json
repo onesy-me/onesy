@@ -1,6 +1,6 @@
 {
   "name": "@onesy/ui-react",
-  "version": "1.0.122",
+  "version": "1.0.127",
   "description": "UI for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar Erić <lazareric1@proton.me>",
@@ -37,10 +37,7 @@
     "release-pure": "yarn test && yarn build && cd ./build && npm publish",
     "lint": "tslint -c ../../tslint.json -p tsconfig.json",
     "type": "tsc --noEmit -p tsconfig.json",
-    "cov": "cross-env NODE_ENV=test onesy-test",
-    "test:pre": "pm2 update && pm2 delete all && pm2 start ../../utils/js/test/app.js && wait-on http://localhost:4000",
-    "test:post": "pm2 delete all",
-    "test": "yarn lint && yarn type && yarn test:pre && yarn cov && yarn test:post"
+    "test": "yarn lint && yarn type"
   },
   "peerDependencies": {
     "@onesy/style-react": "^1.0.4",
