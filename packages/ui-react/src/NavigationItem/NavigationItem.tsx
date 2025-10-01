@@ -4,7 +4,6 @@ import { is, isEnvironment } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
 import TypeElement from '../Type';
-import FadeElement from '../Fade';
 import LineElement from '../Line';
 import TooltipElement from '../Tooltip';
 import TransitionElement, { TTransitionStatus } from '../Transition';
@@ -17,10 +16,8 @@ const useStyle = styleMethod(theme => ({
     display: 'inline-flex',
     justifyContent: 'center',
     flex: '1 1 auto',
-    userSelect: 'none',
     cursor: 'pointer',
-    padding: `${theme.methods.space.value(1.5, 'px')} 0 ${theme.methods.space.value(2, 'px')}`,
-    minHeight: '80px',
+    userSelect: 'none'
   },
 
   vertical: {
@@ -31,8 +28,7 @@ const useStyle = styleMethod(theme => ({
   },
 
   iconWrapper: {
-    position: 'absolute',
-    top: '0',
+    position: 'relative',
     height: '32px',
     width: '64px'
   },
@@ -50,16 +46,6 @@ const useStyle = styleMethod(theme => ({
 
   icon: {
     lineHeight: '0'
-  },
-
-  labelWrapper: {
-    position: 'absolute',
-    bottom: '0'
-  },
-
-  label: {
-    position: 'absolute',
-    bottom: '0'
   },
 
   indicator: {
@@ -121,21 +107,21 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-NavigationItem' });
 
-// To do
-
-// Long press label in tooltip
-
 export type INavigationItemVersion = 'regular' | 'auto';
 
 export type INavigationItem = ITooltip & {
   version?: 'regular' | 'auto';
 
   value?: any;
-  vertical?: boolean;
+
   name?: IElement;
-  label?: IElement;
+  nameTooltip?: any;
+
+  vertical?: boolean;
+
   icon?: IElement;
   iconSelected?: IElement;
+
   selected?: boolean;
   disabled?: boolean;
 
@@ -150,6 +136,7 @@ export type INavigationItem = ITooltip & {
   onTouchStart?: (event: React.TouchEvent<any>) => any;
 
   TooltipProps?: IPropsAny;
+  LabelProps?: IPropsAny;
   IconWrapperProps?: IPropsAny;
 };
 
@@ -162,8 +149,6 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
   const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
-
   const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
 
   const Transition = React.useMemo(() => theme?.elements?.Transition || TransitionElement, [theme]);
@@ -174,11 +159,15 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
     version = 'regular',
 
     value,
-    vertical,
+
     name,
-    label,
+    nameTooltip,
+
+    vertical,
+
     icon,
     iconSelected,
+
     selected,
     disabled,
 
@@ -193,6 +182,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
     onTouchStart: onTouchStart_,
 
     TooltipProps,
+    LabelProps,
     IconWrapperProps,
 
     className,
@@ -216,9 +206,6 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
   };
 
   const styles: any = {
-    root: {
-
-    },
     icon: {},
     label: {},
     indicator: {}
@@ -316,27 +303,11 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
     styles.icon.color = styles.label.color = theme.methods.palette.color.value(color as any, 5, true, palette);
   }
 
-  const LabelWrapper = version === 'auto' ? Fade : React.Fragment;
-
-  const LabelWrapperProps: any = {};
-
-  if (version === 'auto') {
-    LabelWrapperProps.in = selected;
-
-    LabelWrapperProps.className = classNames([
-      staticClassName('NavigationItem', theme) && [
-        'onesy-NavigationItem-label'
-      ],
-
-      classes.labelWrapper
-    ]);
-  }
-
   const Icon = (selected && iconSelected) || icon;
 
   return (
     <Tooltip
-      name={label || value}
+      name={nameTooltip ?? name ?? value}
 
       position='top'
 
@@ -386,9 +357,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
         ])}
 
         style={{
-          ...style,
-
-          ...styles.root
+          ...style
         }}
 
         {...other}
@@ -409,7 +378,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
 
           justify='center'
 
-          gap={0.5}
+          gap={0.25}
 
           className={classNames([
             staticClassName('NavigationItem', theme) && [
@@ -483,26 +452,27 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
             </Line>
           )}
 
-          {['regular', 'auto'].includes(version) && (
-            <LabelWrapper
-              {...LabelWrapperProps}
+          {(version === 'regular' || (version === 'auto' && selected)) && (
+            <Type
+              version='b3'
+
+              {...LabelProps}
+
+              className={classNames([
+                staticClassName('NavigationItem', theme) && [
+                  'onesy-NavigationItem-label',
+                  LabelProps?.className
+                ]
+              ])}
+
+              style={{
+                ...styles.label,
+
+                ...LabelProps?.style
+              }}
             >
-              <Type
-                version='b3'
-
-                className={classNames([
-                  staticClassName('NavigationItem', theme) && [
-                    'onesy-NavigationItem-label'
-                  ],
-
-                  classes.label
-                ])}
-
-                style={styles.label}
-              >
-                {name !== undefined ? name : label}
-              </Type>
-            </LabelWrapper>
+              {name}
+            </Type>
           )}
         </Line>
       </span>
