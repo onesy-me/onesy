@@ -41,7 +41,6 @@ export const IconMaterialDone = React.forwardRef((props: any, ref) => {
 const useStyle = styleMethod(theme => ({
   root: {
     position: 'relative',
-    borderRadius: theme.methods.shape.radius.value('xl', 'px'),
     maxWidth: '100%'
   },
 
@@ -74,20 +73,6 @@ const useStyle = styleMethod(theme => ({
       width: '100% !important'
     }
   },
-
-  // Size
-  size_small: { borderRadius: `${theme.shape.radius.unit * 2}px` },
-
-  size_regular: { borderRadius: `${theme.shape.radius.unit * 2.5}px` },
-
-  size_large: { borderRadius: `${theme.shape.radius.unit * 3.5}px` },
-
-  // Size
-  chip_size_small: { borderRadius: `${theme.shape.radius.unit - (theme.shape.radius.unit / 4)}px` },
-
-  chip_size_regular: { borderRadius: `${theme.shape.radius.unit}px` },
-
-  chip_size_large: { borderRadius: `${theme.shape.radius.unit + (theme.shape.radius.unit / 4)}px` },
 
   // Shadows
   elevation: {
@@ -303,7 +288,6 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const [init, setInit] = React.useState(false);
-  const [preSelected, setPreSelected] = React.useState([]);
   const [selected, setSelected] = React.useState(() => {
     const valueNew = valueDefault !== undefined ? valueDefault : value;
 
@@ -366,29 +350,14 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
           (select === 'multiple' && selected.length > 1)
         )
       ) {
-        if (!refs.noCheckIcon.current) {
-          setPreSelected(items => items.filter(item => item !== itemProps.value));
-        }
-        else {
-          valueNew = selected.filter(item => item !== itemProps.value);
-        }
+        valueNew = selected.filter(item => item !== itemProps.value);
       }
       else {
         if (select === 'single') {
-          if (!refs.noCheckIcon.current) {
-            setPreSelected([itemProps.value]);
-
-            valueNew = [...selected, itemProps.value];
-          }
-          else valueNew = [itemProps.value];
+          valueNew = [itemProps.value];
         }
         if (select === 'multiple') {
-          if (!refs.noCheckIcon.current) {
-            setPreSelected(items => unique([...items, itemProps.value]));
-
-            valueNew = unique([...selected, itemProps.value]);
-          }
-          else valueNew = unique([...selected, itemProps.value]);
+          valueNew = unique([...selected, itemProps.value]);
         }
       }
     }
@@ -399,15 +368,6 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
 
       if (is('function', onChange)) onChange(valueNew);
     }
-  };
-
-  const updateSelected = (itemProps: any) => {
-    const valueNew = selected.filter(item => item !== itemProps.value);
-
-    // Update inner or controlled
-    if (!props.hasOwnProperty('value')) setSelected(valueNew);
-
-    if (is('function', onChange)) onChange(valueNew);
   };
 
   const children = React.Children
@@ -434,20 +394,12 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
         if (is('function', item.props.onClick)) item.props.onClick();
       },
 
-      ...(!refs.noCheckIcon.current && item.props.start && selected.includes(item.props.value) ? {
-        start: (
-          <IconDoneAnimated simple in add />
-        )
-      } : {}),
-
-      ...(!refs.noCheckIcon.current && (!item.props.start && (selected.includes(item.props.value) || preSelected.includes(item.props.value))) ? {
+      ...(!refs.noCheckIcon.current && selected.includes(item.props.value) ? {
         start: (
           <IconDoneAnimated
-            in={(item.props.start ? selected : preSelected).includes(item.props.value)}
-
-            onExited={() => updateSelected(item.props)}
-
+            in
             add
+            simple
           />
         )
       } : {}),
@@ -491,8 +443,6 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
 
         className,
         classes.root,
-        classes[`size_${size}`],
-        chip && classes[`chip_size_${size}`],
         classes[`orientation_${orientation}`],
         classes[`orientation_${orientation}_size_${size}`],
         fullWidth && classes.fullWidth,
