@@ -443,7 +443,7 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
       ...(!refs.noCheckIcon.current && (!item.props.start && (selected.includes(item.props.value) || preSelected.includes(item.props.value))) ? {
         start: (
           <IconDoneAnimated
-            in={(item.props.start ? selected : preSelected).includes(index)}
+            in={(item.props.start ? selected : preSelected).includes(item.props.value)}
 
             onExited={() => updateSelected(item.props)}
 
