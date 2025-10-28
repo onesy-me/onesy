@@ -285,10 +285,10 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
           parentOverflow.addEventListener('scroll', method, {
             passive: false
           });
-
-          // initial
-          method();
         }
+
+        // initial
+        method();
 
         return () => {
           if (parentOverflow) parentOverflow.removeEventListener('scroll', method);
