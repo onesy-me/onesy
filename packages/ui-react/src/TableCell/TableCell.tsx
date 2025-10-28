@@ -281,14 +281,18 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
           setStickyActive(offsetOriginal !== offsetNew);
         };
 
+        // initial
+        method();
+
+        setTimeout(() => {
+          method();
+        }, 150);
+
         if (parentOverflow) {
           parentOverflow.addEventListener('scroll', method, {
             passive: false
           });
         }
-
-        // initial
-        method();
 
         return () => {
           if (parentOverflow) parentOverflow.removeEventListener('scroll', method);
