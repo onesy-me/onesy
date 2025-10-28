@@ -13,6 +13,7 @@ import { TLineAlign, TLineJustify } from '../Line/Line';
 import { getOverflowParent, staticClassName } from '../utils';
 import { IBaseElement, IPropsAny } from '../types';
 import Tooltip from '../Tooltip';
+import useResize from '../useResize';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -164,6 +165,7 @@ export type ITableCell = IBaseElement & {
 
 const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
+  const windowWidth = useResize();
 
   const l = theme.l;
 
@@ -256,7 +258,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   React.useEffect(() => {
     // init
     init();
-  }, []);
+  }, [windowWidth]);
 
   React.useEffect(() => {
     if (sortedBy !== sortedBy_) setSortedBy(sortedBy_);
@@ -293,7 +295,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
         };
       }
     }
-  }, [sticky, stickyPosition, root]);
+  }, [windowWidth, sticky, stickyPosition, root]);
 
   const onSort = React.useCallback(() => {
     let valueNew: any;

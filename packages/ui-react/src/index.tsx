@@ -334,8 +334,8 @@ export * from './ViewSplit';
 export { default as WindowSplit } from './WindowSplit';
 export * from './WindowSplit';
 
-export { default as MainProgress } from './MainProgress';
-export * from './MainProgress';
+export { default as MainProgressMaterial } from './MainProgressMaterial';
+export * from './MainProgressMaterial';
 
 export { default as Image } from './Image';
 export * from './Image';
@@ -636,3 +636,18 @@ export * from './Whiteboard';
 
 export { default as CookieBanner } from './CookieBanner';
 export * from './CookieBanner';
+
+export { default as MainProgress } from './MainProgress';
+export * from './MainProgress';
+
+export { default as useOnline } from './useOnline';
+export * from './useOnline';
+
+export { default as useOpen } from './useOpen';
+export * from './useOpen';
+
+export { default as useResize } from './useResize';
+export * from './useResize';
+
+export { default as useTabs } from './useTabs';
+export * from './useTabs';
