@@ -265,17 +265,28 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   React.useEffect(() => {
     if (sticky) {
       if (root) {
-        const parentOverflow = getOverflowParent(root, false);
+        const parentOverflow = getOverflowParent(root.parentElement, false);
 
-        const offsetPrevious = stickyPosition === 'left' ? root.offsetLeft : (window.innerWidth - root.getBoundingClientRect().right);
+        root.style.position = 'unset';
+
+        const offsetOriginal = root.offsetLeft;
+
+        root.style.position = 'sticky';
 
         const method = () => {
-          const offsetNew = stickyPosition === 'left' ? root.offsetLeft : (window.innerWidth - root.getBoundingClientRect().right);
+          const offsetNew = root.offsetLeft;
 
-          setStickyActive(offsetPrevious !== offsetNew);
+          setStickyActive(offsetOriginal !== offsetNew);
         };
 
-        if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
+        if (parentOverflow) {
+          parentOverflow.addEventListener('scroll', method, {
+            passive: false
+          });
+
+          // initial
+          method();
+        }
 
         return () => {
           parentOverflow.removeEventListener('scroll', method);

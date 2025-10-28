@@ -335,7 +335,7 @@ export const importIframeStyles = (iframeDocument: Document) => {
   }
 };
 
-export const getOverflowParent = (element: HTMLElement, vertical = true): HTMLElement => {
+export const getOverflowParent = (element: HTMLElement, vertical = true) => {
   if (!element) return;
 
   // height
@@ -344,7 +344,7 @@ export const getOverflowParent = (element: HTMLElement, vertical = true): HTMLEl
   // width
   if (!vertical && element.scrollWidth > element.clientWidth) return element;
 
-  return getOverflowParent(element.parentElement);
+  return getOverflowParent(element.parentElement, vertical);
 };
 
 export const keyboardStandardCommands = ['a', 'c', 'v', 'y', 'z'];
