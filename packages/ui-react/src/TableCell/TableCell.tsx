@@ -71,8 +71,10 @@ const useStyle = styleMethod(theme => ({
 
   sticky: {
     position: 'sticky',
-    zIndex: '14',
+    zIndex: '14'
+  },
 
+  sticky_left: {
     '&::after': {
       content: "''",
       position: 'absolute',
@@ -85,9 +87,28 @@ const useStyle = styleMethod(theme => ({
     }
   },
 
-  stickyActive: {
+  sticky_right: {
+    '&::after': {
+      content: "''",
+      position: 'absolute',
+      top: '0',
+      left: '-24px',
+      bottom: '0',
+      width: '24px',
+      transition: theme.methods.transitions.make('box-shadow'),
+      pointerEvents: 'none'
+    }
+  },
+
+  stickyActive_left: {
     '&::after': {
       boxShadow: `inset 11px 0 7px -7px ${theme.palette.light ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.14)'}`
+    }
+  },
+
+  stickyActive_right: {
+    '&::after': {
+      boxShadow: `inset -11px 0 7px -7px ${theme.palette.light ? 'rgba(0, 0, 0, 0.04)' : 'rgba(255, 255, 255, 0.14)'}`
     }
   },
 
@@ -244,7 +265,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   React.useEffect(() => {
     if (sticky) {
       if (root) {
-        const parentOverflow = getOverflowParent(root);
+        const parentOverflow = getOverflowParent(root, false);
 
         const offsetPrevious = stickyPosition === 'left' ? root.offsetLeft : (window.innerWidth - root.getBoundingClientRect().right);
 
@@ -311,8 +332,11 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
         classes.root,
         position === 'head' ? classes.head : classes.body,
         noWeight && classes.noWeight,
-        sticky && classes.sticky,
-        stickyActive && classes.stickyActive
+        sticky && [
+          classes.sticky,
+          classes[`sticky_${stickyPosition}`]
+        ],
+        stickyActive && classes[`stickyActive_${stickyPosition}`]
       ])}
 
       style={{

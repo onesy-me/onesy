@@ -335,10 +335,14 @@ export const importIframeStyles = (iframeDocument: Document) => {
   }
 };
 
-export const getOverflowParent = (element: HTMLElement): HTMLElement => {
+export const getOverflowParent = (element: HTMLElement, vertical = true): HTMLElement => {
   if (!element) return;
 
-  if (element.scrollHeight > element.clientHeight) return element;
+  // height
+  if (vertical && element.scrollHeight > element.clientHeight) return element;
+
+  // width
+  if (!vertical && element.scrollWidth > element.clientWidth) return element;
 
   return getOverflowParent(element.parentElement);
 };
