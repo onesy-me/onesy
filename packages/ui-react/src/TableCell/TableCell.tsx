@@ -267,11 +267,13 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   React.useEffect(() => {
     if (sticky) {
       if (root) {
+        let offsetOriginal = root.offsetLeft;
+
         const parentOverflow = getOverflowParent(root.parentElement, false);
 
         root.style.position = 'unset';
 
-        const offsetOriginal = root.offsetLeft;
+        offsetOriginal = root.offsetLeft;
 
         root.style.position = 'sticky';
 
@@ -285,6 +287,12 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
         method();
 
         setTimeout(() => {
+          root.style.position = 'unset';
+
+          offsetOriginal = root.offsetLeft;
+
+          root.style.position = 'sticky';
+
           method();
         }, 150);
 
