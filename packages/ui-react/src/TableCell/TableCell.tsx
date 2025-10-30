@@ -286,6 +286,16 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
         // initial
         method();
 
+        setTimeout(() => {
+          root.style.position = 'unset';
+
+          offsetOriginal = root.offsetLeft;
+
+          root.style.position = 'sticky';
+
+          method();
+        }, 400);
+
         if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
 
         return () => {

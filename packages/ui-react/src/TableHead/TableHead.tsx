@@ -125,6 +125,16 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
         // initial
         method();
 
+        setTimeout(() => {
+          root.style.position = 'unset';
+
+          offsetOriginal = root.offsetTop;
+
+          root.style.position = 'sticky';
+
+          method();
+        }, 400);
+
         if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
 
         return () => {
