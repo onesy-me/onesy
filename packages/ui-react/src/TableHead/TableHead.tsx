@@ -106,20 +106,29 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
   React.useEffect(() => {
     if (sticky) {
       if (root) {
-        const parentOverflow = getOverflowParent(root);
+        let offsetOriginal = root.offsetTop;
 
-        const offsetPrevious = root.offsetTop;
+        const parentOverflow = window.document.querySelector('.onesy-Table-wrapper');
+
+        root.style.position = 'unset';
+
+        offsetOriginal = root.offsetTop;
+
+        root.style.position = 'sticky';
 
         const method = () => {
           const offsetNew = root.offsetTop;
 
-          setStickyActive(offsetPrevious !== offsetNew);
+          setStickyActive(offsetOriginal !== offsetNew);
         };
+
+        // initial
+        method();
 
         if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
 
         return () => {
-          parentOverflow.removeEventListener('scroll', method);
+          if (parentOverflow) parentOverflow.removeEventListener('scroll', method);
         };
       }
     }

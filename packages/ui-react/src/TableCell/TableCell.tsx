@@ -269,7 +269,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
       if (root) {
         let offsetOriginal = root.offsetLeft;
 
-        const parentOverflow = getOverflowParent(root.parentElement, false);
+        const parentOverflow = window.document.querySelector('.onesy-Table-wrapper');
 
         root.style.position = 'unset';
 
@@ -286,21 +286,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
         // initial
         method();
 
-        setTimeout(() => {
-          root.style.position = 'unset';
-
-          offsetOriginal = root.offsetLeft;
-
-          root.style.position = 'sticky';
-
-          method();
-        }, 150);
-
-        if (parentOverflow) {
-          parentOverflow.addEventListener('scroll', method, {
-            passive: false
-          });
-        }
+        if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
 
         return () => {
           if (parentOverflow) parentOverflow.removeEventListener('scroll', method);
