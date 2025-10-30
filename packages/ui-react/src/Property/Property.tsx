@@ -30,6 +30,26 @@ const useStyle = styleMethod(theme => ({
     }
   },
 
+  'version_row-30': {
+    '& > *:first-child': {
+      flex: '1 1 30%'
+    },
+
+    '& > *:last-child': {
+      flex: '1 1 70%'
+    }
+  },
+
+  'version_row-40': {
+    '& > *:first-child': {
+      flex: '1 1 40%'
+    },
+
+    '& > *:last-child': {
+      flex: '1 1 60%'
+    }
+  },
+
   text: {
     wordBreak: 'break-word'
   }
@@ -42,7 +62,7 @@ export type IProperty = ILine & {
 
   separator?: any;
 
-  version?: 'row' | 'row-20' | 'row-50' | 'row-between' | 'column';
+  version?: 'row' | 'row-20' | 'row-30' | 'row-40' | 'row-50' | 'row-between' | 'column';
 
   size?: 'small' | 'regular' | 'large';
 
@@ -66,7 +86,7 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
   const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
 
   const {
-    version: version_ = 'row-20',
+    version: version_ = 'row-30',
 
     size = 'regular',
 
@@ -125,7 +145,7 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
   if (version === 'row') {
     propsRoot.justify = 'flex-start';
   }
-  else if (['row-20', 'row-50', 'row-between'].includes(version)) {
+  else if (['row-20', 'row-30', 'row-40', 'row-50', 'row-between'].includes(version)) {
     propsRoot.justify = 'space-between';
   }
 

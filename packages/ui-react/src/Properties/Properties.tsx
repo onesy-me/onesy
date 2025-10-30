@@ -45,7 +45,7 @@ export type IPropertiesValue = {
 };
 
 export type IProperties = ILine & {
-  version?: 'row' | 'row-20' | 'row-50' | 'row-between' | 'column';
+  version?: 'row' | 'row-20' | 'row-30' | 'row-40' | 'row-50' | 'row-between' | 'column';
 
   values?: (boolean | IPropertiesValue)[];
   onlyWithValues?: boolean;
@@ -65,7 +65,7 @@ const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) =>
   const Property = React.useMemo(() => theme?.elements?.Property || PropertyElement, [theme]);
 
   const {
-    version = 'row-20',
+    version = 'row-30',
 
     size = 'regular',
 
