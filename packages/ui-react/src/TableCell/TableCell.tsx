@@ -156,6 +156,8 @@ export type ITableCell = IBaseElement & {
   stickyPosition?: 'left' | 'right';
   stickyOffset?: number;
 
+  timeout?: number;
+
   IconArrow?: any;
 
   IconButtonSortProps?: any;
@@ -198,6 +200,8 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
     sticky,
     stickyPosition = 'left',
     stickyOffset,
+
+    timeout = 150,
 
     disabled,
 
@@ -294,7 +298,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
           root.style.position = 'sticky';
 
           method();
-        }, 400);
+        }, timeout);
 
         if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
 
@@ -303,7 +307,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
         };
       }
     }
-  }, [windowWidth, sticky, stickyPosition, root]);
+  }, [timeout, windowWidth, sticky, stickyPosition, root]);
 
   const onSort = React.useCallback(() => {
     let valueNew: any;

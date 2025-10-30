@@ -50,6 +50,8 @@ export type ITableHead = ISurface & {
 
   loading?: boolean;
 
+  timeout?: number;
+
   LinearGradientProps?: any;
   TableRowLoaderProps?: any;
 };
@@ -72,6 +74,8 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
 
     sticky,
     stickyOffset = 0,
+
+    timeout = 150,
 
     loading,
 
@@ -133,7 +137,7 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
           root.style.position = 'sticky';
 
           method();
-        }, 400);
+        }, timeout);
 
         if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
 
@@ -142,7 +146,7 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
         };
       }
     }
-  }, [sticky, root]);
+  }, [timeout, sticky, root]);
 
   return (
     <Surface
