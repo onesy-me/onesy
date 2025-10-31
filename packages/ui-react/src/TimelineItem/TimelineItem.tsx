@@ -84,10 +84,11 @@ export type ITimelineItem = ILine & {
   start?: IElement;
   end?: IElement;
 
-  DividerProps?: IPropsAny;
-  IconProps?: IPropsAny;
+  icon?: any;
 
-  Icon?: IElementReference;
+  DividerProps?: IPropsAny;
+  iconProps?: IPropsAny;
+
   Divider?: any;
 };
 
@@ -112,13 +113,13 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
       tonal: 'secondary',
       color: 'neutral'
     } : undefined,
-    IconProps = !props.Icon ? {
+    iconProps = !props.icon ? {
       tonal: 'secondary',
       color: 'neutral',
       version: 'filled'
     } : undefined,
 
-    Icon,
+    icon,
     Divider: Divider_,
 
     Component = 'li',
@@ -218,9 +219,9 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
             classes[`iconWrapper_orientation_${orientation}`]
           ])}
         >
-          {Icon ? Icon as any : (
+          {icon ? icon as any : (
             <Surface
-              {...IconProps}
+              {...iconProps}
 
               tonal
 
@@ -229,7 +230,7 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
                   'onesy-TimelineItem-icon'
                 ],
 
-                IconProps?.className,
+                iconProps?.className,
                 classes.icon
               ])}
             />
