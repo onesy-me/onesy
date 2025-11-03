@@ -167,7 +167,6 @@ export type ITableCell = IBaseElement & {
 
 const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
-  const windowWidth = useResize();
 
   const l = theme.l;
 
@@ -224,13 +223,17 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
   const { classes } = useStyle();
 
+  const windowWidth = useResize();
+
   const [root, setRoot] = React.useState<HTMLElement>();
   const [stickyActive, setStickyActive] = React.useState(false);
   const [offset, setOffset] = React.useState(0);
   const [sortedBy, setSortedBy] = React.useState(sortedByDefault);
 
   const refs = {
-    root: React.useRef<HTMLElement>(undefined)
+    root: React.useRef<HTMLElement>(undefined),
+    offset: React.useRef(null),
+    observer: React.useRef<MutationObserver>(null)
   };
 
   const init = React.useCallback(() => {
@@ -268,44 +271,79 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
     if (sortedBy !== sortedBy_) setSortedBy(sortedBy_);
   }, [sortedBy_]);
 
-  React.useEffect(() => {
-    if (sticky) {
-      if (root) {
-        let offsetOriginal = root.offsetLeft;
+  const onStickyMove = React.useCallback(() => {
+    const offsetNew = refs.root.current.offsetLeft;
 
-        const parentOverflow = window.document.querySelector('.onesy-Table-wrapper');
+    setStickyActive(refs.offset.current !== offsetNew);
+  }, []);
 
-        root.style.position = 'unset';
+  const onStickyInit = React.useCallback(() => {
+    if (sticky && root) {
+      root.style.position = 'unset';
 
-        offsetOriginal = root.offsetLeft;
+      refs.offset.current = root.offsetLeft;
 
-        root.style.position = 'sticky';
+      root.style.position = 'sticky';
 
-        const method = () => {
-          const offsetNew = root.offsetLeft;
+      onStickyMove();
+    }
+  }, [sticky, root]);
 
-          setStickyActive(offsetOriginal !== offsetNew);
-        };
+  const onObserve = React.useCallback(() => {
+    const element = refs.root.current?.closest('table');
 
-        // initial
-        method();
+    // clean up
+    if (refs.observer.current) refs.observer.current.disconnect();
 
-        setTimeout(() => {
-          root.style.position = 'unset';
+    if (!element) return;
 
-          offsetOriginal = root.offsetLeft;
+    // init
+    const config = {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['style', 'data-*'],
+      characterData: true
+    };
 
-          root.style.position = 'sticky';
-
-          method();
-        }, timeout);
-
-        if (parentOverflow) parentOverflow.addEventListener('scroll', method, { passive: false });
-
-        return () => {
-          if (parentOverflow) parentOverflow.removeEventListener('scroll', method);
-        };
+    const method = mutations => {
+      for (const mutation of mutations) {
+        switch (mutation.type) {
+          case 'childList':
+          case 'attributes':
+          case 'characterData':
+            onStickyInit();
+            break;
+        }
       }
+    };
+
+    refs.observer.current = new MutationObserver(method);
+
+    refs.observer.current.observe(element, config);
+
+    return refs.observer.current;
+  }, []);
+
+  React.useEffect(() => {
+    if (root && sticky) {
+      onStickyInit();
+
+      setTimeout(() => {
+        onStickyInit();
+      }, 250);
+
+      // observer
+      onObserve();
+
+      // scroll
+      const parentOverflow = window.document.querySelector('.onesy-Table-wrapper');
+
+      if (parentOverflow) parentOverflow.addEventListener('scroll', onStickyMove, { passive: false });
+
+      return () => {
+        if (parentOverflow) parentOverflow.removeEventListener('scroll', onStickyMove);
+      };
     }
   }, [timeout, windowWidth, sticky, stickyPosition, root]);
 
