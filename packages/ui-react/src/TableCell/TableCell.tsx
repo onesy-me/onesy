@@ -233,8 +233,13 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   const refs = {
     root: React.useRef<HTMLElement>(undefined),
     offset: React.useRef(null),
-    observer: React.useRef<MutationObserver>(null)
+    observer: React.useRef<MutationObserver>(null),
+    sticky: React.useRef(sticky)
   };
+
+  refs.root.current = root;
+
+  refs.sticky.current = sticky;
 
   const init = React.useCallback(() => {
     setTimeout(() => {
@@ -278,16 +283,16 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   }, []);
 
   const onStickyInit = React.useCallback(() => {
-    if (sticky && root) {
-      root.style.position = 'unset';
+    if (refs.sticky.current && refs.root.current) {
+      refs.root.current.style.position = 'unset';
 
-      refs.offset.current = root.offsetLeft;
+      refs.offset.current = refs.root.current.offsetLeft;
 
-      root.style.position = 'sticky';
+      refs.root.current.style.position = 'sticky';
 
       onStickyMove();
     }
-  }, [sticky, root]);
+  }, []);
 
   const onObserve = React.useCallback(() => {
     const element = refs.root.current?.closest('table');
@@ -302,7 +307,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
       childList: true,
       subtree: true,
       attributes: true,
-      attributeFilter: ['style', 'data-*'],
+      attributeFilter: ['data-*'],
       characterData: true
     };
 
