@@ -393,37 +393,39 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
         ])
       }}
 
-      footer={<>
+      footer={(footer || menu || list) && <>
         {footer}
 
-        <Expand
-          in={openList}
+        {list && (
+          <Expand
+            in={openList}
 
-          parent={refs.root.current}
+            parent={refs.root.current}
 
-          {...ExpandProps}
-        >
-          <ListTransitionComponent
-            {...ListTransitionComponentProps}
+            {...ExpandProps}
           >
-            <List
-              indent={5}
-
-              {...ListProps}
-
-              className={classNames([
-                staticClassName('ListItem', theme) && [
-                  'onesy-ListItem-list'
-                ],
-
-                ListProps?.className,
-                classes.list
-              ])}
+            <ListTransitionComponent
+              {...ListTransitionComponentProps}
             >
-              {list}
-            </List>
-          </ListTransitionComponent>
-        </Expand>
+              <List
+                indent={5}
+
+                {...ListProps}
+
+                className={classNames([
+                  staticClassName('ListItem', theme) && [
+                    'onesy-ListItem-list'
+                  ],
+
+                  ListProps?.className,
+                  classes.list
+                ])}
+              >
+                {list}
+              </List>
+            </ListTransitionComponent>
+          </Expand>
+        )}
 
         {/* Menu */}
         {menu && (
