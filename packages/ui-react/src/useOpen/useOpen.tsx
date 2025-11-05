@@ -17,11 +17,7 @@ export interface IUseOpenReturn {
 }
 
 const useOpen = (props?: IUseOpen): IUseOpenReturn => {
-  const {
-    open: openProps
-  } = props || {};
-
-  const [open, setOpen] = React.useState({ open: is('simple', openProps) ? openProps : false, ...(!is('simple', openProps) && openProps) });
+  const [open, setOpen] = React.useState({ open: false, ...props });
 
   const onOpen = React.useCallback((item?: any) => {
     setOpen({ open: true, ...item });
