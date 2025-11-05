@@ -21,7 +21,7 @@ const useOpen = (props?: IUseOpen): IUseOpenReturn => {
     open: openProps
   } = props || {};
 
-  const [open, setOpen] = React.useState({ open: false, ...openProps });
+  const [open, setOpen] = React.useState({ open: is('simple', openProps) ? openProps : false, ...(!is('simple', openProps) && openProps) });
 
   const onOpen = React.useCallback((item?: any) => {
     setOpen({ open: true, ...item });
