@@ -127,8 +127,9 @@ const useStyle = styleMethod(theme => ({
 
     borderRadius: theme.methods.shape.radius.value(40, 'px'),
     overflow: 'hidden',
-    width: '17px',
-    height: '17px',
+    width: '18px',
+    height: '18px',
+    marginBottom: '3px',
     cursor: 'pointer',
     boxShadow: theme.methods.shadow(theme.palette.text.default.primary, theme.palette.light ? [7, 4, 11] : [27, 24, 31])[1],
 
