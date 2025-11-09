@@ -21,7 +21,7 @@ import TypeElement from '../Type';
 import CarouselElement from '../Carousel';
 import PaginationItemElement from '../PaginationItem';
 import { IconDoneAnimated } from '../Buttons/Buttons';
-import { ICalenarDays, TCalendarMonthCalendar, TCalendarMonthValue } from '../CalendarMonth/CalendarMonth';
+import { ICalendarMonth, TCalendarMonthCalendar, TCalendarMonthValue } from '../CalendarMonth/CalendarMonth';
 import { TTransitionStatus } from '../Transition';
 import { ISurface } from '../Surface/Surface';
 import { iconFontSize, staticClassName } from '../utils';
@@ -207,8 +207,7 @@ export type ICalendar = Omit<ISurface, 'version' | 'onChange'> & {
   IconNext?: IElementReference;
   IconDropDown?: IElementReference;
 
-  CalendarMonthProps?: any;
-  CalendarDayProps?: ICalenarDays;
+  CalendarMonthProps?: ICalendarMonth;
   OptionButtonProps?: any;
   PaginationItemsProps?: any;
 };

@@ -12,12 +12,15 @@ import TransitionsElement from '../Transitions';
 import TransitionElement, { TTransitionStatus } from '../Transition';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IPropsAny } from '../types';
+import { IColor, IPropsAny } from '../types';
 import { ICalendarViewsView } from '../CalendarViews/CalendarViews';
 
 const useStyle = style(theme => ({
   root: {
-    // for transition
+    position: 'relative'
+  },
+
+  root_transition: {
     overflow: 'hidden',
     position: 'relative'
   },
@@ -91,6 +94,12 @@ const useStyle = style(theme => ({
     opacity: '0'
   },
 
+  daySelected: {
+    '&.onesy-Button-disabled': {
+      opacity: 1
+    }
+  },
+
   dayStart: {
     borderRadius: `${theme.methods.shape.radius.value(40, 'px')} 0 0 ${theme.methods.shape.radius.value(40, 'px')}`
   },
@@ -103,19 +112,27 @@ const useStyle = style(theme => ({
     borderRadius: theme.methods.shape.radius.value(40, 'px')
   },
 
-  dayStartSelected: {
-    '&::before': {
+  dayStartSelection: {
+    '&::after': {
       content: '""',
       position: 'absolute',
       left: '50%',
       top: '0',
       height: '100%',
       width: '50%',
-      background: 'currentColor'
+      zIndex: 0
+    },
+
+    '&.onesy-enabled::after': {
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 85 : 25})`
+    },
+
+    '&.onesy-disabled::after': {
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 90 : 20})`
     }
   },
 
-  dayEndSelected: {
+  dayEndSelection: {
     '&::before': {
       content: '""',
       position: 'absolute',
@@ -124,7 +141,15 @@ const useStyle = style(theme => ({
       top: '0',
       height: '100%',
       width: '50%',
-      background: 'currentColor'
+      zIndex: 0
+    },
+
+    '&.onesy-enabled::before': {
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 85 : 25})`
+    },
+
+    '&.onesy-disabled::before': {
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 90 : 20})`
     }
   },
 
@@ -200,6 +225,8 @@ const useStyle = style(theme => ({
   },
 
   dayValue: {
+    zIndex: 1,
+
     '&:hover': {
       boxShadow: 'inset 0px 0px 0px 1px currentColor'
     }
@@ -229,7 +256,7 @@ export type ICalendarMonthValuesValue = {
 
 export type TCalendarMonthValues = [ICalendarMonthValuesValue, ICalendarMonthValuesValue];
 
-export type ICalenarDays = Omit<ILine, 'onChange'> & {
+export type ICalendarMonth = Omit<ILine, 'onChange'> & {
   value?: TCalendarMonthValue;
   valueDefault?: TCalendarMonthValue;
   onChange?: (value: TCalendarMonthValue) => any;
@@ -237,6 +264,10 @@ export type ICalenarDays = Omit<ILine, 'onChange'> & {
   calendar?: TCalendarMonthCalendar;
   calendarDefault?: TCalendarMonthCalendar;
   onChangeCalendar?: (value: TCalendarMonthCalendar) => any;
+
+  colorSelected?: IColor;
+
+  selected?: Array<[OnesyDate, OnesyDate?]>;
 
   onTimeClick?: (date: OnesyDate, view: ICalendarViewsView, event: MouseEvent) => any;
 
@@ -262,7 +293,34 @@ export type ICalenarDays = Omit<ILine, 'onChange'> & {
   TransitionsProps?: IPropsAny;
 };
 
-const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: any) => {
+export interface IDay {
+  value: number;
+  in: boolean;
+  dayWeek: number;
+  weekend: boolean;
+  today: boolean;
+  is: {
+    start: boolean;
+    between: boolean;
+    end: boolean;
+    same: boolean;
+    selected: boolean;
+    outside: boolean;
+
+    fromSelected: boolean;
+
+    monthStart: boolean;
+    monthEnd: boolean;
+
+    selectedIndex: number;
+    selectedSame: boolean;
+  };
+  start: boolean;
+  end: boolean;
+  onesyDate: OnesyDate;
+}
+
+const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -294,6 +352,10 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     calendar: calendar_,
     calendarDefault,
     onChangeCalendar,
+
+    colorSelected = 'secondary',
+
+    selected,
 
     onTimeClick,
 
@@ -460,7 +522,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     return values[order_];
   };
 
-  const days = [];
+  const days: Partial<IDay>[] = [];
 
   const monthNow = new OnesyDate();
 
@@ -479,13 +541,124 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
   const monthSame = refs.previous.current?.year === calendar?.year && refs.previous.current?.month === calendar?.month;
 
-  const isBetween = (day: any) => day.milliseconds >= value[0]?.milliseconds && day.milliseconds <= (value[1]?.milliseconds + 4000);
+  const getRanges = React.useCallback((ranges: any) => {
+    // Convert all ranges to start/end timestamps
+    const rangeTimestamps = ranges.map(itemRange => ({
+      start: itemRange[0].milliseconds,
+      end: (itemRange[1] || itemRange[0]).milliseconds
+    }));
 
-  const isSelected = (day: any) => value.some((item: any) => item.year === day.year && item.month === day.month && item.day === day.day);
+    // Sort by start time
+    rangeTimestamps.sort((a, b) => a.start - b.start);
 
-  const selectedIndex = (day: any) => value.findIndex((item: any) => item.year === day.year && item.month === day.month && item.day === day.day);
+    // Merge overlapping ranges
+    const mergedRanges = [];
 
-  const selectedSame = (day: any) => value.filter((item: any) => item.year === day.year && item.month === day.month && item.day === day.day).length === 2;
+    let currentRange = rangeTimestamps[0];
+
+    for (let i = 1; i < rangeTimestamps.length; i++) {
+      if (rangeTimestamps[i].start <= currentRange.end) {
+        // Ranges overlap, merge them
+        currentRange.end = Math.max(currentRange.end, rangeTimestamps[i].end);
+      }
+      else {
+        // No overlap, push current range and start new one
+        mergedRanges.push(currentRange);
+        currentRange = rangeTimestamps[i];
+      }
+    }
+
+    mergedRanges.push(currentRange);
+
+    return mergedRanges.filter(Boolean);
+  }, []);
+
+  const rangesValue = React.useMemo(() => {
+    const ranges = [value].map(item => {
+      return item.map((itemRange, index) => !index ? startOf(itemRange, 'day') : endOf(itemRange, 'day'));
+    });
+
+    return getRanges(ranges);
+  }, [value]);
+
+  const rangesSelected = React.useMemo(() => {
+    const ranges = [...selected || []].map(item => {
+      return item.map((itemRange, index) => !index ? startOf(itemRange, 'day') : endOf(itemRange, 'day'));
+    });
+
+    return getRanges(ranges);
+  }, [selected]);
+
+  const getDetails = React.useCallback((day: OnesyDate) => {
+    const dayFormat = format(day, 'DD-MM-YYYY');
+
+    const dayMonthStart = format(startOf(day, 'month'), 'DD-MM-YYYY');
+    const dayMonthEnd = format(endOf(day, 'month'), 'DD-MM-YYYY');
+
+    const result = {
+      start: false,
+      between: false,
+      end: false,
+      same: false,
+      selected: false,
+      outside: false,
+      fromSelected: false,
+
+      monthStart: dayMonthStart === dayFormat,
+      monthEnd: dayMonthEnd === dayFormat,
+
+      selectedIndex: value.findIndex((item: any) => item.year === day.year && item.month === day.month && item.day === day.day),
+      selectedSame: value.filter((item: any) => item.year === day.year && item.month === day.month && item.day === day.day).length === 2,
+    };
+
+    // selected
+    for (const itemRange of rangesSelected) {
+      const rangeStartDay = format(new OnesyDate(itemRange.start), 'DD-MM-YYYY');
+      const rangeEndDay = format(new OnesyDate(itemRange.end), 'DD-MM-YYYY');
+
+      // start
+      if (dayFormat === rangeStartDay) result.selected = result.start = true;
+
+      // end
+      if (dayFormat === rangeEndDay) result.selected = result.end = true;
+
+      // between
+      if (day.milliseconds >= itemRange.start && day.milliseconds <= itemRange.end) result.selected = result.between = true;
+
+      // same
+      result.same = result.start && result.end;
+
+      if (result.selected) {
+        result.fromSelected = true;
+
+        return result;
+      }
+    }
+
+    // value
+    for (const itemRange of rangesValue) {
+      const rangeStartDay = format(new OnesyDate(itemRange.start), 'DD-MM-YYYY');
+      const rangeEndDay = format(new OnesyDate(itemRange.end), 'DD-MM-YYYY');
+
+      // start
+      if (dayFormat === rangeStartDay) result.selected = result.start = true;
+
+      // end
+      if (dayFormat === rangeEndDay) result.selected = result.end = true;
+
+      // between
+      if (day.milliseconds >= itemRange.start && day.milliseconds <= itemRange.end) result.selected = result.between = true;
+
+      // same
+      result.same = result.start && result.end;
+
+      if (result.selected) return result;
+    }
+
+    result.outside = true;
+
+    return result;
+  }, [value, selected, rangesSelected, rangesValue]);
 
   let isMonthFrom = false;
   let isMonthTo = false;
@@ -496,10 +669,10 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
     day = set(14, 'hour', day);
 
-    const selectedIndex_ = selectedIndex(day);
+    const details = getDetails(day);
 
-    if (selectedIndex_ === 0) isMonthFrom = true;
-    else if (selectedIndex_ === 1) isMonthTo = true;
+    if (details.selectedIndex === 0) isMonthFrom = true;
+    else if (details.selectedIndex === 1) isMonthTo = true;
 
     days.push({
       value: i + 1,
@@ -512,13 +685,9 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
       today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
 
-      between: isBetween(day),
-
-      selected: isSelected(day),
-
-      selectedIndex: selectedIndex_,
-
-      selectedSame: selectedSame(day),
+      is: {
+        ...details
+      },
 
       onesyDate: day
     });
@@ -540,6 +709,8 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     for (let i = 0; i < toAdd; i++) {
       const day = set(previousMonthEnd.day - i, 'day', previousMonth);
 
+      const details = getDetails(day);
+
       days.unshift({
         value: day.day,
 
@@ -551,13 +722,9 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
         today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
 
-        between: isBetween(day),
-
-        selected: isSelected(day),
-
-        selectedIndex: selectedIndex(day),
-
-        selectedSame: selectedSame(day),
+        is: {
+          ...details
+        },
 
         start: true,
 
@@ -577,6 +744,8 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
     for (let i = 0; i < toAdd; i++) {
       const day = set(i + 1, 'day', nextMonth);
 
+      const details = getDetails(day);
+
       days.push({
         value: i + 1,
 
@@ -588,13 +757,9 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
 
         today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
 
-        between: isBetween(day),
-
-        selected: isSelected(day),
-
-        selectedIndex: selectedIndex(day),
-
-        selectedSame: selectedSame(day),
+        is: {
+          ...details
+        },
 
         end: true,
 
@@ -602,6 +767,14 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
       });
     }
   }
+
+  const colorTheme = React.useMemo(() => {
+    return theme.palette.color[color] || theme.methods.color(color);
+  }, [color, theme]);
+
+  const colorSelectedTheme = React.useMemo(() => {
+    return theme.palette.color[colorSelected] || theme.methods.color(colorSelected);
+  }, [colorSelected, theme]);
 
   // noTransition
   refs.noTransition.current = monthSame;
@@ -619,8 +792,13 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
   const weeks = arrayToParts(days, 7);
 
   const getCalendar = (status?: TTransitionStatus) => {
+
     return (
-      <Surface>
+      <Surface
+        color={color}
+
+        tonal={tonal}
+      >
         {({ palette }) => (
           <Line
             gap={0.5}
@@ -663,19 +841,19 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                   classes.week
                 ])}
               >
-                {week.map((day: any, index_: number) => {
+                {week.map((day: IDay, index_: number) => {
                   const propsDay = {
                     onClick: () => onUpdate(day.onesyDate, day.start || day.end ? -1 : undefined),
 
                     disabled: (
                       (!day.in && !outside) ||
-
                       !valid(day.onesyDate, 'day') ||
-
                       // not prior to 1970, we may potentially update this in the future
                       day.onesyDate.year < 1970
                     )
                   };
+
+                  const isEdge = (day.is.same || ((day.is.monthStart || day.is.monthEnd) && day.is.selected));
 
                   return (
                     <Line
@@ -703,23 +881,19 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                         classes[`day_size_${size}`],
                         classes[`day_${day.in ? 'in' : 'out'}`],
                         (!day.in && !outside) && classes.day_out_no,
-                        !day.selectedSame && range && [
-                          (day.dayWeek === 1 || (day.selected && day.selectedIndex === 0) || (day.start && !outside)) && classes.dayStart,
-                          (day.dayWeek === 0 || (day.selected && day.selectedIndex === 1) || (day.end && !outside)) && classes.dayEnd,
-                          ((day.dayWeek === 1 || (day.selected && day.selectedIndex === 0) || (day.start && !outside)) && (day.dayWeek === 0 || (day.selected && day.selectedIndex === 1) || (day.end && !outside))) && classes.dayStartEnd,
-                          (day.selected && day.selectedIndex === 0 && !day.selectedSame) && classes.dayStartSelected,
-                          (day.selected && day.selectedIndex === 1 && !day.selectedSame) && classes.dayEndSelected
-                        ]
+                        !propsDay.disabled ? 'onesy-enabled' : 'onesy-disabled',
+                        // same day
+                        // (day.is.same || ((day.is.monthStart || day.is.monthEnd) && day.is.selected)) && classes.dayStartEnd,
+                        // start
+                        (day.is.start && !isEdge) && classes.dayStart,
+                        // end
+                        (day.is.end && !isEdge) && classes.dayEnd,
+                        // between
+                        day.is.between && !day.is.same && [!day.is.end && day.dayWeek !== 0 && !day.is.monthEnd && classes.dayStartSelection, !day.is.start && day.dayWeek !== 1 && !day.is.monthStart && classes.dayEndSelection]
                       ])}
 
                       style={{
-                        ...(range && !day.selected && !day.selectedSame && day.between ? {
-                          background: theme.methods.palette.color.value(undefined, 60, true, palette)
-                        } : undefined),
-
-                        ...(range && day.selected && !day.selectedSame ? {
-                          color: theme.methods.palette.color.value(undefined, 60, true, palette)
-                        } : undefined)
+                        '--onesy-color': day.is.fromSelected ? colorSelectedTheme.main : colorTheme.main
                       }}
                     >
                       {is('function', renderDay) ?
@@ -739,7 +913,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                             TypeProps={{
                               version: size === 'large' ? 'b1' : size === 'regular' ? 'b2' : 'b3',
 
-                              priority: !day.selected ? !day.weekend ? 'primary' : 'secondary' : undefined
+                              priority: !day.is.selected ? !day.weekend ? 'primary' : 'secondary' : undefined
                             }}
 
                             aria-label={format(day.onesyDate, 'DD-MM-YYYY', { l })}
@@ -753,25 +927,32 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
                                 day.dayWeek && 'onesy-CalendarMonth-day-day-week',
                                 day.weekend && 'onesy-CalendarMonth-day-weekend',
                                 day.today && 'onesy-CalendarMonth-day-today',
-                                day.between && 'onesy-CalendarMonth-day-between',
-                                day.selected && 'onesy-CalendarMonth-day-selected',
-                                day.start && 'onesy-CalendarMonth-day-start',
-                                day.end && 'onesy-CalendarMonth-day-end'
+                                day.is.between && 'onesy-CalendarMonth-day-between',
+                                day.is.selected && 'onesy-CalendarMonth-day-selected',
+                                day.is.start && 'onesy-CalendarMonth-day-start',
+                                day.is.end && 'onesy-CalendarMonth-day-end'
                               ],
 
                               PaginationItemProps?.className,
-                              classes.dayValue
+                              classes.dayValue,
+                              day.is.selected && classes.daySelected,
+                              classes[`day_size_${size}`]
                             ])}
 
                             style={{
                               ...(day.today ? {
-                                boxShadow: `inset 0px 0px 0px 1px ${palette[40]}`
+                                boxShadow: `inset 0px 0px 0px 1px ${colorTheme[40]}`
                               } : undefined),
 
-                              ...(day.selected ? {
-                                color: theme.methods.palette.color.value(undefined, 90, true, palette),
-                                backgroundColor: theme.methods.palette.color.value(undefined, 40, true, palette)
-                              } : undefined),
+                              ...(day.is.selected && day.is.between && {
+                                color: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 10 : 98})`,
+                                backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? propsDay.disabled ? 90 : 85 : propsDay.disabled ? 20 : 25})`
+                              }),
+
+                              ...(day.is.selected && (day.is.start || day.is.end) && {
+                                color: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 98 : 10})`,
+                                backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? propsDay.disabled ? 40 : 50 : propsDay.disabled ? 60 : 70})`
+                              }),
 
                               ...PaginationItemProps?.style
                             }}
@@ -807,7 +988,7 @@ const CalendarMonth: React.FC<ICalenarDays> = React.forwardRef((props__, ref: an
         ],
 
         className,
-        classes.root,
+        noTransition ? classes.root : classes.root_transition,
         classes[`size_${size}`],
         classes[`move_${refs.move.current}`],
         !labels && classes.root_no_labels,
