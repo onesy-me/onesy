@@ -467,12 +467,12 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
         // based on if value is closer to the middle from, or middle to
         if (!value[0]) index = 0;
         else if (!value[1]) index = 1;
-        else if (valueUpdated.milliseconds < value[0].milliseconds) index = 0;
-        else if (valueUpdated.milliseconds > value[1].milliseconds) index = 1;
+        else if (valueUpdated.milliseconds < value[0]?.milliseconds) index = 0;
+        else if (valueUpdated.milliseconds > value[1]?.milliseconds) index = 1;
         else {
-          const middle = Math.abs(value[1].milliseconds - value[0].milliseconds) / 2;
+          const middle = Math.abs(value[1].milliseconds - value[0]?.milliseconds) / 2;
 
-          index = valueUpdated.milliseconds <= (value[0].milliseconds + middle) ? 0 : 1;
+          index = valueUpdated.milliseconds <= (value[0]?.milliseconds + middle) ? 0 : 1;
         }
 
         valueNew = [...value];
@@ -543,7 +543,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
 
   const getRanges = React.useCallback((ranges: any) => {
     // Convert all ranges to start/end timestamps
-    const rangeTimestamps = ranges.map(itemRange => ({
+    const rangeTimestamps = ranges.filter(itemRange => itemRange.filter(Boolean).length).map(itemRange => ({
       start: itemRange[0].milliseconds,
       end: (itemRange[1] || itemRange[0]).milliseconds
     }));

@@ -450,7 +450,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
           <Carousel
             color='default'
 
-            id={value[0].milliseconds + (value[1]?.milliseconds || 0) + year}
+            id={value[0]?.milliseconds + (value[1]?.milliseconds || 0) + year}
 
             value={carousel}
 
