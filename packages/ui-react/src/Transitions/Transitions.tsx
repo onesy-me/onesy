@@ -58,8 +58,6 @@ const Transitions: React.FC<ITransitions> = (props_) => {
 
   refs.status.current = status;
 
-  // No transition controll
-  // bug solve in nextjs
   React.useEffect(() => {
     if (id !== undefined) {
       if (id !== refs.id.current) {

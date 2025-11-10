@@ -344,9 +344,6 @@ const Transition: React.FC<ITransition> = (props_) => {
 
     updateStatus('add');
 
-    // Reflow
-    reflow(refs.root.current);
-
     await delay('add');
 
     // Prevent update batches
@@ -370,9 +367,6 @@ const Transition: React.FC<ITransition> = (props_) => {
 
     updateStatus('enter');
 
-    // Reflow
-    reflow(refs.root.current);
-
     await delay('enter');
 
     // Prevent update batches
@@ -392,9 +386,6 @@ const Transition: React.FC<ITransition> = (props_) => {
     ) return;
 
     updateStatus('exit');
-
-    // Reflow
-    reflow(refs.root.current);
 
     await delay('exit');
 
@@ -506,6 +497,9 @@ const Transition: React.FC<ITransition> = (props_) => {
       if ((refs.root.current.className as unknown as SVGAnimatedString)?.baseVal) (refs.root.current.className as unknown as SVGAnimatedString).baseVal = className_;
       else refs.root.current.className = className_;
     }
+
+    // reflow
+    reflow(refs.root.current);
   };
 
   if (status === 'removed') return null;

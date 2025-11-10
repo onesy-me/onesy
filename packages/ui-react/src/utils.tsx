@@ -3,7 +3,7 @@ import { is, canvasFilterBrightness, canvasFilterContrast, canvasFilterSaturatio
 import { IPoint } from './types';
 
 export function reflow(element: HTMLElement) {
-  element?.offsetHeight;
+  return element?.offsetHeight;
 }
 
 export const staticClassName = (name: string, theme: any) => {
