@@ -768,10 +768,6 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     }
   }
 
-  const colorTheme = React.useMemo(() => {
-    return theme.palette.color[color] || theme.methods.color(color);
-  }, [color, theme]);
-
   const colorSelectedTheme = React.useMemo(() => {
     return theme.palette.color[colorSelected] || theme.methods.color(colorSelected);
   }, [colorSelected, theme]);
@@ -893,7 +889,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
                       ])}
 
                       style={{
-                        '--onesy-color': day.is.fromSelected ? colorSelectedTheme.main : colorTheme.main
+                        '--onesy-color': day.is.fromSelected ? colorSelectedTheme?.main : palette?.main
                       }}
                     >
                       {is('function', renderDay) ?
@@ -941,7 +937,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
 
                             style={{
                               ...(day.today ? {
-                                boxShadow: `inset 0px 0px 0px 1px ${colorTheme[40]}`
+                                boxShadow: `inset 0px 0px 0px 1px ${palette[40]}`
                               } : undefined),
 
                               ...(day.is.selected && day.is.between && {
