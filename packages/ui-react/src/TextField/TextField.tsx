@@ -124,9 +124,19 @@ const useStyle = styleMethod(theme => {
       '-webkit-tap-highlight-color': 'transparent',
       textAlign: 'start',
 
-      ...theme.typography.values.b2,
-
       ...overflow
+    },
+
+    input_size_small: {
+      ...theme.typography.values.b2
+    },
+
+    input_size_regular: {
+      ...theme.typography.values.b2
+    },
+
+    input_size_large: {
+      ...theme.typography.values.b1
     },
 
     multiline: {
@@ -135,19 +145,19 @@ const useStyle = styleMethod(theme => {
       whiteSpace: 'normal'
     },
 
-    input_size_small: {
+    inputWrapper_size_small: {
       // height: '48px',
       padding: `${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(2, 'px')}`,
       paddingTop: theme.methods.space.value(2.5, 'px')
     },
 
-    input_size_regular: {
+    inputWrapper_size_regular: {
       // height: '56px',
       padding: `11px ${theme.methods.space.value(2, 'px')}`,
       paddingTop: theme.methods.space.value(3, 'px')
     },
 
-    input_size_large: {
+    inputWrapper_size_large: {
       // height: '64px',
       padding: theme.methods.space.value(2, 'px'),
       paddingTop: theme.methods.space.value(3.5, 'px')
@@ -1259,7 +1269,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
         {label && (
           <Type
-            version='b2'
+            version={['small', 'regular'].includes(size as any) ? 'b2' : 'b1'}
 
             id={refs.ids.label}
 
@@ -1329,6 +1339,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
         {prefix !== undefined && (
           <Type
+            version={['small', 'regular'].includes(size as any) ? 'b2' : 'b1'}
+
             className={classNames([
               staticClassName('TextField', theme) && [
                 'onesy-TextField-addition',
@@ -1344,8 +1356,6 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
               noPrefixMargin && classes.noPrefixMargin,
               minimal && !label && classes[`addition_without_label_size_${size}`]
             ])}
-
-            version='b2'
           >
             {prefix}
           </Type>
@@ -1363,7 +1373,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
             InputWrapperProps?.className,
             (enabled || label === undefined || valueWithData || focus) && classes.inputWrapper_focus,
             classes[`input_version_${version}`],
-            classes[`input_size_${size}`],
+            classes[`inputWrapper_size_${size}`],
             classes[`input_version_${version}_size_${size}`],
             (prefix || start) && classes.input_start_icon,
             (sufix || end) && classes.input_end_icon,
@@ -1407,6 +1417,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
               ],
 
               classes.input,
+              classes[`input_size_${size}`],
               inputProps?.className,
               multiline && classes.multiline,
               align && classes[`input_align_${align}`]
@@ -1442,6 +1453,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
         {sufix !== undefined && (
           <Type
+            version={['small', 'regular'].includes(size as any) ? 'b2' : 'b1'}
+
             className={classNames([
               staticClassName('TextField', theme) && [
                 'onesy-TextField-addition',
@@ -1456,8 +1469,6 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
               (enabled || valueWithData || focus) && classes.sufix_focus,
               noSufixMargin && classes.noSufixMargin
             ])}
-
-            version='b2'
           >
             {sufix}
           </Type>
@@ -1518,7 +1529,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
           >
             {(helperText || required) && (
               <Type
-                version='b3'
+                version={['small', 'regular'].includes(size as any) ? 'b3' : 'b2'}
 
                 {...HelperTextProps}
 
@@ -1539,7 +1550,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
             {counter && (
               <Type
-                version='b3'
+                version={['small', 'regular'].includes(size as any) ? 'b3' : 'b2'}
 
                 className={classNames([
                   staticClassName('TextField', theme) && [

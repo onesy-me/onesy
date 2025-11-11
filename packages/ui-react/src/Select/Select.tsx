@@ -18,122 +18,126 @@ import { ITextField } from '../TextField/TextField';
 import { staticClassName } from '../utils';
 import { IElement, IPropsAny } from '../types';
 
-const useStyle = styleMethod(theme => {
-  const overflow = {
+const useStyle = styleMethod(theme => ({
+  root: {
+    flex: 'unset',
+    minWidth: '184px',
+
+    '& .onesy-TextField-input': {
+      position: 'absolute',
+      left: '0',
+      bottom: '0',
+      pointerEvents: 'none',
+      opacity: '0'
+    },
+
+    '& .onesy-TextField-input-wrapper': {
+      cursor: 'pointer'
+    }
+  },
+
+  wrapper: {
+    position: 'relative'
+  },
+
+  inputWrapper: {
+    overflow: 'hidden',
+    cursor: 'pointer',
+
+    '&.onesy-TextField-input-wrapper': {
+      cursor: 'pointer'
+    }
+  },
+
+  inputWrapper_chip_size_small: {
+    minHeight: '48px'
+  },
+
+  inputWrapper_chip_size_regular: {
+    minHeight: '56px'
+  },
+
+  inputWrapper_chip_size_large: {
+    minHeight: '64px'
+  },
+
+  input: {
+    display: 'flex',
+    alignItems: 'center',
+    minHeight: 20,
+    margin: '0',
+    border: '0',
+    color: theme.palette.text.default.primary,
+    background: 'transparent',
+    '-webkit-tap-highlight-color': 'transparent',
+    textAlign: 'start',
+    borderRadius: `${theme.shape.radius.unit / 2}px ${theme.shape.radius.unit / 2}px 0 0`,
+    cursor: 'pointer',
+    pointerEvents: 'none',
+
+    // overflow
     width: '100%',
     overflow: 'hidden',
     whiteSpace: 'pre',
     textOverflow: 'ellipsis'
-  };
+  },
 
-  return {
-    root: {
-      flex: 'unset',
-      minWidth: '184px',
+  input_size_small: {
+    ...theme.typography.values.b2
+  },
 
-      '& .onesy-TextField-input': {
-        position: 'absolute',
-        left: '0',
-        bottom: '0',
-        pointerEvents: 'none',
-        opacity: '0'
-      },
+  input_size_regular: {
+    ...theme.typography.values.b2
+  },
 
-      '& .onesy-TextField-input-wrapper': {
-        cursor: 'pointer'
-      }
-    },
+  input_size_large: {
+    ...theme.typography.values.b1
+  },
 
-    wrapper: {
-      position: 'relative'
-    },
-
-    inputWrapper: {
-      overflow: 'hidden',
-      cursor: 'pointer',
-
-      '&.onesy-TextField-input-wrapper': {
-        cursor: 'pointer'
-      }
-    },
-
-    inputWrapper_chip_size_small: {
-      minHeight: '48px'
-    },
-
-    inputWrapper_chip_size_regular: {
-      minHeight: '56px'
-    },
-
-    inputWrapper_chip_size_large: {
-      minHeight: '64px'
-    },
-
-    input: {
-      display: 'flex',
-      alignItems: 'center',
-      width: '100%',
-      minHeight: 20,
-      margin: '0',
-      border: '0',
-      color: theme.palette.text.default.primary,
-      background: 'transparent',
-      '-webkit-tap-highlight-color': 'transparent',
-      textAlign: 'start',
-      borderRadius: `${theme.shape.radius.unit / 2}px ${theme.shape.radius.unit / 2}px 0 0`,
-      cursor: 'pointer',
-      pointerEvents: 'none',
-
-      ...theme.typography.values.b2,
-
-      ...overflow
-    },
-
-    chip: {
-      '&.onesy-TextField-input-wrapper': {
-        height: 'unset'
-      }
-    },
-
-    chipGroup: {
-      pointerEvents: 'auto'
-    },
-
-    chipGroup_padding: {
-      paddingTop: theme.methods.space.value(0.5, 'px')
-    },
-
-    arrow: {
-      transition: theme.methods.transitions.make('transform')
-    },
-
-    arrow_open: {
-      transform: 'rotate(-180deg)'
-    },
-
-    open: {
-      '&.onesy-TextField-root': {
-        cursor: 'default'
-      }
-    },
-
-    fullWidth: {
-      width: '100%'
-    },
-
-    readOnly: {
-      '&.onesy-TextField-root': {
-        cursor: 'default'
-      }
-    },
-
-    disabled: {
-      '&.onesy-TextField-root': {
-        cursor: 'default'
-      }
+  chip: {
+    '&.onesy-TextField-input-wrapper': {
+      height: 'unset'
     }
-  };
-}, { name: 'onesy-Select' });
+  },
+
+  chipGroup: {
+    pointerEvents: 'auto'
+  },
+
+  chipGroup_padding: {
+    paddingTop: theme.methods.space.value(0.5, 'px')
+  },
+
+  arrow: {
+    transition: theme.methods.transitions.make('transform')
+  },
+
+  arrow_open: {
+    transform: 'rotate(-180deg)'
+  },
+
+  open: {
+    '&.onesy-TextField-root': {
+      cursor: 'default'
+    }
+  },
+
+  fullWidth: {
+    width: '100%'
+  },
+
+  readOnly: {
+    '&.onesy-TextField-root': {
+      cursor: 'default'
+    }
+  },
+
+  disabled: {
+    '&.onesy-TextField-root': {
+      cursor: 'default'
+    }
+  }
+}), { name: 'onesy-Select' });
 
 export type ISelect = ITextField & {
   options?: Array<{
@@ -697,6 +701,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
             ],
 
             classes.input,
+            classes[`input_size_${size}`],
             chip && classes.chip,
             open && classes.open,
             readOnly && classes.readOnly

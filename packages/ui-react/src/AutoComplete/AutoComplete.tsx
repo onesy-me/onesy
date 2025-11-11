@@ -45,7 +45,23 @@ const useStyle = styleMethod(theme => ({
     borderRadius: `${theme.shape.radius.unit / 2}px ${theme.shape.radius.unit / 2}px 0 0`,
     minHeight: 20,
 
+    // overflow
+    width: '100%',
+    overflow: 'hidden',
+    whiteSpace: 'pre',
+    textOverflow: 'ellipsis'
+  },
+
+  input_size_small: {
     ...theme.typography.values.b2
+  },
+
+  input_size_regular: {
+    ...theme.typography.values.b2
+  },
+
+  input_size_large: {
+    ...theme.typography.values.b1
   },
 
   inputWrapper_multiple_size_small: {
@@ -646,6 +662,8 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
         if (is('number', limit) && !open && value.length - limit > 0) (values as any).push(
           <Type
+            version={['small', 'regular'].includes(size as any) ? 'b2' : 'b1'}
+
             color='default'
 
             className={classes.limitText}
@@ -1039,6 +1057,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
               multiple && [
                 classes.input,
+                classes[`input_size_${size}`],
                 chip && classes.chip,
                 open && classes.open,
                 readOnly && classes.readOnly
