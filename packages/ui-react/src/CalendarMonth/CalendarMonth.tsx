@@ -522,8 +522,6 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     return values[order_];
   };
 
-  const days: Partial<IDay>[] = [];
-
   const monthNow = new OnesyDate();
 
   // value or value range selected value
@@ -660,96 +658,21 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     return result;
   }, [value, selected, rangesSelected, rangesValue]);
 
-  let isMonthFrom = false;
-  let isMonthTo = false;
+  const days: Partial<IDay>[] = React.useMemo(() => {
+    const items = [];
 
-  // Add all month days
-  for (let i = 0; i < month.daysInMonth; i++) {
-    let day = set(i + 1, 'day', month);
+    // Add all month days
+    for (let i = 0; i < month.daysInMonth; i++) {
+      let day = set(i + 1, 'day', month);
 
-    day = set(14, 'hour', day);
-
-    const details = getDetails(day);
-
-    if (details.selectedIndex === 0) isMonthFrom = true;
-    else if (details.selectedIndex === 1) isMonthTo = true;
-
-    days.push({
-      value: i + 1,
-
-      in: true,
-
-      dayWeek: day.dayWeek,
-
-      weekend: [0, 6].includes(day.dayWeek),
-
-      today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
-
-      is: {
-        ...details
-      },
-
-      onesyDate: day
-    });
-  }
-
-  days[0].start = true;
-
-  days[days.length - 1].end = true;
-
-  // Add to start
-  if (
-    (weekStartDay === 'Sunday' && monthStart.dayWeek !== 0) ||
-    (weekStartDay === 'Monday' && monthStart.dayWeek !== 1)
-  ) {
-    let toAdd = monthStart.dayWeek === 0 ? 6 : monthStart.dayWeek - 1;
-
-    if (weekStartDay === 'Sunday') toAdd++;
-
-    for (let i = 0; i < toAdd; i++) {
-      const day = set(previousMonthEnd.day - i, 'day', previousMonth);
+      day = set(14, 'hour', day);
 
       const details = getDetails(day);
 
-      days.unshift({
-        value: day.day,
-
-        in: false,
-
-        dayWeek: day.dayWeek,
-
-        weekend: [0, 6].includes(day.dayWeek),
-
-        today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
-
-        is: {
-          ...details
-        },
-
-        start: true,
-
-        onesyDate: day
-      });
-    }
-  }
-
-  // Add to end
-  const dayLast = days[days.length - 1];
-
-  if (dayLast.dayWeek < 7) {
-    let toAdd = 7 - dayLast.dayWeek;
-
-    if (days.length + toAdd - 1 < 42) toAdd += 41 - (days.length + toAdd - 1);
-
-    for (let i = 0; i < toAdd; i++) {
-      const day = set(i + 1, 'day', nextMonth);
-
-      const details = getDetails(day);
-
-      days.push({
+      items.push({
         value: i + 1,
 
-        in: false,
+        in: true,
 
         dayWeek: day.dayWeek,
 
@@ -761,12 +684,87 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
           ...details
         },
 
-        end: true,
-
         onesyDate: day
       });
     }
-  }
+
+    items[0].start = true;
+
+    items[items.length - 1].end = true;
+
+    // Add to start
+    if (
+      (weekStartDay === 'Sunday' && monthStart.dayWeek !== 0) ||
+      (weekStartDay === 'Monday' && monthStart.dayWeek !== 1)
+    ) {
+      let toAdd = monthStart.dayWeek === 0 ? 6 : monthStart.dayWeek - 1;
+
+      if (weekStartDay === 'Sunday') toAdd++;
+
+      for (let i = 0; i < toAdd; i++) {
+        const day = set(previousMonthEnd.day - i, 'day', previousMonth);
+
+        const details = getDetails(day);
+
+        items.unshift({
+          value: day.day,
+
+          in: false,
+
+          dayWeek: day.dayWeek,
+
+          weekend: [0, 6].includes(day.dayWeek),
+
+          today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
+
+          is: {
+            ...details
+          },
+
+          start: true,
+
+          onesyDate: day
+        });
+      }
+    }
+
+    // Add to end
+    const dayLast = items[items.length - 1];
+
+    if (dayLast.dayWeek < 7) {
+      let toAdd = 7 - dayLast.dayWeek;
+
+      if (items.length + toAdd - 1 < 42) toAdd += 41 - (items.length + toAdd - 1);
+
+      for (let i = 0; i < toAdd; i++) {
+        const day = set(i + 1, 'day', nextMonth);
+
+        const details = getDetails(day);
+
+        items.push({
+          value: i + 1,
+
+          in: false,
+
+          dayWeek: day.dayWeek,
+
+          weekend: [0, 6].includes(day.dayWeek),
+
+          today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
+
+          is: {
+            ...details
+          },
+
+          end: true,
+
+          onesyDate: day
+        });
+      }
+    }
+
+    return items;
+  }, [month, getDetails]);
 
   const colorSelectedTheme = React.useMemo(() => {
     return theme.palette.color[colorSelected] || theme.methods.color(colorSelected);
@@ -991,10 +989,6 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
         disabled && classes.disabled
       ])}
 
-      {...(isMonthFrom && { 'data-month-from': true })}
-
-      {...(isMonthTo && { 'data-month-to': true })}
-
       {...other}
     >
       {/* Day names */}
@@ -1050,9 +1044,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
       )}
 
       {/* Weeks */}
-      {noTransition && (
-        getCalendar()
-      )}
+      {noTransition && getCalendar()}
 
       {!noTransition && (
         <Transitions
