@@ -355,7 +355,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
     ) repeating = false;
 
     if (repeating) {
-      const formated = format(day, formats.date);
+      const formatted = format(day, formats.date);
 
       if (value?.repeat?.ends?.active) {
         // date
@@ -381,11 +381,11 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
       if (repeating) {
         if (!refs.repeatCount.current[value?.id]) refs.repeatCount.current[value?.id] = [];
 
-        if (!refs.repeatCount.current[value?.id].includes(formated)) refs.repeatCount.current[value?.id].push(formated);
+        if (!refs.repeatCount.current[value?.id].includes(formatted)) refs.repeatCount.current[value?.id].push(formatted);
       }
 
       if (value?.repeat?.ends?.active) {
-        const indexRepeated = refs.repeatCount.current[value?.id]?.indexOf(formated);
+        const indexRepeated = refs.repeatCount.current[value?.id]?.indexOf(formatted);
 
         // count
         if (value?.repeat.ends.version === 'count') repeating = repeating && value?.repeat.ends.value >= ((indexRepeated === -1 ? 0 : indexRepeated) + 1);
