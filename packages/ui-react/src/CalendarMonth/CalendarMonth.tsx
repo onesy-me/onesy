@@ -609,6 +609,26 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
       selectedSame: value.filter((item: any) => item.year === day.year && item.month === day.month && item.day === day.day).length === 2,
     };
 
+    // value
+    for (const itemRange of rangesValue) {
+      const rangeStartDay = format(new OnesyDate(itemRange.start), 'DD-MM-YYYY');
+      const rangeEndDay = format(new OnesyDate(itemRange.end), 'DD-MM-YYYY');
+
+      // start
+      if (dayFormat === rangeStartDay) result.selected = result.start = true;
+
+      // end
+      if (dayFormat === rangeEndDay) result.selected = result.end = true;
+
+      // between
+      if (day.milliseconds >= itemRange.start && day.milliseconds <= itemRange.end) result.selected = result.between = true;
+
+      // same
+      result.same = result.start && result.end;
+
+      if (result.selected) return result;
+    }
+
     // selected
     for (const itemRange of rangesSelected) {
       const rangeStartDay = format(new OnesyDate(itemRange.start), 'DD-MM-YYYY');
@@ -631,26 +651,6 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
 
         return result;
       }
-    }
-
-    // value
-    for (const itemRange of rangesValue) {
-      const rangeStartDay = format(new OnesyDate(itemRange.start), 'DD-MM-YYYY');
-      const rangeEndDay = format(new OnesyDate(itemRange.end), 'DD-MM-YYYY');
-
-      // start
-      if (dayFormat === rangeStartDay) result.selected = result.start = true;
-
-      // end
-      if (dayFormat === rangeEndDay) result.selected = result.end = true;
-
-      // between
-      if (day.milliseconds >= itemRange.start && day.milliseconds <= itemRange.end) result.selected = result.between = true;
-
-      // same
-      result.same = result.start && result.end;
-
-      if (result.selected) return result;
     }
 
     result.outside = true;
