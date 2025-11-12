@@ -165,7 +165,6 @@ const useStyle = styleMethod(theme => ({
 const IconItem = (props: any) => {
   const {
     noFontSizeDownScale,
-    size,
 
     Component = 'span',
 
@@ -183,6 +182,8 @@ const IconItem = (props: any) => {
     }
   };
 
+  const size = ['very small', 'small', 'regular', 'medium', 'large', 'very large'].includes(props.size) ? props.size : 'small';
+
   let fontSize = '1.5rem';
 
   if (size === 'very small') fontSize = '0.75rem';
@@ -191,7 +192,6 @@ const IconItem = (props: any) => {
   else if (size === 'medium') fontSize = '2.25rem';
   else if (size === 'large') fontSize = '3rem';
   else if (size === 'very large') fontSize = '3.75rem';
-  else if (size !== undefined) fontSize = `${size}${!String(size).includes('px') ? 'px' : ''}`;
 
   styles.root.fontSize = `calc(${fontSize} * 0.75)`;
 
@@ -451,6 +451,8 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
       {...other}
     >
       <IconItem
+        size={size}
+
         className={classNames([
           staticClassName('Checkbox', theme) && [
             'onesy-Checkbox-icon-item'
@@ -467,6 +469,8 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
       <IconItem
         Component='div'
+
+        size={size}
 
         className={classNames([
           staticClassName('Checkbox', theme) && [
@@ -494,6 +498,8 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
       {indeterminate && (
         <IconItem
+          size={size}
+
           className={classNames([
             staticClassName('Checkbox', theme) && [
               'onesy-Checkbox-icon',
@@ -515,6 +521,8 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
       {value && (
         <IconDoneAnimated
+          size={size}
+
           className={classNames([
             staticClassName('Checkbox', theme) && [
               'onesy-Checkbox-icon',
