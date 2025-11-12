@@ -159,14 +159,14 @@ const useStyle = styleMethod(theme => ({
 
 const Icon = (props: any) => {
   const {
-    size,
-
     style,
 
     children,
 
     ...other
   } = props;
+
+  const size = ['very small', 'small', 'regular', 'medium', 'large', 'very large'].includes(props.size) ? props.size : 'small';
 
   let fontSize = 24;
 
@@ -176,7 +176,6 @@ const Icon = (props: any) => {
   else if (size === 'medium') fontSize = 30;
   else if (size === 'large') fontSize = 38;
   else if (size === 'very large') fontSize = 42;
-  else if (size !== undefined) fontSize = size;
 
   return (
     <span

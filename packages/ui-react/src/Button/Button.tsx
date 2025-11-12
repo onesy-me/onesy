@@ -312,6 +312,7 @@ export type IButton = Omit<ISurface, 'elevation'> & {
   InteractionProps?: IPropsAny;
   IconWrapperProps?: IPropsAny;
   LabelProps?: IPropsAny;
+  IconProps?: IPropsAny;
 };
 
 const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
@@ -370,6 +371,7 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
     InteractionProps = {},
     IconWrapperProps,
     LabelProps,
+    IconProps,
 
     Component = props.href ? 'a' : 'button',
 
@@ -470,11 +472,15 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
             }) :
             React.cloneElement(item, {
               key: index,
-              size: item.props.size !== undefined ? item.props.size : !noFontSize ? iconFontSize !== undefined ? iconFontSize : (size === 'large' ? 'medium' : size) : undefined
+              ...IconProps,
+
+              size: item.props.size !== undefined ? item.props.size : !noFontSize ? iconFontSize !== undefined ? iconFontSize : IconProps?.size || (size === 'large' ? 'medium' : size) : undefined
             } as any)
         ) :
         React.cloneElement((children_ as any), {
-          size: children_.props.size !== undefined ? children_.props.size : !noFontSize ? iconFontSize !== undefined ? iconFontSize : (size === 'large' ? 'medium' : size) : undefined
+          ...IconProps,
+
+          size: children_.props.size !== undefined ? children_.props.size : !noFontSize ? iconFontSize !== undefined ? iconFontSize : IconProps?.size || (size === 'large' ? 'medium' : size) : undefined
         });
 
       if (!noFontSize) {
@@ -659,7 +665,9 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
           ])}
         >
           {React.cloneElement(start as any, {
-            size: (start as any)?.props?.size || size || 'regular'
+            ...IconProps,
+
+            size: (start as any)?.props?.size || IconProps?.size || size || 'regular'
           })}
         </span>
       )}
@@ -746,7 +754,9 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
           ])}
         >
           {React.cloneElement(end as any, {
-            size: (end as any)?.props?.size || size || 'regular'
+            ...IconProps,
+
+            size: (end as any)?.props?.size || IconProps?.size || size || 'regular'
           })}
         </span>
       )}

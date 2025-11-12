@@ -32,11 +32,31 @@ const useStyle = styleMethod(theme => ({
   nameRoot_noMargin: { padding: '0' },
 
   name: {
+
+  },
+
+  name_size_small: {
     ...theme.typography.values.b3,
 
-    borderRadius: `${clamp(theme.shape.radius.unit / 2, 0, 8)}px`,
     padding: `${theme.methods.space.value(0.5, 'px')} ${theme.methods.space.value(1, 'px')}`,
-    lineHeight: '1.455'
+    borderRadius: `${clamp(theme.shape.radius.unit / 2, 0, 6)}px`,
+    lineHeight: '1.3'
+  },
+
+  name_size_regular: {
+    ...theme.typography.values.b2,
+
+    padding: `${theme.methods.space.value(0.75, 'px')} ${theme.methods.space.value(1.25, 'px')}`,
+    borderRadius: `${clamp(theme.shape.radius.unit / 2, 0, 8)}px`,
+    lineHeight: '1.3'
+  },
+
+  name_size_large: {
+    ...theme.typography.values.b1,
+
+    padding: `${theme.methods.space.value(1, 'px')} ${theme.methods.space.value(1.5, 'px')}`,
+    borderRadius: `${clamp(theme.shape.radius.unit / 2, 0, 12)}px`,
+    lineHeight: '1.3'
   },
 
   arrow: {
@@ -241,6 +261,8 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
     name,
     label: label_,
+
+    size = 'regular',
 
     parent,
     position = 'bottom',
@@ -652,6 +674,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
                       LabelProps?.className,
                       classes.name,
+                      classes[`name_size_${size}`],
                       arrow && [
                         classes.arrow,
                         classes[`arrow_position_${position}_alignment_${alignment}`]
