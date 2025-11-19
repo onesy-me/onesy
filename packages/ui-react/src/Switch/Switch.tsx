@@ -166,16 +166,13 @@ const Icon = (props: any) => {
     ...other
   } = props;
 
-  const size = ['very small', 'small', 'regular', 'medium', 'large', 'very large'].includes(props.size) ? props.size : 'small';
+  const size = ['small', 'regular', 'large'].includes(props.size) ? props.size : 'small';
 
   let fontSize = 24;
 
-  if (size === 'very small') fontSize = 12;
-  else if (size === 'small') fontSize = 18;
+  if (size === 'small') fontSize = 18;
   else if (size === 'regular') fontSize = 24;
-  else if (size === 'medium') fontSize = 30;
-  else if (size === 'large') fontSize = 38;
-  else if (size === 'very large') fontSize = 42;
+  else if (size === 'large') fontSize = 30;
 
   return (
     <span
