@@ -764,7 +764,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     }
 
     return items;
-  }, [month, getDetails]);
+  }, [month, rangesValue, rangesSelected]);
 
   const colorSelectedTheme = React.useMemo(() => {
     return theme.palette.color[colorSelected] || theme.methods.color(colorSelected);

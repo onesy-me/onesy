@@ -912,7 +912,7 @@ ${listItem(other_, level)}
 
       if (is('function', onUpdate)) onUpdate();
     }
-  }, [init, value, onStart, onAdded, onUpdate]);
+  }, [init, value]);
 
   return (
     <Component

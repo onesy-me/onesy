@@ -45,7 +45,7 @@ const useOpen = (props?: IUseOpen): IUseOpenReturn => {
       onChange,
       setOpen
     };
-  }, [open, setOpen]);
+  }, [open]);
 
   return result;
 };

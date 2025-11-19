@@ -1071,7 +1071,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
   React.useEffect(() => {
     if (is('function', onUpdateItems)) onUpdateItems();
-  }, [items, onUpdateItems, theme.palette.light]);
+  }, [items, theme.palette.light]);
 
   React.useEffect(() => {
     setItems(items_);

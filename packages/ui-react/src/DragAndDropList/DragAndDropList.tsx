@@ -90,7 +90,7 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
 
       rootDocument.body.removeEventListener('touchend', onMouseUp);
     };
-  }, [onDraggedElement]);
+  }, []);
 
   const img = React.useMemo(() => {
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
