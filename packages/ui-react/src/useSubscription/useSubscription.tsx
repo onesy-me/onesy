@@ -10,6 +10,12 @@ const useSubscription = <Type extends unknown = undefined>(onesySubscription: On
   // in order for rerender to be made
   const [response, setResponse] = React.useState<[Type]>([value !== undefined ? value : onesySubscription?.value]);
 
+  const refs = {
+    method: React.useRef(method)
+  };
+
+  refs.method.current = method;
+
   React.useEffect(() => {
     if (value !== undefined) {
       if (is('function', (onesySubscription as any).init)) (onesySubscription as any).init({
@@ -24,7 +30,7 @@ const useSubscription = <Type extends unknown = undefined>(onesySubscription: On
     if (!is('function', onesySubscription?.subscribe)) return;
 
     const subscription = onesySubscription.subscribe(async (valueItem: any) => {
-      if (is('function', method)) await method(valueItem, setResponse);
+      if (is('function', refs.method.current)) await refs.method.current(valueItem, setResponse);
       else setResponse([valueItem]);
     });
 
