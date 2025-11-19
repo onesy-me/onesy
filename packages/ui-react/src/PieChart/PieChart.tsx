@@ -65,17 +65,17 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPieChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPieChart?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
+  const Chart = theme?.elements?.Chart || ChartElement;
 
-  const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
+  const Path = theme?.elements?.Path || PathElement;
 
   const {
     tonal = true,
@@ -146,7 +146,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
 
   refs.init.current = init;
 
-  const LegendItem = React.useCallback((props__: any) => {
+  const LegendItem = (props__: any) => {
     const {
       item = {},
 
@@ -205,7 +205,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
         </Type>
       </Line>
     );
-  }, [theme]);
+  };
 
   const make = () => {
     // Make values into x, y, coordinates
@@ -412,7 +412,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const initMethod = React.useCallback(() => {
+  const initMethod = () => {
     if (animate) {
       if (!init) {
         refs.pathStyle.current = {
@@ -434,7 +434,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
         }, refs.animateTimeout.current);
       }
     }
-  }, [init, animate]);
+  };
 
   React.useEffect(() => {
     make();

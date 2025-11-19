@@ -19,9 +19,9 @@ export type IDateTimeRangePicker = IDateTimePicker & {
 const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDateTimeRangePicker?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDateTimeRangePicker?.props?.default, ...props_ };
 
-  const DateTimePicker = React.useMemo(() => theme?.elements?.DateTimePicker || DateTimePickerElement, [theme]);
+  const DateTimePicker = theme?.elements?.DateTimePicker || DateTimePickerElement;
 
   const {
     className,

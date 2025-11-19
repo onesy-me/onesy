@@ -98,17 +98,17 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAudioRecorder?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAudioRecorder?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     size = 'regular',
@@ -187,7 +187,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     refs.animationFrame.current = requestAnimationFrame(update);
   };
 
-  const onStart = React.useCallback(async (event: React.MouseEvent<any>) => {
+  const onStart = async (event: React.MouseEvent<any>) => {
     // MediaStream
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -238,9 +238,9 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
     // previous action
     refs.previousAction.current = 'start';
-  }, [onStart_, onError]);
+  };
 
-  const onPause = React.useCallback((event: React.MouseEvent<any>) => {
+  const onPause = (event: React.MouseEvent<any>) => {
     // media recorder
     if (refs.mediaRecorder.current) refs.mediaRecorder.current.pause();
 
@@ -258,9 +258,9 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
     // previous action
     refs.previousAction.current = 'pause';
-  }, [onPause_]);
+  };
 
-  const onStop = React.useCallback((event: React.MouseEvent<any>) => {
+  const onStop = (event: React.MouseEvent<any>) => {
     // media recorder
     if (refs.mediaRecorder.current) refs.mediaRecorder.current.stop();
 
@@ -275,9 +275,9 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     refs.value.current = 0;
 
     if (is('function', onStop_)) onStop_(event);
-  }, [onStop_]);
+  };
 
-  const onConfirm = React.useCallback(async (event: React.MouseEvent<any>) => {
+  const onConfirm = async (event: React.MouseEvent<any>) => {
     // Stop
     onStop(event);
 
@@ -310,9 +310,9 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
     refs.mediaRecorderBytes.current = [];
 
     if (is('function', onConfirm_)) onConfirm_(blob, meta);
-  }, [onStop, onConfirm_]);
+  };
 
-  const onResume = React.useCallback((event: React.MouseEvent<any>) => {
+  const onResume = (event: React.MouseEvent<any>) => {
     // media recorder
     if (refs.mediaRecorder.current) refs.mediaRecorder.current.resume();
 
@@ -328,7 +328,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
 
     // previous action
     refs.previousAction.current = 'resume';
-  }, [onResume_]);
+  };
 
   const valueFormat = (valueNew_: number) => {
     let valueNew = '';

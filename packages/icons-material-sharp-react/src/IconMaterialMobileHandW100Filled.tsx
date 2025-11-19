@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMobileHandW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MobileHandW100Filled'
+
+      short_name='MobileHand'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M212-132v-696h420v63H532v296l-138-68-135 142 205 263H212Zm417 0q-17 0-32-6t-26-20L391-388l25-27 216 106v-356h36l120 120v293q0 50-35 85t-85 35h-39ZM422-664q11 0 19.5-8.5T450-692q0-11-8.5-19.5T422-720q-11 0-19.5 8.5T394-692q0 11 8.5 19.5T422-664Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMobileHandW100Filled.displayName = 'OnesyIconMaterialMobileHandW100Filled';
+
+export default IconMaterialMobileHandW100Filled;

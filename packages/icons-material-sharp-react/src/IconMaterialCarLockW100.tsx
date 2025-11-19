@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialCarLockW100 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='CarLockW100'
+
+      short_name='CarLock'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M296.24-336q16.76 0 28.26-11.74 11.5-11.73 11.5-28.5 0-16.76-11.74-28.26-11.73-11.5-28.5-11.5-16.76 0-28.26 11.74-11.5 11.73-11.5 28.5 0 16.76 11.74 28.26 11.73 11.5 28.5 11.5Zm368 0q16.76 0 28.26-11.74 11.5-11.73 11.5-28.5 0-16.76-11.74-28.26-11.73-11.5-28.5-11.5-16.76 0-28.26 11.74-11.5 11.73-11.5 28.5 0 16.76 11.74 28.26 11.73 11.5 28.5 11.5ZM172-172v-300l83-236h257v28H276l-64 180h300v28H200v192h560v-192h28v300h-28v-80H200v80h-28Zm28-300v192-192Zm412-72v-176h41v-40q0-29 19.5-48.5T721-828q29 0 48.5 19.5T789-760v40h39v176H612Zm69-176h80v-40q0-17-11.5-28.5T721-800q-17 0-28.5 11.5T681-760v40Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialCarLockW100.displayName = 'OnesyIconMaterialCarLockW100';
+
+export default IconMaterialCarLockW100;

@@ -268,7 +268,7 @@ export type ILinearProress = IBaseElement & {
 const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinearProgress?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinearProgress?.props?.default, ...props_ };
 
   const {
     tonal = true,

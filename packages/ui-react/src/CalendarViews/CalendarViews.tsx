@@ -170,23 +170,23 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarViews?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarViews?.props?.default, ...props_ };
 
-  const CalendarMonth = React.useMemo(() => theme?.elements?.CalendarMonth || CalendarMonthElement, [theme]);
+  const CalendarMonth = theme?.elements?.CalendarMonth || CalendarMonthElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
+  const Select = theme?.elements?.Select || SelectElement;
 
-  const CalendarWeek = React.useMemo(() => theme?.elements?.CalendarWeek || CalendarWeekElement, [theme]);
+  const CalendarWeek = theme?.elements?.CalendarWeek || CalendarWeekElement;
 
   const {
     viewDefault,
@@ -293,21 +293,21 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     if (view === 'month') return format(date, `MMMM YYYY`, { l });
   }, [view, date]);
 
-  const onChangeView = React.useCallback((valueNew: any) => {
+  const onChangeView = (valueNew: any) => {
     setView(valueNew);
 
     if (is('function', onChangeViewProps)) onChangeViewProps(valueNew);
-  }, [onChangeViewProps]);
+  };
 
-  const onToday = React.useCallback(() => {
+  const onToday = () => {
     const valueNew = new OnesyDate();
 
     setDate(valueNew);
 
     if (is('function', onChangeDateProps)) onChangeDateProps(valueNew);
-  }, [onChangeDateProps]);
+  };
 
-  const onPrevious = React.useCallback(() => {
+  const onPrevious = () => {
     let valueNew = new OnesyDate();
 
     setDate(previous => {
@@ -317,9 +317,9 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     });
 
     if (is('function', onChangeDateProps)) onChangeDateProps(valueNew);
-  }, [view, onChangeDateProps]);
+  };
 
-  const onNext = React.useCallback(() => {
+  const onNext = () => {
     let valueNew = new OnesyDate();
 
     setDate(previous => {
@@ -329,9 +329,9 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     });
 
     if (is('function', onChangeDateProps)) onChangeDateProps(valueNew);
-  }, [view, onChangeDateProps]);
+  };
 
-  const renderDay = React.useCallback((valueCalendarMonth: OnesyDate, propsDay: any, day: any, outside: boolean) => {
+  const renderDay = (valueCalendarMonth: OnesyDate, propsDay: any, day: any, outside: boolean) => {
 
     return (
       <Line
@@ -381,9 +381,9 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
         </Line>
       </Line>
     );
-  }, [render, view]);
+  };
 
-  const renderDayName = React.useCallback((order: number) => {
+  const renderDayName = (order: number) => {
     const values: any = {
       1: l('Mo'),
       2: l('Tu'),
@@ -395,7 +395,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
     };
 
     return values[order];
-  }, []);
+  };
 
   const ui: any = {
     month: <>

@@ -19,9 +19,9 @@ export type IModalTitle = IType & {
 const ModalTitle: React.FC<IModalTitle> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalTitle?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalTitle?.props?.default, ...props_ };
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     className,

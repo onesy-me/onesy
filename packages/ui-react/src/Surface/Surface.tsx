@@ -720,7 +720,7 @@ export type ISurface = IBaseElement & {
 const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySurface?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySurface?.props?.default, ...props_ };
 
   const { classes } = useStyle();
 

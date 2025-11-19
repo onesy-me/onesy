@@ -45,7 +45,7 @@ const useScroll = (props: IUseScroll) => {
     refs.root.current = rootNew;
   }, [target, element]);
 
-  const method = React.useCallback(() => {
+  const method = () => {
     if (!refs.root.current) return;
 
     const value = (refs.root.current as HTMLElement)?.scrollTop !== undefined ? (refs.root.current as HTMLElement).scrollTop : (refs.root.current as unknown as Window)?.scrollY!;
@@ -62,7 +62,7 @@ const useScroll = (props: IUseScroll) => {
 
     // Previous
     refs.previous.current = value;
-  }, []);
+  };
 
   React.useEffect(() => {
     // Add new event listener

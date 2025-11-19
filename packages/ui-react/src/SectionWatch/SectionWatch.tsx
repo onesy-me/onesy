@@ -25,11 +25,11 @@ export type ISectionWatch = ISection & {
 const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionWatch?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionWatch?.props?.default, ...props_ };
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const Watch = React.useMemo(() => theme?.elements?.Watch || WatchElement, [theme]);
+  const Watch = theme?.elements?.Watch || WatchElement;
 
   const {
     version = 'modern',

@@ -30,9 +30,9 @@ const useMediaQuery = (props: string, options?: IOptionsUseMediaQuery) => {
     refs.root.current = rootNew;
   }, [element]);
 
-  const method = React.useCallback((event: MediaQueryListEvent) => {
+  const method = (event: MediaQueryListEvent) => {
     if (refs.matches.current !== event.matches) setMatches(event.matches);
-  }, []);
+  };
 
   // Watch
   React.useEffect(() => {

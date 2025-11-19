@@ -241,15 +241,15 @@ export type ITooltip = Omit<IModal, 'maxWidth'> & {
 const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTooltip?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTooltip?.props?.default, ...props_ };
 
-  const Grow = React.useMemo(() => theme?.elements?.Grow || GrowElement, [theme]);
+  const Grow = theme?.elements?.Grow || GrowElement;
 
-  const Append = React.useMemo(() => theme?.elements?.Append || AppendElement, [theme]);
+  const Append = theme?.elements?.Append || AppendElement;
 
-  const Modal = React.useMemo(() => theme?.elements?.Modal || ModalElement, [theme]);
+  const Modal = theme?.elements?.Modal || ModalElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
     tonal = true,
@@ -349,13 +349,13 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
 
   const label = name !== undefined ? name : label_;
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.MouseEvent<any>) => {
     if (longPress_) refs.longPressTimer.current = setTimeout(() => setLongPress(true), 700);
 
     if (is('function', (children as any)?.props.onMouseDown)) (children as any).props.onMouseDown(event);
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseUp = (event: React.MouseEvent<any>) => {
     if (longPress_) {
       clearTimeout(refs.longPressTimer.current);
 
@@ -363,15 +363,15 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     }
 
     if (is('function', (children as any)?.props.onMouseUp)) (children as any).props.onMouseUp(event);
-  }, []);
+  };
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseEnter = (event: React.MouseEvent<any>) => {
     if (hover_) setHover(true);
 
     if (is('function', (children as any)?.props.onMouseEnter)) (children as any).props.onMouseEnter(event);
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseLeave = (event: React.MouseEvent<any>) => {
     if (refs.longPress.current) {
       setLongPress(false);
 
@@ -384,31 +384,31 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     if (hover_) setHover(false);
 
     if (is('function', (children as any)?.props.onMouseLeave)) (children as any).props.onMouseLeave(event);
-  }, []);
+  };
 
-  const onTouchStart = React.useCallback((event: React.MouseEvent<any>) => {
+  const onTouchStart = (event: React.MouseEvent<any>) => {
     if (!refs.touchProps.current) return;
 
     setTouch(true);
 
     if (is('function', (children as any)?.props.onTouchStart)) (children as any).props.onTouchStart(event);
-  }, [touch_]);
+  };
 
-  const onTouchEnd = React.useCallback((event: React.MouseEvent<any>) => {
+  const onTouchEnd = (event: React.MouseEvent<any>) => {
     if (!refs.touchProps.current) return;
 
     setTouch(false);
 
     if (is('function', (children as any)?.props.onTouchEnd)) (children as any).props.onTouchEnd(event);
-  }, [touch_]);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_) setFocus(true);
 
     if (is('function', (children as any)?.props.onFocus)) (children as any).props.onFocus(event);
-  }, []);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (refs.longPress.current) {
       setLongPress(false);
 
@@ -421,9 +421,9 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     if (focus_) setFocus(false);
 
     if (is('function', (children as any)?.props.onBlur)) (children as any).props.onBlur(event);
-  }, []);
+  };
 
-  const onMouseMove = React.useCallback((event: MouseEvent) => {
+  const onMouseMove = (event: MouseEvent) => {
     if (follow) {
       setAnchor({
         x: event.clientX,
@@ -434,7 +434,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     }
 
     if (is('function', (children as any)?.props.onMouseMove)) (children as any).props.onMouseMove(event);
-  }, []);
+  };
 
   const onOpen = () => {
     if (!open) setOpen(true);
@@ -457,9 +457,9 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
     else setInProp(false);
   };
 
-  const onClick = React.useCallback((event: Event) => {
+  const onClick = (event: Event) => {
     !refs.open.current ? onOpen() : onPreClose();
-  }, [onOpen, onPreClose]);
+  };
 
   React.useEffect(() => {
     setInit(true);

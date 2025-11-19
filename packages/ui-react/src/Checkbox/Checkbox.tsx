@@ -234,9 +234,9 @@ export type ICheckbox = Omit<IIconButton, 'onChange'> & {
 const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...props_, ...theme?.ui?.elements?.onesyCheckbox?.props?.default }), [props_]);
+  const props = { ...props_, ...theme?.ui?.elements?.onesyCheckbox?.props?.default };
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     tonal = true,

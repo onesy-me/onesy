@@ -28,11 +28,11 @@ export type IMoreOptions = IMenu & {
 const MoreOptions: React.FC<IMoreOptions> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMoreOptions?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMoreOptions?.props?.default, ...props_ };
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     menuItems,
@@ -48,15 +48,9 @@ const MoreOptions: React.FC<IMoreOptions> = React.forwardRef((props_, ref: any) 
 
   const { classes } = useStyle();
 
-  const onClick = React.useCallback((event: MouseEvent) => {
-    //  event.stopPropagation();
-  }, []);
-
   return (
     <Menu
       alignment='center'
-
-      onClick={onClick}
 
       menuItems={menuItems}
 
@@ -84,8 +78,6 @@ const MoreOptions: React.FC<IMoreOptions> = React.forwardRef((props_, ref: any) 
         size='small'
 
         disabled={!menuItems?.length}
-
-        onClick={onClick}
 
         {...IconButtonProps}
 

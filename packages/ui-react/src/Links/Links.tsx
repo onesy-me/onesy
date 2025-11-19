@@ -132,23 +132,23 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinks?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinks?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const Share = React.useMemo(() => theme?.elements?.Share || ShareElement, [theme]);
+  const Share = theme?.elements?.Share || ShareElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const MenuItem = React.useMemo(() => theme?.elements?.MenuItem || MenuItemElement, [theme]);
+  const MenuItem = theme?.elements?.MenuItem || MenuItemElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const { classes } = useStyle();
 
@@ -190,7 +190,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
   const confirm = useConfirm();
 
-  const onOpenLink = React.useCallback(async (item: ILinksItem): Promise<any> => {
+  const onOpenLink = async (item: ILinksItem): Promise<any> => {
     const confirmed = (item.sensitivity && !['none'].includes(item.sensitivity as any)) ? await confirm.open({
       name: sensitiveText,
       description: sensitiveDescription
@@ -199,7 +199,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
     if (confirmed) {
       window.open(item.url, 'blank');
     }
-  }, [sensitiveText, sensitiveDescription]);
+  };
 
   return (
     <Section

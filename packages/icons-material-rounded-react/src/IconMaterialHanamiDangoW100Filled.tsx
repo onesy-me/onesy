@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialHanamiDangoW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='HanamiDangoW100Filled'
+
+      short_name='HanamiDango'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M751-190q-42 33-95 30.5T565-200q-31-31-38-73.5t10-80.5q-38 17-80 10.5T383-382q-31-31-38.5-73t9.5-80q-38 17-80 9.5T201-564q-38-38-41-91.5t31-94.5l-69-69q-4-4-4.5-10t4.5-10q4-4 10-4t10 4l69 69q42-33 95-30.5t91 40.5q31 31 38 73t-10 80q38-17 80-9t73 39q31 31 38.5 73t-9.5 80q38-17 80-10.5t74 38.5q38 38 41 91.5T771-210l68 68q4 4 4.5 9.5T839-122q-5 5-10 5t-10-5l-68-68Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialHanamiDangoW100Filled.displayName = 'OnesyIconMaterialHanamiDangoW100Filled';
+
+export default IconMaterialHanamiDangoW100Filled;

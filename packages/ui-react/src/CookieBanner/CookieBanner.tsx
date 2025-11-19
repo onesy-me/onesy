@@ -77,17 +77,17 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBanner?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBanner?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Slide = React.useMemo(() => theme?.elements?.Slide || SlideElement, [theme]);
+  const Slide = theme?.elements?.Slide || SlideElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
   const {
     name,

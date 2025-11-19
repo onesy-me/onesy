@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialEarbudRightW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='EarbudRightW100Filled'
+
+      short_name='EarbudRight'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M503-192v-528q0-11 8.5-19.5T531-748h197q26 0 43 17t17 43v131q0 26-17 43t-43 17h-49v305q0 26-17 43t-43 17h-56q-26 0-43-17t-17-43ZM172-623q0-83 53-144t133-61q11 0 18.5 7.5T384-802v359q0 11-7.5 18.5T358-417q-80 0-133-61.5T172-623Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialEarbudRightW100Filled.displayName = 'OnesyIconMaterialEarbudRightW100Filled';
+
+export default IconMaterialEarbudRightW100Filled;

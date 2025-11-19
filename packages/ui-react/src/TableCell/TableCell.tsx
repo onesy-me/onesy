@@ -170,15 +170,15 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableCell?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableCell?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
     tonal = true,
@@ -241,7 +241,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
   refs.sticky.current = sticky;
 
-  const init = React.useCallback(() => {
+  const init = () => {
     setTimeout(() => {
       if (sticky) {
         const parent = refs.root.current?.parentElement;
@@ -265,7 +265,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
         }
       }
     }, 140);
-  }, [sticky, stickyPosition]);
+  };
 
   React.useEffect(() => {
     // init
@@ -276,13 +276,13 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
     if (sortedBy !== sortedBy_) setSortedBy(sortedBy_);
   }, [sortedBy_]);
 
-  const onStickyMove = React.useCallback(() => {
+  const onStickyMove = () => {
     const offsetNew = refs.root.current.offsetLeft;
 
     setStickyActive(refs.offset.current !== offsetNew);
-  }, []);
+  };
 
-  const onStickyInit = React.useCallback(() => {
+  const onStickyInit = () => {
     if (refs.sticky.current && refs.root.current) {
       refs.root.current.style.position = 'unset';
 
@@ -292,9 +292,9 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
 
       onStickyMove();
     }
-  }, []);
+  };
 
-  const onObserve = React.useCallback(() => {
+  const onObserve = () => {
     const element = refs.root.current?.closest('table');
 
     // clean up
@@ -328,7 +328,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
     refs.observer.current.observe(element, config);
 
     return refs.observer.current;
-  }, []);
+  };
 
   React.useEffect(() => {
     if (root && sticky) {
@@ -352,7 +352,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
     }
   }, [timeout, windowWidth, sticky, stickyPosition, root]);
 
-  const onSort = React.useCallback(() => {
+  const onSort = () => {
     let valueNew: any;
 
     setSortedBy(item => {
@@ -362,7 +362,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
     });
 
     if (is('function', onSort_)) onSort_!(valueNew);
-  }, [onSort_]);
+  };
 
   const stylesOther: any = {};
 

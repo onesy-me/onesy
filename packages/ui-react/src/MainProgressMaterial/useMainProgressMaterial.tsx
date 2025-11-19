@@ -4,7 +4,7 @@ import MainProgressMaterialContext from './Context';
 import { IMainProgressMaterialValue } from './MainProgressMaterial';
 
 export default function useMainProgress(): IMainProgressMaterialValue {
-  const value = React.useContext<IMainProgressMaterialValue>(MainProgressMaterialContext);
+  const value = React.use<IMainProgressMaterialValue>(MainProgressMaterialContext);
 
   return value;
 }

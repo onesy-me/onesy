@@ -62,13 +62,13 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpeechToText?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpeechToText?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     size = 'regular',
@@ -121,7 +121,7 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
 
   const supported = isEnvironment('browser') && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
 
-  const onData = React.useCallback((event: any) => {
+  const onData = (event: any) => {
     const value = Array.from(event.results || []).map((item: any) => item[0]?.transcript || '').join('');
 
     refs.value.current = value;
@@ -131,15 +131,15 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
     }
 
     if (is('function', onData_)) onData_!(value);
-  }, [onData_]);
+  };
 
-  const onStart = React.useCallback(async (event: React.MouseEvent<any>) => {
+  const onStart = async (event: React.MouseEvent<any>) => {
     setStatus('started');
 
     if (is('function', onStart_)) onStart_!(event);
-  }, [onStart_]);
+  };
 
-  const onEnd = React.useCallback((event: any) => {
+  const onEnd = (event: any) => {
     setStatus('initial');
 
     // result
@@ -148,11 +148,11 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
     const response = refs.result.current.join(join);
 
     if (is('function', onChange)) onChange!(response);
-  }, [onChange, join]);
+  };
 
-  const onError = React.useCallback((event: any) => {
+  const onError = (event: any) => {
     if (is('function', onError_)) onError_!(event);
-  }, [onError_]);
+  };
 
   React.useEffect(() => {
     // previous clean up
@@ -199,12 +199,12 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
     };
   }, [SpeechRecognition_, supported, continuous, interimResults, grammars, language, maxAlternatives]);
 
-  const onCleanUp = React.useCallback(() => {
+  const onCleanUp = () => {
     refs.result.current = [];
     refs.value.current = '';
-  }, []);
+  };
 
-  const onListen = React.useCallback(async (event: React.MouseEvent<any>) => {
+  const onListen = async (event: React.MouseEvent<any>) => {
     if (refs.recognition.current) {
       // Clean up
       onCleanUp();
@@ -213,15 +213,15 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
 
       if (is('function', onListen_)) onListen_!(event);
     }
-  }, [onListen_]);
+  };
 
-  const onListenStop = React.useCallback(async (event: React.MouseEvent<any>) => {
+  const onListenStop = async (event: React.MouseEvent<any>) => {
     if (refs.recognition.current) {
       refs.recognition.current.stop();
 
       if (is('function', onListenStop_)) onListenStop_!(event);
     }
-  }, [onListenStop_]);
+  };
 
   const iconProps = {
     size,

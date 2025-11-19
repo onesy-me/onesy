@@ -55,13 +55,13 @@ export type IColumnChartItem = IChart & {
 const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChartItem?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChartItem?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
+  const Path = theme?.elements?.Path || PathElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -141,7 +141,7 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
 
   refs.init.current = init;
 
-  const LegendItem = React.useCallback((legendItemProps: any) => {
+  const LegendItem = (legendItemProps: any) => {
 
     return (
       <Line
@@ -186,7 +186,7 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
         </Type>
       </Line>
     );
-  }, [theme]);
+  };
 
   const make = () => {
     // Make values into x, y, coordinates
@@ -270,7 +270,7 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
     }
   };
 
-  const initMethod = React.useCallback(() => {
+  const initMethod = () => {
     if (animate) {
       if (!init) {
         refs.pathStyle.current = {
@@ -292,7 +292,7 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
         }, refs.animateTimeout.current);
       }
     }
-  }, [init, animate]);
+  };
 
   React.useEffect(() => {
     make();

@@ -81,9 +81,9 @@ export type IBadge = IBaseElement & {
 const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBadge?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBadge?.props?.default, ...props_ };
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
     tonal = false,

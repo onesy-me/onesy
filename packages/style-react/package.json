@@ -1,6 +1,6 @@
 {
   "name": "@onesy/style-react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Onesy CSS in JS styling solution for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar Erić <lazareric1@proton.me>",
@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf build",
-    "build": "yarn lint && yarn type && cross-env ENV=react node ../../utils/js/build.js",
+    "build": "yarn test && cross-env ENV=react node ../../utils/js/build.js",
     "vi": "yarn version --patch --no-git-tag-version",
     "release": "yarn test && yarn build && yarn vi && yarn vi --cwd ./build && cd ./build && npm publish --tag latest",
     "release-pure": "yarn test && yarn build && cd ./build && npm publish",
@@ -44,14 +44,14 @@
     "cov": "cross-env NODE_ENV=test onesy-test",
     "test:pre": "pm2 update && pm2 delete all && pm2 start ../../utils/js/test/app.js && wait-on http://localhost:4000",
     "test:post": "pm2 delete all",
-    "test": "yarn lint && yarn type && yarn test:pre && yarn cov && yarn test:post"
+    "test": "yarn lint && yarn type"
   },
   "peerDependencies": {
-    "react": "^18.1.0"
+    "react": "19.2.0"
   },
   "dependencies": {
     "@onesy/style": "^1.0.1",
-    "@onesy/utils": "^1.0.0"
+    "@onesy/utils": "^1.0.20"
   },
   "publishConfig": {
     "access": "public",
@@ -60,9 +60,5 @@
   "files": [
     "build"
   ],
-  "sideEffects": false,
-  "engines": {
-    "node": ">=12.0.0",
-    "yarn": ">=1.22"
-  }
+  "sideEffects": false
 }

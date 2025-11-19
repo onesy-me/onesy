@@ -298,17 +298,17 @@ export type ICarousel = Omit<ISurface, 'version' | 'onChange'> & {
 const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCarousel?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCarousel?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Transitions = React.useMemo(() => theme?.elements?.Transitions || TransitionsElement, [theme]);
+  const Transitions = theme?.elements?.Transitions || TransitionsElement;
 
   const {
     tonal = true,
@@ -699,7 +699,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
     if (is('function', onUpdatePosition_)) onUpdatePosition_(valueNew);
   };
 
-  const onUpdate = React.useCallback((to: string | number = 'next', values: any[] = refs.items.current) => {
+  const onUpdate = (to: string | number = 'next', values: any[] = refs.items.current) => {
     // Momentum
     momentumClear();
 
@@ -827,9 +827,9 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
         }
       }
     }
-  }, [gap, version, autoHeight, autoHeightDelay]);
+  };
 
-  const onMouseUp = React.useCallback((event: any) => {
+  const onMouseUp = (event: any) => {
     if (refs.mouseDown.current) {
       if (refs.mouseDown.current && !refs.momentum.current) (refs.carousel.current as HTMLElement)?.style.removeProperty('transition');
 
@@ -917,7 +917,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
       refs.previousMouseEvent.current = undefined;
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -1155,7 +1155,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
     }
   }, [items_, background, children]);
 
-  const onWheel = React.useCallback(debounce((event: React.WheelEvent<any>) => {
+  const onWheel = debounce((event: React.WheelEvent<any>) => {
     if (
       (refs.orientation.current === 'horizontal' && event.deltaX < 0) ||
       (refs.orientation.current === 'vertical' && event.deltaY < 0)
@@ -1175,21 +1175,21 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
 
       return onUpdate('next');
     }
-  }, 40), []);
+  }, 40);
 
-  const onBlur = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlur = (event: React.FocusEvent<any>) => {
     setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, []);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocus = (event: React.FocusEvent<any>) => {
     setFocus(true);
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.MouseEvent<any>) => {
     // Momentum
     momentumClear();
 
@@ -1200,30 +1200,30 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
     refs.mouseDownStart.current = new Date().getTime();
 
     refs.carousel.current.style.transition = 'none';
-  }, []);
+  };
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseEnter = (event: React.MouseEvent<any>) => {
     setHover(true);
 
     if (refs.autoPlay.current) clear();
 
     if (is('function', onMouseEnter_)) onMouseEnter_(event);
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseLeave = (event: React.MouseEvent<any>) => {
     setFocus(false);
     setHover(false);
 
     if (!refs.autoPlay.current) start();
 
     if (is('function', onMouseLeave_)) onMouseLeave_(event);
-  }, []);
+  };
 
-  const onArrowMouseEnter = React.useCallback((event: React.MouseEvent<any>) => {
+  const onArrowMouseEnter = (event: React.MouseEvent<any>) => {
     setHover(true);
 
     if (refs.autoPlay.current) clear();
-  }, []);
+  };
 
   const ArrowPreviousTransitionComponent_ = ArrowPreviousTransitionComponent || ArrowTransitionComponent;
 

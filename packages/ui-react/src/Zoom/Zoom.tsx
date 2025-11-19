@@ -12,7 +12,7 @@ export type IZoom = ITransition & {
 const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyZoom?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyZoom?.props?.default, ...props_ };
 
   const refs = {
     root: React.useRef<HTMLElement>(undefined)

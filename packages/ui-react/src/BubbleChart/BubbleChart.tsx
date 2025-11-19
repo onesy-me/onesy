@@ -58,17 +58,17 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBubbleChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBubbleChart?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
+  const Chart = theme?.elements?.Chart || ChartElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const BubbleChartItem = React.useMemo(() => theme?.elements?.BubbleChartItem || BubbleChartItemElement, [theme]);
+  const BubbleChartItem = theme?.elements?.BubbleChartItem || BubbleChartItemElement;
 
   const {
     tonal = true,

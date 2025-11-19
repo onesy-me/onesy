@@ -325,9 +325,9 @@ export type IImageCrop = IBaseElement & {
 const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageCrop?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageCrop?.props?.default, ...props_ };
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
   const {
     // url, datauri or canvas
@@ -1174,19 +1174,19 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
     setImage(canvas);
   };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocus = (event: React.FocusEvent<any>) => {
     setFocus(true);
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, []);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlur = (event: React.FocusEvent<any>) => {
     setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, []);
+  };
 
-  const onTouchStart = React.useCallback((event: React.TouchEvent<any>) => {
+  const onTouchStart = (event: React.TouchEvent<any>) => {
     if (
       ![
         refs.imageSelectorMain.current,
@@ -1212,9 +1212,9 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
         left: clientX - rootRect.left
       });
     }
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.MouseEvent<any>) => {
     if (
       ![
         refs.imageSelectorMain.current,
@@ -1240,9 +1240,9 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
         left: clientX - rootRect.left
       });
     }
-  }, []);
+  };
 
-  const onTouchStartSelector = React.useCallback((event: React.TouchEvent<any>) => {
+  const onTouchStartSelector = (event: React.TouchEvent<any>) => {
     const { clientY, clientX } = event.touches[0];
 
     const rootRect = refs.root.current.getBoundingClientRect();
@@ -1252,9 +1252,9 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
       top: clientY - rootRect.top,
       left: clientX - rootRect.left
     });
-  }, []);
+  };
 
-  const onMouseDownSelector = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDownSelector = (event: React.MouseEvent<any>) => {
     const { clientY, clientX } = event;
 
     const rootRect = refs.root.current.getBoundingClientRect();
@@ -1264,7 +1264,7 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
       top: clientY - rootRect.top,
       left: clientX - rootRect.left
     });
-  }, []);
+  };
 
   const onTouchStartBorder = (version: string) => (event: React.TouchEvent<any>) => {
     setMouseDown({

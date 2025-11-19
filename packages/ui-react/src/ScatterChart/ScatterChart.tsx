@@ -21,11 +21,11 @@ export type IScatterChart = IChart & {
 const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChart?.props?.default, ...props_ };
 
-  const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
+  const Chart = theme?.elements?.Chart || ChartElement;
 
-  const ScatterChartItem = React.useMemo(() => theme?.elements?.ScatterChartItem || ScatterChartItemElement, [theme]);
+  const ScatterChartItem = theme?.elements?.ScatterChartItem || ScatterChartItemElement;
 
   const {
     values,

@@ -14,11 +14,11 @@ import { staticClassName } from '../utils';
 const SliderInput = React.forwardRef((props: any, ref: any) => {
   const theme = useOnesyTheme();
 
-  const FormRow = React.useMemo(() => theme?.elements?.FormRow || FormRowElement, [theme]);
+  const FormRow = theme?.elements?.FormRow || FormRowElement;
 
-  const Slider = React.useMemo(() => theme?.elements?.Slider || SliderElement, [theme]);
+  const Slider = theme?.elements?.Slider || SliderElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     name,
@@ -164,11 +164,11 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColorTextField?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColorTextField?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
   const {
     name,
@@ -252,7 +252,7 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
     if (valueOpacity_ !== undefined && valueOpacity !== valueOpacity_) setValueOpacity(valueOpacity_);
   }, [valueOpacity_]);
 
-  const onChange = React.useCallback((valueNew?: any) => {
+  const onChange = (valueNew?: any) => {
     if (opacity) {
       const opacity_ = clamp(+refs.valueOpacity.current / 100, 0.0001, 1);
 
@@ -264,9 +264,9 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
 
       if (is('function', onChange_)) onChange_(valueNew);
     }
-  }, [onChange_]);
+  };
 
-  const onChangeColor = React.useCallback((valueNew: string) => {
+  const onChangeColor = (valueNew: string) => {
     if (!props.hasOwnProperty('valueColor')) setValueColor(valueNew);
 
     if (is('function', onChangeColor_)) onChangeColor_(valueNew);
@@ -274,9 +274,9 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
     setTimeout(() => {
       onChange();
     }, 14);
-  }, [onChangeColor_]);
+  };
 
-  const onChangeOpacity = React.useCallback((valueNew_: number) => {
+  const onChangeOpacity = (valueNew_: number) => {
     const valueNew = +valueNew_?.toFixed(2);
 
     if (!props.hasOwnProperty('valueOpacity')) setValueOpacity(valueNew);
@@ -286,7 +286,7 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
     setTimeout(() => {
       onChange();
     }, 14);
-  }, [onChangeOpacity_]);
+  };
 
   const root = (
     <TextField

@@ -127,9 +127,9 @@ const colorSelectBackground = 'hsla(244deg 64% 64% / 4%)';
 const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWhiteboard?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWhiteboard?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
   const {
     valueDefault,
@@ -211,7 +211,7 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
   refs.grid.current = grid;
 
-  const init = React.useCallback(() => {
+  const init = () => {
     // Todo
     // items
     // load all of the images in memory and attach theme to items as image elements
@@ -222,21 +222,21 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       setLoaded(true);
     }, 40);
-  }, []);
+  };
 
   React.useEffect(() => {
     if (!['zoom'].includes(tool)) refs.previousTool.current = tool;
   }, [tool]);
 
-  const onChange = React.useCallback(() => {
+  const onChange = () => {
     if (is('function', onChangeProps)) onChangeProps(refs.items.current);
-  }, [onChangeProps]);
+  };
 
-  const getItems = React.useCallback((selected = undefined) => refs.items.current.filter(item => selected === undefined || item.se === selected), []);
+  const getItems = (selected = undefined) => refs.items.current.filter(item => selected === undefined || item.se === selected);
 
-  const getItem = React.useCallback(() => refs.items.current[refs.items.current.length - 1], []);
+  const getItem = () => refs.items.current[refs.items.current.length - 1];
 
-  const filterItems = React.useCallback(() => {
+  const filterItems = () => {
     const toRemove = refs.items.current.filter(item => {
       if (refs.tool.current === 'text' && item !== refs.textActive.current) item.se = false;
 
@@ -246,9 +246,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     });
 
     if (toRemove.length) remove(toRemove);
-  }, []);
+  };
 
-  const add = React.useCallback((toAdd: IWhiteboardItem | IWhiteboardItem[]) => {
+  const add = (toAdd: IWhiteboardItem | IWhiteboardItem[]) => {
     const itemsAdd = (Array.isArray(toAdd) ? toAdd : [toAdd]).filter(Boolean);
 
     const items = getItems();
@@ -260,9 +260,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     refs.redo.current = [];
 
     refs.items.current.push(...itemsAdd);
-  }, []);
+  };
 
-  const remove = React.useCallback((toRemove: IWhiteboardItem | IWhiteboardItem[]) => {
+  const remove = (toRemove: IWhiteboardItem | IWhiteboardItem[]) => {
     const itemsRemove = (Array.isArray(toRemove) ? toRemove : [toRemove]).filter(Boolean);
 
     const items = getItems();
@@ -280,9 +280,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     refs.redo.current = [];
 
     refs.items.current = refs.items.current.filter(item => !toRemoveIDs.includes(item.i));
-  }, []);
+  };
 
-  const reset = React.useCallback(() => {
+  const reset = () => {
     refs.on.current = false;
 
     refs.moveStarted.current = false;
@@ -293,19 +293,19 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     refs.offset.current.x = refs.move.current.x;
 
     refs.offset.current.y = refs.move.current.y;
-  }, []);
+  };
 
-  const transform = React.useCallback((coordinate: number) => coordinate / refs.scale.current, []);
+  const transform = (coordinate: number) => coordinate / refs.scale.current;
 
-  const selectAll = React.useCallback(() => {
+  const selectAll = () => {
     return [...refs.items.current].filter(Boolean).map(item => {
       item.se = true;
 
       return item;
     });
-  }, []);
+  };
 
-  const unselectAll = React.useCallback((eventReact?: React.MouseEvent | React.TouchEvent) => {
+  const unselectAll = (eventReact?: React.MouseEvent | React.TouchEvent) => {
     const event = eventReact?.nativeEvent || eventReact;
     const shift = event?.shiftKey;
 
@@ -316,9 +316,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       return item;
     });
-  }, []);
+  };
 
-  const onInteractionDown = React.useCallback((body: any, eventReact: React.MouseEvent | React.TouchEvent) => {
+  const onInteractionDown = (body: any, eventReact: React.MouseEvent | React.TouchEvent) => {
     const event = eventReact?.nativeEvent || eventReact;
 
     const { offsetX: x, offsetY: y, clientX, clientY } = body;
@@ -495,15 +495,15 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     render();
 
     setMouseDown(true);
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent) => {
+  const onMouseDown = (event: React.MouseEvent) => {
     const { offsetX, offsetY, clientX, clientY } = event.nativeEvent;
 
     onInteractionDown({ offsetX, offsetY, clientX, clientY }, event);
-  }, [onInteractionDown]);
+  };
 
-  const onTouchStart = React.useCallback((event: React.TouchEvent) => {
+  const onTouchStart = (event: React.TouchEvent) => {
     // Get the first touch point
     const touch = event.touches[0];
 
@@ -522,9 +522,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     }
 
     onInteractionDown({ offsetX, offsetY, clientX, clientY }, event);
-  }, [onInteractionDown]);
+  };
 
-  const removeItems = React.useCallback(() => {
+  const removeItems = () => {
     // remove
     if (refs.remove.current.length) {
       const toRemove = [];
@@ -539,9 +539,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       refs.remove.current = [];
     }
-  }, []);
+  };
 
-  const onUpdateCoordinates = React.useCallback(() => {
+  const onUpdateCoordinates = () => {
     const items = getItems();
 
     items.forEach(item => {
@@ -652,9 +652,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
         }
       }
     });
-  }, []);
+  };
 
-  const onSelect = React.useCallback(() => {
+  const onSelect = () => {
     const select = refs.select.current;
 
     if (!select) return;
@@ -699,9 +699,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       if (selected) item.se = true;
     });
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback((event: MouseEvent) => {
+  const onMouseUp = (event: MouseEvent) => {
     if (refs.mouseDown.current) {
       refs.select.current = null;
 
@@ -727,9 +727,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       render();
     }
-  }, [onChange]);
+  };
 
-  const updateTextBoxDimensions = React.useCallback((item: IWhiteboardItem) => {
+  const updateTextBoxDimensions = (item: IWhiteboardItem) => {
     const ui = refs.ui.current.getContext('2d');
 
     const {
@@ -743,9 +743,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
     item.ar[0] = maxWidth + padding * 2.5;
     item.ar[1] = item.s.lines.length * lineHeight + padding * 2;
-  }, []);
+  };
 
-  const getPath = React.useCallback((item: IWhiteboardItem) => {
+  const getPath = (item: IWhiteboardItem) => {
     const path = new Path2D();
 
     const { v, p, ar } = item;
@@ -809,9 +809,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     }
 
     return path;
-  }, []);
+  };
 
-  const draw = React.useCallback((item: IWhiteboardItem) => {
+  const draw = (item: IWhiteboardItem) => {
     const ui = refs.ui.current.getContext('2d');
 
     // settings
@@ -827,9 +827,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
     if (['dp'].includes(v)) ui.fill(path);
     else if (['dl', 'oc', 'oe', 'or', 'os', 'ol', 'oa', 'ot', 'ote'].includes(v)) ui.stroke(path);
-  }, []);
+  };
 
-  const drawGrid = React.useCallback(() => {
+  const drawGrid = () => {
     const uiCanvas = refs.ui.current;
 
     const ui = refs.ui.current.getContext('2d');
@@ -905,17 +905,17 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       ui.setLineDash([]); // Reset line dash
     }
-  }, []);
+  };
 
-  const drawImage = React.useCallback((item: IWhiteboardItem) => {
+  const drawImage = (item: IWhiteboardItem) => {
     const ui = refs.ui.current.getContext('2d');
 
     ui.globalAlpha = 1;
 
     ui.drawImage(item.s.image || refs.image.current, ...item.p as [number, number], ...item.ar as [number, number]);
-  }, []);
+  };
 
-  const drawCursor = React.useCallback((item: IWhiteboardItem) => {
+  const drawCursor = (item: IWhiteboardItem) => {
     if (!item || !item.s.cursor) return;
 
     const ui = refs.ui.current.getContext('2d');
@@ -935,9 +935,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
     ui.fillStyle = 'black';
     ui.fillRect(cursorX, cursorY - lineHeight + 3, 2, lineHeight - 5);
-  }, []);
+  };
 
-  const drawText = React.useCallback((item: IWhiteboardItem) => {
+  const drawText = (item: IWhiteboardItem) => {
     const ui = refs.ui.current.getContext('2d');
 
     const zoom = refs.scale.current;
@@ -970,9 +970,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     });
 
     if (selected) drawCursor(item);
-  }, []);
+  };
 
-  const drawSelect = React.useCallback((item: IWhiteboardItem) => {
+  const drawSelect = (item: IWhiteboardItem) => {
     const ui = refs.ui.current.getContext('2d');
 
     const [x, y, width, height] = item.c || [];
@@ -988,9 +988,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     ui.lineWidth = 1 / refs.scale.current;
 
     ui.stroke(path);
-  }, []);
+  };
 
-  const drawSelection = React.useCallback(() => {
+  const drawSelection = () => {
     const ui = refs.ui.current.getContext('2d');
 
     const zoom = refs.scale.current;
@@ -1012,9 +1012,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
       ui.fill(path);
       ui.stroke(path);
     }
-  }, []);
+  };
 
-  const render = React.useCallback(() => {
+  const render = () => {
     const ui = refs.ui.current.getContext('2d');
 
     const items = refs.items.current.filter(Boolean);
@@ -1049,10 +1049,10 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     drawSelection();
 
     ui.restore();
-  }, []);
+  };
 
   // Snap angle to nearest multiple of 15 degrees
-  const snapToAngle = React.useCallback((dx: number, dy: number) => {
+  const snapToAngle = (dx: number, dy: number) => {
     // Current angle in radians
     const angle = Math.atan2(dy, dx);
     // Snap to nearest 15 degrees
@@ -1064,9 +1064,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
       x: Math.cos(snappedAngle) * length,
       y: Math.sin(snappedAngle) * length
     };
-  }, []);
+  };
 
-  const onMoveItems = React.useCallback((x: number, y: number) => {
+  const onMoveItems = (x: number, y: number) => {
     const itemsSelected = getItems(true);
 
     itemsSelected.forEach(item => {
@@ -1102,9 +1102,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     });
 
     onUpdateCoordinates();
-  }, []);
+  };
 
-  const onMove = React.useCallback((body: any, event: MouseEvent) => {
+  const onMove = (body: any, event: MouseEvent) => {
     if (!refs.on.current) return;
 
     const { offsetX: x, offsetY: y, clientX, clientY } = body;
@@ -1316,15 +1316,15 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
     // render
     render();
-  }, []);
+  };
 
-  const onMouseMove = React.useCallback((event: MouseEvent) => {
+  const onMouseMove = (event: MouseEvent) => {
     const { offsetX, offsetY, clientX, clientY } = event;
 
     onMove({ offsetX, offsetY, clientX, clientY }, event);
-  }, [onMove]);
+  };
 
-  const onTouchMove = React.useCallback((event: TouchEvent) => {
+  const onTouchMove = (event: TouchEvent) => {
     // Get the first touch point
     const touch = event.touches[0];
 
@@ -1343,9 +1343,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     }
 
     onMove({ offsetX, offsetY, clientX, clientY }, event as any);
-  }, [onInteractionDown]);
+  };
 
-  const undo = React.useCallback(() => {
+  const undo = () => {
     if (!refs.undo.current.length) return;
 
     // add current state to redo
@@ -1356,9 +1356,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
     // render
     render();
-  }, []);
+  };
 
-  const redo = React.useCallback(() => {
+  const redo = () => {
     if (!refs.redo.current.length) return;
 
     // add current state to undo
@@ -1369,9 +1369,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
     // render
     render();
-  }, []);
+  };
 
-  const onWheel = React.useCallback((eventReact: React.WheelEvent) => {
+  const onWheel = (eventReact: React.WheelEvent) => {
     const event = eventReact.nativeEvent;
 
     // zoom
@@ -1412,9 +1412,9 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       render();
     }
-  }, [minZoom, maxZoom]);
+  };
 
-  const onPaste = React.useCallback((event: ClipboardEvent) => {
+  const onPaste = (event: ClipboardEvent) => {
     event.preventDefault();
 
     // Get clipboard data
@@ -1461,7 +1461,7 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
         break;
       }
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     const method = () => {
@@ -1700,7 +1700,7 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
     };
   }, []);
 
-  const onChangeInputFile = React.useCallback((event: Event) => {
+  const onChangeInputFile = (event: Event) => {
     const file = (event.target as HTMLInputElement).files[0];
 
     if (file) {
@@ -1720,7 +1720,7 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
 
       reader.readAsDataURL(file);
     }
-  }, []);
+  };
 
   const propsCanvas: any = {
     width: size.width,

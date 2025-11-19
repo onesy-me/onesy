@@ -48,11 +48,11 @@ export type IRadios = Omit<ILine, 'onChange'> & {
 const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRadios?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRadios?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -116,7 +116,7 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
 
   const children: any[] = React.Children.toArray(children_);
 
-  const onUpdate = React.useCallback((valueNew_: any) => {
+  const onUpdate = (valueNew_: any) => {
     let valueNew = valueNew_;
 
     if (uncheck && refs.value.current === valueNew) valueNew = '';
@@ -124,7 +124,7 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
     if (!props.hasOwnProperty('value')) setValue(valueNew);
 
     if (is('function', onChange)) onChange(valueNew);
-  }, [uncheck]);
+  };
 
   return (
     <Line

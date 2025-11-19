@@ -215,23 +215,23 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMedias?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMedias?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Link = React.useMemo(() => theme?.elements?.Link || LinkElement, [theme]);
+  const Link = theme?.elements?.Link || LinkElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
-  const AudioPlayer = React.useMemo(() => theme?.elements?.AudioPlayer || AudioPlayerElement, [theme]);
+  const AudioPlayer = theme?.elements?.AudioPlayer || AudioPlayerElement;
 
-  const VideoPlayer = React.useMemo(() => theme?.elements?.VideoPlayer || VideoPlayerElement, [theme]);
+  const VideoPlayer = theme?.elements?.VideoPlayer || VideoPlayerElement;
 
-  const Portal = React.useMemo(() => theme?.elements?.Portal || PortalElement, [theme]);
+  const Portal = theme?.elements?.Portal || PortalElement;
 
-  const ImageGallery = React.useMemo(() => theme?.elements?.ImageGallery || ImageGalleryElement, [theme]);
+  const ImageGallery = theme?.elements?.ImageGallery || ImageGalleryElement;
 
   const {
     size = 'regular',
@@ -277,19 +277,19 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
 
   const values = is('array', values_) ? values_ : [values_];
 
-  const onOpen = React.useCallback((index: number) => {
+  const onOpen = (index: number) => {
     setOpen({
       index
     });
-  }, []);
+  };
 
-  const onClose = React.useCallback(() => {
+  const onClose = () => {
     setOpen(null);
-  }, []);
+  };
 
-  const onOpenMedia = React.useCallback((media: IMediaObject) => {
+  const onOpenMedia = (media: IMediaObject) => {
     window.open(media.url || media.urlSmall, 'blank_');
-  }, []);
+  };
 
   const items = React.useMemo(() => {
     const items_: Record<string, IMediasItem[]> = {
@@ -315,7 +315,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
     return items_;
   }, [values]);
 
-  const getLink = React.useCallback((item: IMediaObject, index: number) => {
+  const getLink = (item: IMediaObject, index: number) => {
     const urlEmbed = item?.urlEmbed;
 
     if (!urlEmbed) return null;
@@ -464,7 +464,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
         }}
       />
     );
-  }, [EmbedProps]);
+  };
 
   const getItem = (version: IMediasMediaVersion, item: IMediasItem, index: number) => {
     const media = item.value;

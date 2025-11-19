@@ -21,7 +21,7 @@ export type ITransitions = {
 const Transitions: React.FC<ITransitions> = (props_) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTransitions?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTransitions?.props?.default, ...props_ };
 
   const {
     mode = 'out-in',

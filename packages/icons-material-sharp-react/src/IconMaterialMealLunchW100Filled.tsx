@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMealLunchW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MealLunchW100Filled'
+
+      short_name='MealLunch'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M130-466v-65h28v65h-28Zm252-92-47-46 20-20 46 46-19 20Zm-252-93v-177h177v14q0 67.65-47.68 115.32Q211.64-651 144-651h-14Zm299-149v-28h65v28h-65ZM92-132v-28h82l-38-148h389l-38 148h103l64-248H515.58L505-531h323l-31 371h71v28H92Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMealLunchW100Filled.displayName = 'OnesyIconMaterialMealLunchW100Filled';
+
+export default IconMaterialMealLunchW100Filled;

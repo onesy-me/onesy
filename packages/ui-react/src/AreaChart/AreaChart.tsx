@@ -25,11 +25,11 @@ export type IAreaChart = IChart & {
 const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChart?.props?.default, ...props_ };
 
-  const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
+  const Chart = theme?.elements?.Chart || ChartElement;
 
-  const AreaChartItem = React.useMemo(() => theme?.elements?.AreaChartItem || AreaChartItemElement, [theme]);
+  const AreaChartItem = theme?.elements?.AreaChartItem || AreaChartItemElement;
 
   const {
     values,

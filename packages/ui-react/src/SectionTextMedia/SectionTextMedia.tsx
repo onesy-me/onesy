@@ -61,23 +61,23 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTextMedia?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTextMedia?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Text = React.useMemo(() => theme?.elements?.Text || TextElement, [theme]);
+  const Text = theme?.elements?.Text || TextElement;
 
-  const Image = React.useMemo(() => theme?.elements?.Image || ImageElement, [theme]);
+  const Image = theme?.elements?.Image || ImageElement;
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const AudioPlayer = React.useMemo(() => theme?.elements?.AudioPlayer || AudioPlayerElement, [theme]);
+  const AudioPlayer = theme?.elements?.AudioPlayer || AudioPlayerElement;
 
-  const VideoPlayer = React.useMemo(() => theme?.elements?.VideoPlayer || VideoPlayerElement, [theme]);
+  const VideoPlayer = theme?.elements?.VideoPlayer || VideoPlayerElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
   const { classes } = useStyle();
 

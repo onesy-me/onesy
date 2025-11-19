@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialHourglassArrowDownW100 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='HourglassArrowDownW100'
+
+      short_name='HourglassArrowDown'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M349.86-502Q396-502 429-533.9t33-78.1v-108H240v108.45Q240-566 271.86-534t78 32ZM240-240h222v-108.45Q462-394 429-426t-79.14-32q-46.14 0-78 31.9T240-348v108Zm-88 28v-28h60v-108q0-49 31-87t79-45q-49-7-79.5-45.5T212-614v-106h-60v-28h396v28h-58v106q0 51-31.5 89T378-480q49 7 80.5 44.5T490-348v108h58v28H152Zm622 0-98-98 20-20 64 64v-482h28v482l64-64 20 20-98 98ZM351-720Zm0 480Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialHourglassArrowDownW100.displayName = 'OnesyIconMaterialHourglassArrowDownW100';
+
+export default IconMaterialHourglassArrowDownW100;

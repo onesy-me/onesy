@@ -65,11 +65,11 @@ export type IClock = Omit<IRoundMeter, 'onChange'> & {
 const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClock?.props?.default, ...props__ }), [props__]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClock?.props?.default, ...props__ };
 
-  const RoundMeter = React.useMemo(() => theme?.elements?.RoundMeter || RoundMeterElement, [theme]);
+  const RoundMeter = theme?.elements?.RoundMeter || RoundMeterElement;
 
-  const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
+  const Path = theme?.elements?.Path || PathElement;
 
   const {
     tonal = true,
@@ -149,7 +149,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
 
   refs.dayTime.current = dayTime;
 
-  const resolve = React.useCallback((valueNew = refs.value.current, dayTimeValue = refs.dayTime.current) => {
+  const resolve = (valueNew = refs.value.current, dayTimeValue = refs.dayTime.current) => {
     // Resolve the range value
     const valueHour = valueNew.hour;
 
@@ -160,9 +160,9 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     }
 
     return valueNew;
-  }, [value, dayTime, format]);
+  };
 
-  const inputToValue = React.useCallback((valueNew: string | number, unit: TClockUnit = refs.selecting.current) => {
+  const inputToValue = (valueNew: string | number, unit: TClockUnit = refs.selecting.current) => {
     let onesyDate = new OnesyDate(refs.value.current);
 
     let valueTime: any = valueNew;
@@ -175,9 +175,9 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     else onesyDate = set(valueTime, unit, onesyDate);
 
     return resolve(onesyDate);
-  }, [value, format, dayTime, hour, minute, second]);
+  };
 
-  const onMove = React.useCallback((x_: number, y_: number) => {
+  const onMove = (x_: number, y_: number) => {
     const rectMiddle = refs.middle.current.getBoundingClientRect();
 
     const x = x_ - rectMiddle.x;
@@ -255,7 +255,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
       // Update values
       onUpdate(inputToValue(index));
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     const onMouseUp = () => {
@@ -324,7 +324,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     if (value_ !== undefined && value_ !== value) setValue(value_);
   }, [value_]);
 
-  const updateTransitions = React.useCallback(() => {
+  const updateTransitions = () => {
     // Add momentary transition to the OnesyRoundMeter-children > *
     // if selecting value updates
     if (refs.root.current) {
@@ -343,7 +343,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
         }, 300);
       }
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     if (selecting_ !== undefined && selecting_ !== selecting) {
@@ -363,7 +363,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     }
   }, [selecting]);
 
-  const onUpdate = React.useCallback((valueNew: TClockValue) => {
+  const onUpdate = (valueNew: TClockValue) => {
     const newValue = valueNew?.milliseconds || null;
     const previousValue = refs.value.current.milliseconds;
 
@@ -375,18 +375,18 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
 
       if (is('function', onChange)) onChange(valueNew);
     }
-  }, [readOnly, disabled]);
+  };
 
-  const onUpdateSelecting = React.useCallback((valueNew: TClockUnit) => {
+  const onUpdateSelecting = (valueNew: TClockUnit) => {
     if (!(readOnly || disabled)) {
       // Inner controlled selecting
       if (!props.hasOwnProperty('selecting')) setSelecting(valueNew);
 
       if (is('function', onChangeSelecting)) onChangeSelecting(valueNew);
     }
-  }, [readOnly, disabled]);
+  };
 
-  const valid = React.useCallback((...args: [OnesyDate, any?]) => {
+  const valid = (...args: [OnesyDate, any?]) => {
     if (is('function', valid_)) return valid_(...args);
 
     const onesyDate = args[0];
@@ -404,19 +404,19 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
     }
 
     return true;
-  }, [valid_, min, max, validate]);
+  };
 
-  const onMouseDown = React.useCallback(() => {
+  const onMouseDown = () => {
     setMouseDown(true);
-  }, []);
+  };
 
-  const onClick = React.useCallback((event: React.MouseEvent<any, any>) => {
+  const onClick = (event: React.MouseEvent<any, any>) => {
     const { clientX: x, clientY: y } = event;
 
     onMove(x, y);
 
     if (is('function', onClick_)) onClick_(event);
-  }, [onClick_]);
+  };
 
   const palette = React.useMemo(() => {
     if (['inherit', 'default'].includes(color)) return theme.methods.color(theme.palette.text.default.primary);

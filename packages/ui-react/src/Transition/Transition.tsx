@@ -93,7 +93,7 @@ export type ITransition = Omit<IBaseElement, 'className'> & {
 const Transition: React.FC<ITransition> = (props_) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTransition?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTransition?.props?.default, ...props_ };
 
   const {
     in: inProp_,
@@ -304,7 +304,7 @@ const Transition: React.FC<ITransition> = (props_) => {
     }
   };
 
-  const delay = React.useCallback(async (status_: TTransitionStatus) => {
+  const delay = async (status_: TTransitionStatus) => {
     let value: any = delay_;
 
     if (
@@ -317,9 +317,9 @@ const Transition: React.FC<ITransition> = (props_) => {
     if (!(is('number', value) && value > 0)) return;
 
     await wait(value);
-  }, [delay_, theme]);
+  };
 
-  const duration = React.useCallback(async (status_: TTransitionStatus) => {
+  const duration = async (status_: TTransitionStatus) => {
     let value: any = duration_;
 
     if (
@@ -334,7 +334,7 @@ const Transition: React.FC<ITransition> = (props_) => {
     if (!(is('number', value) && value > 0)) return;
 
     await wait(value);
-  }, [duration_, theme]);
+  };
 
   const add = async (status_: TTransitionStatus) => {
     if (

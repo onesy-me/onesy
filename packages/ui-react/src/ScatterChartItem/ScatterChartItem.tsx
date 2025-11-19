@@ -53,13 +53,13 @@ export type IScatterChartItem = IChart & {
 const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChartItem?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChartItem?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
+  const Path = theme?.elements?.Path || PathElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -137,7 +137,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
 
   refs.init.current = init;
 
-  const LegendItem = React.useCallback(() => {
+  const LegendItem = () => {
 
     return (
       <Line
@@ -179,7 +179,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
         </Type>
       </Line>
     );
-  }, [theme]);
+  };
 
   const make = () => {
     // Make values into x, y, coordinates
@@ -274,7 +274,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
     }
   };
 
-  const initMethod = React.useCallback(() => {
+  const initMethod = () => {
     if (animate) {
       if (!init) {
         refs.pathStyle.current = {
@@ -296,7 +296,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
         }, refs.animateTimeout.current);
       }
     }
-  }, [init, animate]);
+  };
 
   React.useEffect(() => {
     make();

@@ -166,21 +166,21 @@ const TreeDelays = {
 const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTree?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTree?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Checkbox = React.useMemo(() => theme?.elements?.Checkbox || CheckboxElement, [theme]);
+  const Checkbox = theme?.elements?.Checkbox || CheckboxElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Expand = React.useMemo(() => theme?.elements?.Expand || ExpandElement, [theme]);
+  const Expand = theme?.elements?.Expand || ExpandElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
   const {
     tonal = true,
@@ -310,7 +310,7 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const onClick = React.useCallback((event: React.MouseEvent<any>) => {
+  const onClick = (event: React.MouseEvent<any>) => {
     if (is('function', MiddleProps?.onClick)) MiddleProps.onClick(event);
 
     if (refs.inProgressTransition.current) return;
@@ -323,7 +323,7 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
 
       if (is('function', onChange)) onChange(valueNew);
     }
-  }, [open, noExpand, children_, disabled]);
+  };
 
   if (!noTransition) TransitionComponentProps.in = open;
   else {
@@ -331,13 +331,13 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
     TransitionComponentProps = {};
   }
 
-  const onBlur = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlur = (event: React.FocusEvent<any>) => {
     if (!disabled) setFocus(false);
-  }, [disabled]);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocus = (event: React.FocusEvent<any>) => {
     if (!disabled) setFocus(true);
-  }, [disabled]);
+  };
 
   const start = React.Children.toArray(start_);
 

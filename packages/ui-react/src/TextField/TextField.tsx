@@ -651,15 +651,15 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextField?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextField?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     tonal = true,
@@ -868,9 +868,9 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
     };
   }, [subscription]);
 
-  const onToggleVisible = React.useCallback(() => {
+  const onToggleVisible = () => {
     setVisible((item: any) => !item);
-  }, []);
+  };
 
   const onUpdateRows = () => {
     if (multiline && row !== undefined) {
@@ -913,7 +913,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
     if (is('function', onInput_)) onInput_(event);
   };
 
-  const onClear = React.useCallback(() => {
+  const onClear = () => {
     if (!disabled) {
       const valueNew = '';
 
@@ -922,9 +922,9 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
       if (is('function', onChange)) onChange(valueNew);
     }
-  }, [disabled, onChange]);
+  };
 
-  const onInputWrapperMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onInputWrapperMouseDown = (event: React.MouseEvent<any>) => {
     if (!disabled) {
       setMouseDown(true);
 
@@ -932,23 +932,23 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
 
       if (is('function', InputWrapperProps.onMouseDown)) InputWrapperProps.onMouseDown(event);
     }
-  }, []);
+  };
 
-  const onInputWrapperMouseUp = React.useCallback((event: React.MouseEvent<any>) => {
+  const onInputWrapperMouseUp = (event: React.MouseEvent<any>) => {
     if (!disabled) {
       setMouseDown(false);
 
       if (is('function', InputWrapperProps.onMouseUp)) InputWrapperProps.onMouseUp(event);
     }
-  }, []);
+  };
 
-  const onInputWrapperClick = React.useCallback((event: React.MouseEvent<any>) => {
+  const onInputWrapperClick = (event: React.MouseEvent<any>) => {
     if (!disabled) {
       if (event.target === event.currentTarget) refs.input.current?.focus();
 
       if (is('function', InputWrapperProps?.onClick)) InputWrapperProps.onClick(event);
     }
-  }, []);
+  };
 
   const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled) {
@@ -966,21 +966,21 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<HTMLInputElement>) => {
+  const onMouseEnter = (event: React.MouseEvent<HTMLInputElement>) => {
     if (!disabled) {
       setHover(true);
 
       if (is('function', onMouseEnter_)) onMouseEnter_(event);
     }
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<HTMLInputElement>) => {
+  const onMouseLeave = (event: React.MouseEvent<HTMLInputElement>) => {
     if (!disabled) {
       setHover(false);
 
       if (is('function', onMouseLeave_)) onMouseLeave_(event);
     }
-  }, []);
+  };
 
   const palette: any = color === 'default' ? theme.palette.color.neutral : !theme.palette.color[color] ? theme.methods.color(color) : theme.palette.color[color];
 

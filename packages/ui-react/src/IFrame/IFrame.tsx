@@ -35,9 +35,9 @@ export type IIFrame = ILine & {
 const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIFrame?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIFrame?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
   const {
     id,
@@ -69,7 +69,7 @@ const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
 
   const iframeBody = refs.root.current?.contentWindow?.document.body;
 
-  const refresh = React.useCallback(() => {
+  const refresh = () => {
     if (iframeDocument) {
       const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
 
@@ -103,7 +103,7 @@ const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
       // Body
       if (iframeBody) iframeBody.dir = rootDocument.body.dir;
     }
-  }, [iframeDocument]);
+  };
 
   React.useEffect(() => {
     if (init && !show) setTimeout(() => {

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialChairCounterFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='ChairCounterFilled'
+
+      short_name='ChairCounter'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M280-80v-60q36-25 76.5-39t83.5-19v-82H320v-80h120v-240H338l-14-40H160v-75q0-69 46-117t114-48h320q68 0 114 48t46 117v75H636l-14 40H520v240h120v80H520v82q43 5 83.5 19t76.5 39v60H280Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialChairCounterFilled.displayName = 'OnesyIconMaterialChairCounterFilled';
+
+export default IconMaterialChairCounterFilled;

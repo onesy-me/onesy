@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialAndroidCell4BarAlert = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='AndroidCell4BarAlert'
+
+      short_name='AndroidCell4BarAlert'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M60-160v-320h120v320H60Zm240 0v-420h120v420H300Zm240 0v-520h120v520H540Zm240-313v-327h120v314q-10-2-19.5-3t-20.5-1q-21 0-41.5 4.5T780-473Zm80 313q-17 0-28.5-11.5T820-200q0-17 11.5-28.5T860-240q17 0 28.5 11.5T900-200q0 17-11.5 28.5T860-160Zm-40-120v-140h80v140h-80Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialAndroidCell4BarAlert.displayName = 'OnesyIconMaterialAndroidCell4BarAlert';
+
+export default IconMaterialAndroidCell4BarAlert;

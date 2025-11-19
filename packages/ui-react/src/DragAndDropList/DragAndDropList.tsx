@@ -31,7 +31,7 @@ export type IDragAndDropList = Omit<IBaseElement, 'onChange'> & {
 const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDragAndDropList?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDragAndDropList?.props?.default, ...props_ };
 
   const {
     onChange: onChange_,

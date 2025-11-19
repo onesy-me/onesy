@@ -19,9 +19,9 @@ export type IToggleButtons = IButtons & {
 const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButtons?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButtons?.props?.default, ...props_ };
 
-  const Buttons = React.useMemo(() => theme?.elements?.Buttons || ButtonsElement, [theme]);
+  const Buttons = theme?.elements?.Buttons || ButtonsElement;
 
   const {
     className,

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialCloudLockW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='CloudLockW100Filled'
+
+      short_name='CloudLock'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M260-212q-70 0-119-48.77Q92-309.55 92-380q0-69 49.5-118.5T254-548q10-86 74.5-143T480-748q80 0 140 48t80 121q-74 11-122.5 66.5T529-382v170H260Zm399 0q-12.75 0-21.37-8.63Q629-229.25 629-242v-105q0-13 10.5-21t24.5-8v-40q0-26.81 19.13-45.91 19.14-19.09 46-19.09 26.87 0 45.37 19.09Q793-442.81 793-416v40q14 0 24.5 8t10.5 21v105q0 12.75-8.62 21.37Q810.75-212 798-212H659Zm33-164h73v-40q0-17-9.5-27T729-453q-17 0-27 10t-10 27v40Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialCloudLockW100Filled.displayName = 'OnesyIconMaterialCloudLockW100Filled';
+
+export default IconMaterialCloudLockW100Filled;

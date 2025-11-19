@@ -112,17 +112,17 @@ export type ITab = Omit<ISurface, 'version' | 'onChange'> & {
 const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTab?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTab?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
   const {
     tonal = true,
@@ -171,13 +171,13 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
 
   const label = name !== undefined ? name : label_;
 
-  const onBlur = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlur = (event: React.FocusEvent<any>) => {
     if (!disabled) setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, [disabled, onBlur_]);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocus = (event: React.FocusEvent<any>) => {
     if (!disabled) {
       setFocus(true);
 
@@ -185,7 +185,7 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
     }
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, [activateOnFocus, value, disabled, onFocus_]);
+  };
 
   if (icon !== undefined) {
     LineProps.direction = iconPosition === 'start' ? 'row' : iconPosition === 'top' ? 'column' : iconPosition === 'end' ? 'row-reverse' : 'column-reverse';

@@ -47,7 +47,7 @@ export type IExpand = Omit<ITransition, 'className'> & {
 const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyExpand?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyExpand?.props?.default, ...props_ };
 
   const {
     in: inProp,
@@ -112,11 +112,11 @@ const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
 
   if (orientation === 'horizontal') prop = 'width';
 
-  const isTransition = React.useCallback((item: any) => {
+  const isTransition = (item: any) => {
     const values = ['Transition', 'Fade', 'Grow', 'Slide', 'Zoom'];
 
     return values.some(item_ => item?.includes(item_));
-  }, []);
+  };
 
   const childrenWithTransition = isTransition(children?.type?.displayName);
 

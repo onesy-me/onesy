@@ -42,9 +42,9 @@ export type IReveal = Omit<IFade, 'onChange'> & {
 const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyReveal?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyReveal?.props?.default, ...props_ };
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
   const {
     inDefault,
@@ -108,13 +108,13 @@ const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
 
   refs.loaded.current = loaded;
 
-  const onUpdate = React.useCallback((value: boolean) => {
+  const onUpdate = (value: boolean) => {
     setInProp(value);
 
     if (value && !refs.loaded.current) setLoaded(true);
 
     if (is('function', onChange)) onChange(value);
-  }, [onChange]);
+  };
 
   React.useEffect(() => {
     const value = visiblity.visible;

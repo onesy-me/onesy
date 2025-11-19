@@ -52,13 +52,13 @@ export type IBanner = IListItem & {
 const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBanner?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBanner?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Grid = React.useMemo(() => theme?.elements?.Grid || GridElement, [theme]);
+  const Grid = theme?.elements?.Grid || GridElement;
 
   const {
     size = 'regular',

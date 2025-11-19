@@ -45,13 +45,13 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNotFound?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNotFound?.props?.default, ...props_ };
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
   const {
     name = l('Page not found'),
@@ -81,10 +81,10 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
 
   const navigate = isEnvironment('browser') && useNavigate();
 
-  const onTo = React.useCallback(() => {
+  const onTo = () => {
     if (link) window.open(link, 'blank');
     else navigate(to);
-  }, [to, link]);
+  };
 
   return (
     <Section

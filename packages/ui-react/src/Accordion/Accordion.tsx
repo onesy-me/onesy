@@ -174,26 +174,26 @@ const AccordionDelays = {
 const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAccordion?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAccordion?.props?.default, ...props_ };
 
   // Why
   // By providing option for a theme to override an entire element
   // with a value stored in elements
   // we can override entire element's content
   // not just customize an element using css
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Expand = React.useMemo(() => theme?.elements?.Expand || ExpandElement, [theme]);
+  const Expand = theme?.elements?.Expand || ExpandElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Grid = React.useMemo(() => theme?.elements?.Grid || GridElement, [theme]);
+  const Grid = theme?.elements?.Grid || GridElement;
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -272,7 +272,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
     if (open_ !== undefined && open_ !== open) setOpen(open_);
   }, [open_, open]);
 
-  const onClick = React.useCallback(() => {
+  const onClick = () => {
     if (refs.expandInProgress.current) return;
 
     if (!disabled) {
@@ -283,7 +283,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
 
       if (is('function', onChange)) onChange(valueNew);
     }
-  }, [open, disabled]);
+  };
 
   if (!noTransition) TransitionComponentProps.in = open;
   else {

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialSyncArrowDownW100 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='SyncArrowDownW100'
+
+      short_name='SyncArrowDown'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M167-241v-28h73q-60-32-95-89.5T110-485q0-88 56-155.5T307-724v29q-74 15-121.5 74T138-485q0 68 38 123.5T279-283v-98h28v140H167Zm223-4v-28q76-16 126.5-74.5T567-484q0-65-36-118.5T435-684v94h-28v-140h140v28h-85q60 33 96.5 91T595-484q0 89-58.5 156T390-245Zm384 33-98-98 20-20 64 64v-482h28v482l64-64 20 20-98 98Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialSyncArrowDownW100.displayName = 'OnesyIconMaterialSyncArrowDownW100';
+
+export default IconMaterialSyncArrowDownW100;

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialPersonShieldW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='PersonShieldW100Filled'
+
+      short_name='PersonShield'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M704-132q-57-14-90.5-63.29T580-305v-80.14L704-448l124 62.95v80.25q0 59.8-33.5 109.3T704-132ZM212-232v-52q0-22 13.5-41.5T262-356q55-26 109.5-39T480-408v103q0 18.68 2 36.84 2 18.16 7 36.16H212Zm268-280q-44.55 0-76.27-31.72Q372-575.45 372-620t31.73-76.28Q435.45-728 480-728t76.28 31.72Q588-664.55 588-620t-31.72 76.28Q524.55-512 480-512Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialPersonShieldW100Filled.displayName = 'OnesyIconMaterialPersonShieldW100Filled';
+
+export default IconMaterialPersonShieldW100Filled;

@@ -81,7 +81,7 @@ const useVisible = (props: IUseVisible) => {
     refs.root.current = rootNew;
   }, [element]);
 
-  const method = React.useCallback((entries: IntersectionObserverEntry[]) => {
+  const method = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
       const properties = ['boundingClientRect', 'intersectionRatio', 'intersectionRect', 'isIntersecting', 'isVisible', 'rootBounds', 'target', 'time'];
 
@@ -113,7 +113,7 @@ const useVisible = (props: IUseVisible) => {
 
       setResponse(responseNew);
     });
-  }, []);
+  };
 
   React.useEffect(() => {
     if (!(isEnvironment('browser') && 'IntersectionObserver' in window)) return;

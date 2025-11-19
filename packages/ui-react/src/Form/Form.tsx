@@ -92,13 +92,13 @@ export type IForm = Omit<ILine, 'onSubmit'> & {
 const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyForm?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyForm?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Accordion = React.useMemo(() => theme?.elements?.Accordion || AccordionElement, [theme]);
+  const Accordion = theme?.elements?.Accordion || AccordionElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     accordion,
@@ -154,9 +154,9 @@ const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
 
   if (!start && !text && end) justify = 'flex-end';
 
-  const onSubmit = ComponentForm === 'form' ? onSubmit_ || React.useCallback((event: SubmitEvent) => {
+  const onSubmit = ComponentForm === 'form' ? onSubmit_ || ((event: SubmitEvent) => {
     event.preventDefault();
-  }, []) : undefined;
+  }) : undefined;
 
   const elements = {
     name: name && (is('string', name) ? (

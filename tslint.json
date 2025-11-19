@@ -1,5 +1,8 @@
 {
-  "extends": ["tslint:recommended"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-react-hooks"
+  ],
   "rules": {
     "array-type": false,
     "no-console": false,

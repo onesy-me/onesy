@@ -172,17 +172,17 @@ export type ISpeedDial = Omit<ILine, 'direction'> & {
 const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpeedDial?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpeedDial?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Zoom = React.useMemo(() => theme?.elements?.Zoom || ZoomElement, [theme]);
+  const Zoom = theme?.elements?.Zoom || ZoomElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Fab = React.useMemo(() => theme?.elements?.Fab || FabElement, [theme]);
+  const Fab = theme?.elements?.Fab || FabElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
   const {
     tonal = true,
@@ -300,29 +300,29 @@ const SpeedDial: React.FC<ISpeedDial> = React.forwardRef((props_, ref: any) => {
     !open ? onOpen() : onClose();
   };
 
-  const onMouseEnter = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onMouseEnter = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled && (event.target.contains(refs.fab.current) || event.target.contains(refs.line.current))) {
       setHover(true);
     }
-  }, [disabled]);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onMouseLeave = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled) {
       setHover(false);
     }
-  }, [disabled]);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled) {
       setFocus(true);
     }
-  }, [disabled]);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled) {
       setFocus(false);
     }
-  }, [disabled]);
+  };
 
   let lineDirection: TLineDirection = 'row';
   // Safari bug *-reverse using gap

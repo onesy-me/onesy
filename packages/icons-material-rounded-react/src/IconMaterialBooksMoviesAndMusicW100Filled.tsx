@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialBooksMoviesAndMusicW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='BooksMoviesAndMusicW100Filled'
+
+      short_name='BooksMoviesAndMusic'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M232-132q-25 0-42.5-17.5T172-192v-426q0-20 12-36.5t32-21.5l248-68q29-8 52.5 10t23.5 48v18h28q25 0 42.5 17.5T628-608v85q-84 13-138 76.5T436-298q0 48 19 91t53 75H232Zm60-536h220v-18q0-16-12.5-26t-27.5-5l-180 49Zm372 518q-62 0-105-43t-43-105q0-62 43-105t105-43q62 0 105 43t43 105q0 62-43 105t-105 43Zm-6-98 54-40q6-5 6-12t-6-12l-54-40q-8-5-16-1t-8 13v80q0 9 8 13t16-1Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialBooksMoviesAndMusicW100Filled.displayName = 'OnesyIconMaterialBooksMoviesAndMusicW100Filled';
+
+export default IconMaterialBooksMoviesAndMusicW100Filled;

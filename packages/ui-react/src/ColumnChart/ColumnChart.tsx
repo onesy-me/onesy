@@ -21,11 +21,11 @@ export type IColumnChart = IChart & {
 const ColumnChart: React.FC<IColumnChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChart?.props?.default, ...props_ };
 
-  const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
+  const Chart = theme?.elements?.Chart || ChartElement;
 
-  const ColumnChartItem = React.useMemo(() => theme?.elements?.ColumnChartItem || ColumnChartItemElement, [theme]);
+  const ColumnChartItem = theme?.elements?.ColumnChartItem || ColumnChartItemElement;
 
   const {
     values,

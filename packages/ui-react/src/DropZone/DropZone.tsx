@@ -71,17 +71,17 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDropZone?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDropZone?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const FileChoose = React.useMemo(() => theme?.elements?.FileChoose || FileChooseElement, [theme]);
+  const FileChoose = theme?.elements?.FileChoose || FileChooseElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
   const {
     tonal = true,
@@ -180,7 +180,7 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
     }
   }, [value_]);
 
-  const onChange = React.useCallback((valueNew_: any[]) => {
+  const onChange = (valueNew_: any[]) => {
     let valueNew = valueNew_;
 
     // Allowed types
@@ -192,21 +192,21 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
     if (!props.hasOwnProperty('value')) setValue(valueNew);
 
     if (is('function', onChange_)) onChange_(valueNew);
-  }, []);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     setFocus(true);
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, [onFocus_]);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, [onBlur_]);
+  };
 
-  const onDrop = React.useCallback((event: React.DragEvent<any>) => {
+  const onDrop = (event: React.DragEvent<any>) => {
     event.preventDefault();
 
     setDragOver(false);
@@ -216,29 +216,29 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
     onChange(valueNew);
 
     if (is('function', onDrop_)) onDrop_(event);
-  }, []);
+  };
 
-  const onDragEnter = React.useCallback((event: React.DragEvent<any>) => {
+  const onDragEnter = (event: React.DragEvent<any>) => {
     event.preventDefault();
 
     setDragOver(true);
 
     if (is('function', onDragEnter_)) onDragEnter_(event);
-  }, []);
+  };
 
-  const onDragLeave = React.useCallback((event: React.DragEvent<any>) => {
+  const onDragLeave = (event: React.DragEvent<any>) => {
     event.preventDefault();
 
     setDragOver(false);
 
     if (is('function', onDragLeave_)) onDragLeave_(event);
-  }, []);
+  };
 
-  const onDragOver = React.useCallback((event: React.DragEvent<any>) => {
+  const onDragOver = (event: React.DragEvent<any>) => {
     event.preventDefault();
 
     if (is('function', onDragOver_)) onDragOver_(event);
-  }, []);
+  };
 
   other.onDrop = onDrop;
 

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMoonStarsFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MoonStarsFilled'
+
+      short_name='MoonStars'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M600-640 480-760l120-120 120 120-120 120Zm200 120-80-80 80-80 80 80-80 80ZM483-80q-84 0-157.5-32t-128-86.5Q143-253 111-326.5T79-484q0-146 93-257.5T409-880q-18 99 11 193.5T520-521q71 71 165.5 100T879-410q-26 144-138 237T483-80Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMoonStarsFilled.displayName = 'OnesyIconMaterialMoonStarsFilled';
+
+export default IconMaterialMoonStarsFilled;

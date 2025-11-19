@@ -353,37 +353,37 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimePicker?.props?.default, ...props__ }), [props__]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimePicker?.props?.default, ...props__ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const AdvancedTextField = React.useMemo(() => theme?.elements?.AdvancedTextField || AdvancedTextFieldElement, [theme]);
+  const AdvancedTextField = theme?.elements?.AdvancedTextField || AdvancedTextFieldElement;
 
-  const Modal = React.useMemo(() => theme?.elements?.Modal || ModalElement, [theme]);
+  const Modal = theme?.elements?.Modal || ModalElement;
 
-  const ClickListener = React.useMemo(() => theme?.elements?.ClickListener || ClickListenerElement, [theme]);
+  const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const ToggleButton = React.useMemo(() => theme?.elements?.ToggleButton || ToggleButtonElement, [theme]);
+  const ToggleButton = theme?.elements?.ToggleButton || ToggleButtonElement;
 
-  const ToggleButtons = React.useMemo(() => theme?.elements?.ToggleButtons || ToggleButtonsElement, [theme]);
+  const ToggleButtons = theme?.elements?.ToggleButtons || ToggleButtonsElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const Slide = React.useMemo(() => theme?.elements?.Slide || SlideElement, [theme]);
+  const Slide = theme?.elements?.Slide || SlideElement;
 
-  const Clock = React.useMemo(() => theme?.elements?.Clock || ClockElement, [theme]);
+  const Clock = theme?.elements?.Clock || ClockElement;
 
-  const Tab = React.useMemo(() => theme?.elements?.Tab || TabElement, [theme]);
+  const Tab = theme?.elements?.Tab || TabElement;
 
-  const Tabs = React.useMemo(() => theme?.elements?.Tabs || TabsElement, [theme]);
+  const Tabs = theme?.elements?.Tabs || TabsElement;
 
   const {
     tonal = true,
@@ -523,7 +523,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
   refs.dayTime.current = dayTime;
 
-  const valueToInput = React.useCallback((valueNew: any = refs.value.current) => {
+  const valueToInput = (valueNew: any = refs.value.current) => {
     let result = '';
 
     const [from, to] = is('array', valueNew) ? valueNew : [valueNew];
@@ -550,7 +550,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     if (range && to) result += `${SEPARATOR}${method(to)}`;
 
     return result;
-  }, [value, format, hour, minute, second, range]);
+  };
 
   const [input, setInput] = React.useState(valueToInput());
 
@@ -574,10 +574,10 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     setDayTime(valueNew.map(item => formatDate(item, 'a')));
   };
 
-  const errorCheck = React.useCallback((valueNew: any = value) => {
+  const errorCheck = (valueNew: any = value) => {
     // Error
     setError((valueNew || []).some((item: any, index: number) => !valid(item)));
-  }, [value]);
+  };
 
   // Init
   React.useEffect(() => {
@@ -590,16 +590,16 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     if (value_ !== undefined && value_ !== value) onUpdateValue(((is('array', value_) ? value_ : [value_] as any).filter(Boolean)));
   }, [value_]);
 
-  const onUpdate = React.useCallback((valueNew_: OnesyDate) => {
+  const onUpdate = (valueNew_: OnesyDate) => {
     const valueNew = resolve(valueNew_);
 
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
     if (is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
-  }, [value, range, onChange]);
+  };
 
-  const onUpdateSelecting = React.useCallback((valueNew_: TClockUnit, index: number) => {
+  const onUpdateSelecting = (valueNew_: TClockUnit, index: number) => {
     const valueNew = [...selecting];
 
     valueNew[index] = valueNew_;
@@ -608,9 +608,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     if (!props.hasOwnProperty('selecting')) setSelecting(valueNew);
 
     if (is('function', onChangeSelecting)) onChangeSelecting(valueNew as any);
-  }, [onChangeSelecting]);
+  };
 
-  const valid = React.useCallback((...args: [OnesyDate, any?]) => {
+  const valid = (...args: [OnesyDate, any?]) => {
     if (is('function', valid_)) return valid_(...args);
 
     const onesyDate = args[0];
@@ -628,9 +628,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     }
 
     return true;
-  }, [valid_, min, max, validate]);
+  };
 
-  const textToOnesyDate = React.useCallback((valueNew: string) => {
+  const textToOnesyDate = (valueNew: string) => {
     const [times, dayTime_] = (valueNew || '').split(' ');
     const values = times.split(':');
 
@@ -669,9 +669,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     }
 
     return onesyDate;
-  }, [format, hour, minute, second]);
+  };
 
-  const onInputModalChange = React.useCallback((valueNew: string, unit: TClockUnit, index: number) => {
+  const onInputModalChange = (valueNew: string, unit: TClockUnit, index: number) => {
     let valueTime: any = valueNew;
 
     if (is('string', valueTime) && valueTime.startsWith('0')) valueTime = valueTime.slice(1);
@@ -681,9 +681,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     value[index] = set(valueTime, unit || selecting[index], value[index]);
 
     (!actions_ ? onUpdate : setValue)(resolve(value) as any);
-  }, [value, actions_, selecting]);
+  };
 
-  const resolve = React.useCallback((valueNew = refs.value.current, dayTimeNew = refs.dayTime.current) => {
+  const resolve = (valueNew = refs.value.current, dayTimeNew = refs.dayTime.current) => {
     const values = valueNew.filter(Boolean).map((item: OnesyDate, index: number) => {
       // Resolve the range value
       const valueHour = item.hour;
@@ -698,9 +698,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     });
 
     return values;
-  }, [value, dayTime, format]);
+  };
 
-  const updateDayTime = React.useCallback((valueNew_: string[], index: number) => {
+  const updateDayTime = (valueNew_: string[], index: number) => {
     const valueNew = valueNew_[0];
 
     // Update dayTime
@@ -713,9 +713,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     setDayTime(dayTimeNew);
 
     (!actions_ ? onUpdate : setValue)(resolve(refs.value.current) as any);
-  }, [value, actions_, dayTime, format]);
+  };
 
-  const inputToValue = React.useCallback((valueNew_: string = input) => {
+  const inputToValue = (valueNew_: string = input) => {
     let valueNew = valueNew_;
 
     let [from, to] = valueNew.split(SEPARATOR) as any;
@@ -727,9 +727,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     valueNew = [from, to].filter(Boolean).filter((item: OnesyDate) => item?.valid) as any;
 
     return valueNew as unknown as TTimePickerValue;
-  }, [input]);
+  };
 
-  const onInputChange = React.useCallback((valueNew_: any) => {
+  const onInputChange = (valueNew_: any) => {
     const valueNew = inputToValue(valueNew_);
 
     const validValues = (valueNew as [OnesyDate, OnesyDate]).every(item => item.valid);
@@ -750,9 +750,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
     // Update input for free typing
     setInput(valueNew_);
-  }, []);
+  };
 
-  const onChangeClock = React.useCallback((valueNew_: any, index: number = 0) => {
+  const onChangeClock = (valueNew_: any, index: number = 0) => {
     const valueNew = [...value];
 
     if (valueNew_ !== value[index]) {
@@ -763,17 +763,17 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
       // Error
       errorCheck(valueNew);
     }
-  }, [value, actions_]);
+  };
 
-  const onChangeSelectingClock = React.useCallback((valueNew: TClockUnit, index = 0) => {
+  const onChangeSelectingClock = (valueNew: TClockUnit, index = 0) => {
     const selectingValue = selecting;
 
     selectingValue[index] = valueNew;
 
     if (valueNew !== selecting[0]) setSelecting([...selectingValue]);
-  }, [selecting]);
+  };
 
-  const onDoneSelecting = React.useCallback((valueNew: any, selectingNew: any) => {
+  const onDoneSelecting = (valueNew: any, selectingNew: any) => {
     // AutoCloseOnLast
     if (autoCloseOnLast && refs.mode.current === 'select') {
       if (['hour', 'minute', 'second'].includes(selectingNew)) {
@@ -784,29 +784,29 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
         ) return onOk();
       }
     }
-  }, [mode, autoCloseOnLast, hour, minute, second]);
+  };
 
-  const onMode = React.useCallback(() => {
+  const onMode = () => {
     setMode((version === 'mobile' ? openMobile : openDesktop) || 'select');
-  }, [version, openMobile, openDesktop]);
+  };
 
-  const onModeSwitch = React.useCallback(() => {
+  const onModeSwitch = () => {
     setMode(refs.mode.current === 'select' ? 'input' : 'select');
-  }, []);
+  };
 
-  const onOpen = React.useCallback(() => {
+  const onOpen = () => {
     onMode();
 
     setOpen(previous => !previous);
-  }, [open, openMobile, version]);
+  };
 
-  const onClose = React.useCallback((event: React.MouseEvent<any>) => {
+  const onClose = (event: React.MouseEvent<any>) => {
     setOpen(false);
 
     if (is('function', onClose_)) onClose_(event);
-  }, [onClose_]);
+  };
 
-  const onReset = React.useCallback(() => {
+  const onReset = () => {
     const valueNew = inputToValue() as any;
 
     // Update value
@@ -814,9 +814,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
 
     // Update dayTime
     setDayTime(valueNew.map(item => formatDate(item, 'a')));
-  }, [input]);
+  };
 
-  const onToday = React.useCallback((event: React.MouseEvent) => {
+  const onToday = (event: React.MouseEvent) => {
     const valueNew: any = [new OnesyDate()];
 
     if (range) valueNew.push(new OnesyDate());
@@ -833,9 +833,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     onClose(event);
 
     if (is('function', onToday_)) onToday_(event);
-  }, [input, range, onToday_]);
+  };
 
-  const onClear = React.useCallback((event: React.MouseEvent) => {
+  const onClear = (event: React.MouseEvent) => {
     const valueNew: any = [];
 
     // Update value
@@ -850,9 +850,9 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     onClose(event);
 
     if (is('function', onClear_)) onClear_(event);
-  }, [onClear_]);
+  };
 
-  const onOk = React.useCallback((event?: React.MouseEvent) => {
+  const onOk = (event?: React.MouseEvent) => {
     // Error
     errorCheck();
 
@@ -868,15 +868,15 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
     onClose(event);
 
     if (is('function', onOk_)) onOk_(event);
-  }, [value, onOk_]);
+  };
 
-  const onCancel = React.useCallback((event: React.MouseEvent) => {
+  const onCancel = (event: React.MouseEvent) => {
     onReset();
 
     onClose(event);
 
     if (is('function', onCancel_)) onCancel_(event);
-  }, [input, onCancel_]);
+  };
 
   const mask: any = [];
 

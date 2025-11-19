@@ -234,7 +234,7 @@ export type IMarkdown = IBaseElement & {
 const Markdown: React.FC<IMarkdown> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMarkdown?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMarkdown?.props?.default, ...props_ };
 
   const {
     value,

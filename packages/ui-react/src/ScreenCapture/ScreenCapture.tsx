@@ -73,21 +73,21 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScreenCapture?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScreenCapture?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const ImageCrop = React.useMemo(() => theme?.elements?.ImageCrop || ImageCropElement, [theme]);
+  const ImageCrop = theme?.elements?.ImageCrop || ImageCropElement;
 
-  const Portal = React.useMemo(() => theme?.elements?.Portal || PortalElement, [theme]);
+  const Portal = theme?.elements?.Portal || PortalElement;
 
   const {
     tonal = true,
@@ -155,7 +155,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
 
   refs.canvasSelectorValue.current = canvasSelectorValue;
 
-  const onInit = React.useCallback(() => {
+  const onInit = () => {
     const value = !(touch || isOS('mobile'));
 
     setInit(true);
@@ -163,7 +163,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
     setSupported(value);
 
     if (is('function', onInit_)) onInit_(value);
-  }, [touch, onInit_]);
+  };
 
   React.useEffect(() => {
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
@@ -253,7 +253,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
     if (is('function', onChangeName)) onChangeName(value_);
   };
 
-  const trackToValue = React.useCallback(async (track: MediaStreamTrack, version: TTrackValueVersion = 'canvas') => {
+  const trackToValue = async (track: MediaStreamTrack, version: TTrackValueVersion = 'canvas') => {
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
 
     const canvasElement = document.createElement('canvas');
@@ -286,9 +286,9 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
     const image = canvasElement.toDataURL(type, quality);
 
     return image;
-  }, [type, quality]);
+  };
 
-  const make = React.useCallback(async (version: TTrackValueVersion = 'image', options: any = {}) => {
+  const make = async (version: TTrackValueVersion = 'image', options: any = {}) => {
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
 
     refs.element.current = rootDocument.createElement('video');
@@ -330,9 +330,9 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
       // Clean up
       cleanUp();
     }
-  }, []);
+  };
 
-  const onView = React.useCallback(async (event: React.MouseEvent<any>) => {
+  const onView = async (event: React.MouseEvent<any>) => {
     setLoading(items => [...items, 'view']);
 
     try {
@@ -353,7 +353,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
     }, 1400);
 
     if (is('function', onView_)) onView_(event);
-  }, [name, make]);
+  };
 
   // const onEntirePage = async (event: React.MouseEvent<any>) => {
   //   setLoading(items => [...items, 'entirePage']);
@@ -435,9 +435,9 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
     if (is('function', onFreeClose_)) onFreeClose_(event);
   };
 
-  const onImageCropSelectorChange = React.useCallback((values: any) => {
+  const onImageCropSelectorChange = (values: any) => {
     setCanvasSelectorValue(values);
-  }, []);
+  };
 
   const iconButtonProps: any = {
     tonal,

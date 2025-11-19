@@ -7,10 +7,10 @@
     "jsx": "react-jsx",
     "paths": {
       "@onesy/ui-react": [
-        "../onesy-ui-react/src"
+        "../ui-react/src"
       ],
       "@onesy/ui-react/*": [
-        "../onesy-ui-react/src/*"
+        "../ui-react/src/*"
       ]
     }
   },

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialTileLargeW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='TileLargeW100Filled'
+
+      short_name='TileLarge'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M172-202v-115q0-12.75 8.63-21.38Q189.25-347 202-347h187.7q13.3 0 21.8 8.62 8.5 8.63 8.5 21.38v115q0 12.75-8.62 21.37Q402.75-172 390-172H202.3q-13.3 0-21.8-8.63-8.5-8.62-8.5-21.37Zm367 0v-115q0-12.75 8.63-21.38Q556.25-347 569-347h188.64q13.36 0 21.86 8.62 8.5 8.63 8.5 21.38v115q0 12.75-8.62 21.37Q770.75-172 758-172H569.36q-13.36 0-21.86-8.63-8.5-8.62-8.5-21.37ZM172-496v-262q0-12.75 8.63-21.38Q189.25-788 202-788h556q12.75 0 21.38 8.62Q788-770.75 788-758v262q0 12.75-8.62 21.37Q770.75-466 758-466H202q-12.75 0-21.37-8.63Q172-483.25 172-496Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialTileLargeW100Filled.displayName = 'OnesyIconMaterialTileLargeW100Filled';
+
+export default IconMaterialTileLargeW100Filled;

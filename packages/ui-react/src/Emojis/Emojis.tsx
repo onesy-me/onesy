@@ -194,27 +194,27 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyEmojis?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyEmojis?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
-  const ListSubheader = React.useMemo(() => theme?.elements?.ListSubheader || ListSubheaderElement, [theme]);
+  const ListSubheader = theme?.elements?.ListSubheader || ListSubheaderElement;
 
-  const SpyScroll = React.useMemo(() => theme?.elements?.SpyScroll || SpyScrollElement, [theme]);
+  const SpyScroll = theme?.elements?.SpyScroll || SpyScrollElement;
 
-  const Tabs = React.useMemo(() => theme?.elements?.Tabs || TabsElement, [theme]);
+  const Tabs = theme?.elements?.Tabs || TabsElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
-  const Tab = React.useMemo(() => theme?.elements?.Tab || TabElement, [theme]);
+  const Tab = theme?.elements?.Tab || TabElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const EMOJI_CATEGORIES = React.useMemo(() => {
     return [
@@ -298,26 +298,26 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
     main: React.useRef<HTMLElement>(undefined)
   };
 
-  const onOpen = React.useCallback(() => {
+  const onOpen = () => {
     setOpen(true);
 
     setTimeout(() => {
       setOpenElement(refs.main.current || null);
     }, 140);
-  }, []);
+  };
 
-  const onClose = React.useCallback(() => {
+  const onClose = () => {
     setOpen(false);
 
     setTimeout(() => {
       setOpenElement(null);
       setSearch('');
     }, 140);
-  }, []);
+  };
 
-  const onSelect = React.useCallback((valueNew: IEmoji) => {
+  const onSelect = (valueNew: IEmoji) => {
     if (is('function', onSelect_)) onSelect_!(valueNew);
-  }, [onSelect_]);
+  };
 
   const emojisPerCategory = React.useMemo(() => {
     const value: Record<string, IEmoji[]> = {};
@@ -351,19 +351,19 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
     return value;
   }, [search, emojis, categories]);
 
-  const onChangeSearch = React.useCallback(debounce((valueNew: any) => {
+  const onChangeSearch = debounce((valueNew: any) => {
     setSearch(valueNew);
-  }, 140), []);
+  }, 140);
 
-  const onChangeTabs = React.useCallback((valueNew: any) => {
+  const onChangeTabs = (valueNew: any) => {
     setTab(valueNew);
-  }, []);
+  };
 
-  const onActiveTab = React.useCallback((valueNew: any) => {
+  const onActiveTab = (valueNew: any) => {
     setTab(valueNew.replace(/-/g, ' '));
-  }, []);
+  };
 
-  const onTabClick = React.useCallback((valueNew: any) => {
+  const onTabClick = (valueNew: any) => {
     const elements = Array.from(refs.main.current?.children || []) as HTMLElement[];
 
     if (!!elements.length) {
@@ -380,7 +380,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
         });
       }
     }
-  }, []);
+  };
 
   const categoriesUsed = Object.keys(emojisPerCategory);
 

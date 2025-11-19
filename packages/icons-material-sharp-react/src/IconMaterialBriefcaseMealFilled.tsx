@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialBriefcaseMealFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='BriefcaseMealFilled'
+
+      short_name='BriefcaseMeal'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M80-120v-600h240v-160h320v160h240v600H80Zm320-600h160v-80H400v80Zm-20 520v-120q26-6 43-27.5t17-49.5v-163h-40v151h-30v-151h-40v151h-30v-151h-40v163q0 28 17 49.5t43 27.5v120h60Zm260 0v-88q26-14 43-49.5t17-82.5q0-58-26.5-99T610-560q-38 0-64 41t-26 99q0 46 17 81.5t43 50.5v88h60Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialBriefcaseMealFilled.displayName = 'OnesyIconMaterialBriefcaseMealFilled';
+
+export default IconMaterialBriefcaseMealFilled;

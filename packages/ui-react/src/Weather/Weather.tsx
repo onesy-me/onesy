@@ -20,7 +20,7 @@ import { IElementReference, IPropsAny } from '../types';
 const IconWeather = React.forwardRef((props: any, ref: any) => {
   const theme = useOnesyTheme();
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
     tonal,
@@ -220,15 +220,15 @@ export type IWeather = ISurface & {
 const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWeather?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWeather?.props?.default, ...props_ };
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Transitions = React.useMemo(() => theme?.elements?.Transitions || TransitionsElement, [theme]);
+  const Transitions = theme?.elements?.Transitions || TransitionsElement;
 
   const {
     tonal = true,

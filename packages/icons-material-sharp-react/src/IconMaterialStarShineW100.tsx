@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialStarShineW100 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='StarShineW100'
+
+      short_name='StarShine'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="m831-248-83-84 19-19 84 83-20 20ZM708-709l-19-19 83-83 20 19-84 83Zm-456 1-83-84 19-19 84 83-20 20ZM128-248l-19-20 83-83 20 19-84 84Zm180 16 172-103 173 105-45-195 151-130-199-18-80-184-79 183-199 17 151 132-45 193Zm-43 60 57-242-190-164 250-21 98-229 99 229 250 21-190 164 57 242-216-129-215 129Zm216-322Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialStarShineW100.displayName = 'OnesyIconMaterialStarShineW100';
+
+export default IconMaterialStarShineW100;

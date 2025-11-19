@@ -199,33 +199,33 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Label = React.useMemo(() => theme?.elements?.Label || LabelElement, [theme]);
+  const Label = theme?.elements?.Label || LabelElement;
 
-  const Switch = React.useMemo(() => theme?.elements?.Switch || SwitchElement, [theme]);
+  const Switch = theme?.elements?.Switch || SwitchElement;
 
-  const Modal = React.useMemo(() => theme?.elements?.Modal || ModalElement, [theme]);
+  const Modal = theme?.elements?.Modal || ModalElement;
 
-  const ModalHeader = React.useMemo(() => theme?.elements?.ModalHeader || ModalHeaderElement, [theme]);
+  const ModalHeader = theme?.elements?.ModalHeader || ModalHeaderElement;
 
-  const ModalMain = React.useMemo(() => theme?.elements?.ModalMain || ModalMainElement, [theme]);
+  const ModalMain = theme?.elements?.ModalMain || ModalMainElement;
 
-  const Slide = React.useMemo(() => theme?.elements?.Slide || SlideElement, [theme]);
+  const Slide = theme?.elements?.Slide || SlideElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
+  const Select = theme?.elements?.Select || SelectElement;
 
-  const CalendarWeek = React.useMemo(() => theme?.elements?.CalendarWeek || CalendarWeekElement, [theme]);
+  const CalendarWeek = theme?.elements?.CalendarWeek || CalendarWeekElement;
 
   const {
     name,
@@ -339,13 +339,13 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     return (is('array', timesProps) ? timesProps : [timesProps]).filter(Boolean);
   }, [events, timesProps]);
 
-  const onStatusToggle = React.useCallback((value = 'working') => {
+  const onStatusToggle = (value = 'working') => {
     setStatuses(previous => ({
       ...previous,
 
       [value]: previous[value] === undefined ? false : !previous[value]
     }));
-  }, []);
+  };
 
   const rangeShade = theme.palette.light ? 70 : 40;
 
@@ -365,25 +365,25 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     if (date_ !== undefined && date_ !== date) setDate(date_);
   }, [date_]);
 
-  const onOpen = React.useCallback((item: any) => {
+  const onOpen = (item: any) => {
     setModal({ ...item, open: true });
-  }, []);
+  };
 
-  const onClose = React.useCallback(() => {
+  const onClose = () => {
     setModal((item: any) => ({
       ...item,
 
       open: false
     }));
-  }, []);
+  };
 
-  const onChangeDisplayTime = React.useCallback((valueNew: any) => {
+  const onChangeDisplayTime = (valueNew: any) => {
     setDisplayTime(valueNew);
-  }, []);
+  };
 
-  const onChangeView = React.useCallback((valueNew: any) => {
+  const onChangeView = (valueNew: any) => {
     setView(valueNew);
-  }, []);
+  };
 
   const optionsStatus = React.useMemo(() => {
     return [
@@ -397,15 +397,15 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     ];
   }, []);
 
-  const onToday = React.useCallback(() => {
+  const onToday = () => {
     const valueNew = new OnesyDate();
 
     setDate(valueNew);
 
     if (is('function', onChangeDateProps)) onChangeDateProps(valueNew);
-  }, [onChangeDateProps]);
+  };
 
-  const onPrevious = React.useCallback(() => {
+  const onPrevious = () => {
     let valueNew = new OnesyDate();
 
     setDate(previous => {
@@ -415,9 +415,9 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     });
 
     if (is('function', onChangeDateProps)) onChangeDateProps(valueNew);
-  }, [view, onChangeDateProps]);
+  };
 
-  const onNext = React.useCallback(() => {
+  const onNext = () => {
     let valueNew = new OnesyDate();
 
     setDate(previous => {
@@ -427,9 +427,9 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     });
 
     if (is('function', onChangeDateProps)) onChangeDateProps(valueNew);
-  }, [view, onChangeDateProps]);
+  };
 
-  const getDates = React.useCallback((available: any) => {
+  const getDates = (available: any) => {
     const values = available.dates?.values || [];
 
     return values.map((item: any) => {
@@ -455,9 +455,9 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
       return item;
     });
-  }, [times]);
+  };
 
-  const getDatesWeek = React.useCallback((available: any) => {
+  const getDatesWeek = (available: any) => {
     const weekFrom = startOf(date, 'week');
     const weekTo = endOf(date, 'week');
 
@@ -467,9 +467,9 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
       return !(from.milliseconds >= weekTo.milliseconds || to.milliseconds <= weekFrom.milliseconds);
     });
-  }, [date, getDates]);
+  };
 
-  const getColor = React.useCallback((item: any) => {
+  const getColor = (item: any) => {
     let palette = theme.palette.color.neutral;
 
     if (item?.status === 'working') palette = theme.palette.color.success;
@@ -487,15 +487,15 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
     if (item?.status === 'other') palette = theme.palette.color.neutral;
 
     return palette[rangeShade];
-  }, [rangeShade, colors, theme]);
+  };
 
-  const itemToText = React.useCallback((item: any) => {
+  const itemToText = (item: any) => {
     if (item === 'pending') return l('Scheduled');
 
     if (item === 'not-count-workout-session') return l(`Don't count workout session`);
 
     return optionsStatus?.find(itemStatus => itemStatus.value === item)?.name ?? l(item);
-  }, []);
+  };
 
   const viewOptions = React.useMemo(() => {
     return viewsProps?.map(item => ({

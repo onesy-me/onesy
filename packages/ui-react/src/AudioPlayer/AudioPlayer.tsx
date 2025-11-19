@@ -193,23 +193,23 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAudioPlayer?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAudioPlayer?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Slider = React.useMemo(() => theme?.elements?.Slider || SliderElement, [theme]);
+  const Slider = theme?.elements?.Slider || SliderElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Expand = React.useMemo(() => theme?.elements?.Expand || ExpandElement, [theme]);
+  const Expand = theme?.elements?.Expand || ExpandElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
   const {
     name,
@@ -317,7 +317,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
 
   refs.startMediaSessionOnPlay.current = startMediaSessionOnPlay;
 
-  const startMediaSession = React.useCallback(() => {
+  const startMediaSession = () => {
     if ('mediaSession' in navigator) {
       window.navigator.mediaSession.metadata = new MediaMetadata({
         title: name
@@ -343,9 +343,9 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
         }
       }
     }
-  }, [name]);
+  };
 
-  const updateMediaSession = React.useCallback(() => {
+  const updateMediaSession = () => {
     if ('mediaSession' in navigator) {
       window.navigator.mediaSession.setPositionState({
         duration: refs.duration.current,
@@ -353,7 +353,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
         position: clamp(refs.time.current, 0, refs.duration.current)
       });
     }
-  }, [name]);
+  };
 
   refs.startMediaSession.current = startMediaSession;
 
@@ -361,22 +361,22 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
 
   const durationTime = duration_ || meta?.duration;
 
-  const onVolumeChange = React.useCallback((value: number) => {
+  const onVolumeChange = (value: number) => {
     setVolume(value);
 
     refs.audio.current!.volume = value;
-  }, []);
+  };
 
-  const onTimeChange = React.useCallback((value: number) => {
+  const onTimeChange = (value: number) => {
     setTime(value);
 
     refs.audio.current!.currentTime = value;
 
     // update MediaSession
     refs.updateMediaSession.current();
-  }, []);
+  };
 
-  const onPlaybackSpeed = React.useCallback((value_: number) => {
+  const onPlaybackSpeed = (value_: number) => {
     const value = clamp(value_, 0, 2);
 
     setPlaybackSpeed(value);
@@ -384,27 +384,27 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
     setOpenMenu(null);
 
     refs.audio.current!.playbackRate = value;
-  }, []);
+  };
 
-  const onForward = React.useCallback((details?: MediaSessionActionDetails) => {
+  const onForward = (details?: MediaSessionActionDetails) => {
     const part = refs.duration.current * 0.1;
     const toMove = clamp(details?.seekOffset || part, 1, refs.duration.current);
 
     const value = clamp(refs.time.current + toMove, 0, refs.duration.current);
 
     refs.onTimeChange.current(value);
-  }, []);
+  };
 
-  const onBackward = React.useCallback((details?: MediaSessionActionDetails) => {
+  const onBackward = (details?: MediaSessionActionDetails) => {
     const part = refs.duration.current * 0.1;
     const toMove = clamp(details?.seekOffset || part, 1, refs.duration.current);
 
     const value = clamp(refs.time.current - toMove, 0, refs.duration.current);
 
     refs.onTimeChange.current(value);
-  }, []);
+  };
 
-  const onPlay = React.useCallback(() => {
+  const onPlay = () => {
     try {
       setPlay(true);
 
@@ -419,33 +419,33 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
     catch (error) {
       console.error(`AudioPlayer`, error);
     }
-  }, []);
+  };
 
-  const onPause = React.useCallback(() => {
+  const onPause = () => {
     setPlay(false);
 
     refs.audio.current!.pause();
-  }, []);
+  };
 
-  const onStop = React.useCallback(() => {
+  const onStop = () => {
     setPlay(false);
 
     refs.audio.current!.pause();
 
     refs.audio.current!.currentTime = 0;
-  }, []);
+  };
 
-  const onMute = React.useCallback(() => {
+  const onMute = () => {
     setMuted(true);
 
     refs.audio.current!.muted = true;
-  }, []);
+  };
 
-  const onUnmute = React.useCallback(() => {
+  const onUnmute = () => {
     setMuted(false);
 
     refs.audio.current!.muted = false;
-  }, []);
+  };
 
   refs.onPlay.current = onPlay;
 
@@ -459,7 +459,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
 
   refs.onStop.current = onStop;
 
-  const init = React.useCallback(() => {
+  const init = () => {
     setLoaded(false);
 
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
@@ -509,7 +509,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
     }
 
     audio.src = src;
-  }, [src, durationTime, startMediaSession]);
+  };
 
   React.useEffect(() => {
     if (loaded) {
@@ -537,27 +537,27 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
     }
   }, [quality]);
 
-  const onMouseEnter = React.useCallback(() => {
+  const onMouseEnter = () => {
     setVolumeVisible(true);
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback(() => {
+  const onMouseLeave = () => {
     setVolumeVisible(false);
-  }, []);
+  };
 
-  const onUpdating = React.useCallback(() => {
+  const onUpdating = () => {
     setUpdating(refs.play.current ? 'play' : true);
 
     if (refs.play.current) onPause();
-  }, [onPause]);
+  };
 
-  const onUpdatingDone = React.useCallback(() => {
+  const onUpdatingDone = () => {
     const updatingPrevious = refs.updating.current;
 
     setUpdating(false);
 
     if (updatingPrevious === 'play') onPlay();
-  }, [onPlay]);
+  };
 
   React.useEffect(() => {
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
@@ -610,15 +610,15 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
     return value;
   };
 
-  const onQuality = React.useCallback((version: any) => {
+  const onQuality = (version: any) => {
     setQuality(version);
 
     setOpenMenu(null);
-  }, []);
+  };
 
-  const onSettingsMenuClose = React.useCallback(() => {
+  const onSettingsMenuClose = () => {
     setOpenMenu(null);
-  }, []);
+  };
 
   const getSettingsMenuItems = () => {
     const itemProps: any = {

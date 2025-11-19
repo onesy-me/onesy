@@ -24,13 +24,13 @@ const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((pr
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCountry?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCountry?.props?.default, ...props_ };
 
-  const AutoComplete = React.useMemo(() => theme?.elements?.AutoComplete || AutoCompleteElement, [theme]);
+  const AutoComplete = theme?.elements?.AutoComplete || AutoCompleteElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     value,

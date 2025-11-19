@@ -46,11 +46,11 @@ export type ILabels = Omit<ILine, 'onChange'> & {
 const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLabels?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLabels?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -114,7 +114,7 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
 
   const children: any[] = React.Children.toArray(children_);
 
-  const onUpdate = React.useCallback((valueNew_: any) => {
+  const onUpdate = (valueNew_: any) => {
     const valueNew = valueNew_;
 
     const value__ = [...refs.value.current];
@@ -127,7 +127,7 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
     if (!props.hasOwnProperty('value')) setValue(value__);
 
     if (is('function', onChange)) onChange(value__);
-  }, []);
+  };
 
   return (
     <Line

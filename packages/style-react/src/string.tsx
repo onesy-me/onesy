@@ -34,7 +34,7 @@ export default function string(value_: TemplateStringsArray, ...args: any[]): st
     a: valueStringMethod()
   };
 
-  const name = React.useMemo(() => hash(value.a), [value_]);
+  const name = hash(value.a);
 
   if (!responses[name]) responses[name] = [];
 

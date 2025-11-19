@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialUdonFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='UdonFilled'
+
+      short_name='Udon'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M220-480h40v-160h-40v160Zm0-220h40v-50l-40 4v46Zm100 220h40v-160h-40v160Zm0-220h40v-62l-40 5v57ZM98-360q-5-18-9-36t-6-37q-2-19 11-33t33-14h33v-284q0-15 10.5-26.5T196-804l651-72q14-2 23.5 6.5T880-847q0 11-7.5 19.5T854-817l-434 49v68h430q13 0 21.5 8.5T880-670q0 13-8.5 21.5T850-640H420v160h413q20 0 33 14t11 33q-2 19-6 37t-9 36H98ZM480-80q-112 0-203.5-54.5T133-280h694q-52 91-143.5 145.5T480-80Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialUdonFilled.displayName = 'OnesyIconMaterialUdonFilled';
+
+export default IconMaterialUdonFilled;

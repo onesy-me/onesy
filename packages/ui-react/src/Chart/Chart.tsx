@@ -492,19 +492,19 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChart?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
+  const Path = theme?.elements?.Path || PathElement;
 
-  const Append = React.useMemo(() => theme?.elements?.Append || AppendElement, [theme]);
+  const Append = theme?.elements?.Append || AppendElement;
 
-  const Grow = React.useMemo(() => theme?.elements?.Grow || GrowElement, [theme]);
+  const Grow = theme?.elements?.Grow || GrowElement;
 
   const {
     tonal = true,
@@ -878,13 +878,13 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
   refs.minMax.current = minMax;
 
-  const onWrapperMouseEnter = React.useCallback(() => {
+  const onWrapperMouseEnter = () => {
     if (!refs.guidelinesIn.current) setGuidelineIn(true);
 
     setHover(true);
-  }, []);
+  };
 
-  const onWrapperMouseLeave = React.useCallback(() => {
+  const onWrapperMouseLeave = () => {
     setHover(false);
 
     setTimeout(() => {
@@ -898,7 +898,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
 
       setGuidelinePosition({});
     });
-  }, [tooltipCloseOnMouseLeave, guidelinesDisplayInactive]);
+  };
 
   const makeGroupTooltip = (x_: number, y_: number) => {
     const items = refs.allValues.current.filter(item => item.normalized[0] === x_);
@@ -1205,7 +1205,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
     make();
   }, [values, labels__, marks__, grid__, additionalLines__, legend__, visible, (guidelinesAppend && guidelinesPosition), rects, theme]);
 
-  const onPointMouseEnter = React.useCallback((values_: any) => {
+  const onPointMouseEnter = (values_: any) => {
     if (tooltipIndividually) {
       setAppend({
         ...(is('function', tooltipRender) ? tooltipRender(values_) : values_),
@@ -1215,15 +1215,15 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
         open: true
       });
     }
-  }, [tooltipRender, tooltipIndividually]);
+  };
 
-  const onPointMouseLeave = React.useCallback(() => {
+  const onPointMouseLeave = () => {
     setAppend(append_ => ({
       ...append_,
 
       open: false
     }));
-  }, []);
+  };
 
   const onLegendClick = (value: any) => {
     if (value !== undefined && legendManageVisibility) {
@@ -1235,7 +1235,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const LegendItem = React.useCallback((props__: any) => {
+  const LegendItem = (props__: any) => {
     const {
       item = {},
 
@@ -1295,7 +1295,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
         </Type>
       </Line>
     );
-  }, [theme]);
+  };
 
   const make = (valueNew = refs.values.current) => {
     // Make values into x, y, coordinates

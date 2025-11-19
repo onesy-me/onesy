@@ -23,9 +23,9 @@ export type IDonutChart = IPieChart & {
 const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDonutChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDonutChart?.props?.default, ...props_ };
 
-  const PieChart = React.useMemo(() => theme?.elements?.PieChart || PieChartElement, [theme]);
+  const PieChart = theme?.elements?.PieChart || PieChartElement;
 
   const {
     className,

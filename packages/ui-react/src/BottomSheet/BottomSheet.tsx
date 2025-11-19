@@ -42,9 +42,9 @@ export type IBottomSheet = INavigationDrawer & {
 const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBottomSheet?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBottomSheet?.props?.default, ...props_ };
 
-  const NavigationDrawer = React.useMemo(() => theme?.elements?.NavigationDrawer || NavigationDrawerElement, [theme]);
+  const NavigationDrawer = theme?.elements?.NavigationDrawer || NavigationDrawerElement;
 
   const {
     className,

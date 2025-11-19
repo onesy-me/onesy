@@ -62,13 +62,13 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextToSpeech?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTextToSpeech?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     size = 'regular',
@@ -119,29 +119,29 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
 
   const supported = isEnvironment('browser') && ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
 
-  const onPause = React.useCallback(async (event?: SpeechSynthesisEvent) => {
+  const onPause = async (event?: SpeechSynthesisEvent) => {
     setStatus('paused');
 
     if (is('function', onPause_)) onPause_!(event);
-  }, [onPause_]);
+  };
 
-  const onResume = React.useCallback(async (event?: SpeechSynthesisEvent) => {
+  const onResume = async (event?: SpeechSynthesisEvent) => {
     setStatus('resumed');
 
     if (is('function', onResume_)) onResume_!(event);
-  }, [onResume_]);
+  };
 
-  const onEnd = React.useCallback((event?: SpeechSynthesisEvent) => {
+  const onEnd = (event?: SpeechSynthesisEvent) => {
     setStatus('initial');
 
     if (is('function', onEnd_)) onEnd_!(event);
-  }, [onEnd_]);
+  };
 
-  const onError = React.useCallback((event?: SpeechSynthesisEvent) => {
+  const onError = (event?: SpeechSynthesisEvent) => {
     setStatus('initial');
 
     if (is('function', onError_)) onError_!(event);
-  }, [onError_]);
+  };
 
   React.useEffect(() => {
     // Clean up previous utterance
@@ -153,7 +153,7 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
     }
   }, [read, speechSynthesisUtterance, supported, language, pitch, rate, text, voice, volume]);
 
-  const onStart = React.useCallback(async (event?: SpeechSynthesisEvent) => {
+  const onStart = async (event?: SpeechSynthesisEvent) => {
     if (supported && is('string', read)) {
       setStatus('started');
 
@@ -189,15 +189,15 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
 
       if (is('function', onStart_)) onStart_!(event);
     }
-  }, [read, speechSynthesisUtterance, supported, onStart_, onPause, onResume, onEnd, language, pitch, rate, text, voice, volume]);
+  };
 
-  const onClick = React.useCallback(async () => {
+  const onClick = async () => {
     const status_ = refs.status.current;
 
     if (['started', 'resumed'].includes(status_)) window.speechSynthesis.pause();
     else if (status_ === 'paused') window.speechSynthesis.resume();
     else if (status_ === 'initial') onStart();
-  }, [onStart]);
+  };
 
   const iconProps = {
     size,

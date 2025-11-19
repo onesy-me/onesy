@@ -52,9 +52,9 @@ export type IAppend = {
 const Append: React.FC<IAppend> = (props_) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAppend?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAppend?.props?.default, ...props_ };
 
-  const Portal = React.useMemo(() => theme?.elements?.Portal || PortalElement, [theme]);
+  const Portal = theme?.elements?.Portal || PortalElement;
 
   const {
     open,
@@ -117,14 +117,11 @@ const Append: React.FC<IAppend> = (props_) => {
 
   refs.props.current = props;
 
-  const onScroll = React.useCallback((event: any) => {
-    // Only if it's parent's scroll event
-    // if (event.target.contains(refs.root.current) && anchor === undefined) make();
-
+  const onScroll = () => {
     make();
-  }, [anchor]);
+  };
 
-  const observerMethod = React.useCallback((mutations: Array<MutationRecord>) => {
+  const observerMethod = (mutations: Array<MutationRecord>) => {
 
     for (const mutation of mutations) {
       if (
@@ -137,13 +134,7 @@ const Append: React.FC<IAppend> = (props_) => {
         if (refs.anchor.current === undefined) make();
       }
     }
-
-  }, []);
-
-  const observerResizeMethod = React.useCallback(() => {
-    if (refs.anchor.current === undefined) make();
-
-  }, []);
+  };
 
   React.useEffect(() => {
     const rootWindow = isEnvironment('browser') ? (refs.root.current?.ownerDocument?.defaultView || window) : undefined;
@@ -231,7 +222,7 @@ const Append: React.FC<IAppend> = (props_) => {
     }
   }, [values]);
 
-  const getBoundingRect = React.useCallback((elementHTML: HTMLElement): Promise<DOMRect> => new Promise(async (resolve, reject) => {
+  const getBoundingRect = (elementHTML: HTMLElement): Promise<DOMRect> => new Promise(async (resolve, reject) => {
     if (!elementHTML?.getBoundingClientRect) return;
 
     let tries = 5;
@@ -245,7 +236,7 @@ const Append: React.FC<IAppend> = (props_) => {
 
       await wait(40);
     }
-  }), []);
+  });
 
   const getValues = async () => {
     if (!((refs.root.current || refs.anchor.current) && refs.element.current)) return;

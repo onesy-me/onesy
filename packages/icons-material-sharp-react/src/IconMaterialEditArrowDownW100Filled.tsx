@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialEditArrowDownW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='EditArrowDownW100Filled'
+
+      short_name='EditArrowDown'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="m774-212-98-98 20-20 64 64v-482h28v482l64-64 20 20-98 98Zm-602-74v-118l295-290q18-17 43-17t42 18l34 34q17 18 17 43t-18 42L292-286H172Zm335-251 58-57q10-9 10-22.5T565-640l-34-34q-9-9-22-9t-23 9l-59 58 80 79Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialEditArrowDownW100Filled.displayName = 'OnesyIconMaterialEditArrowDownW100Filled';
+
+export default IconMaterialEditArrowDownW100Filled;

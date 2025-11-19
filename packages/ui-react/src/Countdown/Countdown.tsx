@@ -130,25 +130,25 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCountdown?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCountdown?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const NumericTextField = React.useMemo(() => theme?.elements?.NumericTextField || NumericTextFieldElement, [theme]);
+  const NumericTextField = theme?.elements?.NumericTextField || NumericTextFieldElement;
 
-  const RoundProgress = React.useMemo(() => theme?.elements?.RoundProgress || RoundProgressElement, [theme]);
+  const RoundProgress = theme?.elements?.RoundProgress || RoundProgressElement;
 
-  const LinearProgress = React.useMemo(() => theme?.elements?.LinearProgress || LinearProgressElement, [theme]);
+  const LinearProgress = theme?.elements?.LinearProgress || LinearProgressElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     tonal = true,
@@ -242,7 +242,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
     refs.animationFrame.current = requestAnimationFrame(update);
   };
 
-  const onStart = React.useCallback((event: React.MouseEvent<any>) => {
+  const onStart = (event: React.MouseEvent<any>) => {
     refs.total.current = refs.valuePaused.current = (
       ((refs.values.current.hours || 0) * (60 ** 2) * 1e3) +
       ((refs.values.current.minutes || 0) * (60 ** 1) * 1e3) +
@@ -260,9 +260,9 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
     }, 14);
 
     if (is('function', onStart_)) onStart_(event);
-  }, []);
+  };
 
-  const onPause = React.useCallback((event: React.MouseEvent<any>) => {
+  const onPause = (event: React.MouseEvent<any>) => {
     clear();
 
     // Remember previous value
@@ -271,9 +271,9 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
     setStatus('paused');
 
     if (is('function', onPause_)) onPause_(event);
-  }, []);
+  };
 
-  const onStop = React.useCallback((event: React.MouseEvent<any>) => {
+  const onStop = (event: React.MouseEvent<any>) => {
     clear();
 
     refs.start.current = 0;
@@ -287,9 +287,9 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
     setValue(0);
 
     if (is('function', onStop_)) onStop_(event);
-  }, []);
+  };
 
-  const onResume = React.useCallback((event: React.MouseEvent<any>) => {
+  const onResume = (event: React.MouseEvent<any>) => {
     // Update start, valuePaused value
     refs.start.current = OnesyDate.milliseconds;
 
@@ -299,7 +299,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
     setStatus('running');
 
     if (is('function', onResume_)) onResume_(event);
-  }, []);
+  };
 
   const IconProps = {
 

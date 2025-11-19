@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMobileHandLeftOff = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MobileHandLeftOff'
+
+      short_name='MobileHandLeftOff'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="m800-272-80-80v-448H360v88l-80-80v-88h520v608Zm19 244-52-52H412l67-80h208L574-274 412-80q-17 19-40 29.5T323-40h-43q-66 0-113-47t-47-113v-320l104-104L28-820l56-56L876-84l-57 56ZM540-576Zm0-104q17 0 28.5-11.5T580-720q0-17-11.5-28.5T540-760q-17 0-28.5 11.5T500-720q0 17 11.5 28.5T540-680ZM280-120h43q9 0 17-3.5t14-10.5l138-168-212 107v-369l-80 80v284q0 34 23.5 57t56.5 23Zm407-40ZM360-325l107-54-107-109v163Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMobileHandLeftOff.displayName = 'OnesyIconMaterialMobileHandLeftOff';
+
+export default IconMaterialMobileHandLeftOff;

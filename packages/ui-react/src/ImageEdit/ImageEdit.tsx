@@ -219,29 +219,29 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageEdit?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageEdit?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Expand = React.useMemo(() => theme?.elements?.Expand || ExpandElement, [theme]);
+  const Expand = theme?.elements?.Expand || ExpandElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const Slider = React.useMemo(() => theme?.elements?.Slider || SliderElement, [theme]);
+  const Slider = theme?.elements?.Slider || SliderElement;
 
-  const NumericTextField = React.useMemo(() => theme?.elements?.NumericTextField || NumericTextFieldElement, [theme]);
+  const NumericTextField = theme?.elements?.NumericTextField || NumericTextFieldElement;
 
-  const ImageCrop = React.useMemo(() => theme?.elements?.ImageCrop || ImageCropElement, [theme]);
+  const ImageCrop = theme?.elements?.ImageCrop || ImageCropElement;
 
-  const Chip = React.useMemo(() => theme?.elements?.Chip || ChipElement, [theme]);
+  const Chip = theme?.elements?.Chip || ChipElement;
 
   const {
     tonal = true,
@@ -491,7 +491,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
     });
   };
 
-  const applyAllFiltersDebounced = React.useCallback(debounce(applyAllFilters, 140), []);
+  const applyAllFiltersDebounced = debounce(applyAllFilters, 140);
 
   React.useEffect(() => {
     applyAllFiltersDebounced(refs.canvasMain.current);

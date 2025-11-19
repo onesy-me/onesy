@@ -318,15 +318,15 @@ export type IButton = Omit<ISurface, 'elevation'> & {
 const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButton?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButton?.props?.default, ...props_ };
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
-  const RoundProgress = React.useMemo(() => theme?.elements?.RoundProgress || RoundProgressElement, [theme]);
+  const RoundProgress = theme?.elements?.RoundProgress || RoundProgressElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -532,17 +532,17 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
     delete styles.label.color;
   }
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_ === undefined && event.target === refs.root.current && !disabled) setFocus(true);
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, [focus_, onFocus_, disabled]);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_ === undefined && !disabled) setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, [focus_, onBlur_, disabled]);
+  };
 
   const IconElement = (selected && iconSelected) || children_;
 

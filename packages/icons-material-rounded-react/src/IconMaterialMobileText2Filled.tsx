@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMobileText2Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MobileText2Filled'
+
+      short_name='MobileText2'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M360-480h240q17 0 28.5-11.5T640-520q0-17-11.5-28.5T600-560H360q-17 0-28.5 11.5T320-520q0 17 11.5 28.5T360-480Zm40 140h160q17 0 28.5-11.5T600-380q0-17-11.5-28.5T560-420H400q-17 0-28.5 11.5T360-380q0 17 11.5 28.5T400-340ZM280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v124q18 7 29 22t11 34v80q0 19-11 34t-29 22v404q0 33-23.5 56.5T680-40H280Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMobileText2Filled.displayName = 'OnesyIconMaterialMobileText2Filled';
+
+export default IconMaterialMobileText2Filled;

@@ -105,11 +105,11 @@ export type INavigationDrawer = IModal & {
 const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationDrawer?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationDrawer?.props?.default, ...props_ };
 
-  const Modal = React.useMemo(() => theme?.elements?.Modal || ModalElement, [theme]);
+  const Modal = theme?.elements?.Modal || ModalElement;
 
-  const Slide = React.useMemo(() => theme?.elements?.Slide || SlideElement, [theme]);
+  const Slide = theme?.elements?.Slide || SlideElement;
 
   const {
     tonal = false,
@@ -249,9 +249,9 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
     }
   }, [version, swipeValue?.value, swipeValue?.position]);
 
-  const onClose = React.useCallback(() => {
+  const onClose = () => {
     if (is('function', onClose_)) onClose_();
-  }, []);
+  };
 
   if (version === 'standard') {
     other.portal = other.portal !== undefined ? other.portal : false;

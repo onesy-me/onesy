@@ -210,31 +210,31 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDatePicker?.props?.default, ...props__ }), [props__]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDatePicker?.props?.default, ...props__ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const AdvancedTextField = React.useMemo(() => theme?.elements?.AdvancedTextField || AdvancedTextFieldElement, [theme]);
+  const AdvancedTextField = theme?.elements?.AdvancedTextField || AdvancedTextFieldElement;
 
-  const Modal = React.useMemo(() => theme?.elements?.Modal || ModalElement, [theme]);
+  const Modal = theme?.elements?.Modal || ModalElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Calendar = React.useMemo(() => theme?.elements?.Calendar || CalendarElement, [theme]);
+  const Calendar = theme?.elements?.Calendar || CalendarElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const Slide = React.useMemo(() => theme?.elements?.Slide || SlideElement, [theme]);
+  const Slide = theme?.elements?.Slide || SlideElement;
 
-  const ClickListener = React.useMemo(() => theme?.elements?.ClickListener || ClickListenerElement, [theme]);
+  const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
   const {
     tonal = true,
@@ -353,7 +353,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   const [mode, setMode] = React.useState((touch ? openMobile : 'select') || 'select');
   const [error, setError] = React.useState(false);
 
-  const valueToInput = React.useCallback((valueNew: any = value) => {
+  const valueToInput = (valueNew: any = value) => {
     let result = '';
 
     const [from, to] = is('array', valueNew) ? valueNew : [valueNew];
@@ -367,7 +367,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     if (range && to) result += `${SEPARATOR}${method(to)}`;
 
     return result;
-  }, [value, range]);
+  };
 
   const [input, setInput] = React.useState(valueToInput());
   const [inputModal, setInputModal] = React.useState(valueToInput());
@@ -397,10 +397,10 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     setInputModal(valueToInput(valueNew));
   };
 
-  const errorCheck = React.useCallback((valueNew: any = value) => {
+  const errorCheck = (valueNew: any = value) => {
     // Error
     setError((valueNew || []).some((item: any, index: number) => !valid(item)));
-  }, [value]);
+  };
 
   // Init
   React.useEffect(() => {
@@ -418,25 +418,25 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     if (calendar_ !== undefined && calendar_ !== calendar) setCalendar(calendar_);
   }, [calendar_]);
 
-  const onUpdate = React.useCallback((valueNew: OnesyDate) => {
+  const onUpdate = (valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
     if (is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
-  }, [onChange, range]);
+  };
 
-  const onUpdateCalendar = React.useCallback((valueNew: OnesyDate) => {
+  const onUpdateCalendar = (valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('calendar')) setCalendar(valueNew);
 
     if (is('function', onChangeCalendar)) onChangeCalendar(valueNew);
-  }, [onChangeCalendar]);
+  };
 
   // Update only internally, without using onChange
   // since it might be canceled
   // only use onChange on
   // input change, or ok
-  const onCalendarChange = React.useCallback((valueNew_: TCalendarMonthValue) => {
+  const onCalendarChange = (valueNew_: TCalendarMonthValue) => {
     const valueNew = is('array', valueNew_) ? valueNew_ : [valueNew_];
 
     if (valueNew !== value) {
@@ -445,13 +445,13 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
       // Update input modal
       setInputModal(valueToInput(valueNew));
     }
-  }, [value, actions_]);
+  };
 
-  const onCalendarChangeCalendar = React.useCallback((valueNew: TCalendarMonthCalendar) => {
+  const onCalendarChangeCalendar = (valueNew: TCalendarMonthCalendar) => {
     if (valueNew !== calendar) onUpdateCalendar(valueNew as any);
-  }, [calendar]);
+  };
 
-  const inputToValue = React.useCallback((valueNew_: string = input) => {
+  const inputToValue = (valueNew_: string = input) => {
     let valueNew = valueNew_;
 
     let [from, to] = valueNew.split(SEPARATOR) as any;
@@ -463,21 +463,21 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     valueNew = [from, to].filter(Boolean) as any;
 
     return valueNew as unknown as TCalendarMonthValue;
-  }, [input]);
+  };
 
-  const onOpen = React.useCallback(() => {
+  const onOpen = () => {
     onMode();
 
     setOpen(!open);
-  }, [open, openMobile, version]);
+  };
 
-  const onClose = React.useCallback((event: React.MouseEvent<any>) => {
+  const onClose = (event: React.MouseEvent<any>) => {
     setOpen(false);
 
     if (is('function', onClose_)) onClose_(event);
-  }, [onClose_]);
+  };
 
-  const onReset = React.useCallback(() => {
+  const onReset = () => {
     let valueNew: any = inputToValue();
 
     const isValid = valueNew && (valueNew?.[0] as OnesyDate)?.valid;
@@ -509,9 +509,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
       // Update input modal
       setInputModal(valueToInput(valueNew));
     }
-  }, [input]);
+  };
 
-  const onToday = React.useCallback((event: React.MouseEvent) => {
+  const onToday = (event: React.MouseEvent) => {
     const valueNew = [startOf(new OnesyDate(), 'day')];
 
     if (range) valueNew.push(endOf(new OnesyDate(), 'day'));
@@ -531,9 +531,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     onClose(event);
 
     if (is('function', onToday_)) onToday_(event);
-  }, [input, range, onToday_]);
+  };
 
-  const onClear = React.useCallback((event: React.MouseEvent) => {
+  const onClear = (event: React.MouseEvent) => {
     const dateNow = new OnesyDate();
 
     const valueNew = [];
@@ -553,9 +553,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     onClose(event);
 
     if (is('function', onClear_)) onClear_(event);
-  }, [onClear_]);
+  };
 
-  const onOk = React.useCallback((event: React.MouseEvent) => {
+  const onOk = (event: React.MouseEvent) => {
     // Error
     errorCheck();
 
@@ -571,17 +571,17 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     onClose(event);
 
     if (is('function', onOk_)) onOk_(event);
-  }, [value, onOk_]);
+  };
 
-  const onCancel = React.useCallback((event: React.MouseEvent) => {
+  const onCancel = (event: React.MouseEvent) => {
     onReset();
 
     onClose(event);
 
     if (is('function', onCancel_)) onCancel_(event);
-  }, [input, onCancel_]);
+  };
 
-  const valid = React.useCallback((...args: [OnesyDate, any?]) => {
+  const valid = (...args: [OnesyDate, any?]) => {
     if (is('function', valid_)) return valid_(...args);
 
     const onesyDate = args[0];
@@ -599,17 +599,17 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
     }
 
     return true;
-  }, [valid_, min, max, validate]);
+  };
 
-  const textToOnesyDate = React.useCallback((valueNew: string, start = true) => {
+  const textToOnesyDate = (valueNew: string, start = true) => {
     const [valueDay, valueMonth, valueYear] = (valueNew || '').split('/');
 
     const onesyDate = new OnesyDate(new Date(`${valueMonth}/${valueDay}/${valueYear}`));
 
     return start ? startOf(onesyDate, 'day') : endOf(onesyDate, 'day');
-  }, []);
+  };
 
-  const onInputChange = React.useCallback((valueNew_: any) => {
+  const onInputChange = (valueNew_: any) => {
     const valueNew = inputToValue(valueNew_);
 
     const validValues = (valueNew as [OnesyDate, OnesyDate]).every(item => item.valid);
@@ -633,9 +633,9 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
     // Update input for free typing
     setInput(valueNew_);
-  }, []);
+  };
 
-  const onInputChangeModal = React.useCallback((valueNew_: any) => {
+  const onInputChangeModal = (valueNew_: any) => {
     const valueNew = inputToValue(valueNew_);
 
     const validValues = (valueNew as [OnesyDate, OnesyDate]).every(item => item.valid);
@@ -655,11 +655,11 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
 
     // Update input for free typing
     setInputModal(valueNew_);
-  }, []);
+  };
 
-  const onMode = React.useCallback((mode_: 'input' | 'select' = openMobile) => {
+  const onMode = (mode_: 'input' | 'select' = openMobile) => {
     setMode(() => mode_);
-  }, []);
+  };
 
   const mask = [
     { pattern: '[0-3]' },

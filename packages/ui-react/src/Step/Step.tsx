@@ -118,19 +118,19 @@ export type IStep = ILine & {
 const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyStep?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyStep?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
-  const PaginationItem = React.useMemo(() => theme?.elements?.PaginationItem || PaginationItemElement, [theme]);
+  const PaginationItem = theme?.elements?.PaginationItem || PaginationItemElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
   const {
     tonal = true,

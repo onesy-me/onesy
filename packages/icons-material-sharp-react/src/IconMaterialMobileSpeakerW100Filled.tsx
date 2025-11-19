@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMobileSpeakerW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MobileSpeakerW100Filled'
+
+      short_name='MobileSpeaker'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M172-132v-696h420v201L433-468H290v308h143l28 28H172Zm210.07-532q11.93 0 19.93-8.07t8-20q0-11.93-8.07-19.93t-20-8Q370-720 362-711.93t-8 20q0 11.93 8.07 19.93t20 8ZM578-157 475-260h-85v-108h85l103-103v314Zm100 63v-30q69-14 112.5-67.5T834-314q0-69-43.5-122.5T678-503v-30q80 14 132 76t52 143q0 81-52 143.5T678-94Zm0-132v-176q25 12 40.5 35.25t15.5 52.5q0 29.25-15.5 52.75T678-226Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMobileSpeakerW100Filled.displayName = 'OnesyIconMaterialMobileSpeakerW100Filled';
+
+export default IconMaterialMobileSpeakerW100Filled;

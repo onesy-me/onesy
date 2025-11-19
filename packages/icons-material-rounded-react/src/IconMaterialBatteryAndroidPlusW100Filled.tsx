@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialBatteryAndroidPlusW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='BatteryAndroidPlusW100Filled'
+
+      short_name='BatteryAndroidPlus'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M426-366h28v-100h100v-28H454v-100h-28v100H326v28h100v100ZM192-262q-26 0-43-17t-17-43v-316q0-26 17-43t43-17h524q26 0 43 17t17 43v84h12.44Q804-554 816-542q12 12 12 28v68q0 17.33-12 28.67Q804-406 788.44-406H776v84q0 26-17 43t-43 17H192Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialBatteryAndroidPlusW100Filled.displayName = 'OnesyIconMaterialBatteryAndroidPlusW100Filled';
+
+export default IconMaterialBatteryAndroidPlusW100Filled;

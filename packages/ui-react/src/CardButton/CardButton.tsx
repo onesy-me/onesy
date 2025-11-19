@@ -28,9 +28,9 @@ export type ICardButton = IBaseElement & {
 const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardButton?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardButton?.props?.default, ...props_ };
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
   const {
     focus: focus_,
@@ -56,21 +56,21 @@ const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) =>
 
   const [focus, setFocus] = React.useState(focus_ !== undefined ? focus_ : false);
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_ === undefined && !disabled) {
       setFocus(true);
 
       if (is('function', onFocus_)) onFocus_(event);
     }
-  }, [focus_, disabled, onFocus_]);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_ === undefined && !disabled) {
       setFocus(false);
 
       if (is('function', onBlur_)) onBlur_(event);
     }
-  }, [focus_, disabled, onBlur_]);
+  };
 
   const Component: any = Component_;
 

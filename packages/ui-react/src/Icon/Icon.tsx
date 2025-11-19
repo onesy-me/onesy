@@ -53,7 +53,7 @@ export type IIcon = Omit<IBaseElement, 'size'> & {
 const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIcon?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIcon?.props?.default, ...props_ };
 
   const {
     viewBox = '0 0 24 24',

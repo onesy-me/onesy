@@ -151,13 +151,13 @@ export type IViewSplit = Omit<ILine, 'onChange'> & {
 const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyViewSplit?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyViewSplit?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
     tonal = true,
@@ -367,43 +367,43 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
     setMouseDown(true);
   };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocus = (event: React.FocusEvent<any>) => {
     setFocus(true);
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, []);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlur = (event: React.FocusEvent<any>) => {
     setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, []);
+  };
 
-  const onFocusIconButton = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocusIconButton = (event: React.FocusEvent<any>) => {
     setFocus(true);
-  }, []);
+  };
 
-  const onBlurIconButton = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlurIconButton = (event: React.FocusEvent<any>) => {
     setFocus(false);
-  }, []);
+  };
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseEnter = (event: React.MouseEvent<any>) => {
     setHover(true);
 
     if (is('function', onMouseEnter_)) onMouseEnter_(event);
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseLeave = (event: React.MouseEvent<any>) => {
     setHover(false);
 
     setFocus(false);
 
     if (is('function', onMouseLeave_)) onMouseLeave_(event);
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback(() => {
+  const onMouseDown = () => {
     setMouseDown(true);
-  }, []);
+  };
 
   const move = (forward_ = true) => {
     let forward = forward_;
@@ -420,7 +420,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
     onChange(valueNew);
   };
 
-  const onKeyDown = React.useCallback((event: React.KeyboardEvent<any>) => {
+  const onKeyDown = (event: React.KeyboardEvent<any>) => {
     if (['ArrowUp', 'ArrowRight', 'ArrowLeft', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
       if (
         ['Home', 'End'].includes(event.key) ||
@@ -456,7 +456,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
         }
       }
     }
-  }, []);
+  };
 
   const onChange = (valueItem: number) => {
     // Update inner or controlled

@@ -81,11 +81,11 @@ export type IMainProgressMaterial = ILinearProress & {
 const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMainProgressMaterial?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMainProgressMaterial?.props?.default, ...props_ };
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const LinearProgress = React.useMemo(() => theme?.elements?.LinearProgress || LinearProgressElement, [theme]);
+  const LinearProgress = theme?.elements?.LinearProgress || LinearProgressElement;
 
   const {
     min = 0,
@@ -171,7 +171,7 @@ const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((
     }
   };
 
-  const start = React.useCallback((value_?: IMainProgressMaterialStartArgument) => {
+  const start = (value_?: IMainProgressMaterialStartArgument) => {
     // Reset
     clear();
 
@@ -203,9 +203,9 @@ const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((
     }
 
     if (is('function', onStart)) onStart();
-  }, []);
+  };
 
-  const increment = React.useCallback(() => {
+  const increment = () => {
     // Inc value random between incrementMin, incrementMax, with clam to min, max
     let valueNew = refs.value.current;
 
@@ -214,17 +214,17 @@ const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((
     setValue(valueNew);
 
     if (is('function', onIncrement)) onIncrement(valueNew);
-  }, []);
+  };
 
-  const update = React.useCallback((value_: number) => {
+  const update = (value_: number) => {
     const valueNew = value_;
 
     setValue(valueNew);
 
     if (is('function', onUpdate)) onUpdate(valueNew);
-  }, []);
+  };
 
-  const done = React.useCallback(async () => {
+  const done = async () => {
     clear();
 
     // Update value to 100
@@ -238,7 +238,7 @@ const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((
     setInProp(false);
 
     if (is('function', onDone)) onDone();
-  }, []);
+  };
 
   const onExited = () => {
     // Reset

@@ -143,15 +143,15 @@ export type INavigationItem = ITooltip & {
 const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationItem?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationItem?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Transition = React.useMemo(() => theme?.elements?.Transition || TransitionElement, [theme]);
+  const Transition = theme?.elements?.Transition || TransitionElement;
 
   const {
     tonal = true,
@@ -238,7 +238,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
     }
   }, [selected]);
 
-  const onKeyDown = React.useCallback((event: React.KeyboardEvent<any>) => {
+  const onKeyDown = (event: React.KeyboardEvent<any>) => {
     if (!disabled) {
       if (event.key === 'Enter') {
         if (is('function', props.onClick)) props.onClick(event as any);
@@ -246,43 +246,43 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
     }
 
     if (is('function', onKeyDown_)) onKeyDown_(event);
-  }, []);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocus = (event: React.FocusEvent<any>) => {
     if (!disabled) setFocus(true);
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, []);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlur = (event: React.FocusEvent<any>) => {
     if (!disabled) setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, []);
+  };
 
-  const onTouchStart = React.useCallback((event: React.TouchEvent<any>) => {
+  const onTouchStart = (event: React.TouchEvent<any>) => {
     if (!disabled) setMouseDown(true);
 
     if (is('function', onTouchStart)) onTouchStart(event);
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.MouseEvent<any>) => {
     if (!disabled) setMouseDown(true);
 
     if (is('function', onMouseDown_)) onMouseDown_(event);
-  }, []);
+  };
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseEnter = (event: React.MouseEvent<any>) => {
     if (!disabled) setHover(true);
 
     if (is('function', onMouseEnter_)) onMouseEnter_(event);
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseLeave = (event: React.MouseEvent<any>) => {
     if (!refs.props.current.disabled) setHover(false);
 
     if (is('function', onMouseLeave_)) onMouseLeave_(event);
-  }, []);
+  };
 
   let palette: any;
 

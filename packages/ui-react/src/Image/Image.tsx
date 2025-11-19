@@ -154,13 +154,13 @@ export type IImage = IBaseElement & {
 const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImage?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImage?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
     tonal = true,
@@ -222,7 +222,7 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
 
   refs.loaded.current = loaded;
 
-  const imageLoad = React.useCallback((value: any) => new Promise((resolve, reject) => {
+  const imageLoad = (value: any) => new Promise((resolve, reject) => {
     const image = window.document.createElement('img');
 
     let imageLoaded = false;
@@ -250,9 +250,9 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
     image.src = value;
 
     if (image.complete) return resolve(true);
-  }), []);
+  });
 
-  const init = React.useCallback(async () => {
+  const init = async () => {
     const URL = src || url || urlSmall;
 
     const isLoaded = await imageLoad(URL);
@@ -260,7 +260,7 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
     setSource(isLoaded ? URL : '');
 
     setLoaded(true);
-  }, [src, url, urlSmall, loaded]);
+  };
 
   React.useEffect(() => {
     if (visiblity?.visible && !refs.loaded.current) {

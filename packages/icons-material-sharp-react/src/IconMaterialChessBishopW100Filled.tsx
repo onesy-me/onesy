@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialChessBishopW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='ChessBishopW100Filled'
+
+      short_name='ChessBishop'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M212-132v-157q57-42 98-98.5T377-509h-93v-28h83l-77-133 190-197 190 197-77 133h82v28h-93q27 65 68 121.5t98 98.5v157H212Zm267.96-516q11.04 0 18.54-7.46 7.5-7.47 7.5-18.5 0-11.04-7.46-18.54-7.47-7.5-18.5-7.5-11.04 0-18.54 7.46-7.5 7.47-7.5 18.5 0 11.04 7.46 18.54 7.47 7.5 18.5 7.5Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialChessBishopW100Filled.displayName = 'OnesyIconMaterialChessBishopW100Filled';
+
+export default IconMaterialChessBishopW100Filled;

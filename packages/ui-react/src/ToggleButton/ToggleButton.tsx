@@ -39,9 +39,9 @@ export type IToggleButton = IChip & {
 const ToggleButton: React.FC<IToggleButton> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButton?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButton?.props?.default, ...props_ };
 
-  const Chip = React.useMemo(() => theme?.elements?.Chip || ChipElement, [theme]);
+  const Chip = theme?.elements?.Chip || ChipElement;
 
   const {
     size,

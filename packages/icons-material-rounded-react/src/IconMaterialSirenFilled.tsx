@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialSirenFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='SirenFilled'
+
+      short_name='Siren'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M400-560q0-33 23.5-56.5T480-640q17 0 28.5-11.5T520-680q0-17-11.5-28.5T480-720q-66 0-113 47t-47 113v80q0 17 11.5 28.5T360-440q17 0 28.5-11.5T400-480v-80ZM160-120q-33 0-56.5-23.5T80-200v-80q0-33 23.5-56.5T160-360h40v-200q0-117 81.5-198.5T480-840q117 0 198.5 81.5T760-560v200h40q33 0 56.5 23.5T880-280v80q0 33-23.5 56.5T800-120H160Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialSirenFilled.displayName = 'OnesyIconMaterialSirenFilled';
+
+export default IconMaterialSirenFilled;

@@ -174,7 +174,7 @@ export type IInteraction = IBaseElement & {
 const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyInteraction?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyInteraction?.props?.default, ...props_ };
 
   const {
     wave = true,
@@ -338,11 +338,11 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
     else removeWaves();
   }, [pulse]);
 
-  const methods = React.useCallback((version: TMethodsVersion) => {
+  const methods = (version: TMethodsVersion) => {
     if (version === 'add') addWave(undefined, { origin: 'center' });
     else if (version === 'pulse') addWavePulse();
     else if (version === 'remove') removeWaves();
-  }, []);
+  };
 
   React.useEffect(() => {
     let subscribed: any;
@@ -359,7 +359,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
     if (disabled && refs.interactions.current.length) setInteractions([]);
   }, [disabled]);
 
-  const addWave = React.useCallback((event?: MouseEvent | TouchEvent, overrides: IInteraction = {}) => {
+  const addWave = (event?: MouseEvent | TouchEvent, overrides: IInteraction = {}) => {
     const origin = overrides.origin !== undefined ? overrides.origin : refs.origin.current;
 
     if (refs.wave.current && !refs.props.current.disabled) {
@@ -436,9 +436,9 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
       ]
       );
     }
-  }, []);
+  };
 
-  const addWavePulse = React.useCallback(() => {
+  const addWavePulse = () => {
     if (refs.pulse.current && !refs.props.current.disabled) {
       // Remove previous wave
       // if there is one
@@ -486,21 +486,21 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
         )
       ]);
     }
-  }, []);
+  };
 
-  const removeWaves = React.useCallback(() => {
+  const removeWaves = () => {
     if (refs.waves.current.length) setWaves([]);
-  }, []);
+  };
 
-  const add = React.useCallback((value: string) => {
+  const add = (value: string) => {
     if (!refs.props.current.disabled && !has(value)) setInteractions(items => [...items, value]);
-  }, []);
+  };
 
-  const has = React.useCallback((value: string) => refs.interactions.current.includes(value), []);
+  const has = (value: string) => refs.interactions.current.includes(value);
 
-  const remove = React.useCallback((value: string) => {
+  const remove = (value: string) => {
     if (has(value)) setInteractions(items => [...items].filter(item => item !== value));
-  }, []);
+  };
 
   return (
     <span

@@ -29,7 +29,7 @@ export type IClickListener = IBaseElement & {
 const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClickListener?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClickListener?.props?.default, ...props_ };
 
   const {
     mouseEvent = 'onClick',

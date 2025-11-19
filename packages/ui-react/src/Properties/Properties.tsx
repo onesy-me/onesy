@@ -58,11 +58,11 @@ export type IProperties = ILine & {
 const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyProperties?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyProperties?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Property = React.useMemo(() => theme?.elements?.Property || PropertyElement, [theme]);
+  const Property = theme?.elements?.Property || PropertyElement;
 
   const {
     version = 'row-30',

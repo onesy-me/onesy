@@ -56,9 +56,9 @@ export type IPageTransition = ILine & {
 const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPageTransition?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPageTransition?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
   const {
     add,
@@ -102,15 +102,15 @@ const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref:
     out: classNames_?.out || classes.out
   };
 
-  const hashLocation = React.useCallback((value: Location) => {
+  const hashLocation = (value: Location) => {
     return hash([
       value.hash,
       value.pathname,
       value.search
     ]);
-  }, []);
+  };
 
-  const onUpdate = React.useCallback(async () => {
+  const onUpdate = async () => {
     if (refs.inProgress.current) return;
 
     if (hashLocation(location) !== hashLocation(locationUsed)) {
@@ -126,7 +126,7 @@ const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref:
         refs.inProgress.current = false;
       }, refs.duration.current);
     }
-  }, [location, locationUsed]);
+  };
 
   React.useEffect(() => {
     onUpdate();

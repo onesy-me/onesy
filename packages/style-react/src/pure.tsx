@@ -53,14 +53,14 @@ export default function pure(value: TValue, options_: IOptions = {}) {
     };
 
     // Updates for onesyTheme
-    const method = React.useCallback((updateValue: any, updatedTheme: any) => {
+    const method = (updateValue: any, updatedTheme: any) => {
       if (is('function', value)) {
         const valueNew = resolve(updatedTheme);
 
         // Update
         if (response?.update !== undefined) response.update(valueNew);
       }
-    }, []);
+    };
 
     const makeResponse = () => {
       // Object

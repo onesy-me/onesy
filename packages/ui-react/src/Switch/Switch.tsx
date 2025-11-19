@@ -214,11 +214,11 @@ export type ISwitch = Omit<IBaseElement, 'onChange'> & {
 const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySwitch?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySwitch?.props?.default, ...props_ };
 
-  const Keyframes = React.useMemo(() => theme?.elements?.Keyframes || KeyframesElement, [theme]);
+  const Keyframes = theme?.elements?.Keyframes || KeyframesElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     tonal: tonal_ = true,

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialListAltCheckW100 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='ListAltCheckW100'
+
+      short_name='ListAltCheck'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M200-200v-560 448-80 192Zm-28 28v-616h616v378h-28v-350H200v560h278v28H172Zm517 40-100-99 20-20 80 80 160-160 20 20-180 179ZM450-466h208v-28H450v28Zm0-148h208v-28H450v28ZM298-452h56v-56h-56v56Zm0-148h56v-56h-56v56Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialListAltCheckW100.displayName = 'OnesyIconMaterialListAltCheckW100';
+
+export default IconMaterialListAltCheckW100;

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialApprovalDelegationOff = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='ApprovalDelegationOff'
+
+      short_name='ApprovalDelegationOff'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M557-518 387-688l57-56 113 113 227-226 56 56-283 283ZM320-220l278 76 167-51-45-45H598q-20 0-39-1.5t-37-8.5l-93-31 22-78 81 27q16 5 32.5 8.5T598-320h42l-39-39-217-81h-64v220ZM80-80v-440h304q7 0 14 1.5t13 3.5l53 19 365 364-229 72-280-78v58H80Zm80-80h80v-280h-80v280Zm718 78-56 56L26-822l56-56L878-82Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialApprovalDelegationOff.displayName = 'OnesyIconMaterialApprovalDelegationOff';
+
+export default IconMaterialApprovalDelegationOff;

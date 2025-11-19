@@ -225,31 +225,31 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendar?.props?.default, ...props__ }), [props__]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendar?.props?.default, ...props__ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const CalendarMonth = React.useMemo(() => theme?.elements?.CalendarMonth || CalendarMonthElement, [theme]);
+  const CalendarMonth = theme?.elements?.CalendarMonth || CalendarMonthElement;
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Carousel = React.useMemo(() => theme?.elements?.Carousel || CarouselElement, [theme]);
+  const Carousel = theme?.elements?.Carousel || CarouselElement;
 
-  const PaginationItem = React.useMemo(() => theme?.elements?.PaginationItem || PaginationItemElement, [theme]);
+  const PaginationItem = theme?.elements?.PaginationItem || PaginationItemElement;
 
   const {
     tonal = true,
@@ -332,49 +332,49 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
     if (calendar_ !== undefined && calendar_ !== calendar) setCalendar(calendar_);
   }, [calendar_]);
 
-  const onUpdate = React.useCallback((valueNew: OnesyDate) => {
+  const onUpdate = (valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
     if (is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
-  }, [range, onChange]);
+  };
 
-  const onUpdateCalendar = React.useCallback((valueNew: OnesyDate) => {
+  const onUpdateCalendar = (valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('calendar')) setCalendar(valueNew);
 
     if (is('function', onChangeCalendar)) onChangeCalendar(valueNew);
-  }, [onChangeCalendar]);
+  };
 
-  const onUpdateCalendarOption = React.useCallback((valueNew: OnesyDate) => {
+  const onUpdateCalendarOption = (valueNew: OnesyDate) => {
     setOpen(null);
 
     onUpdateCalendar(valueNew);
-  }, []);
+  };
 
-  const onCalendarMonthChange = React.useCallback((valueNew_: TCalendarMonthValue) => {
+  const onCalendarMonthChange = (valueNew_: TCalendarMonthValue) => {
     const valueNew = is('array', valueNew_) ? valueNew_ : [valueNew_];
 
     if (valueNew !== value) onUpdate(valueNew as any);
-  }, [value]);
+  };
 
-  const onCalendarMonthChangeCalendar = React.useCallback((valueNew: TCalendarMonthCalendar) => {
+  const onCalendarMonthChangeCalendar = (valueNew: TCalendarMonthCalendar) => {
     onUpdateCalendar(valueNew as any);
-  }, [calendar]);
+  };
 
-  const valid = React.useCallback((...args: [OnesyDate, any]) => {
+  const valid = (...args: [OnesyDate, any]) => {
     if (is('function', valid_)) return valid_(...args);
 
     return true;
-  }, [valid_]);
+  };
 
-  const move = React.useCallback((next = true, unit: TTimeUnits = 'month') => {
+  const move = (next = true, unit: TTimeUnits = 'month') => {
     if (refs.inProgressTransition.current) return;
 
     onUpdateCalendar((next ? add : remove)(1, unit, calendar));
-  }, [calendar]);
+  };
 
-  const onOpen = React.useCallback((valueUpdate: 'month' | 'year' = 'month') => {
+  const onOpen = (valueUpdate: 'month' | 'year' = 'month') => {
     const valueNew = open === valueUpdate ? null : valueUpdate;
 
     setOpen(valueNew);
@@ -396,23 +396,23 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
         });
       }
     });
-  }, [open, menu, calendar]);
+  };
 
-  const getMonths: TGetOnesyDates = is('function', getMonths_) ? getMonths_ : React.useCallback(() => {
+  const getMonths: TGetOnesyDates = is('function', getMonths_) ? getMonths_ : () => {
     const valueCalendar = set(14, 'day', calendar);
     const result = Array.from({ length: 12 }).map((item: any, index: number) => ({ value: set(index, 'month', valueCalendar) }));
 
     return result;
-  }, [calendar]);
+  };
 
-  const getYears: TGetOnesyDates = is('function', getYears_) ? getYears_ : React.useCallback(() => {
+  const getYears: TGetOnesyDates = is('function', getYears_) ? getYears_ : () => {
     const minYear = 1970;
     const length = 130;
 
     return Array.from({ length }).map((item: any, index: number) => ({ value: set(minYear + index, 'year', calendar) }));
-  }, []);
+  };
 
-  const onCarouselInit = React.useCallback(() => {
+  const onCarouselInit = () => {
     // Scroll to the value
     setTimeout(() => {
       Try(() => {
@@ -427,13 +427,13 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
         }
       });
     }, 140);
-  }, []);
+  };
 
   // Prevent multiple moves of the calendar
   // before the previous transition is done
-  const onTransition = React.useCallback((element: any, status: TTransitionStatus) => {
+  const onTransition = (element: any, status: TTransitionStatus) => {
     refs.inProgressTransition.current = !['entered', 'exited', 'removed'].includes(status);
-  }, []);
+  };
 
   const calendarMonthProps: any = {
     renderDay,

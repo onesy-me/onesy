@@ -150,27 +150,27 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarAvailability?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const Calendar = React.useMemo(() => theme?.elements?.Calendar || CalendarElement, [theme]);
+  const Calendar = theme?.elements?.Calendar || CalendarElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const PaginationItem = React.useMemo(() => theme?.elements?.PaginationItem || PaginationItemElement, [theme]);
+  const PaginationItem = theme?.elements?.PaginationItem || PaginationItemElement;
 
-  const TimePicker = React.useMemo(() => theme?.elements?.TimePicker || TimePickerElement, [theme]);
+  const TimePicker = theme?.elements?.TimePicker || TimePickerElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     value,
@@ -227,9 +227,9 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
 
   refs.onChange.current = onChange_;
 
-  const onChange = React.useCallback(async (...args: any) => {
+  const onChange = async (...args: any) => {
     if (is('function', onChange_)) onChange_(...args);
-  }, [onChange_]);
+  };
 
   React.useEffect(() => {
     if (menuOpen !== menuOpen_ && menuOpen_ !== undefined) setMenuOpen(menuOpen_);
@@ -239,37 +239,37 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
     if (timeMenuOpen !== timeMenuOpen_ && timeMenuOpen_ !== undefined) setTimeMenuOpen(timeMenuOpen_);
   }, [timeMenuOpen_]);
 
-  const onMenuOpen = React.useCallback(() => {
+  const onMenuOpen = () => {
     setMenuOpen(true);
-  }, []);
+  };
 
-  const onMenuClose = React.useCallback(() => {
+  const onMenuClose = () => {
     setMenuOpen(false);
-  }, []);
+  };
 
-  const onTimeMenuOpen = React.useCallback(() => {
+  const onTimeMenuOpen = () => {
     setTimeMenuOpen(true);
-  }, []);
+  };
 
-  const onTimeMenuClose = React.useCallback(() => {
+  const onTimeMenuClose = () => {
     setTimeMenuOpen(false);
-  }, []);
+  };
 
-  const onChangeDate = React.useCallback((valueNew: OnesyDate) => {
+  const onChangeDate = (valueNew: OnesyDate) => {
     if (closeOnChange) onMenuClose();
 
     onChange(refs.dateProperty.current, valueNew?.milliseconds);
-  }, [closeOnChange, onChange]);
+  };
 
-  const onChangeTime = React.useCallback((valueNew: OnesyDate) => {
+  const onChangeTime = (valueNew: OnesyDate) => {
     onTimeMenuClose();
 
     onChange(refs.dateProperty.current, valueNew?.milliseconds);
-  }, [onTimeMenuClose, closeOnChange, onChange]);
+  };
 
-  const onRemove = React.useCallback(() => {
+  const onRemove = () => {
     if (is('function', onRemove_)) onRemove_(value);
-  }, [value, onRemove_]);
+  };
 
   React.useEffect(() => {
     // reset
@@ -287,9 +287,9 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
     { name: l('1 month'), onClick: () => onChangeDate(add(1, 'month')), icon: <IconMaterialCalendarMonthRounded {...iconProps} /> }
   ];
 
-  const onClear = React.useCallback((event: MouseEvent) => {
+  const onClear = (event: MouseEvent) => {
     onChange(refs.dateProperty.current, null);
-  }, [onChange]);
+  };
 
   const date = React.useMemo(() => new OnesyDate(value?.[dateProperty] || undefined), [value, dateProperty]);
 
@@ -397,9 +397,9 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
     return repeating;
   };
 
-  const onContextMenu = React.useCallback((event: MouseEvent) => {
+  const onContextMenu = (event: MouseEvent) => {
     event.stopPropagation();
-  }, []);
+  };
 
   const palette = theme.palette.color.primary;
 

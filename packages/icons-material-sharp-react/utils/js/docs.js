@@ -76,7 +76,7 @@ import _extends from '@babel/runtime/helpers/extends';
     });
 
     await Promise.all(versions.map(item => new Promise(async resolve => {
-      const iconsFile = path.resolve(wd, `../../docs/icons/icons-elements-${item}.tsx`);
+      const iconsFile = path.resolve(wd, `../../../docs/public/assets/js/examples/icons-material-react/icons-elements-${item}.tsx`);
 
       values[item].value += `export default ${values[item].exports};`;
 

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialPickleballFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='PickleballFilled'
+
+      short_name='Pickleball'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M743-80 508-315q-29 26-64.5 38T372-265q-40 0-77.5-15T227-325L75-476q-17-17-26-39.5T40-561q0-23 9-45.5T75-646l159-159q17-17 39.5-26t45.5-9q23 0 45.5 9t39.5 26l151 152q30 30 45 67.5t15 77.5q0 36-12.5 71.5T564-372l236 236-57 56Zm37-520q-58 0-99-41t-41-99q0-58 41-99t99-41q58 0 99 41t41 99q0 58-41 99t-99 41Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialPickleballFilled.displayName = 'OnesyIconMaterialPickleballFilled';
+
+export default IconMaterialPickleballFilled;

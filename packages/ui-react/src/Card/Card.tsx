@@ -59,13 +59,13 @@ export type ICard = ISurface & {
 const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCard?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCard?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
   const {
     tonal = true,
@@ -105,21 +105,21 @@ const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
     elevation = 0;
   }
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_ === undefined && !disabled) {
       setFocus(true);
 
       if (is('function', onFocus_)) onFocus_(event);
     }
-  }, [focus_, disabled, onFocus_]);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (focus_ === undefined && !disabled) {
       setFocus(false);
 
       if (is('function', onBlur_)) onBlur_(event);
     }
-  }, [focus_, disabled, onBlur_]);
+  };
 
   return (
     <Surface

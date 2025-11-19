@@ -26,7 +26,7 @@ export type IMove = IBaseElement & {
 const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMove?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMove?.props?.default, ...props_ };
 
   const { classes } = useStyle();
 
@@ -79,25 +79,25 @@ const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
     root: {}
   };
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.MouseEvent<any>) => {
     setMouseDown(true);
 
     if (is('function', refs.onMouseDown.current)) refs.onMouseDown.current(event);
-  }, []);
+  };
 
-  const onTouchStart = React.useCallback((event: React.TouchEvent<any>) => {
+  const onTouchStart = (event: React.TouchEvent<any>) => {
     setMouseDown(true);
 
     if (is('function', refs.onTouchStart.current)) refs.onTouchStart.current(event);
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback((event: any) => {
+  const onMouseUp = (event: any) => {
     setMouseDown(false);
 
     refs.previousMouseEvent.current = undefined;
 
     if (is('function', refs.onMouseDown.current)) refs.onMouseDown.current(event);
-  }, []);
+  };
 
   React.useEffect(() => {
     const onMove = (x_: number, y_: number) => {

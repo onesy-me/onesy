@@ -30,11 +30,11 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionAction?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionAction?.props?.default, ...props_ };
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
   const {
     size = 'regular',

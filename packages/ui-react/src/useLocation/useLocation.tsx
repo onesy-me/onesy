@@ -16,18 +16,18 @@ const useLocation = (props?: IUseLocation): Location => {
 
   const [response, setResponse] = React.useState<Location>(isEnvironment('browser') ? { ...window.location } : {} as any);
 
-  const onUpdate = React.useCallback(debounce((value = { ...window.location }) => {
+  const onUpdate = debounce((value = { ...window.location }) => {
     setResponse(value);
-  }, 40), []);
+  }, 40);
 
   // React router DOM
   React.useEffect(() => {
     if (locationReactRouterDOM) onUpdate(locationReactRouterDOM);
   }, [locationReactRouterDOM]);
 
-  const method = React.useCallback(() => {
+  const method = () => {
     onUpdate();
-  }, []);
+  };
 
   React.useEffect(() => {
     if (!isEnvironment('browser')) return;

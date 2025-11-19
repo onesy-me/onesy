@@ -325,19 +325,19 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarMonth?.props?.default, ...props__ }), [props__]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarMonth?.props?.default, ...props__ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const PaginationItem = React.useMemo(() => theme?.elements?.PaginationItem || PaginationItemElement, [theme]);
+  const PaginationItem = theme?.elements?.PaginationItem || PaginationItemElement;
 
-  const Transitions = React.useMemo(() => theme?.elements?.Transitions || TransitionsElement, [theme]);
+  const Transitions = theme?.elements?.Transitions || TransitionsElement;
 
-  const Transition = React.useMemo(() => theme?.elements?.Transition || TransitionElement, [theme]);
+  const Transition = theme?.elements?.Transition || TransitionElement;
 
   const {
     tonal = true,
@@ -420,7 +420,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     if (calendar_ !== undefined && calendar_ !== calendar) setCalendar(calendar_);
   }, [calendar_]);
 
-  const valid = React.useCallback((...args: [OnesyDate, any]) => {
+  const valid = (...args: [OnesyDate, any]) => {
     if (is('function', valid_)) return valid_(...args);
 
     const onesyDate = args[0];
@@ -438,16 +438,16 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     }
 
     return true;
-  }, [valid_, min, max, validate]);
+  };
 
-  const onUpdateCalendar = React.useCallback((valueNew: OnesyDate) => {
+  const onUpdateCalendar = (valueNew: OnesyDate) => {
     // Inner update
     if (!props.hasOwnProperty('calendar')) setCalendar(valueNew);
 
     if (is('function', onChangeCalendar)) onChangeCalendar(valueNew);
-  }, [onChangeCalendar]);
+  };
 
-  const onUpdate = React.useCallback((valueUpdated: OnesyDate, offsetMultiplier?: number) => {
+  const onUpdate = (valueUpdated: OnesyDate, offsetMultiplier?: number) => {
     let valueNew: Array<OnesyDate> = [valueUpdated, value[1]].filter(Boolean);
 
     // Previous
@@ -501,7 +501,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     if (!props.hasOwnProperty('value')) setValue(valueNew);
 
     if (is('function', onChange)) onChange((!range ? valueNew[0] : valueNew) as any);
-  }, [value, range, offset, calendar, onChange]);
+  };
 
   const dayNames = [1, 2, 3, 4, 5, 6];
 
@@ -539,7 +539,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
 
   const monthSame = refs.previous.current?.year === calendar?.year && refs.previous.current?.month === calendar?.month;
 
-  const getRanges = React.useCallback((ranges: any) => {
+  const getRanges = (ranges: any) => {
     // Convert all ranges to start/end timestamps
     const rangeTimestamps = ranges.filter(itemRange => itemRange.filter(Boolean).length).map(itemRange => ({
       start: itemRange[0].milliseconds,
@@ -569,7 +569,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     mergedRanges.push(currentRange);
 
     return mergedRanges.filter(Boolean);
-  }, []);
+  };
 
   const rangesValue = React.useMemo(() => {
     const ranges = [value].map(item => {
@@ -587,7 +587,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     return getRanges(ranges);
   }, [selected]);
 
-  const getDetails = React.useCallback((day: OnesyDate) => {
+  const getDetails = (day: OnesyDate) => {
     const dayFormat = format(day, 'DD-MM-YYYY');
 
     const dayMonthStart = format(startOf(day, 'month'), 'DD-MM-YYYY');
@@ -656,7 +656,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
     result.outside = true;
 
     return result;
-  }, [value, selected, rangesSelected, rangesValue]);
+  };
 
   const days: Partial<IDay>[] = React.useMemo(() => {
     const items = [];

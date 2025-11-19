@@ -82,15 +82,15 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFrame?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFrame?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const IFrameElement = React.useMemo(() => theme?.elements?.IFrame || IFrameElement_, [theme]);
+  const IFrameElement = theme?.elements?.IFrame || IFrameElement_;
 
   const {
     url,
@@ -124,13 +124,13 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
   const [responsive, setResponsive] = React.useState<any>();
 
-  const onResponsive = React.useCallback((value_: any) => {
+  const onResponsive = (value_: any) => {
     setResponsive((previous: any) => {
       if (previous === value_) return '';
 
       return value_;
     });
-  }, []);
+  };
 
   const responsiveOptions = [
     { name: l('Mobile'), icon: IconMobile, disabled: isEnvironment('browser') && window.innerWidth < 375 },

@@ -187,37 +187,37 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDrawing?.props?.default, ...props__ }), [props__]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDrawing?.props?.default, ...props__ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
+  const Select = theme?.elements?.Select || SelectElement;
 
-  const NumericTextField = React.useMemo(() => theme?.elements?.NumericTextField || NumericTextFieldElement, [theme]);
+  const NumericTextField = theme?.elements?.NumericTextField || NumericTextFieldElement;
 
-  const ToggleButton = React.useMemo(() => theme?.elements?.ToggleButton || ToggleButtonElement, [theme]);
+  const ToggleButton = theme?.elements?.ToggleButton || ToggleButtonElement;
 
-  const ToggleButtons = React.useMemo(() => theme?.elements?.ToggleButtons || ToggleButtonsElement, [theme]);
+  const ToggleButtons = theme?.elements?.ToggleButtons || ToggleButtonsElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const ColorTextField = React.useMemo(() => theme?.elements?.ColorTextField || ColorTextFieldElement, [theme]);
+  const ColorTextField = theme?.elements?.ColorTextField || ColorTextFieldElement;
 
-  const Append = React.useMemo(() => theme?.elements?.Append || AppendElement, [theme]);
+  const Append = theme?.elements?.Append || AppendElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const ClickListener = React.useMemo(() => theme?.elements?.ClickListener || ClickListenerElement, [theme]);
+  const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
   const {
     tonal = true,
@@ -449,7 +449,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
     }
   }, [viewBox]);
 
-  const onMouseDown = React.useCallback((event: React.TouchEvent<any> | React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.TouchEvent<any> | React.MouseEvent<any>) => {
     setMouseDown(true);
 
     let x: number = (event as React.TouchEvent<any>).touches ? (event as React.TouchEvent<any>).touches[0].clientX : (event as React.MouseEvent<any>).clientX;
@@ -474,15 +474,15 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
     ]);
 
     if (is('function', onMouseDown_)) onMouseDown_(event as any);
-  }, []);
+  };
 
-  const onClear = React.useCallback(() => {
+  const onClear = () => {
     updateValue([]);
 
     if (is('function', onClear_)) onClear_();
-  }, []);
+  };
 
-  const onDownload = React.useCallback(async () => {
+  const onDownload = async () => {
     const svg = refs.svg.current;
 
     const rect = svg.getBoundingClientRect();
@@ -518,7 +518,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
     setLoading(false);
 
     if (is('function', onDownload_)) onDownload_();
-  }, []);
+  };
 
   const includes = (...args) => !is('array', exclude) || args.some(item => !exclude.includes(item));
 
@@ -604,7 +604,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
     ...IconProps_
   };
 
-  const WrapperToggleButton = React.useCallback(React.forwardRef((props_: any, ref_: any) => {
+  const WrapperToggleButton = React.forwardRef((props_: any, ref_: any) => {
     const {
       open: open_,
 
@@ -617,6 +617,8 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
 
     return (
       <Tooltip
+        ref={ref_}
+
         open={open_ !== undefined ? open_ : undefined}
 
         name={label}
@@ -630,9 +632,9 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
         })}
       </Tooltip>
     );
-  }), []);
+  });
 
-  const WrapperAppend = React.useCallback((props_: any) => {
+  const WrapperAppend = (props_: any) => {
     const {
       open: open_,
 
@@ -680,9 +682,9 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
         })}
       </Append>
     );
-  }, []);
+  };
 
-  const PaletteItem = React.useCallback((props_: any) => {
+  const PaletteItem = (props_: any) => {
     const {
       color: color_,
 
@@ -706,9 +708,9 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
         {...other_}
       />
     );
-  }, []);
+  };
 
-  const Palette = React.useCallback(React.forwardRef((props_: any, ref_: any) => {
+  const Palette = React.forwardRef((props_: any, ref_: any) => {
     const {
       version: version_,
 
@@ -866,7 +868,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
         </Line>
       </Line>
     );
-  }), []);
+  });
 
   const valueNew_ = ((is('array', value) ? value : [value]) as any).filter(Boolean);
 

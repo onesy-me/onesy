@@ -9,9 +9,9 @@ export interface IUseTab {
 const useTabs = <Type extends unknown = string>(props?: Type | IUseTab) => {
   const [tab, setTab] = React.useState<Type>(is('string', props) ? props : (props as IUseTab)?.tab);
 
-  const onChange = React.useCallback((item?: Type) => {
+  const onChange = (item?: Type) => {
     setTab(item);
-  }, []);
+  };
 
   const result = React.useMemo(() => {
     return {

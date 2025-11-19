@@ -23,11 +23,11 @@ export type ILineChart = IChart & {
 const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLineChart?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLineChart?.props?.default, ...props_ };
 
-  const Chart = React.useMemo(() => theme?.elements?.Chart || ChartElement, [theme]);
+  const Chart = theme?.elements?.Chart || ChartElement;
 
-  const LineChartItem = React.useMemo(() => theme?.elements?.LineChartItem || LineChartItemElement, [theme]);
+  const LineChartItem = theme?.elements?.LineChartItem || LineChartItemElement;
 
   const {
     values,

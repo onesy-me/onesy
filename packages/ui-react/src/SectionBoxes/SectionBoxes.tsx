@@ -124,15 +124,15 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionBoxes?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionBoxes?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
   const {
     size = 'regular',
@@ -160,7 +160,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
   // Max 4
   const values = values_?.slice(0, 4);
 
-  const getItem = React.useCallback((item: ISectionBoxesItem, index: number) => {
+  const getItem = (item: ISectionBoxesItem, index: number) => {
     let styleBackground: any = {};
 
     const themed = [undefined, true].includes(item.themed);
@@ -403,7 +403,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
         )}
       </Line>
     );
-  }, [theme, size]);
+  };
 
   return (
     <Section

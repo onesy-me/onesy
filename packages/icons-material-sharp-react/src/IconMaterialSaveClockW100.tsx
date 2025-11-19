@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialSaveClockW100 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='SaveClockW100'
+
+      short_name='SaveClock'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M200-200v-560 233-1 328Zm-28 28v-616h486l130 130v135q-7-2-14-2.5t-14-1.5v-119L646-760H200v560h305q2 8 5.5 14.5T517-172H172Zm568 40q-62 0-105-43t-43-105q0-62 43-105t105-43q62 0 105 43t43 105q0 62-43 105t-105 43Zm14-154v-108h-28v120l80 80 20-20-72-72ZM280-572h278v-108H280v108Zm213 257q4-29 14.5-56.5T535-423q-10-14-25.5-21.5T477-452q-27 0-46 19.5T412-386q0 31 24.5 50t56.5 21Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialSaveClockW100.displayName = 'OnesyIconMaterialSaveClockW100';
+
+export default IconMaterialSaveClockW100;

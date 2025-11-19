@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialHourglassPauseW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='HourglassPauseW100Filled'
+
+      short_name='HourglassPause'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M760-301q-5.6 0-9.8 4.2-4.2 4.2-4.2 9.8v100q0 5.6 4.2 9.8 4.2 4.2 9.8 4.2 5.6 0 9.8-4.2 4.2-4.2 4.2-9.8v-100q0-5.6-4.2-9.8-4.2-4.2-9.8-4.2Zm-80 128q5.6 0 9.8-4.2 4.2-4.2 4.2-9.8v-100q0-5.6-4.2-9.8-4.2-4.2-9.8-4.2-5.6 0-9.8 4.2-4.2 4.2-4.2 9.8v100q0 5.6 4.2 9.8 4.2 4.2 9.8 4.2Zm-454 41q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h56v-120q0-78 50.5-136.5T460-480q-77-6-127.5-64T282-680v-120h-56q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h508q5.95 0 9.97 4.04 4.03 4.03 4.03 10 0 5.96-4.03 9.96-4.02 4-9.97 4h-56v120q0 78-50.5 136T500-480q15 1 39.5 7.5T591-449q-56 33-87.5 89.5T472-237q0 27.52 6 53.76T495-132H226Zm494 43q-62 0-105-43t-43-105q0-62 43-105t105-43q62 0 105 43t43 105q0 62-43 105T720-89Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialHourglassPauseW100Filled.displayName = 'OnesyIconMaterialHourglassPauseW100Filled';
+
+export default IconMaterialHourglassPauseW100Filled;

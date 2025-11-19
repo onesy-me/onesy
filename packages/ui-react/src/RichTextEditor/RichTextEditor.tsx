@@ -351,45 +351,45 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRichTextEditor?.props?.default, ...props__ }), [props__]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRichTextEditor?.props?.default, ...props__ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Append = React.useMemo(() => theme?.elements?.Append || AppendElement, [theme]);
+  const Append = theme?.elements?.Append || AppendElement;
 
-  const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
+  const Select = theme?.elements?.Select || SelectElement;
 
-  const Switch = React.useMemo(() => theme?.elements?.Switch || SwitchElement, [theme]);
+  const Switch = theme?.elements?.Switch || SwitchElement;
 
-  const Label = React.useMemo(() => theme?.elements?.Label || LabelElement, [theme]);
+  const Label = theme?.elements?.Label || LabelElement;
 
-  const NumericTextField = React.useMemo(() => theme?.elements?.NumericTextField || NumericTextFieldElement, [theme]);
+  const NumericTextField = theme?.elements?.NumericTextField || NumericTextFieldElement;
 
-  const ColorTextField = React.useMemo(() => theme?.elements?.ColorTextField || ColorTextFieldElement, [theme]);
+  const ColorTextField = theme?.elements?.ColorTextField || ColorTextFieldElement;
 
-  const ToggleButton = React.useMemo(() => theme?.elements?.ToggleButton || ToggleButtonElement, [theme]);
+  const ToggleButton = theme?.elements?.ToggleButton || ToggleButtonElement;
 
-  const ToggleButtons = React.useMemo(() => theme?.elements?.ToggleButtons || ToggleButtonsElement, [theme]);
+  const ToggleButtons = theme?.elements?.ToggleButtons || ToggleButtonsElement;
 
-  const Drawing = React.useMemo(() => theme?.elements?.Drawing || DrawingElement, [theme]);
+  const Drawing = theme?.elements?.Drawing || DrawingElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const ClickListener = React.useMemo(() => theme?.elements?.ClickListener || ClickListenerElement, [theme]);
+  const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
   const {
     tonal = true,
@@ -667,7 +667,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     }
   };
 
-  const method = React.useCallback((command: string) => (argument: any) => {
+  const method = (command: string) => (argument: any) => {
     switch (command) {
       // updates
       case 'italic':
@@ -887,7 +887,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
       default:
         break;
     }
-  }, []);
+  };
 
   const includes = (...args) => !is('array', exclude) || args.some(item => !exclude.includes(item));
 
@@ -983,7 +983,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ...IconProps_
   };
 
-  const WrapperToggleButton = React.useCallback(React.forwardRef((props_: any, ref_: any) => {
+  const WrapperToggleButton = React.forwardRef((props_: any, ref_: any) => {
     const {
       open: open_,
 
@@ -1009,9 +1009,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         })}
       </Tooltip>
     );
-  }), []);
+  });
 
-  const WrapperAppend = React.useCallback((props_: any) => {
+  const WrapperAppend = (props_: any) => {
     const {
       open: open_,
 
@@ -1059,27 +1059,27 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         })}
       </Append>
     );
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback(() => {
+  const onMouseDown = () => {
     const selection_ = refs.rootWindow.current.getSelection();
 
     if (
       selection_.anchorNode &&
       !(selection_.anchorNode as any)?.className?.includes('TextField')
     ) refs.range.current = selection_.getRangeAt(0);
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback(() => {
+  const onMouseUp = () => {
     if (refs.range.current) {
       const selection_ = refs.rootWindow.current.getSelection();
 
       selection_.removeAllRanges();
       selection_.addRange(refs.range.current);
     }
-  }, []);
+  };
 
-  const PaletteItem = React.useCallback((props_: any) => {
+  const PaletteItem = (props_: any) => {
     const {
       color: color_,
 
@@ -1103,9 +1103,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         {...other_}
       />
     );
-  }, []);
+  };
 
-  const Palette = React.useCallback(React.forwardRef((props_: any, ref_: any) => {
+  const Palette = React.forwardRef((props_: any, ref_: any) => {
     const {
       version: version_,
 
@@ -1282,9 +1282,9 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         </Line>
       </Line>
     );
-  }), []);
+  });
 
-  const Input = React.useCallback(React.forwardRef((props_: any, ref_: any) => {
+  const Input = React.forwardRef((props_: any, ref_: any) => {
     const {
       label,
 
@@ -1380,7 +1380,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         </Line>
       </Line>
     );
-  }), []);
+  });
 
   const font_families = [
     ...fontFamilies,
@@ -1456,7 +1456,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     setSelected(selected_);
   };
 
-  const onMouseUpValue = React.useCallback(() => {
+  const onMouseUpValue = () => {
     queryValueUpdate();
 
     setTimeout(() => {
@@ -1468,11 +1468,11 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
 
       setSelection(Math.round(rect.width) ? rect : '' as any);
     });
-  }, []);
+  };
 
-  const onMouseDownValue = React.useCallback(() => {
+  const onMouseDownValue = () => {
     queryValueUpdate();
-  }, []);
+  };
 
   const updateElements = {
     'font-version': (

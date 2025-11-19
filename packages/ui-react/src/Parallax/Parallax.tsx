@@ -37,7 +37,7 @@ export type IParallax = IBaseElement & {
 const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyParallax?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyParallax?.props?.default, ...props_ };
 
   const {
     value: value_,

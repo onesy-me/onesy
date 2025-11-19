@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMobileSensorLoW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MobileSensorLoW100Filled'
+
+      short_name='MobileSensorLo'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M342-172q-24.75 0-42.37-17.63Q282-207.25 282-232v-496q0-24.75 17.63-42.38Q317.25-788 342-788h276q24.75 0 42.38 17.62Q678-752.75 678-728v496q0 24.75-17.62 42.37Q642.75-172 618-172H342Zm140.07-452q11.93 0 19.93-8.07t8-20q0-11.93-8.07-19.93t-20-8Q470-680 462-671.93t-8 20q0 11.93 8.07 19.93t20 8ZM184-440v-200q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v200q0 5.95-4.04 9.98-4.03 4.02-10 4.02-5.96 0-9.96-4.02-4-4.03-4-9.98Zm564 120v-200q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v200q0 5.95-4.04 9.98-4.03 4.02-10 4.02-5.96 0-9.96-4.02-4-4.03-4-9.98Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMobileSensorLoW100Filled.displayName = 'OnesyIconMaterialMobileSensorLoW100Filled';
+
+export default IconMaterialMobileSensorLoW100Filled;

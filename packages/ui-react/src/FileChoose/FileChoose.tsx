@@ -78,17 +78,17 @@ export type IFileChoose = Omit<ILine, 'onClick' | 'onChange'> & {
 const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFileChoose?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFileChoose?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Tree = React.useMemo(() => theme?.elements?.Tree || TreeElement, [theme]);
+  const Tree = theme?.elements?.Tree || TreeElement;
 
   const {
     tonal = true,
@@ -161,7 +161,7 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
     }
   }, [value_]);
 
-  const onChange = React.useCallback((valueNew_: any[]) => {
+  const onChange = (valueNew_: any[]) => {
     let valueNew = valueNew_;
 
     // Allowed types
@@ -173,13 +173,13 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
     if (!props.hasOwnProperty('value')) setValue(valueNew);
 
     if (is('function', onChange_)) onChange_(valueNew);
-  }, []);
+  };
 
-  const onChangeMethod = React.useCallback((event: React.ChangeEvent<any>) => {
+  const onChangeMethod = (event: React.ChangeEvent<any>) => {
     const valueNew = Array.from(refs.input.current.files);
 
     onChange(valueNew);
-  }, []);
+  };
 
   const onRemove = (index: number) => {
     const valueNew = [...(value as any)];

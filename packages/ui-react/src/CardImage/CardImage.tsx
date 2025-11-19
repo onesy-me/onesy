@@ -59,7 +59,7 @@ export type ICardImage = IBaseElement & {
 const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardImage?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardImage?.props?.default, ...props_ };
 
   const {
     tonal = true,

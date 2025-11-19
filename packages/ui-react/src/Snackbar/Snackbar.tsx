@@ -109,17 +109,17 @@ const timeouts = {};
 const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySnackbar?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySnackbar?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Grow = React.useMemo(() => theme?.elements?.Grow || GrowElement, [theme]);
+  const Grow = theme?.elements?.Grow || GrowElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     id = getID(),
@@ -175,37 +175,37 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
 
   const end = React.Children.toArray(end_);
 
-  const onClose = React.useCallback(() => {
+  const onClose = () => {
     if (is('function', onClose_)) onClose_();
-  }, [onClose_]);
+  };
 
-  const addTimeout = React.useCallback((value = autoHideDuration) => {
+  const addTimeout = (value = autoHideDuration) => {
     clearTimeout(timeouts[id]);
 
     timeouts[id] = setTimeout(() => onClose(), value);
 
     refs.timeoutStart.current = new Date().getTime();
-  }, [autoHideDuration, timeouts, onClose]);
+  };
 
-  const removeTimeout = React.useCallback(() => {
+  const removeTimeout = () => {
     clearTimeout(timeouts[id]);
 
     const start = resumeFromStart ? refs.autoHideDuration.current : (refs.timeoutLeftOver.current !== undefined ? refs.timeoutLeftOver.current : refs.autoHideDuration.current);
 
     refs.timeoutLeftOver.current = start - (new Date().getTime() - refs.timeoutStart.current);
-  }, [resumeFromStart]);
+  };
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseEnter = (event: React.MouseEvent<any>) => {
     if (timeouts[id] !== undefined) removeTimeout();
 
     if (is('function', onMouseEnter_)) onMouseEnter_(event);
-  }, [onMouseEnter_]);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseLeave = (event: React.MouseEvent<any>) => {
     if (refs.timeoutLeftOver.current !== undefined) addTimeout(refs.timeoutLeftOver.current);
 
     if (is('function', onMouseLeave_)) onMouseLeave_(event);
-  }, [onMouseLeave_]);
+  };
 
   React.useEffect(() => {
     const onTabFocus = () => {

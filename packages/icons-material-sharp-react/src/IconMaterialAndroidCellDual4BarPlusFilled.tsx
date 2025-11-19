@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialAndroidCellDual4BarPlusFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='AndroidCellDual4BarPlusFilled'
+
+      short_name='AndroidCellDual4BarPlus'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M60-400v-180h120v180H60Zm240 0v-240h120v240H300ZM60-160v-160h120v160H60Zm240 0v-160h120v160H300Zm480-319v-321h120v347q-27-16-57.5-22.5T780-479ZM540-160v-160h64q-8 42 1 83.5t35 76.5H540Zm220 0v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80ZM540-400v-320h120v297q-5 5-10 11l-10 12H540Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialAndroidCellDual4BarPlusFilled.displayName = 'OnesyIconMaterialAndroidCellDual4BarPlusFilled';
+
+export default IconMaterialAndroidCellDual4BarPlusFilled;

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMusicNoteAddFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MusicNoteAddFilled'
+
+      short_name='MusicNoteAdd'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M480-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T560-418v-422h240v160H640v400q0 66-47 113t-113 47ZM280-520v-120H160v-80h120v-120h80v120h120v80H360v120h-80Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMusicNoteAddFilled.displayName = 'OnesyIconMaterialMusicNoteAddFilled';
+
+export default IconMaterialMusicNoteAddFilled;

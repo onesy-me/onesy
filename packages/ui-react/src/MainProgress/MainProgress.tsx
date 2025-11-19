@@ -50,7 +50,7 @@ export interface IMainProgress extends ILine {
 const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMainProgress?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMainProgress?.props?.default, ...props_ };
 
   const {
     children,
@@ -62,17 +62,17 @@ const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any
 
   const { classes } = useStyle();
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
   const open = useOpen();
 
-  const start = React.useCallback(() => {
+  const start = () => {
     open.onOpen();
-  }, []);
+  };
 
-  const done = React.useCallback(() => {
+  const done = () => {
     open.onClose();
-  }, []);
+  };
 
   const value = React.useMemo(() => {
     return {

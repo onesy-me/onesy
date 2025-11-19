@@ -12,11 +12,6 @@ module.exports = function (api) {
       presets: [
         '@babel/preset-react'
       ]
-    },
-    vue: {
-      plugins: [
-        '@vue/babel-plugin-jsx'
-      ]
     }
   };
 
@@ -36,12 +31,13 @@ module.exports = function (api) {
 
   const other = {};
 
-  if (version === 'icons') {
+  if (version?.includes('icons')) {
     other['sourceMaps'] = false;
     other['minified'] = true;
   }
 
   const plugins = [
+    'babel-plugin-react-compiler',
     '@babel/plugin-transform-runtime',
     '@babel/proposal-class-properties',
     '@babel/proposal-object-rest-spread',
@@ -52,6 +48,7 @@ module.exports = function (api) {
   return {
     presets,
     plugins,
+
     ...other
   };
 };

@@ -60,13 +60,13 @@ export type IBackdrop = ILine & {
 const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBackdrop?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBackdrop?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Focus = React.useMemo(() => theme?.elements?.Focus || FocusElement, [theme]);
+  const Focus = theme?.elements?.Focus || FocusElement;
 
   const {
     open: open_,

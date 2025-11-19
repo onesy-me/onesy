@@ -64,19 +64,19 @@ const ListItemDelays = {
 const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuItem?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuItem?.props?.default, ...props_ };
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const Expand = React.useMemo(() => theme?.elements?.Expand || ExpandElement, [theme]);
+  const Expand = theme?.elements?.Expand || ExpandElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
   const {
     tonal = true,
@@ -180,13 +180,13 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
     })
   ));
 
-  const onClick = React.useCallback((event?: React.MouseEvent<any>) => {
+  const onClick = (event?: React.MouseEvent<any>) => {
     if (!refs.props.current.disabled) {
       if (refs.props.current.list) setOpenList(!refs.openList.current);
     }
 
     if (is('function', onClick_)) onClick_(event);
-  }, [onClick_]);
+  };
 
   let end = end_;
 
@@ -269,13 +269,13 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
     if (menu) setOpenMenu(hover || focus || preselected || selected);
   }, [focus]);
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseEnter = (event: React.MouseEvent<any>) => {
     if (!disabled) setHover(true);
 
     if (is('function', onMouseEnter_)) onMouseEnter_(event);
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseLeave = (event: React.MouseEvent<any>) => {
     if (!disabled) {
       setHover(false);
 
@@ -283,21 +283,21 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
     }
 
     if (is('function', onMouseLeave_)) onMouseLeave_(event);
-  }, []);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<any>) => {
+  const onFocus = (event: React.FocusEvent<any>) => {
     if (event.target === event.currentTarget && !disabled) setFocus(true);
 
     if (is('function', onFocus_)) onFocus_(event);
-  }, []);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<any>) => {
+  const onBlur = (event: React.FocusEvent<any>) => {
     if (event.target === event.currentTarget && !disabled) setFocus(false);
 
     if (is('function', onBlur_)) onBlur_(event);
-  }, []);
+  };
 
-  const onCloseList = React.useCallback(() => {
+  const onCloseList = () => {
     if (!disabled) {
       setOpenList(false);
       setHover(false);
@@ -305,9 +305,9 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
 
       // if (is('function', onClose_)) onClose_();
     }
-  }, []);
+  };
 
-  const onCloseMenu = React.useCallback(() => {
+  const onCloseMenu = () => {
     if (!disabled) {
       setOpenMenu(false);
       setHover(false);
@@ -315,7 +315,7 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
 
       // if (is('function', onClose_)) onClose_();
     }
-  }, []);
+  };
 
   ListTransitionComponentProps.in = !!openList;
 

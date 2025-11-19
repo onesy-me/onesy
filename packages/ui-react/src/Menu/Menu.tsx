@@ -73,13 +73,13 @@ export type IMenu = Omit<ITooltip, 'name' | 'label'> & {
 const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenu?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenu?.props?.default, ...props_ };
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const ClickListener = React.useMemo(() => theme?.elements?.ClickListener || ClickListenerElement, [theme]);
+  const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
   const {
     open: open_,
@@ -249,9 +249,9 @@ const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
     if (open !== open_) setOpen(open_);
   }, [open_]);
 
-  const onMouseLeave = React.useCallback(() => {
+  const onMouseLeave = () => {
     setPreselected('');
-  }, []);
+  };
 
   const onOpen = () => {
     if (open_ === undefined) setOpen(true);

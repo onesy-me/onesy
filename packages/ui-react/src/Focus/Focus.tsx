@@ -26,7 +26,7 @@ export type IFocus = IBaseElement & {
 const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFocus?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFocus?.props?.default, ...props_ };
 
   const refs = {
     focusStart: React.useRef<HTMLDivElement>(undefined),

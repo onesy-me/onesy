@@ -287,23 +287,23 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyShare?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyShare?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const MenuItem = React.useMemo(() => theme?.elements?.MenuItem || MenuItemElement, [theme]);
+  const MenuItem = theme?.elements?.MenuItem || MenuItemElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const BottomSheet = React.useMemo(() => theme?.elements?.BottomSheet || BottomSheetElement, [theme]);
+  const BottomSheet = theme?.elements?.BottomSheet || BottomSheetElement;
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
   const {
     version = 'fixed',
@@ -390,15 +390,15 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
 
   refs.onOpen.current = onOpen;
 
-  const onOpenBottomSheet = React.useCallback(() => {
+  const onOpenBottomSheet = () => {
     setOpen(true);
-  }, []);
+  };
 
-  const onCloseBottomSheet = React.useCallback(() => {
+  const onCloseBottomSheet = () => {
     setOpen(false);
-  }, []);
+  };
 
-  const onClick = React.useCallback(async (item: any, event: MouseEvent) => {
+  const onClick = async (item: any, event: MouseEvent) => {
     if (!isEnvironment('browser')) return;
 
     clearTimeout(refs.copyTimeout.current);
@@ -468,7 +468,7 @@ const Share: React.FC<IShare> = React.forwardRef((props_, ref: any): any => {
     }
 
     if (is('function', refs.onOpen.current)) refs.onOpen.current!(item, event);
-  }, []);
+  };
 
   const size = props.size !== undefined ? props.size : mobile ? 'small' : 'regular';
 

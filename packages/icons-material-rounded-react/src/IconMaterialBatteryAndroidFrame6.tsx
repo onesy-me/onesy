@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialBatteryAndroidFrame6 = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='BatteryAndroidFrame6'
+
+      short_name='BatteryAndroidFrame6'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M160-240q-50 0-85-35t-35-85v-240q0-50 35-85t85-35h540q50 0 85 35t35 85v240q0 50-35 85t-85 35H160Zm0-80h540q17 0 28.5-11.5T740-360v-240q0-17-11.5-28.5T700-640H160q-17 0-28.5 11.5T120-600v240q0 17 11.5 28.5T160-320Zm700-60v-200h20q17 0 28.5 11.5T920-540v120q0 17-11.5 28.5T880-380h-20Zm-700-20v-160q0-17 11.5-28.5T200-600h400q17 0 28.5 11.5T640-560v160q0 17-11.5 28.5T600-360H200q-17 0-28.5-11.5T160-400Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialBatteryAndroidFrame6.displayName = 'OnesyIconMaterialBatteryAndroidFrame6';
+
+export default IconMaterialBatteryAndroidFrame6;

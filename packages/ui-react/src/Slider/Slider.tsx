@@ -484,15 +484,15 @@ export type ISlider = Omit<IBaseElement, 'onChange'> & {
 const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySlider?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySlider?.props?.default, ...props_ };
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Zoom = React.useMemo(() => theme?.elements?.Zoom || ZoomElement, [theme]);
+  const Zoom = theme?.elements?.Zoom || ZoomElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -712,7 +712,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
     if (init && value_ !== value) setValue(value_);
   }, [value_]);
 
-  const move = React.useCallback((x: number, y: number) => {
+  const move = (x: number, y: number) => {
     if (!disabled && !readOnly) {
       const rect = refs.root.current.getBoundingClientRect();
 
@@ -748,7 +748,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
         if (is('function', onChange)) onChange(valueNew);
       }
     }
-  }, [disabled, readOnly, onChange, value, mouseDownButton]);
+  };
 
   const moveItem = (forward_ = true) => {
     const forward = (orientation === 'vertical' || (theme.direction === 'ltr' && orientation === 'horizontal')) ? forward_ : !forward_;
@@ -810,7 +810,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const onKeyDown = React.useCallback((event: React.KeyboardEvent<any>) => {
+  const onKeyDown = (event: React.KeyboardEvent<any>) => {
     if (!disabled && !readOnly) {
       if (['Enter', 'Escape', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft', 'Home', 'End'].includes(event.key)) {
         // Prevent default
@@ -858,25 +858,25 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
         }
       }
     }
-  }, [disabled, readOnly, value, precision, focusButton]);
+  };
 
-  const onFocus = React.useCallback(() => {
+  const onFocus = () => {
     if (!disabled && !readOnly && !mouseDown) setFocus(true);
-  }, [disabled, readOnly, mouseDown]);
+  };
 
-  const onBlur = React.useCallback(() => {
+  const onBlur = () => {
     if (!disabled && !readOnly) setFocus(false);
-  }, [disabled, readOnly]);
+  };
 
-  const onFocusButton = React.useCallback((index: number) => {
+  const onFocusButton = (index: number) => {
     if (!disabled && !readOnly) setFocusButton(index);
-  }, [disabled, readOnly]);
+  };
 
-  const onMouseDownButton = React.useCallback((event: React.TouchEvent<any> | React.MouseEvent<any>, index: number) => {
+  const onMouseDownButton = (event: React.TouchEvent<any> | React.MouseEvent<any>, index: number) => {
     if (!disabled && !readOnly) setMouseDownButton(index);
-  }, [disabled, readOnly]);
+  };
 
-  const onMouseDown = React.useCallback((event: React.TouchEvent<any> | React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.TouchEvent<any> | React.MouseEvent<any>) => {
     if (!disabled && !readOnly) {
       setMouseDown(true);
 
@@ -888,9 +888,9 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
     }
 
     if (is('function', onMouseDown_)) onMouseDown_(event as any);
-  }, [disabled, readOnly, onMouseDown_]);
+  };
 
-  const onTouchStart = React.useCallback((event: React.TouchEvent<any> | React.MouseEvent<any>) => {
+  const onTouchStart = (event: React.TouchEvent<any> | React.MouseEvent<any>) => {
     if (!disabled && !readOnly) {
       setMouseDown(true);
 
@@ -902,7 +902,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
     }
 
     if (is('function', onMouseDown_)) onMouseDown_(event as any);
-  }, [disabled, readOnly, onTouchStart_]);
+  };
 
   const styles: any = {
     root: {

@@ -131,17 +131,17 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWidgets?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWidgets?.props?.default, ...props_ };
 
-  const SpeedDial = React.useMemo(() => theme?.elements?.SpeedDial || SpeedDialElement, [theme]);
+  const SpeedDial = theme?.elements?.SpeedDial || SpeedDialElement;
 
-  const SpeedDialItem = React.useMemo(() => theme?.elements?.SpeedDialItem || SpeedDialItemElement, [theme]);
+  const SpeedDialItem = theme?.elements?.SpeedDialItem || SpeedDialItemElement;
 
-  const Transition = React.useMemo(() => theme?.elements?.Transition || TransitionElement, [theme]);
+  const Transition = theme?.elements?.Transition || TransitionElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Move = React.useMemo(() => theme?.elements?.Move || MoveElement, [theme]);
+  const Move = theme?.elements?.Move || MoveElement;
 
   const {
     widgets,
@@ -182,13 +182,13 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
 
   refs.props.current = props;
 
-  const open = React.useCallback((value?: string) => {
+  const open = (value?: string) => {
     setOpenItems(items => unique([...items, value]));
 
     if (is('function', onOpen)) onOpen(value);
-  }, []);
+  };
 
-  const openAll = React.useCallback(() => {
+  const openAll = () => {
     setOpenItems(() => unique(((widgets || []) as any).map((item: any) => {
       const valueItem = item.value !== undefined ? item.value : item.label;
 
@@ -196,19 +196,19 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
     })));
 
     if (is('function', onOpenAll)) onOpenAll();
-  }, []);
+  };
 
-  const close = React.useCallback((value?: string) => {
+  const close = (value?: string) => {
     setOpenItems(items => unique(items.filter((item: any) => item !== value)));
 
     if (is('function', onClose)) onClose(value);
-  }, []);
+  };
 
-  const closeAll = React.useCallback(() => {
+  const closeAll = () => {
     setOpenItems([]);
 
     if (is('function', onCloseAll)) onCloseAll();
-  }, []);
+  };
 
   // Add to the value
   refs.value.current.open = open;

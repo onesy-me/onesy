@@ -158,25 +158,25 @@ export type IHTMLCanvas = Omit<IBaseElement, 'onWheel' | 'onMouseDown' | 'onTouc
 const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyHTMLCanvas?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyHTMLCanvas?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Label = React.useMemo(() => theme?.elements?.Label || LabelElement, [theme]);
+  const Label = theme?.elements?.Label || LabelElement;
 
-  const Switch = React.useMemo(() => theme?.elements?.Switch || SwitchElement, [theme]);
+  const Switch = theme?.elements?.Switch || SwitchElement;
 
   const {
     size = 'regular',
@@ -277,7 +277,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
     }
   }, [methods]);
 
-  const onChange = React.useCallback((valueNew?: any) => {
+  const onChange = (valueNew?: any) => {
     const root = refs.root.current as HTMLElement;
 
     const values = {
@@ -294,9 +294,9 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
     };
 
     if (is('function', onChange_)) onChange_!(values);
-  }, [onChange_]);
+  };
 
-  const updateBoundaries = React.useCallback((valueZoom = refs.positions.current?.zoom) => {
+  const updateBoundaries = (valueZoom = refs.positions.current?.zoom) => {
     const root = refs.root.current as HTMLElement;
 
     const rootRect = root.getBoundingClientRect();
@@ -305,14 +305,14 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
       x: [(refs.width.current * valueZoom * -1) + rootRect.width, 0],
       y: [(refs.height.current * valueZoom * -1) + rootRect.height, 0]
     };
-  }, []);
+  };
 
   React.useEffect(() => {
     // update boundaries
     updateBoundaries();
   }, [width, height, positions]);
 
-  const updatePositions = React.useCallback((valueNew: any) => {
+  const updatePositions = (valueNew: any) => {
     valueNew.zoom = clamp(valueNew.zoom, refs.minZoom.current, refs.maxZoom.current);
     valueNew.top = clamp(valueNew.top, ...refs.boundaries.current.y);
     valueNew.left = clamp(valueNew.left, ...refs.boundaries.current.x);
@@ -322,9 +322,9 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
     setPositions(valueNew);
 
     onChange(valueNew);
-  }, []);
+  };
 
-  const update = React.useCallback((values: any, event?: WheelEvent) => {
+  const update = (values: any, event?: WheelEvent) => {
     const root = refs.root.current as HTMLElement;
 
     const container = refs.container.current as HTMLElement;
@@ -369,13 +369,13 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
     // update
     updatePositions({ zoom: zoom_, left, top });
-  }, []);
+  };
 
-  const zoom = React.useCallback((value = 1, event: MouseEvent) => {
+  const zoom = (value = 1, event: MouseEvent) => {
     update({ zoom: value });
-  }, []);
+  };
 
-  const onCenter = React.useCallback(() => {
+  const onCenter = () => {
     const root = refs.root.current as HTMLElement;
 
     const container = refs.container.current as HTMLElement;
@@ -451,15 +451,15 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
     // update
     // zoom
     if (zoom_ !== 1) update({ zoom: zoom_ });
-  }, []);
+  };
 
-  const init = React.useCallback(() => {
+  const init = () => {
     // initially
     // center
     onCenter();
-  }, []);
+  };
 
-  const onWheel = React.useCallback((event: WheelEvent) => {
+  const onWheel = (event: WheelEvent) => {
     if (event.target === refs.root.current || refs.root.current?.contains(event.target as any)) {
       const positions_ = refs.positions.current;
 
@@ -502,44 +502,44 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
         event.preventDefault();
       }
     }
-  }, []);
+  };
 
-  const onKeyUp = React.useCallback(() => {
+  const onKeyUp = () => {
     setKeyDown(null);
-  }, []);
+  };
 
-  const onKeyDown = React.useCallback((event: KeyboardEvent) => {
+  const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === ' ') setKeyDown(event.key);
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback(() => {
+  const onMouseUp = () => {
     refs.mouseDown.current = false;
     refs.mouseDownMiniMap.current = false;
 
     refs.previousMouseEvent.current = undefined;
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback((event: MouseEvent) => {
+  const onMouseDown = (event: MouseEvent) => {
     refs.mouseDown.current = true;
 
     if (is('function', onMouseDown_)) onMouseDown_!(event);
-  }, [onMouseDown_]);
+  };
 
-  const onTouchStart = React.useCallback((event: TouchEvent) => {
+  const onTouchStart = (event: TouchEvent) => {
     refs.mouseDown.current = true;
 
     if (is('function', onTouchStart_)) onTouchStart_!(event);
-  }, [onTouchStart_]);
+  };
 
-  const onMouseDownMiniMap = React.useCallback((event: MouseEvent) => {
+  const onMouseDownMiniMap = (event: MouseEvent) => {
     refs.mouseDownMiniMap.current = true;
-  }, []);
+  };
 
-  const onTouchStartMiniMap = React.useCallback((event: TouchEvent) => {
+  const onTouchStartMiniMap = (event: TouchEvent) => {
     refs.mouseDownMiniMap.current = true;
-  }, []);
+  };
 
-  const onMoveMiniMap = React.useCallback((x_: number, y_: number, event: MouseEvent) => {
+  const onMoveMiniMap = (x_: number, y_: number, event: MouseEvent) => {
     if (refs.mouseDownMiniMap.current && refs.previousMouseEvent.current && !refs.disabled.current) {
       const positions_ = refs.positions.current;
 
@@ -566,9 +566,9 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
       update({ left, top });
     }
-  }, []);
+  };
 
-  const onMove = React.useCallback((x_: number, y_: number, event: MouseEvent) => {
+  const onMove = (x_: number, y_: number, event: MouseEvent) => {
     if (refs.keyDown.current === ' ' && refs.mouseDown.current && refs.previousMouseEvent.current && !refs.disabled.current) {
       const { clientX: xPrevious, clientY: yPrevious } = refs.previousMouseEvent.current as any;
 
@@ -584,9 +584,9 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
       update({ left, top });
     }
-  }, []);
+  };
 
-  const onMouseMove = React.useCallback((event: MouseEvent) => {
+  const onMouseMove = (event: MouseEvent) => {
     if ((refs.mouseDown.current || refs.mouseDownMiniMap.current) && !refs.disabled.current) {
       const { clientY, clientX } = event;
 
@@ -595,9 +595,9 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
       refs.previousMouseEvent.current = event;
     }
-  }, []);
+  };
 
-  const onTouchMove = React.useCallback((event: TouchEvent) => {
+  const onTouchMove = (event: TouchEvent) => {
     if ((refs.mouseDown.current || refs.mouseDownMiniMap.current) && !refs.disabled.current) {
       const { clientY, clientX } = event.touches[0];
 
@@ -611,7 +611,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
 
       (refs.previousMouseEvent.current as any).clientX = clientX;
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     // init
@@ -650,9 +650,9 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
     };
   }, []);
 
-  const onShowGuidelines = React.useCallback((valueNew: any) => {
+  const onShowGuidelines = (valueNew: any) => {
     setShowGuidelines(valueNew);
-  }, []);
+  };
 
   const zoomOptions = React.useMemo(() => {
 
@@ -731,7 +731,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
     );
   }, [positions, onMouseDownMiniMap, onTouchStartMiniMap]);
 
-  const updateMiniMap = React.useCallback(debounce(() => {
+  const updateMiniMap = debounce(() => {
     const root = refs.root.current as HTMLElement;
     const container = refs.container.current as HTMLElement;
     const miniMap_ = refs.miniMap.current as HTMLElement;
@@ -810,7 +810,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
         item.remove();
       }
     });
-  }, 440), []);
+  }, 440);
 
   React.useEffect(() => {
     // update

@@ -60,13 +60,13 @@ export type ITableHead = ISurface & {
 const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableHead?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableHead?.props?.default, ...props_ };
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const TableRow = React.useMemo(() => theme?.elements?.TableRow || TableRowElement, [theme]);
+  const TableRow = theme?.elements?.TableRow || TableRowElement;
 
-  const LinearProgress = React.useMemo(() => theme?.elements?.LinearProgress || LinearProgressElement, [theme]);
+  const LinearProgress = theme?.elements?.LinearProgress || LinearProgressElement;
 
   const {
     tonal = true,
@@ -117,13 +117,13 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
 
   if (sticky && stickyOffset !== undefined) styleOther.top = stickyOffset;
 
-  const onStickyMove = React.useCallback(() => {
+  const onStickyMove = () => {
     const offsetNew = refs.root.current.offsetLeft;
 
     setStickyActive(refs.offset.current !== offsetNew);
-  }, []);
+  };
 
-  const onStickyInit = React.useCallback(() => {
+  const onStickyInit = () => {
     if (refs.sticky.current && refs.root.current) {
       refs.root.current.style.position = 'unset';
 
@@ -133,9 +133,9 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
 
       onStickyMove();
     }
-  }, []);
+  };
 
-  const onObserve = React.useCallback(() => {
+  const onObserve = () => {
     const element = refs.root.current?.closest('table');
 
     // clean up
@@ -169,7 +169,7 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
     refs.observer.current.observe(element, config);
 
     return refs.observer.current;
-  }, []);
+  };
 
   React.useEffect(() => {
     if (root && sticky) {

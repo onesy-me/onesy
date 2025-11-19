@@ -195,41 +195,41 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySmartTextField?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySmartTextField?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Avatar = React.useMemo(() => theme?.elements?.Avatar || AvatarElement, [theme]);
+  const Avatar = theme?.elements?.Avatar || AvatarElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
-  const Append = React.useMemo(() => theme?.elements?.Append || AppendElement, [theme]);
+  const Append = theme?.elements?.Append || AppendElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const ToggleButton = React.useMemo(() => theme?.elements?.ToggleButton || ToggleButtonElement, [theme]);
+  const ToggleButton = theme?.elements?.ToggleButton || ToggleButtonElement;
 
-  const ClickListener = React.useMemo(() => theme?.elements?.ClickListener || ClickListenerElement, [theme]);
+  const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
-  const ToggleButtons = React.useMemo(() => theme?.elements?.ToggleButtons || ToggleButtonsElement, [theme]);
+  const ToggleButtons = theme?.elements?.ToggleButtons || ToggleButtonsElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const ColorTextField = React.useMemo(() => theme?.elements?.ColorTextField || ColorTextFieldElement, [theme]);
+  const ColorTextField = theme?.elements?.ColorTextField || ColorTextFieldElement;
 
   const {
     tonal = true,
@@ -391,7 +391,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
   refs.rootWindow.current = rootWindow;
 
-  const init = React.useCallback(() => {
+  const init = () => {
     if (version === 'text') {
       const valueNew = valueDefault || value || '';
 
@@ -399,7 +399,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         refs.root.current.innerHTML = valueNew;
       }
     }
-  }, [version, value, valueDefault]);
+  };
 
   React.useEffect(() => {
     // init
@@ -445,7 +445,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     }));
   };
 
-  const validateElement = React.useCallback((element: any) => {
+  const validateElement = (element: any) => {
     if (element?.children) {
       Array.from(element?.children).forEach((child: any) => {
         // Any tag
@@ -464,9 +464,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         if (child?.children) validateElement(child);
       });
     }
-  }, []);
+  };
 
-  const validate = React.useCallback((valueNew: any = undefined) => {
+  const validate = (valueNew: any = undefined) => {
     // Save caret position
     refs.caret.current = caret.save(refs.root.current);
 
@@ -482,9 +482,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     if (refs.validateMeta.current.restore) caret.restore(refs.root.current, refs.caret.current);
 
     return refs.root.current.innerHTML;
-  }, []);
+  };
 
-  const getAtSearchData = React.useCallback(() => {
+  const getAtSearchData = () => {
     if (refs.root.current) {
       const windowSelection = window.document.getSelection();
 
@@ -521,11 +521,11 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
       return result;
     }
-  }, []);
+  };
 
   refs.search.current = getAtSearchData();
 
-  const onInput = React.useCallback((event?: Event) => {
+  const onInput = (event?: Event) => {
     if (refs.root.current) {
       let valueInput = refs.root.current!.innerHTML || '';
 
@@ -549,7 +549,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
       if (is('function', refs.onChange.current)) refs.onChange.current!(valueInput, event as any);
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     if (mention && refs.search.current !== undefined) onChangeMention?.(refs.search.current, '@');
@@ -569,7 +569,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     };
   }, []);
 
-  const updateSelection = React.useCallback(() => {
+  const updateSelection = () => {
     const windowSelection = window.document.getSelection();
 
     if (!(windowSelection && windowSelection.rangeCount > 0)) return;
@@ -577,9 +577,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     const range = windowSelection?.getRangeAt(0);
 
     if (range) setSelectionMenu(range?.getBoundingClientRect());
-  }, []);
+  };
 
-  const onOpenSearch = React.useCallback(async () => {
+  const onOpenSearch = async () => {
     if (!refs.openMenu.current && !!refs.optionsMention.current.length) {
       // open
       setOpenMenu(true);
@@ -587,29 +587,29 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
       // selection
       updateSelection();
     }
-  }, []);
+  };
 
-  const onCloseSearch = React.useCallback(() => {
+  const onCloseSearch = () => {
     if (refs.openMenu.current) {
       setOpenMenu(false);
 
       setSelectionMenu(null);
     }
-  }, []);
+  };
 
-  const updateOffset = React.useCallback(() => {
+  const updateOffset = () => {
     setOffset([-(refs.searchElement.current?.clientWidth || 0), 8]);
-  }, []);
+  };
 
-  const onFocus = React.useCallback(() => {
+  const onFocus = () => {
     // setFocus(true);
-  }, []);
+  };
 
-  const onBlur = React.useCallback(() => {
+  const onBlur = () => {
     // setFocus(false);
-  }, []);
+  };
 
-  const onKeyDown = React.useCallback((event: KeyboardEvent) => {
+  const onKeyDown = (event: KeyboardEvent) => {
     const windowSelection = window.getSelection();
 
     if (windowSelection) {
@@ -680,29 +680,29 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     }
 
     if (is('function', onKeyDown_)) onKeyDown_(event as any);
-  }, [onKeyDown_]);
+  };
 
-  const onPaste = React.useCallback((event: ClipboardEvent) => {
+  const onPaste = (event: ClipboardEvent) => {
     // event.preventDefault();
 
     // const text = event.clipboardData?.getData('text/plain');
 
     // window.document.execCommand('insertText', false, text);
-  }, []);
+  };
 
-  const onPasteText = React.useCallback((event: ClipboardEvent) => {
+  const onPasteText = (event: ClipboardEvent) => {
     event.preventDefault();
 
     const text = event.clipboardData?.getData('text/plain');
 
     window.document.execCommand('insertText', false, text);
-  }, []);
+  };
 
-  const onDrop = React.useCallback((event: DragEvent) => {
+  const onDrop = (event: DragEvent) => {
     event.preventDefault();
-  }, []);
+  };
 
-  const addTag = React.useCallback((item: any, versionMention = 'user') => {
+  const addTag = (item: any, versionMention = 'user') => {
     // Save caret position
     refs.caret.current = caret.save(refs.root.current);
 
@@ -774,7 +774,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
     // Close the search
     onCloseSearch();
-  }, [onChange]);
+  };
 
   // If users response & not open, open
   // else if no users response & opened, close the search
@@ -806,7 +806,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     // setError(error_);
   }, [error_]);
 
-  const label = React.useCallback(() => (
+  const label = () => (
     is('function', mentionLabel) ? mentionLabel!(optionsMention, { addTag }) :
       <Line
         className={classes.menu}
@@ -846,7 +846,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
           ))}
         </List>
       </Line>
-  ), [optionsMention]);
+  );
 
   const paste = async () => {
     const valueClipboard = await navigator.clipboard.read();
@@ -885,7 +885,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     setTextSelected(selected);
   };
 
-  const onMouseUp = React.useCallback(() => {
+  const onMouseUp = () => {
     if (!refs.edit.current) return;
 
     const selection_ = refs.rootWindow.current!.getSelection();
@@ -901,21 +901,21 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
       textQueryUpdate();
     }, 140);
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback(() => {
+  const onMouseDown = () => {
     if (!refs.edit.current) return;
 
     textQueryUpdate();
-  }, []);
+  };
 
-  const onKeyUp = React.useCallback(() => {
+  const onKeyUp = () => {
     if (!refs.edit.current) return;
 
     textQueryUpdate();
-  }, []);
+  };
 
-  const textMethod = React.useCallback((command: string) => (argument: any) => {
+  const textMethod = (command: string) => (argument: any) => {
     switch (command) {
       // updates
       case 'italic':
@@ -1151,9 +1151,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     }
 
     textQueryUpdate();
-  }, []);
+  };
 
-  const PaletteItem = React.useCallback((propsItem: any) => {
+  const PaletteItem = (propsItem: any) => {
     const {
       color: color_,
 
@@ -1177,9 +1177,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         {...other_}
       />
     );
-  }, []);
+  };
 
-  const Palette = React.useCallback(React.forwardRef((propsPalette: any, ref_: any) => {
+  const Palette = React.forwardRef((propsPalette: any, ref_: any) => {
     const {
       version: version_,
 
@@ -1360,7 +1360,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         </Line>
       </Line>
     );
-  }), []);
+  });
 
   const AppendProps: any = {
     padding: [14, 14]
@@ -1386,7 +1386,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     size: 'small'
   };
 
-  const Input = React.useCallback(React.forwardRef((propsInput: any, ref_: any) => {
+  const Input = React.forwardRef((propsInput: any, ref_: any) => {
     const {
       label: labelInput,
 
@@ -1474,9 +1474,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         </Line>
       </Line>
     );
-  }), []);
+  });
 
-  const WrapperAppend = React.useCallback((propsWrapper: any) => {
+  const WrapperAppend = (propsWrapper: any) => {
     const {
       open: open_,
 
@@ -1532,9 +1532,9 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         })}
       </Append>
     );
-  }, []);
+  };
 
-  const WrapperToggleButton = React.useCallback(React.forwardRef((propsWrapperToggleButton: any, ref_: any) => {
+  const WrapperToggleButton = React.forwardRef((propsWrapperToggleButton: any, ref_: any) => {
     const {
       open: open_,
 
@@ -1547,6 +1547,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
 
     return (
       <Tooltip
+        ref={ref_}
+
         open={open_ !== undefined ? open_ : undefined}
 
         name={nameWrapperToogleButton}
@@ -1560,7 +1562,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         })}
       </Tooltip>
     );
-  }), []);
+  });
 
   const updateElements = {
     'italic': (

@@ -159,7 +159,7 @@ export const IconDoneAnimated = (props: any) => {
 
   const theme = useOnesyTheme();
 
-  const Transition = React.useMemo(() => theme?.elements?.Transition || TransitionElement, [theme]);
+  const Transition = theme?.elements?.Transition || TransitionElement;
 
   const {
     in: inProp,
@@ -253,9 +253,9 @@ export type IButtons = Omit<ILine, 'onChange'> & {
 const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButtons?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButtons?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
   const {
     tonal = true,

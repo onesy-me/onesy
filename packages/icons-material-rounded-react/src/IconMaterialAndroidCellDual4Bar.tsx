@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialAndroidCellDual4Bar = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='AndroidCellDual4Bar'
+
+      short_name='AndroidCellDual4Bar'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M60-460v-60q0-25 17.5-42.5T120-580q25 0 42.5 17.5T180-520v60q0 25-17.5 42.5T120-400q-25 0-42.5-17.5T60-460Zm240 0v-120q0-25 17.5-42.5T360-640q25 0 42.5 17.5T420-580v120q0 25-17.5 42.5T360-400q-25 0-42.5-17.5T300-460Zm240 0v-200q0-25 17.5-42.5T600-720q25 0 42.5 17.5T660-660v200q0 25-17.5 42.5T600-400q-25 0-42.5-17.5T540-460Zm240 0v-280q0-25 17.5-42.5T840-800q25 0 42.5 17.5T900-740v280q0 25-17.5 42.5T840-400q-25 0-42.5-17.5T780-460ZM60-220v-40q0-25 17.5-42.5T120-320q25 0 42.5 17.5T180-260v40q0 25-17.5 42.5T120-160q-25 0-42.5-17.5T60-220Zm240 0v-40q0-25 17.5-42.5T360-320q25 0 42.5 17.5T420-260v40q0 25-17.5 42.5T360-160q-25 0-42.5-17.5T300-220Zm240 0v-40q0-25 17.5-42.5T600-320q25 0 42.5 17.5T660-260v40q0 25-17.5 42.5T600-160q-25 0-42.5-17.5T540-220Zm240 0v-40q0-25 17.5-42.5T840-320q25 0 42.5 17.5T900-260v40q0 25-17.5 42.5T840-160q-25 0-42.5-17.5T780-220Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialAndroidCellDual4Bar.displayName = 'OnesyIconMaterialAndroidCellDual4Bar';
+
+export default IconMaterialAndroidCellDual4Bar;

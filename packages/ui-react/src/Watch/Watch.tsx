@@ -130,17 +130,17 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWatch?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWatch?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
+  const Path = theme?.elements?.Path || PathElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const RoundMeter = React.useMemo(() => theme?.elements?.RoundMeter || RoundMeterElement, [theme]);
+  const RoundMeter = theme?.elements?.RoundMeter || RoundMeterElement;
 
   const {
     tonal = true,
@@ -188,11 +188,11 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
 
   const [value, setValue] = React.useState<OnesyDate>(OnesyDate.onesyDate);
 
-  const update = React.useCallback(() => {
+  const update = () => {
     setValue(OnesyDate.onesyDate);
 
     refs.requestAnimationFrameID.current = requestAnimationFrame(update);
-  }, []);
+  };
 
   const marks: any = React.useMemo(() => {
     return {

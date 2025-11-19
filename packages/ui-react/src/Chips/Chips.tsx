@@ -74,11 +74,11 @@ export type IChips = ILine & {
 const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChips?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChips?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Chip = React.useMemo(() => theme?.elements?.Chip || ChipElement, [theme]);
+  const Chip = theme?.elements?.Chip || ChipElement;
 
   const {
     size = 'regular',
@@ -115,9 +115,9 @@ const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
 
   const [showAll, setShowAll] = React.useState(showAllDefault !== undefined ? showAllDefault : false);
 
-  const onClickMore = React.useCallback(() => {
+  const onClickMore = () => {
     setShowAll(true);
-  }, []);
+  };
 
   let children = React.Children.toArray(children_);
 

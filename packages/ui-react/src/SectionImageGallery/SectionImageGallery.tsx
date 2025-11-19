@@ -26,11 +26,11 @@ export type ISectionImageGallery = ISection & {
 const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionImageGallery?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionImageGallery?.props?.default, ...props_ };
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const ImageGallery = React.useMemo(() => theme?.elements?.ImageGallery || ImageGalleryElement, [theme]);
+  const ImageGallery = theme?.elements?.ImageGallery || ImageGalleryElement;
 
   const {
     values,

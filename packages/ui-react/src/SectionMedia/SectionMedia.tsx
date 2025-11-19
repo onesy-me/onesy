@@ -82,21 +82,21 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionMedia?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionMedia?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const Image = React.useMemo(() => theme?.elements?.Image || ImageElement, [theme]);
+  const Image = theme?.elements?.Image || ImageElement;
 
-  const AudioPlayer = React.useMemo(() => theme?.elements?.AudioPlayer || AudioPlayerElement, [theme]);
+  const AudioPlayer = theme?.elements?.AudioPlayer || AudioPlayerElement;
 
-  const VideoPlayer = React.useMemo(() => theme?.elements?.VideoPlayer || VideoPlayerElement, [theme]);
+  const VideoPlayer = theme?.elements?.VideoPlayer || VideoPlayerElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     value,
@@ -124,9 +124,9 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
     root: React.useRef<any>(undefined)
   };
 
-  const onOpenMedia = React.useCallback((media: IMediaObject) => {
+  const onOpenMedia = (media: IMediaObject) => {
     window.open(media.url || media.urlSmall, 'blank_');
-  }, []);
+  };
 
   let element: any;
 

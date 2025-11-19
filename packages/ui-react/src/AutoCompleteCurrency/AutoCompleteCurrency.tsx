@@ -21,9 +21,9 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCurrency?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoCompleteCurrency?.props?.default, ...props_ };
 
-  const AutoComplete = React.useMemo(() => theme?.elements?.AutoComplete || AutoCompleteElement, [theme]);
+  const AutoComplete = theme?.elements?.AutoComplete || AutoCompleteElement;
 
   const {
     valueInputDefault: valueInputDefault_,

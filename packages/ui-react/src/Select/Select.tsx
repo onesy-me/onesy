@@ -180,23 +180,23 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySelect?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySelect?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const Chip = React.useMemo(() => theme?.elements?.Chip || ChipElement, [theme]);
+  const Chip = theme?.elements?.Chip || ChipElement;
 
-  const Chips = React.useMemo(() => theme?.elements?.Chips || ChipsElement, [theme]);
+  const Chips = theme?.elements?.Chips || ChipsElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     tonal = true,
@@ -322,43 +322,43 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
     if (value_ !== undefined && value_ !== value) setValue(value_);
   }, [value_]);
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.MouseEvent<any>) => {
     if (!disabled && !readOnly) setMouseDown(true);
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseUp = (event: React.MouseEvent<any>) => {
     if (!disabled && !readOnly) setMouseDown(false);
-  }, []);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled && !readOnly) setFocus(true);
-  }, []);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled && !readOnly) setFocus(false);
-  }, []);
+  };
 
-  const onClick = React.useCallback((event: React.MouseEvent) => {
+  const onClick = (event: React.MouseEvent) => {
     if (!disabled && !readOnly) setOpen(open_ => {
       if (open_) setFocus(false);
 
       return !open_;
     });
-  }, []);
+  };
 
-  const onClickArrowDown = React.useCallback((event: React.MouseEvent) => {
+  const onClickArrowDown = (event: React.MouseEvent) => {
     if (!disabled && !readOnly) setOpen(open_ => !open_);
-  }, []);
+  };
 
-  const onEnterKeyDown = React.useCallback((event: React.KeyboardEvent) => {
+  const onEnterKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && !disabled && !readOnly) setOpen(open_ => {
       if (open_) refs.input.current.focus();
 
       return !open_;
     });
-  }, []);
+  };
 
-  const onClose = React.useCallback((refocus = true) => {
+  const onClose = (refocus = true) => {
     if (!disabled && !readOnly) {
       setOpen(open_ => {
         if (open_ && refocus) refs.input.current.focus();
@@ -366,7 +366,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
         return false;
       });
     }
-  }, []);
+  };
 
   const onChange = (valueNew: any) => {
     // Inner controlled value
@@ -393,13 +393,13 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const onClear = React.useCallback((refocus = false) => {
+  const onClear = (refocus = false) => {
     if (!disabled && !readOnly) {
       onChange(multiple ? [] : null);
 
       if (refocus) refs.input.current.focus();
     }
-  }, [multiple, readOnly, disabled]);
+  };
 
   const items = React.useMemo(() => {
     return (options || []).map((item: any) => ({

@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialSquareDotFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='SquareDotFilled'
+
+      short_name='SquareDot'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm280-80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialSquareDotFilled.displayName = 'OnesyIconMaterialSquareDotFilled';
+
+export default IconMaterialSquareDotFilled;

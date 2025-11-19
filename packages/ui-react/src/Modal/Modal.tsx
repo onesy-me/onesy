@@ -170,15 +170,15 @@ export type IModal = IBaseElement & {
 const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModal?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModal?.props?.default, ...props_ };
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Portal = React.useMemo(() => theme?.elements?.Portal || PortalElement, [theme]);
+  const Portal = theme?.elements?.Portal || PortalElement;
 
-  const Focus = React.useMemo(() => theme?.elements?.Focus || FocusElement, [theme]);
+  const Focus = theme?.elements?.Focus || FocusElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
   const {
     tonal = true,

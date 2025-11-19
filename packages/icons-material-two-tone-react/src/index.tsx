@@ -1120,6 +1120,7 @@ export { default as IconMaterialMonitorWeight } from './IconMaterialMonitorWeigh
 export { default as IconMaterialMonochromePhotos } from './IconMaterialMonochromePhotos';
 export { default as IconMaterialMood } from './IconMaterialMood';
 export { default as IconMaterialMoodBad } from './IconMaterialMoodBad';
+export { default as IconMaterialMoped } from './IconMaterialMoped';
 export { default as IconMaterialMore } from './IconMaterialMore';
 export { default as IconMaterialMoreHoriz } from './IconMaterialMoreHoriz';
 export { default as IconMaterialMoreTime } from './IconMaterialMoreTime';

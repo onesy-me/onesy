@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialPageMenuIosFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='PageMenuIosFilled'
+
+      short_name='PageMenuIos'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M160-120q-17 0-28.5-11.5T120-160q0-17 11.5-28.5T160-200h400q17 0 28.5 11.5T600-160q0 17-11.5 28.5T560-120H160Zm0-160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360h640q17 0 28.5 11.5T840-320q0 17-11.5 28.5T800-280H160Zm40-160q-33 0-56.5-23.5T120-520v-240q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v240q0 33-23.5 56.5T760-440H200Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialPageMenuIosFilled.displayName = 'OnesyIconMaterialPageMenuIosFilled';
+
+export default IconMaterialPageMenuIosFilled;

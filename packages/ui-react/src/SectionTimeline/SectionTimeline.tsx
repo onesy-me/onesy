@@ -54,17 +54,17 @@ export type ISectionTimeline = ISection & {
 const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTimeline?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTimeline?.props?.default, ...props_ };
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const Timeline = React.useMemo(() => theme?.elements?.Timeline || TimelineElement, [theme]);
+  const Timeline = theme?.elements?.Timeline || TimelineElement;
 
-  const TimelineItem = React.useMemo(() => theme?.elements?.TimelineItem || TimelineItemElement, [theme]);
+  const TimelineItem = theme?.elements?.TimelineItem || TimelineItemElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     size = 'regular',

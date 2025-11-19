@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialTvDisplaysW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='TvDisplaysW100Filled'
+
+      short_name='TvDisplays'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M146-355q-6 0-10-4t-4-10v-399q0-25 17.5-42.5T192-828h476q6 0 10 4t4 10q0 6-4 10t-10 4H192q-14 0-23 9t-9 23v399q0 6-4 10t-10 4Zm351 223q-13 0-21.5-8.5T467-162v-50H340q-26 0-43-17t-17-43v-348q0-26 17-43t43-17h469q26 0 43 17t17 43v348q0 26-17 43t-43 17H681v50q0 13-8.5 21.5T651-132H497Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialTvDisplaysW100Filled.displayName = 'OnesyIconMaterialTvDisplaysW100Filled';
+
+export default IconMaterialTvDisplaysW100Filled;

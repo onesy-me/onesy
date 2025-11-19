@@ -189,23 +189,23 @@ export type IMenuDesktop = Omit<ILine, 'onChange'> & {
 const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuDesktop?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuDesktop?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Grow = React.useMemo(() => theme?.elements?.Grow || GrowElement, [theme]);
+  const Grow = theme?.elements?.Grow || GrowElement;
 
-  const Append = React.useMemo(() => theme?.elements?.Append || AppendElement, [theme]);
+  const Append = theme?.elements?.Append || AppendElement;
 
-  const Transitions = React.useMemo(() => theme?.elements?.Transitions || TransitionsElement, [theme]);
+  const Transitions = theme?.elements?.Transitions || TransitionsElement;
 
-  const ClickListener = React.useMemo(() => theme?.elements?.ClickListener || ClickListenerElement, [theme]);
+  const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
-  const Transition = React.useMemo(() => theme?.elements?.Transition || TransitionElement, [theme]);
+  const Transition = theme?.elements?.Transition || TransitionElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -483,42 +483,42 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
     }
   }, [open]);
 
-  const onBlur = React.useCallback(() => {
+  const onBlur = () => {
     if (refs.focus.current) {
       updateOpen('');
       setFocus('');
     }
-  }, []);
+  };
 
-  const onFocus = React.useCallback((item: any) => {
+  const onFocus = (item: any) => {
     if (item && !item.disabled && item.menu) {
       setFocus(item);
 
       if (open !== item.value) updateOpen(item.value);
     }
-  }, [open]);
+  };
 
-  const onMouseLeave = React.useCallback((item: any) => {
+  const onMouseLeave = (item: any) => {
     updateOpen('');
-  }, []);
+  };
 
-  const onMouseEnter = React.useCallback((item: any) => {
+  const onMouseEnter = (item: any) => {
     if (item && !item.disabled && item.menu) {
       updateOpen(item.value);
     }
-  }, []);
+  };
 
-  const onClick = React.useCallback((item: any) => {
+  const onClick = (item: any) => {
     if (item && !item.disabled && item.menu) {
       open ? updateOpen('') : updateOpen(item.value);
 
       setTimeout(() => setFocus(''));
     }
-  }, [open]);
+  };
 
-  const onClickOutside = React.useCallback(() => {
+  const onClickOutside = () => {
     if (open) updateOpen('');
-  }, [open]);
+  };
 
   // If no items don't render anything
   // not to waste html space

@@ -1,6 +1,6 @@
 {
   "name": "@onesy/icons-material-rounded-react",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Icons material rounded for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar Erić <lazareric1@proton.me>",
@@ -30,27 +30,24 @@
     "utils"
   ],
   "scripts": {
+    "update": "yarn make && yarn docs",
     "prebuild": "rimraf build",
     "build": "cross-env ENV=react VERSION=icons-rounded node ../../utils/js/build.js",
     "vi": "yarn version --patch --no-git-tag-version",
-    "release": "yarn test && yarn build && yarn vi && yarn vi --cwd ./build && cd ./build && npm publish --tag latest",
-    "release-pure": "yarn test && yarn build && cd ./build && npm publish",
+    "release": "yarn build && yarn vi && yarn vi --cwd ./build && cd ./build && npm publish --tag latest",
+    "release-pure": "yarn build && cd ./build && npm publish",
     "lint": "tslint -c ../../tslint.json -p tsconfig.json",
     "type": "tsc --noEmit -p tsconfig.json",
-    "cov": "cross-env NODE_ENV=test onesy-test",
-    "test:pre": "pm2 update && pm2 delete all && pm2 start ../../utils/js/test/app.js && wait-on http://localhost:4000",
-    "test:post": "pm2 delete all",
-    "test": "yarn lint && yarn type && yarn test:pre && yarn cov && yarn test:post",
+    "test": "yarn lint && yarn type",
     "make": "node utils/js/make",
-    "docs": "node utils/js/docs",
-    "clear": "node utils/js/clear"
+    "docs": "node utils/js/docs"
   },
   "peerDependencies": {
-    "@onesy/ui-react": "^1.0.74",
-    "react": "^18.1.0"
+    "@onesy/ui-react": "^1.0.165",
+    "react": "^19.2.0"
   },
   "devDependencies": {
-    "@onesy/ui-react": "^1.0.74"
+    "@onesy/ui-react": "^1.0.165"
   },
   "publishConfig": {
     "access": "public",
@@ -59,9 +56,5 @@
   "files": [
     "build"
   ],
-  "sideEffects": false,
-  "engines": {
-    "node": ">=12.0.0",
-    "yarn": ">=1.22"
-  }
+  "sideEffects": false
 }

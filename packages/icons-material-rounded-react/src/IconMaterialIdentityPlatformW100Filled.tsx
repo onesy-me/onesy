@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialIdentityPlatformW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='IdentityPlatformW100Filled'
+
+      short_name='IdentityPlatform'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M449-172q14 9 31 9t31-9l168-103q-45-28-95.5-43.5T480-334q-53 0-103.5 16T280-275l169 103Zm31-294q48 0 81-33t33-81q0-48-33-81t-81-33q-48 0-81 33t-33 81q0 48 33 81t81 33Zm-31 326L201-291q-14-8-21.5-22t-7.5-30v-274q0-16 7.5-30t21.5-22l248-151q14-9 31-9t31 9l248 151q14 8 21.5 22t7.5 30v274q0 16-7.5 30T759-291L511-140q-14 9-31 9t-31-9Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialIdentityPlatformW100Filled.displayName = 'OnesyIconMaterialIdentityPlatformW100Filled';
+
+export default IconMaterialIdentityPlatformW100Filled;

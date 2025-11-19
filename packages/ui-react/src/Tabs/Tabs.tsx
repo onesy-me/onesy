@@ -211,15 +211,15 @@ export type ITabs = Omit<ISurface, 'version' | 'onChange'> & {
 const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTabs?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTabs?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
     tonal = true,
@@ -328,7 +328,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
     };
   }, []);
 
-  const onScroll = React.useCallback((event: React.EventHandler<any>) => {
+  const onScroll = (event: React.EventHandler<any>) => {
     const useArrows_ = refs.props.current.arrows && (!refs.mobile.current || refs.props.current.arrowsMobile);
 
     if (useArrows_) {
@@ -337,7 +337,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
         top: refs.tabsRoot.current.scrollTop,
       });
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     if (init) {

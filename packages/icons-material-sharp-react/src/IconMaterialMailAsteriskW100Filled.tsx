@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMailAsteriskW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MailAsteriskW100Filled'
+
+      short_name='MailAsterisk'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="m705-103-24-14 55-95H626v-28h110l-55-95 24-14 55 95 55-95 24 14-55 95h110v28H784l55 95-24 14-55-95-55 95ZM132-212v-536h696v297q-17-5-33.5-7.5T760-461q-98 0-166.5 68.5T525-226q0 4 .5 7t.5 7H132Zm348-274 320-211-16-23-304 200-304-200-16 23 320 211Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMailAsteriskW100Filled.displayName = 'OnesyIconMaterialMailAsteriskW100Filled';
+
+export default IconMaterialMailAsteriskW100Filled;

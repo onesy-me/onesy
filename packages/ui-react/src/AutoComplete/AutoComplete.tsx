@@ -206,27 +206,27 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoComplete?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAutoComplete?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Menu = React.useMemo(() => theme?.elements?.Menu || MenuElement, [theme]);
+  const Menu = theme?.elements?.Menu || MenuElement;
 
-  const Chip = React.useMemo(() => theme?.elements?.Chip || ChipElement, [theme]);
+  const Chip = theme?.elements?.Chip || ChipElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const RoundProgress = React.useMemo(() => theme?.elements?.RoundProgress || RoundProgressElement, [theme]);
+  const RoundProgress = theme?.elements?.RoundProgress || RoundProgressElement;
 
-  const ListSubheader = React.useMemo(() => theme?.elements?.ListSubheader || ListSubheaderElement, [theme]);
+  const ListSubheader = theme?.elements?.ListSubheader || ListSubheaderElement;
 
   const {
     tonal = true,
@@ -434,27 +434,27 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
     setOptions(optionsValue);
   };
 
-  const onMouseDown = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseDown = (event: React.MouseEvent<any>) => {
     if (!disabled && !readOnly) setMouseDown(true);
-  }, [readOnly, disabled]);
+  };
 
-  const onMouseUp = React.useCallback((event: React.MouseEvent<any>) => {
+  const onMouseUp = (event: React.MouseEvent<any>) => {
     if (!disabled && !readOnly) setMouseDown(false);
-  }, [readOnly, disabled]);
+  };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled && !readOnly) {
       setFocus(true);
 
       if (selectOnFocus) setTimeout(() => refs.input.current.select());
     }
-  }, [readOnly, disabled]);
+  };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!disabled && !readOnly) setFocus(false);
   };
 
-  const onClick = React.useCallback((event: React.MouseEvent) => {
+  const onClick = (event: React.MouseEvent) => {
     if (!disabled && !readOnly) setOpen(open_ => {
       if (!open_) {
         if (!openOnFocus) return open_;
@@ -467,17 +467,17 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
       return !open_;
     });
-  }, [readOnly, disabled]);
+  };
 
-  const onClickArrowDown = React.useCallback((event: React.MouseEvent) => {
+  const onClickArrowDown = (event: React.MouseEvent) => {
     if (!disabled && !readOnly) setOpen(open_ => {
       if (!open_) refs.input.current.focus();
 
       return !open_;
     });
-  }, [readOnly, disabled]);
+  };
 
-  const onEnterKeyDown = React.useCallback((event: React.KeyboardEvent) => {
+  const onEnterKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && !disabled && !readOnly) setOpen(open_ => {
       if (!open_) {
         if (!openOnFocus) return open_;
@@ -487,7 +487,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
       return !open_;
     });
-  }, [readOnly, disabled]);
+  };
 
   const onClose = (refocus = true) => {
     if (!disabled && !readOnly) {
@@ -539,7 +539,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
     }
   };
 
-  const onClear = React.useCallback((refocus = true) => {
+  const onClear = (refocus = true) => {
     if (!disabled && !readOnly) {
       onChangeInput('');
 
@@ -547,15 +547,15 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
 
       if (refocus) refs.input.current.focus();
     }
-  }, [multiple, readOnly, disabled]);
+  };
 
-  const onClearInput = React.useCallback((refocus = true) => {
+  const onClearInput = (refocus = true) => {
     if (!disabled && !readOnly) {
       onChangeInput('');
 
       if (refocus) refs.input.current.focus();
     }
-  }, []);
+  };
 
   const isEqual = (value1: any, value2: any) => is('function', equal) ? equal(value1, value2) : getValue(value1) === getValue(value2);
 

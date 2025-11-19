@@ -82,21 +82,21 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyConfirm?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyConfirm?.props?.default, ...props_ };
 
-  const ModalHeader = React.useMemo(() => theme?.elements?.ModalHeader || ModalHeaderElement, [theme]);
+  const ModalHeader = theme?.elements?.ModalHeader || ModalHeaderElement;
 
-  const ModalFooter = React.useMemo(() => theme?.elements?.ModalFooter || ModalFooterElement, [theme]);
+  const ModalFooter = theme?.elements?.ModalFooter || ModalFooterElement;
 
-  const ModalTitle = React.useMemo(() => theme?.elements?.ModalTitle || ModalTitleElement, [theme]);
+  const ModalTitle = theme?.elements?.ModalTitle || ModalTitleElement;
 
-  const ModalMain = React.useMemo(() => theme?.elements?.ModalMain || ModalMainElement, [theme]);
+  const ModalMain = theme?.elements?.ModalMain || ModalMainElement;
 
-  const ModalText = React.useMemo(() => theme?.elements?.ModalText || ModalTextElement, [theme]);
+  const ModalText = theme?.elements?.ModalText || ModalTextElement;
 
-  const Modal = React.useMemo(() => theme?.elements?.Modal || ModalElement, [theme]);
+  const Modal = theme?.elements?.Modal || ModalElement;
 
-  const Button = React.useMemo(() => theme?.elements?.Button || ButtonElement, [theme]);
+  const Button = theme?.elements?.Button || ButtonElement;
 
   const {
     throwError,
@@ -128,7 +128,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
   refs.props.current = props;
 
-  const open = React.useCallback((value?: IConfirmOpen): Promise<any> => {
+  const open = (value?: IConfirmOpen): Promise<any> => {
     if (!openModal) {
       refs.modal.current = { ...value };
 
@@ -156,9 +156,9 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
 
       return promise;
     }
-  }, [openModal, onOpen]);
+  };
 
-  const close = React.useCallback((confirm = false) => {
+  const close = (confirm = false) => {
     if (openModal) {
       setOpenModal(false);
 
@@ -171,7 +171,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
       refs.promise.resolve.current = undefined;
       refs.promise.reject.current = undefined;
     }
-  }, [openModal, onClose]);
+  };
 
   const {
     name,

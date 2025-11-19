@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialFitPageWidth = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='FitPageWidth'
+
+      short_name='FitPageWidth'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M360-360v-240L240-480l120 120Zm360-120L600-600v240l120-120ZM80-160v-640h800v640H80Zm720-560H160v480h640v-480Zm-640 0v480-480Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialFitPageWidth.displayName = 'OnesyIconMaterialFitPageWidth';
+
+export default IconMaterialFitPageWidth;

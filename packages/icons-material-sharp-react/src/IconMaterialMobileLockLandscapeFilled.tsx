@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMobileLockLandscapeFilled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MobileLockLandscapeFilled'
+
+      short_name='MobileLockLandscape'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M360-320h240v-200h-40v-40q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560v40h-40v200Zm80-200v-40q0-17 11.5-28.5T480-600q17 0 28.5 11.5T520-560v40h-80ZM40-200v-560h204v-40h192v40h484v560H40Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMobileLockLandscapeFilled.displayName = 'OnesyIconMaterialMobileLockLandscapeFilled';
+
+export default IconMaterialMobileLockLandscapeFilled;

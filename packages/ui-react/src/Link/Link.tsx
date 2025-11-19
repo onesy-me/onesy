@@ -99,9 +99,9 @@ export type ILink = IType & {
 const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLink?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLink?.props?.default, ...props_ };
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -132,21 +132,21 @@ const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
     }
   };
 
-  const onFocus = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     setFocus(true);
-  }, []);
+  };
 
-  const onBlur = React.useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     setFocus(false);
-  }, []);
+  };
 
-  const onMouseEnter = React.useCallback((event: React.MouseEvent<HTMLInputElement>) => {
+  const onMouseEnter = (event: React.MouseEvent<HTMLInputElement>) => {
     setHover(true);
-  }, []);
+  };
 
-  const onMouseLeave = React.useCallback((event: React.MouseEvent<HTMLInputElement>) => {
+  const onMouseLeave = (event: React.MouseEvent<HTMLInputElement>) => {
     setHover(false);
-  }, []);
+  };
 
   const color = color_;
   let palette: any;

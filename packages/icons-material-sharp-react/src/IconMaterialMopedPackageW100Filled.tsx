@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { Icon, IIcon } from '@onesy/ui-react';
+
+const IconMaterialMopedPackageW100Filled = React.forwardRef((props: IIcon, ref) => {
+
+  return (
+    <Icon
+      ref={ref}
+
+      name='MopedPackageW100Filled'
+
+      short_name='MopedPackage'
+
+      viewBox='0 -960 960 960'
+
+      {...props}
+    >
+      <path d="M172-634v-154h212v154H172Zm118.12 382q-39.12 0-66.62-27.42Q196-306.83 196-346h-80v-228h268v200h178l154-190v-132H596v-28h148v168L578-346H384q0 39-27.38 66.5t-66.5 27.5Zm-.12-28q27 0 46.5-19.5T356-346H224q0 27 19.5 46.5T290-280Zm460.12 28q-39.12 0-66.62-27.38-27.5-27.38-27.5-66.5 0-39.12 27.38-66.62 27.38-27.5 66.5-27.5 39.12 0 66.62 27.38 27.5 27.38 27.5 66.5 0 39.12-27.38 66.62-27.38 27.5-66.5 27.5Zm-.12-28q27 0 46.5-19.5T816-346q0-27-19.5-46.5T750-412q-27 0-46.5 19.5T684-346q0 27 19.5 46.5T750-280Z"/>
+    </Icon>
+  );
+});
+
+IconMaterialMopedPackageW100Filled.displayName = 'OnesyIconMaterialMopedPackageW100Filled';
+
+export default IconMaterialMopedPackageW100Filled;

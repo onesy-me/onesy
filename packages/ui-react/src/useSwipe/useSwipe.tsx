@@ -42,9 +42,9 @@ const useSwipe = (element: HTMLElement, options_: IOptionsUseSwipe = {}) => {
   refs.response.current = response;
   refs.touch.current = touch;
 
-  const onTouchStart = React.useCallback((event: TouchEvent) => setTouch(event), []);
+  const onTouchStart = (event: TouchEvent) => setTouch(event);
 
-  const getMinMax = React.useCallback(() => {
+  const getMinMax = () => {
     let min: number;
     let max: number;
 
@@ -74,9 +74,9 @@ const useSwipe = (element: HTMLElement, options_: IOptionsUseSwipe = {}) => {
       min,
       max
     };
-  }, []);
+  };
 
-  const onTouchEnd = React.useCallback(() => {
+  const onTouchEnd = () => {
     const newResponse = { ...refs.response.current };
 
     const { min, max } = getMinMax();
@@ -108,9 +108,9 @@ const useSwipe = (element: HTMLElement, options_: IOptionsUseSwipe = {}) => {
 
     setTouch(false);
     setResponse(newResponse);
-  }, [response]);
+  };
 
-  const onTouchMove = React.useCallback((event: TouchEvent) => {
+  const onTouchMove = (event: TouchEvent) => {
     const newResponse = { ...refs.response.current };
 
     const { clientX: x_, clientY: y_ } = event.touches[0];
@@ -159,7 +159,7 @@ const useSwipe = (element: HTMLElement, options_: IOptionsUseSwipe = {}) => {
     refs.previousMouseMove.current = new Date().getTime();
 
     setResponse(newResponse);
-  }, [element, response]);
+  };
 
   React.useEffect(() => {
     const onTouchMoveMethod = (event: any) => {

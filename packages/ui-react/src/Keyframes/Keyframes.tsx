@@ -54,7 +54,7 @@ export type IKeyframes = Omit<IBaseElement, 'className'> & {
 const Keyframes: React.FC<IKeyframes> = (props_) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyKeyframes?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyKeyframes?.props?.default, ...props_ };
 
   const {
     ref,

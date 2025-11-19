@@ -75,7 +75,7 @@ const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
 
   const [value, setValue] = React.useState<IThemeValue>(() => new OnesyTheme(merge(resolveValue(is('function', valueLocal) ? (valueLocal as any)(valueParent) : valueLocal), resolveValue(valueParent), { copy: true }) as any) as any);
 
-  const addCssVariablesMethod = React.useCallback(() => {
+  const addCssVariablesMethod = () => {
     if (!refs.styleSheet.current) {
       refs.styleSheet.current = window.document.createElement('style');
 
@@ -162,7 +162,7 @@ ${refs.root.current ? `#${refs.id}` : ':root'} {
 ${values.map(item => `\t${item};`).join('\n')}
 }
 `;
-  }, [value]);
+  };
 
   React.useEffect(() => {
     if (refs.root.current) {

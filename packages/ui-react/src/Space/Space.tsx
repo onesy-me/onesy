@@ -379,51 +379,51 @@ export type ISpace = IBaseElement & {
 const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpace?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpace?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Checkbox = React.useMemo(() => theme?.elements?.Checkbox || CheckboxElement, [theme]);
+  const Checkbox = theme?.elements?.Checkbox || CheckboxElement;
 
-  const ColorTextField = React.useMemo(() => theme?.elements?.ColorTextField || ColorTextFieldElement, [theme]);
+  const ColorTextField = theme?.elements?.ColorTextField || ColorTextFieldElement;
 
-  const Divider = React.useMemo(() => theme?.elements?.Divider || DividerElement, [theme]);
+  const Divider = theme?.elements?.Divider || DividerElement;
 
-  const Fab = React.useMemo(() => theme?.elements?.Fab || FabElement, [theme]);
+  const Fab = theme?.elements?.Fab || FabElement;
 
-  const Form = React.useMemo(() => theme?.elements?.Form || FormElement, [theme]);
+  const Form = theme?.elements?.Form || FormElement;
 
-  const FormRow = React.useMemo(() => theme?.elements?.FormRow || FormRowElement, [theme]);
+  const FormRow = theme?.elements?.FormRow || FormRowElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Label = React.useMemo(() => theme?.elements?.Label || LabelElement, [theme]);
+  const Label = theme?.elements?.Label || LabelElement;
 
-  const List = React.useMemo(() => theme?.elements?.List || ListElement, [theme]);
+  const List = theme?.elements?.List || ListElement;
 
-  const ListItem = React.useMemo(() => theme?.elements?.ListItem || ListItemElement, [theme]);
+  const ListItem = theme?.elements?.ListItem || ListItemElement;
 
-  const NavigationDrawer = React.useMemo(() => theme?.elements?.NavigationDrawer || NavigationDrawerElement, [theme]);
+  const NavigationDrawer = theme?.elements?.NavigationDrawer || NavigationDrawerElement;
 
-  const NumericTextField = React.useMemo(() => theme?.elements?.NumericTextField || NumericTextFieldElement, [theme]);
+  const NumericTextField = theme?.elements?.NumericTextField || NumericTextFieldElement;
 
-  const Select = React.useMemo(() => theme?.elements?.Select || SelectElement, [theme]);
+  const Select = theme?.elements?.Select || SelectElement;
 
-  const Slider = React.useMemo(() => theme?.elements?.Slider || SliderElement, [theme]);
+  const Slider = theme?.elements?.Slider || SliderElement;
 
-  const SmartTextField = React.useMemo(() => theme?.elements?.SmartTextField || SmartTextFieldElement, [theme]);
+  const SmartTextField = theme?.elements?.SmartTextField || SmartTextFieldElement;
 
-  const Switch = React.useMemo(() => theme?.elements?.Switch || SwitchElement, [theme]);
+  const Switch = theme?.elements?.Switch || SwitchElement;
 
-  const TextField = React.useMemo(() => theme?.elements?.TextField || TextFieldElement, [theme]);
+  const TextField = theme?.elements?.TextField || TextFieldElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const HTMLCanvas = React.useMemo(() => theme?.elements?.HTMLCanvas || HTMLCanvasElement, [theme]);
+  const HTMLCanvas = theme?.elements?.HTMLCanvas || HTMLCanvasElement;
 
   const {
     size = 'regular',
@@ -540,23 +540,23 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
   refs.disabled.current = disabled;
 
-  const onItemsResolve = React.useCallback((items_: any) => {
+  const onItemsResolve = (items_: any) => {
     // sort
     items_.sort((a: any, b: any) => a.order - b.order);
 
     return items_;
-  }, []);
+  };
 
-  const onGroupSelect = React.useCallback((item: any, event: MouseEvent) => {
+  const onGroupSelect = (item: any, event: MouseEvent) => {
     event.stopPropagation();
 
     setSelectedGroup(item === refs.selectedGroup.current ? null : item);
 
     // reset
     setSelected(null);
-  }, []);
+  };
 
-  const onItemSelect = React.useCallback((item: any) => {
+  const onItemSelect = (item: any) => {
     const itemsSelectedNew: any = { ...refs.itemsSelected.current };
 
     const exists = itemsSelectedNew[item.id];
@@ -565,9 +565,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     else itemsSelectedNew[item.id] = item;
 
     setItemsSelected(itemsSelectedNew);
-  }, []);
+  };
 
-  const onItemsGroup = React.useCallback(() => {
+  const onItemsGroup = () => {
     let itemsNew = [...refs.items.current];
 
     const group = `Group ${refs.groupCounter.current++}`;
@@ -602,9 +602,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     setItems(onItemsResolve(itemsNew));
 
     setItemsSelected([]);
-  }, []);
+  };
 
-  const onItemsUngroup = React.useCallback((group: string) => {
+  const onItemsUngroup = (group: string) => {
     const itemsNew = [...refs.items.current];
 
     itemsNew.forEach(item => {
@@ -612,9 +612,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     });
 
     setItems(itemsNew);
-  }, []);
+  };
 
-  const onItemMakeCopy = React.useCallback((item: any = refs.itemOpen.current) => {
+  const onItemMakeCopy = (item: any = refs.itemOpen.current) => {
     const itemNew = {
       ...copy(item),
 
@@ -634,9 +634,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     itemsNew.push(itemNew);
 
     setItems(onItemsResolve(itemsNew));
-  }, []);
+  };
 
-  const onItemMove = React.useCallback((item: any, orderPrevious: number, orderNew: number, event?: MouseEvent) => {
+  const onItemMove = (item: any, orderPrevious: number, orderNew: number, event?: MouseEvent) => {
     event?.preventDefault();
     event?.stopPropagation();
 
@@ -688,30 +688,30 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     }
 
     setItems(onItemsResolve(itemsNew));
-  }, []);
+  };
 
-  const onUpdateGuidelines = React.useCallback((valueNew: any) => {
+  const onUpdateGuidelines = (valueNew: any) => {
     setGuidelines(valueNew);
-  }, []);
+  };
 
-  const onUpdateUnit = React.useCallback((valueNew: any) => {
+  const onUpdateUnit = (valueNew: any) => {
     setUnit(valueNew);
-  }, []);
+  };
 
-  const onOpenOpenOptions = React.useCallback(() => {
+  const onOpenOpenOptions = () => {
     setItemOpen(false);
     setOpenOptions(true);
-  }, []);
+  };
 
-  const onCloseOpenOptions = React.useCallback(() => {
+  const onCloseOpenOptions = () => {
     setOpenOptions(false);
-  }, []);
+  };
 
-  const onChangeKeepAspectRatio = React.useCallback((valueNew: any) => {
+  const onChangeKeepAspectRatio = (valueNew: any) => {
     setKeepAspectRatio(valueNew);
-  }, []);
+  };
 
-  const getUnitValue = React.useCallback((valueNew_: any) => {
+  const getUnitValue = (valueNew_: any) => {
     if (['', ' ', '+', '-', 'e', 'e+', 'e-', undefined, null].includes(valueNew_)) return valueNew_;
 
     let valueNew = +valueNew_;
@@ -727,9 +727,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     if ((String(valueNew_).startsWith('-0') || String(valueNew_).includes('.')) && clamp(+valueNew_, refs.minSize.current, refs.maxSize.current) === +valueNew_) return valueNew_;
 
     return !valueNew ? clamp(+valueNew, refs.minSize.current, refs.maxSize.current) : valueNew;
-  }, []);
+  };
 
-  const toUnitValue = React.useCallback((valueNew_: any, raw = false) => {
+  const toUnitValue = (valueNew_: any, raw = false) => {
     if (['', ' ', '+', '-', 'e', 'e+', 'e-', undefined, null].includes(valueNew_)) return valueNew_;
 
     let valueNew = valueNew_;
@@ -745,9 +745,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     if (raw && (String(valueNew_).startsWith('-0') || String(valueNew_).includes('.')) && clamp(+valueNew_, refs.minSize.current, refs.maxSize.current) === +valueNew_) return valueNew_;
 
     return valueNew;
-  }, []);
+  };
 
-  const onItemCenter = React.useCallback((item: any) => {
+  const onItemCenter = (item: any) => {
     const root = refs.root.current as HTMLElement;
     const positions_ = refs.positions.current;
 
@@ -768,9 +768,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     };
 
     refs.methods.current.updatePositions(valueNew);
-  }, []);
+  };
 
-  const onItemOpen = React.useCallback((item: any) => {
+  const onItemOpen = (item: any) => {
     setSelected(item?.id);
 
     setItemOpen(item);
@@ -780,21 +780,21 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
     // reset
     setSelectedGroup(null);
-  }, []);
+  };
 
-  const onItemClose = React.useCallback(() => {
+  const onItemClose = () => {
     setItemOpen(null);
-  }, []);
+  };
 
-  const onElementSearch = React.useCallback((value: string) => {
+  const onElementSearch = (value: string) => {
     setElementSearch(value);
-  }, []);
+  };
 
-  const onElementSearchClear = React.useCallback(() => {
+  const onElementSearchClear = () => {
     setElementSearch('');
-  }, []);
+  };
 
-  const onItemRemove = React.useCallback((id: string) => {
+  const onItemRemove = (id: string) => {
     const item = refs.items.current.find((item_: any) => item_.id === id);
 
     if (item) setItems((previous: any) => onItemsResolve(previous.filter((item_: any) => !(item_.id === id || (refs.selectedGroup.current && refs.selectedGroup.current === item.group && item.group && item_.group === item.group)))));
@@ -802,15 +802,15 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     if (refs.itemOpen.current?.id === id) {
       setItemOpen(null);
     }
-  }, []);
+  };
 
-  const onKeyUp = React.useCallback(() => {
+  const onKeyUp = () => {
     refs.keyDown.current = null;
 
     refs.previousMouseEvent.current = undefined;
-  }, []);
+  };
 
-  const onKeyDown = React.useCallback((event: KeyboardEvent) => {
+  const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Backspace') {
       const activeElement = window.document.activeElement?.nodeName;
 
@@ -821,15 +821,15 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     }
 
     refs.keyDown.current = event.key;
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback(() => {
+  const onMouseUp = () => {
     refs.mouseDown.current = null;
 
     refs.previousMouseEvent.current = undefined;
-  }, []);
+  };
 
-  const onMouseDown = React.useCallback((event: MouseEvent) => {
+  const onMouseDown = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
 
     const element = target.closest('[data-element]') as HTMLElement;
@@ -845,9 +845,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
         };
       }
     }
-  }, []);
+  };
 
-  const onTouchStart = React.useCallback((event: TouchEvent) => {
+  const onTouchStart = (event: TouchEvent) => {
     const target = event.target as HTMLElement;
 
     const element = target.closest('[data-element]') as HTMLElement;
@@ -858,9 +858,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
         element
       };
     }
-  }, []);
+  };
 
-  const onMoveItem = React.useCallback((x: number, y: number) => {
+  const onMoveItem = (x: number, y: number) => {
     const mouseDown = refs.mouseDown.current;
 
     if (mouseDown) {
@@ -888,9 +888,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
         return previous;
       });
     }
-  }, []);
+  };
 
-  const onMove = React.useCallback((x_: number, y_: number, event: MouseEvent) => {
+  const onMove = (x_: number, y_: number, event: MouseEvent) => {
     if (refs.mouseDown.current && refs.previousMouseEvent.current && !refs.disabled.current) {
       const { clientX: xPrevious, clientY: yPrevious } = refs.previousMouseEvent.current as any;
 
@@ -902,9 +902,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
       onMoveItem(x, y);
     }
-  }, []);
+  };
 
-  const onMouseMove = React.useCallback((event: MouseEvent) => {
+  const onMouseMove = (event: MouseEvent) => {
     if (!refs.keyDown.current && refs.mouseDown.current && !refs.disabled.current) {
       const { clientY, clientX } = event;
 
@@ -912,9 +912,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
       refs.previousMouseEvent.current = event;
     }
-  }, []);
+  };
 
-  const onTouchMove = React.useCallback((event: TouchEvent) => {
+  const onTouchMove = (event: TouchEvent) => {
     if (!refs.keyDown.current && refs.mouseDown.current && !refs.disabled.current) {
       const { clientY, clientX } = event.touches[0];
 
@@ -927,7 +927,7 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
       (refs.previousMouseEvent.current as any).clientX = clientX;
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     onElementSearchClear();
@@ -961,35 +961,35 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     };
   }, []);
 
-  const onOpenNavigation = React.useCallback(() => {
+  const onOpenNavigation = () => {
     setOpenOptions(false);
     setItemOpen(false);
     setOpenNavigation(true);
-  }, []);
+  };
 
-  const onCloseNavigation = React.useCallback(() => {
+  const onCloseNavigation = () => {
     setOpenNavigation(false);
 
     setTimeout(() => {
       setItemOpen(null);
     }, 140);
-  }, []);
+  };
 
-  const onOpenMenu = React.useCallback(() => {
+  const onOpenMenu = () => {
     setOpenMenu(true);
-  }, []);
+  };
 
-  const onCloseMenu = React.useCallback(() => {
+  const onCloseMenu = () => {
     setOpenMenu(false);
-  }, []);
+  };
 
-  const onChangeHTMLCanvas = React.useCallback((valueNew: any) => {
+  const onChangeHTMLCanvas = (valueNew: any) => {
     setPositions(valueNew);
 
     refs.positions.current = valueNew;
-  }, []);
+  };
 
-  const onClickSpace = React.useCallback((event: MouseEvent) => {
+  const onClickSpace = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
 
     const element = target.closest('[data-element]') as HTMLElement;
@@ -1012,9 +1012,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
       setSelected(null);
       setSelectedGroup(null);
     }
-  }, []);
+  };
 
-  const onItemClick = React.useCallback((item: any, event: MouseEvent) => {
+  const onItemClick = (item: any, event: MouseEvent) => {
     if (event.detail === 2) {
       setSelected(item.id);
       setItemOpen(item);
@@ -1024,9 +1024,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
       // reset
       if (item.group !== refs.selectedGroup.current) setSelectedGroup(null);
     }
-  }, []);
+  };
 
-  const onItemUpdate = React.useCallback((valueNew: any, item = refs.itemOpen.current) => {
+  const onItemUpdate = (valueNew: any, item = refs.itemOpen.current) => {
     const itemsNew = [...refs.items.current];
 
     const index = itemsNew.findIndex(item_ => item_.id === item.id);
@@ -1096,7 +1096,7 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
 
       setItems(onItemsResolve(itemsNew));
     }
-  }, []);
+  };
 
   const optionsMenu = React.useMemo(() => {
 
@@ -1181,7 +1181,7 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
     return valueNew;
   }, [optionsMenu, elementSearch]);
 
-  const getElement = React.useCallback((item: any) => {
+  const getElement = (item: any) => {
     const otherElementProps = {
       onMouseDown,
       onTouchStart,
@@ -1302,9 +1302,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
         </>}
       </Line>
     );
-  }, [selected, onMouseDown, onTouchStart]);
+  };
 
-  const getThumbnail = React.useCallback((item: any) => {
+  const getThumbnail = (item: any) => {
     let element: any = null;
 
     if (['rectangle', 'oval'].includes(item.version)) {
@@ -1360,9 +1360,9 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
         {element}
       </Line>
     );
-  }, []);
+  };
 
-  const onAdd = React.useCallback((item: any) => {
+  const onAdd = (item: any) => {
     const itemToAdd = copy(item);
 
     itemToAdd.name = `${itemToAdd.name} ${refs.items.current.length ? refs.items.current.length + 1 : ''}`.trim();
@@ -1420,7 +1420,7 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
         object
       ]) as any;
     });
-  }, []);
+  };
 
   const optionsBackgroundImage = React.useMemo(() => {
     const options = refs.floors.current;
@@ -1434,16 +1434,16 @@ const Space: React.FC<ISpace> = React.forwardRef((props_, ref: any) => {
             width: 20,
             height: 20,
             backgroundImage: `url(${item.url})`,
-            bacgkroundSize: '17px'
+            backgroundSize: '17px'
           }}
         />
       )
     }));
   }, []);
 
-  const onStopPropagation = React.useCallback((event: MouseEvent) => {
+  const onStopPropagation = (event: MouseEvent) => {
     event.stopPropagation();
-  }, []);
+  };
 
   const indexItemOpen = itemOpen && items.findIndex((item_: any) => item_ === itemOpen);
 

@@ -71,17 +71,17 @@ export type ISectionReviews = ISection & {
 const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionReviews?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionReviews?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Section = React.useMemo(() => theme?.elements?.Section || SectionElement, [theme]);
+  const Section = theme?.elements?.Section || SectionElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Avatar = React.useMemo(() => theme?.elements?.Avatar || AvatarElement, [theme]);
+  const Avatar = theme?.elements?.Avatar || AvatarElement;
 
-  const Rating = React.useMemo(() => theme?.elements?.Rating || RatingElement, [theme]);
+  const Rating = theme?.elements?.Rating || RatingElement;
 
   const {
     values = [],

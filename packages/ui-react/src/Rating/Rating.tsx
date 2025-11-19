@@ -96,7 +96,7 @@ export type IRating = Omit<IBaseElement, 'onChange'> & {
 const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRating?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRating?.props?.default, ...props_ };
 
   const {
     tonal = true,
@@ -273,11 +273,11 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
     if (init && valueActive_ !== valueActive) setValueActive(valueActive_);
   }, [valueActive_]);
 
-  const onMouseDown = React.useCallback(() => {
+  const onMouseDown = () => {
     if (!disabled && !readOnly) setMouseDown(true);
-  }, [disabled, readOnly]);
+  };
 
-  const onClick = React.useCallback((event: React.MouseEvent<any>) => {
+  const onClick = (event: React.MouseEvent<any>) => {
     if (!disabled && !readOnly) {
       // Make precision value
       // if value is same as previous value clear
@@ -297,7 +297,7 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
         if (is('function', onChange)) onChange(valueNew);
       }
     }
-  }, [disabled, readOnly, value, valueActive]);
+  };
 
   const move = (forward_ = true) => {
     const forward = theme.direction === 'ltr' ? forward_ : !forward_;
@@ -329,7 +329,7 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
     setHover(false);
   };
 
-  const onKeyDown = React.useCallback((event: React.KeyboardEvent<any>) => {
+  const onKeyDown = (event: React.KeyboardEvent<any>) => {
     if (!disabled && !readOnly) {
       if (['Enter', 'Escape', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft', 'Home', 'End'].includes(event.key)) {
         // Prevent default
@@ -379,23 +379,23 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
         }
       }
     }
-  }, [disabled, readOnly, value, valueActive, precision]);
+  };
 
-  const onFocus = React.useCallback((event) => {
+  const onFocus = (event) => {
     if (!disabled && !readOnly && !mouseDown) setFocus(true);
-  }, [disabled, readOnly, mouseDown]);
+  };
 
-  const onBlur = React.useCallback(() => {
+  const onBlur = () => {
     if (!disabled && !readOnly) setFocus(false);
-  }, [disabled, readOnly]);
+  };
 
-  const onMouseEnter = React.useCallback(() => {
+  const onMouseEnter = () => {
     if (!disabled && !readOnly) setHover(true);
-  }, [disabled, readOnly]);
+  };
 
-  const onMouseLeave = React.useCallback(() => {
+  const onMouseLeave = () => {
     if (!disabled && !readOnly) setHover(false);
-  }, [disabled, readOnly]);
+  };
 
   const width = (index: number) => {
     const value__ = !hover ? value : valueActive;

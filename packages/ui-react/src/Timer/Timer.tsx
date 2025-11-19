@@ -82,23 +82,23 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimer?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimer?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Fade = React.useMemo(() => theme?.elements?.Fade || FadeElement, [theme]);
+  const Fade = theme?.elements?.Fade || FadeElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Expand = React.useMemo(() => theme?.elements?.Expand || ExpandElement, [theme]);
+  const Expand = theme?.elements?.Expand || ExpandElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
-  const Tree = React.useMemo(() => theme?.elements?.Tree || TreeElement, [theme]);
+  const Tree = theme?.elements?.Tree || TreeElement;
 
-  const Surface = React.useMemo(() => theme?.elements?.Surface || SurfaceElement, [theme]);
+  const Surface = theme?.elements?.Surface || SurfaceElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
     tonal = true,
@@ -166,7 +166,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
     refs.animationFrame.current = requestAnimationFrame(update);
   };
 
-  const onStart = React.useCallback((event: React.MouseEvent<any>) => {
+  const onStart = (event: React.MouseEvent<any>) => {
     refs.start.current = OnesyDate.milliseconds;
 
     // ~60+ fps
@@ -175,17 +175,17 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
     setStatus('running');
 
     if (is('function', onStart_)) onStart_(event);
-  }, []);
+  };
 
-  const onFlag = React.useCallback((event: React.MouseEvent<any>) => {
+  const onFlag = (event: React.MouseEvent<any>) => {
     if (!expand) setExpand(true);
 
     setFlags(values => [...values, refs.value.current]);
 
     if (is('function', onFlag_)) onFlag_(event);
-  }, [expand]);
+  };
 
-  const onPause = React.useCallback((event: React.MouseEvent<any>) => {
+  const onPause = (event: React.MouseEvent<any>) => {
     clear();
 
     // Remember previous value
@@ -194,9 +194,9 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
     setStatus('paused');
 
     if (is('function', onPause_)) onPause_(event);
-  }, []);
+  };
 
-  const onStop = React.useCallback((event: React.MouseEvent<any>) => {
+  const onStop = (event: React.MouseEvent<any>) => {
     clear();
 
     setStatus('initial');
@@ -212,9 +212,9 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
     refs.value.current = 0;
 
     if (is('function', onStop_)) onStop_(event);
-  }, []);
+  };
 
-  const onResume = React.useCallback((event: React.MouseEvent<any>) => {
+  const onResume = (event: React.MouseEvent<any>) => {
     // ~60+ fps
     refs.animationFrame.current = requestAnimationFrame(update);
 
@@ -224,11 +224,11 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
     setStatus('running');
 
     if (is('function', onResume_)) onResume_(event);
-  }, []);
+  };
 
-  const onExited = React.useCallback(() => {
+  const onExited = () => {
     setFlags([]);
-  }, []);
+  };
 
   const IconProps = {
 

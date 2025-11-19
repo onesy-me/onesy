@@ -214,17 +214,17 @@ export type IImageGallery = ILine & {
 const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageGallery?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageGallery?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Image = React.useMemo(() => theme?.elements?.Image || ImageElement, [theme]);
+  const Image = theme?.elements?.Image || ImageElement;
 
-  const IconButton = React.useMemo(() => theme?.elements?.IconButton || IconButtonElement, [theme]);
+  const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
-  const Interaction = React.useMemo(() => theme?.elements?.Interaction || InteractionElement, [theme]);
+  const Interaction = theme?.elements?.Interaction || InteractionElement;
 
-  const Backdrop = React.useMemo(() => theme?.elements?.Backdrop || BackdropElement, [theme]);
+  const Backdrop = theme?.elements?.Backdrop || BackdropElement;
 
   const {
     version = 'modal',
@@ -319,7 +319,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
   refs.maxZoom.current = maxZoom;
 
-  const init = React.useCallback(() => {
+  const init = () => {
     setTimeout(() => {
       setMoveValue({
         left: refs.more.current?.scrollLeft,
@@ -328,11 +328,11 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
       setLoaded(true);
     }, 14);
-  }, []);
+  };
 
-  const cleanUp = React.useCallback(() => {
+  const cleanUp = () => {
     refs.mouseDown.current = false;
-  }, []);
+  };
 
   React.useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -368,7 +368,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
     if (value_ !== undefined && value !== value_) setValue(clamp(value_, 0, length));
   }, [value_]);
 
-  const onResetZoom = React.useCallback(() => {
+  const onResetZoom = () => {
     refs.zoom.current = null;
 
     if (refs.imageWrapper.current) {
@@ -382,19 +382,19 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
         refs.imageWrapper.current!.style.removeProperty('transition');
       }, 14);
     }
-  }, []);
+  };
 
-  const onValue = React.useCallback((index: number) => {
+  const onValue = (index: number) => {
     onResetZoom();
 
     setValue(index);
-  }, [onResetZoom]);
+  };
 
-  const onOpen = React.useCallback(() => {
+  const onOpen = () => {
     setOpen(true);
-  }, []);
+  };
 
-  const onClose = React.useCallback(() => {
+  const onClose = () => {
     setOpen(false);
 
     setTimeout(() => {
@@ -402,7 +402,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
     }, 140);
 
     if (is('function', onClose_)) onClose_!();
-  }, [onClose_]);
+  };
 
   const move = (forward_ = true) => {
     const forward = forward_;
@@ -417,21 +417,21 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
     refs.more.current.scrollTo(moveValue_);
   };
 
-  const onMouseDown = React.useCallback((event: MouseEvent) => {
+  const onMouseDown = (event: MouseEvent) => {
     refs.mouseDown.current = true;
 
     refs.mouseMovePrevious.current = {
       x: event.clientX,
       y: event.clientY
     };
-  }, []);
+  };
 
-  const onMouseUp = React.useCallback(() => {
+  const onMouseUp = () => {
     refs.mouseDown.current = false;
     refs.mouseMovePrevious.current = null;
-  }, []);
+  };
 
-  const onWheel = React.useCallback((event: WheelEvent) => {
+  const onWheel = (event: WheelEvent) => {
     if (!refs.useZoom.current) return;
 
     event.preventDefault();
@@ -465,9 +465,9 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
       refs.imageWrapper.current!.style.transform = `scale(${scale})`;
     }
-  }, []);
+  };
 
-  const onMouseMove = React.useCallback((event: MouseEvent) => {
+  const onMouseMove = (event: MouseEvent) => {
     if (!refs.useZoom.current) return;
 
     if (!(refs.mouseDown.current && refs.image.current)) return;
@@ -512,7 +512,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
       refs.imageWrapper.current!.style.top = `${top}px`;
     }
-  }, []);
+  };
 
   React.useEffect(() => {
     if (refs.useZoom.current) {
@@ -536,7 +536,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
     };
   }, [imageRef, refs.useZoom.current]);
 
-  const onScroll = React.useCallback((event: WheelEvent) => {
+  const onScroll = (event: WheelEvent) => {
     if (!refs.useZoom.current) return;
 
     if (arrows) {
@@ -545,7 +545,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
         top: refs.more.current.scrollTop
       });
     }
-  }, [arrows]);
+  };
 
   const iconButtonProps = {
     version: 'filled',
@@ -602,9 +602,9 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
   const more = !!items?.length;
 
-  const onDragStartImage = React.useCallback((event: DragEvent) => {
+  const onDragStartImage = (event: DragEvent) => {
     event.preventDefault();
-  }, []);
+  };
 
   const url = media?.url || media?.urlSmall || (is('string', media) ? media : '');
 

@@ -73,13 +73,13 @@ export type IAreaChartItem = IChart & {
 const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChartItem?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChartItem?.props?.default, ...props_ };
 
-  const Path = React.useMemo(() => theme?.elements?.Path || PathElement, [theme]);
+  const Path = theme?.elements?.Path || PathElement;
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
   const {
     tonal = true,
@@ -167,7 +167,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
 
   refs.init.current = init;
 
-  const LegendItem = React.useCallback((legendItemProps: any) => {
+  const LegendItem = (legendItemProps: any) => {
 
     return (
       <Line
@@ -212,9 +212,9 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
         </Type>
       </Line>
     );
-  }, [theme]);
+  };
 
-  const LinearGradient = React.useCallback(() => {
+  const LinearGradient = () => {
 
     return (
       <linearGradient
@@ -243,7 +243,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
         />
       </linearGradient>
     );
-  }, [theme]);
+  };
 
   const make = () => {
     // Make values into x, y, coordinates
@@ -441,7 +441,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
     }
   };
 
-  const initMethod = React.useCallback(() => {
+  const initMethod = () => {
     if (animate) {
       if (!init && refs.path.current) {
         const total = refs.path.current.getTotalLength();
@@ -466,7 +466,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
         }, refs.animateTimeout.current);
       }
     }
-  }, [init, animate]);
+  };
 
   React.useEffect(() => {
     make();

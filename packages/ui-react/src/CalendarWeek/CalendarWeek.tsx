@@ -166,13 +166,13 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
   const l = theme.l;
 
-  const props = React.useMemo(() => ({ ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarWeek?.props?.default, ...props_ }), [props_]);
+  const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCalendarWeek?.props?.default, ...props_ };
 
-  const Line = React.useMemo(() => theme?.elements?.Line || LineElement, [theme]);
+  const Line = theme?.elements?.Line || LineElement;
 
-  const Type = React.useMemo(() => theme?.elements?.Type || TypeElement, [theme]);
+  const Type = theme?.elements?.Type || TypeElement;
 
-  const Tooltip = React.useMemo(() => theme?.elements?.Tooltip || TooltipElement, [theme]);
+  const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
   const {
     date,
@@ -247,7 +247,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     };
   }, []);
 
-  const getDates = React.useCallback((available: any) => {
+  const getDates = (available: any) => {
     const values = available.dates?.values || [];
 
     return values.map((item: any) => {
@@ -273,7 +273,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
       return item;
     });
-  }, [times]);
+  };
 
   const optionsStatus = React.useMemo(() => {
     return [
@@ -287,7 +287,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     ];
   }, []);
 
-  const getColor = React.useCallback((item: any) => {
+  const getColor = (item: any) => {
     let palette = theme.palette.color.neutral;
 
     if (item?.status === 'working') palette = theme.palette.color.success;
@@ -307,15 +307,15 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     if (item.color) palette = theme.methods.color(item.color) as any;
 
     return palette[rangeShade];
-  }, [rangeShade, colors, theme]);
+  };
 
-  const itemToText = React.useCallback((item: any) => {
+  const itemToText = (item: any) => {
     if (item === 'pending') return l('Scheduled');
 
     if (item === 'not-count-workout-session') return l(`Don't count workout session`);
 
     return optionsStatus?.find(itemStatus => itemStatus.value === item)?.name ?? l(item);
-  }, []);
+  };
 
   const renderTimes = (day: OnesyDate, valuesAll: any, weekly = true, itemDay?: any) => {
     if (itemDay !== undefined && !itemDay?.active) return null;
@@ -526,7 +526,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     return elements;
   };
 
-  const onTimeClickMethod = React.useCallback((itemDay: OnesyDate, event: MouseEvent) => {
+  const onTimeClickMethod = (itemDay: OnesyDate, event: MouseEvent) => {
     const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
 
     const relativeY = event.clientY - rect.top;
@@ -539,9 +539,9 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
     timeDate = startOf(timeDate, 'hour');
 
     onTimeClick?.(timeDate, dayProp ? 'day' : 'week', event);
-  }, []);
+  };
 
-  const timesUI = React.useCallback((dayDate: OnesyDate) => {
+  const timesUI = (dayDate: OnesyDate) => {
     // clean up
     refs.days.current = {};
     refs.overlaping.current = {};
@@ -557,7 +557,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
         {item.dates && renderTimes(dayDate, getDates(item), false)}
       </>)}
     </>;
-  }, [theme, times, date]);
+  };
 
   const hours = React.useMemo(() => {
     return Array.from({ length: 24 }).map((item, index) => set(index, 'hour', date));
