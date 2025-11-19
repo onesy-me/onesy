@@ -28,12 +28,10 @@ const valueMake = async (url, name, short_name) => {
 
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
+const ${prefix}${name} = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='${name}'
 
       short_name='${short_name}'
@@ -45,7 +43,7 @@ const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
       ${value}
     </Icon>
   );
-});
+};
 
 ${prefix}${name}.displayName = 'Onesy${prefix}${name}';
 
