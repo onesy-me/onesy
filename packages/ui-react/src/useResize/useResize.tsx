@@ -2,7 +2,7 @@ import React from 'react';
 
 import { isEnvironment } from '@onesy/utils';
 
-const useWindowWidth = () => {
+const useResize = () => {
   const [windowWidth, setWindowWidth] = React.useState(() => {
     if (isEnvironment('browser')) return window.innerWidth;
 
@@ -26,4 +26,4 @@ const useWindowWidth = () => {
   return windowWidth;
 };
 
-export default useWindowWidth;
+export default useResize;
