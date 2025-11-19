@@ -139,7 +139,7 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
     ...other
   } = props;
 
-  const [entered, setEntered] = React.useState(false);
+  const [, setEntered] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
   const refs = {

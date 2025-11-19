@@ -5,7 +5,7 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
-import { getOverflowParent, staticClassName } from '../utils';
+import { staticClassName } from '../utils';
 import TableRowElement from '../TableRow';
 import LinearProgressElement from '../LinearProgress';
 import useResize from '../useResize';

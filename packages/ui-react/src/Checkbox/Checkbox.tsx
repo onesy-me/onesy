@@ -521,7 +521,7 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
       {value && (
         <IconDoneAnimated
-          size={size}
+          size={size === 'large' ? '3rem' : size}
 
           className={classNames([
             staticClassName('Checkbox', theme) && [

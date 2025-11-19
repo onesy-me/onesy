@@ -490,8 +490,6 @@ export type IChart = ISurface & {
 const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
   const theme = useOnesyTheme();
 
-  const l = theme.l;
-
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChart?.props?.default, ...props_ };
 
   const Line = theme?.elements?.Line || LineElement;

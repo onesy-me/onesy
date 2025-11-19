@@ -1,15 +1,9 @@
 import React from 'react';
 
 import { debounce, equalDeep, is, isEnvironment } from '@onesy/utils';
-import { style as styleMethod, useOnesyTheme } from '@onesy/style-react';
+import { useOnesyTheme } from '@onesy/style-react';
 
 import { IBaseElement } from '../types';
-
-const useStyle = styleMethod(theme => ({
-  root: {
-
-  }
-}), { name: 'onesy-DragAndDropList' });
 
 export type IDragAndDropList = Omit<IBaseElement, 'onChange'> & {
   onChange?: (indexPrevious: number, indexNew: number) => any;
@@ -53,10 +47,9 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
 
     children,
 
+    // @ts-ignore
     ...other
   } = props;
-
-  const { classes } = useStyle();
 
   const refs = {
     root: React.useRef<any>(null),

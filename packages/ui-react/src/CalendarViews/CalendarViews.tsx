@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { capitalize, is } from '@onesy/utils';
+import { is } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 import { add, OnesyDate, endOf, format, remove, startOf } from '@onesy/date';
 

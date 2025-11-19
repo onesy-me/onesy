@@ -12,7 +12,8 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "declaration": false,
-    "allowJs": true
+    "allowJs": true,
+    "noUnusedLocals": true
   },
   "exclude": [
     "build",

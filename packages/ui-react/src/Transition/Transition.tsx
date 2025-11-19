@@ -98,6 +98,7 @@ const Transition: React.FC<ITransition> = (props_) => {
   const {
     in: inProp_,
 
+    // @ts-ignore
     name,
 
     prefix,

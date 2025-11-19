@@ -276,16 +276,10 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
 
   const children = React.Children.toArray(children_);
 
-  // picture
-  // with sources
-  let isPicture = false;
-
   const picture = !!children.length || !!sources?.length;
 
   if (picture && !description) {
     Component = 'picture';
-
-    isPicture = true;
   }
 
   // description

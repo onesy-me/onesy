@@ -7,7 +7,6 @@ import OnesySubscription from '@onesy/subscription';
 import IconMaterialNavigateBefore from '@onesy/icons-material-rounded-react/IconMaterialNavigateBeforeW100';
 import IconMaterialNavigateNext from '@onesy/icons-material-rounded-react/IconMaterialNavigateNextW100';
 
-import IconElement from '../Icon';
 import LineElement from '../Line';
 import FadeElement from '../Fade';
 import IconButtonElement from '../IconButton';

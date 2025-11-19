@@ -832,6 +832,8 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
               }}
             >
               <Icon
+                size={size}
+
                 className={classNames([
                   staticClassName('Switch', theme) && [
                     'onesy-Switch-icon'

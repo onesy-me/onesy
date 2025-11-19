@@ -71,6 +71,7 @@ const Append: React.FC<IAppend> = (props_) => {
     switch: switch_ = true,
     overflow = true,
     unfollow = false,
+    // @ts-ignore
     onScreen = true,
     style: style_,
     update,

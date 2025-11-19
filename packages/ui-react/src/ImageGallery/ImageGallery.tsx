@@ -15,7 +15,6 @@ import BackdropElement from '../Backdrop';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
 import { IElementReference, IMediaObject } from '../types';
-import useMediaQuery from '../useMediaQuery';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -271,7 +270,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
 
   const { classes } = useStyle();
 
-  const [loaded, setLoaded] = React.useState(false);
+  const [, setLoaded] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<any>(0);
   const [moveValue, setMoveValue] = React.useState<any>();
@@ -294,8 +293,6 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
     keyDown: React.useRef(keyDown),
     useZoom: React.useRef(false)
   };
-
-  const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
   const minZoom = clamp(minZoom_, 0.1, 1);
 
@@ -388,10 +385,6 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
     onResetZoom();
 
     setValue(index);
-  };
-
-  const onOpen = () => {
-    setOpen(true);
   };
 
   const onClose = () => {

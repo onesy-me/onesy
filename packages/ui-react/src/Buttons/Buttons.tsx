@@ -23,6 +23,7 @@ export const IconMaterialDone = React.forwardRef((props: any, ref) => {
       ref={ref}
 
       name='DoneSharp'
+
       short_name='Done'
 
       {...other}

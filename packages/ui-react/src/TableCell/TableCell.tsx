@@ -10,7 +10,7 @@ import IconButtonElement from '../IconButton';
 import TypeElement from '../Type';
 import DividerElement from '../Divider';
 import { TLineAlign, TLineJustify } from '../Line/Line';
-import { getOverflowParent, staticClassName } from '../utils';
+import { staticClassName } from '../utils';
 import { IBaseElement, IPropsAny } from '../types';
 import Tooltip from '../Tooltip';
 import useResize from '../useResize';

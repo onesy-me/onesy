@@ -7,7 +7,7 @@ import DividerElement from '../Divider';
 import LineElement from '../Line';
 import { ILine } from '../Line/Line';
 import { staticClassName } from '../utils';
-import { IElement, IPropsAny, IElementReference } from '../types';
+import { IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
