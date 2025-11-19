@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialInboxTextAsteriskFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialInboxTextAsteriskFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='InboxTextAsteriskFilled'
 
       short_name='InboxTextAsterisk'
@@ -19,7 +15,7 @@ const IconMaterialInboxTextAsteriskFilled = React.forwardRef((props: IIcon, ref)
       <path d="M120-120v-720h720v306q-19-9-39-14.5t-41-8.5v-203H200v360h168q9 27 30 47t47 28q-8 54 3 107t43 98H120Zm160-490h400v-80H280v80Zm0 140h237q27-29 60.5-49t72.5-31H280v80Zm378 343-64-47 61-85-99-32 24-77 100 33v-105h80v105l100-33 24 77-99 32 61 85-64 47-62-85-62 85Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialInboxTextAsteriskFilled.displayName = 'OnesyIconMaterialInboxTextAsteriskFilled';
 

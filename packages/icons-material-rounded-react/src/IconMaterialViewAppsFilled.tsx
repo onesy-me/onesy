@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialViewAppsFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialViewAppsFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ViewAppsFilled'
 
       short_name='ViewApps'
@@ -19,7 +15,7 @@ const IconMaterialViewAppsFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M87-168q-18 3-32.5-8.5T40-207v-546q0-19 14.5-30.5T87-792l160 26q14 2 23.5 13.5T280-726v492q0 15-9.5 26.5T247-194L87-168Zm313-32q-17 0-28.5-11.5T360-240v-480q0-17 11.5-28.5T400-760h160q17 0 28.5 11.5T600-720v480q0 17-11.5 28.5T560-200H400Zm313 6q-14-2-23.5-13.5T680-234v-492q0-15 9.5-26.5T713-766l160-26q18-3 32.5 8.5T920-753v546q0 19-14.5 30.5T873-168l-160-26Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialViewAppsFilled.displayName = 'OnesyIconMaterialViewAppsFilled';
 

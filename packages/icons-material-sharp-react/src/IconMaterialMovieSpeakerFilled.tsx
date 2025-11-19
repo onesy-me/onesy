@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMovieSpeakerFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMovieSpeakerFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MovieSpeakerFilled'
 
       short_name='MovieSpeaker'
@@ -19,7 +15,7 @@ const IconMaterialMovieSpeakerFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M640-80 520-200H400v-160h120l120-120v400Zm80 36v-82q52-14 86-56t34-98q0-56-34-98t-86-56v-82q86 14 143 80t57 156q0 90-57 156T720-44Zm0-144v-184q27 11 43.5 36t16.5 56q0 31-16.5 56T720-188ZM80-160v-640h80l80 160h120l-80-160h80l80 160h120l-80-160h80l80 160h120l-80-160h200v271q-39-30-83.5-50.5T702-600h-55L487-440H320v280H80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMovieSpeakerFilled.displayName = 'OnesyIconMaterialMovieSpeakerFilled';
 

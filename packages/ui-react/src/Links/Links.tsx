@@ -127,7 +127,7 @@ export type ILinks = IBaseElement & {
   LinkTypeProps?: any;
 };
 
-const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ILinks> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -203,8 +203,6 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Section
-      ref={ref}
-
       gap={2}
 
       align='center'
@@ -490,7 +488,7 @@ const Element: React.FC<ILinks> = React.forwardRef((props_, ref: any) => {
       {end}
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-Links';
 

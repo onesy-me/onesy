@@ -6,7 +6,7 @@ import { useOnesyTheme } from '@onesy/style-react';
 import { ITransition, Transition, TTransitionStatus } from '..';
 import { IPropsAny } from '../types';
 
-const Wrapper = React.forwardRef((props: any, ref: any) => {
+const Wrapper = props => {
   const {
     children,
 
@@ -17,8 +17,6 @@ const Wrapper = React.forwardRef((props: any, ref: any) => {
 
   return (
     <div
-      ref={ref}
-
       {...other}
 
       style={{
@@ -30,7 +28,7 @@ const Wrapper = React.forwardRef((props: any, ref: any) => {
       {children}
     </div>
   );
-});
+};
 
 export type IExpand = Omit<ITransition, 'className'> & {
   value?: number;
@@ -44,12 +42,14 @@ export type IExpand = Omit<ITransition, 'className'> & {
   className?: string;
 };
 
-const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
+const Expand: React.FC<IExpand> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyExpand?.props?.default, ...props_ };
 
   const {
+    ref,
+
     in: inProp,
 
     value: valueProvided,
@@ -299,7 +299,7 @@ const Expand: React.FC<IExpand> = React.forwardRef((props_, ref: any) => {
       </Transition>
     )}
   </>;
-});
+};
 
 Expand.displayName = 'onesy-Expand';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHealingW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHealingW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HealingW100Filled'
 
       short_name='Healing'
@@ -19,7 +15,7 @@ const IconMaterialHealingW100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M274-120 119-275l565-565 155 155-565 565Zm226-186 153-153 186 186-153 153-186-186Zm-19.82-84q12.82 0 21.32-8.68 8.5-8.67 8.5-21.5 0-12.82-8.68-21.32-8.67-8.5-21.5-8.5-12.82 0-21.32 8.68-8.5 8.67-8.5 21.5 0 12.82 8.68 21.32 8.67 8.5 21.5 8.5Zm-60-60q12.82 0 21.32-8.68 8.5-8.67 8.5-21.5 0-12.82-8.68-21.32-8.67-8.5-21.5-8.5-12.82 0-21.32 8.68-8.5 8.67-8.5 21.5 0 12.82 8.68 21.32 8.67 8.5 21.5 8.5Zm120 0q12.82 0 21.32-8.68 8.5-8.67 8.5-21.5 0-12.82-8.68-21.32-8.67-8.5-21.5-8.5-12.82 0-21.32 8.68-8.5 8.67-8.5 21.5 0 12.82 8.68 21.32 8.67 8.5 21.5 8.5ZM306-502 121-687l153-153 185 185-153 153Zm174.18-8q12.82 0 21.32-8.68 8.5-8.67 8.5-21.5 0-12.82-8.68-21.32-8.67-8.5-21.5-8.5-12.82 0-21.32 8.68-8.5 8.67-8.5 21.5 0 12.82 8.68 21.32 8.67 8.5 21.5 8.5Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHealingW100Filled.displayName = 'OnesyIconMaterialHealingW100Filled';
 

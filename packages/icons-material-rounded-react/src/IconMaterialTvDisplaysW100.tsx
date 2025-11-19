@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTvDisplaysW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTvDisplaysW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TvDisplaysW100'
 
       short_name='TvDisplays'
@@ -19,7 +15,7 @@ const IconMaterialTvDisplaysW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M145.96-355q-5.96 0-9.96-4.02-4-4.03-4-9.98v-399q0-24.75 17.63-42.38Q167.25-828 192-828h476q5.95 0 9.97 4.04 4.03 4.03 4.03 10 0 5.96-4.03 9.96-4.02 4-9.97 4H192q-14 0-23 9t-9 23v399q0 5.95-4.04 9.98-4.03 4.02-10 4.02Zm351.12 223q-13.08 0-21.58-8.63-8.5-8.62-8.5-21.37v-50H340q-26 0-43-17t-17-43v-348q0-26 17-43t43-17h469q26 0 43 17t17 43v348q0 26-17 43t-43 17H681v50q0 12.75-8.62 21.37Q663.75-132 651-132H497.08ZM340-240h469q14 0 23-9t9-23v-348q0-14-9-23t-23-9H340q-14 0-23 9t-9 23v348q0 14 9 23t23 9Zm235-206Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTvDisplaysW100.displayName = 'OnesyIconMaterialTvDisplaysW100';
 

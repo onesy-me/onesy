@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSeatCoolRightW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSeatCoolRightW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SeatCoolRightW100Filled'
 
       short_name='SeatCoolRight'
@@ -19,7 +15,7 @@ const IconMaterialSeatCoolRightW100Filled = React.forwardRef((props: IIcon, ref)
       <path d="M325-172v-14q0-21 15-35.5t36-14.5h228q14 0 26.5 5t21.5 15v-58q0-61 17.5-119T712-508l16-36q13-29 8.5-60T710-657q-4-5-6-10t-2-10q0-12 8.5-20.5T731-706q11 0 21.5 6t15.5 17q10 20 15 41.5t5 44.5q0 13-1.5 25.5T781-546l-97 374H325Zm37-209v-98l-76 76-19-19 95-95v-53h-54l-94 94-19-19 75-75h-98v-27h99l-76-76 19-19 95 95h53v-54l-95-95 19-19 76 76v-98h27v99l76-77 19 19-95 96v53h53l96-95 19 19-77 76h100v27h-99l76 75-19 19-95-94h-54v52l95 96-19 19-76-77v99h-27Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSeatCoolRightW100Filled.displayName = 'OnesyIconMaterialSeatCoolRightW100Filled';
 

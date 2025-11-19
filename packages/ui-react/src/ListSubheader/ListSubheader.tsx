@@ -23,7 +23,7 @@ export type IListSubheader = IListItem & {
 
 };
 
-const ListSubheader: React.FC<IListSubheader> = React.forwardRef((props_, ref: any) => {
+const ListSubheader: React.FC<IListSubheader> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyListSubheader?.props?.default, ...props_ };
@@ -42,8 +42,6 @@ const ListSubheader: React.FC<IListSubheader> = React.forwardRef((props_, ref: a
 
   return (
     <ListItem
-      ref={ref}
-
       secondary={children}
 
       className={classNames([
@@ -58,7 +56,7 @@ const ListSubheader: React.FC<IListSubheader> = React.forwardRef((props_, ref: a
       {...other}
     />
   );
-});
+};
 
 ListSubheader.displayName = 'onesy-ListSubheader';
 

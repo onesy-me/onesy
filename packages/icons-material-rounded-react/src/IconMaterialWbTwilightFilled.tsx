@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialWbTwilightFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialWbTwilightFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='WbTwilightFilled'
 
       short_name='WbTwilight'
@@ -19,7 +15,7 @@ const IconMaterialWbTwilightFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M792-670q11 11 11 28t-11 28l-29 29q-12 12-28.5 12T706-585q-12-12-11.5-28.5T707-642l29-29q12-11 28.5-10.5T792-670ZM120-160q-17 0-28.5-11.5T80-200q0-17 11.5-28.5T120-240h720q17 0 28.5 11.5T880-200q0 17-11.5 28.5T840-160H120Zm360-640q17 0 28.5 11.5T520-760v40q0 17-11.5 28.5T480-680q-17 0-28.5-11.5T440-720v-40q0-17 11.5-28.5T480-800ZM170-672q11-11 28-11t28 11l29 29q12 12 12 28.5T255-586q-12 11-29 11t-28-12l-29-29q-11-12-10.5-28.5T170-672Zm30 352q0-117 81.5-198.5T480-600q117 0 198.5 81.5T760-320H200Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialWbTwilightFilled.displayName = 'OnesyIconMaterialWbTwilightFilled';
 

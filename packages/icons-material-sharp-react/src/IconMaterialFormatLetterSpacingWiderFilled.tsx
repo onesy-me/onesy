@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFormatLetterSpacingWiderFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFormatLetterSpacingWiderFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FormatLetterSpacingWiderFilled'
 
       short_name='FormatLetterSpacingWider'
@@ -19,7 +15,7 @@ const IconMaterialFormatLetterSpacingWiderFilled = React.forwardRef((props: IIco
       <path d="M80-160v-640h80v640H80Zm720 0v-640h80v640h-80ZM294-280l150-400h72l150 400h-69l-36-102H399l-36 102h-69Zm126-160h120l-58-166h-4l-58 166Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFormatLetterSpacingWiderFilled.displayName = 'OnesyIconMaterialFormatLetterSpacingWiderFilled';
 

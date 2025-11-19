@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialChairFireplaceW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialChairFireplaceW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ChairFireplaceW100Filled'
 
       short_name='ChairFireplace'
@@ -19,7 +15,7 @@ const IconMaterialChairFireplaceW100Filled = React.forwardRef((props: IIcon, ref
       <path d="M608-438q26 0 44-16t18-39q0-31-24.5-48.5T608-585q-3 8-3.5 17.5T606-547q2 13 5.5 24t1.5 22q-3 15-17.5 29T564-453q9 8 20.5 11.5T608-438Zm-39 58-32-28q-25-22-41.5-53T479-527q0-49 31-95t89-84q10 33 28.5 60t44.5 47q28 20 42.5 46t14.5 55q0 25-11 46.5T684-408h116v-392H408v322h-28v-350h448v448H569ZM197-172v-133h-25l-40-340h29l33 265h222v75h-28v133h-27v-133H225v133h-28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialChairFireplaceW100Filled.displayName = 'OnesyIconMaterialChairFireplaceW100Filled';
 

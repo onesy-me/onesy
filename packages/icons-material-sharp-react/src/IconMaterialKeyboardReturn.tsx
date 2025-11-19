@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialKeyboardReturn = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialKeyboardReturn = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='KeyboardReturn'
 
       short_name='KeyboardReturn'
@@ -19,7 +15,7 @@ const IconMaterialKeyboardReturn = React.forwardRef((props: IIcon, ref) => {
       <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialKeyboardReturn.displayName = 'OnesyIconMaterialKeyboardReturn';
 

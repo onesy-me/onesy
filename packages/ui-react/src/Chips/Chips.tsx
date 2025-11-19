@@ -71,7 +71,7 @@ export type IChips = ILine & {
   AdditionalChipProps?: IPropsAny;
 };
 
-const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
+const Chips: React.FC<IChips> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChips?.props?.default, ...props_ };
@@ -154,8 +154,6 @@ const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={gap}
 
       justify={justify}
@@ -196,7 +194,7 @@ const Chips: React.FC<IChips> = React.forwardRef((props_, ref: any) => {
       }))}
     </Line>
   );
-});
+};
 
 Chips.displayName = 'onesy-Chips';
 

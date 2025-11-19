@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHearingAidDisabledLeftW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHearingAidDisabledLeftW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HearingAidDisabledLeftW100Filled'
 
       short_name='HearingAidDisabledLeft'
@@ -19,7 +15,7 @@ const IconMaterialHearingAidDisabledLeftW100Filled = React.forwardRef((props: II
       <path d="M685-106q-50 0-88.5-33T541-220q-13-35-39-68t-71-68q-60-48-92-111.5T307-600q0-12 1.5-24t3.5-23l24 24q-6 71 24.5 136.5T453-374q40 30 68.5 66.5T567-230q16 38 46.5 67t71.5 29q29 0 53-13t39-35l20 20q-19 26-48 41t-64 15Zm154-126L448-623q8-38 39-64.5t73-26.5q57 0 91 45.5t19 99.5l152 132-76 61q36 33 64.5 77t28.5 67Zm-54-394q-8-85-72-142.5T561-826q-65 0-117.5 32.5T362-708l-20-20q33-57 91-91.5T561-854q100 0 172 65.5T813-626h-28Zm66 558L195-724q-10 30-15 61t-5 63q0 69 24.5 134T271-346l-20 18q-51-57-77.5-127T147-600q0-38 7-74t20-71l-85-85 20-20L871-88l-20 20Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHearingAidDisabledLeftW100Filled.displayName = 'OnesyIconMaterialHearingAidDisabledLeftW100Filled';
 

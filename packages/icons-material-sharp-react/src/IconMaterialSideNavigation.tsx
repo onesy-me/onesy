@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSideNavigation = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSideNavigation = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SideNavigation'
 
       short_name='SideNavigation'
@@ -19,7 +15,7 @@ const IconMaterialSideNavigation = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-120v-720h720v720H120Zm360-80h280v-560H480v560Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSideNavigation.displayName = 'OnesyIconMaterialSideNavigation';
 

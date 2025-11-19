@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialStackedEmailW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialStackedEmailW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='StackedEmailW100'
 
       short_name='StackedEmail'
@@ -19,7 +15,7 @@ const IconMaterialStackedEmailW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M200-292v-508h668v508H200Zm334-218L228-740v420h612v-420L534-510Zm0-32 306-230H228l306 230ZM92-184v-404h28v376h602v28H92Zm748-588H228h612Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialStackedEmailW100.displayName = 'OnesyIconMaterialStackedEmailW100';
 

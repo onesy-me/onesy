@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialEditArrowUp = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialEditArrowUp = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='EditArrowUp'
 
       short_name='EditArrowUp'
@@ -19,7 +15,7 @@ const IconMaterialEditArrowUp = React.forwardRef((props: IIcon, ref) => {
       <path d="M740-160v-488l-44 44-56-56 140-140 140 140-57 56-43-43v487h-80Zm-620-80v-163l295-294q24-24 57.5-23t56.5 25l48 50q23 23 22.5 56T576-533L283-240H120Zm80-80h50l162-162-25-25-25-25-162 162v50Zm269-219-50-50 50 50Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialEditArrowUp.displayName = 'OnesyIconMaterialEditArrowUp';
 

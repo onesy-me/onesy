@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialOpenJamFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialOpenJamFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='OpenJamFilled'
 
       short_name='OpenJam'
@@ -19,7 +15,7 @@ const IconMaterialOpenJamFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M240-120v-80h280v-288l64 64 56-56-160-160-160 160 56 56 64-64v168H80v-520h800v520H600v120h120v80H240Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialOpenJamFilled.displayName = 'OnesyIconMaterialOpenJamFilled';
 

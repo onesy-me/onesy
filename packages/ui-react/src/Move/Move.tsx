@@ -23,7 +23,7 @@ export type IMove = IBaseElement & {
   onTouchStart?: (event: React.TouchEvent<any>) => any;
 };
 
-const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
+const Move: React.FC<IMove> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMove?.props?.default, ...props_ };
@@ -31,6 +31,8 @@ const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const {
+    ref,
+
     version = 'regular',
     manage = false,
     manageLevel = 0,
@@ -227,7 +229,7 @@ const Move: React.FC<IMove> = React.forwardRef((props_, ref: any) => {
       {children}
     </Component>
   );
-});
+};
 
 Move.displayName = 'onesy-Move';
 

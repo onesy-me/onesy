@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCollapseContentW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCollapseContentW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CollapseContentW100'
 
       short_name='CollapseContent'
@@ -19,7 +15,7 @@ const IconMaterialCollapseContentW100 = React.forwardRef((props: IIcon, ref) => 
       <path d="M440-440v188h-28v-160H252v-28h188Zm108-268v160h160v28H520v-188h28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCollapseContentW100.displayName = 'OnesyIconMaterialCollapseContentW100';
 

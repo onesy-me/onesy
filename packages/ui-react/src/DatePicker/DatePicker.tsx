@@ -205,7 +205,7 @@ export type IDatePicker = Omit<ILine, 'onChange'> & ITextField & {
   MobileSurfaceProps?: IPropsAny;
 };
 
-const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) => {
+const DatePicker: React.FC<IDatePicker> = props__ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -237,6 +237,8 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
   const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -1399,7 +1401,7 @@ const DatePicker: React.FC<IDatePicker> = React.forwardRef((props__, ref: any) =
       )}
     </Line>
   );
-});
+};
 
 DatePicker.displayName = 'onesy-DatePicker';
 

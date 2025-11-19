@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTableConvertFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTableConvertFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TableConvertFilled'
 
       short_name='TableConvert'
@@ -19,7 +15,7 @@ const IconMaterialTableConvertFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M520-320h320v200H520v-200Zm0-80v-200h320v200H520ZM120-680v-160h720v160H120Zm0 600v-80h102q-48-23-77.5-68T115-330q0-79 55.5-134.5T305-520v80q-45 0-77.5 32T195-330q0 39 24 69t61 38v-97h80v240H120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTableConvertFilled.displayName = 'OnesyIconMaterialTableConvertFilled';
 

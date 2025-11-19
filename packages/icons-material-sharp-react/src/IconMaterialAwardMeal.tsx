@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAwardMeal = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAwardMeal = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AwardMeal'
 
       short_name='AwardMeal'
@@ -19,7 +15,7 @@ const IconMaterialAwardMeal = React.forwardRef((props: IIcon, ref) => {
       <path d="M480-28 346-160H160v-186L28-480l132-134v-186h186l134-132 134 132h186v186l132 134-132 134v186H614L480-28Zm0-112 80-80v-148q-26-15-43-50.5T500-500q0-58 26-99t64-41q37 0 63.5 41t26.5 99q0 47-17 82.5T620-368v128h100v-140l100-100-100-100v-140H580L480-820 380-720H240v140L140-480l100 100v140h100v-160q-26-6-43-27.5T280-477v-163h40v151h30v-151h40v151h30v-151h40v163q0 28-17 49.5T400-400v180l80 80Zm0-340Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAwardMeal.displayName = 'OnesyIconMaterialAwardMeal';
 

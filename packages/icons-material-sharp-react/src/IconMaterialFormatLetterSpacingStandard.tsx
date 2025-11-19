@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFormatLetterSpacingStandard = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFormatLetterSpacingStandard = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FormatLetterSpacingStandard'
 
       short_name='FormatLetterSpacingStandard'
@@ -19,7 +15,7 @@ const IconMaterialFormatLetterSpacingStandard = React.forwardRef((props: IIcon, 
       <path d="M160-160v-640h80v640h-80Zm560 0v-640h80v640h-80ZM294-280l150-400h72l150 400h-69l-36-102H399l-36 102h-69Zm126-160h120l-58-166h-4l-58 166Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFormatLetterSpacingStandard.displayName = 'OnesyIconMaterialFormatLetterSpacingStandard';
 

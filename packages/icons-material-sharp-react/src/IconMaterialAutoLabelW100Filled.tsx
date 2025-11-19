@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAutoLabelW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAutoLabelW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AutoLabelW100Filled'
 
       short_name='AutoLabel'
@@ -19,7 +15,7 @@ const IconMaterialAutoLabelW100Filled = React.forwardRef((props: IIcon, ref) => 
       <path d="M782 576 621 804H178V348h441l163 228ZM427 686l34-76 76-34-76-34-34-76-34 76-76 34 76 34 34 76Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAutoLabelW100Filled.displayName = 'OnesyIconMaterialAutoLabelW100Filled';
 

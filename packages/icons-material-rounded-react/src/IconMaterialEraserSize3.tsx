@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialEraserSize3 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialEraserSize3 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='EraserSize3'
 
       short_name='EraserSize3'
@@ -19,7 +15,7 @@ const IconMaterialEraserSize3 = React.forwardRef((props: IIcon, ref) => {
       <path d="M340-200q-58 0-99-41t-41-99q0-27 10.5-53t30.5-46l280-280q20-20 46-30.5t53-10.5q58 0 99 41t41 99q0 27-10.5 53T719-521L439-241q-20 20-46 30.5T340-200Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialEraserSize3.displayName = 'OnesyIconMaterialEraserSize3';
 

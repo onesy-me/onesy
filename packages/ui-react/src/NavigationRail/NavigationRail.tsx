@@ -80,7 +80,7 @@ export type INavigationRail = Omit<ISurface, 'version' | 'onChange'> & {
   DividerProps?: IPropsAny;
 };
 
-const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref: any) => {
+const NavigationRail: React.FC<INavigationRail> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationRail?.props?.default, ...props_ };
@@ -192,8 +192,6 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
 
   return (
     <Surface
-      ref={ref}
-
       Component={Line}
 
       color={color}
@@ -292,7 +290,7 @@ const NavigationRail: React.FC<INavigationRail> = React.forwardRef((props_, ref:
       )}
     </Surface>
   );
-});
+};
 
 NavigationRail.displayName = 'onesy-NavigationRail';
 

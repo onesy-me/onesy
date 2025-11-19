@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileCastW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileCastW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileCastW100'
 
       short_name='MobileCast'
@@ -19,7 +15,7 @@ const IconMaterialMobileCastW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M252-92v-48q19.8 0 33.9 14.1Q300-111.8 300-92h-48Zm148 0q0-62-43-105t-105-43v-28q73.33 0 124.67 51.33Q428-165.33 428-92h-28Zm128 0q0-115-80.5-195.5T252-368v-28q63.08 0 118.56 23.94 55.48 23.94 96.52 64.98 41.04 41.04 64.98 96.52Q556-155.08 556-92h-28Zm184-776v190h36v134h-36v452h-28v-748H280v344h-28v-372h460ZM482.07-704q11.93 0 19.93-8.07t8-20q0-11.93-8.07-19.93t-20-8Q470-760 462-751.93t-8 20q0 11.93 8.07 19.93t20 8ZM684-92v-748 748Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileCastW100.displayName = 'OnesyIconMaterialMobileCastW100';
 

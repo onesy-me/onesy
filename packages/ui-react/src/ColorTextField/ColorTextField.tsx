@@ -11,7 +11,7 @@ import TypeElement from '../Type';
 import { ITextField } from '../TextField/TextField';
 import { staticClassName } from '../utils';
 
-const SliderInput = React.forwardRef((props: any, ref: any) => {
+const SliderInput = props => {
   const theme = useOnesyTheme();
 
   const FormRow = theme?.elements?.FormRow || FormRowElement;
@@ -102,7 +102,7 @@ const SliderInput = React.forwardRef((props: any, ref: any) => {
       />
     </FormRow>
   );
-});
+};
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -159,7 +159,7 @@ export type IColorTextField = ITextField & {
   WrapperProps?: any;
 };
 
-const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref: any) => {
+const ColorTextField: React.FC<IColorTextField> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -171,6 +171,8 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
   const TextField = theme?.elements?.TextField || TextFieldElement;
 
   const {
+    ref,
+
     name,
 
     version = 'outlined',
@@ -304,6 +306,8 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
 
       end={(
         <input
+          ref={ref}
+
           type='color'
 
           value={opacity ? valueColor : value}
@@ -342,8 +346,6 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
   if (opacity) {
     return (
       <Line
-        ref={ref}
-
         gap={1}
 
         fullWidth
@@ -368,7 +370,7 @@ const ColorTextField: React.FC<IColorTextField> = React.forwardRef((props_, ref:
   }
 
   return root;
-});
+};
 
 ColorTextField.displayName = 'onesy-ColorTextField';
 

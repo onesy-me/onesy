@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHealthCross = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHealthCross = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HealthCross'
 
       short_name='HealthCross'
@@ -19,7 +15,7 @@ const IconMaterialHealthCross = React.forwardRef((props: IIcon, ref) => {
       <path d="M360-120q-17 0-28.5-11.5T320-160v-160H160q-17 0-28.5-11.5T120-360v-240q0-17 11.5-28.5T160-640h160v-160q0-17 11.5-28.5T360-840h240q17 0 28.5 11.5T640-800v160h160q17 0 28.5 11.5T840-600v240q0 17-11.5 28.5T800-320H640v160q0 17-11.5 28.5T600-120H360Zm40-80h160v-200h200v-160H560v-200H400v200H200v160h200v200Zm80-280Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHealthCross.displayName = 'OnesyIconMaterialHealthCross';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialChessRookW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialChessRookW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ChessRookW100Filled'
 
       short_name='ChessRook'
@@ -19,7 +15,7 @@ const IconMaterialChessRookW100Filled = React.forwardRef((props: IIcon, ref) => 
       <path d="M272-132q-24.75 0-42.37-17.63Q212-167.25 212-192v-73q0-12.02 4.93-22.62 4.92-10.6 14.07-18.38 66-58 97.5-122T383-577h-38q-26 0-43-17t-17-43.48V-798q0-12.75 8.63-21.38Q302.25-828 315-828h77q12.75 0 21.38 8.62Q422-810.75 422-798v81h117v-81q0-12.75 8.63-21.38Q556.25-828 569-828h77q12.75 0 21.38 8.62Q676-810.75 676-798v160.52Q676-611 659-594q-17 17-43 17h-39q23 85 54.5 149T729-306q9.15 7.64 14.07 18.42Q748-276.81 748-265v73q0 24.75-17.62 42.37Q712.75-132 688-132H272Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialChessRookW100Filled.displayName = 'OnesyIconMaterialChessRookW100Filled';
 

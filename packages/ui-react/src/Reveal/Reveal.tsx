@@ -39,7 +39,7 @@ export type IReveal = Omit<IFade, 'onChange'> & {
   UseVisibleProps?: IUseVisible;
 };
 
-const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
+const Reveal: React.FC<IReveal> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyReveal?.props?.default, ...props_ };
@@ -47,6 +47,8 @@ const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
   const Fade = theme?.elements?.Fade || FadeElement;
 
   const {
+    ref,
+
     inDefault,
 
     offset,
@@ -168,7 +170,7 @@ const Reveal: React.FC<IReveal> = React.forwardRef((props_, ref: any) => {
       })}
     </Component>
   );
-});
+};
 
 Reveal.displayName = 'onesy-Reveal';
 

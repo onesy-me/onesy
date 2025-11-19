@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialDashboard2W100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialDashboard2W100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Dashboard2W100Filled'
 
       short_name='Dashboard2'
@@ -19,7 +15,7 @@ const IconMaterialDashboard2W100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M640.4-212q-13.4 0-21.9-8.63-8.5-8.62-8.5-21.37v-157.6q0-13.4 8.63-21.9 8.62-8.5 21.37-8.5h157.6q13.4 0 21.9 8.62 8.5 8.63 8.5 21.38v157.6q0 13.4-8.62 21.9-8.63 8.5-21.38 8.5H640.4ZM480-530q-12.75 0-21.37-8.63Q450-547.25 450-560v-157.6q0-13.4 8.63-21.9 8.62-8.5 21.37-8.5h318q12.75 0 21.38 8.62Q828-730.75 828-718v157.6q0 13.4-8.62 21.9-8.63 8.5-21.38 8.5H480ZM162-212q-12.75 0-21.37-8.63Q132-229.25 132-242v-157.6q0-13.4 8.63-21.9 8.62-8.5 21.37-8.5h318q12.75 0 21.38 8.62Q510-412.75 510-400v157.6q0 13.4-8.62 21.9-8.63 8.5-21.38 8.5H162Zm.4-318q-13.4 0-21.9-8.63-8.5-8.62-8.5-21.37v-157.6q0-13.4 8.63-21.9 8.62-8.5 21.37-8.5h157.6q13.4 0 21.9 8.62 8.5 8.63 8.5 21.38v157.6q0 13.4-8.62 21.9-8.63 8.5-21.38 8.5H162.4Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialDashboard2W100Filled.displayName = 'OnesyIconMaterialDashboard2W100Filled';
 

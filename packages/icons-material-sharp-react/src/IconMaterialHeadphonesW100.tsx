@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHeadphonesW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHeadphonesW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HeadphonesW100'
 
       short_name='Headphones'
@@ -19,7 +15,7 @@ const IconMaterialHeadphonesW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M312-172H172v-307.86Q172-544 196-600t66-98q42-42 97.94-66 55.95-24 120-24Q544-788 600-764t98 66q42 42 66 98.01 24 56.01 24 120.15V-172H648v-224h112v-84q0-117-81.5-198.5T480-760q-117 0-198.5 81.5T200-480v84h112v224Zm-28-196h-84v168h84v-168Zm392 0v168h84v-168h-84Zm-392 0h-84 84Zm392 0h84-84Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHeadphonesW100.displayName = 'OnesyIconMaterialHeadphonesW100';
 

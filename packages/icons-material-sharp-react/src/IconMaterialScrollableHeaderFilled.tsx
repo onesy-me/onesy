@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialScrollableHeaderFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialScrollableHeaderFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ScrollableHeaderFilled'
 
       short_name='ScrollableHeader'
@@ -19,7 +15,7 @@ const IconMaterialScrollableHeaderFilled = React.forwardRef((props: IIcon, ref) 
       <path d="M120-120v-720h720v720H120Zm80-80h560v-200H200v200Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialScrollableHeaderFilled.displayName = 'OnesyIconMaterialScrollableHeaderFilled';
 

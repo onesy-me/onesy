@@ -53,7 +53,7 @@ export type IPage = ILine & {
   IconForward?: IElementReference;
 };
 
-const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
+const Page: React.FC<IPage> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -176,8 +176,6 @@ const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       gap={4}
 
       direction='column'
@@ -220,7 +218,7 @@ const Page: React.FC<IPage> = React.forwardRef((props_, ref: any) => {
       </Line>
     </Component>
   );
-});
+};
 
 Page.displayName = 'onesy-Page';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialOpenInFull = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialOpenInFull = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='OpenInFull'
 
       short_name='OpenInFull'
@@ -19,7 +15,7 @@ const IconMaterialOpenInFull = React.forwardRef((props: IIcon, ref) => {
       <rect fill="none" height="24" width="24"/><polygon points="21,11 21,3 13,3 16.29,6.29 6.29,16.29 3,13 3,21 11,21 7.71,17.71 17.71,7.71"/>
     </Icon>
   );
-});
+};
 
 IconMaterialOpenInFull.displayName = 'OnesyIconMaterialOpenInFull';
 

@@ -177,7 +177,7 @@ export type IType = IBaseElement & {
   fullWidth?: boolean;
 };
 
-const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
+const Type: React.FC<IType> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyType?.props?.default, ...props_ };
@@ -249,8 +249,6 @@ const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       className={classNames([
         staticClassName('Type', theme) && [
           'onesy-Type-root',
@@ -286,7 +284,7 @@ const Type: React.FC<IType> = React.forwardRef((props_, ref: any) => {
       {children}
     </Component>
   );
-});
+};
 
 Type.displayName = 'onesy-Type';
 

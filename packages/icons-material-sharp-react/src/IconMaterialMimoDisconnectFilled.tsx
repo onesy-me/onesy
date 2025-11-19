@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMimoDisconnectFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMimoDisconnectFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MimoDisconnectFilled'
 
       short_name='MimoDisconnect'
@@ -19,7 +15,7 @@ const IconMaterialMimoDisconnectFilled = React.forwardRef((props: IIcon, ref) =>
       <path d="M820-28 608-240h72l40 40v80H240v-80l40-40H80v-593h47v112l-99-99 56-56L876-84l-56 56Zm8-218L234-840h646v594h-52Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMimoDisconnectFilled.displayName = 'OnesyIconMaterialMimoDisconnectFilled';
 

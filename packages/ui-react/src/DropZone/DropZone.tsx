@@ -66,7 +66,7 @@ export type IDropZone = IFileChoose & {
   onDragLeave?: (event: React.DragEvent<any>) => any;
 };
 
-const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
+const DropZone: React.FC<IDropZone> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -84,6 +84,8 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
   const Interaction = theme?.elements?.Interaction || InteractionElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
     version,
@@ -381,7 +383,7 @@ const DropZone: React.FC<IDropZone> = React.forwardRef((props_, ref: any) => {
       )}
     </FileChoose>
   );
-});
+};
 
 DropZone.displayName = 'onesy-DropZone';
 

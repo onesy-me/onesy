@@ -40,7 +40,7 @@ export type ITable = ISurface & {
   WrapperComponent?: IElementReference;
 };
 
-const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
+const Table: React.FC<ITable> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTable?.props?.default, ...props_ };
@@ -76,8 +76,6 @@ const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={0}
 
       direction='column'
@@ -164,7 +162,7 @@ const Table: React.FC<ITable> = React.forwardRef((props_, ref: any) => {
       })}
     </Line>
   );
-});
+};
 
 Table.displayName = 'onesy-Table';
 

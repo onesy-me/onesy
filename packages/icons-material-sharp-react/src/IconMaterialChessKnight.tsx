@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialChessKnight = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialChessKnight = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ChessKnight'
 
       short_name='ChessKnight'
@@ -19,7 +15,7 @@ const IconMaterialChessKnight = React.forwardRef((props: IIcon, ref) => {
       <path d="M200-80v-209l240-121v-70l-139 69q-12 6-25 9t-26 3q-31 0-58.5-16T149-461q-14-27-12-57.5t19-56.5l124-185-80-120h240q133 0 226.5 93T760-560v480H200Zm80-80h400v-400q0-100-70-170t-170-70h-90l26 40-153 230q-5 8-5.5 16.5T221-497q5 11 13.5 14.5T251-479q3 0 15-3l254-128v250L280-240v80Zm160-320Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialChessKnight.displayName = 'OnesyIconMaterialChessKnight';
 

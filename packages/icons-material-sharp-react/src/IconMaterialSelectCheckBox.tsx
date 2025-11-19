@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSelectCheckBox = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSelectCheckBox = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SelectCheckBox'
 
       short_name='SelectCheckBox'
@@ -19,7 +15,7 @@ const IconMaterialSelectCheckBox = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-120v-720h675l-80 80H200v560h560v-266l80-80v426H120Zm341-160L235-506l56-56 170 170 367-367 57 55-424 424Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSelectCheckBox.displayName = 'OnesyIconMaterialSelectCheckBox';
 

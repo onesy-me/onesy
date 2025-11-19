@@ -25,7 +25,7 @@ export type ISectionAction = ISection & {
   ButtonProps?: IPropsAny;
 };
 
-const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionAction> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -37,6 +37,8 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
   const Button = theme?.elements?.Button || ButtonElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     text,
@@ -107,7 +109,7 @@ const Element: React.FC<ISectionAction> = React.forwardRef((props_, ref: any) =>
       </Button>
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionAction';
 

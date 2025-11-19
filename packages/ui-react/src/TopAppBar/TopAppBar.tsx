@@ -135,7 +135,7 @@ export type ITopAppBar = Omit<ISurface, 'version'> & {
   WrapperProps?: any;
 };
 
-const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
+const TopAppBar: React.FC<ITopAppBar> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTopAppBar?.props?.default, ...props_ };
@@ -265,8 +265,6 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Surface
-      ref={ref}
-
       color={color}
 
       tonal={tonal}
@@ -377,7 +375,7 @@ const TopAppBar: React.FC<ITopAppBar> = React.forwardRef((props_, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 TopAppBar.displayName = 'onesy-TopAppBar';
 

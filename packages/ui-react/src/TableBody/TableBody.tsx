@@ -31,7 +31,7 @@ export type ITableBody = ISurface & {
   loading?: boolean;
 };
 
-const TableBody: React.FC<ITableBody> = React.forwardRef((props_, ref: any) => {
+const TableBody: React.FC<ITableBody> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableBody?.props?.default, ...props_ };
@@ -66,8 +66,6 @@ const TableBody: React.FC<ITableBody> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Surface
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -102,7 +100,7 @@ const TableBody: React.FC<ITableBody> = React.forwardRef((props_, ref: any) => {
       ))}
     </Surface>
   );
-});
+};
 
 TableBody.displayName = 'onesy-TableBody';
 

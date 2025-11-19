@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialBrickW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialBrickW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='BrickW100'
 
       short_name='Brick'
@@ -19,7 +15,7 @@ const IconMaterialBrickW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M132-242v-331q0-12.5 8.75-21.25T162-603h81v-115q0-12.5 8.75-21.25T273-748h117q12.5 0 21.25 8.75T420-718v115h120v-115q0-12.5 8.75-21.25T570-748h117q12.5 0 21.25 8.75T717-718v115h81q12.5 0 21.25 8.75T828-573v331q0 12.5-8.75 21.25T798-212H162q-12.5 0-21.25-8.75T132-242Zm28 2h640v-335H160v335Zm111-363h121v-117H271v117Zm297 0h121v-117H568v117ZM160-240h640-640Zm111-363h121-121Zm297 0h121-121Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialBrickW100.displayName = 'OnesyIconMaterialBrickW100';
 

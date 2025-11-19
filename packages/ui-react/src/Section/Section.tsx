@@ -322,7 +322,7 @@ export type ISection = ILine & {
   AdditionalProps?: IPropsAny;
 };
 
-const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
+const Section: React.FC<ISection> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySection?.props?.default, ...props_, ...props_?.AdditionalProps };
@@ -334,6 +334,8 @@ const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
   const Reveal = theme?.elements?.Reveal || RevealElement;
 
   const {
+    ref,
+
     themed = true,
 
     title: title_,
@@ -652,7 +654,7 @@ const Section: React.FC<ISection> = React.forwardRef((props_, ref: any) => {
       </Line>
     </Wrapper>
   );
-});
+};
 
 Section.displayName = 'onesy-Section';
 

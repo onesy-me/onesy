@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMenuBook2Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMenuBook2Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MenuBook2Filled'
 
       short_name='MenuBook2'
@@ -19,7 +15,7 @@ const IconMaterialMenuBook2Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M240-80q-33 0-56.5-23.5T160-160v-80q-17 0-28.5-11.5T120-280q0-16 14.5-22.5T160-320v-120q-17 0-28.5-11.5T120-480q0-16 14.5-22.5T160-520v-120q-17 0-28.5-11.5T120-680q0-16 14.5-22.5T160-720v-80q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v640q0 33-23.5 56.5T720-80H240Zm140-360v130q0 13 8.5 21.5T410-280q13 0 21.5-8.5T440-310v-130q26-7 43-28.5t17-48.5v-143q0-8-6-14t-14-6q-8 0-14 6t-6 14v131h-30v-131q0-8-6-14t-14-6q-8 0-14 6t-6 14v131h-30v-131q0-8-6-14t-14-6q-8 0-14 6t-6 14v143q0 27 17 48.5t43 28.5Zm220 0v130q0 13 8.5 21.5T630-280q13 0 21.5-8.5T660-310v-347q0-11-7.5-17t-19.5-6q-13 0-28.5 7T575-652q-17 17-26 38.5t-9 46.5v87q0 17 11.5 28.5T580-440h20Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMenuBook2Filled.displayName = 'OnesyIconMaterialMenuBook2Filled';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHealthCrossW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHealthCrossW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HealthCrossW100Filled'
 
       short_name='HealthCross'
@@ -19,7 +15,7 @@ const IconMaterialHealthCrossW100Filled = React.forwardRef((props: IIcon, ref) =
       <path d="M385.36-172q-13.36 0-21.86-8.63-8.5-8.62-8.5-21.37v-153H202q-12.75 0-21.37-8.63Q172-372.25 172-385v-188.64q0-13.36 8.63-21.86 8.62-8.5 21.37-8.5h153v-154q0-12.75 8.63-21.38Q372.25-788 385-788h188.64q13.36 0 21.86 8.62 8.5 8.63 8.5 21.38v154h154q12.75 0 21.38 8.62Q788-586.75 788-574v188.64q0 13.36-8.62 21.86-8.63 8.5-21.38 8.5H604v153q0 12.75-8.62 21.37Q586.75-172 574-172H385.36Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHealthCrossW100Filled.displayName = 'OnesyIconMaterialHealthCrossW100Filled';
 

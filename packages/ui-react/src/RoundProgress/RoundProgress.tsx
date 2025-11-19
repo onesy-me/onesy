@@ -151,12 +151,14 @@ export type IRoundProgress = IBaseElement & {
   pathBackgroundProps?: IPropsAny;
 };
 
-const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: any) => {
+const RoundProgress: React.FC<IRoundProgress> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRoundProgress?.props?.default, ...props_ };
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     size = 'regular',
@@ -314,7 +316,7 @@ const RoundProgress: React.FC<IRoundProgress> = React.forwardRef((props_, ref: a
       {children}
     </span>
   );
-});
+};
 
 RoundProgress.displayName = 'onesy-RoundProgress';
 

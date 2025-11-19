@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHourglassPause = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHourglassPause = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HourglassPause'
 
       short_name='HourglassPause'
@@ -19,7 +15,7 @@ const IconMaterialHourglassPause = React.forwardRef((props: IIcon, ref) => {
       <path d="M452-160ZM160-80v-80h80v-120q0-61 28.5-114.5T348-480q-51-32-79.5-85.5T240-680v-120h-80v-80h640v80h-80v120q0 48-18 92t-51 77q-38 10-71 29t-60 47q-10-2-19.5-3.5T480-440q-66 0-113 47t-47 113v120h132q7 22 16.5 42T491-80H160Zm320-440q66 0 113-47t47-113v-120H320v120q0 66 47 113t113 47Zm270 360h40v-160h-40v160Zm-100 0h40v-160h-40v160Zm70 120q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40ZM480-800Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHourglassPause.displayName = 'OnesyIconMaterialHourglassPause';
 

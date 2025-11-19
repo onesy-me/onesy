@@ -238,7 +238,7 @@ export type ITooltip = Omit<IModal, 'maxWidth'> & {
   LabelTextProps?: IPropsAny;
 };
 
-const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
+const Tooltip: React.FC<ITooltip> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTooltip?.props?.default, ...props_ };
@@ -252,6 +252,8 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
   const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'inverted',
 
@@ -754,7 +756,7 @@ const Tooltip: React.FC<ITooltip> = React.forwardRef((props_, ref: any) => {
       )}
     </Append>
   );
-});
+};
 
 Tooltip.displayName = 'onesy-Tooltip';
 

@@ -46,7 +46,7 @@ export type IAvatar = Omit<IButton, 'elevation'> & {
   InteractionProps?: IPropsAny;
 };
 
-const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
+const Avatar: React.FC<IAvatar> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAvatar?.props?.default, ...props_ };
@@ -132,8 +132,6 @@ const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
 
   return (
     <Button
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -174,7 +172,7 @@ const Avatar: React.FC<IAvatar> = React.forwardRef((props_, ref) => {
       {children}
     </Button>
   );
-});
+};
 
 Avatar.displayName = 'onesy-Avatar';
 

@@ -8,12 +8,14 @@ export type IModalIcon = IIcon & {
 
 };
 
-const ModalIcon: React.FC<IModalIcon> = React.forwardRef((props_, ref: any) => {
+const ModalIcon: React.FC<IModalIcon> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalIcon?.props?.default, ...props_ };
 
   const {
+    ref,
+
     className,
 
     children,
@@ -30,7 +32,7 @@ const ModalIcon: React.FC<IModalIcon> = React.forwardRef((props_, ref: any) => {
       ...other
     })
   );
-});
+};
 
 ModalIcon.displayName = 'onesy-ModalIcon';
 

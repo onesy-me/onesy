@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileWrenchFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileWrenchFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileWrenchFilled'
 
       short_name='MobileWrench'
@@ -19,7 +15,7 @@ const IconMaterialMobileWrenchFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M480-720q17 0 28.5-11.5T520-760q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760q0 17 11.5 28.5T480-720ZM200-40v-880h560v204h40v192h-40v68q-23-11-48-17.5t-52-6.5q-91 0-155.5 64.5T440-260q0 91 64.5 155.5T660-40H200Zm595 0-88-88q-11 5-23 6.5t-24 1.5q-59 0-99.5-40.5T520-259q0-18 4.5-35t12.5-32l95 95 56-57-95-94q15-8 32-12.5t35-4.5q58 0 99 40.5t41 99.5q0 12-2 24t-7 23l89 88-85 84Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileWrenchFilled.displayName = 'OnesyIconMaterialMobileWrenchFilled';
 

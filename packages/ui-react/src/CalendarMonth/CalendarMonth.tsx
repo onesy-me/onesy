@@ -320,7 +320,7 @@ export interface IDay {
   onesyDate: OnesyDate;
 }
 
-const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: any) => {
+const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -969,8 +969,6 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
 
   return (
     <Line
-      ref={ref}
-
       gap={0}
 
       direction='column'
@@ -1069,7 +1067,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = React.forwardRef((props__, ref: 
       )}
     </Line>
   );
-});
+};
 
 CalendarMonth.displayName = 'onesy-CalendarMonth';
 

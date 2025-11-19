@@ -39,7 +39,7 @@ export type IBottomAppBar = ISurface & {
   fixed?: boolean;
 };
 
-const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any) => {
+const BottomAppBar: React.FC<IBottomAppBar> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBottomAppBar?.props?.default, ...props_ };
@@ -68,8 +68,6 @@ const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any
 
   return (
     <Surface
-      ref={ref}
-
       color={color}
 
       tonal={tonal}
@@ -109,7 +107,7 @@ const BottomAppBar: React.FC<IBottomAppBar> = React.forwardRef((props_, ref: any
       {children}
     </Surface>
   );
-});
+};
 
 BottomAppBar.displayName = 'onesy-BottomAppBar';
 

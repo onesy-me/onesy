@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFormatTextClip = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFormatTextClip = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FormatTextClip'
 
       short_name='FormatTextClip'
@@ -19,7 +15,7 @@ const IconMaterialFormatTextClip = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-160v-640h80v640h-80Zm560 0v-280H320v-80h400v-280h80v640h-80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFormatTextClip.displayName = 'OnesyIconMaterialFormatTextClip';
 

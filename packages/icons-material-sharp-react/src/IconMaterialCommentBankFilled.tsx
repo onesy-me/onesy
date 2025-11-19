@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCommentBankFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCommentBankFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CommentBankFilled'
 
       short_name='CommentBank'
@@ -19,7 +15,7 @@ const IconMaterialCommentBankFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="m500-520 100-60 100 60v-280H500v280ZM80-80v-800h800v640H240L80-80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCommentBankFilled.displayName = 'OnesyIconMaterialCommentBankFilled';
 

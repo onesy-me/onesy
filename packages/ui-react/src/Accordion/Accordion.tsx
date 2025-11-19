@@ -171,7 +171,7 @@ const AccordionDelays = {
   }
 };
 
-const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
+const Accordion: React.FC<IAccordion> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAccordion?.props?.default, ...props_ };
@@ -196,6 +196,8 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     elevation = 0,
@@ -533,7 +535,7 @@ const Accordion: React.FC<IAccordion> = React.forwardRef((props_, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 Accordion.displayName = 'onesy-Accordion';
 

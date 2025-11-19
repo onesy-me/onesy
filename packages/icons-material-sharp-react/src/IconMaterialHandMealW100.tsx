@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHandMealW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHandMealW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HandMealW100'
 
       short_name='HandMeal'
@@ -19,7 +15,7 @@ const IconMaterialHandMealW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M92-439v-28h75q1-134 87.5-225T466-788v-40h28v40q125 5 211.5 96T793-467h75v28H92Zm103-28h570q-1-126-84-210t-201-84q-118 0-201 84t-84 210Zm285 0Zm152 28H308v239h276l200-165q-12-13-26.5-19.5T727-393q-16-1-31.5 3.5T666-374l-60 48H428v-28h168l53-43q6-5 8-12t-1-15q-3-8-9.5-11.5T632-439Zm-352 0H160v279h120v-279Zm25 308H132v-336h499q51 0 95.5 22.5T806-384l19 21-230 192H305v40Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHandMealW100.displayName = 'OnesyIconMaterialHandMealW100';
 

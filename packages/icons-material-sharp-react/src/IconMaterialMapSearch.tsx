@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMapSearch = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMapSearch = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MapSearch'
 
       short_name='MapSearch'
@@ -19,7 +15,7 @@ const IconMaterialMapSearch = React.forwardRef((props: IIcon, ref) => {
       <path d="M640-560v-126 126ZM120-111v-647l240-82 240 84 240-93v396q-15-23-35.5-42T760-528v-204l-120 46v126q-21 0-41 3.5T560-546v-140l-160-56v523L120-111Zm80-117 120-46v-468l-120 40v474Zm440-12q34 0 56.5-20t23.5-60q1-34-22.5-57T640-400q-34 0-57 23t-23 57q0 34 23 57t57 23Zm0 80q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 23-5.5 43.5T778-238l102 102-56 56-102-102q-18 11-38.5 16.5T640-160ZM320-742v468-468Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMapSearch.displayName = 'OnesyIconMaterialMapSearch';
 

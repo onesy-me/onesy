@@ -57,7 +57,7 @@ export type ITableHead = ISurface & {
   TableRowLoaderProps?: any;
 };
 
-const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
+const TableHead: React.FC<ITableHead> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableHead?.props?.default, ...props_ };
@@ -69,6 +69,8 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
   const LinearProgress = theme?.elements?.LinearProgress || LinearProgressElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'themed',
     size = 'regular',
@@ -287,7 +289,7 @@ const TableHead: React.FC<ITableHead> = React.forwardRef((props_, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 TableHead.displayName = 'onesy-TableHead';
 

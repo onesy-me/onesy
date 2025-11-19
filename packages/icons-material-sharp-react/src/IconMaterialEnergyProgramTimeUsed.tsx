@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialEnergyProgramTimeUsed = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialEnergyProgramTimeUsed = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='EnergyProgramTimeUsed'
 
       short_name='EnergyProgramTimeUsed'
@@ -19,7 +15,7 @@ const IconMaterialEnergyProgramTimeUsed = React.forwardRef((props: IIcon, ref) =
       <path d="M400-440ZM40-80v-720h400v80H120v560h560v-240h80v320H40Zm160-160h80v-280h-80v280Zm160 0h80v-400h-80v400Zm160 0h80v-160h-80v160Zm200-240q-30 0-59-9t-54-26l-44 41-55-55 44-44q-16-24-24-51t-8-56q0-83 58.5-141.5T720-880h200v200q0 83-58.5 141.5T720-480Zm0-80q50 0 85-35t35-85v-120H720q-50 0-85 35t-35 85q0 13 2.5 25t7.5 24l132-132 57 56-133 133q13 6 26.5 10t27.5 4Zm-5-119Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialEnergyProgramTimeUsed.displayName = 'OnesyIconMaterialEnergyProgramTimeUsed';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTimerArrowDownFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTimerArrowDownFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TimerArrowDownFilled'
 
       short_name='TimerArrowDown'
@@ -19,7 +15,7 @@ const IconMaterialTimerArrowDownFilled = React.forwardRef((props: IIcon, ref) =>
       <path d="M340-160q-125 0-212.5-87.5T40-460q0-125 87.5-212.5T340-760q52 0 98 16.5t84 45.5l14-14q11-11 27.5-11.5T592-712q11 11 11 28t-11 28l-14 14q29 38 45.5 84.5T640-460q0 125-87.5 212.5T340-160Zm-60-640q-17 0-28.5-11.5T240-840q0-17 11.5-28.5T280-880h120q17 0 28.5 11.5T440-840q0 17-11.5 28.5T400-800H280Zm60 380q17 0 28.5-11.5T380-460v-120q0-17-11.5-28.5T340-620q-17 0-28.5 11.5T300-580v120q0 17 11.5 28.5T340-420Zm412 232-92-92q-11-12-11-28.5t12-27.5q12-11 28.5-11.5T717-336l23 23v-447q0-17 11.5-28.5T780-800q17 0 28.5 11.5T820-760v448l24-24q11-11 28-11t28 11q11 11 11 28t-11 28l-92 92q-12 12-28 12t-28-12Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTimerArrowDownFilled.displayName = 'OnesyIconMaterialTimerArrowDownFilled';
 

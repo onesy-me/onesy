@@ -79,7 +79,7 @@ export type ISnackbars = IBaseElement & {
   SnackbarProps?: IPropsAny;
 };
 
-const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
+const Snackbars: React.FC<ISnackbars> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySnackbars?.props?.default, ...props_ };
@@ -93,6 +93,8 @@ const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
   const Expand = theme?.elements?.Expand || ExpandElement;
 
   const {
+    ref,
+
     max = 4,
     position = 'bottom',
     alignment = 'start',
@@ -329,7 +331,7 @@ const Snackbars: React.FC<ISnackbars> = React.forwardRef((props_, ref: any) => {
       </Line>
     </SnackbarsContext.Provider>
   );
-});
+};
 
 Snackbars.displayName = 'onesy-Snackbars';
 

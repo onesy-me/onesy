@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialEqualizer = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialEqualizer = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Equalizer'
 
       short_name='Equalizer'
@@ -19,7 +15,7 @@ const IconMaterialEqualizer = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-160v-320h160v320H160Zm240 0v-640h160v640H400Zm240 0v-440h160v440H640Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialEqualizer.displayName = 'OnesyIconMaterialEqualizer';
 

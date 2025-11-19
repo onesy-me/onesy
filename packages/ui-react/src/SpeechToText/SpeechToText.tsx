@@ -57,7 +57,7 @@ export type ISpeechToText = Omit<ILine, 'onChange'> & {
   IconProps?: IPropsAny;
 };
 
-const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any) => {
+const SpeechToText: React.FC<ISpeechToText> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -71,6 +71,8 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     SpeechRecognition: SpeechRecognition_,
@@ -305,7 +307,7 @@ const SpeechToText: React.FC<ISpeechToText> = React.forwardRef((props_, ref: any
       </Tooltip>
     </Line>
   );
-});
+};
 
 SpeechToText.displayName = 'onesy-SpeechToText';
 

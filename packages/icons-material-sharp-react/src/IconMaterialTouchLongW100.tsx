@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTouchLongW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTouchLongW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TouchLongW100'
 
       short_name='TouchLong'
@@ -19,7 +15,7 @@ const IconMaterialTouchLongW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M748-132H380L158-430l23-26 155 74v-312h28v357l-157-74 189 251h324v-304H484v-28h264v360ZM558-312ZM276-754v202q-33-20-53.5-53T202-679.9q0-62.1 43-105.1 43-43 105-43t105 43q43 43 43 105.1 0 41.9-20.5 74.9-20.5 33-53.5 53v-202H276Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTouchLongW100.displayName = 'OnesyIconMaterialTouchLongW100';
 

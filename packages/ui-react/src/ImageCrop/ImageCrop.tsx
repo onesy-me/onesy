@@ -322,7 +322,7 @@ export type IImageCrop = IBaseElement & {
   TooltipProps?: IPropsAny;
 };
 
-const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
+const ImageCrop: React.FC<IImageCrop> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageCrop?.props?.default, ...props_ };
@@ -330,6 +330,8 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
   const Tooltip = theme?.elements?.Tooltip || TooltipElement;
 
   const {
+    ref,
+
     // url, datauri or canvas
     image: image_,
 
@@ -1620,7 +1622,7 @@ const ImageCrop: React.FC<IImageCrop> = React.forwardRef((props_, ref: any) => {
       </div>
     </Component>
   );
-});
+};
 
 ImageCrop.displayName = 'onesy-ImageCrop';
 

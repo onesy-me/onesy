@@ -16,7 +16,7 @@ export type IAutoCompleteCurrency = IAutoComplete & {
 
 };
 
-const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((props_, ref: any) => {
+const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -65,8 +65,6 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((
 
   return (
     <AutoComplete
-      ref={ref}
-
       valueInputDefault={valueInputDefault}
 
       options={options}
@@ -86,7 +84,7 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = React.forwardRef((
       {...other}
     />
   );
-});
+};
 
 AutoCompleteCurrency.displayName = 'onesy-AutoCompleteCurrency';
 

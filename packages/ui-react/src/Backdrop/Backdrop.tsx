@@ -57,7 +57,7 @@ export type IBackdrop = ILine & {
   onClose?: TMethod;
 };
 
-const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
+const Backdrop: React.FC<IBackdrop> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBackdrop?.props?.default, ...props_ };
@@ -69,6 +69,8 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
   const Focus = theme?.elements?.Focus || FocusElement;
 
   const {
+    ref,
+
     open: open_,
     invisible,
 
@@ -244,7 +246,7 @@ const Backdrop: React.FC<IBackdrop> = React.forwardRef((props_, ref: any) => {
       </Focus>
     </Line>
   );
-});
+};
 
 Backdrop.displayName = 'onesy-Backdrop';
 

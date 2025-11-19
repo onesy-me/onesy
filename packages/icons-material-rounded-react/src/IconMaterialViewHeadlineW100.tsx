@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialViewHeadlineW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialViewHeadlineW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ViewHeadlineW100'
 
       short_name='ViewHeadline'
@@ -19,7 +15,7 @@ const IconMaterialViewHeadlineW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M199-392q-5 0-9-4.04-4-4.03-4-10 0-5.96 4.02-9.96 4.03-4 9.98-4h561q5 0 9 4.04 4 4.03 4 10 0 5.96-4.03 9.96-4.02 4-9.97 4H199Zm0 148q-5 0-9-4.04-4-4.03-4-10 0-5.96 4.02-9.96 4.03-4 9.98-4h561q5 0 9 4.04 4 4.03 4 10 0 5.96-4.03 9.96-4.02 4-9.97 4H199Zm0-296q-5 0-9-4.04-4-4.03-4-10 0-5.96 4.02-9.96 4.03-4 9.98-4h561q5 0 9 4.04 4 4.03 4 10 0 5.96-4.03 9.96-4.02 4-9.97 4H199Zm0-148q-5 0-9-4.04-4-4.03-4-10 0-5.96 4.02-9.96 4.03-4 9.98-4h561q5 0 9 4.04 4 4.03 4 10 0 5.96-4.03 9.96-4.02 4-9.97 4H199Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialViewHeadlineW100.displayName = 'OnesyIconMaterialViewHeadlineW100';
 

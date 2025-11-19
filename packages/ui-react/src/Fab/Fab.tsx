@@ -16,7 +16,7 @@ export type IFab = IButton & {
 
 };
 
-const Fab: React.FC<IFab> = React.forwardRef((props_, ref: any) => {
+const Fab: React.FC<IFab> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFab?.props?.default, ...props_ };
@@ -35,8 +35,6 @@ const Fab: React.FC<IFab> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Button
-      ref={ref}
-
       {...props}
 
       className={classNames([
@@ -55,7 +53,7 @@ const Fab: React.FC<IFab> = React.forwardRef((props_, ref: any) => {
       fab
     />
   );
-});
+};
 
 Fab.displayName = 'onesy-Fab';
 

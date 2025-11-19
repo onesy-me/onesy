@@ -32,7 +32,7 @@ export type IIFrame = ILine & {
   WrapperProps?: IPropsAny;
 };
 
-const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
+const IFrame: React.FC<IIFrame> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIFrame?.props?.default, ...props_ };
@@ -40,6 +40,8 @@ const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
   const Line = theme?.elements?.Line || LineElement;
 
   const {
+    ref,
+
     id,
 
     src,
@@ -185,7 +187,7 @@ const IFrame: React.FC<IIFrame> = React.forwardRef((props_, ref: any) => {
       )}
     </Line>
   );
-});
+};
 
 IFrame.displayName = 'onesy-IFrame';
 

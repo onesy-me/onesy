@@ -77,7 +77,7 @@ export type ISectionMedia = ISection & {
   OtherProps?: IPropsAny;
 };
 
-const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionMedia> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -99,6 +99,8 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     value,
 
     size = 'regular',
@@ -303,7 +305,7 @@ const Element: React.FC<ISectionMedia> = React.forwardRef((props_, ref: any) => 
       </Line>
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionMedia';
 

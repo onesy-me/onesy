@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialKanjiAlcohol = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialKanjiAlcohol = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='KanjiAlcohol'
 
       short_name='KanjiAlcohol'
@@ -19,7 +15,7 @@ const IconMaterialKanjiAlcohol = React.forwardRef((props: IIcon, ref) => {
       <path d="M320-120v-440q0-50 35-85t85-35h40v-80H360v-80h440v80H680v80h40q50 0 85 35t35 85v440h-80v-40H400v40h-80Zm80-120h360v-60H400v60Zm0-140h360v-60h-40q-50 0-85-35t-35-85v-40h-40q0 26-7 51t-21 48l-38 62-68-41 37-62q8-13 12-27.5t5-30.5h-40q-17 0-28.5 11.5T400-560v180Zm160-300h40v-80h-40v80Zm160 160h40v-40q0-17-11.5-28.5T720-600h-40v40q0 17 11.5 28.5T720-520ZM176-184l-72-33 100-220 72 33-100 220Zm19-345L95-609l50-62 100 80-50 62Zm30-150-100-80 50-62 100 80-50 62Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialKanjiAlcohol.displayName = 'OnesyIconMaterialKanjiAlcohol';
 

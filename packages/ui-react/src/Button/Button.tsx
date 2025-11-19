@@ -315,7 +315,7 @@ export type IButton = Omit<ISurface, 'elevation'> & {
   IconProps?: IPropsAny;
 };
 
-const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
+const Button: React.FC<IButton> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButton?.props?.default, ...props_ };
@@ -329,6 +329,8 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     tonal = true,
     color: color_ = 'primary',
     version = 'outlined',
@@ -762,7 +764,7 @@ const Button: React.FC<IButton> = React.forwardRef((props_, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 Button.displayName = 'onesy-Button';
 

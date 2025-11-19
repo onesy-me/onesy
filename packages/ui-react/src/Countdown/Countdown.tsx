@@ -125,7 +125,7 @@ export type ICountdown = Omit<ISurface, 'version'> & {
   IconProps?: IPropsAny;
 };
 
-const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
+const Countdown: React.FC<ICountdown> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -369,8 +369,6 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Surface
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -744,7 +742,7 @@ const Countdown: React.FC<ICountdown> = React.forwardRef((props_, ref: any) => {
       </Line>
     </Surface>
   );
-});
+};
 
 Countdown.displayName = 'onesy-Countdown';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAlarmPauseW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAlarmPauseW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AlarmPauseW100'
 
       short_name='AlarmPause'
@@ -19,7 +15,7 @@ const IconMaterialAlarmPauseW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M480.06-132Q416-132 360-156t-98-66q-42-42-66-97.94-24-55.95-24-120Q172-504 196-560t66-98q42-42 97.94-66 55.95-24 120-24Q544-748 600-724t98 66q42 42 66 97.94 24 55.95 24 120Q788-376 764-320t-66 98q-42 42-97.94 66-55.95 24-120 24ZM480-440ZM240-810l20 20-130 130-20-20 130-130Zm480 0 130 130-20 20-130-130 20-20ZM480-160q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm-78-146h28v-268h-28v268Zm128 0h28v-268h-28v268Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAlarmPauseW100.displayName = 'OnesyIconMaterialAlarmPauseW100';
 

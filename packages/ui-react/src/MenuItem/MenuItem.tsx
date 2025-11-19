@@ -61,7 +61,7 @@ const ListItemDelays = {
   }
 };
 
-const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
+const MenuItem: React.FC<IMenuItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuItem?.props?.default, ...props_ };
@@ -79,6 +79,8 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
   const Fade = theme?.elements?.Fade || FadeElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
     colorSelected = props.color,
@@ -464,7 +466,7 @@ const MenuItem: React.FC<IMenuItem> = React.forwardRef((props_, ref: any) => {
       {...other}
     />
   </>;
-});
+};
 
 MenuItem.displayName = 'onesy-MenuItem';
 

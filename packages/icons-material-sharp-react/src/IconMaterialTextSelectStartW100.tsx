@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTextSelectStartW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTextSelectStartW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TextSelectStartW100'
 
       short_name='TextSelectStart'
@@ -19,7 +15,7 @@ const IconMaterialTextSelectStartW100 = React.forwardRef((props: IIcon, ref) => 
       <path d="M460-172v-40h40v40h-40Zm0-576v-40h40v40h-40Zm144 576v-40h40v40h-40Zm0-576v-40h40v40h-40Zm144 576v-40h40v40h-40Zm0-144v-40h40v40h-40Zm0-144v-40h40v40h-40Zm0-144v-40h40v40h-40Zm0-144v-40h40v40h-40ZM172-172v-28h80v-560h-80v-28h188v28h-80v560h80v28H172Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTextSelectStartW100.displayName = 'OnesyIconMaterialTextSelectStartW100';
 

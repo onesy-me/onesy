@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHighChair = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHighChair = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HighChair'
 
       short_name='HighChair'
@@ -19,7 +15,7 @@ const IconMaterialHighChair = React.forwardRef((props: IIcon, ref) => {
       <path d="m240-120 40-438-47-282h105q59 0 103.5 38t54.5 96l18 106h206v80h-76l36 400h-80l-7-80H327l-7 80h-80Zm114-480h79l-16-93q-5-29-27.5-48T338-760h-11l27 160Zm0 0h79-79Zm-20 320h251l-7-80H342l-8 80Zm15-160h222l-8-80H356l-7 80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHighChair.displayName = 'OnesyIconMaterialHighChair';
 

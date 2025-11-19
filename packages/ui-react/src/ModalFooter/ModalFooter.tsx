@@ -16,7 +16,7 @@ export type IModalFooter = ILine & {
 
 };
 
-const ModalFooter: React.FC<IModalFooter> = React.forwardRef((props_, ref: any) => {
+const ModalFooter: React.FC<IModalFooter> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalFooter?.props?.default, ...props_ };
@@ -35,8 +35,6 @@ const ModalFooter: React.FC<IModalFooter> = React.forwardRef((props_, ref: any) 
 
   return (
     <Line
-      ref={ref}
-
       direction='row'
 
       align='center'
@@ -59,7 +57,7 @@ const ModalFooter: React.FC<IModalFooter> = React.forwardRef((props_, ref: any) 
       {children}
     </Line>
   );
-});
+};
 
 ModalFooter.displayName = 'onesy-ModalFooter';
 

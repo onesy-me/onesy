@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialNestFarsightDualW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialNestFarsightDualW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='NestFarsightDualW100'
 
       short_name='NestFarsightDual'
@@ -19,7 +15,7 @@ const IconMaterialNestFarsightDualW100 = React.forwardRef((props: IIcon, ref) =>
       <path d="M466-292h28v-88l68 68 20-20-88-88v-46h47l88 87 19-20-67-67h88v-28h-88l67-68-19-20-88 88h-47v-47l88-88-20-19-68 67v-88h-28v377Zm14.17 160q-72.17 0-135.73-27.39-63.56-27.39-110.57-74.35-47.02-46.96-74.44-110.43Q132-407.65 132-479.83q0-72.17 27.39-135.73 27.39-63.56 74.35-110.57 46.96-47.02 110.43-74.44Q407.65-828 479.83-828q72.17 0 135.73 27.39 63.56 27.39 110.57 74.35 47.02 46.96 74.44 110.43Q828-552.35 828-480.17q0 72.17-27.39 135.73-27.39 63.56-74.35 110.57-46.96 47.02-110.43 74.44Q552.35-132 480.17-132Zm-.17-28q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM370-309l17-22q-22-17-31.5-33.34Q346-380.69 346-400q0-13.82 6.5-31.41T375-478q17-30 24-49.99 7-20 7-37.01 0-24.44-14-45.72Q378-632 350-652l-16 23q23 17 33.5 32t10.5 33q0 13-6 29t-22 44q-17 32-24.5 52.57T318-399q0 24.35 13 46.68Q344-330 370-309Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialNestFarsightDualW100.displayName = 'OnesyIconMaterialNestFarsightDualW100';
 

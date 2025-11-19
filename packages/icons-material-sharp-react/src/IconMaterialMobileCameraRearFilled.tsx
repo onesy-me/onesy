@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileCameraRearFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileCameraRearFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileCameraRearFilled'
 
       short_name='MobileCameraRear'
@@ -19,7 +15,7 @@ const IconMaterialMobileCameraRearFilled = React.forwardRef((props: IIcon, ref) 
       <path d="m394-60-56-56 44-44H200v-80h182l-44-44 56-56 140 140L394-60Zm166-100v-80h200v80H560Zm-80-600q-17 0-28.5 11.5T440-720q0 17 11.5 28.5T480-680q17 0 28.5-11.5T520-720q0-17-11.5-28.5T480-760ZM200-280v-600h560v204h40v192h-40v204H511L394-397 277-280h-77Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileCameraRearFilled.displayName = 'OnesyIconMaterialMobileCameraRearFilled';
 

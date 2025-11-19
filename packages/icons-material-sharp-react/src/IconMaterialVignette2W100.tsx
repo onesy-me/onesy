@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVignette2W100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVignette2W100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Vignette2W100'
 
       short_name='Vignette2'
@@ -19,7 +15,7 @@ const IconMaterialVignette2W100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M172-172v-616h616v616H172Zm28-28h560v-560H200v560Zm0 0v-560 560Zm280-78q85 0 144-58.5T683-480q0-85-59.21-144T480-683q-85 0-143.5 59.21T278-480q0 85 58.5 143.5T480-278Zm-.87-27Q407-305 355.5-356.37 304-407.73 304-479.87 304-552 355.37-603q51.36-51 123.5-51 72.13 0 123.63 51.16t51.5 123q0 71.84-51.37 123.34-51.36 51.5-123.5 51.5Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVignette2W100.displayName = 'OnesyIconMaterialVignette2W100';
 

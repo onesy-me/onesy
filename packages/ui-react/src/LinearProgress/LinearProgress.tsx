@@ -265,7 +265,7 @@ export type ILinearProress = IBaseElement & {
   reverse?: boolean;
 };
 
-const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: any) => {
+const LinearProgress: React.FC<ILinearProress> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinearProgress?.props?.default, ...props_ };
@@ -346,8 +346,6 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
 
   return (
     <Component
-      ref={ref}
-
       role='meter'
 
       className={classNames([
@@ -454,7 +452,7 @@ const LinearProgress: React.FC<ILinearProress> = React.forwardRef((props_, ref: 
       )}
     </Component>
   );
-});
+};
 
 LinearProgress.displayName = 'onesy-LinearProgress';
 

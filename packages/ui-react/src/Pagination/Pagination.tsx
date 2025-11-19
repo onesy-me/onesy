@@ -66,7 +66,7 @@ export type IPagination = Omit<ILine, 'onChange'> & {
   IconLast?: IElementReference;
 };
 
-const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) => {
+const Pagination: React.FC<IPagination> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPagination?.props?.default, ...props_ };
@@ -184,8 +184,6 @@ const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) =>
 
   return (
     <Line
-      ref={ref}
-
       gap={0.5}
 
       wrap='wrap'
@@ -269,7 +267,7 @@ const Pagination: React.FC<IPagination> = React.forwardRef((props_, ref: any) =>
       )}
     </Line>
   );
-});
+};
 
 Pagination.displayName = 'onesy-Pagination';
 

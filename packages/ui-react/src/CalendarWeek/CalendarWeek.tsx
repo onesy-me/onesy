@@ -161,7 +161,7 @@ export type ICalendarWeek = ILine & {
   day?: boolean;
 };
 
-const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any) => {
+const CalendarWeek: React.FC<ICalendarWeek> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -571,8 +571,6 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
 
   return (
     <Line
-      ref={ref}
-
       gap={1.5}
 
       flex
@@ -856,7 +854,7 @@ const CalendarWeek: React.FC<ICalendarWeek> = React.forwardRef((props_, ref: any
       </Line>
     </Line>
   );
-});
+};
 
 CalendarWeek.displayName = 'onesy-CalendarWeek';
 

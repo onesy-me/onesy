@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialWashokuW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialWashokuW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='WashokuW100'
 
       short_name='Washoku'
@@ -19,7 +15,7 @@ const IconMaterialWashokuW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="m309-172-56-162q-33-16-56-44t-32-63l-32-126h695l-32 126q-9 35-32 63t-56 44l-55 162H309Zm20-28h303l42-119H287l42 119Zm-4-147h311q48 0 85-27.5t48-72.5l24-92H169l23 92q11 45 48 72.5t85 27.5Zm434-220h-28v-69q0-29-21-48.5T658-704q-26 0-49 15.5T575-647h-39l-5-19q-15-51-35.5-72.5T443-760q-26 0-44.5 12.5T369-712l-12 26h-66q-26 0-43.5 17T230-627v60h-28v-60q0-36 27.5-61.5T302-714q4 0 14.5.5t22.5-.5q14-34 41.5-54t62.5-20q41 0 70 28t45 84q20-28 45-42t54-14q43 0 72.5 28t29.5 68v69Zm-278 28ZM329-200h303-303Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialWashokuW100.displayName = 'OnesyIconMaterialWashokuW100';
 

@@ -15,7 +15,7 @@ const src = path.resolve(wd, './src');
 const prefix = 'IconMaterial';
 
 let made = 0;
-let icons_ = 0;
+let processed = 0;
 
 const valueMake = async (url, name, short_name) => {
   const valueFile = await OnesyNode.file.get(url, false);
@@ -24,9 +24,7 @@ const valueMake = async (url, name, short_name) => {
 
   let value = (valueFile).match(/<svg[^>]+?>([^$]+?)<\/svg>/)[1];
 
-  value = `import React from 'react';
-
-import { Icon, IIcon } from '@onesy/ui-react';
+  value = `import { Icon, IIcon } from '@onesy/ui-react';
 
 const ${prefix}${name} = (props: IIcon) => {
 
@@ -71,7 +69,6 @@ async function method() {
 
   const variants = {
     materialsymbolsrounded: 'Rounded'
-    // materialsymbolssharp: 'Sharp'
   };
 
   async function makeIcon(icon) {
@@ -85,8 +82,6 @@ async function method() {
 
     // Variants
     for (const item of Object.keys(variants)) {
-      const variant = variants[item];
-
       const files = (await fg(path.join(rootIcon, item, '/**/*_24px.svg'), { onlyFiles: true }));
 
       for (const url of files) {
@@ -119,14 +114,7 @@ async function method() {
       }
     }
 
-    // // Two tone
-    // const twoTone = (await fg(path.join(rootSrc, `/**/${icon}/materialiconstwotone/24px.svg`), { onlyFiles: true }))[0];
-
-    // const exists_ = (await fg(path.join(src, `${prefix}${iconName}TwoTone.tsx`)))[0];
-
-    // if (!exists_) await valueMake(twoTone || iconDefault, `${iconName}TwoTone`, iconName);
-
-    console.log('Icons', ++icons_);
+    console.log('Icons', ++processed);
 
     console.log('Made', made);
   }

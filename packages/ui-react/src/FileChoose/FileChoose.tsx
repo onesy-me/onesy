@@ -75,7 +75,7 @@ export type IFileChoose = Omit<ILine, 'onClick' | 'onChange'> & {
   ComponentProps?: IPropsAny;
 };
 
-const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) => {
+const FileChoose: React.FC<IFileChoose> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFileChoose?.props?.default, ...props_ };
@@ -91,6 +91,8 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
   const Tree = theme?.elements?.Tree || TreeElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
 
@@ -378,7 +380,7 @@ const FileChoose: React.FC<IFileChoose> = React.forwardRef((props_, ref: any) =>
       )}
     </Wrapper>
   );
-});
+};
 
 FileChoose.displayName = 'onesy-FileChoose';
 

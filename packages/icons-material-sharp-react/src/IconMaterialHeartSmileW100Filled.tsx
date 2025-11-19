@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHeartSmileW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHeartSmileW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HeartSmileW100Filled'
 
       short_name='HeartSmile'
@@ -19,7 +15,7 @@ const IconMaterialHeartSmileW100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M480-366q49 0 88.5-28.5T625-470l-30 1q-15 35-46.25 55T480-394q-37.5 0-68.75-20T365-469h-30q17 47 56.5 75t88.5 28ZM370.06-564q10.94 0 18.44-7.56 7.5-7.55 7.5-18.5 0-10.94-7.56-18.44-7.55-7.5-18.5-7.5-10.94 0-18.44 7.56-7.5 7.55-7.5 18.5 0 10.94 7.56 18.44 7.55 7.5 18.5 7.5Zm220 0q10.94 0 18.44-7.56 7.5-7.55 7.5-18.5 0-10.94-7.56-18.44-7.55-7.5-18.5-7.5-10.94 0-18.44 7.56-7.5 7.55-7.5 18.5 0 10.94 7.56 18.44 7.55 7.5 18.5 7.5ZM480-172l-22-20q-97-89-160.5-152.5T197.5-456q-36.5-48-51-86T132-619q0-72.21 48.5-120.6Q229-788 300-788q53 0 99 28.5t81 83.5q35-55 81-83.5t99-28.5q71 0 119.5 48.4Q828-691.21 828-619q0 39-14.5 77t-51 86Q726-408 663-344.5T502-192l-22 20Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHeartSmileW100Filled.displayName = 'OnesyIconMaterialHeartSmileW100Filled';
 

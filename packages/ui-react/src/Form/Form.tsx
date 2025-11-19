@@ -89,7 +89,7 @@ export type IForm = Omit<ILine, 'onSubmit'> & {
   AccordionMainProps?: any;
 };
 
-const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
+const Form: React.FC<IForm> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyForm?.props?.default, ...props_ };
@@ -225,8 +225,6 @@ const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
         {...other}
       >
         <Line
-          ref={ref}
-
           gap={size === 'large' ? 3 : size === 'regular' ? 2.5 : 2}
 
           direction='column'
@@ -270,8 +268,6 @@ const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       gap={size === 'large' ? 3 : size === 'regular' ? 2.5 : 2}
 
       direction='column'
@@ -386,7 +382,7 @@ const Form: React.FC<IForm> = React.forwardRef((props_, ref: any) => {
       )}
     </Component>
   );
-});
+};
 
 Form.displayName = 'onesy-Form';
 

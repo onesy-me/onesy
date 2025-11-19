@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFormatAlignJustifyFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFormatAlignJustifyFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FormatAlignJustifyFilled'
 
       short_name='FormatAlignJustify'
@@ -19,7 +15,7 @@ const IconMaterialFormatAlignJustifyFilled = React.forwardRef((props: IIcon, ref
       <path d="M120-120v-80h720v80H120Zm0-160v-80h720v80H120Zm0-160v-80h720v80H120Zm0-160v-80h720v80H120Zm0-160v-80h720v80H120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFormatAlignJustifyFilled.displayName = 'OnesyIconMaterialFormatAlignJustifyFilled';
 

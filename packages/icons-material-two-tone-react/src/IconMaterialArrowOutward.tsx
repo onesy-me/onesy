@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialArrowOutward = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialArrowOutward = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ArrowOutward'
 
       short_name='ArrowOutward'
@@ -19,7 +15,7 @@ const IconMaterialArrowOutward = React.forwardRef((props: IIcon, ref) => {
       <g><rect fill="none" height="24" width="24"/></g><g><polygon points="6,6 6,8 14.59,8 5,17.59 6.41,19 16,9.41 16,18 18,18 18,6"/></g>
     </Icon>
   );
-});
+};
 
 IconMaterialArrowOutward.displayName = 'OnesyIconMaterialArrowOutward';
 

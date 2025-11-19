@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTileSmall = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTileSmall = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TileSmall'
 
       short_name='TileSmall'
@@ -19,7 +15,7 @@ const IconMaterialTileSmall = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-200v-240h320v240H120Zm400 0v-240h320v240H520Zm-320-80h160v-80H200v80Zm400 0h160v-80H600v80ZM120-520v-240h320v240H120Zm400 0v-240h320v240H520Zm-320-80h160v-80H200v80Zm80 280Zm400 0ZM280-640Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTileSmall.displayName = 'OnesyIconMaterialTileSmall';
 

@@ -10,12 +10,10 @@ import { staticClassName } from '../utils';
 import { IRef, IColor } from '../types';
 import Icon from '../Icon';
 
-const IconMaterialIndeterminateCheckBox = React.forwardRef((props: any, ref) => {
+const IconMaterialIndeterminateCheckBox = props => {
 
   return (
     <Icon
-      ref={ref}
-
       name='IndeterminateCheckBox'
 
       short_name='IndeterminateCheckBox'
@@ -25,7 +23,7 @@ const IconMaterialIndeterminateCheckBox = React.forwardRef((props: any, ref) => 
       <path d='M7 13H17V11H7V13Z' />
     </Icon>
   );
-});
+};
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -231,7 +229,7 @@ export type ICheckbox = Omit<IIconButton, 'onChange'> & {
   disabled?: boolean;
 };
 
-const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
+const Checkbox: React.FC<ICheckbox> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...props_, ...theme?.ui?.elements?.onesyCheckbox?.props?.default };
@@ -379,8 +377,6 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
 
   return (
     <IconButton
-      ref={ref}
-
       tabIndex={!disabled ? 0 : -1}
 
       color={colorValue}
@@ -542,7 +538,7 @@ const Checkbox: React.FC<ICheckbox> = React.forwardRef((props_, ref: any) => {
       )}
     </IconButton>
   );
-});
+};
 
 Checkbox.displayName = 'onesy-Checkbox';
 

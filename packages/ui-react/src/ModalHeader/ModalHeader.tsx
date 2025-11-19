@@ -15,7 +15,7 @@ export type IModalHeader = ILine & {
   align?: TLineAlign;
 };
 
-const ModalHeader: React.FC<IModalHeader> = React.forwardRef((props_, ref: any) => {
+const ModalHeader: React.FC<IModalHeader> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalHeader?.props?.default, ...props_ };
@@ -34,8 +34,6 @@ const ModalHeader: React.FC<IModalHeader> = React.forwardRef((props_, ref: any) 
 
   return (
     <Line
-      ref={ref}
-
       gap={2}
 
       direction='column'
@@ -60,7 +58,7 @@ const ModalHeader: React.FC<IModalHeader> = React.forwardRef((props_, ref: any) 
       {children}
     </Line>
   );
-});
+};
 
 ModalHeader.displayName = 'onesy-ModalHeader';
 

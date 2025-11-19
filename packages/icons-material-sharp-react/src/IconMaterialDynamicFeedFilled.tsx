@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialDynamicFeedFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialDynamicFeedFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='DynamicFeedFilled'
 
       short_name='DynamicFeed'
@@ -19,7 +15,7 @@ const IconMaterialDynamicFeedFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M80-120v-360h80v280h360v80H80Zm160-160v-360h80v280h360v80H240Zm160-160v-400h480v400H400Zm80-80h320v-160H480v160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialDynamicFeedFilled.displayName = 'OnesyIconMaterialDynamicFeedFilled';
 

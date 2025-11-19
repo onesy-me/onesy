@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHorizontalRule = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHorizontalRule = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HorizontalRule'
 
       short_name='HorizontalRule'
@@ -19,7 +15,7 @@ const IconMaterialHorizontalRule = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-440v-80h640v80H160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHorizontalRule.displayName = 'OnesyIconMaterialHorizontalRule';
 

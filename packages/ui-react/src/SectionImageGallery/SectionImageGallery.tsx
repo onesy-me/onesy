@@ -23,7 +23,7 @@ export type ISectionImageGallery = ISection & {
   ImageGalleryProps?: IImageGallery;
 };
 
-const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionImageGallery> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionImageGallery?.props?.default, ...props_ };
@@ -33,6 +33,8 @@ const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: a
   const ImageGallery = theme?.elements?.ImageGallery || ImageGalleryElement;
 
   const {
+    ref,
+
     values,
 
     value,
@@ -85,7 +87,7 @@ const Element: React.FC<ISectionImageGallery> = React.forwardRef((props_, ref: a
       )}
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionImageGallery';
 

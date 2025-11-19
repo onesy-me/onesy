@@ -68,7 +68,7 @@ export type ISectionReviews = ISection & {
   ReviewsProps?: IPropsAny;
 };
 
-const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionReviews> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionReviews?.props?.default, ...props_ };
@@ -84,6 +84,8 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
   const Rating = theme?.elements?.Rating || RatingElement;
 
   const {
+    ref,
+
     values = [],
 
     size = 'regular',
@@ -299,7 +301,7 @@ const Element: React.FC<ISectionReviews> = React.forwardRef((props_, ref: any) =
       </Line>
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionReviews';
 

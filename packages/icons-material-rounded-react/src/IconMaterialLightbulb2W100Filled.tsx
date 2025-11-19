@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLightbulb2W100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLightbulb2W100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Lightbulb2W100Filled'
 
       short_name='Lightbulb2'
@@ -19,7 +15,7 @@ const IconMaterialLightbulb2W100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M419.13-260q-25.13 0-42.63-17.63Q359-295.25 359-320v-86q-50-32-78.5-83T252-599q0-95 66.31-162t161.5-67q95.19 0 161.69 66.36Q708-695.27 708-600q0 60-28.5 111T601-406v86q0 24.75-17.62 42.37Q565.75-260 541-260H419.13ZM409-132q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h142q5.95 0 9.97 4.04 4.03 4.03 4.03 10 0 5.96-4.03 9.96-4.02 4-9.97 4H409Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLightbulb2W100Filled.displayName = 'OnesyIconMaterialLightbulb2W100Filled';
 

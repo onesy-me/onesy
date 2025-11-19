@@ -68,7 +68,7 @@ export type IScreenCapture = ISurface & {
   ImageCropProps?: IPropsAny;
 };
 
-const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: any) => {
+const ScreenCapture: React.FC<IScreenCapture> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -90,6 +90,8 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
   const Portal = theme?.elements?.Portal || PortalElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -626,7 +628,7 @@ const ScreenCapture: React.FC<IScreenCapture> = React.forwardRef((props_, ref: a
       )}
     </Surface>
   );
-});
+};
 
 ScreenCapture.displayName = 'onesy-ScreenCapture';
 

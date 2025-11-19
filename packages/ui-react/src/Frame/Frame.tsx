@@ -77,7 +77,7 @@ export type IFrame = ILine & {
   WrapperProps?: any;
 };
 
-const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
+const Frame: React.FC<IFrame> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -206,8 +206,6 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={0}
 
       align='center'
@@ -336,7 +334,7 @@ const Frame: React.FC<IFrame> = React.forwardRef((props_, ref: any) => {
       </Line>
     </Line>
   );
-});
+};
 
 Frame.displayName = 'onesy-Frame';
 

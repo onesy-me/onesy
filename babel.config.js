@@ -10,7 +10,7 @@ module.exports = function (api) {
   const envs = {
     react: {
       presets: [
-        '@babel/preset-react'
+        ['@babel/preset-react', { runtime: 'automatic' }]
       ]
     }
   };

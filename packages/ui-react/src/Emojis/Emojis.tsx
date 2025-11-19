@@ -189,7 +189,7 @@ export type IEmojis = Omit<IMenu, 'onSelect'> & {
   tabs?: boolean;
 };
 
-const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
+const Emojis: React.FC<IEmojis> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -591,7 +591,7 @@ const Emojis: React.FC<IEmojis> = React.forwardRef((props_, ref: any) => {
       {...other}
     />
   );
-});
+};
 
 Emojis.displayName = 'onesy-Emojis';
 

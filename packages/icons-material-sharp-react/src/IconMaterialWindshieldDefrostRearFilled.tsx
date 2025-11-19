@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialWindshieldDefrostRearFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialWindshieldDefrostRearFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='WindshieldDefrostRearFilled'
 
       short_name='WindshieldDefrostRear'
@@ -19,7 +15,7 @@ const IconMaterialWindshieldDefrostRearFilled = React.forwardRef((props: IIcon, 
       <path d="M760-240v-80h40v-400H160v400h40v80H80v-560h800v560H760Zm-79 102-66-44 13-21q6-9 9-18.5t3-20.5q0-14-5-27t-15-23q-21-21-32.5-48.5T576-398q0-23 6.5-44t18.5-40l13-20 67 44-14 21q-6 9-8.5 18.5T656-398q0 14 5 27t15 23q21 21 32.5 48.5T720-242q0 23-6.5 44T695-158l-14 20Zm-168 0-66-44 13-21q6-9 9-18.5t3-20.5q0-14-5-27t-15-23q-21-21-32.5-48.5T408-398q0-23 6.5-44t18.5-40l13-20 67 44-14 21q-6 9-8.5 18.5T488-398q0 14 5 27t15 23q21 21 32.5 48.5T552-242q0 23-6.5 44T527-158l-14 20Zm-167 0-67-44 14-21q6-9 9-18.5t3-20.5q0-14-5.5-27T284-292q-21-21-32.5-48.5T240-398q0-23 6-44t19-40l14-20 67 44-14 21q-6 8-9 18t-3 21q0 14 5 27t15 23q21 21 32.5 48.5T384-242q0 23-6.5 44T359-158l-13 20Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialWindshieldDefrostRearFilled.displayName = 'OnesyIconMaterialWindshieldDefrostRearFilled';
 

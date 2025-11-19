@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMediaBluetoothOff = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMediaBluetoothOff = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MediaBluetoothOff'
 
       short_name='MediaBluetoothOff'
@@ -19,7 +15,7 @@ const IconMaterialMediaBluetoothOff = React.forwardRef((props: IIcon, ref) => {
       <path d="M792-56 632-216l-24 24-34-34 24-24-158-158v128q0 66-47 113t-113 47q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T360-418v-70L56-792l56-56 736 736-56 56Zm56-170L576-496l32-32 110 110v-182h24l138 136-104 104 104 102-32 32Zm-82-192 46-46-46-44v90ZM440-634l-80-80v-126h240v160H440v46Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMediaBluetoothOff.displayName = 'OnesyIconMaterialMediaBluetoothOff';
 

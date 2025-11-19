@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTvOptionsEditChannelsFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTvOptionsEditChannelsFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TvOptionsEditChannelsFilled'
 
       short_name='TvOptionsEditChannels'
@@ -19,7 +15,7 @@ const IconMaterialTvOptionsEditChannelsFilled = React.forwardRef((props: IIcon, 
       <path d="M80-320v-80h80v80H80Zm0-160v-80h80v80H80Zm0-160v-80h80v80H80Zm160 320v-80h160v80H240Zm0-160v-80h520v80H240Zm0-160v-80h520v80H240Zm398 480L468-330l57-57 113 113 226-226 56 58-282 282Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTvOptionsEditChannelsFilled.displayName = 'OnesyIconMaterialTvOptionsEditChannelsFilled';
 

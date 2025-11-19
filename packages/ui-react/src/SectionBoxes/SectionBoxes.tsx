@@ -119,7 +119,7 @@ export type ISectionBoxes = ISection & {
   ItemsProps?: IPropsAny;
 };
 
-const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionBoxes> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -135,6 +135,8 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
   const Button = theme?.elements?.Button || ButtonElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     values: values_ = [],
@@ -459,7 +461,7 @@ const Element: React.FC<ISectionBoxes> = React.forwardRef((props_, ref: any) => 
       </Line>
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionBoxes';
 

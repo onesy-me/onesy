@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVoicemail2W100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVoicemail2W100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Voicemail2W100'
 
       short_name='Voicemail2'
@@ -19,7 +15,7 @@ const IconMaterialVoicemail2W100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M618-394q37 0 63-25t26-61q0-36-26-61.5T618-567q-36 0-62 25.5T530-480q0 17 6 31.5t17 26.5H407q11-12 17-26.5t6-31.5q0-36-26-61.5T342-567q-36 0-62 25.5T254-480q0 36 26 61t62 25h276Zm-276-28q-25 0-42.5-17T282-480q0-25 17.5-42t42.5-17q25 0 43 17t18 42q0 25-18 41.5T342-422Zm276 0q-25 0-42.5-17T558-480q0-25 17.5-42t42.5-17q25 0 43 17t18 42q0 25-18 41.5T618-422ZM192-212q-26 0-43-17t-17-43v-416q0-26 17-43t43-17h576q26 0 43 17t17 43v416q0 26-17 43t-43 17H192Zm0-28h576q12 0 22-10t10-22v-416q0-12-10-22t-22-10H192q-12 0-22 10t-10 22v416q0 12 10 22t22 10Zm-32 0v-480 480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVoicemail2W100.displayName = 'OnesyIconMaterialVoicemail2W100';
 

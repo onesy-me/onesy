@@ -25,7 +25,7 @@ export type ICardButton = IBaseElement & {
   InteractionProps?: IPropsAny;
 };
 
-const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) => {
+const CardButton: React.FC<ICardButton> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardButton?.props?.default, ...props_ };
@@ -76,8 +76,6 @@ const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) =>
 
   return (
     <Component
-      ref={ref}
-
       tabIndex={!disabled ? 0 : -1}
 
       Component={Component}
@@ -114,7 +112,7 @@ const CardButton: React.FC<ICardButton> = React.forwardRef((props_, ref: any) =>
       {children}
     </Component>
   );
-});
+};
 
 CardButton.displayName = 'onesy-CardButton';
 

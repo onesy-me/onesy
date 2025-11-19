@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialNotificationSound = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialNotificationSound = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='NotificationSound'
 
       short_name='NotificationSound'
@@ -19,7 +15,7 @@ const IconMaterialNotificationSound = React.forwardRef((props: IIcon, ref) => {
       <path d="M501-500ZM480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM160-200v-80h80v-280q0-83 50-147.5T420-792v-88h120v88q29 7 53.5 20.5T639-740l-57 57q-21-17-47-27t-55-10q-66 0-113 47t-47 113v280h480v80H160Zm496-219-56-57q10-10 15-24t5-32q0-18-5-32.5T600-589l56-56q21 21 32.5 50t11.5 63q0 34-11.5 63T656-419Zm43 43q29-29 45-70t16-86q0-45-16-86t-45-70l57-56q41 41 62.5 95.5T840-532q0 62-21.5 116.5T756-320l-57-56Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialNotificationSound.displayName = 'OnesyIconMaterialNotificationSound';
 

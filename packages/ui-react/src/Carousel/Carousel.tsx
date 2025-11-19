@@ -294,7 +294,7 @@ export type ICarousel = Omit<ISurface, 'version' | 'onChange'> & {
   ItemWrapperProps?: IPropsAny;
 };
 
-const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
+const Carousel: React.FC<ICarousel> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCarousel?.props?.default, ...props_ };
@@ -310,6 +310,8 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
   const Transitions = theme?.elements?.Transitions || TransitionsElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
 
@@ -1749,7 +1751,7 @@ const Carousel: React.FC<ICarousel> = React.forwardRef((props_, ref: any) => {
       {end_}
     </Surface>
   );
-});
+};
 
 Carousel.displayName = 'onesy-Carousel';
 

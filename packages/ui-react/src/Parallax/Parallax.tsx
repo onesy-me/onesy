@@ -34,12 +34,14 @@ export type IParallax = IBaseElement & {
   disabled?: boolean | Partial<Record<IValueBreakpoints, boolean>>;
 };
 
-const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
+const Parallax: React.FC<IParallax> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyParallax?.props?.default, ...props_ };
 
   const {
+    ref,
+
     value: value_,
 
     // element
@@ -215,7 +217,7 @@ const Parallax: React.FC<IParallax> = React.forwardRef((props_, ref: any) => {
         ...other
       })
   );
-});
+};
 
 Parallax.displayName = 'onesy-Parallax';
 

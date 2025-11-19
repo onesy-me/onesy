@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTimer5ShutterFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTimer5ShutterFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Timer5ShutterFilled'
 
       short_name='Timer5Shutter'
@@ -19,7 +15,7 @@ const IconMaterialTimer5ShutterFilled = React.forwardRef((props: IIcon, ref) => 
       <path d="M320-200v-120h240v-100H320v-340h360v120H440v100h240v340H320Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTimer5ShutterFilled.displayName = 'OnesyIconMaterialTimer5ShutterFilled';
 

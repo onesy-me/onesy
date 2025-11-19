@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFastRewindFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFastRewindFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FastRewindFilled'
 
       short_name='FastRewind'
@@ -19,7 +15,7 @@ const IconMaterialFastRewindFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M860-240 500-480l360-240v480Zm-400 0L100-480l360-240v480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFastRewindFilled.displayName = 'OnesyIconMaterialFastRewindFilled';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialBatteryAndroidFrameShieldW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialBatteryAndroidFrameShieldW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='BatteryAndroidFrameShieldW100'
 
       short_name='BatteryAndroidFrameShield'
@@ -19,7 +15,7 @@ const IconMaterialBatteryAndroidFrameShieldW100 = React.forwardRef((props: IIcon
       <path d="M92-292v-376h509l-105 28H120v320h475q6 8 11.5 14.5T619-292H92Zm648-28q-62-23-103-95.5T596-576q27 0 61.5-15t82.5-49q48 34 82.5 49t61.5 15q0 88-41 160.5T740-320Zm0-30q45-21 77-77t38-124q-24-5-52-18.5T740-606v256Zm-184-30H180v-200h319q5 54 19 104.5t38 95.5Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialBatteryAndroidFrameShieldW100.displayName = 'OnesyIconMaterialBatteryAndroidFrameShieldW100';
 

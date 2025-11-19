@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHourglassArrowUpW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHourglassArrowUpW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HourglassArrowUpW100Filled'
 
       short_name='HourglassArrowUp'
@@ -19,7 +15,7 @@ const IconMaterialHourglassArrowUpW100Filled = React.forwardRef((props: IIcon, r
       <path d="M152-212v-28h60v-108q0-49 31-87t79-45q-49-7-79.5-45.5T212-614v-106h-60v-28h396v28h-58v106q0 51-31.5 89T378-480q49 7 80.5 44.5T490-348v108h58v28H152Zm608 0v-482l-64 64-20-20 98-98 98 98-20 20-64-64v482h-28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHourglassArrowUpW100Filled.displayName = 'OnesyIconMaterialHourglassArrowUpW100Filled';
 

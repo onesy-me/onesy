@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialJapaneseFlagW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialJapaneseFlagW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='JapaneseFlagW100Filled'
 
       short_name='JapaneseFlag'
@@ -19,7 +15,7 @@ const IconMaterialJapaneseFlagW100Filled = React.forwardRef((props: IIcon, ref) 
       <path d="M480-434q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29ZM212-172v-600q37-9 59.5-12.5T315-788q42.65 0 85.31 12.69Q442.96-762.63 483-739q43 26 90.55 39.5T671-686q20 0 39-1.5t39-3.5v403q-20 2-38.5 4t-38.5 2q-45.03 0-87.52-12Q542-306 502-330q-42.46-26.02-89.17-39.51Q366.12-383 318-383q-22 0-41 2.5t-37 4.31V-172h-28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialJapaneseFlagW100Filled.displayName = 'OnesyIconMaterialJapaneseFlagW100Filled';
 

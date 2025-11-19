@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAndroidCellDual5Bar = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAndroidCellDual5Bar = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AndroidCellDual5Bar'
 
       short_name='AndroidCellDual5Bar'
@@ -19,7 +15,7 @@ const IconMaterialAndroidCellDual5Bar = React.forwardRef((props: IIcon, ref) => 
       <path d="M40-460v-60q0-25 17.5-42.5T100-580q25 0 42.5 17.5T160-520v60q0 25-17.5 42.5T100-400q-25 0-42.5-17.5T40-460Zm190 0v-120q0-25 17.5-42.5T290-640q25 0 42.5 17.5T350-580v120q0 25-17.5 42.5T290-400q-25 0-42.5-17.5T230-460Zm190 0v-160q0-25 17.5-42.5T480-680q25 0 42.5 17.5T540-620v160q0 25-17.5 42.5T480-400q-25 0-42.5-17.5T420-460Zm190 0v-200q0-25 17.5-42.5T670-720q25 0 42.5 17.5T730-660v200q0 25-17.5 42.5T670-400q-25 0-42.5-17.5T610-460Zm190 0v-280q0-25 17.5-42.5T860-800q25 0 42.5 17.5T920-740v280q0 25-17.5 42.5T860-400q-25 0-42.5-17.5T800-460ZM40-220v-40q0-25 17.5-42.5T100-320q25 0 42.5 17.5T160-260v40q0 25-17.5 42.5T100-160q-25 0-42.5-17.5T40-220Zm190 0v-40q0-25 17.5-42.5T290-320q25 0 42.5 17.5T350-260v40q0 25-17.5 42.5T290-160q-25 0-42.5-17.5T230-220Zm190 0v-40q0-25 17.5-42.5T480-320q25 0 42.5 17.5T540-260v40q0 25-17.5 42.5T480-160q-25 0-42.5-17.5T420-220Zm190 0v-40q0-25 17.5-42.5T670-320q25 0 42.5 17.5T730-260v40q0 25-17.5 42.5T670-160q-25 0-42.5-17.5T610-220Zm190 0v-40q0-25 17.5-42.5T860-320q25 0 42.5 17.5T920-260v40q0 25-17.5 42.5T860-160q-25 0-42.5-17.5T800-220Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAndroidCellDual5Bar.displayName = 'OnesyIconMaterialAndroidCellDual5Bar';
 

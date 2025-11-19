@@ -28,7 +28,7 @@ export type IAdvancedTextField = ITextField & {
   TextFieldProps?: IPropsAny;
 };
 
-const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_, ref: any) => {
+const AdvancedTextField: React.FC<IAdvancedTextField> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAdvancedTextField?.props?.default, ...props_ };
@@ -36,6 +36,8 @@ const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_
   const TextField = theme?.elements?.TextField || TextFieldElement;
 
   const {
+    ref,
+
     valueDefault,
 
     value: value_,
@@ -224,7 +226,7 @@ const AdvancedTextField: React.FC<IAdvancedTextField> = React.forwardRef((props_
       {...TextFieldProps}
     />
   );
-});
+};
 
 AdvancedTextField.displayName = 'onesy-AdvancedTextField';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialEarbudCaseW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialEarbudCaseW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='EarbudCaseW100Filled'
 
       short_name='EarbudCase'
@@ -19,7 +15,7 @@ const IconMaterialEarbudCaseW100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M172-502v206q0 51.15 36.43 87.57Q244.85-172 296-172h367q51.56 0 88.28-36T788-296v-206H641v147H319v-147H172Zm175 0v119h266v-119H347Zm-175-28h616v-133q0-51.56-36.72-88.28T663-788H296q-52 0-88 36.72T172-663v133Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialEarbudCaseW100Filled.displayName = 'OnesyIconMaterialEarbudCaseW100Filled';
 

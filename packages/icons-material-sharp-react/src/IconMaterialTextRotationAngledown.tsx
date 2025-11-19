@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTextRotationAngledown = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTextRotationAngledown = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TextRotationAngledown'
 
       short_name='TextRotationAngledown'
@@ -19,7 +15,7 @@ const IconMaterialTextRotationAngledown = React.forwardRef((props: IIcon, ref) =
       <path d="M400-120v-80h64L92-572l56-56 372 372v-64h80v200H400Zm204-222-54-54 52-106-126-126-106 50-54-54 428-194 56 56-196 428Zm-66-316 92 94 84-174-2-2-174 82Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTextRotationAngledown.displayName = 'OnesyIconMaterialTextRotationAngledown';
 

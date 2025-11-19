@@ -165,7 +165,7 @@ export type ICalendarViews = ICalendar & {
   TypeDateFormattedProps?: any;
 };
 
-const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: any) => {
+const CalendarViews: React.FC<ICalendarViews> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -479,8 +479,6 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
 
   return (
     <Line
-      ref={ref}
-
       flex
 
       fullWidth
@@ -665,7 +663,7 @@ const CalendarViews: React.FC<ICalendarViews> = React.forwardRef((props_, ref: a
       </Line>
     </Line>
   );
-});
+};
 
 CalendarViews.displayName = 'onesy-CalendarViews';
 

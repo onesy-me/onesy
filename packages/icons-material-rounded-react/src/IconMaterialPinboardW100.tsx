@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPinboardW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPinboardW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PinboardW100'
 
       short_name='Pinboard'
@@ -19,7 +15,7 @@ const IconMaterialPinboardW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M275.96-132q-5.96 0-9.96-4.02-4-4.03-4-9.98v-174h-96q-17 0-26-14t-1-29l49-102v-127h-42q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h260q5.95 0 9.98 4.04 4.02 4.03 4.02 10 0 5.96-4.02 9.96-4.03 4-9.98 4h-42v127l49 102q8 15-1 29t-26 14h-96v174q0 5.95-4.04 9.98-4.03 4.02-10 4.02ZM768-212H517q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h251q14 0 23-9t9-23v-416q0-14-9-23t-23-9H146q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h622q26 0 43 17t17 43v416q0 26-17 43t-43 17ZM164-348h224l-52-107v-137H216v137l-52 107Zm112 0Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPinboardW100.displayName = 'OnesyIconMaterialPinboardW100';
 

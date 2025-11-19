@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialArrowRangeFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialArrowRangeFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ArrowRangeFilled'
 
       short_name='ArrowRange'
@@ -19,7 +15,7 @@ const IconMaterialArrowRangeFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M280-280 80-480l200-200 56 56-103 104h494L624-624l56-56 200 200-200 200-56-56 103-104H233l103 104-56 56Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialArrowRangeFilled.displayName = 'OnesyIconMaterialArrowRangeFilled';
 

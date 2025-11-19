@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHighDensityFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHighDensityFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HighDensityFilled'
 
       short_name='HighDensity'
@@ -19,7 +15,7 @@ const IconMaterialHighDensityFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-280v-560h560v560H120Zm0 160v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm0-160v-80h80v80h-80Zm0-160v-80h80v80h-80Zm0-160v-80h80v80h-80Zm0-160v-80h80v80h-80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHighDensityFilled.displayName = 'OnesyIconMaterialHighDensityFilled';
 

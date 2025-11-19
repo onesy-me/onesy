@@ -717,7 +717,7 @@ export type ISurface = IBaseElement & {
   AdditionalProps?: IPropsAny;
 };
 
-const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
+const Surface: React.FC<ISurface> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySurface?.props?.default, ...props_ };
@@ -968,8 +968,6 @@ const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       {...AdditionalProps}
 
       className={classNames([
@@ -1009,7 +1007,7 @@ const Surface: React.FC<ISurface> = React.forwardRef((props_, ref: any) => {
         })}
     </Component>
   );
-});
+};
 
 Surface.displayName = 'onesy-Surface';
 

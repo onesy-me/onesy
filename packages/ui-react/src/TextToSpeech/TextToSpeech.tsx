@@ -57,7 +57,7 @@ export type ITextToSpeech = ILine & {
   IconProps?: IPropsAny;
 };
 
-const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any) => {
+const TextToSpeech: React.FC<ITextToSpeech> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -71,6 +71,8 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     read,
@@ -281,7 +283,7 @@ const TextToSpeech: React.FC<ITextToSpeech> = React.forwardRef((props_, ref: any
       </Tooltip>
     </Line>
   );
-});
+};
 
 TextToSpeech.displayName = 'onesy-TextToSpeech';
 

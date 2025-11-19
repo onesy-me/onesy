@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPaymentArrowDownW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPaymentArrowDownW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PaymentArrowDownW100'
 
       short_name='PaymentArrowDown'
@@ -19,7 +15,7 @@ const IconMaterialPaymentArrowDownW100 = React.forwardRef((props: IIcon, ref) =>
       <path d="M480-562q-29 0-48.5-19.5T412-630q0-29 19.5-48.5T480-698q29 0 48.5 19.5T548-630q0 29-19.5 48.5T480-562ZM173-432v-396h615v396H173Zm88-28h439q0-25 17.63-42.5Q735.25-520 760-520v-220q-25 0-42.5-17.63Q700-775.25 700-800H261q0 25-17.62 42.5Q225.75-740 201-740v220q25 0 42.5 17.62Q261-484.75 261-460Zm-60 0v-340 340Zm280 328 123-123-19-19-90 90v-168h-29v168l-90-90-19 19 124 123Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPaymentArrowDownW100.displayName = 'OnesyIconMaterialPaymentArrowDownW100';
 

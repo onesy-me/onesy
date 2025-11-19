@@ -78,7 +78,7 @@ export type IBadge = IBaseElement & {
   element?: any;
 };
 
-const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
+const Badge: React.FC<IBadge> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBadge?.props?.default, ...props_ };
@@ -132,8 +132,6 @@ const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       size={size}
 
       className={classNames([
@@ -172,7 +170,7 @@ const Badge: React.FC<IBadge> = React.forwardRef((props_, ref: any) => {
       ))}
     </Component>
   );
-});
+};
 
 Badge.displayName = 'onesy-Badge';
 

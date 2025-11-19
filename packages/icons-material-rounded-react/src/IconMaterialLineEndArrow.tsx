@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLineEndArrow = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLineEndArrow = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='LineEndArrow'
 
       short_name='LineEndArrow'
@@ -19,7 +15,7 @@ const IconMaterialLineEndArrow = React.forwardRef((props: IIcon, ref) => {
       <path d="M501-239q-20 13-40.5 1.5T440-273v-167H120q-17 0-28.5-11.5T80-480q0-17 11.5-28.5T120-520h320v-167q0-24 20.5-35.5T501-721l326 207q19 12 19 34t-19 34L501-239Zm19-107 211-134-211-134v268Zm0-134Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLineEndArrow.displayName = 'OnesyIconMaterialLineEndArrow';
 

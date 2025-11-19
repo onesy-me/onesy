@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMagnificationLargeFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMagnificationLargeFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MagnificationLargeFilled'
 
       short_name='MagnificationLarge'
@@ -19,7 +15,7 @@ const IconMaterialMagnificationLargeFilled = React.forwardRef((props: IIcon, ref
       <path d="M200-360h480v-320H200v320ZM80-160v-640h800v640H80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMagnificationLargeFilled.displayName = 'OnesyIconMaterialMagnificationLargeFilled';
 

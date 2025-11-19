@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAlignHorizontalRightW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAlignHorizontalRightW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AlignHorizontalRightW100'
 
       short_name='AlignHorizontalRight'
@@ -19,7 +15,7 @@ const IconMaterialAlignHorizontalRightW100 = React.forwardRef((props: IIcon, ref
       <path d="M760-132v-696h28v696h-28ZM412-316v-70h238v70H412ZM172-574v-70h478v70H172Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAlignHorizontalRightW100.displayName = 'OnesyIconMaterialAlignHorizontalRightW100';
 

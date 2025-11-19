@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFolderCodeW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFolderCodeW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FolderCodeW100Filled'
 
       short_name='FolderCode'
@@ -19,7 +15,7 @@ const IconMaterialFolderCodeW100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M632-128.5q-4 4.5-9.5 4T613-129l-76-76q-9-9-9-21t9-21l76-76q4-4 9.5-4t9.5 4q4 4 4 9.82T632-303l-77 77 77 77q4 4.36 4 10.18 0 5.82-4 10.32Zm120-.5q-4-4-4-9.82t4-10.18l77-77-77-77q-4-4.36-4-10.18 0-5.82 4-10.32t9.5-4q5.5.5 9.5 4.5l76 76q9 9 9 21t-9 21l-76 76q-4 4-9.5 4t-9.5-4Zm-560-83q-24.75 0-42.37-17.63Q132-247.25 132-272v-416q0-24.75 17.63-42.38Q167.25-748 192-748h161.82q12.51 0 23.84 5Q389-738 397-730l62 62h309q24.75 0 42.38 17.62Q828-632.75 828-608v145q0 12.75-8.62 21.37Q810.75-433 798-433H623q-85 0-146 55.5T416-240q0 11-8.5 19.5T388-212H192Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFolderCodeW100Filled.displayName = 'OnesyIconMaterialFolderCodeW100Filled';
 

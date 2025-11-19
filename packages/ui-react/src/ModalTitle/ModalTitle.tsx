@@ -16,7 +16,7 @@ export type IModalTitle = IType & {
 
 };
 
-const ModalTitle: React.FC<IModalTitle> = React.forwardRef((props_, ref: any) => {
+const ModalTitle: React.FC<IModalTitle> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalTitle?.props?.default, ...props_ };
@@ -35,8 +35,6 @@ const ModalTitle: React.FC<IModalTitle> = React.forwardRef((props_, ref: any) =>
 
   return (
     <Type
-      ref={ref}
-
       version='t2'
 
       align='center'
@@ -57,7 +55,7 @@ const ModalTitle: React.FC<IModalTitle> = React.forwardRef((props_, ref: any) =>
       {children}
     </Type>
   );
-});
+};
 
 ModalTitle.displayName = 'onesy-ModalTitle';
 

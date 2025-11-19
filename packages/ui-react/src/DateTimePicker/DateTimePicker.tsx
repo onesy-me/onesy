@@ -116,7 +116,7 @@ export type IDateTimePicker = Omit<IAdvancedTextField, 'version' | 'onChange'> &
   ModeMobileProps?: IPropsAny;
 };
 
-const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref: any) => {
+const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -148,6 +148,8 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
   const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -1120,7 +1122,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = React.forwardRef((props__, ref
       )}
     </Line>
   );
-});
+};
 
 DateTimePicker.displayName = 'onesy-DateTimePicker';
 

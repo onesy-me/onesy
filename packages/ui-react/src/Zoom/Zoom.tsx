@@ -9,7 +9,7 @@ export type IZoom = ITransition & {
 
 };
 
-const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
+const Zoom: React.FC<IZoom> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyZoom?.props?.default, ...props_ };
@@ -19,6 +19,8 @@ const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
   };
 
   const {
+    ref,
+
     in: inProp,
     prefix,
     run,
@@ -158,7 +160,7 @@ const Zoom: React.FC<IZoom> = React.forwardRef((props_, ref: any) => {
       }}
     </Transition>
   );
-});
+};
 
 Zoom.displayName = 'onesy-Zoom';
 

@@ -53,7 +53,7 @@ export type IFormRow = ILine & {
   EndProps?: any;
 };
 
-const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
+const FormRow: React.FC<IFormRow> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFormRow?.props?.default, ...props_ };
@@ -106,8 +106,6 @@ const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       gap={1}
 
       direction='column'
@@ -248,7 +246,7 @@ const FormRow: React.FC<IFormRow> = React.forwardRef((props_, ref: any) => {
       )}
     </Component>
   );
-});
+};
 
 FormRow.displayName = 'onesy-FormRow';
 

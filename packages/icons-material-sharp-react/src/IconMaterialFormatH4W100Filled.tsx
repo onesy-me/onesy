@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFormatH4W100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFormatH4W100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FormatH4W100Filled'
 
       short_name='FormatH4'
@@ -19,7 +15,7 @@ const IconMaterialFormatH4W100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M172-306v-348h28v160h212v-160h28v348h-28v-160H200v160h-28Zm548 0v-120H520v-228h28v200h172v-200h28v200h80v28h-80v120h-28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFormatH4W100Filled.displayName = 'OnesyIconMaterialFormatH4W100Filled';
 

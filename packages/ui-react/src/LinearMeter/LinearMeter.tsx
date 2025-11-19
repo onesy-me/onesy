@@ -107,7 +107,7 @@ export type ILinearMeter = IBaseElement & {
   LineProgressProps?: IPropsAny;
 };
 
-const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) => {
+const LinearMeter: React.FC<ILinearMeter> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLinearMeter?.props?.default, ...props_ };
@@ -115,6 +115,8 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
   const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -951,7 +953,7 @@ const LinearMeter: React.FC<ILinearMeter> = React.forwardRef((props_, ref: any) 
       </Surface>
     </Component>
   );
-});
+};
 
 LinearMeter.displayName = 'onesy-LinearMeter';
 

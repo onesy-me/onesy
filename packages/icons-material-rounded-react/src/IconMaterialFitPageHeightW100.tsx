@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFitPageHeightW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFitPageHeightW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FitPageHeightW100'
 
       short_name='FitPageHeight'
@@ -19,7 +15,7 @@ const IconMaterialFitPageHeightW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M272-132q-26 0-43-17t-17-43v-576q0-26 17-43t43-17h416q26 0 43 17t17 43v576q0 26-17 43t-43 17H272Zm448-60v-576q0-12-10-22t-22-10H272q-12 0-22 10t-10 22v576q0 12 10 22t22 10h416q12 0 22-10t10-22Zm0-608H240h480ZM420-610h120q10 0 13.5-9.5T550-636l-49-49q-9-9-21-9t-21 9l-49 49q-7 7-3.5 16.5T420-610Zm81 335 49-49q7-7 3.5-16.5T540-350H420q-10 0-13.5 9.5T410-324l49 49q9 9 21 9t21-9Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFitPageHeightW100.displayName = 'OnesyIconMaterialFitPageHeightW100';
 

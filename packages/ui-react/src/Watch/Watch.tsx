@@ -125,7 +125,7 @@ export type IWatch = Omit<ISurface, 'version'> & {
   ModernProps?: IPropsAny;
 };
 
-const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
+const Watch: React.FC<IWatch> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -314,8 +314,6 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Surface
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -711,7 +709,7 @@ const Watch: React.FC<IWatch> = React.forwardRef((props_, ref: any) => {
       </Surface>
     </Surface>
   );
-});
+};
 
 Watch.displayName = 'onesy-Watch';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialWindshieldDefrostRearW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialWindshieldDefrostRearW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='WindshieldDefrostRearW100Filled'
 
       short_name='WindshieldDefrostRear'
@@ -19,7 +15,7 @@ const IconMaterialWindshieldDefrostRearW100Filled = React.forwardRef((props: IIc
       <path d="M728-292v-28h40q12 0 22-10t10-22v-336q0-12-10-22t-22-10H192q-12 0-22 10t-10 22v336q0 12 10 22t22 10h31v28h-31q-26 0-43-17t-17-43v-336q0-26 17-43t43-17h576q26 0 43 17t17 43v336q0 26-17 43t-43 17h-40Zm-88 36q0-18-5-35t-16-31q-14-20-23-42.5t-9-46.5q0-14 3.5-27.5T601-465l4-8q2-5 7.5-7t10.5 0q5 2 7 7.5t0 10.5l-5 9q-5 10-8 21.5t-3 22.5q0 18 6.5 34.5T638-344q15 18 22.5 40t7.5 45q0 15-3 29t-8 28l-4 11q-2 5-7.5 7t-10.5 0q-5-2-7-7.5t0-10.5l4-10q4-11 6-22t2-22Zm-152 0q0-18-5-35t-16-31q-14-20-23-42.5t-9-46.5q0-14 3.5-27.5T449-465l4-8q2-5 7.5-7t10.5 0q5 2 7 7.5t0 10.5l-5 9q-5 10-8 21t-3 22q0 18 6.5 35t17.5 31q15 18 22.5 40t7.5 45q0 15-3 29t-8 28l-4 11q-2 5-7.5 7t-10.5 0q-5-2-7-7.5t0-10.5l4-10q4-11 6-22t2-22Zm-152-1q0-18-5-34.5T315-322q-15-19-23.5-41.5T283-410q0-14 3.5-28t10.5-27l4-8q2-5 7.5-7t10.5 0q5 2 7 7.5t0 10.5l-5 9q-5 10-8 21t-3 22q0 18 6.5 35t17.5 31q15 18 22.5 40t7.5 45q0 15-3 29t-8 28l-4 11q-2 5-7.5 7t-10.5 0q-5-2-7-7.5t0-10.5l4-10q4-11 6-22.5t2-22.5Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialWindshieldDefrostRearW100Filled.displayName = 'OnesyIconMaterialWindshieldDefrostRearW100Filled';
 

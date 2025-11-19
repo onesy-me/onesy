@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMaximize = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMaximize = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Maximize'
 
       short_name='Maximize'
@@ -19,7 +15,7 @@ const IconMaterialMaximize = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-760v-80h640v80H160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMaximize.displayName = 'OnesyIconMaterialMaximize';
 

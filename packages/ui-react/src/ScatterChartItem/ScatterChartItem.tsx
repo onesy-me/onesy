@@ -50,7 +50,7 @@ export type IScatterChartItem = IChart & {
   BorderProps?: any;
 };
 
-const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, ref: any) => {
+const ScatterChartItem: React.FC<IScatterChartItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChartItem?.props?.default, ...props_ };
@@ -315,7 +315,7 @@ const ScatterChartItem: React.FC<IScatterChartItem> = React.forwardRef((props_, 
       ...other
     })
   );
-});
+};
 
 ScatterChartItem.displayName = 'onesy-ScatterChartItem';
 

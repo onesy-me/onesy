@@ -151,7 +151,7 @@ export type IImage = IBaseElement & {
   UseVisibleProps?: IUseVisible;
 };
 
-const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
+const Image: React.FC<IImage> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImage?.props?.default, ...props_ };
@@ -163,6 +163,8 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
   const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -435,7 +437,7 @@ const Image: React.FC<IImage> = React.forwardRef((props_, ref: any) => {
       {...other}
     />
   );
-});
+};
 
 Image.displayName = 'onesy-Image';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAndroidCell4BarAlertFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAndroidCell4BarAlertFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AndroidCell4BarAlertFilled'
 
       short_name='AndroidCell4BarAlert'
@@ -19,7 +15,7 @@ const IconMaterialAndroidCell4BarAlertFilled = React.forwardRef((props: IIcon, r
       <path d="M60-220v-200q0-25 17.5-42.5T120-480q25 0 42.5 17.5T180-420v200q0 25-17.5 42.5T120-160q-25 0-42.5-17.5T60-220Zm240 0v-300q0-25 17.5-42.5T360-580q25 0 42.5 17.5T420-520v300q0 25-17.5 42.5T360-160q-25 0-42.5-17.5T300-220Zm240 0v-400q0-25 17.5-42.5T600-680q25 0 42.5 17.5T660-620v400q0 25-17.5 42.5T600-160q-25 0-42.5-17.5T540-220Zm240-253v-267q0-25 17.5-42.5T840-800q25 0 42.5 17.5T900-740v254q-10-2-19.5-3t-20.5-1q-21 0-41.5 4.5T780-473Zm80 313q-17 0-28.5-11.5T820-200q0-17 11.5-28.5T860-240q17 0 28.5 11.5T900-200q0 17-11.5 28.5T860-160Zm-40-160v-60q0-17 11.5-28.5T860-420q17 0 28.5 11.5T900-380v60q0 17-11.5 28.5T860-280q-17 0-28.5-11.5T820-320Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAndroidCell4BarAlertFilled.displayName = 'OnesyIconMaterialAndroidCell4BarAlertFilled';
 

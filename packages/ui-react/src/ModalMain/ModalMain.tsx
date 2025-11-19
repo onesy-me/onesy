@@ -20,7 +20,7 @@ export type IModalMain = ILine & {
 
 };
 
-const ModalMain: React.FC<IModalMain> = React.forwardRef((props_, ref: any) => {
+const ModalMain: React.FC<IModalMain> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalMain?.props?.default, ...props_ };
@@ -43,8 +43,6 @@ const ModalMain: React.FC<IModalMain> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       align={align}
 
       className={classNames([
@@ -65,7 +63,7 @@ const ModalMain: React.FC<IModalMain> = React.forwardRef((props_, ref: any) => {
       {children}
     </Line>
   );
-});
+};
 
 ModalMain.displayName = 'onesy-ModalMain';
 

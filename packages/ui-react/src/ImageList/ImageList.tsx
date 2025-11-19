@@ -44,7 +44,7 @@ export type IImageList = IBaseElement & {
   columns?: number | Partial<Record<IValueBreakpoints, number>>;
 };
 
-const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
+const ImageList: React.FC<IImageList> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageList?.props?.default, ...props_ };
@@ -52,6 +52,8 @@ const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
   const { classes } = useStyle();
 
   const {
+    ref,
+
     version = 'standard',
 
     gap: gap_,
@@ -197,7 +199,7 @@ const ImageList: React.FC<IImageList> = React.forwardRef((props_, ref: any) => {
       </Component>
     </Wrapper>
   );
-});
+};
 
 ImageList.displayName = 'onesy-ImageList';
 

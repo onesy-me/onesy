@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTextSelectJumpToBeginningW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTextSelectJumpToBeginningW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TextSelectJumpToBeginningW100'
 
       short_name='TextSelectJumpToBeginning'
@@ -19,7 +15,7 @@ const IconMaterialTextSelectJumpToBeginningW100 = React.forwardRef((props: IIcon
       <path d="M748-748v-40h40v40h-40Zm0 576v-40h40v40h-40ZM604-748v-40h40v40h-40Zm0 576v-40h40v40h-40ZM460-748v-40h40v40h-40Zm-144 0v-40h40v40h-40Zm0 576v-40h40v40h-40Zm-144 0v-616h28v616h-28Zm359-185L408-480l123-123 20 19-89 90h326v28H462l89 90-20 19Zm-71 185v-40h40v40h-40Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTextSelectJumpToBeginningW100.displayName = 'OnesyIconMaterialTextSelectJumpToBeginningW100';
 

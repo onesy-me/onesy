@@ -34,7 +34,7 @@ export type IChip = IButton & {
   onUnselected?: () => any;
 };
 
-const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
+const Chip: React.FC<IChip> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChip?.props?.default, ...props_ };
@@ -127,8 +127,6 @@ const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Button
-      ref={ref}
-
       tonal={tonal}
 
       version={version}
@@ -185,7 +183,7 @@ const Chip: React.FC<IChip> = React.forwardRef((props_, ref: any) => {
       {children}
     </Button>
   );
-});
+};
 
 Chip.displayName = 'onesy-Chip';
 

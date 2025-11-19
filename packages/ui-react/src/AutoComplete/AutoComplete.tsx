@@ -201,7 +201,7 @@ const getText = (value: any) => {
 
 const getValue = (value: any) => value?.value !== undefined ? value.value : value;
 
-const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any) => {
+const AutoComplete: React.FC<IAutoComplete> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -229,6 +229,8 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
   const ListSubheader = theme?.elements?.ListSubheader || ListSubheaderElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     size = 'regular',
@@ -1139,7 +1141,7 @@ const AutoComplete: React.FC<IAutoComplete> = React.forwardRef((props_, ref: any
       />
     </Line>
   );
-});
+};
 
 AutoComplete.displayName = 'onesy-AutoComplete';
 

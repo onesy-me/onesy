@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialStackedLineChartW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialStackedLineChartW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='StackedLineChartW100'
 
       short_name='StackedLineChart'
@@ -19,7 +15,7 @@ const IconMaterialStackedLineChartW100 = React.forwardRef((props: IIcon, ref) =>
       <path d="m140-140-20-20 264-264 160 160 278-320 20 18-296 344-162-162-244 244Zm0-240-20-20 264-264 160 160 278-320 20 18-296 344-162-162-244 244Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialStackedLineChartW100.displayName = 'OnesyIconMaterialStackedLineChartW100';
 

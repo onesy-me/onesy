@@ -120,7 +120,7 @@ export type IRoundMeter = IBaseElement & {
   ArcProgressProps?: IPropsAny;
 };
 
-const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) => {
+const RoundMeter: React.FC<IRoundMeter> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRoundMeter?.props?.default, ...props_ };
@@ -128,6 +128,8 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
   const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     size = 'regular',
@@ -1155,7 +1157,7 @@ const RoundMeter: React.FC<IRoundMeter> = React.forwardRef((props_, ref: any) =>
       </Surface>
     </Component>
   );
-});
+};
 
 RoundMeter.displayName = 'onesy-RoundMeter';
 

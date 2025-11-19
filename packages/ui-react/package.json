@@ -40,7 +40,7 @@
     "test": "yarn lint && yarn type"
   },
   "peerDependencies": {
-    "@onesy/style-react": "^1.0.5",
+    "@onesy/style-react": "^1.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-router-dom": "7.9.6"
@@ -48,7 +48,7 @@
   "dependencies": {
     "@onesy/date": "^1.0.2",
     "@onesy/errors": "^1.0.0",
-    "@onesy/icons-material-rounded-react": "^1.0.7",
+    "@onesy/icons-material-rounded-react": "^1.0.11",
     "@onesy/log": "^1.0.1",
     "@onesy/models": "^1.0.0",
     "@onesy/subscription": "^1.0.0",
@@ -56,7 +56,7 @@
     "webm-duration-fix": "^1.0.4"
   },
   "devDependencies": {
-    "@onesy/style-react": "^1.0.5",
+    "@onesy/style-react": "^1.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-router-dom": "7.9.6"

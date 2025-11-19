@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileLockLandscape = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileLockLandscape = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileLockLandscape'
 
       short_name='MobileLockLandscape'
@@ -19,7 +15,7 @@ const IconMaterialMobileLockLandscape = React.forwardRef((props: IIcon, ref) => 
       <path d="M360-320h240v-200h-40v-40q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560v40h-40v200Zm80-200v-40q0-17 11.5-28.5T480-600q17 0 28.5 11.5T520-560v40h-80ZM40-200v-560h204v-40h192v40h484v560H40Zm800-80v-400H120v400h720Zm-720 0v-400 400Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileLockLandscape.displayName = 'OnesyIconMaterialMobileLockLandscape';
 

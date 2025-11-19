@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTimerArrowDownW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTimerArrowDownW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TimerArrowDownW100'
 
       short_name='TimerArrowDown'
@@ -19,7 +15,7 @@ const IconMaterialTimerArrowDownW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M352.18-212Q251-212 180.5-282.82q-70.5-70.83-70.5-172Q110-556 180.58-627q70.59-71 171.42-71 46 0 87.5 16t73.5 45l28-28q4-4 9.5-3.5t9.67 4.67Q564-660 564-655t-4 9l-27 28q29 32 45.5 73.5T595-455q0 101.25-70.82 172.12-70.83 70.88-172 70.88ZM296-760q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h114q5.95 0 9.98 4.04 4.02 4.03 4.02 10 0 5.96-4.02 9.96-4.03 4-9.98 4H296Zm55.94 520q89.93 0 152.5-62.56Q567-365.13 567-455.06q0-89.94-62.56-152.44-62.57-62.5-152.5-62.5Q262-670 200-607.44q-62 62.57-62 152.5 0 89.94 62 152.44T351.94-240Zm.1-211q5.96 0 9.96-4.02 4-4.03 4-9.98v-110q0-5.95-4.04-9.97-4.03-4.03-10-4.03-5.96 0-9.96 4.03-4 4.02-4 9.97v110q0 5.95 4.04 9.98 4.03 4.02 10 4.02Zm-.04-4Zm401 222-77-77q-5-5-5-10t5-10q5-5 10-5t10 5l64 64v-468q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v468l64-64q5-5 10-5t10 5q5 5 5 10t-5 10l-77 77q-9 9-21 9t-21-9Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTimerArrowDownW100.displayName = 'OnesyIconMaterialTimerArrowDownW100';
 

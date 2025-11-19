@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialStylusBrushW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialStylusBrushW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='StylusBrushW100'
 
       short_name='StylusBrush'
@@ -19,7 +15,7 @@ const IconMaterialStylusBrushW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M480-365q-82 0-140-58t-58-140q0-48 18-90t47-79.5q29-37.5 65.5-71T486-868q20 43 44.5 72t53.5 55q50 43 72 86t22 91q0 83-58 141t-140 58Zm0-28q71 0 120.5-49.5T650-564q0-41-20.5-80T558-726q-25-21-44-43.5T478-824q-94 78-131 139t-37 122q0 71 49.5 120.5T480-393Zm0-216ZM212-172l31-84h474l31 84H212Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialStylusBrushW100.displayName = 'OnesyIconMaterialStylusBrushW100';
 

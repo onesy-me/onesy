@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFlipToBackW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFlipToBackW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FlipToBackW100'
 
       short_name='FlipToBack'
@@ -19,7 +15,7 @@ const IconMaterialFlipToBackW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M172-172v-472h28v444h444v28H172Zm144-144v-40h40v40h-40Zm0-144v-40h40v40h-40Zm0-144v-40h40v40h-40Zm0-144v-40h40v40h-40Zm144 432v-40h40v40h-40Zm0-432v-40h40v40h-40Zm144 0v-40h40v40h-40Zm0 432v-40h40v40h-40Zm144-432v-40h40v40h-40Zm0 432v-40h40v40h-40Zm0-144v-40h40v40h-40Zm0-144v-40h40v40h-40Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFlipToBackW100.displayName = 'OnesyIconMaterialFlipToBackW100';
 

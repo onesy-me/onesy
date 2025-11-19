@@ -175,7 +175,7 @@ export type ISelect = ITextField & {
 
 const getValue = (value: any) => value?.value !== undefined ? value.value : value;
 
-const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
+const Select: React.FC<ISelect> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -199,6 +199,8 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     size = 'regular',
@@ -877,7 +879,7 @@ const Select: React.FC<ISelect> = React.forwardRef((props_, ref: any) => {
       )}
     </Line>
   );
-});
+};
 
 Select.displayName = 'onesy-Select';
 

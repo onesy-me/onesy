@@ -92,7 +92,7 @@ export type ITimelineItem = ILine & {
   Divider?: any;
 };
 
-const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any) => {
+const TimelineItem: React.FC<ITimelineItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimelineItem?.props?.default, ...props_ };
@@ -147,8 +147,6 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
 
   return (
     <Line
-      ref={ref}
-
       gap={0}
 
       align='unset'
@@ -276,7 +274,7 @@ const TimelineItem: React.FC<ITimelineItem> = React.forwardRef((props_, ref: any
       )}
     </Line>
   );
-});
+};
 
 TimelineItem.displayName = 'onesy-TimelineItem';
 

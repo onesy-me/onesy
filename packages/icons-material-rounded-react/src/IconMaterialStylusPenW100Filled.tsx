@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialStylusPenW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialStylusPenW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='StylusPenW100Filled'
 
       short_name='StylusPen'
@@ -19,7 +15,7 @@ const IconMaterialStylusPenW100Filled = React.forwardRef((props: IIcon, ref) => 
       <path d="m296-393 65-257q2-10 10-16.5t19-6.5h39v-39q0-6 1.5-12.5T434-737l40-88q1-2 1.5-2.5t2.5-.5h4q2 0 2.5.5t1.5 2.5l41 88q3 6 4 12t1 13v39h39q11 0 19 6.5t10 16.5l65 257q4 14-5 25.5T636-356H325q-15 0-24-11.5t-5-25.5Zm-41 221q-16 0-24.5-12.5T227-212l3-9q6-16 19-25.5t30-9.5h402q17 0 30 9.5t19 25.5l3 9q5 15-3.5 27.5T705-172H255Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialStylusPenW100Filled.displayName = 'OnesyIconMaterialStylusPenW100Filled';
 

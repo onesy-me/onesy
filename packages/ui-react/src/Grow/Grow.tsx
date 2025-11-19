@@ -9,7 +9,7 @@ export type IGrow = ITransition & {
 
 };
 
-const Grow: React.FC<IGrow> = React.forwardRef((props_, ref: any) => {
+const Grow: React.FC<IGrow> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyGrow?.props?.default, ...props_ };
@@ -19,6 +19,8 @@ const Grow: React.FC<IGrow> = React.forwardRef((props_, ref: any) => {
   };
 
   const {
+    ref,
+
     in: inProp,
     prefix,
     run,
@@ -168,7 +170,7 @@ const Grow: React.FC<IGrow> = React.forwardRef((props_, ref: any) => {
       }}
     </Transition>
   );
-});
+};
 
 Grow.displayName = 'onesy-Grow';
 

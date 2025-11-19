@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialArrowSplit = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialArrowSplit = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ArrowSplit'
 
       short_name='ArrowSplit'
@@ -19,7 +15,7 @@ const IconMaterialArrowSplit = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-440v-80h304l200-200H560v-80h240v240h-80v-104L496-440H160Zm400 280v-80h104L536-366l58-58 126 128v-104h80v240H560Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialArrowSplit.displayName = 'OnesyIconMaterialArrowSplit';
 

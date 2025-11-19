@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLeftClick = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLeftClick = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='LeftClick'
 
       short_name='LeftClick'
@@ -19,7 +15,7 @@ const IconMaterialLeftClick = React.forwardRef((props: IIcon, ref) => {
       <path d="M468-240q-96-5-162-74t-66-166q0-100 70-170t170-70q97 0 166 66t74 162l-84-25q-13-54-56-88.5T480-640q-66 0-113 47t-47 113q0 57 34.5 100t88.5 56l25 84ZM821-60 650-231 600-80 480-480l400 120-151 50 171 171-79 79Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLeftClick.displayName = 'OnesyIconMaterialLeftClick';
 

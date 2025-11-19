@@ -124,7 +124,7 @@ export type IWhiteboardItem = {
 const colorSelect = 'hsl(244deg 64% 64%)';
 const colorSelectBackground = 'hsla(244deg 64% 64% / 4%)';
 
-const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) => {
+const Whiteboard: React.FC<IWhiteboard> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWhiteboard?.props?.default, ...props_ };
@@ -132,6 +132,8 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
   const Line = theme?.elements?.Line || LineElement;
 
   const {
+    ref,
+
     valueDefault,
 
     onChange: onChangeProps,
@@ -1793,7 +1795,7 @@ const Whiteboard: React.FC<IWhiteboard> = React.forwardRef((props_, ref: any) =>
       />
     </Line>
   );
-});
+};
 
 Whiteboard.displayName = 'onesy-Whiteboard';
 

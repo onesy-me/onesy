@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialContextualTokenFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialContextualTokenFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ContextualTokenFilled'
 
       short_name='ContextualToken'
@@ -19,7 +15,7 @@ const IconMaterialContextualTokenFilled = React.forwardRef((props: IIcon, ref) =
       <path d="M240-320h280v-120H240v120Zm360 0h120v-320H600v320ZM240-520h280v-120H240v120ZM80-160v-640h800v640H80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialContextualTokenFilled.displayName = 'OnesyIconMaterialContextualTokenFilled';
 

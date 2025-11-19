@@ -25,7 +25,7 @@ export type IMoreOptions = IMenu & {
   IconButtonProps?: IPropsAny;
 };
 
-const MoreOptions: React.FC<IMoreOptions> = React.forwardRef((props_, ref: any) => {
+const MoreOptions: React.FC<IMoreOptions> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMoreOptions?.props?.default, ...props_ };
@@ -94,7 +94,7 @@ const MoreOptions: React.FC<IMoreOptions> = React.forwardRef((props_, ref: any) 
       </IconButton>
     </Menu>
   );
-});
+};
 
 MoreOptions.displayName = 'onesy-MoreOptions';
 

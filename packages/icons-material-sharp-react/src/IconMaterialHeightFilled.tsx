@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHeightFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHeightFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HeightFilled'
 
       short_name='Height'
@@ -19,7 +15,7 @@ const IconMaterialHeightFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M480-120 320-280l56-56 64 63v-414l-64 63-56-56 160-160 160 160-56 57-64-64v414l64-63 56 56-160 160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHeightFilled.displayName = 'OnesyIconMaterialHeightFilled';
 

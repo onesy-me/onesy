@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialViewArray = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialViewArray = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ViewArray'
 
       short_name='ViewArray'
@@ -19,7 +15,7 @@ const IconMaterialViewArray = React.forwardRef((props: IIcon, ref) => {
       <rect fill="none" height="24" width="24"/><rect height="10" opacity=".3" width="6" x="9" y="7"/><path d="M15,7v10H9V7H15z M21,5h-3v14h3V5z M17,5H7v14h10V5z M6,5H3v14h3V5z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialViewArray.displayName = 'OnesyIconMaterialViewArray';
 

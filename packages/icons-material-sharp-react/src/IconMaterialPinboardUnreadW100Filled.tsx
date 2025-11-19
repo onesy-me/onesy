@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPinboardUnreadW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPinboardUnreadW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PinboardUnreadW100Filled'
 
       short_name='PinboardUnread'
@@ -19,7 +15,7 @@ const IconMaterialPinboardUnreadW100Filled = React.forwardRef((props: IIcon, ref
       <path d="m276-132-14-14v-174H132v-28l56-117v-127h-56v-28h288v28h-56v127l56 117v28H290v174l-14 14Zm418.12-508q-39.12 0-66.62-27.38-27.5-27.38-27.5-66.5 0-39.12 27.38-66.62 27.38-27.5 66.5-27.5 39.12 0 66.62 27.38 27.5 27.38 27.5 66.5 0 39.12-27.38 66.62-27.38 27.5-66.5 27.5ZM521-720H132v-28h389q0 3-.5 6.5t-.5 7q0 3.5.5 7t.5 7.5Zm-18 508v-28h297v-356q8-6 15.14-12.15 7.15-6.16 12.86-13.85v410H503Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPinboardUnreadW100Filled.displayName = 'OnesyIconMaterialPinboardUnreadW100Filled';
 

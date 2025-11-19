@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCarFanMidRightW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCarFanMidRightW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CarFanMidRightW100Filled'
 
       short_name='CarFanMidRight'
@@ -19,7 +15,7 @@ const IconMaterialCarFanMidRightW100Filled = React.forwardRef((props: IIcon, ref
       <path d="M670-684q-22 0-37-15t-15-37q0-22 15-37t37-15q22 0 37 15t15 37q0 22-15 37t-37 15ZM236-132l-24-15 142-214h184l67-233q7-23 22-36.5t34-13.5q26 0 43 20t12 46l-57 282H357L236-132Zm92-404-20-19 82-84H173v-28h217l-82-83 20-20 116 117-116 117Zm57 404v-14q0-21 15-35.5t36-14.5h248q14 0 26.5 5t21.5 15v-58q0-51 14.5-107T792-468l16-36q13-30 8-61t-26-52q-4-5-6-10t-2-10q0-12 8.5-20.5T811-666q12 0 22 6t15 17q10 20 15 42t5 44q0 14-1.5 26.5T861-506l-97 374H385Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCarFanMidRightW100Filled.displayName = 'OnesyIconMaterialCarFanMidRightW100Filled';
 

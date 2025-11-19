@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLineAxis = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLineAxis = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='LineAxis'
 
       short_name='LineAxis'
@@ -19,7 +15,7 @@ const IconMaterialLineAxis = React.forwardRef((props: IIcon, ref) => {
       <path d="m140-200-60-60 300-300 160 160 67-76-224-207-243 243-60-60 300-300 284 261 160-181 56 56-158 178 158 146-60 60-154-142-126 142-160-160-240 240Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLineAxis.displayName = 'OnesyIconMaterialLineAxis';
 

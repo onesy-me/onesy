@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPinboardFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPinboardFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PinboardFilled'
 
       short_name='Pinboard'
@@ -19,7 +15,7 @@ const IconMaterialPinboardFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="m260-80-40-40v-160H80v-80l60-106v-94H80v-80h360v80h-60v94l60 106v80H300v160l-40 40Zm220-80v-80h320v-480H80v-80h800v640H480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPinboardFilled.displayName = 'OnesyIconMaterialPinboardFilled';
 

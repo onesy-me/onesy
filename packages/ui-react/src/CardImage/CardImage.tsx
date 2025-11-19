@@ -56,7 +56,7 @@ export type ICardImage = IBaseElement & {
   marginHorizontal?: boolean;
 };
 
-const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
+const CardImage: React.FC<ICardImage> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardImage?.props?.default, ...props_ };
@@ -85,8 +85,6 @@ const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       alt={alt || ''}
 
       src={image}
@@ -105,7 +103,7 @@ const CardImage: React.FC<ICardImage> = React.forwardRef((props_, ref: any) => {
       {...other}
     />
   );
-});
+};
 
 CardImage.displayName = 'onesy-CardImage';
 

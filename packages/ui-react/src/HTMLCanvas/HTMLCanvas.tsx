@@ -155,7 +155,7 @@ export type IHTMLCanvas = Omit<IBaseElement, 'onWheel' | 'onMouseDown' | 'onTouc
   IconButtonProps?: any;
 };
 
-const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) => {
+const HTMLCanvas: React.FC<IHTMLCanvas> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyHTMLCanvas?.props?.default, ...props_ };
@@ -179,6 +179,8 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
   const Switch = theme?.elements?.Switch || SwitchElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     width = 240_000,
@@ -1019,7 +1021,7 @@ const HTMLCanvas: React.FC<IHTMLCanvas> = React.forwardRef((props_, ref: any) =>
       {post}
     </Surface>
   );
-});
+};
 
 HTMLCanvas.displayName = 'onesy-HTMLCanvas';
 

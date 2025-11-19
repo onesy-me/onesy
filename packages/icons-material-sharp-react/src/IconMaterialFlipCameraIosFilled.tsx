@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFlipCameraIosFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFlipCameraIosFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FlipCameraIosFilled'
 
       short_name='FlipCameraIos'
@@ -19,7 +15,7 @@ const IconMaterialFlipCameraIosFilled = React.forwardRef((props: IIcon, ref) => 
       <path d="M80-120v-640h206l74-80h240l74 80h206v640H80Zm400-120q79 0 136-53.5T678-426l30 28 42-42-100-100-100 100 42 42 26-26q-6 53-45 88.5T480-300q-13 0-25.5-2.5T430-310l-44 44q22 12 45.5 19t48.5 7ZM310-340l100-100-42-42-26 26q6-53 45-88.5t93-35.5q13 0 25.5 2.5T530-570l44-44q-22-12-45.5-19t-48.5-7q-79 0-136 53.5T282-454l-30-28-42 42 100 100Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFlipCameraIosFilled.displayName = 'OnesyIconMaterialFlipCameraIosFilled';
 

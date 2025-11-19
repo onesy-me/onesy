@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialScreenshotKeyboardW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialScreenshotKeyboardW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ScreenshotKeyboardW100'
 
       short_name='ScreenshotKeyboard'
@@ -19,7 +15,7 @@ const IconMaterialScreenshotKeyboardW100 = React.forwardRef((props: IIcon, ref) 
       <path d="M480-374q-44 0-75-31t-31-75q0-44 31-75t75-31q44 0 75 31t31 75q0 44-31 75t-75 31Zm0 28q56 0 95-39t39-95q0-56-39-95t-95-39q-56 0-95 39t-39 95q0 56 39 95t95 39ZM192-212q-26 0-43-17t-17-43v-416q0-26 17-43t43-17h576q26 0 43 17t17 43v416q0 26-17 43t-43 17H192Zm0-28h576q12 0 22-10t10-22v-416q0-12-10-22t-22-10H192q-12 0-22 10t-10 22v416q0 12 10 22t22 10Zm-32 0v-480 480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialScreenshotKeyboardW100.displayName = 'OnesyIconMaterialScreenshotKeyboardW100';
 

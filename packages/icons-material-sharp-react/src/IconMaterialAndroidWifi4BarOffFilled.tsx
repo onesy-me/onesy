@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAndroidWifi4BarOffFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAndroidWifi4BarOffFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AndroidWifi4BarOffFilled'
 
       short_name='AndroidWifi4BarOff'
@@ -19,7 +15,7 @@ const IconMaterialAndroidWifi4BarOffFilled = React.forwardRef((props: IIcon, ref
       <path d="M73-536 2-607q19-18 39.5-34.5T83-673l-53-38 57-81 786 550-57 82-313-219q-6-1-11.5-1H480q-51 0-97.5 18T298-309l-70-71q32-31 70.5-52.5T379-466l-60-42q-37 15-70.5 36.5T186-422l-70-71q25-24 52-44t57-37l-54-38q-26 17-50.5 35.5T73-536Zm328-159-112-78q47-14 94.5-20.5T480-800q134 0 257.5 49.5T958-607l-71 71q-82-79-187-121.5T480-700q-20 0-39.5 1t-39.5 4Zm380 266L479-640q103 0 197.5 37.5T845-494l-64 65ZM480-126l139-140q-28-25-63-39.5T480-320q-41 0-76 14.5T341-266l139 140Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAndroidWifi4BarOffFilled.displayName = 'OnesyIconMaterialAndroidWifi4BarOffFilled';
 

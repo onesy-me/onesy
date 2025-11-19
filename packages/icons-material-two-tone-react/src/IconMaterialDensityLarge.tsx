@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialDensityLarge = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialDensityLarge = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='DensityLarge'
 
       short_name='DensityLarge'
@@ -19,7 +15,7 @@ const IconMaterialDensityLarge = React.forwardRef((props: IIcon, ref) => {
       <g><rect fill="none" height="24" width="24"/></g><g><g><rect height="2" width="18" x="3" y="3"/><rect height="2" width="18" x="3" y="19"/></g></g>
     </Icon>
   );
-});
+};
 
 IconMaterialDensityLarge.displayName = 'OnesyIconMaterialDensityLarge';
 

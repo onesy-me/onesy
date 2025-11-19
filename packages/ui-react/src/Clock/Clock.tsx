@@ -62,7 +62,7 @@ export type IClock = Omit<IRoundMeter, 'onChange'> & {
   onDoneSelecting?: (value: TClockValue, selecting: TClockUnit) => any;
 };
 
-const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
+const Clock: React.FC<IClock> = props__ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClock?.props?.default, ...props__ };
@@ -72,6 +72,8 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
   const Path = theme?.elements?.Path || PathElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -655,7 +657,7 @@ const Clock: React.FC<IClock> = React.forwardRef((props__, ref: any) => {
       />
     </RoundMeter>
   );
-});
+};
 
 Clock.displayName = 'onesy-Clock';
 

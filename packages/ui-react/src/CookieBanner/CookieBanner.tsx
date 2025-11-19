@@ -72,7 +72,7 @@ export type ICookieBanner = ISurface & {
   TransitionProps?: IPropsAny;
 };
 
-const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any) => {
+const CookieBanner: React.FC<ICookieBanner> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -152,8 +152,6 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
       {...WrapperProps}
     >
       <Line
-        ref={ref}
-
         gap={1.5}
 
         align='center'
@@ -272,7 +270,7 @@ const CookieBanner: React.FC<ICookieBanner> = React.forwardRef((props_, ref: any
       </Line>
     </TransitionElement>
   );
-});
+};
 
 CookieBanner.displayName = 'onesy-CookieBanner';
 

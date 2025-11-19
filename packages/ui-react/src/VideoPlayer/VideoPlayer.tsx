@@ -243,7 +243,7 @@ export type IVideoPlayer = ILine & {
   FullScreenButtonProps?: IPropsAny;
 };
 
-const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) => {
+const VideoPlayer: React.FC<IVideoPlayer> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -267,6 +267,8 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
   const ListItem = theme?.elements?.ListItem || ListItemElement;
 
   const {
+    ref,
+
     name,
     src,
     meta,
@@ -1429,7 +1431,7 @@ const VideoPlayer: React.FC<IVideoPlayer> = React.forwardRef((props_, ref: any) 
       </Line>
     </Line>
   );
-});
+};
 
 VideoPlayer.displayName = 'onesy-VideoPlayer';
 

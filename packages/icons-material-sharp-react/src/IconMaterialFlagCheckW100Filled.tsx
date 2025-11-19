@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFlagCheckW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFlagCheckW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FlagCheckW100Filled'
 
       short_name='FlagCheck'
@@ -19,7 +15,7 @@ const IconMaterialFlagCheckW100Filled = React.forwardRef((props: IIcon, ref) => 
       <path d="M252-146v-602h184v6q0 106 74 177t174 71q16 0 32-1.5t32-6.5v130H562l-16-80H280v306h-28Zm432-744q62 0 105 43t43 105q0 62-43 105t-105 43q-62 0-105-43t-43-105q0-62 43-105t105-43Zm-28 226 132-132-20-20-112 112-56-56-20 20 76 76Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFlagCheckW100Filled.displayName = 'OnesyIconMaterialFlagCheckW100Filled';
 

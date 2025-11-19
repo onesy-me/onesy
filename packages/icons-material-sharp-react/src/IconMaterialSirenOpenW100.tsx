@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSirenOpenW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSirenOpenW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SirenOpenW100'
 
       short_name='SirenOpen'
@@ -19,7 +15,7 @@ const IconMaterialSirenOpenW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M440-347Zm-9 28Zm-76-124h28v-110q0-39.6 28.49-67.8Q439.99-649 480-649v-28q-52 0-88.5 36T355-553v110ZM132-172v-175h111v-206q0-98.2 68.98-166.6 68.97-68.4 168-68.4Q579-788 648-719.6q69 68.4 69 166.6v32h-28v-32q0-87-61.19-147-61.18-60-148-60Q393-760 332-700t-61 147v206h169q-2 7-4.5 13.5T431-319H160v119h271q2 8 3.5 14.5T438-172H132Zm557 78q-69 0-116.5-47.5T525-258q0-69 47.5-116.5T689-422q69 0 116.5 47.5T853-258q0 69-47.5 116.5T689-94Zm-59-88 98-98v80h28v-128H628v28h80l-98 98 20 20Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSirenOpenW100.displayName = 'OnesyIconMaterialSirenOpenW100';
 

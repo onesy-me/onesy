@@ -231,12 +231,14 @@ export type IMarkdown = IBaseElement & {
   onStart?: () => any;
 };
 
-const Markdown: React.FC<IMarkdown> = React.forwardRef((props_, ref: any) => {
+const Markdown: React.FC<IMarkdown> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMarkdown?.props?.default, ...props_ };
 
   const {
+    ref,
+
     value,
     render,
 
@@ -937,7 +939,7 @@ ${listItem(other_, level)}
       {...other}
     />
   );
-});
+};
 
 Markdown.displayName = 'onesy-Markdown';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAddColumnLeftW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAddColumnLeftW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AddColumnLeftW100'
 
       short_name='AddColumnLeft'
@@ -19,7 +15,7 @@ const IconMaterialAddColumnLeftW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M800-200v-560H531v560h269Zm-588 28v-114h28v86h263v-560H240v86h-28v-114h616v616H212Zm291-308Zm28 0h-28 28Zm0 0Zm-319 94v-80h-80v-28h80v-80h28v80h80v28h-80v80h-28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAddColumnLeftW100.displayName = 'OnesyIconMaterialAddColumnLeftW100';
 

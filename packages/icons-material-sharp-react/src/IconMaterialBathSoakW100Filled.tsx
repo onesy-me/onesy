@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialBathSoakW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialBathSoakW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='BathSoakW100Filled'
 
       short_name='BathSoak'
@@ -19,7 +15,7 @@ const IconMaterialBathSoakW100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M132-132v-362h8q4.27-11.37 12.28-21.38Q160.3-525.39 173-530q26-12 53-.5t44 36.5h558v362H132Zm8-497q-21 0-36-15t-15-36q0-21 15-36t36-15q22 0 36.5 15t14.5 36q0 21-14.5 36T140-629Zm20 469h640v-106H339q-36 0-66.5-18.5T222-334l-62-99v273Zm202-195 438 52v-163H289l73 111Zm83-213v-11q-2-30-12-56.5T398-698q-17-25-31.5-51.5T350-814v-14h29v11q2 36 16 61.5t31 50.5q25 36 35.5 63.5T474-582v14h-29Zm156 0v-11q-2-30-12-56.5T554-698q-17-25-31.5-51.5T506-814v-14h29v11q2 36 16 61.5t31 50.5q25 36 35.5 63.5T630-582v14h-29Zm160 0v-11q-2-30-12-56.5T714-698q-17-25-31.5-51.5T666-814v-14h29v11q2 36 16 61.5t31 50.5q25 36 35.5 63.5T790-582v14h-29Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialBathSoakW100Filled.displayName = 'OnesyIconMaterialBathSoakW100Filled';
 

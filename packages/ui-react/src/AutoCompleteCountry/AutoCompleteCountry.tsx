@@ -19,7 +19,7 @@ export type IAutoCompleteCountry = IAutoComplete & {
 
 };
 
-const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((props_, ref: any) => {
+const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -77,8 +77,6 @@ const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((pr
 
   return (
     <AutoComplete
-      ref={ref}
-
       valueInputDefault={valueInputDefault}
 
       valueDefault={valueDefault}
@@ -130,7 +128,7 @@ const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = React.forwardRef((pr
       {...other}
     />
   );
-});
+};
 
 AutoCompleteCountry.displayName = 'onesy-AutoCompleteCountry';
 

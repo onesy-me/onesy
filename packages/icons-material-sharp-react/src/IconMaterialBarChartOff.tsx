@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialBarChartOff = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialBarChartOff = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='BarChartOff'
 
       short_name='BarChartOff'
@@ -19,7 +15,7 @@ const IconMaterialBarChartOff = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-160v-440h160v440H160Zm240 0v-400l160 160v240H400Zm160-354L400-674v-126h160v286Zm240 240L640-434v-6h160v166Zm-9 219L55-791l57-57 736 736-57 57Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialBarChartOff.displayName = 'OnesyIconMaterialBarChartOff';
 

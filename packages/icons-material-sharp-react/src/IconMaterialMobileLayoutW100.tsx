@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileLayoutW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileLayoutW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileLayoutW100'
 
       short_name='MobileLayout'
@@ -19,7 +15,7 @@ const IconMaterialMobileLayoutW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M103-172v-188h327v188H103Zm428 0v-616h327v616H531Zm-400-28h271v-132H131v132Zm428 0h271v-560H559v560Zm135.5-70q10.5 0 18-7.48 7.5-7.47 7.5-18.52 0-10-7.47-18-7.48-8-18.53-8-10 0-18 8t-8 18.5q0 10.5 8 18t18.5 7.5ZM103-460v-328h328v328H103Zm213.96-188q11.04 0 18.54-8t7.5-18.5q0-10.5-7.46-18-7.47-7.5-18.5-7.5-11.04 0-18.54 7.47-7.5 7.48-7.5 18.53 0 10 7.46 18 7.47 8 18.5 8ZM131-497l88-119 97 128h87v-272H131v263Zm136 231Zm428-214ZM267-624Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileLayoutW100.displayName = 'OnesyIconMaterialMobileLayoutW100';
 

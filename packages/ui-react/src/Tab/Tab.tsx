@@ -109,7 +109,7 @@ export type ITab = Omit<ISurface, 'version' | 'onChange'> & {
   TooltipProps?: ITooltip;
 };
 
-const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
+const Tab: React.FC<ITab> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTab?.props?.default, ...props_ };
@@ -207,8 +207,6 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
       {...wrapperProps}
     >
       <Surface
-        ref={ref}
-
         tabIndex={!disabled ? 0 : -1}
 
         tonal={tonal}
@@ -310,7 +308,7 @@ const Tab: React.FC<ITab> = React.forwardRef((props_, ref: any) => {
       </Surface>
     </Wrapper>
   );
-});
+};
 
 Tab.displayName = 'onesy-Tab';
 

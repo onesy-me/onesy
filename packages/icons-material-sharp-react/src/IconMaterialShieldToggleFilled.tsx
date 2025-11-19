@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialShieldToggleFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialShieldToggleFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ShieldToggleFilled'
 
       short_name='ShieldToggle'
@@ -19,7 +15,7 @@ const IconMaterialShieldToggleFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M400-520h160q33 0 56.5-23.5T640-600q0-33-23.5-56.5T560-680H400q-33 0-56.5 23.5T320-600q0 33 23.5 56.5T400-520Zm160-40q-17 0-28.5-11.5T520-600q0-17 11.5-28.5T560-640q17 0 28.5 11.5T600-600q0 17-11.5 28.5T560-560ZM400-320h160q33 0 56.5-23.5T640-400q0-33-23.5-56.5T560-480H400q-33 0-56.5 23.5T320-400q0 33 23.5 56.5T400-320Zm0-40q-17 0-28.5-11.5T360-400q0-17 11.5-28.5T400-440q17 0 28.5 11.5T440-400q0 17-11.5 28.5T400-360Zm80 280q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialShieldToggleFilled.displayName = 'OnesyIconMaterialShieldToggleFilled';
 

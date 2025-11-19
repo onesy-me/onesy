@@ -52,7 +52,7 @@ export type IColumnChartItem = IChart & {
   BorderProps?: any;
 };
 
-const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, ref: any) => {
+const ColumnChartItem: React.FC<IColumnChartItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChartItem?.props?.default, ...props_ };
@@ -311,7 +311,7 @@ const ColumnChartItem: React.FC<IColumnChartItem> = React.forwardRef((props_, re
       ...other
     })
   );
-});
+};
 
 ColumnChartItem.displayName = 'onesy-ColumnChartItem';
 

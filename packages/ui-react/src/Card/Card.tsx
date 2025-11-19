@@ -56,7 +56,7 @@ export type ICard = ISurface & {
   InteractionProps?: IPropsAny;
 };
 
-const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
+const Card: React.FC<ICard> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCard?.props?.default, ...props_ };
@@ -123,8 +123,6 @@ const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Surface
-      ref={ref}
-
       gap={0}
 
       tabIndex={(href || button) && !disabled ? 0 : undefined}
@@ -195,7 +193,7 @@ const Card: React.FC<ICard> = React.forwardRef((props_, ref: any) => {
       ))}
     </Surface>
   );
-});
+};
 
 Card.displayName = 'onesy-Card';
 

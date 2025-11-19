@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialImageArrowUp = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialImageArrowUp = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ImageArrowUp'
 
       short_name='ImageArrowUp'
@@ -19,7 +15,7 @@ const IconMaterialImageArrowUp = React.forwardRef((props: IIcon, ref) => {
       <path d="M480-480ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280q17 0 28.5 11.5T520-800q0 17-11.5 28.5T480-760H200v560h560v-240q0-17 11.5-28.5T800-480q17 0 28.5 11.5T840-440v240q0 33-23.5 56.5T760-120H200Zm520-607-36 35q-11 11-27.5 11.5T628-692q-11-11-11-28t11-28l104-104q6-6 13-9t15-3q8 0 15 3t13 9l104 104q11 11 11.5 27.5T892-692q-11 11-28 11t-28-11l-36-35v127q0 17-11.5 28.5T760-560q-17 0-28.5-11.5T720-600v-127ZM280-280h400q12 0 18-11t-2-21L586-459q-6-8-16-8t-16 8L450-320l-74-99q-6-8-16-8t-16 8l-80 107q-8 10-2 21t18 11Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialImageArrowUp.displayName = 'OnesyIconMaterialImageArrowUp';
 

@@ -16,7 +16,7 @@ export type IDateTimeRangePicker = IDateTimePicker & {
 
 };
 
-const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((props_, ref: any) => {
+const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDateTimeRangePicker?.props?.default, ...props_ };
@@ -33,8 +33,6 @@ const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((pr
 
   return (
     <DateTimePicker
-      ref={ref}
-
       range
 
       className={classNames([
@@ -49,7 +47,7 @@ const DateTimeRangePicker: React.FC<IDateTimeRangePicker> = React.forwardRef((pr
       {...other}
     />
   );
-});
+};
 
 DateTimeRangePicker.displayName = 'onesy-DateTimeRangePicker';
 

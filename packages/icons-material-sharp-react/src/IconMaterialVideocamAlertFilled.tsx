@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVideocamAlertFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVideocamAlertFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='VideocamAlertFilled'
 
       short_name='VideocamAlert'
@@ -19,7 +15,7 @@ const IconMaterialVideocamAlertFilled = React.forwardRef((props: IIcon, ref) => 
       <path d="M467-160q25-35 38-76t13-85q0-116-81.5-197.5T239-600q-43 0-83.5 12.5T80-551v-249h640v260l160-160v440L720-420v260H467Zm-227 40q-83 0-141.5-58.5T40-320q0-83 58.5-141.5T240-520q83 0 141.5 58.5T440-320q0 83-58.5 141.5T240-120Zm-20-160h40v-160h-40v160Zm20 80q8 0 14-6t6-14q0-8-6-14t-14-6q-8 0-14 6t-6 14q0 8 6 14t14 6Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVideocamAlertFilled.displayName = 'OnesyIconMaterialVideocamAlertFilled';
 

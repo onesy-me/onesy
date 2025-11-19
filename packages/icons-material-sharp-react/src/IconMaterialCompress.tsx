@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCompress = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCompress = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Compress'
 
       short_name='Compress'
@@ -19,7 +15,7 @@ const IconMaterialCompress = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-400v-80h640v80H160Zm0-120v-80h640v80H160ZM440-80v-128l-64 64-56-56 160-160 160 160-56 56-64-62v126h-80Zm40-560L320-800l56-56 64 64v-128h80v128l64-64 56 56-160 160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCompress.displayName = 'OnesyIconMaterialCompress';
 

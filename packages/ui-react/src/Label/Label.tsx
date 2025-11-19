@@ -72,7 +72,7 @@ export type ILabel = Omit<ILine, 'onChange'> & {
   TextProps?: IPropsAny;
 };
 
-const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
+const Label: React.FC<ILabel> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLabel?.props?.default, ...props_ };
@@ -186,8 +186,6 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
       {...other}
     >
       <Line
-        ref={ref}
-
         gap={gap}
 
         direction={['top', 'bottom'].includes(position) ? position === 'bottom' ? 'column-reverse' : 'column' : position === 'end' ? 'row-reverse' : 'row'}
@@ -341,7 +339,7 @@ const Label: React.FC<ILabel> = React.forwardRef((props_, ref: any) => {
       </>}
     </Line>
   );
-});
+};
 
 Label.displayName = 'onesy-Label';
 

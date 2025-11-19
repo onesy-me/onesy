@@ -53,7 +53,7 @@ export type IPageTransition = ILine & {
   };
 };
 
-const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref: any) => {
+const PageTransition: React.FC<IPageTransition> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPageTransition?.props?.default, ...props_ };
@@ -134,8 +134,6 @@ const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref:
 
   return (
     <Line
-      ref={ref}
-
       direction='column'
 
       align='unset'
@@ -166,7 +164,7 @@ const PageTransition: React.FC<IPageTransition> = React.forwardRef((props_, ref:
       })}
     </Line>
   );
-});
+};
 
 PageTransition.displayName = 'onesy-PageTransition';
 

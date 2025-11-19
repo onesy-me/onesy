@@ -115,7 +115,7 @@ export type IStep = ILine & {
   DividerProps?: IPropsAny;
 };
 
-const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
+const Step: React.FC<IStep> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyStep?.props?.default, ...props_ };
@@ -196,8 +196,6 @@ const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       version={version}
 
       tonal={tonal}
@@ -280,7 +278,7 @@ const Step: React.FC<IStep> = React.forwardRef((props_, ref: any) => {
       )}
     </Line>
   );
-});
+};
 
 Step.displayName = 'onesy-Step';
 

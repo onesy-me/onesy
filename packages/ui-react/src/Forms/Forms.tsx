@@ -16,7 +16,7 @@ export type IForms = ILine & {
   divider?: boolean;
 };
 
-const Forms: React.FC<IForms> = React.forwardRef((props_, ref: any) => {
+const Forms: React.FC<IForms> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyForms?.props?.default, ...props_ };
@@ -41,8 +41,6 @@ const Forms: React.FC<IForms> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       gap={4}
 
       direction='column'
@@ -71,7 +69,7 @@ const Forms: React.FC<IForms> = React.forwardRef((props_, ref: any) => {
       }))}
     </Component>
   );
-});
+};
 
 Forms.displayName = 'onesy-Forms';
 

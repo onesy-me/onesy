@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialStylusHighlighterFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialStylusHighlighterFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='StylusHighlighterFilled'
 
       short_name='StylusHighlighter'
@@ -19,7 +15,7 @@ const IconMaterialStylusHighlighterFilled = React.forwardRef((props: IIcon, ref)
       <path d="M280-320v-520h99l301 149v371H280ZM160-120l40-120h560l40 120H160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialStylusHighlighterFilled.displayName = 'OnesyIconMaterialStylusHighlighterFilled';
 

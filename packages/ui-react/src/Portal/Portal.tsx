@@ -10,12 +10,14 @@ export type IPortal = IBaseElement & {
   element?: Element | DocumentFragment;
 };
 
-const Portal: React.FC<IPortal> = React.forwardRef((props_, ref: any) => {
+const Portal: React.FC<IPortal> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPortal?.props?.default, ...props_ };
 
   const {
+    ref,
+
     element,
 
     children,
@@ -43,7 +45,7 @@ const Portal: React.FC<IPortal> = React.forwardRef((props_, ref: any) => {
       element
     )
   ) as any;
-});
+};
 
 Portal.displayName = 'onesy-Portal';
 

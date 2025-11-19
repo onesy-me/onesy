@@ -53,7 +53,7 @@ export type IBubbleChart = IChart & {
 
 };
 
-const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) => {
+const BubbleChart: React.FC<IBubbleChart> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -393,8 +393,6 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
 
   return (
     <Chart
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -437,7 +435,7 @@ const BubbleChart: React.FC<IBubbleChart> = React.forwardRef((props_, ref: any) 
       ))}
     </Chart>
   );
-});
+};
 
 BubbleChart.displayName = 'onesy-BubbleChart';
 

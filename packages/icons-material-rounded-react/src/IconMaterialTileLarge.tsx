@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTileLarge = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTileLarge = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TileLarge'
 
       short_name='TileLarge'
@@ -19,7 +15,7 @@ const IconMaterialTileLarge = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-160v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm400 0v-160q0-17 11.5-28.5T560-360h240q17 0 28.5 11.5T840-320v160q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160ZM120-480v-320q0-17 11.5-28.5T160-840h640q17 0 28.5 11.5T840-800v320q0 17-11.5 28.5T800-440H160q-17 0-28.5-11.5T120-480Zm80 280h160v-80H200v80Zm400 0h160v-80H600v80Zm-320-40Zm400 0Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTileLarge.displayName = 'OnesyIconMaterialTileLarge';
 

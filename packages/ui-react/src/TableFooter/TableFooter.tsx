@@ -28,7 +28,7 @@ export type ITableFooter = ISurface & {
 
 };
 
-const TableFooter: React.FC<ITableFooter> = React.forwardRef((props_, ref: any) => {
+const TableFooter: React.FC<ITableFooter> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableFooter?.props?.default, ...props_ };
@@ -53,8 +53,6 @@ const TableFooter: React.FC<ITableFooter> = React.forwardRef((props_, ref: any) 
 
   return (
     <Surface
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -77,7 +75,7 @@ const TableFooter: React.FC<ITableFooter> = React.forwardRef((props_, ref: any) 
       {children}
     </Surface>
   );
-});
+};
 
 TableFooter.displayName = 'onesy-TableFooter';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMailShieldW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMailShieldW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MailShieldW100'
 
       short_name='MailShield'
@@ -19,7 +15,7 @@ const IconMaterialMailShieldW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="m480-520 304-200H176l304 200Zm44 308H132v-536h696v271l-28-15v-206L480-486 160-698v458h360q1 7 1.5 14t2.5 14ZM744-92q-57-14-90.5-63.5T620-265v-80l124-63 124 63v80q0 60-33.5 109.5T744-92Zm0-27q46-14 71.5-55.5T841-265v-64l-97-48v258ZM160-240v-280 28-228 480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMailShieldW100.displayName = 'OnesyIconMaterialMailShieldW100';
 

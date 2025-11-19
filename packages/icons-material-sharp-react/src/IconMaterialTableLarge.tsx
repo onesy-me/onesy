@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTableLarge = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTableLarge = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TableLarge'
 
       short_name='TableLarge'
@@ -19,7 +15,7 @@ const IconMaterialTableLarge = React.forwardRef((props: IIcon, ref) => {
       <path d="M200-80q50 0 85-35t35-85v-40h-80v40q0 17-11.5 28.5T200-160q-17 0-28.5-11.5T160-200v-40H80v40q0 50 35 85t85 35Zm280 0q50 0 85-35t35-85v-40h-80v40q0 17-11.5 28.5T480-160q-17 0-28.5-11.5T440-200v-40h-80v40q0 50 35 85t85 35Zm280 0q50 0 85-35t35-85v-40h-80v40q0 17-11.5 28.5T760-160q-17 0-28.5-11.5T720-200v-40h-80v40q0 50 35 85t85 35ZM80-320v-320h800v320H80Zm80-80h640v-160H160v160Zm40-480q50 0 85 35t35 85v40h-80v-40q0-17-11.5-28.5T200-800q-17 0-28.5 11.5T160-760v40H80v-40q0-50 35-85t85-35Zm280 0q50 0 85 35t35 85v40h-80v-40q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v40h-80v-40q0-50 35-85t85-35Zm280 0q50 0 85 35t35 85v40h-80v-40q0-17-11.5-28.5T760-800q-17 0-28.5 11.5T720-760v40h-80v-40q0-50 35-85t85-35ZM160-400v-160 160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTableLarge.displayName = 'OnesyIconMaterialTableLarge';
 

@@ -165,7 +165,7 @@ export type ITableCell = IBaseElement & {
   DividerProps?: IPropsAny;
 };
 
-const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
+const TableCell: React.FC<ITableCell> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -181,6 +181,8 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
   const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
+    ref,
+
     tonal = true,
     color,
     size = 'regular',
@@ -496,7 +498,7 @@ const TableCell: React.FC<ITableCell> = React.forwardRef((props_, ref: any) => {
       />
     </Component>
   );
-});
+};
 
 TableCell.displayName = 'onesy-TableCell';
 

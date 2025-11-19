@@ -22,12 +22,14 @@ export type IDragAndDropList = Omit<IBaseElement, 'onChange'> & {
   onDragStart?: (item: any, event: DragEvent) => any;
 };
 
-const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, ref: any) => {
+const DragAndDropList: React.FC<IDragAndDropList> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDragAndDropList?.props?.default, ...props_ };
 
   const {
+    ref,
+
     onChange: onChange_,
 
     items,
@@ -212,7 +214,7 @@ const DragAndDropList: React.FC<IDragAndDropList> = React.forwardRef((props_, re
   return <>
     {children}
   </>;
-});
+};
 
 DragAndDropList.displayName = 'onesy-DragAndDropList';
 

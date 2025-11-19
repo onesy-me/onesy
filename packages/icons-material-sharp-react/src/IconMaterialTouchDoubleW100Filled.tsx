@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTouchDoubleW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTouchDoubleW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TouchDoubleW100Filled'
 
       short_name='TouchDouble'
@@ -19,7 +15,7 @@ const IconMaterialTouchDoubleW100Filled = React.forwardRef((props: IIcon, ref) =
       <path d="m564-784 14-25q35 20 55 54t20 74.67q0 20.33-5 38.83T633-606l-24-14q8-14 12-28.5t4-31.5q0-32-16.5-60T564-784Zm184 652H380L158-430l23-26 155 74v-312h28v202h384v360ZM222-606q-10-17-15-35.63-5-18.64-5-38.37 0-62 43-105t105-43q62 0 105 43t43 104.87q0 20.13-5 38.63-5 18.5-15 35.5l-24-14q8-14 12-28.5t4-31.5q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 17 4 31.5t12 28.5l-24 14Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTouchDoubleW100Filled.displayName = 'OnesyIconMaterialTouchDoubleW100Filled';
 

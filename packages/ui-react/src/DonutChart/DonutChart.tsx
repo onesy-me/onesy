@@ -20,7 +20,7 @@ export type IDonutChart = IPieChart & {
 
 };
 
-const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) => {
+const DonutChart: React.FC<IDonutChart> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDonutChart?.props?.default, ...props_ };
@@ -37,8 +37,6 @@ const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) =>
 
   return (
     <PieChart
-      ref={ref}
-
       innerOffset={0.64}
 
       className={classNames([
@@ -53,7 +51,7 @@ const DonutChart: React.FC<IDonutChart> = React.forwardRef((props_, ref: any) =>
       {...other}
     />
   );
-});
+};
 
 DonutChart.displayName = 'onesy-DonutChart';
 

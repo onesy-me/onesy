@@ -29,7 +29,7 @@ export type ITableHeader = ISurface & {
 
 };
 
-const TableHeader: React.FC<ITableHeader> = React.forwardRef((props_, ref: any) => {
+const TableHeader: React.FC<ITableHeader> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableHeader?.props?.default, ...props_ };
@@ -56,8 +56,6 @@ const TableHeader: React.FC<ITableHeader> = React.forwardRef((props_, ref: any) 
 
   return (
     <Component
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -80,7 +78,7 @@ const TableHeader: React.FC<ITableHeader> = React.forwardRef((props_, ref: any) 
       {children}
     </Component>
   );
-});
+};
 
 TableHeader.displayName = 'onesy-TableHeader';
 

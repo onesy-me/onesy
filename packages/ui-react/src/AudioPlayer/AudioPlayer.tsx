@@ -188,7 +188,7 @@ export type IAudioPlayer = ILine & {
   QualityButtonProps?: IPropsAny;
 };
 
-const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) => {
+const AudioPlayer: React.FC<IAudioPlayer> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -212,6 +212,8 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
   const ListItem = theme?.elements?.ListItem || ListItemElement;
 
   const {
+    ref,
+
     name,
     src,
     meta,
@@ -1130,7 +1132,7 @@ const AudioPlayer: React.FC<IAudioPlayer> = React.forwardRef((props_, ref: any) 
       </Line>
     </Line>
   );
-});
+};
 
 AudioPlayer.displayName = 'onesy-AudioPlayer';
 

@@ -22,7 +22,7 @@ export type ISectionWatch = ISection & {
   WatchProps?: IWatch;
 };
 
-const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionWatch> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionWatch?.props?.default, ...props_ };
@@ -32,6 +32,8 @@ const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => 
   const Watch = theme?.elements?.Watch || WatchElement;
 
   const {
+    ref,
+
     version = 'modern',
     size = 'regular',
 
@@ -85,7 +87,7 @@ const Element: React.FC<ISectionWatch> = React.forwardRef((props_, ref: any) => 
       />
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionWatch';
 

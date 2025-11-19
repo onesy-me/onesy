@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPageFooterFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPageFooterFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PageFooterFilled'
 
       short_name='PageFooter'
@@ -19,7 +15,7 @@ const IconMaterialPageFooterFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M800-120H160q-17 0-28.5-11.5T120-160q0-17 11.5-28.5T160-200h640q17 0 28.5 11.5T840-160q0 17-11.5 28.5T800-120ZM200-280q-33 0-56.5-23.5T120-360v-400q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v400q0 33-23.5 56.5T760-280H200Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPageFooterFilled.displayName = 'OnesyIconMaterialPageFooterFilled';
 

@@ -646,7 +646,7 @@ export type ITextField = Omit<IBaseElement, 'onChange'> & {
   colorUnchecked?: any;
 };
 
-const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
+const TextField: React.FC<ITextField> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -662,6 +662,8 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     version = 'filled',
@@ -1571,7 +1573,7 @@ const TextField: React.FC<ITextField> = React.forwardRef((props_, ref: any) => {
       </>}
     </Wrapper>
   );
-});
+};
 
 TextField.displayName = 'onesy-TextField';
 

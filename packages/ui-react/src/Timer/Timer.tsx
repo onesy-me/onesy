@@ -77,7 +77,7 @@ export type ITimer = ISurface & {
   IconProps?: IPropsAny;
 };
 
-const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
+const Timer: React.FC<ITimer> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -101,6 +101,8 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -582,7 +584,7 @@ const Timer: React.FC<ITimer> = React.forwardRef((props_, ref: any) => {
       </Line>
     </Surface>
   );
-});
+};
 
 Timer.displayName = 'onesy-Timer';
 

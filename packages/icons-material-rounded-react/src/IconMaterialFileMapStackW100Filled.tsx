@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFileMapStackW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFileMapStackW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FileMapStackW100Filled'
 
       short_name='FileMapStack'
@@ -19,7 +15,7 @@ const IconMaterialFileMapStackW100Filled = React.forwardRef((props: IIcon, ref) 
       <path d="M326-292q-26 0-43-17t-17-43v-416q0-26 17-43t43-17h416q26 0 43 17t17 43v416q0 26-17 43t-43 17H326ZM218-184q-26 0-43-17t-17-43v-430q0-6 4-10t10-4q6 0 10 4t4 10v430q0 12 10 22t22 10h430q6 0 10 4t4 10q0 6-4 10t-10 4H218Zm316-376q-13 0-21.5-8.5T504-590q0-13 8.5-21.5T534-620q13 0 21.5 8.5T564-590q0 13-8.5 21.5T534-560Zm0 150q60-51 90-95.5t30-81.5q0-57-36-90t-84-33q-48 0-84 33t-36 90q0 37 30 81.5t90 95.5Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFileMapStackW100Filled.displayName = 'OnesyIconMaterialFileMapStackW100Filled';
 

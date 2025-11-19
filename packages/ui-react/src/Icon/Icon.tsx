@@ -50,7 +50,7 @@ export type IIcon = Omit<IBaseElement, 'size'> & {
   noRtl?: boolean;
 };
 
-const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
+const Icon: React.FC<IIcon> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIcon?.props?.default, ...props_ };
@@ -115,8 +115,6 @@ const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       className={classNames([
         staticClassName('Icon', theme) && [
           'onesy-Icon-root',
@@ -159,7 +157,7 @@ const Icon: React.FC<IIcon> = React.forwardRef((props_, ref: any) => {
       {children}
     </Component>
   );
-});
+};
 
 Icon.displayName = 'onesy-Icon';
 

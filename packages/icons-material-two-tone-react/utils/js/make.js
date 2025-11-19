@@ -15,7 +15,7 @@ const src = path.resolve(wd, './src');
 const prefix = 'IconMaterial';
 
 let made = 0;
-let icons_ = 0;
+let processed = 0;
 
 const valueMake = async (url, name, short_name) => {
   const valueFile = await OnesyNode.file.get(url, false);
@@ -24,16 +24,12 @@ const valueMake = async (url, name, short_name) => {
 
   let value = (valueFile).match(/<svg[^>]+?>([^$]+?)<\/svg>/)[1];
 
-  value = `import React from 'react';
+  value = `import { Icon, IIcon } from '@onesy/ui-react';
 
-import { Icon, IIcon } from '@onesy/ui-react';
-
-const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
+const ${prefix}${name} = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='${name}'
 
       short_name='${short_name}'
@@ -45,7 +41,7 @@ const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
       ${value}
     </Icon>
   );
-});
+};
 
 ${prefix}${name}.displayName = 'Onesy${prefix}${name}';
 
@@ -72,69 +68,43 @@ async function method() {
 
   const icons = (await fg(path.join(root, '/**'), { onlyDirectories: true, deep: 1 })).map(item => path.basename(item)).filter(item => !item.startsWith('types.tsx'));
 
-  const variants = {
-    // materialsymbolsrounded: 'Rounded',
-    // materialsymbolssharp: 'Sharp'
-  };
+  // Pre-find all two-tone icons at once
+  const twoTonePattern = path.join(rootSrc, '/**/materialiconstwotone/24px.svg');
+  const allTwoToneIcons = await fg(twoTonePattern, { onlyFiles: true });
+
+  const twoToneMap = new Map();
+
+  for (const twoTonePath of allTwoToneIcons) {
+    const pathParts = twoTonePath.split(path.sep);
+    const iconNameIndex = pathParts.findIndex(part => part.includes('materialiconstwotone')) - 1;
+
+    if (iconNameIndex >= 0) {
+      const iconName = pathParts[iconNameIndex];
+
+      twoToneMap.set(iconName, twoTonePath);
+    }
+  }
+
+  const iconsToUse = icons.filter(icon => twoToneMap.get(icon));
 
   async function makeIcon(icon) {
-    console.log(icon);
-
     const rootIcon = path.resolve(root, icon);
 
     const iconName = resolve(icon);
 
-    let iconDefault;
-
-    // Variants
-    for (const item of Object.keys(variants)) {
-      const variant = variants[item];
-
-      const files = (await fg(path.join(rootIcon, item, '/**/*_24px.svg'), { onlyFiles: true }));
-
-      for (const url of files) {
-        if (iconDefault === undefined && url.indexOf(`${icon}_24px.svg`) > -1) iconDefault = url;
-
-        const file = path.basename(url);
-
-        let weight = file.match(/wght(100|200|300|500|600|700)/g);
-
-        weight = weight && weight[0].slice(4);
-
-        let grad = file.match(/grad(N25|200)/g);
-
-        grad = grad && grad[0].slice(4);
-
-        const fill = file.indexOf('fill1_') > -1;
-
-        const name = `${iconName}${weight ? `W${weight}` : ''}${grad ? `G${grad}` : ''}${fill ? 'Filled' : ''}`;
-
-        if (
-          // Without grad, only regular
-          [undefined, null].includes(grad) &&
-          // Weights only 100, regular (400) and 700
-          ['100', undefined, null].includes(weight)
-        ) {
-          const exists = (await fg(path.join(src, `${prefix}${name}.tsx`)))[0];
-
-          if (!exists) await valueMake(url, name, iconName);
-        }
-      }
-    }
-
     // Two tone
-    const twoTone = (await fg(path.join(rootSrc, `/**/${icon}/materialiconstwotone/24px.svg`), { onlyFiles: true }))[0];
+    const twoTonePath = twoToneMap.get(icon);
 
-    const exists_ = (await fg(path.join(src, `${prefix}${iconName}.tsx`)))[0];
+    const exists = (await fg(path.join(src, `${prefix}${iconName}.tsx`)))[0];
 
-    if (!exists_ && (twoTone || iconDefault)) await valueMake(twoTone || iconDefault, `${iconName}`, iconName);
+    if (!exists) await valueMake(twoTonePath, `${iconName}`, iconName);
 
-    console.log('Icons', ++icons_);
+    console.log('Icons', ++processed);
 
     console.log('Made', made);
   }
 
-  for (const icon of icons) await makeIcon(icon);
+  for (const icon of iconsToUse) await makeIcon(icon);
 
   // Make index.tsx
   const allIcons = (await fg(path.join(src, `/**`), { onlyFiles: true })).filter(item => !item.includes('/index') && !item.includes('/types'));

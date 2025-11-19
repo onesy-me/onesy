@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialDeleteSweepFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialDeleteSweepFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='DeleteSweepFilled'
 
       short_name='DeleteSweep'
@@ -19,7 +15,7 @@ const IconMaterialDeleteSweepFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M600-240v-80h160v80H600Zm0-320v-80h280v80H600Zm0 160v-80h240v80H600ZM120-640H80v-80h160v-60h160v60h160v80h-40v440H120v-440Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialDeleteSweepFilled.displayName = 'OnesyIconMaterialDeleteSweepFilled';
 

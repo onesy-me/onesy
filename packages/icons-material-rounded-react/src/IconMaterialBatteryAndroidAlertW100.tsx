@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialBatteryAndroidAlertW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialBatteryAndroidAlertW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='BatteryAndroidAlertW100'
 
       short_name='BatteryAndroidAlert'
@@ -19,7 +15,7 @@ const IconMaterialBatteryAndroidAlertW100 = React.forwardRef((props: IIcon, ref)
       <path d="M440-350q11 0 18.5-7.5T466-376q0-11-7.5-18.5T440-402q-11 0-18.5 7.5T414-376q0 11 7.5 18.5T440-350Zm0-260q-6 0-10 4t-4 10v130q0 6 4 10t10 4q6 0 10-4t4-10v-130q0-6-4-10t-10-4ZM192-290h524q14 0 23-9t9-23v-316q0-14-9-23t-23-9H192q-14 0-23 9t-9 23v316q0 14 9 23t23 9Zm0 28q-26 0-43-17t-17-43v-316q0-26 17-43t43-17h524q26 0 43 17t17 43v84h12q16 0 28 12t12 28v68q0 17-12 28.5T788-406h-12v84q0 26-17 43t-43 17H192Zm-32-28v-380 380Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialBatteryAndroidAlertW100.displayName = 'OnesyIconMaterialBatteryAndroidAlertW100';
 

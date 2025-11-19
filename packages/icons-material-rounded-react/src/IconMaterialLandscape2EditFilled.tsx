@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLandscape2EditFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLandscape2EditFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Landscape2EditFilled'
 
       short_name='Landscape2Edit'
@@ -19,7 +15,7 @@ const IconMaterialLandscape2EditFilled = React.forwardRef((props: IIcon, ref) =>
       <path d="M600-120q-17 0-28.5-11.5T560-160v-50q0-16 6.5-30.5T584-266l197-197q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-340L706-143q-11 11-25.5 17t-30.5 6h-50Zm223-224 37-39-37-37-38 38 38 38ZM240-560q-50 0-85-35.5T120-680q0-50 35-85t85-35q50 0 85 35t35 85q0 49-35 84.5T240-560ZM111-160q-23 0-34.5-19T75-218l109-218q10-20 28.5-32t41.5-12q24 0 44 12.5t29 35.5q2 6 13.5 33t13.5 33q2 6 9 5.5t9-6.5l86-287q14-48 53.5-77t89.5-29q49 0 87.5 28.5T742-657l14 42q8 22 3 44t-22 39L515-311q-17 17-26 39t-9 46v26q0 17-11.5 28.5T440-160H111Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLandscape2EditFilled.displayName = 'OnesyIconMaterialLandscape2EditFilled';
 

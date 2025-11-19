@@ -60,7 +60,7 @@ export type IPieChart = IChart & {
   innerOffset?: number;
 };
 
-const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
+const PieChart: React.FC<IPieChart> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -78,6 +78,8 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
   const Path = theme?.elements?.Path || PathElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -623,7 +625,7 @@ const PieChart: React.FC<IPieChart> = React.forwardRef((props_, ref: any) => {
       {...other}
     />
   );
-});
+};
 
 PieChart.displayName = 'onesy-PieChart';
 

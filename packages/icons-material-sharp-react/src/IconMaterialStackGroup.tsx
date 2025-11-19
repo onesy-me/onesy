@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialStackGroup = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialStackGroup = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='StackGroup'
 
       short_name='StackGroup'
@@ -19,7 +15,7 @@ const IconMaterialStackGroup = React.forwardRef((props: IIcon, ref) => {
       <path d="M320-80v-240H80v-560h560v240h240v560H320Zm80-80h400v-400H560v-240H160v400h240v240Zm80-320Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialStackGroup.displayName = 'OnesyIconMaterialStackGroup';
 

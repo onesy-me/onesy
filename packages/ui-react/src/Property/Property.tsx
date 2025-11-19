@@ -76,7 +76,7 @@ export type IProperty = ILine & {
   ValueProps?: IPropsAny;
 };
 
-const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
+const Property: React.FC<IProperty> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyProperty?.props?.default, ...props_ };
@@ -86,6 +86,8 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     version: version_ = 'row-30',
 
     size = 'regular',
@@ -235,7 +237,7 @@ const Property: React.FC<IProperty> = React.forwardRef((props_, ref: any) => {
       ) : value}
     </Line>
   );
-});
+};
 
 Property.displayName = 'onesy-Property';
 

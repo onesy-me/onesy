@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialGamepad = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialGamepad = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Gamepad'
 
       short_name='Gamepad'
@@ -19,7 +15,7 @@ const IconMaterialGamepad = React.forwardRef((props: IIcon, ref) => {
       <path d="M480-654Zm174 174Zm-348 0Zm174 174Zm0-234L360-660v-220h240v220L480-540Zm180 180L540-480l120-120h220v240H660Zm-580 0v-240h220l120 120-120 120H80ZM360-80v-220l120-120 120 120v220H360Zm120-574 40-40v-106h-80v106l40 40ZM160-440h106l40-40-40-40H160v80Zm280 280h80v-106l-40-40-40 40v106Zm254-280h106v-80H694l-40 40 40 40Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialGamepad.displayName = 'OnesyIconMaterialGamepad';
 

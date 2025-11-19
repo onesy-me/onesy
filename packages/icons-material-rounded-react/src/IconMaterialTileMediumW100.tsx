@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTileMediumW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTileMediumW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TileMediumW100'
 
       short_name='TileMedium'
@@ -19,7 +15,7 @@ const IconMaterialTileMediumW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M172-281.68v-118.71q0-12.61 8.63-21.11 8.62-8.5 21.37-8.5h198q12.75 0 21.38 8.53 8.62 8.53 8.62 21.15v118.71q0 12.61-8.62 21.11-8.63 8.5-21.38 8.5H202q-12.75 0-21.37-8.53-8.63-8.53-8.63-21.15Zm358 0v-118.71q0-12.61 8.63-21.11 8.62-8.5 21.37-8.5h198q12.75 0 21.38 8.53 8.62 8.53 8.62 21.15v118.71q0 12.61-8.62 21.11-8.63 8.5-21.38 8.5H560q-12.75 0-21.37-8.53-8.63-8.53-8.63-21.15Zm-358-278v-118.71q0-12.61 8.63-21.11 8.62-8.5 21.37-8.5h556q12.75 0 21.38 8.53 8.62 8.53 8.62 21.15v118.71q0 12.61-8.62 21.11-8.63 8.5-21.38 8.5H202q-12.75 0-21.37-8.53-8.63-8.53-8.63-21.15ZM200-280h202v-122H200v122Zm358 0h202v-122H558v122Zm-257-61Zm358 0Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTileMediumW100.displayName = 'OnesyIconMaterialTileMediumW100';
 

@@ -145,7 +145,7 @@ export type ICalendarMenu = Omit<IMenu, 'onChange'> & {
   TimePickerProps?: any;
 };
 
-const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any) => {
+const CalendarMenu: React.FC<ICalendarMenu> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -672,7 +672,7 @@ const CalendarMenu: React.FC<ICalendarMenu> = React.forwardRef((props_, ref: any
       {children}
     </Menu>
   );
-});
+};
 
 CalendarMenu.displayName = 'onesy-CalendarMenu';
 

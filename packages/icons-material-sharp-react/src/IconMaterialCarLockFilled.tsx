@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCarLockFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCarLockFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CarLockFilled'
 
       short_name='CarLock'
@@ -19,7 +15,7 @@ const IconMaterialCarLockFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M300-320q25 0 42.5-17.5T360-380q0-25-17.5-42.5T300-440q-25 0-42.5 17.5T240-380q0 25 17.5 42.5T300-320Zm360 0q25 0 42.5-17.5T720-380q0-25-17.5-42.5T660-440q-25 0-42.5 17.5T600-380q0 25 17.5 42.5T660-320Zm-20-240v-200h40v-40q0-33 23.5-56.5T760-880q33 0 56.5 23.5T840-800v40h40v200H640Zm80-200h80v-40q0-17-11.5-28.5T760-840q-17 0-28.5 11.5T720-800v40ZM120-120v-360l98-280h342v80H274l-42 120h328v80h280v360H720v-80H240v80H120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCarLockFilled.displayName = 'OnesyIconMaterialCarLockFilled';
 

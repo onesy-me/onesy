@@ -14,10 +14,12 @@ const styled = (Element: any) => (value: TValue, options: IOptions = {}): React.
   const useStyle = style(value, options);
 
   // Element
-  const element = React.forwardRef((props: any, ref) => {
+  const element = props => {
     const {
       children,
+
       className: classNameProp,
+
       ...other
     } = props;
 
@@ -25,8 +27,6 @@ const styled = (Element: any) => (value: TValue, options: IOptions = {}): React.
 
     return (
       <Element
-        ref={ref}
-
         className={classNames([classNameProp, styles.class])}
 
         {...other}
@@ -34,7 +34,7 @@ const styled = (Element: any) => (value: TValue, options: IOptions = {}): React.
         {children}
       </Element>
     );
-  });
+  };
 
   return element;
 };

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLocalMallFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLocalMallFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='LocalMallFilled'
 
       short_name='LocalMall'
@@ -19,7 +15,7 @@ const IconMaterialLocalMallFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-80v-640h160q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720h160v640H120Zm360-320q83 0 141.5-58.5T680-600h-80q0 50-35 85t-85 35q-50 0-85-35t-35-85h-80q0 83 58.5 141.5T480-400ZM360-720h240q0-50-35-85t-85-35q-50 0-85 35t-35 85Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLocalMallFilled.displayName = 'OnesyIconMaterialLocalMallFilled';
 

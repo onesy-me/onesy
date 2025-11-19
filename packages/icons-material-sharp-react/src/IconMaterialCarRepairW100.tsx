@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCarRepairW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCarRepairW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CarRepairW100'
 
       short_name='CarRepair'
@@ -19,7 +15,7 @@ const IconMaterialCarRepairW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M466-144v-120H186v-28h588v28H494v120h-28ZM340-472q11 0 19.5-8.5T368-500q0-11-8.5-19.5T340-528q-11 0-19.5 8.5T312-500q0 11 8.5 19.5T340-472Zm280 0q11 0 19.5-8.5T648-500q0-11-8.5-19.5T620-528q-11 0-19.5 8.5T592-500q0 11 8.5 19.5T620-472Zm-368-96 62.65-180H645l63 180v236h-28v-80H280v80h-28v-236Zm36-20h384l-46-132H334l-46 132Zm-8 28v120-120Zm0 120h400v-120H280v120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCarRepairW100.displayName = 'OnesyIconMaterialCarRepairW100';
 

@@ -93,12 +93,14 @@ export type IRating = Omit<IBaseElement, 'onChange'> & {
   IconInactiveProps?: any;
 };
 
-const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
+const Rating: React.FC<IRating> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRating?.props?.default, ...props_ };
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     colorInactive = 'default',
@@ -540,7 +542,7 @@ const Rating: React.FC<IRating> = React.forwardRef((props_, ref: any) => {
       })}
     </Component>
   );
-});
+};
 
 Rating.displayName = 'onesy-Rating';
 

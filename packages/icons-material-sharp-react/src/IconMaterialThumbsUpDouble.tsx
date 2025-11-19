@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialThumbsUpDouble = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialThumbsUpDouble = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ThumbsUpDouble'
 
       short_name='ThumbsUpDouble'
@@ -19,7 +15,7 @@ const IconMaterialThumbsUpDouble = React.forwardRef((props: IIcon, ref) => {
       <path d="m713-280 127-297v-23H588l19-134-55 55-56-57 144-144 60 60-20 140h240v120L800-280h-87ZM40-120v-400h200v80H120v240h120v80H40Zm120 0v-360l240-240 60 60-20 140h240v120L560-120H160Zm80-80h267l93-216v-24H348l19-134-127 127v247Zm0 0v-247 247Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialThumbsUpDouble.displayName = 'OnesyIconMaterialThumbsUpDouble';
 

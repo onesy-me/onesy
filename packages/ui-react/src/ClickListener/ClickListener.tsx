@@ -26,12 +26,14 @@ export type IClickListener = IBaseElement & {
   onClickOutside?: () => any;
 };
 
-const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: any) => {
+const ClickListener: React.FC<IClickListener> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyClickListener?.props?.default, ...props_ };
 
   const {
+    ref,
+
     mouseEvent = 'onClick',
     touchEvent = 'onTouchEnd',
 
@@ -136,7 +138,7 @@ const ClickListener: React.FC<IClickListener> = React.forwardRef((props_, ref: a
       )}
     </React.Fragment>
   );
-});
+};
 
 ClickListener.displayName = 'onesy-ClickListener';
 

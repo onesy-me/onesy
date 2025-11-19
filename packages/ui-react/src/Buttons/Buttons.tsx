@@ -11,7 +11,7 @@ import { IColor, IValueBreakpoints, IVersion } from '../types';
 import useMediaQuery from '../useMediaQuery';
 import Icon from '../Icon';
 
-export const IconMaterialDone = React.forwardRef((props: any, ref) => {
+export const IconMaterialDone = props => {
   const {
     className,
 
@@ -20,8 +20,6 @@ export const IconMaterialDone = React.forwardRef((props: any, ref) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='DoneSharp'
 
       short_name='Done'
@@ -37,7 +35,7 @@ export const IconMaterialDone = React.forwardRef((props: any, ref) => {
       />
     </Icon>
   );
-});
+};
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -251,7 +249,7 @@ export type IButtons = Omit<ILine, 'onChange'> & {
   fullWidth?: boolean;
 };
 
-const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
+const Buttons: React.FC<IButtons> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyButtons?.props?.default, ...props_ };
@@ -259,6 +257,8 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
   const Line = theme?.elements?.Line || LineElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     version = 'outlined',
@@ -456,7 +456,7 @@ const Buttons: React.FC<IButtons> = React.forwardRef((props_, ref: any) => {
       {children}
     </Line>
   );
-});
+};
 
 Buttons.displayName = 'onesy-Buttons';
 

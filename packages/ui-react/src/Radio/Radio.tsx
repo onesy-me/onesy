@@ -135,7 +135,7 @@ export type IRadio = Omit<IIconButton, 'onChange'> & {
   disabled?: boolean;
 };
 
-const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
+const Radio: React.FC<IRadio> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRadio?.props?.default, ...props_ };
@@ -238,8 +238,6 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
 
   return (
     <IconButton
-      ref={ref}
-
       tabIndex={!disabled ? 0 : -1}
 
       tonal={tonal}
@@ -344,7 +342,7 @@ const Radio: React.FC<IRadio> = React.forwardRef((props_, ref: any) => {
       </>}
     </IconButton>
   );
-});
+};
 
 Radio.displayName = 'onesy-Radio';
 

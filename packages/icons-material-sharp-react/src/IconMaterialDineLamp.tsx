@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialDineLamp = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialDineLamp = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='DineLamp'
 
       short_name='DineLamp'
@@ -19,7 +15,7 @@ const IconMaterialDineLamp = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-120v-120H81L40-680h80l29 320h251v120h-40v120h-60v-120H180v120h-60Zm320 0v-320H200v-80h560v80H520v320h-80Zm160 0v-120h-40v-120h252l29-320h79l-40 440h-40v120h-60v-120H660v120h-60ZM280-600v-40q0-66 47-113t113-47v-120h80v120q66 0 113 47t47 113v40H280Zm91-80h218q-11-19-29-29.5T520-720h-80q-22 0-40 10.5T371-680Zm109 0Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialDineLamp.displayName = 'OnesyIconMaterialDineLamp';
 

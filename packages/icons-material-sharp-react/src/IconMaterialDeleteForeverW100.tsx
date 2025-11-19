@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialDeleteForeverW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialDeleteForeverW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='DeleteForeverW100'
 
       short_name='DeleteForever'
@@ -19,7 +15,7 @@ const IconMaterialDeleteForeverW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="m376-336 104-104 104 104 20-20-104-104 104-104-20-20-104 104-104-104-20 20 104 104-104 104 20 20ZM252-172v-548h-40v-28h148v-28h240v28h148v28h-40v548H252Zm28-28h400v-520H280v520Zm0-520v520-520Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialDeleteForeverW100.displayName = 'OnesyIconMaterialDeleteForeverW100';
 

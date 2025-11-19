@@ -210,7 +210,7 @@ export type IImageGallery = ILine & {
   IconClose?: IElementReference;
 };
 
-const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any) => {
+const ImageGallery: React.FC<IImageGallery> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageGallery?.props?.default, ...props_ };
@@ -226,6 +226,8 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
   const Backdrop = theme?.elements?.Backdrop || BackdropElement;
 
   const {
+    ref,
+
     version = 'modal',
 
     size = 'regular',
@@ -879,7 +881,7 @@ const ImageGallery: React.FC<IImageGallery> = React.forwardRef((props_, ref: any
       </Line>
     </Backdrop>
   );
-});
+};
 
 ImageGallery.displayName = 'onesy-ImageGallery';
 

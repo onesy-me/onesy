@@ -96,7 +96,7 @@ export type ILink = IType & {
   target?: string;
 };
 
-const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
+const Link: React.FC<ILink> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLink?.props?.default, ...props_ };
@@ -169,8 +169,6 @@ const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Type
-      ref={ref}
-
       onFocus={onFocus}
 
       onBlur={onBlur}
@@ -216,7 +214,7 @@ const Link: React.FC<ILink> = React.forwardRef((props_, ref: any) => {
       {children}
     </Type>
   );
-});
+};
 
 Link.displayName = 'onesy-Link';
 

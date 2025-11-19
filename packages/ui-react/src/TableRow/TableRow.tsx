@@ -34,7 +34,7 @@ export type ITableRow = ISurface & {
   position?: 'head' | 'body';
 };
 
-const TableRow: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
+const TableRow: React.FC<ITableRow> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTableRow?.props?.default, ...props_ };
@@ -63,8 +63,6 @@ const TableRow: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Surface
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -106,7 +104,7 @@ const TableRow: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
       ) : item)}
     </Surface>
   );
-});
+};
 
 TableRow.displayName = 'onesy-TableRow';
 

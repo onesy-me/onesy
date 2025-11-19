@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVerticalDistribute = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVerticalDistribute = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='VerticalDistribute'
 
       short_name='VerticalDistribute'
@@ -19,7 +15,7 @@ const IconMaterialVerticalDistribute = React.forwardRef((props: IIcon, ref) => {
       <rect fill="none" height="24" width="24"/><path d="M22,2v2H2V2H22z M7,10.5v3h10v-3H7z M2,20v2h20v-2H2z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVerticalDistribute.displayName = 'OnesyIconMaterialVerticalDistribute';
 

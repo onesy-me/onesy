@@ -37,7 +37,7 @@ export type IAvatarGroup = IAvatar & {
   AdditionalAvatarProps?: IPropsAny;
 };
 
-const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) => {
+const AvatarGroup: React.FC<IAvatarGroup> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAvatarGroup?.props?.default, ...props_ };
@@ -122,8 +122,6 @@ const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) 
 
   return (
     <Line
-      ref={ref}
-
       gap={0}
 
       direction='row-reverse'
@@ -167,7 +165,7 @@ const AvatarGroup: React.FC<IAvatarGroup> = React.forwardRef((props_, ref: any) 
       }))}
     </Line>
   );
-});
+};
 
 AvatarGroup.displayName = 'onesy-AvatarGroup';
 

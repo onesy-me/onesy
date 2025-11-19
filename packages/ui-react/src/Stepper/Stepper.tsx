@@ -99,7 +99,7 @@ export type IStepper = ILine & {
   DividerProps?: IPropsAny;
 };
 
-const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
+const Stepper: React.FC<IStepper> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyStepper?.props?.default, ...props_ };
@@ -149,8 +149,6 @@ const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={gap}
 
       direction={orientation === 'horizontal' ? 'row' : 'column'}
@@ -262,7 +260,7 @@ const Stepper: React.FC<IStepper> = React.forwardRef((props_, ref: any) => {
         ))}
     </Line>
   );
-});
+};
 
 Stepper.displayName = 'onesy-Stepper';
 

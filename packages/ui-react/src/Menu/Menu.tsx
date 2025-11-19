@@ -70,7 +70,7 @@ export type IMenu = Omit<ITooltip, 'name' | 'label'> & {
   ClickListenerProps?: IPropsAny;
 };
 
-const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
+const Menu: React.FC<IMenu> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenu?.props?.default, ...props_ };
@@ -82,6 +82,8 @@ const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
   const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
   const {
+    ref,
+
     open: open_,
 
     openDefault,
@@ -446,7 +448,7 @@ const Menu: React.FC<IMenu> = React.forwardRef((props_, ref: any) => {
       </Tooltip>
     </Wrapper>
   );
-});
+};
 
 Menu.displayName = 'onesy-Menu';
 

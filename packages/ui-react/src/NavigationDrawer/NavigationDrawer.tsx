@@ -102,7 +102,7 @@ export type INavigationDrawer = IModal & {
   TransitionComponentProps?: IPropsAny;
 };
 
-const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, ref: any) => {
+const NavigationDrawer: React.FC<INavigationDrawer> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationDrawer?.props?.default, ...props_ };
@@ -273,8 +273,6 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
 
   return (
     <Modal
-      ref={ref}
-
       open={open}
 
       mainRef={refs.modal}
@@ -325,7 +323,7 @@ const NavigationDrawer: React.FC<INavigationDrawer> = React.forwardRef((props_, 
       {children}
     </Modal>
   );
-});
+};
 
 NavigationDrawer.displayName = 'onesy-NavigationDrawer';
 

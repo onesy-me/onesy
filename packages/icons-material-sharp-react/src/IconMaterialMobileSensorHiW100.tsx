@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileSensorHiW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileSensorHiW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileSensorHiW100'
 
       short_name='MobileSensorHi'
@@ -19,7 +15,7 @@ const IconMaterialMobileSensorHiW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M282-172v-616h396v616H282Zm368-28v-560H310v560h340ZM482.07-624q11.93 0 19.93-8.07t8-20q0-11.93-8.07-19.93t-20-8Q470-680 462-671.93t-8 20q0 11.93 8.07 19.93t20 8ZM76-306v-228h28v228H76Zm108-120v-228h28v228h-28Zm672 0v-228h28v228h-28ZM748-306v-228h28v228h-28ZM310-760v560-560Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileSensorHiW100.displayName = 'OnesyIconMaterialMobileSensorHiW100';
 

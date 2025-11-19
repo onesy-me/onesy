@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialDialpadW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialDialpadW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='DialpadW100Filled'
 
       short_name='Dialpad'
@@ -19,7 +15,7 @@ const IconMaterialDialpadW100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M480-100q-23 0-38.5-15.5T426-154q0-23 15.5-38.5T480-208q23 0 38.5 15.5T534-154q0 23-15.5 38.5T480-100ZM252-768q-23 0-38.5-15.5T198-822q0-23 15.5-38.5T252-876q23 0 38.5 15.5T306-822q0 23-15.5 38.5T252-768Zm0 228q-23 0-38.5-15.5T198-594q0-23 15.5-38.5T252-648q23 0 38.5 15.5T306-594q0 23-15.5 38.5T252-540Zm0 228q-23 0-38.5-15.5T198-366q0-23 15.5-38.5T252-420q23 0 38.5 15.5T306-366q0 23-15.5 38.5T252-312Zm456-456q-23 0-38.5-15.5T654-822q0-23 15.5-38.5T708-876q23 0 38.5 15.5T762-822q0 23-15.5 38.5T708-768ZM480-312q-23 0-38.5-15.5T426-366q0-23 15.5-38.5T480-420q23 0 38.5 15.5T534-366q0 23-15.5 38.5T480-312Zm228 0q-23 0-38.5-15.5T654-366q0-23 15.5-38.5T708-420q23 0 38.5 15.5T762-366q0 23-15.5 38.5T708-312Zm0-228q-23 0-38.5-15.5T654-594q0-23 15.5-38.5T708-648q23 0 38.5 15.5T762-594q0 23-15.5 38.5T708-540Zm-228 0q-23 0-38.5-15.5T426-594q0-23 15.5-38.5T480-648q23 0 38.5 15.5T534-594q0 23-15.5 38.5T480-540Zm0-228q-23 0-38.5-15.5T426-822q0-23 15.5-38.5T480-876q23 0 38.5 15.5T534-822q0 23-15.5 38.5T480-768Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialDialpadW100Filled.displayName = 'OnesyIconMaterialDialpadW100Filled';
 

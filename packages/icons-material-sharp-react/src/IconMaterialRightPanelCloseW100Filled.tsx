@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialRightPanelCloseW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialRightPanelCloseW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='RightPanelCloseW100Filled'
 
       short_name='RightPanelClose'
@@ -19,7 +15,7 @@ const IconMaterialRightPanelCloseW100Filled = React.forwardRef((props: IIcon, re
       <path d="m347-363 118-117-118-117v234ZM200-200h412v-560H200v560Zm-28 28v-616h616v616H172Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialRightPanelCloseW100Filled.displayName = 'OnesyIconMaterialRightPanelCloseW100Filled';
 

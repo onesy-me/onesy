@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSpaceBar = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSpaceBar = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SpaceBar'
 
       short_name='SpaceBar'
@@ -19,7 +15,7 @@ const IconMaterialSpaceBar = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-360v-240h80v160h480v-160h80v240H160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSpaceBar.displayName = 'OnesyIconMaterialSpaceBar';
 

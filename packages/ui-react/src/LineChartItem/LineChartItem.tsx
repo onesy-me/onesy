@@ -53,7 +53,7 @@ export type ILineChartItem = IChart & {
   BorderProps?: any;
 };
 
-const LineChartItem: React.FC<ILineChartItem> = React.forwardRef((props_, ref: any) => {
+const LineChartItem: React.FC<ILineChartItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLineChartItem?.props?.default, ...props_ };
@@ -346,7 +346,7 @@ const LineChartItem: React.FC<ILineChartItem> = React.forwardRef((props_, ref: a
       ...other
     })
   );
-});
+};
 
 // Parts of the logic done thanks to
 // https://francoisromain.medium.com/smooth-a-svg-path-with-cubic-bezier-curves-e37b49d46c74

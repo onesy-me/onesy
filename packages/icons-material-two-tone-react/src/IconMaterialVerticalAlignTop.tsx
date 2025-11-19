@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVerticalAlignTop = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVerticalAlignTop = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='VerticalAlignTop'
 
       short_name='VerticalAlignTop'
@@ -19,7 +15,7 @@ const IconMaterialVerticalAlignTop = React.forwardRef((props: IIcon, ref) => {
       <path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 3h16v2H4zm4 8h3v10h2V11h3l-4-4z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVerticalAlignTop.displayName = 'OnesyIconMaterialVerticalAlignTop';
 

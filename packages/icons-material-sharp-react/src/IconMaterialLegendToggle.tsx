@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLegendToggle = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLegendToggle = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='LegendToggle'
 
       short_name='LegendToggle'
@@ -19,7 +15,7 @@ const IconMaterialLegendToggle = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-200v-80h640v80H160Zm0-160v-80h640v80H160Zm0-160v-94l240-146 200 142 200-142v98L600-520 397-664 160-520Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLegendToggle.displayName = 'OnesyIconMaterialLegendToggle';
 

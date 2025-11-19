@@ -67,7 +67,7 @@ export type ISectionLogos = ISection & {
   WrapperProps?: IPropsAny;
 };
 
-const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionLogos> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionLogos?.props?.default, ...props_ };
@@ -79,6 +79,8 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     values = [],
 
     size = 'regular',
@@ -210,7 +212,7 @@ const Element: React.FC<ISectionLogos> = React.forwardRef((props_, ref: any) => 
       </Line>
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionLogos';
 

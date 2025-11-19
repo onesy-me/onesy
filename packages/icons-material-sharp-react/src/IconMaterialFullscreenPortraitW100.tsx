@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFullscreenPortraitW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFullscreenPortraitW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FullscreenPortraitW100'
 
       short_name='FullscreenPortrait'
@@ -19,7 +15,7 @@ const IconMaterialFullscreenPortraitW100 = React.forwardRef((props: IIcon, ref) 
       <path d="M340-260h280v-440H340v440Zm408 128H212v-696h536v696Zm-28-28v-640H240v640h480Zm0-640H240h480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFullscreenPortraitW100.displayName = 'OnesyIconMaterialFullscreenPortraitW100';
 

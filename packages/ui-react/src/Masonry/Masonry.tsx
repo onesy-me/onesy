@@ -25,7 +25,7 @@ export type IMasonry = Omit<ILine, 'gap'> & {
   NoMasonryProps?: any;
 };
 
-const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
+const Masonry: React.FC<IMasonry> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMasonry?.props?.default, ...props_ };
@@ -33,6 +33,8 @@ const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
   const Line = theme?.elements?.Line || LineElement;
 
   const {
+    ref,
+
     gap: gap_,
 
     columns: columns_,
@@ -331,7 +333,7 @@ const Masonry: React.FC<IMasonry> = React.forwardRef((props_, ref: any) => {
       ))}
     </Line>
   );
-});
+};
 
 Masonry.displayName = 'onesy-Masonry';
 

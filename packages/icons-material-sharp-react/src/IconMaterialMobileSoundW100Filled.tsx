@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileSoundW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileSoundW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileSoundW100Filled'
 
       short_name='MobileSound'
@@ -19,7 +15,7 @@ const IconMaterialMobileSoundW100Filled = React.forwardRef((props: IIcon, ref) =
       <path d="M252-92v-776h456v96L449-513v66l259 257v98H252Zm464-212-20-20q31-31 47.5-71.5T760-480q0-44-16.5-84.5T696-636l20-20q34.79 34.9 53.39 80.6Q788-529.71 788-479.85q0 49.85-18.61 95.44Q750.79-338.82 716-304Zm-82-82-20-20q17-14 28-33t11-41q0-22-11-41t-28-33l20-20q21 18 34 42t13 52q0 28-13 52t-34 42ZM482.07-704q11.93 0 19.93-8.07t8-20q0-11.93-8.07-19.93t-20-8Q470-760 462-751.93t-8 20q0 11.93 8.07 19.93t20 8Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileSoundW100Filled.displayName = 'OnesyIconMaterialMobileSoundW100Filled';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialKeyboardDoubleArrowRightFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialKeyboardDoubleArrowRightFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='KeyboardDoubleArrowRightFilled'
 
       short_name='KeyboardDoubleArrowRight'
@@ -19,7 +15,7 @@ const IconMaterialKeyboardDoubleArrowRightFilled = React.forwardRef((props: IIco
       <path d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialKeyboardDoubleArrowRightFilled.displayName = 'OnesyIconMaterialKeyboardDoubleArrowRightFilled';
 

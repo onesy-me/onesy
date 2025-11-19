@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPageMenuIosW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPageMenuIosW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PageMenuIosW100'
 
       short_name='PageMenuIos'
@@ -19,7 +15,7 @@ const IconMaterialPageMenuIosW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M186-172q-6 0-10-4t-4-10q0-6 4-10t10-4h367q6 0 10 4t4 10q0 6-4 10t-10 4H186Zm0-128q-6 0-10-4t-4-10q0-6 4-10t10-4h588q6 0 10 4t4 10q0 6-4 10t-10 4H186Zm46-128q-26 0-43-17t-17-43v-240q0-26 17-43t43-17h496q26 0 43 17t17 43v240q0 26-17 43t-43 17H232Zm0-28h496q14 0 23-9t9-23v-240q0-14-9-23t-23-9H232q-14 0-23 9t-9 23v240q0 14 9 23t23 9Zm-32 0v-304 304Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPageMenuIosW100.displayName = 'OnesyIconMaterialPageMenuIosW100';
 

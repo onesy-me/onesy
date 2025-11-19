@@ -67,7 +67,7 @@ export type ISectionContact = ISection & {
   PropertiesProps?: IPropsAny;
 };
 
-const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionContact> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionContact?.props?.default, ...props_ };
@@ -81,6 +81,8 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     map,
 
     mapPosition: mapPosition_ = 'bottom',
@@ -300,7 +302,7 @@ const Element: React.FC<ISectionContact> = React.forwardRef((props_, ref: any) =
       {mapPosition === 'bottom' && mapElement}
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionContact';
 

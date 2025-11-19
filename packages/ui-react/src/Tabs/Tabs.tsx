@@ -208,7 +208,7 @@ export type ITabs = Omit<ISurface, 'version' | 'onChange'> & {
   SurfaceProps?: IPropsAny;
 };
 
-const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
+const Tabs: React.FC<ITabs> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTabs?.props?.default, ...props_ };
@@ -222,6 +222,8 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
   const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -641,7 +643,7 @@ const Tabs: React.FC<ITabs> = React.forwardRef((props_, ref: any) => {
       {useArrows && ArrowPost}
     </Surface>
   );
-});
+};
 
 Tabs.displayName = 'onesy-Tabs';
 

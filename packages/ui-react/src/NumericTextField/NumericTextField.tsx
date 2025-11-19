@@ -34,7 +34,7 @@ export type INumericTextField = IAdvancedTextField & {
   IconButtonProps?: IPropsAny;
 };
 
-const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, ref: any) => {
+const NumericTextField: React.FC<INumericTextField> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNumericTextField?.props?.default, ...props_ };
@@ -44,6 +44,8 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     valueDefault,
     value: value_,
 
@@ -345,7 +347,7 @@ const NumericTextField: React.FC<INumericTextField> = React.forwardRef((props_, 
       {...other}
     />
   );
-});
+};
 
 NumericTextField.displayName = 'onesy-NumericTextField';
 

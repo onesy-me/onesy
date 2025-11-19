@@ -151,7 +151,7 @@ export type IDivider = ISurface & {
   flex?: boolean;
 };
 
-const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
+const Divider: React.FC<IDivider> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyDivider?.props?.default, ...props_ };
@@ -203,8 +203,6 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Surface
-      ref={ref}
-
       version='filled'
 
       tonal={tonal}
@@ -305,7 +303,7 @@ const Divider: React.FC<IDivider> = React.forwardRef((props_, ref: any) => {
       </>}
     </Surface>
   );
-});
+};
 
 Divider.displayName = 'onesy-Divider';
 

@@ -43,7 +43,7 @@ export type IBreadcrumbs = ILine & {
   MoreProps?: any;
 };
 
-const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) => {
+const Breadcrumbs: React.FC<IBreadcrumbs> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -57,6 +57,8 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     max: max_,
 
     separator = (
@@ -271,7 +273,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = React.forwardRef((props_, ref: any) 
       })}
     </Line>
   );
-});
+};
 
 Breadcrumbs.displayName = 'onesy-Breadcrumbs';
 

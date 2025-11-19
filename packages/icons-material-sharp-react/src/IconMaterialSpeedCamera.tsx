@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSpeedCamera = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSpeedCamera = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SpeedCamera'
 
       short_name='SpeedCamera'
@@ -19,7 +15,7 @@ const IconMaterialSpeedCamera = React.forwardRef((props: IIcon, ref) => {
       <path d="m701-360-87-50 140-104 86 50-139 104ZM512-482l104-79-276-159-60 104 232 134ZM160-160v-80h200v-238L171-587l140-242 450 260-244 182-77-44v271H160Zm288-441Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSpeedCamera.displayName = 'OnesyIconMaterialSpeedCamera';
 

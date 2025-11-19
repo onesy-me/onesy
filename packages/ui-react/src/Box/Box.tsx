@@ -16,7 +16,7 @@ export type IBox = IBaseElement & {
   styles?: string | TValue;
 };
 
-const Box: React.FC<IBox> = React.forwardRef((props_, ref: any) => {
+const Box: React.FC<IBox> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBox?.props?.default, ...props_ };
@@ -37,8 +37,6 @@ const Box: React.FC<IBox> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       className={classNameMethod(styles as any, props, classNames([
         staticClassName('Box', theme) && [
           'onesy-Box-root'
@@ -53,7 +51,7 @@ const Box: React.FC<IBox> = React.forwardRef((props_, ref: any) => {
       {children}
     </Component>
   );
-});
+};
 
 Box.displayName = 'onesy-Box';
 

@@ -77,7 +77,7 @@ export type IConfirm = IBaseElement & {
   onClose?: () => any;
 };
 
-const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
+const Confirm: React.FC<IConfirm> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -199,8 +199,6 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
       {children}
 
       <Modal
-        ref={ref}
-
         open={openModal}
 
         onClose={close}
@@ -290,7 +288,7 @@ const Confirm: React.FC<IConfirm> = React.forwardRef((props_, ref: any) => {
       </Modal>
     </ConfirmContext.Provider>
   );
-});
+};
 
 Confirm.displayName = 'onesy-Confirm';
 

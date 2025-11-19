@@ -34,7 +34,7 @@ export type IImageListItem = ILine & {
   version?: 'standard' | 'vowen' | 'masonry';
 };
 
-const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: any) => {
+const ImageListItem: React.FC<IImageListItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageListItem?.props?.default, ...props_ };
@@ -42,6 +42,8 @@ const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: a
   const Line = theme?.elements?.Line || LineElement;
 
   const {
+    ref,
+
     rows: rows_,
     columns: columns_,
     version = 'standard',
@@ -139,7 +141,7 @@ const ImageListItem: React.FC<IImageListItem> = React.forwardRef((props_, ref: a
       {children}
     </Line>
   );
-});
+};
 
 ImageListItem.displayName = 'onesy-ImageListItem';
 

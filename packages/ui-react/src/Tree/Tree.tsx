@@ -163,7 +163,7 @@ const TreeDelays = {
   }
 };
 
-const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
+const Tree: React.FC<ITree> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTree?.props?.default, ...props_ };
@@ -183,6 +183,8 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
   const Interaction = theme?.elements?.Interaction || InteractionElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'inherit',
     version = 'text',
@@ -661,7 +663,7 @@ const Tree: React.FC<ITree> = React.forwardRef((props_, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 Tree.displayName = 'onesy-Tree';
 

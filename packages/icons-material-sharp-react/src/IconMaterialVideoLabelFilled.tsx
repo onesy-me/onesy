@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVideoLabelFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVideoLabelFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='VideoLabelFilled'
 
       short_name='VideoLabel'
@@ -19,7 +15,7 @@ const IconMaterialVideoLabelFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M80-160v-640h800v640H80Zm80-200h640v-360H160v360Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVideoLabelFilled.displayName = 'OnesyIconMaterialVideoLabelFilled';
 

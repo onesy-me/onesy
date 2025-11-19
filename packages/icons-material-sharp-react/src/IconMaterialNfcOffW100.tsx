@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialNfcOffW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialNfcOffW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='NfcOffW100'
 
       short_name='NfcOff'
@@ -19,7 +15,7 @@ const IconMaterialNfcOffW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M172-172v-576l-82-82 20-20L872-88l-20 20-104-104H172Zm160-160v-256L200-720v520h520L588-332H332Zm456 49-28-28v-449H311l-28-28h505v505Zm-428-77h200L360-560v200Zm268-83-28-28v-129H494v23l-28-28v-23h162v185Zm-168-17Zm76-76Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialNfcOffW100.displayName = 'OnesyIconMaterialNfcOffW100';
 

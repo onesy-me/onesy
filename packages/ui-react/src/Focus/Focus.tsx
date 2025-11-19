@@ -23,7 +23,7 @@ export type IFocus = IBaseElement & {
 
 };
 
-const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
+const Focus: React.FC<IFocus> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFocus?.props?.default, ...props_ };
@@ -34,6 +34,8 @@ const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
   };
 
   const {
+    ref,
+
     children,
 
     ...other
@@ -119,7 +121,7 @@ const Focus: React.FC<IFocus> = React.forwardRef((props_, ref: any) => {
       />
     </React.Fragment>
   );
-});
+};
 
 Focus.displayName = 'onesy-Focus';
 

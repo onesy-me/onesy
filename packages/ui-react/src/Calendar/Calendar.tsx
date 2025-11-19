@@ -220,7 +220,7 @@ export type ICalendar = Omit<ISurface, 'version' | 'onChange'> & {
 // [l('Monday'), l('Tuesday'), l('Wednesday'), l('Thursday'), l('Friday'), l('Saturday'), l('Sunday'];
 // ['Mon'), l('Tue'), l('Wed'), l('Thu'), l('Fri'), l('Sat'), l('Sun')];
 
-const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
+const Calendar: React.FC<ICalendar> = props__ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -252,6 +252,8 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
   const PaginationItem = theme?.elements?.PaginationItem || PaginationItemElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
 
@@ -1303,7 +1305,7 @@ const Calendar: React.FC<ICalendar> = React.forwardRef((props__, ref: any) => {
       {end}
     </Surface>
   );
-});
+};
 
 Calendar.displayName = 'onesy-Calendar';
 

@@ -214,7 +214,7 @@ export type IImageEdit = Omit<ILine, 'onChange'> & {
   IconButtonProps?: IPropsAny;
 };
 
-const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
+const ImageEdit: React.FC<IImageEdit> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -244,6 +244,8 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
   const Chip = theme?.elements?.Chip || ChipElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -1927,7 +1929,7 @@ const ImageEdit: React.FC<IImageEdit> = React.forwardRef((props_, ref: any) => {
       </>}
     </Line>
   );
-});
+};
 
 ImageEdit.displayName = 'onesy-ImageEdit';
 

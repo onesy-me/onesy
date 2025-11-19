@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCheckBoxOutlineBlankW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCheckBoxOutlineBlankW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CheckBoxOutlineBlankW100Filled'
 
       short_name='CheckBoxOutlineBlank'
@@ -19,7 +15,7 @@ const IconMaterialCheckBoxOutlineBlankW100Filled = React.forwardRef((props: IIco
       <path d="M172-172v-616h616v616H172Zm28-28h560v-560H200v560Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCheckBoxOutlineBlankW100Filled.displayName = 'OnesyIconMaterialCheckBoxOutlineBlankW100Filled';
 

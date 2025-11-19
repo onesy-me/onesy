@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialContractDelete = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialContractDelete = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ContractDelete'
 
       short_name='ContractDelete'
@@ -19,7 +15,7 @@ const IconMaterialContractDelete = React.forwardRef((props: IIcon, ref) => {
       <path d="m760-183-85 84-56-56 84-85-84-85 56-56 85 84 85-84 56 56-84 85 84 85-56 56-85-84ZM240-80q-50 0-85-35t-35-85v-120h120v-560h600v415q-19-7-39-10.5t-41-3.5v-321H320v480h214q-7 19-10.5 39t-3.5 41H200v40q0 17 11.5 28.5T240-160h294q8 23 20 43t28 37H240Zm120-520v-80h360v80H360Zm0 120v-80h360v80H360Zm174 320H200h334Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialContractDelete.displayName = 'OnesyIconMaterialContractDelete';
 

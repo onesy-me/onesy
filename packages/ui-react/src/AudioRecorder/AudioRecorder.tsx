@@ -93,7 +93,7 @@ export type IAudioRecorder = ILine & {
   IconProps?: IPropsAny;
 };
 
-const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: any) => {
+const AudioRecorder: React.FC<IAudioRecorder> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -111,6 +111,8 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     pause = true,
@@ -591,7 +593,7 @@ const AudioRecorder: React.FC<IAudioRecorder> = React.forwardRef((props_, ref: a
       )}
     </Line>
   );
-});
+};
 
 AudioRecorder.displayName = 'onesy-AudioRecorder';
 

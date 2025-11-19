@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMoneyBagW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMoneyBagW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MoneyBagW100Filled'
 
       short_name='MoneyBag'
@@ -19,7 +15,7 @@ const IconMaterialMoneyBagW100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M479.82-347q-24.82 0-42.32-17.68-17.5-17.67-17.5-42.5 0-24.82 17.68-42.32 17.67-17.5 42.5-17.5 24.82 0 42.32 17.68 17.5 17.67 17.5 42.5 0 24.82-17.68 42.32-17.67 17.5-42.5 17.5ZM347-641h266l51-104q8-15-.5-29T638-788H322q-17 0-25.5 14t-.5 29l51 104Zm1 469h264q73.33 0 124.67-51.5Q788-275 788-348.34q0-30.63-10.5-59.65Q767-437 747-461L620-613H340L213-461q-20 24-30.5 53.01-10.5 29.02-10.5 59.65 0 73.34 51.5 124.84T348-172Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMoneyBagW100Filled.displayName = 'OnesyIconMaterialMoneyBagW100Filled';
 

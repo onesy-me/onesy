@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSaveClockFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSaveClockFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SaveClockFilled'
 
       short_name='SaveClock'
@@ -19,7 +15,7 @@ const IconMaterialSaveClockFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M720-80q-83 0-141.5-58.5T520-280q0-83 58.5-141.5T720-480q83 0 141.5 58.5T920-280q0 83-58.5 141.5T720-80Zm67-105 28-28-75-75v-112h-40v128l87 87ZM240-560h360v-160H240v160ZM120-120v-720h560l160 160v147q-28-14-59-20.5t-62-6.5q-60 0-111.5 23T518-474q-9-3-18.5-4.5T480-480q-50 0-85 35t-35 85q0 40 23 71t59 43q5 34 17 66t32 60H120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSaveClockFilled.displayName = 'OnesyIconMaterialSaveClockFilled';
 

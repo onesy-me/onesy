@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMassageFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMassageFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MassageFilled'
 
       short_name='Massage'
@@ -19,7 +15,7 @@ const IconMaterialMassageFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M314-409q-44-5-78.5-31T184-507L80-760l240-120 80 120h208q16 0 31 6.5t26 17.5l222 222q13 14 11 32t-17 29l-12 9q-20 14-45 13.5T777-443L510-592l-80-6q-13-1-22 7t-10 21q-1 12 7.5 21.5T426-538l66 5 87 50q19 10 23.5 27.5T601-421q-6 17-22.5 28t-40.5 9l-224-25ZM168-131q-16 5-30-3.5T119-159q-5-17 3.5-30.5T148-208l150-40q72-19 153-35.5T599-300q66 0 124 23.5T836-212q13 9 13.5 24.5T839-160q-11 12-27 14.5t-30-7.5q-45-32-91.5-49.5T599-220q-64 0-141 16.5T319-171l-151 40Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMassageFilled.displayName = 'OnesyIconMaterialMassageFilled';
 

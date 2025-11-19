@@ -140,7 +140,7 @@ export type INavigationItem = ITooltip & {
   IconWrapperProps?: IPropsAny;
 };
 
-const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref: any) => {
+const NavigationItem: React.FC<INavigationItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationItem?.props?.default, ...props_ };
@@ -154,6 +154,8 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
   const Transition = theme?.elements?.Transition || TransitionElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     version = 'regular',
@@ -478,7 +480,7 @@ const NavigationItem: React.FC<INavigationItem> = React.forwardRef((props_, ref:
       </span>
     </Tooltip>
   );
-});
+};
 
 NavigationItem.displayName = 'onesy-NavigationItem';
 

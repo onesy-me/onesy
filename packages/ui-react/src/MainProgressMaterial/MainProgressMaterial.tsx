@@ -78,7 +78,7 @@ export type IMainProgressMaterial = ILinearProress & {
   TransitionComponentProps?: IPropsAny;
 };
 
-const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((props_, ref: any) => {
+const MainProgressMaterial: React.FC<IMainProgressMaterial> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMainProgressMaterial?.props?.default, ...props_ };
@@ -271,8 +271,6 @@ const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((
         {...TransitionComponentProps}
       >
         <LinearProgress
-          ref={ref}
-
           value={value}
 
           version='determinate'
@@ -297,7 +295,7 @@ const MainProgressMaterial: React.FC<IMainProgressMaterial> = React.forwardRef((
       {children}
     </MainProgressMaterialContext.Provider>
   );
-});
+};
 
 MainProgressMaterial.displayName = 'onesy-MainProgressMaterial';
 

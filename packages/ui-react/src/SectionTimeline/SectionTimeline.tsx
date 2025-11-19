@@ -51,7 +51,7 @@ export type ISectionTimeline = ISection & {
   ItemEndProps?: IPropsAny;
 };
 
-const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, ref: any) => {
+const SectionTimeline: React.FC<ISectionTimeline> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySectionTimeline?.props?.default, ...props_ };
@@ -67,6 +67,8 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     values = [],
@@ -214,7 +216,7 @@ const SectionTimeline: React.FC<ISectionTimeline> = React.forwardRef((props_, re
       </Timeline>
     </Section>
   );
-});
+};
 
 SectionTimeline.displayName = 'onesy-SectionTimeline';
 

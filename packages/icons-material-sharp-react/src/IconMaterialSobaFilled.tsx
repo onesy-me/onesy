@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSobaFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSobaFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SobaFilled'
 
       short_name='Soba'
@@ -19,7 +15,7 @@ const IconMaterialSobaFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M139-80 80-320h69q2-9 5-18t6-17v-445l720-80v60l-460 52v68h460v60H420v65q14-2 29.5-3.5T480-580q121 0 212 74t118 186h70L819-80H139Zm94-240h64q23-54 72-87t111-33q62 0 110.5 33t71.5 87h64q-26-78-92.5-129T480-500q-88 0-154.5 51T233-320Zm158 0h177q-17-19-39.5-29.5T480-360q-26 0-49 10.5T391-320ZM220-459q9-11 19-21t21-19v-141h-40v181Zm100-81q10-5 19.5-9.5T360-558v-82h-40v100ZM220-700h40v-50l-40 4v46Zm100 0h40v-62l-40 5v57Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSobaFilled.displayName = 'OnesyIconMaterialSobaFilled';
 

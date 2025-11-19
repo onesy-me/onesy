@@ -167,7 +167,7 @@ export type IModal = IBaseElement & {
   TransitionComponent?: IElementReference;
 };
 
-const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
+const Modal: React.FC<IModal> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModal?.props?.default, ...props_ };
@@ -181,6 +181,8 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
   const Fade = theme?.elements?.Fade || FadeElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     size = 'regular',
@@ -509,7 +511,7 @@ const Modal: React.FC<IModal> = React.forwardRef((props_, ref: any) => {
       </Component>
     </PortalComponent>
   );
-});
+};
 
 Modal.displayName = 'onesy-Modal';
 

@@ -487,7 +487,7 @@ export type IChart = ISurface & {
   WrapperProps?: IPropsAny;
 };
 
-const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
+const Chart: React.FC<IChart> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyChart?.props?.default, ...props_ };
@@ -505,6 +505,8 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
   const Grow = theme?.elements?.Grow || GrowElement;
 
   const {
+    ref,
+
     tonal = true,
 
     color = 'primary',
@@ -2585,7 +2587,7 @@ const Chart: React.FC<IChart> = React.forwardRef((props_, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 Chart.displayName = 'onesy-Chart';
 

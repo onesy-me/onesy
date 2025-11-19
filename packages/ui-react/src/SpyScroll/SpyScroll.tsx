@@ -26,12 +26,14 @@ export type ISpyScroll = IBaseElement & {
   onActive?: (value: string) => any;
 };
 
-const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
+const SpyScroll: React.FC<ISpyScroll> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpyScroll?.props?.default, ...props_ };
 
   const {
+    ref,
+
     ids,
 
     offset,
@@ -204,7 +206,7 @@ const SpyScroll: React.FC<ISpyScroll> = React.forwardRef((props_, ref: any) => {
       })}
     </React.Fragment>
   );
-});
+};
 
 SpyScroll.displayName = 'onesy-SpyScroll';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMapPinReviewFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMapPinReviewFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MapPinReviewFilled'
 
       short_name='MapPinReview'
@@ -19,7 +15,7 @@ const IconMaterialMapPinReviewFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M80-80v-80h138q-28-26-59-59t-57-71q-26-38-44-78t-18-82q0-98 64-164t160-66q96 0 160 66t64 164q0 42-18 82t-44 78q-26 38-57 71t-59 59h570v80H80Zm184-320q25 0 42.5-17.5T324-460q0-25-17.5-42.5T264-520q-25 0-42.5 17.5T204-460q0 25 17.5 42.5T264-400Zm336 160-58-93q12-29 19-58.5t7-58.5q0-23-3-46t-9-44l48-29 81 49-21-92 72-63-95-8-37-87-37 87-91 8q-32-31-71-51.5T320-755v-125h560v520H675l-75 120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMapPinReviewFilled.displayName = 'OnesyIconMaterialMapPinReviewFilled';
 

@@ -22,7 +22,7 @@ export type IAreaChart = IChart & {
   linearGradient?: boolean;
 };
 
-const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
+const AreaChart: React.FC<IAreaChart> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChart?.props?.default, ...props_ };
@@ -43,8 +43,6 @@ const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Chart
-      ref={ref}
-
       values={values}
 
       className={classNames([
@@ -67,7 +65,7 @@ const AreaChart: React.FC<IAreaChart> = React.forwardRef((props_, ref: any) => {
       ))}
     </Chart>
   );
-});
+};
 
 AreaChart.displayName = 'onesy-AreaChart';
 

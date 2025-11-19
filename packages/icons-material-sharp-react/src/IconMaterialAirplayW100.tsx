@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAirplayW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAirplayW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AirplayW100'
 
       short_name='Airplay'
@@ -19,7 +15,7 @@ const IconMaterialAirplayW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="m314-172 166-166 166 166H314Zm-182-80v-536h696v536H680v-28h120v-480H160v480h120v28H132Zm348-254Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAirplayW100.displayName = 'OnesyIconMaterialAirplayW100';
 

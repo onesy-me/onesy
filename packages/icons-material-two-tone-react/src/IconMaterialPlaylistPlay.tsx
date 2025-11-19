@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPlaylistPlay = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPlaylistPlay = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PlaylistPlay'
 
       short_name='PlaylistPlay'
@@ -19,7 +15,7 @@ const IconMaterialPlaylistPlay = React.forwardRef((props: IIcon, ref) => {
       <g><rect fill="none" height="24" width="24"/></g><g><g><rect height="2" width="11" x="3" y="10"/><rect height="2" width="11" x="3" y="6"/><rect height="2" width="7" x="3" y="14"/><polygon points="16,13 16,21 22,17"/></g></g>
     </Icon>
   );
-});
+};
 
 IconMaterialPlaylistPlay.displayName = 'OnesyIconMaterialPlaylistPlay';
 

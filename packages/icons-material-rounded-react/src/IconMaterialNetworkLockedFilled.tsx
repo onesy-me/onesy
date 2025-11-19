@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialNetworkLockedFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialNetworkLockedFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='NetworkLockedFilled'
 
       short_name='NetworkLocked'
@@ -19,7 +15,7 @@ const IconMaterialNetworkLockedFilled = React.forwardRef((props: IIcon, ref) => 
       <path d="M714-80q-14 0-24-10t-10-24v-132q0-14 10-24t24-10h6v-40q0-33 23.5-56.5T800-400q33 0 56.5 23.5T880-320v40h6q14 0 24 10t10 24v132q0 14-10 24t-24 10H714Zm46-200h80v-40q0-17-11.5-28.5T800-360q-17 0-28.5 11.5T760-320v40ZM177-80q-27 0-37.5-24.5T148-148l664-664q19-19 43.5-8.5T880-783v263q0 17-11.5 28.5T840-480h-40q-83 0-141.5 58.5T600-280v160q0 17-11.5 28.5T560-80H177Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialNetworkLockedFilled.displayName = 'OnesyIconMaterialNetworkLockedFilled';
 

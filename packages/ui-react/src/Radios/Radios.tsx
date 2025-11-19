@@ -45,7 +45,7 @@ export type IRadios = Omit<ILine, 'onChange'> & {
   LabelProps?: IPropsAny;
 };
 
-const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
+const Radios: React.FC<IRadios> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyRadios?.props?.default, ...props_ };
@@ -128,8 +128,6 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={1}
 
       direction={direction}
@@ -216,7 +214,7 @@ const Radios: React.FC<IRadios> = React.forwardRef((props_, ref: any) => {
       </Line>
     </Line>
   );
-});
+};
 
 Radios.displayName = 'onesy-Radios';
 

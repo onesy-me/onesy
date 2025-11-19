@@ -18,7 +18,7 @@ export type IScatterChart = IChart & {
 
 };
 
-const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any) => {
+const ScatterChart: React.FC<IScatterChart> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyScatterChart?.props?.default, ...props_ };
@@ -39,8 +39,6 @@ const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any
 
   return (
     <Chart
-      ref={ref}
-
       values={values}
 
       className={classNames([
@@ -63,7 +61,7 @@ const ScatterChart: React.FC<IScatterChart> = React.forwardRef((props_, ref: any
       ))}
     </Chart>
   );
-});
+};
 
 ScatterChart.displayName = 'onesy-ScatterChart';
 

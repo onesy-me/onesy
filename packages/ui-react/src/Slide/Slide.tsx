@@ -14,12 +14,14 @@ export type ISlide = ITransition & {
   delay?: number;
 };
 
-const Slide: React.FC<ISlide> = React.forwardRef((props_, ref: any) => {
+const Slide: React.FC<ISlide> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySlide?.props?.default, ...props_ };
 
   const {
+    ref,
+
     in: inProp,
     prefix,
     run,
@@ -241,7 +243,7 @@ const Slide: React.FC<ISlide> = React.forwardRef((props_, ref: any) => {
       }}
     </Transition>
   );
-});
+};
 
 Slide.displayName = 'onesy-Slide';
 

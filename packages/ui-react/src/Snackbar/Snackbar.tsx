@@ -106,7 +106,7 @@ export type ISnackbar = ISurface & {
 
 const timeouts = {};
 
-const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
+const Snackbar: React.FC<ISnackbar> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySnackbar?.props?.default, ...props_ };
@@ -122,6 +122,8 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
   const IconButton = theme?.elements?.IconButton || IconButtonElement;
 
   const {
+    ref,
+
     id = getID(),
 
     tonal = true,
@@ -362,7 +364,7 @@ const Snackbar: React.FC<ISnackbar> = React.forwardRef((props_, ref: any) => {
       </Surface>
     </TransitionComponent>
   );
-});
+};
 
 Snackbar.displayName = 'onesy-Snackbar';
 

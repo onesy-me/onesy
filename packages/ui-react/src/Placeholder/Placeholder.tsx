@@ -99,7 +99,7 @@ export type IPlaceholder = Omit<IBaseElement, 'version'> & {
   text?: boolean;
 };
 
-const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) => {
+const Placeholder: React.FC<IPlaceholder> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPlaceholder?.props?.default, ...props_ };
@@ -140,8 +140,6 @@ const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) 
 
   return (
     <Component
-      ref={ref}
-
       className={classNames([
         staticClassName('Placeholder', theme) && [
           `onesy-Placeholder-root`
@@ -193,7 +191,7 @@ const Placeholder: React.FC<IPlaceholder> = React.forwardRef((props_, ref: any) 
       </Surface>
     </Component>
   );
-});
+};
 
 Placeholder.displayName = 'onesy-Placeholder';
 

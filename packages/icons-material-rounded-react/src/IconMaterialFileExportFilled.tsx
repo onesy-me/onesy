@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFileExportFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFileExportFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FileExportFilled'
 
       short_name='FileExport'
@@ -19,7 +15,7 @@ const IconMaterialFileExportFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="m320-183-90 90q-12 12-28 11.5T174-94q-11-12-11.5-28t11.5-28l90-90h-50q-17 0-28.5-11.5T174-280q0-17 11.5-28.5T214-320h146q17 0 28.5 11.5T400-280v146q0 17-11.5 28.5T360-94q-17 0-28.5-11.5T320-134v-49ZM520-80q-17 0-28.5-11.5T480-120v-160q0-50-35-85t-85-35H200q-17 0-28.5-11.5T160-440v-360q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H520Zm0-520h200L520-800l200 200-200-200v200Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFileExportFilled.displayName = 'OnesyIconMaterialFileExportFilled';
 

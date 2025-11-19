@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSettingsSeating = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSettingsSeating = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SettingsSeating'
 
       short_name='SettingsSeating'
@@ -19,7 +15,7 @@ const IconMaterialSettingsSeating = React.forwardRef((props: IIcon, ref) => {
       <path d="M320-80q-17 0-28.5-11.5T280-120q0-17 11.5-28.5T320-160q17 0 28.5 11.5T360-120q0 17-11.5 28.5T320-80Zm160 0q-17 0-28.5-11.5T440-120q0-17 11.5-28.5T480-160q17 0 28.5 11.5T520-120q0 17-11.5 28.5T480-80Zm160 0q-17 0-28.5-11.5T600-120q0-17 11.5-28.5T640-160q17 0 28.5 11.5T680-120q0 17-11.5 28.5T640-80ZM320-240v-120h-6q-32 0-55-21t-25-52l-34-407h98q45 0 78 28t41 72l23 140h160q66 0 113 47t47 113v80h-80v120h-80v-120H400v120h-80Zm360-200q0-33-23.5-56.5T600-520H372l-34-206q-2-15-13.5-24.5T298-760h-11l27 320h366Zm-366 0Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSettingsSeating.displayName = 'OnesyIconMaterialSettingsSeating';
 

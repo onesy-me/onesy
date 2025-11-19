@@ -194,7 +194,7 @@ export type ICalendarAvailability = ILine & {
   IconButtonProps?: any;
 };
 
-const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((props_, ref: any) => {
+const CalendarAvailability: React.FC<ICalendarAvailability> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -796,8 +796,6 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
 
   return (
     <Component
-      ref={ref}
-
       flex
 
       fullWidth
@@ -1188,7 +1186,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = React.forwardRef((
       )}
     </Component>
   );
-});
+};
 
 CalendarAvailability.displayName = 'onesy-CalendarAvailability';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAndroidCellDual5BarAlertFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAndroidCellDual5BarAlertFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AndroidCellDual5BarAlertFilled'
 
       short_name='AndroidCellDual5BarAlert'
@@ -19,7 +15,7 @@ const IconMaterialAndroidCellDual5BarAlertFilled = React.forwardRef((props: IIco
       <path d="M40-400v-180h120v180H40Zm190 0v-240h120v240H230Zm190 0v-280h120v280H420ZM40-160v-160h120v160H40Zm190 0v-160h120v160H230Zm190 0v-160h120v160H420Zm380-313v-327h120v314q-10-2-19.5-3t-20.5-1q-21 0-41.5 4.5T800-473Zm-190 73v-320h120v298q-5 5-9 10.5t-8 11.5H610Zm0 240v-160h72q-7 43 5 85t41 75H610Zm270 0q-17 0-28.5-11.5T840-200q0-17 11.5-28.5T880-240q17 0 28.5 11.5T920-200q0 17-11.5 28.5T880-160Zm-40-120v-140h80v140h-80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAndroidCellDual5BarAlertFilled.displayName = 'OnesyIconMaterialAndroidCellDual5BarAlertFilled';
 

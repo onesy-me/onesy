@@ -56,7 +56,7 @@ export type ISectionTextMedia = ISection & {
   OtherProps?: IPropsAny;
 };
 
-const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, ref: any) => {
+const SectionTextMedia: React.FC<ISectionTextMedia> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -82,6 +82,8 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
   const { classes } = useStyle();
 
   const {
+    ref,
+
     size,
 
     title,
@@ -374,7 +376,7 @@ const SectionTextMedia: React.FC<ISectionTextMedia> = React.forwardRef((props_, 
       </Line>
     </Section>
   );
-});
+};
 
 SectionTextMedia.displayName = 'onesy-SectionTextMedia';
 

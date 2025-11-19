@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMinimizeFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMinimizeFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MinimizeFilled'
 
       short_name='Minimize'
@@ -19,7 +15,7 @@ const IconMaterialMinimizeFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M240-120v-80h480v80H240Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMinimizeFilled.displayName = 'OnesyIconMaterialMinimizeFilled';
 

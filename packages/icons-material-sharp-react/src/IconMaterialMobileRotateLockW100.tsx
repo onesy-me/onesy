@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileRotateLockW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileRotateLockW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileRotateLockW100'
 
       short_name='MobileRotateLock'
@@ -19,7 +15,7 @@ const IconMaterialMobileRotateLockW100 = React.forwardRef((props: IIcon, ref) =>
       <path d="M651-572v-176h41v-40q0-29 19.5-48.5T760-856q29 0 48.5 19.5T828-788v40h39v176H651Zm69-176h80v-40q0-17-11.5-28.5T760-828q-17 0-28.5 11.5T720-788v40ZM561-201 199-563l198-198 362 362-198 198Zm0-40 158-158-322-322-158 158 322 322ZM480-52q-88.27 0-166.3-33.44-78.02-33.44-136.42-91.84-58.4-58.4-91.84-136.42Q52-391.73 52-480h28q0 83 31.5 156T197-197q54 54 127 85.5T480-80L332-228l20-20L542-58q-16 2-31 4t-31 2Zm-1-429Zm-101.19-73q11.19 0 18.69-7.74 7.5-7.75 7.5-18.07 0-11.19-7.49-18.69-7.49-7.5-18.94-7.5-10.57 0-18.07 7.49t-7.5 18.94q0 10.57 7.74 18.07 7.75 7.5 18.07 7.5Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileRotateLockW100.displayName = 'OnesyIconMaterialMobileRotateLockW100';
 

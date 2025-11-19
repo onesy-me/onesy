@@ -171,12 +171,14 @@ export type IInteraction = IBaseElement & {
   clear?: any;
 };
 
-const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) => {
+const Interaction: React.FC<IInteraction> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyInteraction?.props?.default, ...props_ };
 
   const {
+    ref,
+
     wave = true,
     background = true,
     border: hasBorder,
@@ -581,7 +583,7 @@ const Interaction: React.FC<IInteraction> = React.forwardRef((props_, ref: any) 
       )}
     </span>
   );
-});
+};
 
 Interaction.displayName = 'onesy-Interaction';
 

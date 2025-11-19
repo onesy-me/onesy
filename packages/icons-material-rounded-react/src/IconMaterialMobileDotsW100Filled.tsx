@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileDotsW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileDotsW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileDotsW100Filled'
 
       short_name='MobileDots'
@@ -19,7 +15,7 @@ const IconMaterialMobileDotsW100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M251.96-454q11.04 0 18.54-7.46 7.5-7.47 7.5-18.5 0-11.04-7.46-18.54-7.47-7.5-18.5-7.5-11.04 0-18.54 7.46-7.5 7.47-7.5 18.5 0 11.04 7.46 18.54 7.47 7.5 18.5 7.5Zm152 0q11.04 0 18.54-7.46 7.5-7.47 7.5-18.5 0-11.04-7.46-18.54-7.47-7.5-18.5-7.5-11.04 0-18.54 7.46-7.5 7.47-7.5 18.5 0 11.04 7.46 18.54 7.47 7.5 18.5 7.5Zm152 0q11.04 0 18.54-7.46 7.5-7.47 7.5-18.5 0-11.04-7.46-18.54-7.47-7.5-18.5-7.5-11.04 0-18.54 7.46-7.5 7.47-7.5 18.5 0 11.04 7.46 18.54 7.47 7.5 18.5 7.5Zm152 0q11.04 0 18.54-7.46 7.5-7.47 7.5-18.5 0-11.04-7.46-18.54-7.47-7.5-18.5-7.5-11.04 0-18.54 7.46-7.5 7.47-7.5 18.5 0 11.04 7.46 18.54 7.47 7.5 18.5 7.5ZM152-252q-26 0-43-17t-17-43v-340q0-24.75 17.63-42.38Q127.25-712 152-712h130q0-14 9.5-25t23.5-11h68q14 0 23.5 11t9.5 25h392q24.75 0 42.38 17.62Q868-676.75 868-652v340q0 24.75-17.62 42.37Q832.75-252 808-252H152Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileDotsW100Filled.displayName = 'OnesyIconMaterialMobileDotsW100Filled';
 

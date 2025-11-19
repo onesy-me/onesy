@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLineEndArrowNotchW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLineEndArrowNotchW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='LineEndArrowNotchW100Filled'
 
       short_name='LineEndArrowNotch'
@@ -19,7 +15,7 @@ const IconMaterialLineEndArrowNotchW100Filled = React.forwardRef((props: IIcon, 
       <path d="m502-313 84-153H106v-28h480l-84-153 263 167-263 167Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLineEndArrowNotchW100Filled.displayName = 'OnesyIconMaterialLineEndArrowNotchW100Filled';
 

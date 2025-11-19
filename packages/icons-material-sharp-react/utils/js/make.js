@@ -15,7 +15,7 @@ const src = path.resolve(wd, './src');
 const prefix = 'IconMaterial';
 
 let made = 0;
-let icons_ = 0;
+let processed = 0;
 
 const valueMake = async (url, name, short_name) => {
   const valueFile = await OnesyNode.file.get(url, false);
@@ -24,16 +24,12 @@ const valueMake = async (url, name, short_name) => {
 
   let value = (valueFile).match(/<svg[^>]+?>([^$]+?)<\/svg>/)[1];
 
-  value = `import React from 'react';
+  value = `import { Icon, IIcon } from '@onesy/ui-react';
 
-import { Icon, IIcon } from '@onesy/ui-react';
-
-const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
+const ${prefix}${name} = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='${name}'
 
       short_name='${short_name}'
@@ -45,7 +41,7 @@ const ${prefix}${name} = React.forwardRef((props: IIcon, ref) => {
       ${value}
     </Icon>
   );
-});
+};
 
 ${prefix}${name}.displayName = 'Onesy${prefix}${name}';
 
@@ -72,7 +68,6 @@ async function method() {
   const icons = (await fg(path.join(root, '/**'), { onlyDirectories: true, deep: 1 })).map(item => path.basename(item)).filter(item => !item.startsWith('types.tsx'));
 
   const variants = {
-    // materialsymbolsrounded: 'Rounded',
     materialsymbolssharp: 'Sharp'
   };
 
@@ -121,14 +116,7 @@ async function method() {
       }
     }
 
-    // // Two tone
-    // const twoTone = (await fg(path.join(rootSrc, `/**/${icon}/materialiconstwotone/24px.svg`), { onlyFiles: true }))[0];
-
-    // const exists_ = (await fg(path.join(src, `${prefix}${iconName}TwoTone.tsx`)))[0];
-
-    // if (!exists_) await valueMake(twoTone || iconDefault, `${iconName}TwoTone`, iconName);
-
-    console.log('Icons', ++icons_);
+    console.log('Icons', ++processed);
 
     console.log('Made', made);
   }

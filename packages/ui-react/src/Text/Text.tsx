@@ -57,7 +57,7 @@ export type IText = IBaseElement & {
   HorizontalProps?: IPropsAny;
 };
 
-const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
+const Text: React.FC<IText> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyText?.props?.default, ...props_ };
@@ -67,6 +67,8 @@ const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     value: value_,
 
     columns: columns_,
@@ -209,7 +211,7 @@ const Text: React.FC<IText> = React.forwardRef((props_, ref: any) => {
       {bottom}
     </Line>
   );
-});
+};
 
 Text.displayName = 'onesy-Text';
 

@@ -18,7 +18,7 @@ export type IColumnChart = IChart & {
 
 };
 
-const ColumnChart: React.FC<IColumnChart> = React.forwardRef((props_, ref: any) => {
+const ColumnChart: React.FC<IColumnChart> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyColumnChart?.props?.default, ...props_ };
@@ -49,8 +49,6 @@ const ColumnChart: React.FC<IColumnChart> = React.forwardRef((props_, ref: any) 
 
   return (
     <Chart
-      ref={ref}
-
       values={values}
 
       pointsVisibility='hidden'
@@ -81,7 +79,7 @@ const ColumnChart: React.FC<IColumnChart> = React.forwardRef((props_, ref: any) 
       ))}
     </Chart>
   );
-});
+};
 
 ColumnChart.displayName = 'onesy-ColumnChart';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialGrid3x3W100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialGrid3x3W100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Grid3x3W100'
 
       short_name='Grid3x3'
@@ -19,7 +15,7 @@ const IconMaterialGrid3x3W100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M372-212v-160H212v-28h160v-160H212v-28h160v-160h28v160h160v-160h28v160h160v28H588v160h160v28H588v160h-28v-160H400v160h-28Zm28-188h160v-160H400v160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialGrid3x3W100.displayName = 'OnesyIconMaterialGrid3x3W100';
 

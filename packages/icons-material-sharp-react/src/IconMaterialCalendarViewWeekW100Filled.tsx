@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCalendarViewWeekW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCalendarViewWeekW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CalendarViewWeekW100Filled'
 
       short_name='CalendarViewWeek'
@@ -19,7 +15,7 @@ const IconMaterialCalendarViewWeekW100Filled = React.forwardRef((props: IIcon, r
       <path d="M494-240v-480h139v480H494Zm-167 0v-480h139v480H327Zm-167 0v-480h139v480H160Zm501 0v-480h139v480H661Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCalendarViewWeekW100Filled.displayName = 'OnesyIconMaterialCalendarViewWeekW100Filled';
 

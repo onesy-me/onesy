@@ -43,7 +43,7 @@ export type ILabels = Omit<ILine, 'onChange'> & {
   LabelProps?: IPropsAny;
 };
 
-const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
+const Labels: React.FC<ILabels> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLabels?.props?.default, ...props_ };
@@ -131,8 +131,6 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={1}
 
       direction={direction}
@@ -220,7 +218,7 @@ const Labels: React.FC<ILabels> = React.forwardRef((props_, ref: any) => {
       </Line>
     </Line>
   );
-});
+};
 
 Labels.displayName = 'onesy-Labels';
 

@@ -15,7 +15,7 @@ export type IPath = IBaseElement & {
   value?: any;
 };
 
-const Path: React.FC<IPath> = React.forwardRef((props_, ref: any) => {
+const Path: React.FC<IPath> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPath?.props?.default, ...props_ };
@@ -34,8 +34,6 @@ const Path: React.FC<IPath> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       className={classNames([
         staticClassName('Path', theme) && [
           'onesy-Path-root'
@@ -48,7 +46,7 @@ const Path: React.FC<IPath> = React.forwardRef((props_, ref: any) => {
       {...other}
     />
   );
-});
+};
 
 Path.displayName = 'onesy-Path';
 

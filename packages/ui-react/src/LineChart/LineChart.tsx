@@ -20,7 +20,7 @@ export type ILineChart = IChart & {
   smoothRatio?: number;
 };
 
-const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
+const LineChart: React.FC<ILineChart> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLineChart?.props?.default, ...props_ };
@@ -45,8 +45,6 @@ const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Chart
-      ref={ref}
-
       values={values}
 
       className={classNames([
@@ -73,7 +71,7 @@ const LineChart: React.FC<ILineChart> = React.forwardRef((props_, ref: any) => {
       ))}
     </Chart>
   );
-});
+};
 
 LineChart.displayName = 'onesy-LineChart';
 

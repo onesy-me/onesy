@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPowerInput = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPowerInput = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PowerInput'
 
       short_name='PowerInput'
@@ -19,7 +15,7 @@ const IconMaterialPowerInput = React.forwardRef((props: IIcon, ref) => {
       <path d="M80-360v-80h200v80H80Zm0-160v-80h760v80H80Zm280 160v-80h200v80H360Zm280 0v-80h200v80H640Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPowerInput.displayName = 'OnesyIconMaterialPowerInput';
 

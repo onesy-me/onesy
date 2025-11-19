@@ -9,12 +9,14 @@ export type IFade = ITransition & {
 
 };
 
-const Fade: React.FC<IFade> = React.forwardRef((props_, ref: any) => {
+const Fade: React.FC<IFade> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyFade?.props?.default, ...props_ };
 
   const {
+    ref,
+
     in: inProp,
     prefix,
     run,
@@ -165,7 +167,7 @@ const Fade: React.FC<IFade> = React.forwardRef((props_, ref: any) => {
       }}
     </Transition>
   );
-});
+};
 
 Fade.displayName = 'onesy-Fade';
 

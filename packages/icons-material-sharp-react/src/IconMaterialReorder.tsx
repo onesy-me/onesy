@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialReorder = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialReorder = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Reorder'
 
       short_name='Reorder'
@@ -19,7 +15,7 @@ const IconMaterialReorder = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-200v-80h720v80H120Zm0-160v-80h720v80H120Zm0-160v-80h720v80H120Zm0-160v-80h720v80H120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialReorder.displayName = 'OnesyIconMaterialReorder';
 

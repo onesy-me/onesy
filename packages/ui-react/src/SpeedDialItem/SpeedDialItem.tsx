@@ -53,7 +53,7 @@ export type ISpeedDialItem = IIconButton & {
   TooltipProps?: IPropsAny;
 };
 
-const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: any) => {
+const SpeedDialItem: React.FC<ISpeedDialItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySpeedDialItem?.props?.default, ...props_ };
@@ -102,8 +102,6 @@ const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: a
 
   return (
     <Component
-      ref={ref}
-
       className={classNames([
         staticClassName('SpeedDialItem', theme) && [
           `onesy-SpeedDialItem-root`
@@ -143,7 +141,7 @@ const SpeedDialItem: React.FC<ISpeedDialItem> = React.forwardRef((props_, ref: a
       }
     </Component>
   );
-});
+};
 
 SpeedDialItem.displayName = 'onesy-SpeedDialItem';
 

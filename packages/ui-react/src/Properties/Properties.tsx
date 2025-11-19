@@ -55,7 +55,7 @@ export type IProperties = ILine & {
   PropertyProps?: IPropsAny;
 };
 
-const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) => {
+const Properties: React.FC<IProperties> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyProperties?.props?.default, ...props_ };
@@ -93,8 +93,6 @@ const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) =>
 
   return (
     <Line
-      ref={ref}
-
       gap={size === 'large' ? 1.5 : size === 'regular' ? 1 : 0.5}
 
       rowGap={size === 'large' ? 1.5 : size === 'regular' ? 1 : 0.5}
@@ -136,7 +134,7 @@ const Properties: React.FC<IProperties> = React.forwardRef((props_, ref: any) =>
       ))}
     </Line>
   );
-});
+};
 
 Properties.displayName = 'onesy-Properties';
 

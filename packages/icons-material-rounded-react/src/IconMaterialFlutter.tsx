@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFlutter = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFlutter = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Flutter'
 
       short_name='Flutter'
@@ -19,7 +15,7 @@ const IconMaterialFlutter = React.forwardRef((props: IIcon, ref) => {
       <path d="M236-345 100-480l440-440h271L236-345ZM540-40 303-277l237-237h271L574-277 811-40H540Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFlutter.displayName = 'OnesyIconMaterialFlutter';
 

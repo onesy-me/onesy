@@ -210,7 +210,7 @@ export type IMedias = ILine & {
   OtherItemsProps?: IPropsAny;
 };
 
-const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
+const Medias: React.FC<IMedias> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -234,6 +234,8 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
   const ImageGallery = theme?.elements?.ImageGallery || ImageGalleryElement;
 
   const {
+    ref,
+
     size = 'regular',
 
     values: values_ = [],
@@ -830,7 +832,7 @@ const Medias: React.FC<IMedias> = React.forwardRef((props_, ref: any) => {
       )}
     </Line>
   );
-});
+};
 
 Medias.displayName = 'onesy-Medias';
 

@@ -158,7 +158,7 @@ export type ISectionCarousel = ISection & {
   CarouselProps?: IPropsAny;
 };
 
-const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) => {
+const Element: React.FC<ISectionCarousel> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -176,6 +176,8 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     size: size_ = 'regular',
 
     values: values_ = [],
@@ -505,7 +507,7 @@ const Element: React.FC<ISectionCarousel> = React.forwardRef((props_, ref: any) 
       )}
     </Section>
   );
-});
+};
 
 Element.displayName = 'onesy-SectionCarousel';
 

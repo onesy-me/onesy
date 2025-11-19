@@ -31,7 +31,7 @@ export type IImageListItemBox = IListItem & {
   backgroundOpacity?: number;
 };
 
-const ImageListItemBox: React.FC<IImageListItemBox> = React.forwardRef((props_, ref: any) => {
+const ImageListItemBox: React.FC<IImageListItemBox> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyImageListItemBox?.props?.default, ...props_ };
@@ -55,8 +55,6 @@ const ImageListItemBox: React.FC<IImageListItemBox> = React.forwardRef((props_, 
 
   return (
     <ListItem
-      ref={ref}
-
       backgroundOpacity={backgroundOpacity}
 
       Component={Component}
@@ -76,7 +74,7 @@ const ImageListItemBox: React.FC<IImageListItemBox> = React.forwardRef((props_, 
       {children}
     </ListItem>
   );
-});
+};
 
 ImageListItemBox.displayName = 'onesy-ImageListItemBox';
 

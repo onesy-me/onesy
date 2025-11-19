@@ -148,7 +148,7 @@ export type IViewSplit = Omit<ILine, 'onChange'> & {
   SeparatorProps?: IPropsAny;
 };
 
-const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
+const ViewSplit: React.FC<IViewSplit> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyViewSplit?.props?.default, ...props_ };
@@ -160,6 +160,8 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
   const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -685,7 +687,7 @@ const ViewSplit: React.FC<IViewSplit> = React.forwardRef((props_, ref: any) => {
       )}
     </Line>
   );
-});
+};
 
 ViewSplit.displayName = 'onesy-ViewSplit';
 

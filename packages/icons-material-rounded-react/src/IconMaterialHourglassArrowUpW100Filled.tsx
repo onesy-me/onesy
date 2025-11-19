@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHourglassArrowUpW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHourglassArrowUpW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HourglassArrowUpW100Filled'
 
       short_name='HourglassArrowUp'
@@ -19,7 +15,7 @@ const IconMaterialHourglassArrowUpW100Filled = React.forwardRef((props: IIcon, r
       <path d="M212-240v-108q0-49 31-87t79-45q-49-7-79.5-45.5T212-614v-106h-46q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h368q5.95 0 9.97 4.04 4.03 4.03 4.03 10 0 5.96-4.03 9.96-4.02 4-9.97 4h-44v106q0 51-31.5 89T378-480q49 7 80.5 44.5T490-348v108h44q5.95 0 9.97 4.04 4.03 4.03 4.03 10 0 5.96-4.03 9.96-4.02 4-9.97 4H166q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h46Zm548-454-64 64q-5 5-10 5t-10-5q-5-5-5-10t5-10l77-77q9-9 21-9t21 9l77 77q5 5 5 10t-5 10q-5 5-10 5t-10-5l-64-64v468q0 5.95-4.04 9.98-4.03 4.02-10 4.02-5.96 0-9.96-4.02-4-4.03-4-9.98v-468Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHourglassArrowUpW100Filled.displayName = 'OnesyIconMaterialHourglassArrowUpW100Filled';
 

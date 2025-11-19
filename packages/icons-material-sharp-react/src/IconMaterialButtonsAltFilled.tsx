@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialButtonsAltFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialButtonsAltFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ButtonsAltFilled'
 
       short_name='ButtonsAlt'
@@ -19,7 +15,7 @@ const IconMaterialButtonsAltFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M80-240v-480h800v480H80Zm210-120h60v-90h90v-60h-90v-90h-60v90h-90v60h90v90Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialButtonsAltFilled.displayName = 'OnesyIconMaterialButtonsAltFilled';
 

@@ -319,7 +319,7 @@ export type IListItem = ISurface & {
   AsideEndProps?: IPropsAny;
 };
 
-const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
+const ListItem: React.FC<IListItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyListItem?.props?.default, ...props_ };
@@ -331,6 +331,8 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
     colorSelected = props.color,
@@ -709,7 +711,7 @@ const ListItem: React.FC<IListItem> = React.forwardRef((props_, ref: any) => {
       {footer}
     </Surface>
   );
-});
+};
 
 ListItem.displayName = 'onesy-ListItem';
 

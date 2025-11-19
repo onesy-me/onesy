@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialYakitoriW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialYakitoriW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='YakitoriW100Filled'
 
       short_name='Yakitori'
@@ -19,7 +15,7 @@ const IconMaterialYakitoriW100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="m663-278-95 95q-17 17-41 17t-41-17l-56-57q-17-17-17.5-40.5T430-322l13-13-78-78-14 13q-17 17-40.5 17.5T269-400l-56-56q-17-17-17-40.5t17-41.5l13-14-57-57q-17-17-17-41t17-41l41-40-88-88q-4-4-4.5-10t4.5-10q4-4 10-3.5t10 4.5l88 88 40-41q17-17 41-17t41 17l57 58 14-14q17-17 41-17t41 17l56 56q18 18 17.5 41.5T561-609l-13 14 78 78 13-13q18-18 41.5-17.5T721-530l57 56q17 17 17 41t-17 41l-95 95 156 156q4 4 4 9.5t-4 9.5q-4 5-10 4.5t-10-4.5L663-278Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialYakitoriW100Filled.displayName = 'OnesyIconMaterialYakitoriW100Filled';
 

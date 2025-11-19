@@ -70,7 +70,7 @@ export type IAreaChartItem = IChart & {
   BorderProps?: any;
 };
 
-const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: any) => {
+const AreaChartItem: React.FC<IAreaChartItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyAreaChartItem?.props?.default, ...props_ };
@@ -485,7 +485,7 @@ const AreaChartItem: React.FC<IAreaChartItem> = React.forwardRef((props_, ref: a
       ...other
     })
   );
-});
+};
 
 // Parts of the logic done thanks to
 // https://francoisromain.medium.com/smooth-a-svg-path-with-cubic-bezier-curves-e37b49d46c74

@@ -348,7 +348,7 @@ export type ITimePicker = Omit<IAdvancedTextField, 'version' | 'onChange'> & {
   IconProps?: IPropsAny;
 };
 
-const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) => {
+const TimePicker: React.FC<ITimePicker> = props__ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -386,6 +386,8 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
   const Tabs = theme?.elements?.Tabs || TabsElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
 
@@ -1712,7 +1714,7 @@ const TimePicker: React.FC<ITimePicker> = React.forwardRef((props__, ref: any) =
       )}
     </Line>
   );
-});
+};
 
 TimePicker.displayName = 'onesy-TimePicker';
 

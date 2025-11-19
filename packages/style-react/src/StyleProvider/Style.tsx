@@ -27,8 +27,10 @@ export interface IStyle extends Partial<OnesyStyle> {
   updateWithRerender?: (value: any) => OnesyStyle;
 }
 
-const Style: React.FC<IStyle> = React.forwardRef((props, ref: any) => {
+const Style: React.FC<IStyle> = props => {
   const {
+    ref,
+
     root = false,
 
     remove,
@@ -114,6 +116,6 @@ const Style: React.FC<IStyle> = React.forwardRef((props, ref: any) => {
       {children}
     </StyleContext.Provider>
   );
-});
+};
 
 export default Style;

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHardDiskW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHardDiskW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HardDiskW100Filled'
 
       short_name='HardDisk'
@@ -19,7 +15,7 @@ const IconMaterialHardDiskW100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M212-132v-696h537v696H212Zm128-128h281v-28H340v28Zm140-140q63 0 106.5-43.5T630-550q0-63-43.5-106.5T480-700q-63 0-106.5 43.5T330-550q0 63 43.5 106.5T480-400Zm.5-53q-40.5 0-68.5-28.5T384-550q0-40 28-68.5t68.5-28.5q40.5 0 69 27.84t28.5 69Q578-509 549.5-481t-69 28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHardDiskW100Filled.displayName = 'OnesyIconMaterialHardDiskW100Filled';
 

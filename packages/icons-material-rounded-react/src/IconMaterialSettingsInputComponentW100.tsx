@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSettingsInputComponentW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSettingsInputComponentW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SettingsInputComponentW100'
 
       short_name='SettingsInputComponent'
@@ -19,7 +15,7 @@ const IconMaterialSettingsInputComponentW100 = React.forwardRef((props: IIcon, r
       <path d="M167-106v-166q-32-8-53.5-31.5T92-361v-320q0-12.75 8.63-21.38Q109.25-711 122-711h45v-143q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v143h45q12.75 0 21.38 8.62Q270-693.75 270-681v320q0 34-21.5 57.5T195-272v166q0 5.95-4.04 9.97-4.03 4.03-10 4.03-5.96 0-9.96-4.03-4-4.02-4-9.97Zm299 0v-166q-32-8-53.5-31.5T391-361v-320q0-12.75 8.63-21.38Q408.25-711 421-711h45v-143q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v143h45q12.75 0 21.38 8.62Q569-693.75 569-681v320q0 34-21.5 57.5T494-272v166q0 5.95-4.04 9.97-4.03 4.03-10 4.03-5.96 0-9.96-4.03-4-4.02-4-9.97Zm299 0v-166q-32-8-53.5-31.5T690-361v-320q0-12.75 8.63-21.38Q707.25-711 720-711h45v-143q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v143h45q12.75 0 21.38 8.62Q868-693.75 868-681v320q0 34-21.5 57.5T793-272v166q0 5.95-4.04 9.97-4.03 4.03-10 4.03-5.96 0-9.96-4.03-4-4.02-4-9.97ZM120-683v196h122v-196H120Zm299 0v196h122v-196H419Zm299 0v196h122v-196H718ZM181-300q25 0 43-17.54T242-361v-98H120v98q0 25.92 18 43.46T181-300Zm299 0q25 0 43-17.54T541-361v-98H419v98q0 25.92 18 43.46T480-300Zm299 0q25 0 43-17.54T840-361v-98H718v98q0 25.92 18 43.46T779-300ZM181-473Zm299 0Zm299 0Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSettingsInputComponentW100.displayName = 'OnesyIconMaterialSettingsInputComponentW100';
 

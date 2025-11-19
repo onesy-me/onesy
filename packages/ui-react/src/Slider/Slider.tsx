@@ -481,7 +481,7 @@ export type ISlider = Omit<IBaseElement, 'onChange'> & {
   TooltipProps?: IPropsAny;
 };
 
-const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
+const Slider: React.FC<ISlider> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySlider?.props?.default, ...props_ };
@@ -495,6 +495,8 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     tonal = true,
     color: color_ = 'primary',
     size = 'regular',
@@ -1337,7 +1339,7 @@ const Slider: React.FC<ISlider> = React.forwardRef((props_, ref: any) => {
       })}
     </Component>
   );
-});
+};
 
 Slider.displayName = 'onesy-Slider';
 

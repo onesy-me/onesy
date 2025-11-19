@@ -57,7 +57,7 @@ export type IBubbleChartItem = IChart & {
   updateLegend?: TMethod;
 };
 
-const BubbleChartItem: React.FC<IBubbleChartItem> = React.forwardRef((props_, ref: any) => {
+const BubbleChartItem: React.FC<IBubbleChartItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBubbleChartItem?.props?.default, ...props_ };
@@ -356,7 +356,7 @@ const BubbleChartItem: React.FC<IBubbleChartItem> = React.forwardRef((props_, re
       ...other
     })
   );
-});
+};
 
 BubbleChartItem.displayName = 'onesy-BubbleChartItem';
 

@@ -16,7 +16,7 @@ export type ITimeRangePicker = ITimePicker & {
 
 };
 
-const TimeRangePicker: React.FC<ITimeRangePicker> = React.forwardRef((props_, ref: any) => {
+const TimeRangePicker: React.FC<ITimeRangePicker> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimeRangePicker?.props?.default, ...props_ };
@@ -33,8 +33,6 @@ const TimeRangePicker: React.FC<ITimeRangePicker> = React.forwardRef((props_, re
 
   return (
     <TimePicker
-      ref={ref}
-
       range
 
       className={classNames([
@@ -49,7 +47,7 @@ const TimeRangePicker: React.FC<ITimeRangePicker> = React.forwardRef((props_, re
       {...other}
     />
   );
-});
+};
 
 TimeRangePicker.displayName = 'onesy-TimeRangePicker';
 

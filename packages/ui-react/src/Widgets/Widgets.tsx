@@ -126,7 +126,7 @@ export type IWidgets = IBaseElement & {
   IconCloseItem?: IElementReference;
 };
 
-const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
+const Widgets: React.FC<IWidgets> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -225,8 +225,6 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
     <WidgetsContext.Provider value={refs.value.current}>
       {(widgets as any)?.length && <>
         <SpeedDial
-          ref={ref}
-
           direction='top'
 
           position='bottom'
@@ -344,7 +342,7 @@ const Widgets: React.FC<IWidgets> = React.forwardRef((props_, ref: any) => {
       {children}
     </WidgetsContext.Provider>
   );
-});
+};
 
 Widgets.displayName = 'onesy-Widgets';
 

@@ -40,7 +40,7 @@ export type INotFound = ISection & {
   TypeProps?: any;
 };
 
-const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
+const NotFound: React.FC<INotFound> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -88,8 +88,6 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Section
-      ref={ref}
-
       flex
 
       fullWidth
@@ -158,7 +156,7 @@ const NotFound: React.FC<INotFound> = React.forwardRef((props_, ref: any) => {
       {end}
     </Section>
   );
-});
+};
 
 NotFound.displayName = 'onesy-NotFound';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPipExitW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPipExitW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PipExitW100'
 
       short_name='PipExit'
@@ -19,7 +15,7 @@ const IconMaterialPipExitW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M132-212v-296h28v268h640v-480H452v-28h376v536H132Zm561-114 20-20-187-186h141v-28H479v188h28v-140l186 186ZM132-608v-140h220v140H132Zm348 128Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPipExitW100.displayName = 'OnesyIconMaterialPipExitW100';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialNotificationSettingsFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialNotificationSettingsFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='NotificationSettingsFilled'
 
       short_name='NotificationSettings'
@@ -19,7 +15,7 @@ const IconMaterialNotificationSettingsFilled = React.forwardRef((props: IIcon, r
       <path d="M480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM160-200v-80h80v-280q0-84 50.5-149T422-793q-11 26-17 55t-6 58q0 65 26 119.5t71 92.5q45 38 102.5 56.5T720-402v122h80v80H160Zm480-280-12-60q-12-5-22.5-10.5T584-564l-58 18-40-68 46-40q-2-13-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T628-820l12-60h80l12 60q12 5 22.5 10.5T776-796l58-18 40 68-46 40q2 13 2 26t-2 26l46 40-40 68-58-18q-11 8-21.5 13.5T732-540l-12 60h-80Zm40-120q33 0 56.5-23.5T760-680q0-33-23.5-56.5T680-760q-33 0-56.5 23.5T600-680q0 33 23.5 56.5T680-600Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialNotificationSettingsFilled.displayName = 'OnesyIconMaterialNotificationSettingsFilled';
 

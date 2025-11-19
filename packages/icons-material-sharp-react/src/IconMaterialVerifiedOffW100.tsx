@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVerifiedOffW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVerifiedOffW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='VerifiedOffW100'
 
       short_name='VerifiedOff'
@@ -19,7 +15,7 @@ const IconMaterialVerifiedOffW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="m569-505 59-59-20-20-59 59 20 20Zm207 207-30-30-6-68 74-84-74-84 10-114-110-24-58-96-102 42-102-42-38 64-21-21 47-79 114 48 114-48 64 108 122 26-12 126 82 94-82 94 8 88ZM378-162l102-42 102 42 58-96 18-4-166-166-54 54-106-106 20-20 86 86 34-34-236-236-26 6 10 114-74 84 74 84-10 114 110 24 58 96Zm-12 36-64-108-122-26 12-126-82-94 82-94-12-126 33-7-81-81 20-20 694 694-20 20-145-145-23 5-64 108-114-48-114 48Zm183-399Zm-147 7Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVerifiedOffW100.displayName = 'OnesyIconMaterialVerifiedOffW100';
 

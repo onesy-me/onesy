@@ -190,7 +190,7 @@ export type ISmartTextField = ITextField & {
   ColorTextFieldProps?: IPropsAny;
 };
 
-const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref: any) => {
+const SmartTextField: React.FC<ISmartTextField> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -232,6 +232,8 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
   const ColorTextField = theme?.elements?.ColorTextField || ColorTextFieldElement;
 
   const {
+    ref,
+
     tonal = true,
 
     color = 'default',
@@ -1179,8 +1181,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     );
   };
 
-  const Palette = React.forwardRef((propsPalette: any, ref_: any) => {
+  const Palette = propsPalette => {
     const {
+      ref: ref_,
+
       version: version_,
 
       onUpdate: onUpdate_,
@@ -1360,7 +1364,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         </Line>
       </Line>
     );
-  });
+  };
 
   const AppendProps: any = {
     padding: [14, 14]
@@ -1386,8 +1390,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     size: 'small'
   };
 
-  const Input = React.forwardRef((propsInput: any, ref_: any) => {
+  const Input = propsInput => {
     const {
+      ref: ref_,
+
       label: labelInput,
 
       labelButton,
@@ -1474,7 +1480,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         </Line>
       </Line>
     );
-  });
+  };
 
   const WrapperAppend = (propsWrapper: any) => {
     const {
@@ -1534,8 +1540,10 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     );
   };
 
-  const WrapperToggleButton = React.forwardRef((propsWrapperToggleButton: any, ref_: any) => {
+  const WrapperToggleButton = propsWrapperToggleButton => {
     const {
+      ref: ref_,
+
       open: open_,
 
       name: nameWrapperToogleButton,
@@ -1562,7 +1570,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
         })}
       </Tooltip>
     );
-  });
+  };
 
   const updateElements = {
     'italic': (
@@ -2401,7 +2409,7 @@ const SmartTextField: React.FC<ISmartTextField> = React.forwardRef((props_, ref:
     {/* @ menu */}
     {menu}
   </>;
-});
+};
 
 SmartTextField.displayName = 'onesy-SmartTextField';
 

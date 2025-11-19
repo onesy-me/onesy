@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPlugConnectW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPlugConnectW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='PlugConnectW100Filled'
 
       short_name='PlugConnect'
@@ -19,7 +15,7 @@ const IconMaterialPlugConnectW100Filled = React.forwardRef((props: IIcon, ref) =
       <path d="M172-345v-121h-66q-5.95 0-9.97-4.04-4.03-4.03-4.03-10 0-5.96 4.03-9.96 4.02-4 9.97-4h66v-121q0-36.25 25.96-61.63Q223.92-702 261-702h59v-32q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v508q0 5.95-4.04 9.98-4.03 4.02-10 4.02-5.96 0-9.96-4.02-4-4.03-4-9.98v-32h-59q-37.08 0-63.04-25.38Q172-308.75 172-345Zm616 0q0 36.25-25.96 61.62Q736.08-258 699-258h-59v32q0 5.95-4.04 9.98-4.03 4.02-10 4.02-5.96 0-9.96-4.02-4-4.03-4-9.98v-131H479q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h133v-190H479q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h133v-131q0-5.95 4.04-9.97 4.03-4.03 10-4.03 5.96 0 9.96 4.03 4 4.02 4 9.97v32h59q37.08 0 63.04 25.37Q788-651.25 788-615v121h66q5.95 0 9.97 4.04 4.03 4.03 4.03 10 0 5.96-4.03 9.96-4.02 4-9.97 4h-66v121Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPlugConnectW100Filled.displayName = 'OnesyIconMaterialPlugConnectW100Filled';
 

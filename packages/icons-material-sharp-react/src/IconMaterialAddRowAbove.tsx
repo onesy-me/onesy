@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAddRowAbove = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAddRowAbove = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AddRowAbove'
 
       short_name='AddRowAbove'
@@ -19,7 +15,7 @@ const IconMaterialAddRowAbove = React.forwardRef((props: IIcon, ref) => {
       <path d="M200-160h560v-240H200v240Zm640 80H120v-720h160v80h-80v240h560v-240h-80v-80h160v720ZM480-480Zm0 80v-80 80Zm0 0Zm-40-240v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAddRowAbove.displayName = 'OnesyIconMaterialAddRowAbove';
 

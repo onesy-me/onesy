@@ -59,7 +59,7 @@ export type ITableRow = Omit<ILine, 'onChange'> & {
   IconLast?: IElementReference;
 };
 
-const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any) => {
+const TablePagination: React.FC<ITableRow> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -150,8 +150,6 @@ const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any)
 
   return (
     <Line
-      ref={ref}
-
       gap={3}
 
       direction='row'
@@ -302,7 +300,7 @@ const TablePagination: React.FC<ITableRow> = React.forwardRef((props_, ref: any)
       </Line>
     </Line>
   );
-});
+};
 
 TablePagination.displayName = 'onesy-TablePagination';
 

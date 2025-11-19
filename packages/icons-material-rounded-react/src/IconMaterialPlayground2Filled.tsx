@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialPlayground2Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialPlayground2Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='Playground2Filled'
 
       short_name='Playground2'
@@ -19,7 +15,7 @@ const IconMaterialPlayground2Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M200-440h108l-38-61q-6-9-14.5-14t-19.5-5h-36v80Zm0 240h324q-31 0-57.5-15T423-256l-65-104H200v160ZM80-120q-17 0-28.5-11.5T40-160q0-17 11.5-28.5T80-200h40v-440q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640v40h36q31 0 57.5 15t43.5 41l153 245q6 9 14.5 14t19.5 5h76q17 0 28.5 11.5T640-240v40h80v-246q-52-14-86-56t-34-98q0-34 13-63.5t36-51.5q-5-11-7-22t-2-23q0-50 35-85t85-35q50 0 85 35t35 85q0 12-2 23t-7 22q23 22 36 51.5t13 63.5q0 56-34 98t-86 56v246h80q17 0 28.5 11.5T920-160q0 17-11.5 28.5T880-120H80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialPlayground2Filled.displayName = 'OnesyIconMaterialPlayground2Filled';
 

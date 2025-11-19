@@ -38,6 +38,8 @@ const resolveValue = (value: OnesyTheme) => {
 };
 
 export interface ITheme extends React.HTMLAttributes<any> {
+  ref?: any;
+
   root?: boolean;
 
   value?: IOnesyTheme;
@@ -47,10 +49,12 @@ export interface ITheme extends React.HTMLAttributes<any> {
   children?: any;
 }
 
-const Theme: React.FC<ITheme> = React.forwardRef((props, ref: any) => {
+const Theme: React.FC<ITheme> = props => {
   const [init, setInit] = React.useState(false);
 
   const {
+    ref,
+
     root = false,
 
     value: valueLocal = {},
@@ -254,6 +258,6 @@ ${values.map(item => `\t${item};`).join('\n')}
       {children}
     </ThemeContext.Provider>
   );
-});
+};
 
 export default Theme;

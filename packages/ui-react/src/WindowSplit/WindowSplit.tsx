@@ -129,7 +129,7 @@ export type IWindowSplit = Omit<ILine, 'onChange'> & {
   EndProps?: IPropsAny;
 };
 
-const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) => {
+const WindowSplit: React.FC<IWindowSplit> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWindowSplit?.props?.default, ...props_ };
@@ -141,6 +141,8 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
   const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
+    ref,
+
     tonal = false,
     color = 'inverted',
 
@@ -639,7 +641,7 @@ const WindowSplit: React.FC<IWindowSplit> = React.forwardRef((props_, ref: any) 
       )}
     </Line>
   );
-});
+};
 
 WindowSplit.displayName = 'onesy-WindowSplit';
 

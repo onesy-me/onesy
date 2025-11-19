@@ -18,7 +18,7 @@ export type ICardHeader = ILine & {
   elevation?: IElevation;
 };
 
-const CardHeader: React.FC<ICardHeader> = React.forwardRef((props_, ref: any) => {
+const CardHeader: React.FC<ICardHeader> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardHeader?.props?.default, ...props_ };
@@ -44,8 +44,6 @@ const CardHeader: React.FC<ICardHeader> = React.forwardRef((props_, ref: any) =>
 
   return (
     <Line
-      ref={ref}
-
       direction='row'
 
       align='center'
@@ -78,7 +76,7 @@ const CardHeader: React.FC<ICardHeader> = React.forwardRef((props_, ref: any) =>
       })}
     </Line>
   );
-});
+};
 
 CardHeader.displayName = 'onesy-CardHeader';
 

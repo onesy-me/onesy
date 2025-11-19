@@ -97,7 +97,7 @@ export type IContainer = ILine & {
   maxWidth?: 'xxs' | 'xs' | 'sm' | 'rg' | 'lg' | 'xl' | 'unset' | Partial<Record<IValueBreakpoints, 'xxs' | 'xs' | 'sm' | 'rg' | 'lg' | 'xl' | 'unset'>>;
 };
 
-const Container: React.FC<IContainer> = React.forwardRef((props_, ref: any) => {
+const Container: React.FC<IContainer> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyContainer?.props?.default, ...props_ };
@@ -105,6 +105,8 @@ const Container: React.FC<IContainer> = React.forwardRef((props_, ref: any) => {
   const Line = theme?.elements?.Line || LineElement;
 
   const {
+    ref,
+
     alignment: alignment_,
 
     paddingVertical: paddingVertical_,
@@ -206,7 +208,7 @@ const Container: React.FC<IContainer> = React.forwardRef((props_, ref: any) => {
       {children}
     </Line>
   );
-});
+};
 
 Container.displayName = 'onesy-Container';
 

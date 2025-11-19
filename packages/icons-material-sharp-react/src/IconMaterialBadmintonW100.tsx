@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialBadmintonW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialBadmintonW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='BadmintonW100'
 
       short_name='Badminton'
@@ -19,7 +15,7 @@ const IconMaterialBadmintonW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M368-356q66 1 110.5-46T523-515q0-34-15.5-64.5T467-634q-41-39-91-63t-107-24q-49 0-79 25t-30 72q0 61 23 117.5t68 98.5q24 23 54 37.5t63 14.5Zm292-315-86-86 189-90 13 121-116 55Zm110 82q-9 5-18.5 2T734-598l-29-28 77-37 5 42q1 10-3.5 18.5T770-589Zm-638-35q0-60 37.5-92.5T269-749q62 0 118.5 26t98.5 71q27 29 46 63.5t19 73.5q0 34-11.5 65.5T506-392l241 240-20 20-240-240q-25 22-55.5 33T368-328q-39 0-74.5-17T230-389q-48-47-73-108t-25-127Zm209 86Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialBadmintonW100.displayName = 'OnesyIconMaterialBadmintonW100';
 

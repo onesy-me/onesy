@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialVideocamAlertW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialVideocamAlertW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='VideocamAlertW100'
 
       short_name='VideocamAlert'
@@ -19,7 +15,7 @@ const IconMaterialVideocamAlertW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M496-212q-5.95 0-9.98-4.04-4.02-4.03-4.02-10 0-5.96 4.02-9.96 4.03-4 9.98-4h137q14 0 23-9t9-23v-416q0-14-9-23t-23-9H217q-14 0-23 9t-9 23v114q0 5.95-4.04 9.97-4.03 4.03-10 4.03-5.96 0-9.96-4.03-4-4.02-4-9.97v-114q0-26 17-43t43-17h416q26 0 43 17t17 43v188l84.31-84.31q6.69-6.69 16.19-3.15 9.5 3.54 9.5 13.46v188q0 9.92-9.5 13.46-9.5 3.54-16.19-3.15L693-460v188q0 26-17 43t-43 17H496Zm-256 40q-62 0-105-43T92-320q0-62 43-105t105-43q62 0 105 43t43 105q0 62-43 105t-105 43Zm0-58q8 0 13-5t5-13q0-8-5-13t-13-5q-8 0-13 5t-5 13q0 8 5 13t13 5Zm0-72q5.6 0 9.8-4.2 4.2-4.2 4.2-9.8v-80q0-5.6-4.2-9.8-4.2-4.2-9.8-4.2-5.6 0-9.8 4.2-4.2 4.2-4.2 9.8v80q0 5.6 4.2 9.8 4.2 4.2 9.8 4.2Zm185-178Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialVideocamAlertW100.displayName = 'OnesyIconMaterialVideocamAlertW100';
 

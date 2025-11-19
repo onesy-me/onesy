@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAqIndoorW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAqIndoorW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AqIndoorW100'
 
       short_name='AqIndoor'
@@ -19,7 +15,7 @@ const IconMaterialAqIndoorW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M550-287q17 0 33-6.5t28-18.5l28-28-20-20-28 28q-8 8-19 12t-22 4q-11 0-22-4t-19-12l-38-38q-12-12-28-17.5t-33-5.5q-17 0-33 5.5T349-370l-28 28 20 20 28-28q8-8 19-12t22-4q11 0 22 4t19 12l38 38q12 12 28 18.5t33 6.5Zm0-109q17 0 33-6.5t28-18.5l28-28-20-20-28 28q-8 8-19 12t-22 4q-11 0-22-4t-19-12l-38-38q-12-12-28-17.5t-33-5.5q-17 0-33 5.5T349-479l-28 28 20 20 28-28q8-8 19-12t22-4q11 0 22 4t19 12l38 38q12 12 28 18.5t33 6.5Zm0-109q17 0 33-6.5t28-18.5l28-28-20-20-28 28q-8 8-19 12t-22 4q-11 0-22-4t-19-12l-38-38q-12-12-28-17.5t-33-5.5q-17 0-33 5.5T349-588l-28 28 20 20 28-28q8-8 19-12t22-4q11 0 22 4t19 12l38 38q12 12 28 18.5t33 6.5ZM212-212v-402l268-202 268 202v402H212Zm28-28h480v-360L480-780 240-600v360Zm240-270Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAqIndoorW100.displayName = 'OnesyIconMaterialAqIndoorW100';
 

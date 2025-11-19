@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileTextW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileTextW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileTextW100Filled'
 
       short_name='MobileText'
@@ -19,7 +15,7 @@ const IconMaterialMobileTextW100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M312-92q-24.75 0-42.37-17.63Q252-127.25 252-152v-656q0-26 17-43t43-17h340q24.75 0 42.38 17.62Q712-832.75 712-808v130q14 0 25 9.5t11 23.5v68q0 14-11 23.5t-25 9.5v392q0 24.75-17.62 42.37Q676.75-92 652-92H312Zm42-409h256q5.95 0 9.97-4.04 4.03-4.03 4.03-10 0-5.96-4.03-9.96-4.02-4-9.97-4H354q-5.95 0-9.98 4.04-4.02 4.03-4.02 10 0 5.96 4.02 9.96 4.03 4 9.98 4Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileTextW100Filled.displayName = 'OnesyIconMaterialMobileTextW100Filled';
 

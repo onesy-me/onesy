@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialChatAddOnW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialChatAddOnW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ChatAddOnW100Filled'
 
       short_name='ChatAddOn'
@@ -19,7 +15,7 @@ const IconMaterialChatAddOnW100Filled = React.forwardRef((props: IIcon, ref) => 
       <path d="M300-626h280q5.95 0 9.97-4.04 4.03-4.03 4.03-10 0-5.96-4.03-9.96-4.02-4-9.97-4H300q-5.95 0-9.98 4.04-4.02 4.03-4.02 10 0 5.96 4.02 9.96 4.03 4 9.98 4Zm0 160h160q5.95 0 9.98-4.04 4.02-4.03 4.02-10 0-5.96-4.02-9.96-4.03-4-9.98-4H300q-5.95 0-9.98 4.04-4.02 4.03-4.02 10 0 5.96 4.02 9.96 4.03 4 9.98 4Zm406 160H600q-5.95 0-9.97-4.04-4.03-4.03-4.03-10 0-5.96 4.03-9.96 4.02-4 9.97-4h106v-106q0-5.95 4.04-9.98 4.03-4.02 10-4.02 5.96 0 9.96 4.02 4 4.03 4 9.98v106h106q5.95 0 9.97 4.04 4.03 4.03 4.03 10 0 5.96-4.03 9.96-4.02 4-9.97 4H734v106q0 5.95-4.04 9.98-4.03 4.02-10 4.02-5.96 0-9.96-4.02-4-4.03-4-9.98v-106Zm-477 0-57.33 57.33Q165-242 155.5-245.54 146-249.08 146-259v-495q0-24.75 17.63-42.38Q181.25-814 206-814h468q24.75 0 42.38 17.62Q734-778.75 734-754v173q0 9.33-6 15.17-6 5.83-15 5.83-49 2-89 15t-78 51q-38 38-51 78t-15 89q0 9-6.22 15T459-306H229Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialChatAddOnW100Filled.displayName = 'OnesyIconMaterialChatAddOnW100Filled';
 

@@ -16,7 +16,7 @@ export type ITimeline = ILine & {
   orientation?: 'vertical' | 'horizontal';
 };
 
-const Timeline: React.FC<ITimeline> = React.forwardRef((props_, ref: any) => {
+const Timeline: React.FC<ITimeline> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyTimeline?.props?.default, ...props_ };
@@ -41,8 +41,6 @@ const Timeline: React.FC<ITimeline> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={0}
 
       direction={direction}
@@ -67,7 +65,7 @@ const Timeline: React.FC<ITimeline> = React.forwardRef((props_, ref: any) => {
       ))}
     </Line>
   );
-});
+};
 
 Timeline.displayName = 'onesy-Timeline';
 

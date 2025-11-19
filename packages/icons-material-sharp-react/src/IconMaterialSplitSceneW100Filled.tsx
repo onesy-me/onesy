@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSplitSceneW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSplitSceneW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SplitSceneW100Filled'
 
       short_name='SplitScene'
@@ -19,7 +15,7 @@ const IconMaterialSplitSceneW100Filled = React.forwardRef((props: IIcon, ref) =>
       <path d="M132-212v-536h234v536H132Zm334 80v-696h28v80h334v536H494v80h-28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSplitSceneW100Filled.displayName = 'OnesyIconMaterialSplitSceneW100Filled';
 

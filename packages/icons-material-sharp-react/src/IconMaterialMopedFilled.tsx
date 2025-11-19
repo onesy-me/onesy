@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMopedFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMopedFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MopedFilled'
 
       short_name='Moped'
@@ -19,7 +15,7 @@ const IconMaterialMopedFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M280-200q-50 0-85-35t-35-85H80v-280h320v200h140l140-174v-106H560v-80h200v214L580-320H400q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T320-320h-80q0 17 11.5 28.5T280-280Zm-80-360v-80h200v80H200Zm560 440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T800-320q0-17-11.5-28.5T760-360q-17 0-28.5 11.5T720-320q0 17 11.5 28.5T760-280Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMopedFilled.displayName = 'OnesyIconMaterialMopedFilled';
 

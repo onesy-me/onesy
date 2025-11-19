@@ -182,7 +182,7 @@ export type IDrawing = Omit<ISurface, 'onChange' | 'onMouseDown'> & {
   ColorTextFieldProps?: IPropsAny;
 };
 
-const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
+const Drawing: React.FC<IDrawing> = props__ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -220,6 +220,8 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
   const ClickListener = theme?.elements?.ClickListener || ClickListenerElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
     version = 'filled',
@@ -604,8 +606,10 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
     ...IconProps_
   };
 
-  const WrapperToggleButton = React.forwardRef((props_: any, ref_: any) => {
+  const WrapperToggleButton = props_ => {
     const {
+      ref: ref_,
+
       open: open_,
 
       label,
@@ -632,7 +636,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
         })}
       </Tooltip>
     );
-  });
+  };
 
   const WrapperAppend = (props_: any) => {
     const {
@@ -710,8 +714,10 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
     );
   };
 
-  const Palette = React.forwardRef((props_: any, ref_: any) => {
+  const Palette = props_ => {
     const {
+      ref: ref_,
+
       version: version_,
 
       onUpdate,
@@ -868,7 +874,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
         </Line>
       </Line>
     );
-  });
+  };
 
   const valueNew_ = ((is('array', value) ? value : [value]) as any).filter(Boolean);
 
@@ -1495,7 +1501,7 @@ const Drawing: React.FC<IDrawing> = React.forwardRef((props__, ref: any) => {
       </svg>
     </Surface>
   );
-});
+};
 
 Drawing.displayName = 'onesy-Drawing';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAndroidWifi3BarW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAndroidWifi3BarW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AndroidWifi3BarW100Filled'
 
       short_name='AndroidWifi3Bar'
@@ -19,7 +15,7 @@ const IconMaterialAndroidWifi3BarW100Filled = React.forwardRef((props: IIcon, re
       <path d="M480-680q-88 0-170.5 29T159-567q-11 9-25.5 9T109-568q-10-10-9.5-24t11.5-23q78-65 173-99t196-34q102 0 196.5 34T849-615q11 9 11.5 23t-9.5 24q-10 10-24.5 10t-25.5-9q-69-55-151-84t-170-29Zm0 215q-45 0-86.5 14T317-411q-11 9-25.5 9T267-412q-10-10-10-24t11-23q45-36 99.5-55T480-533q59 0 114 19.5T694-457q11 9 11.5 22.5T695-411q-11 10-25.5 10t-25.5-9q-35-27-77-41t-87-14Zm0 253q-23 0-38.5-15.5T426-266q0-23 15.5-38.5T480-320q23 0 38.5 15.5T534-266q0 23-15.5 38.5T480-212Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAndroidWifi3BarW100Filled.displayName = 'OnesyIconMaterialAndroidWifi3BarW100Filled';
 

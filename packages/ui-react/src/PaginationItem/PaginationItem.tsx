@@ -43,7 +43,7 @@ export type IPaginationItem = IButton & {
   TypeProps?: IPropsAny;
 };
 
-const PaginationItem: React.FC<IPaginationItem> = React.forwardRef((props_, ref) => {
+const PaginationItem: React.FC<IPaginationItem> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyPaginationItem?.props?.default, ...props_ };
@@ -72,8 +72,6 @@ const PaginationItem: React.FC<IPaginationItem> = React.forwardRef((props_, ref)
 
   return (
     <Button
-      ref={ref}
-
       tonal={tonal}
 
       color={color}
@@ -116,7 +114,7 @@ const PaginationItem: React.FC<IPaginationItem> = React.forwardRef((props_, ref)
       }
     </Button>
   );
-});
+};
 
 PaginationItem.displayName = 'onesy-PaginationItem';
 

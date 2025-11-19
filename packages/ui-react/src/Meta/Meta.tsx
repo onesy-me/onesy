@@ -28,7 +28,7 @@ export type IMeta = ILine & {
   SeparatorProps?: IPropsAny;
 };
 
-const Meta: React.FC<IMeta> = React.forwardRef((props_, ref: any) => {
+const Meta: React.FC<IMeta> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMeta?.props?.default, ...props_ };
@@ -90,8 +90,6 @@ const Meta: React.FC<IMeta> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       gap={1}
 
       direction='row'
@@ -114,7 +112,7 @@ const Meta: React.FC<IMeta> = React.forwardRef((props_, ref: any) => {
       {values}
     </Line>
   );
-});
+};
 
 Meta.displayName = 'onesy-Meta';
 

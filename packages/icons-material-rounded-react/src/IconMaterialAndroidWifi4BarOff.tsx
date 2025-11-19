@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAndroidWifi4BarOff = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAndroidWifi4BarOff = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AndroidWifi4BarOff'
 
       short_name='AndroidWifi4BarOff'
@@ -19,7 +15,7 @@ const IconMaterialAndroidWifi4BarOff = React.forwardRef((props: IIcon, ref) => {
       <path d="M775-189 503-379q-6-1-11.5-1H480q-38 0-74 10t-68 30q-18 11-39 10.5T263-345q-15-15-14.5-35t17.5-32q26-18 54.5-32t58.5-22l-60-42q-26 11-49.5 24T224-454q-17 13-37.5 12T151-458q-14-15-14-35t16-33q17-14 35-25.5t37-22.5l-54-38q-16 10-31.5 20.5T110-569q-17 14-37 13.5T38-571q-15-15-14.5-35T40-640q11-9 21.5-17T83-673l-13-9q-17-12-20.5-32t8.5-37q12-17 32.5-21t37.5 8l704 494q17 12 21 32t-8 37q-12 17-32.5 20.5T775-189Zm-295 29q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm-79-535-112-78q47-14 94.5-20.5T480-800q121 0 234 40.5T920-641q16 14 16.5 34.5T922-571q-15 15-35.5 15.5T849-569q-78-63-172.5-97T480-700q-20 0-39.5 1t-39.5 4Zm342 240L479-640q91 0 176 29.5T811-524q14 12 15 30.5T813-461q-14 14-33.5 15.5T743-455Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAndroidWifi4BarOff.displayName = 'OnesyIconMaterialAndroidWifi4BarOff';
 

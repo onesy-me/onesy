@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSignLanguage2 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSignLanguage2 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SignLanguage2'
 
       short_name='SignLanguage2'
@@ -19,7 +15,7 @@ const IconMaterialSignLanguage2 = React.forwardRef((props: IIcon, ref) => {
       <path d="M840-320v-360q0-17-11.5-28.5T800-720H623l-46 81q45 6 74 40t29 79q0 51-37 85.5T554-400h-54v-80h60q17 0 28.5-11.5T600-520q0-17-11.5-28.5T560-560h-50l-35-60 102-180h223q50 0 85 35t35 85v360h-80Zm-40-160v240h-80v-240h80Zm-120 66v214h-80v-165q21-5 43.5-18.5T680-414Zm29-186ZM160-160q-50 0-85-35t-35-85v-360h80v360q0 17 11.5 28.5T160-240h177l46-81q-45-6-74-40t-29-79q0-51 37-85.5t89-34.5h54v80h-60q-17 0-28.5 11.5T360-440q0 17 11.5 28.5T400-400h50l35 60-101 180H160Zm0-320v-240h80v240h-80Zm120-66v-214h80v165q-21 5-43.5 18.5T280-546Zm-28 186Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSignLanguage2.displayName = 'OnesyIconMaterialSignLanguage2';
 

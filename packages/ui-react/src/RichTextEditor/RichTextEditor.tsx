@@ -346,7 +346,7 @@ export type IRichTextEditor = Omit<ILine, 'onChange'> & {
   ColorTextFieldProps?: IPropsAny;
 };
 
-const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref: any) => {
+const RichTextEditor: React.FC<IRichTextEditor> = props__ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -392,6 +392,8 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
   const ListItem = theme?.elements?.ListItem || ListItemElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'default',
     version = 'filled',
@@ -983,7 +985,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     ...IconProps_
   };
 
-  const WrapperToggleButton = React.forwardRef((props_: any, ref_: any) => {
+  const WrapperToggleButton = props_ => {
     const {
       open: open_,
 
@@ -1009,7 +1011,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         })}
       </Tooltip>
     );
-  });
+  };
 
   const WrapperAppend = (props_: any) => {
     const {
@@ -1105,8 +1107,10 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
     );
   };
 
-  const Palette = React.forwardRef((props_: any, ref_: any) => {
+  const Palette = props_ => {
     const {
+      ref: ref_,
+
       version: version_,
 
       onUpdate: onUpdate_,
@@ -1282,10 +1286,12 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         </Line>
       </Line>
     );
-  });
+  };
 
-  const Input = React.forwardRef((props_: any, ref_: any) => {
+  const Input = props_ => {
     const {
+      ref: ref_,
+
       label,
 
       labelButton,
@@ -1380,7 +1386,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
         </Line>
       </Line>
     );
-  });
+  };
 
   const font_families = [
     ...fontFamilies,
@@ -3477,7 +3483,7 @@ const RichTextEditor: React.FC<IRichTextEditor> = React.forwardRef((props__, ref
       />
     </Line>
   );
-});
+};
 
 RichTextEditor.displayName = 'onesy-RichTextEditor';
 

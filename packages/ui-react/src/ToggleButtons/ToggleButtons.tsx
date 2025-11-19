@@ -16,7 +16,7 @@ export type IToggleButtons = IButtons & {
 
 };
 
-const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: any) => {
+const ToggleButtons: React.FC<IToggleButtons> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButtons?.props?.default, ...props_ };
@@ -33,8 +33,6 @@ const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: a
 
   return (
     <Buttons
-      ref={ref}
-
       className={classNames([
         staticClassName('ToggleButtons', theme) && [
           'onesy-ToggleButtons-root'
@@ -53,7 +51,7 @@ const ToggleButtons: React.FC<IToggleButtons> = React.forwardRef((props_, ref: a
       {...other}
     />
   );
-});
+};
 
 ToggleButtons.displayName = 'onesy-ToggleButtons';
 

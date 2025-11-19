@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialAddModeratorW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialAddModeratorW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='AddModeratorW100Filled'
 
       short_name='AddModerator'
@@ -19,7 +15,7 @@ const IconMaterialAddModeratorW100Filled = React.forwardRef((props: IIcon, ref) 
       <path d="M666-266v66q0 5.6 4.2 9.8 4.2 4.2 9.8 4.2 5.6 0 9.8-4.2 4.2-4.2 4.2-9.8v-66h66q5.6 0 9.8-4.2 4.2-4.2 4.2-9.8 0-5.6-4.2-9.8-4.2-4.2-9.8-4.2h-66v-66q0-5.6-4.2-9.8-4.2-4.2-9.8-4.2-5.6 0-9.8 4.2-4.2 4.2-4.2 9.8v66h-66q-5.6 0-9.8 4.2-4.2 4.2-4.2 9.8 0 5.6 4.2 9.8 4.2 4.2 9.8 4.2h66Zm14 134q-62 0-105-43t-43-105q0-62 43-105t105-43q62 0 105 43t43 105q0 62-43 105t-105 43ZM212-515.82V-682q0-19.26 10.88-34.66Q233.75-732.07 251-739l208-77q11-4 21-4t21 4l208 77q17.25 6.93 28.13 22.34Q748-701.26 748-682v149q0 13.42-10 21.71-10 8.29-24 6.29-8-2-17-2.5t-17-.5q-95 0-161.5 66.5T452-280q0 23 5 47.5t17 50.5q7 15-4 27t-26 6q-47-20-85-51t-70-76q-36.38-51.04-56.69-112.02Q212-449 212-515.82Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialAddModeratorW100Filled.displayName = 'OnesyIconMaterialAddModeratorW100Filled';
 

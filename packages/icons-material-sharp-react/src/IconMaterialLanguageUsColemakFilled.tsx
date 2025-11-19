@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialLanguageUsColemakFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialLanguageUsColemakFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='LanguageUsColemakFilled'
 
       short_name='LanguageUsColemak'
@@ -19,7 +15,7 @@ const IconMaterialLanguageUsColemakFilled = React.forwardRef((props: IIcon, ref)
       <path d="M580-360h140v-240H580v240Zm-420 80v-400h260v80H240v240h180v80H160Zm340 0v-400h300v400H500Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialLanguageUsColemakFilled.displayName = 'OnesyIconMaterialLanguageUsColemakFilled';
 

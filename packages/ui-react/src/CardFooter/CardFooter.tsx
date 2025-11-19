@@ -18,7 +18,7 @@ export type ICardFooter = ILine & {
   elevation?: IElevation;
 };
 
-const CardFooter: React.FC<ICardFooter> = React.forwardRef((props_, ref: any) => {
+const CardFooter: React.FC<ICardFooter> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardFooter?.props?.default, ...props_ };
@@ -44,8 +44,6 @@ const CardFooter: React.FC<ICardFooter> = React.forwardRef((props_, ref: any) =>
 
   return (
     <Line
-      ref={ref}
-
       gap={1}
 
       direction='row'
@@ -74,7 +72,7 @@ const CardFooter: React.FC<ICardFooter> = React.forwardRef((props_, ref: any) =>
       {children}
     </Line>
   );
-});
+};
 
 CardFooter.displayName = 'onesy-CardFooter';
 

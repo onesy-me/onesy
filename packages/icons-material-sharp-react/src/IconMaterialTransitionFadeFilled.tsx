@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTransitionFadeFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTransitionFadeFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TransitionFadeFilled'
 
       short_name='TransitionFade'
@@ -19,7 +15,7 @@ const IconMaterialTransitionFadeFilled = React.forwardRef((props: IIcon, ref) =>
       <path d="M120-120v-720h280v720H120Zm320-640v-80h80v80h-80Zm80 80v-80h80v80h-80Zm80-80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm-80 80v-80h80v80h-80Zm-240 80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm-240 80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm-240 80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm-240 80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm-240 80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm-240 80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm-240 80v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTransitionFadeFilled.displayName = 'OnesyIconMaterialTransitionFadeFilled';
 

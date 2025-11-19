@@ -39,7 +39,7 @@ export type IBottomSheet = INavigationDrawer & {
 
 };
 
-const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) => {
+const BottomSheet: React.FC<IBottomSheet> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBottomSheet?.props?.default, ...props_ };
@@ -56,8 +56,6 @@ const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) 
 
   return (
     <NavigationDrawer
-      ref={ref}
-
       direction='bottom'
 
       className={classNames([
@@ -72,7 +70,7 @@ const BottomSheet: React.FC<IBottomSheet> = React.forwardRef((props_, ref: any) 
       {...other}
     />
   );
-});
+};
 
 BottomSheet.displayName = 'onesy-BottomSheet';
 

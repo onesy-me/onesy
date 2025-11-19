@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialHPlusMobiledataBadgeFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialHPlusMobiledataBadgeFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='HPlusMobiledataBadgeFilled'
 
       short_name='HPlusMobiledataBadge'
@@ -19,7 +15,7 @@ const IconMaterialHPlusMobiledataBadgeFilled = React.forwardRef((props: IIcon, r
       <path d="M180-280h80v-160h160v160h80v-400h-80v160H260v-160h-80v400Zm440-80h80v-80h80v-80h-80v-80h-80v80h-80v80h80v80ZM40-120v-720h880v720H40Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialHPlusMobiledataBadgeFilled.displayName = 'OnesyIconMaterialHPlusMobiledataBadgeFilled';
 

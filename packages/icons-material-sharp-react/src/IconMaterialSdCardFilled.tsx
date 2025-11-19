@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialSdCardFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialSdCardFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='SdCardFilled'
 
       short_name='SdCard'
@@ -19,7 +15,7 @@ const IconMaterialSdCardFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M160-80v-560l240-240h400v800H160Zm200-440h80v-160h-80v160Zm120 0h80v-160h-80v160Zm120 0h80v-160h-80v160Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialSdCardFilled.displayName = 'OnesyIconMaterialSdCardFilled';
 

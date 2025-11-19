@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialMobileChatW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialMobileChatW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='MobileChatW100'
 
       short_name='MobileChat'
@@ -19,7 +15,7 @@ const IconMaterialMobileChatW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M280-120v-720 720Zm400 0v-96 96ZM554-344h234v-172H554v172Zm-28 81v-281h290v228H579l-53 53ZM252-92v-776h456v224h-28v-196H280v720h400v-96h28v124H252Zm230.07-612q11.93 0 19.93-8.07t8-20q0-11.93-8.07-19.93t-20-8Q470-760 462-751.93t-8 20q0 11.93 8.07 19.93t20 8ZM554-344v-172 172Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialMobileChatW100.displayName = 'OnesyIconMaterialMobileChatW100';
 

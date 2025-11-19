@@ -208,7 +208,7 @@ export type ISwitch = Omit<IBaseElement, 'onChange'> & {
   OffIcon?: IElement;
 };
 
-const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
+const Switch: React.FC<ISwitch> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesySwitch?.props?.default, ...props_ };
@@ -690,8 +690,6 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       tabIndex={disabled ? -1 : 0}
 
       role='switch'
@@ -857,7 +855,7 @@ const Switch: React.FC<ISwitch> = React.forwardRef((props_, ref: any) => {
 
     </Component>
   );
-});
+};
 
 Switch.displayName = 'onesy-Switch';
 

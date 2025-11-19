@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialCannabisW100Filled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialCannabisW100Filled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='CannabisW100Filled'
 
       short_name='Cannabis'
@@ -19,7 +15,7 @@ const IconMaterialCannabisW100Filled = React.forwardRef((props: IIcon, ref) => {
       <path d="M466-132v-161q-41 28-86 46.5T285-228q-54 0-104-19t-89-56q42-34 91.5-54T287-378q-22-8-41.5-19.5T209-425q-51-48-81-111.5T98-670q75 5 144 31.5T365-559q-4-17-6-33.5t-2-33.5q0-80 34.5-151T480-907q52 60 87.5 130.5T603-626q0 17-2 33.5t-7 32.5q54-53 124.5-79T864-670q0 71-31.5 134T750-425q-17 15-36.5 27T673-378q54 1 103.5 21.5T868-303q-40 36-90 55.5T674-228q-49 0-93.5-19T494-292v160h-28Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialCannabisW100Filled.displayName = 'OnesyIconMaterialCannabisW100Filled';
 

@@ -18,7 +18,7 @@ export type ICardMain = ILine & {
   elevation?: IElevation;
 };
 
-const CardMain: React.FC<ICardMain> = React.forwardRef((props_, ref: any) => {
+const CardMain: React.FC<ICardMain> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyCardMain?.props?.default, ...props_ };
@@ -44,8 +44,6 @@ const CardMain: React.FC<ICardMain> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Line
-      ref={ref}
-
       fullWidth
 
       Component={Component}
@@ -64,7 +62,7 @@ const CardMain: React.FC<ICardMain> = React.forwardRef((props_, ref: any) => {
       {children}
     </Line>
   );
-});
+};
 
 CardMain.displayName = 'onesy-CardMain';
 

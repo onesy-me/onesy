@@ -35,7 +35,7 @@ export type INavigationBar = Omit<ISurface, 'version' | 'onChange'> & {
   fixed?: boolean;
 };
 
-const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: any) => {
+const NavigationBar: React.FC<INavigationBar> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyNavigationBar?.props?.default, ...props_ };
@@ -151,8 +151,6 @@ const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: a
 
   return (
     <Surface
-      ref={ref}
-
       Component={Line}
 
       color={color}
@@ -188,7 +186,7 @@ const NavigationBar: React.FC<INavigationBar> = React.forwardRef((props_, ref: a
       {children}
     </Surface>
   );
-});
+};
 
 NavigationBar.displayName = 'onesy-NavigationBar';
 

@@ -48,7 +48,7 @@ export type IInfo = IMenu & {
   TooltipProps?: any;
 };
 
-const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
+const Info: React.FC<IInfo> = props_ => {
   const theme = useOnesyTheme();
 
   const l = theme.l;
@@ -91,8 +91,6 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Menu
-      ref={ref}
-
       alignment='center'
 
       name={is('function', render) ? render() : (
@@ -157,7 +155,7 @@ const Info: React.FC<IInfo> = React.forwardRef((props_, ref: any) => {
       </span>
     </Menu>
   );
-});
+};
 
 Info.displayName = 'onesy-Info';
 

@@ -47,7 +47,7 @@ export interface IMainProgress extends ILine {
 
 }
 
-const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any) => {
+const MainProgress: React.FC<IMainProgress> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMainProgress?.props?.default, ...props_ };
@@ -87,8 +87,6 @@ const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any
     >
       {open.open && (
         <Line
-          ref={ref}
-
           fullWidth
 
           className={classNames([
@@ -109,6 +107,6 @@ const MainProgress: React.FC<IMainProgress> = React.forwardRef((props_, ref: any
       {children}
     </MainProgressContext.Provider>
   );
-});
+};
 
 export default MainProgress;

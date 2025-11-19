@@ -16,7 +16,7 @@ export type IModalText = IType & {
 
 };
 
-const ModalText: React.FC<IModalText> = React.forwardRef((props_, ref: any) => {
+const ModalText: React.FC<IModalText> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyModalText?.props?.default, ...props_ };
@@ -35,8 +35,6 @@ const ModalText: React.FC<IModalText> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Type
-      ref={ref}
-
       version='b2'
 
       align='center'
@@ -57,7 +55,7 @@ const ModalText: React.FC<IModalText> = React.forwardRef((props_, ref: any) => {
       {children}
     </Type>
   );
-});
+};
 
 ModalText.displayName = 'onesy-ModalText';
 

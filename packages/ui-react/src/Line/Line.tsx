@@ -176,7 +176,7 @@ export type ILine = IBaseElement & {
   DividerProps?: IPropsAny;
 };
 
-const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
+const Line: React.FC<ILine> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyLine?.props?.default, ...props_ };
@@ -184,6 +184,8 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
   const Divider = theme?.elements?.Divider || DividerElement;
 
   const {
+    ref,
+
     display: display_,
     align: align_,
     justify: justify_,
@@ -316,7 +318,7 @@ const Line: React.FC<ILine> = React.forwardRef((props_, ref: any) => {
       {React.Children.toArray(children).flatMap((item: any, index: number) => (!divider || index === (children as any).length - 1) ? [item] : [item, Divider_])}
     </Component>
   );
-});
+};
 
 Line.displayName = 'onesy-Line';
 

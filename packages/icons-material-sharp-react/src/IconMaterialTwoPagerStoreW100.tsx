@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTwoPagerStoreW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTwoPagerStoreW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TwoPagerStoreW100'
 
       short_name='TwoPagerStore'
@@ -19,7 +15,7 @@ const IconMaterialTwoPagerStoreW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M132-212v-536h696v234h-28v-206H494v206h-28v-206H160v480h306v28H132Zm428 80v-144h28v116h212v-116h28v144H560Zm-43-134 29-148h296l29 148H517Zm34-28h286l-18-92H569l-18 92Zm-331-52h186v-28H220v28Zm0-120h186v-28H220v28Zm0-120h186v-28H220v28Zm334 0v-28h186v28H554ZM160-240v-480 480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTwoPagerStoreW100.displayName = 'OnesyIconMaterialTwoPagerStoreW100';
 

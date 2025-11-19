@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialResponsiveLayoutFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialResponsiveLayoutFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='ResponsiveLayoutFilled'
 
       short_name='ResponsiveLayout'
@@ -19,7 +15,7 @@ const IconMaterialResponsiveLayoutFilled = React.forwardRef((props: IIcon, ref) 
       <path d="M640-120v-520H380v-200h460v720H640Zm-260 0v-440h180v440H380Zm-260 0v-440h180v440H120Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialResponsiveLayoutFilled.displayName = 'OnesyIconMaterialResponsiveLayoutFilled';
 

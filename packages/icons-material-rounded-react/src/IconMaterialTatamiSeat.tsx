@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialTatamiSeat = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialTatamiSeat = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='TatamiSeat'
 
       short_name='TatamiSeat'
@@ -19,7 +15,7 @@ const IconMaterialTatamiSeat = React.forwardRef((props: IIcon, ref) => {
       <path d="M280-120q-38 0-71.5-17T152-184q-23-30-30-67.5t4-73.5l24-82-28-387q-2-17 9.5-29t28.5-14l40-3q66-5 115.5 39T370-691l9 119q5 66-38.5 116T231-401l-28 98q-5 18-1.5 37t14.5 34q5 6 11 11t14 10q5-63 50.5-106T400-360h280q66 0 113 47t47 113v40q0 17-11.5 28.5T800-120H280Zm40-80h440q0-33-23.5-56.5T680-280H400q-33 0-56.5 23.5T320-200Zm-96-280q33-2 55-27.5t20-58.5l-9-119q-2-33-27-55t-58-20l19 280Zm316 280ZM215-622Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialTatamiSeat.displayName = 'OnesyIconMaterialTatamiSeat';
 

@@ -17,7 +17,7 @@ import { ISurface } from '../Surface/Surface';
 import { staticClassName } from '../utils';
 import { IElementReference, IPropsAny } from '../types';
 
-const IconWeather = React.forwardRef((props: any, ref: any) => {
+const IconWeather = props => {
   const theme = useOnesyTheme();
 
   const Surface = theme?.elements?.Surface || SurfaceElement;
@@ -39,8 +39,6 @@ const IconWeather = React.forwardRef((props: any, ref: any) => {
     >
       {({ color, backgroundColor }) => (
         <svg
-          ref={ref}
-
           viewBox='0 0 177 178'
 
           xmlns='http://www.w3.org/2000/svg'
@@ -62,7 +60,7 @@ const IconWeather = React.forwardRef((props: any, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -217,7 +215,7 @@ export type IWeather = ISurface & {
   IconProps?: IPropsAny;
 };
 
-const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
+const Weather: React.FC<IWeather> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyWeather?.props?.default, ...props_ };
@@ -231,6 +229,8 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
   const Transitions = theme?.elements?.Transitions || TransitionsElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     version = 'filled',
@@ -482,7 +482,7 @@ const Weather: React.FC<IWeather> = React.forwardRef((props_, ref: any) => {
       )}
     </Surface>
   );
-});
+};
 
 Weather.displayName = 'onesy-Weather';
 

@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialFileSaveOffW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialFileSaveOffW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='FileSaveOffW100'
 
       short_name='FileSaveOff'
@@ -19,7 +15,7 @@ const IconMaterialFileSaveOffW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="m799-236-19-20 44-44 19 20-44 44Zm-65-66-28-28v-83h28v111ZM586-26v-28h244L214-670v456h272v28H186v-512L65-820l19-19L869-54v28H586Zm120-487h28v-127L520-854H182l28 28h296v200h200v113Zm-293 42Zm73-79Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialFileSaveOffW100.displayName = 'OnesyIconMaterialFileSaveOffW100';
 

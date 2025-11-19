@@ -110,7 +110,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-MenuDesktop' });
 
-const Wrapper = React.forwardRef((props: any, ref: any) => {
+const Wrapper = props => {
   const theme = useOnesyTheme();
 
   const {
@@ -122,8 +122,6 @@ const Wrapper = React.forwardRef((props: any, ref: any) => {
 
   return (
     <div
-      ref={ref}
-
       onMouseEnter={onMouseEnter}
 
       onMouseLeave={onMouseLeave}
@@ -137,7 +135,7 @@ const Wrapper = React.forwardRef((props: any, ref: any) => {
       {props.children}
     </div>
   );
-});
+};
 
 export type TMenuDesktopValue = string | number;
 
@@ -186,7 +184,7 @@ export type IMenuDesktop = Omit<ILine, 'onChange'> & {
   WrapperMenuProps?: IPropsAny;
 };
 
-const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) => {
+const MenuDesktop: React.FC<IMenuDesktop> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyMenuDesktop?.props?.default, ...props_ };
@@ -208,6 +206,8 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
   const Type = theme?.elements?.Type || TypeElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'primary',
     version = 'filled',
@@ -817,7 +817,7 @@ const MenuDesktop: React.FC<IMenuDesktop> = React.forwardRef((props_, ref: any) 
       </Line>
     </ClickListener>
   );
-});
+};
 
 MenuDesktop.displayName = 'onesy-MenuDesktop';
 

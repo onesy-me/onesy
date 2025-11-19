@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialBatteryAndroidFrameAlert = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialBatteryAndroidFrameAlert = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='BatteryAndroidFrameAlert'
 
       short_name='BatteryAndroidFrameAlert'
@@ -19,7 +15,7 @@ const IconMaterialBatteryAndroidFrameAlert = React.forwardRef((props: IIcon, ref
       <path d="M160-240q-50 0-85-35t-35-85v-240q0-50 35-85t85-35h520q17 0 28.5 11.5T720-680q0 17-11.5 28.5T680-640H160q-17 0-28.5 11.5T120-600v240q0 17 11.5 28.5T160-320h520q17 0 28.5 11.5T720-280q0 17-11.5 28.5T680-240H160Zm0-160v-160q0-17 11.5-28.5T200-600h480q17 0 28.5 11.5T720-560v160q0 17-11.5 28.5T680-360H200q-17 0-28.5-11.5T160-400Zm680 100q-17 0-28.5-11.5T800-340q0-17 11.5-28.5T840-380q17 0 28.5 11.5T880-340q0 17-11.5 28.5T840-300Zm0-140q-17 0-28.5-11.5T800-480v-160q0-17 11.5-28.5T840-680q17 0 28.5 11.5T880-640v160q0 17-11.5 28.5T840-440Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialBatteryAndroidFrameAlert.displayName = 'OnesyIconMaterialBatteryAndroidFrameAlert';
 

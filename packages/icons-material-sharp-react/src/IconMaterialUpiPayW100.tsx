@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialUpiPayW100 = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialUpiPayW100 = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='UpiPayW100'
 
       short_name='UpiPay'
@@ -19,7 +15,7 @@ const IconMaterialUpiPayW100 = React.forwardRef((props: IIcon, ref) => {
       <path d="M466-376h28v-84h140v-124H466v208Zm228 0h28v-208h-28v208ZM494-488v-68h112v68H494ZM238-376h168v-208h-28v180H266v-180h-28v208ZM132-212v-536h696v536H132Zm28-28h640v-480H160v480Zm0 0v-480 480Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialUpiPayW100.displayName = 'OnesyIconMaterialUpiPayW100';
 

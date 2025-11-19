@@ -13,13 +13,17 @@ const withStyle = (Element: any) => (value: TValue, options: IOptions = {}): Rea
   const useStyle = style(value, options);
 
   // Element
-  const element = React.forwardRef((props: any, ref) => {
+  const element = props => {
     const styles = useStyle(props);
 
     return (
-      <Element ref={ref} styles={styles} {...props} />
+      <Element
+        styles={styles}
+
+        {...props}
+      />
     );
-  });
+  };
 
   return element;
 };

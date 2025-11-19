@@ -16,7 +16,7 @@ export type IIconButton = IButton & {
 
 };
 
-const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) => {
+const IconButton: React.FC<IIconButton> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyIconButton?.props?.default, ...props_ };
@@ -37,8 +37,6 @@ const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) =>
 
   return (
     <Button
-      ref={ref}
-
       size={size}
 
       {...other}
@@ -57,7 +55,7 @@ const IconButton: React.FC<IIconButton> = React.forwardRef((props_, ref: any) =>
       icon
     />
   );
-});
+};
 
 IconButton.displayName = 'onesy-IconButton';
 

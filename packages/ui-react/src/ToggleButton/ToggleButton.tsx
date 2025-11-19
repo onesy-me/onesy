@@ -36,7 +36,7 @@ export type IToggleButton = IChip & {
 
 };
 
-const ToggleButton: React.FC<IToggleButton> = React.forwardRef((props_, ref: any) => {
+const ToggleButton: React.FC<IToggleButton> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyToggleButton?.props?.default, ...props_ };
@@ -57,8 +57,6 @@ const ToggleButton: React.FC<IToggleButton> = React.forwardRef((props_, ref: any
 
   return (
     <Chip
-      ref={ref}
-
       size={size}
 
       icon={icon}
@@ -79,7 +77,7 @@ const ToggleButton: React.FC<IToggleButton> = React.forwardRef((props_, ref: any
       {...other}
     />
   );
-});
+};
 
 ToggleButton.displayName = 'onesy-ToggleButton';
 

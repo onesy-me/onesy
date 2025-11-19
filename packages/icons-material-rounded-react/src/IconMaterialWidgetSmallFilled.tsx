@@ -1,13 +1,9 @@
-import React from 'react';
-
 import { Icon, IIcon } from '@onesy/ui-react';
 
-const IconMaterialWidgetSmallFilled = React.forwardRef((props: IIcon, ref) => {
+const IconMaterialWidgetSmallFilled = (props: IIcon) => {
 
   return (
     <Icon
-      ref={ref}
-
       name='WidgetSmallFilled'
 
       short_name='WidgetSmall'
@@ -19,7 +15,7 @@ const IconMaterialWidgetSmallFilled = React.forwardRef((props: IIcon, ref) => {
       <path d="M120-80q-17 0-28.5-11.5T80-120v-160q0-17 11.5-28.5T120-320h160q17 0 28.5 11.5T320-280v160q0 17-11.5 28.5T280-80H120Zm280 0q-17 0-28.5-11.5T360-120v-160q0-17 11.5-28.5T400-320h160q17 0 28.5 11.5T600-280v160q0 17-11.5 28.5T560-80H400Zm280 0q-17 0-28.5-11.5T640-120v-160q0-17 11.5-28.5T680-320h160q17 0 28.5 11.5T880-280v160q0 17-11.5 28.5T840-80H680ZM120-360q-17 0-28.5-11.5T80-400v-160q0-17 11.5-28.5T120-600h160q17 0 28.5 11.5T320-560v160q0 17-11.5 28.5T280-360H120Zm280 0q-17 0-28.5-11.5T360-400v-160q0-17 11.5-28.5T400-600h160q17 0 28.5 11.5T600-560v160q0 17-11.5 28.5T560-360H400Zm280 0q-17 0-28.5-11.5T640-400v-160q0-17 11.5-28.5T680-600h160q17 0 28.5 11.5T880-560v160q0 17-11.5 28.5T840-360H680ZM120-640q-17 0-28.5-11.5T80-680v-160q0-17 11.5-28.5T120-880h160q17 0 28.5 11.5T320-840v160q0 17-11.5 28.5T280-640H120Zm280 0q-17 0-28.5-11.5T360-680v-160q0-17 11.5-28.5T400-880h160q17 0 28.5 11.5T600-840v160q0 17-11.5 28.5T560-640H400Zm280 0q-17 0-28.5-11.5T640-680v-160q0-17 11.5-28.5T680-880h160q17 0 28.5 11.5T880-840v160q0 17-11.5 28.5T840-640H680Z"/>
     </Icon>
   );
-});
+};
 
 IconMaterialWidgetSmallFilled.displayName = 'OnesyIconMaterialWidgetSmallFilled';
 

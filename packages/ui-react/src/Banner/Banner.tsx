@@ -49,7 +49,7 @@ export type IBanner = IListItem & {
   RootProps?: any;
 };
 
-const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
+const Banner: React.FC<IBanner> = props_ => {
   const theme = useOnesyTheme();
 
   const props = { ...theme?.ui?.elements?.all?.props?.default, ...theme?.ui?.elements?.onesyBanner?.props?.default, ...props_ };
@@ -128,8 +128,6 @@ const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
 
   return (
     <Component
-      ref={ref}
-
       role='alert'
 
       className={classNames([
@@ -178,7 +176,7 @@ const Banner: React.FC<IBanner> = React.forwardRef((props_, ref: any) => {
       {end}
     </Component>
   );
-});
+};
 
 Banner.displayName = 'onesy-Banner';
 
