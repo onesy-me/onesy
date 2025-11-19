@@ -545,7 +545,7 @@ const Share: React.FC<IShare> = props_ => {
       />
     ));
 
-  if (version === 'menu-items') return menuItemsMoreOptions;
+  if (version === 'menu-items') return menuItemsMoreOptions as any;
 
   const AppendProps: any = {};
 
