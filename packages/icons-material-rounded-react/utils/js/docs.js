@@ -49,7 +49,7 @@ import { jsx as _jsx } from 'react/jsx-runtime';
       console.log(error);
     }
 
-    await Promise.all(icons.map(icon => new Promise(async (resolve, reject) => {
+    await Promise.all(icons.filter(icon => icon.endsWith('W100') && !icon.endsWith('FilledW100')).map(icon => new Promise(async (resolve, reject) => {
       let version = 'rounded-w100';
 
       // if (icon.endsWith('Filled')) version = 'rounded-filled';
