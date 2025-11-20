@@ -195,7 +195,7 @@ const Interaction: React.FC<IInteraction> = props_ => {
     clear,
     disabled,
 
-    mobileDelay = 15,
+    mobileDelay = 150,
 
     className
   } = props;
@@ -294,8 +294,8 @@ const Interaction: React.FC<IInteraction> = props_ => {
       removeWaves();
     };
 
-    const onTouchStart = () => {
-      onMouseUp();
+    const onTouchStart = event => {
+      onMouseDown(event);
       onMouseIn();
     };
 
