@@ -294,15 +294,10 @@ const Interaction: React.FC<IInteraction> = props_ => {
 
     if (parent) {
       parent.addEventListener('mousedown', onMouseDown);
-      parent.addEventListener('touchstart', onMouseDown, { passive: true });
       parent.addEventListener('mouseup', onMouseUp);
       rootDocument.addEventListener('mouseup', onMouseUp);
-      parent.addEventListener('touchend', onMouseUp, { passive: true });
-      rootDocument.addEventListener('touchend', onMouseUp, { passive: true });
       parent.addEventListener('mouseenter', onMouseIn);
-      // parent.addEventListener('touchstart', onMouseIn, { passive: true });
       parent.addEventListener('mouseleave', onMouseOut);
-      // parent.addEventListener('touchend', onMouseOut, { passive: true });
     }
 
     refs.init.current = true;
@@ -310,15 +305,10 @@ const Interaction: React.FC<IInteraction> = props_ => {
     return () => {
       if (parent) {
         parent.removeEventListener('mousedown', onMouseDown);
-        parent.removeEventListener('touchstart', onMouseDown);
         parent.removeEventListener('mouseup', onMouseUp);
         rootDocument.removeEventListener('mouseup', onMouseUp);
-        parent.removeEventListener('touchend', onMouseUp);
-        rootDocument.removeEventListener('touchend', onMouseUp);
         parent.removeEventListener('mouseenter', onMouseIn);
-        parent.removeEventListener('touchstart', onMouseIn);
         parent.removeEventListener('mouseleave', onMouseOut);
-        parent.removeEventListener('touchend', onMouseOut);
       }
     };
   }, []);

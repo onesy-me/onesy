@@ -177,10 +177,6 @@ const Link: React.FC<ILink> = props_ => {
 
       onMouseLeave={onMouseLeave}
 
-      onTouchStart={onMouseEnter}
-
-      onTouchEnd={onMouseLeave}
-
       version={version}
 
       role='link'
