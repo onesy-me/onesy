@@ -18,14 +18,16 @@ const method = async () => {
 
     const versions = ['sharp', 'sharp-filled', 'sharp-w100', 'sharp-w100-filled'];
 
-    // const versions = ['sharp', 'sharp-filled', 'sharp-w100', 'sharp-w100-filled', 'sharp', 'sharp-filled', 'sharp-w100', 'sharp-w100-filled', 'two-tone'];
-
     versions.forEach(item => {
       values[item] = {
         value: `// @ts-nocheck
 import React from 'react';
 import { Icon } from '@onesy/ui-react';
 import _extends from '@babel/runtime/helpers/extends';
+import _defineProperty from '@babel/runtime/helpers/defineProperty';
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable })), t.push.apply(t, o) } return t } function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]) }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)) }) } return e }
+import { c as _c } from 'react/compiler-runtime';
+import { jsx as _jsx } from 'react/jsx-runtime';
 
 `,
         exports: '['
@@ -54,8 +56,6 @@ import _extends from '@babel/runtime/helpers/extends';
 
       if (icon.endsWith('W100Filled')) version = 'sharp-w100-filled';
 
-      // if (icon.endsWith('TwoTone')) version = 'two-tone';
-
       if (version) {
         const esmFile = await OnesyNode.file.get(path.resolve(esm, `${icon}.js`), false);
 
@@ -76,7 +76,7 @@ import _extends from '@babel/runtime/helpers/extends';
     });
 
     await Promise.all(versions.map(item => new Promise(async resolve => {
-      const iconsFile = path.resolve(wd, `../../../docs/public/assets/js/examples/icons-material-react/icons-elements-${item}.tsx`);
+      const iconsFile = path.resolve(wd, `../../../docs/src/ui/icons/icons-elements-${item}.tsx`);
 
       values[item].value += `export default ${values[item].exports};`;
 
