@@ -293,17 +293,31 @@ const Interaction: React.FC<IInteraction> = props_ => {
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
 
     if (parent) {
-      parent.addEventListener('mousedown', onMouseDown);
-      parent.addEventListener('mouseup', onMouseUp);
-      rootDocument.addEventListener('mouseup', onMouseUp);
-      parent.addEventListener('mouseenter', onMouseIn);
-      parent.addEventListener('mouseleave', onMouseOut);
+      if (touch) {
+        parent.addEventListener('touchstart', onMouseDown, { passive: true });
+        parent.addEventListener('touchend', onMouseUp, { passive: true });
+        rootDocument.addEventListener('touchend', onMouseUp, { passive: true });
+        parent.addEventListener('touchstart', onMouseIn, { passive: true });
+        parent.addEventListener('touchend', onMouseOut, { passive: true });
+      } else {
+        parent.addEventListener('mousedown', onMouseDown);
+        parent.addEventListener('mouseup', onMouseUp);
+        rootDocument.addEventListener('mouseup', onMouseUp);
+        parent.addEventListener('mouseenter', onMouseIn);
+        parent.addEventListener('mouseleave', onMouseOut);
+      }
     }
 
     refs.init.current = true;
 
     return () => {
       if (parent) {
+        parent.removeEventListener('touchstart', onMouseDown);
+        parent.removeEventListener('touchend', onMouseUp);
+        rootDocument.removeEventListener('touchend', onMouseUp);
+        parent.removeEventListener('touchstart', onMouseIn);
+        parent.removeEventListener('touchend', onMouseOut);
+
         parent.removeEventListener('mousedown', onMouseDown);
         parent.removeEventListener('mouseup', onMouseUp);
         rootDocument.removeEventListener('mouseup', onMouseUp);
@@ -311,7 +325,7 @@ const Interaction: React.FC<IInteraction> = props_ => {
         parent.removeEventListener('mouseleave', onMouseOut);
       }
     };
-  }, []);
+  }, [touch]);
 
   React.useEffect(() => {
     if (refs.init.current) {
