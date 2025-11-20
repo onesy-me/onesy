@@ -169,6 +169,8 @@ export type IInteraction = IBaseElement & {
   wave_version?: 'simple';
   subscription?: OnesySubscription;
   clear?: any;
+
+  mobileDelay?: number;
 };
 
 const Interaction: React.FC<IInteraction> = props_ => {
@@ -192,6 +194,8 @@ const Interaction: React.FC<IInteraction> = props_ => {
     subscription,
     clear,
     disabled,
+
+    mobileDelay = 15,
 
     className
   } = props;
@@ -290,15 +294,33 @@ const Interaction: React.FC<IInteraction> = props_ => {
       removeWaves();
     };
 
+    const onTouchStart = () => {
+      onMouseUp();
+      onMouseIn();
+    };
+
+    const onTouchUp = () => {
+      setTimeout(() => {
+        onMouseUp();
+        onMouseOut();
+      }, mobileDelay);
+    };
+
+    const onTouchCancel = () => {
+      setTimeout(() => {
+        onMouseUp();
+        onMouseOut();
+      }, mobileDelay);
+    };
+
     const rootDocument = isEnvironment('browser') ? (refs.root.current?.ownerDocument || window.document) : undefined;
 
     if (parent) {
       if (touch) {
-        parent.addEventListener('touchstart', onMouseDown, { passive: true });
-        parent.addEventListener('touchend', onMouseUp, { passive: true });
-        rootDocument.addEventListener('touchend', onMouseUp, { passive: true });
-        parent.addEventListener('touchstart', onMouseIn, { passive: true });
-        parent.addEventListener('touchend', onMouseOut, { passive: true });
+        parent.addEventListener('touchstart', onTouchStart, { passive: true });
+
+        rootDocument.addEventListener('touchend', onTouchUp, { passive: true });
+        rootDocument.addEventListener('touchcancel', onTouchCancel, { passive: true });
       } else {
         parent.addEventListener('mousedown', onMouseDown);
         parent.addEventListener('mouseup', onMouseUp);
@@ -312,11 +334,9 @@ const Interaction: React.FC<IInteraction> = props_ => {
 
     return () => {
       if (parent) {
-        parent.removeEventListener('touchstart', onMouseDown);
-        parent.removeEventListener('touchend', onMouseUp);
-        rootDocument.removeEventListener('touchend', onMouseUp);
-        parent.removeEventListener('touchstart', onMouseIn);
-        parent.removeEventListener('touchend', onMouseOut);
+        parent.removeEventListener('touchstart', onTouchStart);
+        rootDocument.removeEventListener('touchend', onTouchUp);
+        rootDocument.removeEventListener('touchcancel', onTouchCancel);
 
         parent.removeEventListener('mousedown', onMouseDown);
         parent.removeEventListener('mouseup', onMouseUp);
@@ -325,7 +345,7 @@ const Interaction: React.FC<IInteraction> = props_ => {
         parent.removeEventListener('mouseleave', onMouseOut);
       }
     };
-  }, [touch]);
+  }, [mobileDelay, touch]);
 
   React.useEffect(() => {
     if (refs.init.current) {
