@@ -281,7 +281,7 @@ const TableCell: React.FC<ITableCell> = props_ => {
   const onStickyMove = () => {
     const offsetNew = refs.root.current.offsetLeft;
 
-    setStickyActive(refs.offset.current !== offsetNew);
+    setStickyActive(offsetNew < refs.offset.current);
   };
 
   const onStickyInit = () => {
