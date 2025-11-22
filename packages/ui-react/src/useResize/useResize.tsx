@@ -3,19 +3,31 @@ import React from 'react';
 import { isEnvironment } from '@onesy/utils';
 
 const useResize = () => {
-  const [windowWidth, setWindowWidth] = React.useState(() => {
+  const [width, setWidth] = React.useState(() => {
     if (isEnvironment('browser')) return window.innerWidth;
 
     return 0;
   });
 
+  const refs = {
+    width: React.useRef(width)
+  };
+
+  refs.width.current = width;
+
   React.useEffect(() => {
     const onResize = () => {
-      setWindowWidth(window.innerWidth);
+      const newWidth = window.innerWidth;
+
+      if (refs.width.current === newWidth) return;
+
+      setWidth(newWidth);
     };
 
     if (isEnvironment('browser')) {
-      setWindowWidth(window.innerWidth);
+      const newWidth = window.innerWidth;
+
+      if (refs.width.current !== newWidth) setWidth(newWidth);
 
       window.addEventListener('resize', onResize);
 
@@ -23,7 +35,7 @@ const useResize = () => {
     }
   }, []);
 
-  return windowWidth;
+  return width;
 };
 
 export default useResize;

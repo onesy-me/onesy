@@ -885,19 +885,21 @@ const Chart: React.FC<IChart> = props_ => {
   };
 
   const onWrapperMouseLeave = () => {
-    setHover(false);
+    if (refs.hover.current) {
+      setHover(false);
 
-    setTimeout(() => {
-      if (tooltipCloseOnMouseLeave) setAppend(values_ => ({
-        ...values_,
+      setTimeout(() => {
+        if (tooltipCloseOnMouseLeave) setAppend(values_ => ({
+          ...values_,
 
-        open: false
-      }));
+          open: false
+        }));
 
-      if (!guidelinesDisplayInactive) setGuidelineIn(false);
+        if (!guidelinesDisplayInactive) setGuidelineIn(false);
 
-      setGuidelinePosition({});
-    });
+        setGuidelinePosition({});
+      });
+    }
   };
 
   const makeGroupTooltip = (x_: number, y_: number) => {

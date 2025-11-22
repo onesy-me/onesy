@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { is } from '@onesy/utils';
+import { is, isEnvironment } from '@onesy/utils';
 import { useOnesyTheme } from '@onesy/style-react';
 
 import { ITransition, Transition, TTransitionStatus } from '..';
@@ -101,7 +101,8 @@ const Expand: React.FC<IExpand> = props_ => {
     placeholder: React.useRef<any>(undefined),
     parent: React.useRef<HTMLElement>(undefined),
     element: React.useRef<HTMLDivElement>(undefined),
-    value: React.useRef<number>(0)
+    value: React.useRef<number>(0),
+    previousWidth: React.useRef(isEnvironment('browser') && window.innerWidth)
   };
 
   refs.value.current = value;
@@ -122,9 +123,14 @@ const Expand: React.FC<IExpand> = props_ => {
 
   React.useEffect(() => {
     const method = () => {
-      setValue(null);
+      const newWidth = window.innerWidth;
 
+      if (refs.previousWidth.current === newWidth) return;
+
+      setValue(null);
       setParent(null);
+
+      refs.previousWidth.current = newWidth;
     };
 
     // on resize
