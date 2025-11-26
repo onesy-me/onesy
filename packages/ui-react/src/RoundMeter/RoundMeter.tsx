@@ -9,6 +9,7 @@ import { IBaseElement, IStyle, IElement, IPropsAny } from '../types';
 
 const useStyle = styleMethod(theme => ({
   root: {
+    position: 'relative',
     width: '100vw'
   },
 

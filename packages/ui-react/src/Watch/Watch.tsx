@@ -84,6 +84,18 @@ const useStyle = styleMethod(theme => ({
     background: 'transparent'
   },
 
+  roundMeter: {
+    '&.onesy-RoundMeter-root': {
+      marginInline: 'auto',
+
+      '& .onesy-RoundMeter-svg': {
+        aspectRatio: '1 / 1',
+        maxWidth: '100%',
+        maxHeight: '100%'
+      }
+    }
+  },
+
   shadow_version_modern: {
     '& svg:first-of-type': {
       filter: `drop-shadow(0px 6px 10px rgb(0 0 0 / 4%)) drop-shadow(0px 1px 18px rgb(0 0 0 / 1%)) drop-shadow(0px 3px 5px rgb(0 0 0 / 7%))`
@@ -93,8 +105,9 @@ const useStyle = styleMethod(theme => ({
   modern_background: {
     position: 'absolute',
     inset: '0',
-    width: '100%',
-    height: 'auto'
+    aspectRatio: '1 / 1',
+    maxWidth: '100%',
+    maxHeight: '100%'
   },
 
   modernDate: {
@@ -123,6 +136,7 @@ export type IWatch = Omit<ISurface, 'version'> & {
   RegularProps?: IPropsAny;
   MinimalProps?: IPropsAny;
   ModernProps?: IPropsAny;
+  RoundMeterProps?: IPropsAny;
 };
 
 const Watch: React.FC<IWatch> = props_ => {
@@ -169,6 +183,7 @@ const Watch: React.FC<IWatch> = props_ => {
     RegularProps,
     MinimalProps,
     ModernProps,
+    RoundMeterProps,
 
     Component = 'div',
 
@@ -405,7 +420,15 @@ const Watch: React.FC<IWatch> = props_ => {
 
                 background
 
+                {...RoundMeterProps}
+
                 {...AnalogProps}
+
+                className={classNames([
+                  RoundMeterProps?.className,
+                  AnalogProps?.className,
+                  classes.roundMeter
+                ])}
               >
                 {/* AM / PM */}
                 {timeOfDayVisible && (
@@ -530,7 +553,15 @@ const Watch: React.FC<IWatch> = props_ => {
 
                 background
 
+                {...RoundMeterProps}
+
                 {...MinimalProps}
+
+                className={classNames([
+                  RoundMeterProps?.className,
+                  MinimalProps?.className,
+                  classes.roundMeter
+                ])}
               >
                 {/* Hour */}
                 <Path
@@ -620,7 +651,15 @@ const Watch: React.FC<IWatch> = props_ => {
                   </svg>
                 )}
 
+                {...RoundMeterProps}
+
                 {...ModernProps}
+
+                className={classNames([
+                  RoundMeterProps?.className,
+                  ModernProps?.className,
+                  classes.roundMeter
+                ])}
               >
                 <Path
                   Component='g'
