@@ -935,7 +935,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
 
                             style={{
                               ...(day.today ? {
-                                boxShadow: `inset 0px 0px 0px 1px ${palette[70]}`
+                                boxShadow: `inset 0px 0px 0px 1px ${palette[theme.palette.light ? 40 : 60]}`
                               } : undefined),
 
                               ...(day.is.selected && day.is.between && {
