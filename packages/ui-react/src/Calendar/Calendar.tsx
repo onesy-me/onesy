@@ -498,7 +498,9 @@ const Calendar: React.FC<ICalendar> = props__ => {
                   </Type>
 
                   <CalendarMonth
-                    color='default'
+                    color={color}
+
+                    tonal={tonal}
 
                     value={value}
 
@@ -618,7 +620,9 @@ const Calendar: React.FC<ICalendar> = props__ => {
                     )}
 
                     <CalendarMonth
-                      color='default'
+                      color={color}
+
+                      tonal={tonal}
 
                       value={value}
 

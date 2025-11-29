@@ -1,0 +1,24 @@
+{
+  "id": "onesy.me",
+  "name": "onesy",
+  "short_name": "onesy",
+  "start_url": "/",
+  "display_override": [
+    "fullscreen"
+  ],
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/assets/favicon/150.png",
+      "sizes": "150x150",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon/300.png",
+      "sizes": "300x300",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

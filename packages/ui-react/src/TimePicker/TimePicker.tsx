@@ -503,10 +503,17 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
+  const onResolveValue = (valueNew: any): Array<OnesyDate> => {
+    const array = (is('array', valueNew) ? valueNew : [valueNew]).filter(Boolean);
+    const sorted = array.sort((a: OnesyDate, b: OnesyDate) => a?.milliseconds - b?.milliseconds);
+
+    return sorted;
+  };
+
   const [value, setValue] = React.useState(() => {
     const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
-    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<OnesyDate>).filter(Boolean);
+    return onResolveValue(valueResult) as any;
   });
   const [selecting, setSelecting] = React.useState(() => {
     const valueResult = (selectingDefault !== undefined ? selectingDefault : selecting_) || ['hour', 'hour'];
@@ -564,7 +571,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
   }
 
   const onUpdateValue = (valueNew_: any) => {
-    const valueNew = is('array', valueNew_) ? valueNew_ : [valueNew_];
+    const valueNew = onResolveValue(valueNew_);
 
     // Update value
     setValue(valueNew);
@@ -573,7 +580,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     setInput(valueToInput(valueNew));
 
     // Update dayTime
-    setDayTime(valueNew.map(item => formatDate(item, 'a')));
+    setDayTime(valueNew.map(item => formatDate(item, 'a')) as any);
   };
 
   const errorCheck = (valueNew: any = value) => {
@@ -589,7 +596,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
   // Value
   React.useEffect(() => {
-    if (value_ !== undefined && value_ !== value) onUpdateValue(((is('array', value_) ? value_ : [value_] as any).filter(Boolean)));
+    if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
   }, [value_]);
 
   const onUpdate = (valueNew_: OnesyDate) => {
@@ -686,7 +693,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
   };
 
   const resolve = (valueNew = refs.value.current, dayTimeNew = refs.dayTime.current) => {
-    const values = valueNew.filter(Boolean).map((item: OnesyDate, index: number) => {
+    const values = onResolveValue(valueNew).map((item: OnesyDate, index: number) => {
       // Resolve the range value
       const valueHour = item.hour;
 
@@ -699,7 +706,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
       return item;
     });
 
-    return values;
+    return values as any;
   };
 
   const updateDayTime = (valueNew_: string[], index: number) => {

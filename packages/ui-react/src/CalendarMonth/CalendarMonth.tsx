@@ -887,7 +887,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
                       ])}
 
                       style={{
-                        '--onesy-color': day.is.fromSelected ? colorSelectedTheme?.main : palette?.main
+                        '--onesy-color': theme.methods.palette.color.alpha(day.is.fromSelected ? colorSelectedTheme?.main : palette?.main, 1)
                       }}
                     >
                       {is('function', renderDay) ?

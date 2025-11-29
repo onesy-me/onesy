@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./build",
+    "target": "es2023",
+    "lib": [
+      "DOM",
+      "es2023"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "emitDecoratorMetadata": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noUnusedLocals": true,
+    "paths": {
+      "@onesy/style-react": [
+        "../style-react/src"
+      ],
+      "@onesy/style-react/*": [
+        "../style-react/src/*"
+      ],
+      "@onesy/ui-react": [
+        "../ui-react/src"
+      ],
+      "@onesy/ui-react/*": [
+        "../ui-react/src/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "../ui-react/src"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "@onesy/style-react",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Onesy CSS in JS styling solution for React",
   "repository": "https://github.com/onesy-me/onesy.git",
   "author": "Lazar Erić <lazareric1@proton.me>",
@@ -50,7 +50,7 @@
     "react": "19.2.0"
   },
   "dependencies": {
-    "@onesy/style": "^1.0.1",
+    "@onesy/style": "^1.0.4",
     "@onesy/utils": "^1.0.20"
   },
   "publishConfig": {

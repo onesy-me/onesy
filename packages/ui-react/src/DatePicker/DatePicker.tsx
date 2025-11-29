@@ -345,10 +345,17 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
+  const onResolveValue = (valueNew: any): Array<OnesyDate> => {
+    const array = (is('array', valueNew) ? valueNew : [valueNew]).filter(Boolean);
+    const sorted = array.sort((a: OnesyDate, b: OnesyDate) => a?.milliseconds - b?.milliseconds);
+
+    return sorted;
+  };
+
   const [value, setValue] = React.useState<[OnesyDate, OnesyDate]>((): [OnesyDate, OnesyDate] => {
     const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
-    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<OnesyDate>).filter(Boolean) as any;
+    return onResolveValue(valueResult) as any;
   });
   const [calendar, setCalendar] = React.useState((calendarDefault !== undefined ? calendarDefault : calendar_) || new OnesyDate());
   const [open, setOpen] = React.useState(false);
@@ -382,7 +389,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
   }
 
   const onUpdateValue = (valueNew_: any) => {
-    const valueNew = is('array', valueNew_) ? valueNew_ : [valueNew_];
+    const valueNew = onResolveValue(valueNew_);
 
     const dateNow = new OnesyDate();
 
@@ -412,7 +419,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
   // Value
   React.useEffect(() => {
-    if (value_ !== undefined && value_ !== value) onUpdateValue(((is('array', value_) ? value_ : [value_] as any).filter(Boolean)));
+    if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
   }, [value_]);
 
   // Calendar
@@ -439,7 +446,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
   // only use onChange on
   // input change, or ok
   const onCalendarChange = (valueNew_: TCalendarMonthValue) => {
-    const valueNew = is('array', valueNew_) ? valueNew_ : [valueNew_];
+    const valueNew = onResolveValue(valueNew_);
 
     if (valueNew !== value) {
       (!actions_ ? onUpdate : setValue)(valueNew as any);
@@ -1222,6 +1229,10 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
   const desktop = (
     <Calendar
       value={value}
+
+      tonal={tonal}
+
+      color={color}
 
       calendar={calendar}
 

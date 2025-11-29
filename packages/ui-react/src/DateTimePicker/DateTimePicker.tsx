@@ -245,10 +245,17 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
+  const onResolveValue = (valueNew: any): Array<OnesyDate> => {
+    const array = (is('array', valueNew) ? valueNew : [valueNew]).filter(Boolean);
+    const sorted = array.sort((a: OnesyDate, b: OnesyDate) => a?.milliseconds - b?.milliseconds);
+
+    return sorted;
+  };
+
   const [value, setValue] = React.useState(() => {
     const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
-    return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<OnesyDate>).filter(Boolean);
+    return onResolveValue(valueResult) as any;
   });
   const [calendar, setCalendar] = React.useState<OnesyDate>(value[0]);
   const [open, setOpen] = React.useState(false);
@@ -305,7 +312,9 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     else version = 'desktop';
   }
 
-  const onUpdateValue = (valueNew: any) => {
+  const onUpdateValue = (valueNew_: any) => {
+    const valueNew = onResolveValue(valueNew_);
+
     setValue(valueNew);
 
     // Update input
@@ -325,7 +334,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
   // Value
   React.useEffect(() => {
-    if (value_ !== undefined && value_ !== value) onUpdateValue(((is('array', value_) ? value_ : [value_] as any).filter(Boolean)));
+    if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
   }, [value_]);
 
   const onUpdate = (valueNew: OnesyDate) => {
@@ -344,7 +353,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
   // only use onChange on
   // input change, or ok
   const onPickerChange = (valueNew_: TCalendarMonthValue) => {
-    const valueNew = is('array', valueNew_) ? valueNew_ : [valueNew_];
+    const valueNew = onResolveValue(valueNew_);
 
     if (valueNew !== value) setValue(valueNew as any);
   };

@@ -32,7 +32,7 @@ const useStyle = styleMethod(theme => ({
     alignSelf: 'stretch',
     userSelect: 'none',
     cursor: 'pointer',
-    opacity: theme.palette.visual_contrast.default.opacity.secondary,
+    opacity: theme.palette.visual_contrast.default.opacity.tertiary,
     transition: theme.methods.transitions.make('opacity')
   },
 
