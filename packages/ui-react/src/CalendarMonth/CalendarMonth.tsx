@@ -228,7 +228,7 @@ const useStyle = style(theme => ({
     zIndex: 1,
 
     '&:hover': {
-      boxShadow: 'inset 0px 0px 0px 1px currentColor'
+      boxShadow: 'inset 0px 0px 0px 1px currentColor !important'
     }
   },
 
@@ -935,7 +935,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
 
                             style={{
                               ...(day.today ? {
-                                boxShadow: `inset 0px 0px 0px 1px ${palette[40]}`
+                                boxShadow: `inset 0px 0px 0px 1px ${palette[70]}`
                               } : undefined),
 
                               ...(day.is.selected && day.is.between && {

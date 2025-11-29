@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DateRangePicker, Line, Reset, Tab, Tabs, useMediaQuery } from '@onesy/ui-react';
+import { CalendarMonth, Line, Reset, useMediaQuery } from '@onesy/ui-react';
 import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 
 const useStyle = style(theme => ({
@@ -17,6 +17,7 @@ const useStyle = style(theme => ({
   },
 
   root: {
+    background: theme.palette.light ? theme.palette.color.primary[100] : `hsl(from var(--onesy-palette-color-primary) h 75 25)`,
     minHeight: '100vh'
   }
 }), { name: 'Root' });
@@ -50,8 +51,6 @@ const Main = () => {
     if (theme.palette.light !== light) update('light', light);
   }, [light, theme]);
 
-
-
   return <>
     <Reset />
 
@@ -70,21 +69,7 @@ const Main = () => {
         classes.root
       ])}
     >
-      <Tabs
-        justify='center'
-      >
-        <Tab>Home</Tab>
-        <Tab>Products</Tab>
-        <Tab>About</Tab>
-      </Tabs>
-
-      <DateRangePicker
-        color='primary'
-
-        onChange={valueNew => console.log(valueNew)}
-
-      // colorSelected='tertiary'
-      />
+      <CalendarMonth />
     </Line>
   </>
 };
