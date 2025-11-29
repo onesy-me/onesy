@@ -120,6 +120,8 @@ export type IWatch = Omit<ISurface, 'version'> & {
 
   start?: boolean;
 
+  valueDefault?: OnesyDate;
+
   timeVisible?: boolean;
   timeOfDayVisible?: boolean;
   dateVisible?: boolean;
@@ -167,6 +169,8 @@ const Watch: React.FC<IWatch> = props_ => {
 
     start = true,
 
+    valueDefault,
+
     timeVisible = true,
     timeOfDayVisible = true,
     dateVisible = true,
@@ -201,7 +205,7 @@ const Watch: React.FC<IWatch> = props_ => {
     requestAnimationFrameID: React.useRef<any>(undefined)
   };
 
-  const [value, setValue] = React.useState<OnesyDate>(OnesyDate.onesyDate);
+  const [value, setValue] = React.useState<OnesyDate>(valueDefault ?? OnesyDate.onesyDate);
 
   const update = () => {
     setValue(OnesyDate.onesyDate);
