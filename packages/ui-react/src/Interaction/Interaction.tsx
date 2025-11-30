@@ -72,17 +72,17 @@ const useStyle = styleMethod(theme => ({
     borderRadius: theme.methods.shape.radius.value(4e4, 'px'),
 
     '&.entering': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
       transform: 'scale(1)',
     },
 
     '&.entered': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
       transform: 'scale(1)',
     },
 
     '&.exit': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
       transform: 'scale(1)',
     },
 
@@ -99,18 +99,18 @@ const useStyle = styleMethod(theme => ({
 
   pulse: {
     '&.entering': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
       transform: 'scale(0.77)',
     },
 
     '&.entered': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
       transform: 'scale(0.77)',
       animation: `$pulse 2400ms ${theme.transitions.timing_function.emphasized} 240ms infinite`,
     },
 
     '&.exit': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
       transform: 'scale(0.7)'
     },
 
@@ -132,15 +132,15 @@ const useStyle = styleMethod(theme => ({
     transition: theme.methods.transitions.make(['opacity'], { duration: 'complex', timing_function: 'standard' }),
 
     '&.entering': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
     },
 
     '&.entered': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary,
+      opacity: theme.palette.visual_contrast.default.opacity.press,
     },
 
     '&.exit': {
-      opacity: theme.palette.visual_contrast.default.opacity.quaternary
+      opacity: theme.palette.visual_contrast.default.opacity.press
     },
 
     '&.exiting': {
