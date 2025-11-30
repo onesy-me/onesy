@@ -72,17 +72,17 @@ const useStyle = styleMethod(theme => ({
     borderRadius: theme.methods.shape.radius.value(4e4, 'px'),
 
     '&.entering': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
       transform: 'scale(1)',
     },
 
     '&.entered': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
       transform: 'scale(1)',
     },
 
     '&.exit': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
       transform: 'scale(1)',
     },
 
@@ -99,18 +99,18 @@ const useStyle = styleMethod(theme => ({
 
   pulse: {
     '&.entering': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
       transform: 'scale(0.77)',
     },
 
     '&.entered': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
       transform: 'scale(0.77)',
       animation: `$pulse 2400ms ${theme.transitions.timing_function.emphasized} 240ms infinite`,
     },
 
     '&.exit': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
       transform: 'scale(0.7)'
     },
 
@@ -132,15 +132,15 @@ const useStyle = styleMethod(theme => ({
     transition: theme.methods.transitions.make(['opacity'], { duration: 'complex', timing_function: 'standard' }),
 
     '&.entering': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
     },
 
     '&.entered': {
-      opacity: theme.palette.visual_contrast.default.opacity.press,
+      opacity: theme.palette.visual_contrast.low.opacity.press,
     },
 
     '&.exit': {
-      opacity: theme.palette.visual_contrast.default.opacity.press
+      opacity: theme.palette.visual_contrast.low.opacity.press
     },
 
     '&.exiting': {
@@ -597,7 +597,7 @@ const Interaction: React.FC<IInteraction> = props_ => {
               ])}
 
               style={{
-                opacity: status?.indexOf('enter') > -1 ? theme.palette.visual_contrast.default.opacity.quaternary : 0,
+                opacity: status?.indexOf('enter') > -1 ? theme.palette.visual_contrast.low.opacity.press : 0,
 
                 transition: status?.indexOf('exit') > -1 ? theme.methods.transitions.make('opacity', { duration: 'complex', timing_function: 'standard' }) : undefined
               }}
