@@ -225,6 +225,7 @@ const useStyle = style(theme => ({
   },
 
   dayValue: {
+    position: 'relative',
     zIndex: 1,
 
     '&:hover': {
@@ -285,6 +286,7 @@ export type ICalendarMonth = Omit<ILine, 'onChange'> & {
 
   valid?: (value: OnesyDate, version: 'day' | 'month' | 'year') => boolean;
   renderDay?: (value: OnesyDate, props: any, day: any, outside: boolean) => React.ReactNode;
+  renderDayValue?: (value: number, date: OnesyDate, day: any) => any;
   renderDayName?: (order: number) => any;
 
   DayNameProps?: IPropsAny;
@@ -299,6 +301,7 @@ export interface IDay {
   dayWeek: number;
   weekend: boolean;
   today: boolean;
+  future: boolean;
   is: {
     start: boolean;
     between: boolean;
@@ -373,6 +376,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
 
     valid: valid_,
     renderDay,
+    renderDayValue,
     renderDayName,
 
     disabled,
@@ -660,6 +664,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
 
   const days: Partial<IDay>[] = React.useMemo(() => {
     const items = [];
+    const nowDate = new OnesyDate();
 
     // Add all month days
     for (let i = 0; i < month.daysInMonth; i++) {
@@ -679,6 +684,8 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
         weekend: [0, 6].includes(day.dayWeek),
 
         today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
+
+        future: day.milliseconds > nowDate.milliseconds,
 
         is: {
           ...details
@@ -717,6 +724,8 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
 
           today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
 
+          future: day.milliseconds > nowDate.milliseconds,
+
           is: {
             ...details
           },
@@ -751,6 +760,8 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
           weekend: [0, 6].includes(day.dayWeek),
 
           today: day.year === monthNow.year && day.dayYear === monthNow.dayYear,
+
+          future: day.milliseconds > nowDate.milliseconds,
 
           is: {
             ...details
@@ -953,7 +964,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
 
                             {...propsDay}
                           >
-                            {day.value}
+                            {is('function', renderDayValue) ? renderDayValue(day.value, day.onesyDate, day) : day.value}
                           </PaginationItem>
                         )}
                     </Line>
