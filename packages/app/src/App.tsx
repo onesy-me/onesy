@@ -17,7 +17,7 @@ const useStyle = style(theme => ({
   },
 
   root: {
-    background: theme.palette.light ? theme.palette.color.primary[100] : `hsl(from var(--onesy-palette-color-primary) h 75 25)`,
+    background: theme.palette.light ? theme.palette.color.primary[100] : `hsl(from var(--onesy-palette-color-primary) h 50 25)`,
     minHeight: '100vh'
   }
 }), { name: 'Root' });

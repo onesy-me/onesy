@@ -25,9 +25,9 @@ const valueTheme = new OnesyTheme({
 
   // colors
   getBackground: (theme, type = 'primary') => {
-    if (type === 'secondary') return `hsl(from var(--onesy-palette-color-primary) h 75 ${theme.palette.light ? 96 : 20})`;
+    if (type === 'secondary') return `hsl(from var(--onesy-palette-color-primary) h 50 ${theme.palette.light ? 96 : 20})`;
 
-    return theme.palette.light ? theme.palette.color.primary[100] : `hsl(from var(--onesy-palette-color-primary) h 75 25)`;
+    return theme.palette.light ? theme.palette.color.primary[100] : `hsl(from var(--onesy-palette-color-primary) h 50 25)`;
   }
 });
 
