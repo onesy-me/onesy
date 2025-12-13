@@ -12,11 +12,11 @@ import { IResponseStyle, propsAreNew, TValue } from './style';
 export default function reset(value: TValue = {}, options_: IOptions = {}) {
   const responses: Array<IResponseStyle> = [];
 
-  const { name = 'Reset' } = options_;
-
   function useReset(props_?: any) {
     const onesyStyle = useOnesyStyle();
     const onesyTheme = useOnesyTheme();
+
+    const props = { ...onesyTheme?.ui?.elements?.all?.props?.default, ...onesyTheme?.ui?.elements?.onesyReset?.props?.default, ...props_ };
 
     const refs = {
       update: React.useRef<any>(undefined)
@@ -28,8 +28,8 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
       if (is('function', value)) valueNew = (value as any)(theme);
 
       // Add style add & overrides
-      if (onesyTheme.ui?.elements?.[name as any]?.style) {
-        const { add, override } = onesyTheme.ui.elements[name as any].style;
+      if (props?.style) {
+        const { add, override } = props.style;
 
         // Add
         if (add) {
@@ -76,6 +76,9 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
       const options: any = {
         onesy_style: { value: undefined },
         onesy_theme: { value: undefined },
+        override: true,
+
+        ...props.options
       };
 
       // OnesyStyle
@@ -99,18 +102,6 @@ export default function reset(value: TValue = {}, options_: IOptions = {}) {
     };
 
     const response = React.useState<IResponseStyle>(makeResponse())[0];
-
-    let props = props_;
-
-    if (is('object', props)) {
-      const newProps: any = {};
-
-      const allowed = Object.keys(props).filter((prop: any) => is('array', props[prop]) ? !(props[prop].some((item: any) => React.isValidElement(item))) : !React.isValidElement(props[prop]));
-
-      allowed.forEach((prop: any) => newProps[prop] = props[prop]);
-
-      props = newProps;
-    }
 
     const [values, setValues] = React.useState<IResponse>(() => response.add(props));
 
