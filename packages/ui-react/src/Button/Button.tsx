@@ -631,9 +631,9 @@ const Button: React.FC<IButton> = props_ => {
       ])}
 
       style={{
-        ...style,
+        ...styles.root,
 
-        ...styles.root
+        ...style
       }}
 
       {...other}

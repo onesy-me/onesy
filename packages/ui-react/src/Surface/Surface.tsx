@@ -987,9 +987,9 @@ const Surface: React.FC<ISurface> = props_ => {
       ])}
 
       style={{
-        ...style,
+        ...styles.root,
 
-        ...styles.root
+        ...style
       }}
 
       {...other}
