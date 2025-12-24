@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { clamp, is, isEnvironment, Try } from '@onesy/utils';
+import { is, isEnvironment, Try } from '@onesy/utils';
 import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 import { OnesyDate, add, remove, format, TTimeUnits, set } from '@onesy/date';
 
@@ -376,6 +376,19 @@ const Calendar: React.FC<ICalendar> = props__ => {
     onUpdateCalendar((next ? add : remove)(1, unit, calendar));
   };
 
+  const scrollToMiddleOfParent = (element: HTMLElement) => {
+    const parent = element.parentElement;
+
+    if (!parent) return;
+
+    const top = element.offsetTop - (parent.clientHeight / 2) + (element.offsetHeight / 2);
+
+    parent.scrollTo({
+      top,
+      behavior: 'smooth'
+    });
+  };
+
   const onOpen = (valueUpdate: 'month' | 'year' = 'month') => {
     const valueNew = open === valueUpdate ? null : valueUpdate;
 
@@ -391,10 +404,7 @@ const Calendar: React.FC<ICalendar> = props__ => {
         Try(() => {
           const element = list.querySelector(`[data-value="${valueData}"]`) as HTMLElement;
 
-          if (element) list.scrollTo({
-            top: clamp((element.offsetTop - element.parentElement.offsetTop) + (menu === 'month' ? -104 : 51), 0),
-            behavior: 'smooth'
-          });
+          if (element) scrollToMiddleOfParent(element);
         });
       }
     });
