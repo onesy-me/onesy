@@ -343,7 +343,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
   const Transition = theme?.elements?.Transition || TransitionElement;
 
   const {
-    tonal = true,
+    tonal,
     color = 'primary',
 
     size = 'regular',

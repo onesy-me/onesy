@@ -388,7 +388,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
   const {
     ref,
 
-    tonal = true,
+    tonal,
     color = 'primary',
 
     version: version_ = 'auto',

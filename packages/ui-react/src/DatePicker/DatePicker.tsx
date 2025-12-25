@@ -239,7 +239,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
   const {
     ref,
 
-    tonal = true,
+    tonal,
     color = 'primary',
 
     version: version_ = 'auto',

@@ -254,7 +254,7 @@ const Calendar: React.FC<ICalendar> = props__ => {
   const {
     ref,
 
-    tonal = true,
+    tonal,
     color = 'default',
 
     version = 'regular',
