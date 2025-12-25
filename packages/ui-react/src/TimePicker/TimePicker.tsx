@@ -391,13 +391,13 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     tonal,
     color = 'primary',
 
-    version: version_ = 'auto',
+    version: versionProps = 'auto',
 
-    value: value_,
+    value: valueProps,
     valueDefault,
     onChange,
 
-    selecting: selecting_,
+    selecting: selectingProps,
     selectingDefault,
     onChangeSelecting,
 
@@ -409,39 +409,39 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     min,
     max,
     validate,
-    autoNext: autoNext_,
-    autoCloseOnLast: autoCloseOnLast_,
+    autoNext: autoNextProps,
+    autoCloseOnLast: autoCloseOnLastProps,
     openMobile = 'select',
     openDesktop = 'select',
     selectModalSubHeadingText = l('Select time'),
     selectModalSubHeadingTextRange = `${l('Select from')}${SEPARATOR}${l('to time')}`,
     inputModalSubHeadingText = l('Enter time'),
     inputModalSubHeadingTextRange = `${l('Enter from')}${SEPARATOR}${l('to time')}`,
-    orientation: orientation_,
+    orientation: orientationProps,
     format = '12',
     hour = true,
     minute = true,
     second = false,
-    switch: switch__,
-    static: static_,
+    switch: switchProps,
+    static: staticProps,
     today,
     clear = true,
-    placeholder: placeholder_,
-    heading: heading_ = true,
-    actions: actions_ = true,
+    placeholder: placeholderProps,
+    heading: headingProps = true,
+    actions: actionsProps = true,
     fullWidth,
     readOnly,
     disabled,
 
-    valid: valid_,
+    valid: validProps,
 
-    onClick: onClick_,
-    onClose: onClose_,
-    onCancel: onCancel_,
-    onNow: onNow_,
-    onToday: onToday_,
-    onClear: onClear_,
-    onOk: onOk_,
+    onClick: onClickProps,
+    onClose: onCloseProps,
+    onCancel: onCancelProps,
+    onNow: onNowProps,
+    onToday: onTodayProps,
+    onClear: onClearProps,
+    onOk: onOkProps,
 
     renderValue,
 
@@ -481,14 +481,14 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
   const keys = React.useMemo(() => {
     const result = [];
-    const items = [switch__, orientation_, autoNext_, autoCloseOnLast_];
+    const items = [switchProps, orientationProps, autoNextProps, autoCloseOnLastProps];
 
     items.forEach(item => {
       if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
     });
 
     return unique(result);
-  }, [switch__, orientation_, autoNext_, autoCloseOnLast_]);
+  }, [switchProps, orientationProps, autoNextProps, autoCloseOnLastProps]);
 
   const breakpoints = {};
 
@@ -496,10 +496,10 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
-  const switch_ = valueBreakpoints(switch__, true, breakpoints, theme);
-  const orientation = valueBreakpoints(orientation_, 'vertical', breakpoints, theme);
-  const autoNext = valueBreakpoints(autoNext_, undefined, breakpoints, theme);
-  const autoCloseOnLast = valueBreakpoints(autoCloseOnLast_, undefined, breakpoints, theme);
+  const switch_ = valueBreakpoints(switchProps, true, breakpoints, theme);
+  const orientation = valueBreakpoints(orientationProps, 'vertical', breakpoints, theme);
+  const autoNext = valueBreakpoints(autoNextProps, undefined, breakpoints, theme);
+  const autoCloseOnLast = valueBreakpoints(autoCloseOnLastProps, undefined, breakpoints, theme);
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
@@ -511,12 +511,12 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
   };
 
   const [value, setValue] = React.useState(() => {
-    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
+    const valueResult = (valueDefault !== undefined ? valueDefault : valueProps) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
     return onResolveValue(valueResult) as any;
   });
   const [selecting, setSelecting] = React.useState(() => {
-    const valueResult = (selectingDefault !== undefined ? selectingDefault : selecting_) || ['hour', 'hour'];
+    const valueResult = (selectingDefault !== undefined ? selectingDefault : selectingProps) || ['hour', 'hour'];
 
     return ((is('array', valueResult) ? valueResult : [valueResult]) as Array<TClockUnit>).filter(Boolean);
   });
@@ -563,7 +563,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
   const [input, setInput] = React.useState(valueToInput());
 
-  let version = version_;
+  let version = versionProps;
 
   if (version === 'auto') {
     if (touch) version = 'mobile';
@@ -596,14 +596,14 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
   // Value
   React.useEffect(() => {
-    if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
-  }, [value_]);
+    if (valueProps !== undefined && valueProps !== value) onUpdateValue(valueProps);
+  }, [valueProps]);
 
   const onUpdate = (valueNew_: OnesyDate, triggerOnChange = true) => {
     const valueNew = resolve(valueNew_);
 
     // Inner update
-    if (!props.hasOwnProperty('value')) setValue(valueNew as any);
+    if (!props.hasOwnProperty('value') || !triggerOnChange) setValue(valueNew as any);
 
     if (triggerOnChange && is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
   };
@@ -620,7 +620,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
   };
 
   const valid = (...args: [OnesyDate, any?]) => {
-    if (is('function', valid_)) return valid_(...args);
+    if (is('function', validProps)) return validProps(...args);
 
     const onesyDate = args[0];
 
@@ -689,7 +689,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
     value[index] = set(valueTime, unit || selecting[index], value[index]);
 
-    (!actions_ ? onUpdate : setValue)(resolve(value) as any);
+    (!actionsProps ? onUpdate : setValue)(resolve(value) as any);
   };
 
   const resolve = (valueNew = refs.value.current, dayTimeNew = refs.dayTime.current) => {
@@ -721,7 +721,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
     setDayTime(dayTimeNew);
 
-    (!actions_ ? onUpdate : setValue)(resolve(refs.value.current) as any);
+    (!actionsProps ? onUpdate : setValue)(resolve(refs.value.current) as any);
   };
 
   const inputToValue = (valueNew_: string = input) => {
@@ -767,7 +767,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     if (valueNew_ !== value[index]) {
       valueNew[index] = valueNew_;
 
-      (!actions_ ? onUpdate : setValue)(resolve(valueNew) as any);
+      (!actionsProps ? onUpdate : setValue)(resolve(valueNew) as any);
 
       // Error
       errorCheck(valueNew);
@@ -812,7 +812,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
   const onClose = (event: React.MouseEvent<any>) => {
     setOpen(false);
 
-    if (is('function', onClose_)) onClose_(event);
+    if (is('function', onCloseProps)) onCloseProps(event);
   };
 
   const onReset = () => {
@@ -841,7 +841,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onToday_)) onToday_(event);
+    if (is('function', onTodayProps)) onTodayProps(event);
   };
 
   const onClear = (event: React.MouseEvent) => {
@@ -858,7 +858,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onClear_)) onClear_(event);
+    if (is('function', onClearProps)) onClearProps(event);
   };
 
   const onOk = (event?: React.MouseEvent) => {
@@ -876,7 +876,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onOk_)) onOk_(event);
+    if (is('function', onOkProps)) onOkProps(event);
   };
 
   const onCancel = (event: React.MouseEvent) => {
@@ -884,7 +884,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onCancel_)) onCancel_(event);
+    if (is('function', onCancelProps)) onCancelProps(event);
   };
 
   const mask: any = [];
@@ -968,7 +968,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     placeholder += `${SEPARATOR}${placeholder}`;
   }
 
-  placeholder = placeholder_ || placeholder;
+  placeholder = placeholderProps || placeholder;
 
   const buttonProps = {
     color: 'inherit',
@@ -1508,7 +1508,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
       ])}
     >
       {/* Heading */}
-      {heading_ && (
+      {headingProps && (
         <Type
           version={size === 'large' ? 'l1' : size === 'regular' ? 'l2' : 'l3'}
 
@@ -1547,7 +1547,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
 
             TabsProps?.className,
             classes.tabs,
-            heading_ && classes.tabs_padding
+            headingProps && classes.tabs_padding
           ])}
         >
           <Tab
@@ -1586,7 +1586,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
       </Line>
 
       {/* Actions */}
-      {actions_ && actions}
+      {actionsProps && actions}
     </Surface>
   );
 
@@ -1594,7 +1594,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     if (!(readOnly || disabled)) moreProps.onClick = onOpen;
   }
 
-  if (static_) return element;
+  if (staticProps) return element;
 
   return (
     <Line

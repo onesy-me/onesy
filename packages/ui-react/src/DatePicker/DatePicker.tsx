@@ -242,23 +242,23 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
     tonal,
     color = 'primary',
 
-    version: version_ = 'auto',
+    version: versionProps = 'auto',
 
     size = 'regular',
 
-    value: value_,
+    value: valueProps,
     valueDefault,
     onChange,
 
-    calendar: calendar_,
+    calendar: calendarProps,
     calendarDefault,
     onChangeCalendar,
 
     range,
     now,
-    static: static_,
+    static: staticProps,
     openMobile = 'select',
-    placeholder: placeholder_,
+    placeholder: placeholderProps,
     calendars = props.range ? 2 : 1,
     min,
     max,
@@ -266,33 +266,33 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
     name,
     nameFrom,
     nameTo,
-    label: label_,
-    labelFrom: labelFrom_ = l('Date from'),
-    labelTo: labelTo_ = l('Date to'),
+    label: labelProps,
+    labelFrom: labelFromProps = l('Date from'),
+    labelTo: labelToProps = l('Date to'),
     modeModalSubHeadingText = l('Select date'),
     modeModalSubHeadingTextRange = `${l('Date from')}${SEPARATOR}${l('Date to')}`,
     selectModeHeadingText = l('Select date'),
     inputModeHeadingText = l('Enter date'),
-    useHelperText: useHelperText_,
+    useHelperText: useHelperTextProps,
     weekStartDay = 'Monday',
-    switch: switch__,
+    switch: switchProps,
     fullScreen,
     today,
     clear = true,
-    heading: heading_ = true,
-    actions: actions_ = true,
+    heading: headingProps = true,
+    actions: actionsProps = true,
     fullWidth,
     readOnly,
     disabled,
 
-    valid: valid_,
+    valid: validProps,
 
-    onClick: onClick_,
-    onClose: onClose_,
-    onToday: onToday_,
-    onClear: onClear_,
-    onCancel: onCancel_,
-    onOk: onOk_,
+    onClick: onClickProps,
+    onClose: onCloseProps,
+    onToday: onTodayProps,
+    onClear: onClearProps,
+    onCancel: onCancelProps,
+    onOk: onOkProps,
 
     Icon: Icon_ = IconMaterialCalendarToday,
     IconEnter = IconMaterialEdit,
@@ -323,14 +323,14 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
   const keys = React.useMemo(() => {
     const result = [];
-    const items = [switch__, useHelperText_];
+    const items = [switchProps, useHelperTextProps];
 
     items.forEach(item => {
       if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
     });
 
     return unique(result);
-  }, [switch__, useHelperText_]);
+  }, [switchProps, useHelperTextProps]);
 
   const breakpoints = {};
 
@@ -338,10 +338,10 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
     breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
-  const label = name !== undefined ? name : label_;
+  const label = name !== undefined ? name : labelProps;
 
-  const switch_ = valueBreakpoints(switch__, true, breakpoints, theme);
-  const useHelperText = valueBreakpoints(useHelperText_, undefined, breakpoints, theme);
+  const switch_ = valueBreakpoints(switchProps, true, breakpoints, theme);
+  const useHelperText = valueBreakpoints(useHelperTextProps, undefined, breakpoints, theme);
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
@@ -353,11 +353,11 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
   };
 
   const [value, setValue] = React.useState<[OnesyDate, OnesyDate]>((): [OnesyDate, OnesyDate] => {
-    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
+    const valueResult = (valueDefault !== undefined ? valueDefault : valueProps) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
     return onResolveValue(valueResult) as any;
   });
-  const [calendar, setCalendar] = React.useState((calendarDefault !== undefined ? calendarDefault : calendar_) || new OnesyDate());
+  const [calendar, setCalendar] = React.useState((calendarDefault !== undefined ? calendarDefault : calendarProps) || new OnesyDate());
   const [open, setOpen] = React.useState(false);
   const [mode, setMode] = React.useState((touch ? openMobile : 'select') || 'select');
   const [error, setError] = React.useState(false);
@@ -381,7 +381,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
   const [input, setInput] = React.useState(valueToInput());
   const [inputModal, setInputModal] = React.useState(valueToInput());
 
-  let version = version_;
+  let version = versionProps;
 
   if (version === 'auto') {
     if (touch) version = 'mobile';
@@ -419,24 +419,24 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
   // Value
   React.useEffect(() => {
-    if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
-  }, [value_]);
+    if (valueProps !== undefined && valueProps !== value) onUpdateValue(valueProps);
+  }, [valueProps]);
 
   // Calendar
   React.useEffect(() => {
-    if (calendar_ !== undefined && calendar_ !== calendar) setCalendar(calendar_);
-  }, [calendar_]);
+    if (calendarProps !== undefined && calendarProps !== calendar) setCalendar(calendarProps);
+  }, [calendarProps]);
 
   const onUpdate = (valueNew: OnesyDate, triggerOnChange = true) => {
     // Inner update
-    if (!props.hasOwnProperty('value')) setValue(valueNew as any);
+    if (!props.hasOwnProperty('value') || !triggerOnChange) setValue(valueNew as any);
 
     if (triggerOnChange && is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
   };
 
   const onUpdateCalendar = (valueNew: OnesyDate, triggerOnChange = true) => {
     // Inner update
-    if (!props.hasOwnProperty('calendar')) setCalendar(valueNew);
+    if (!props.hasOwnProperty('calendar') || !triggerOnChange) setCalendar(valueNew);
 
     if (triggerOnChange && is('function', onChangeCalendar)) onChangeCalendar(valueNew);
   };
@@ -449,7 +449,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
     const valueNew = onResolveValue(valueNew_);
 
     if (valueNew !== value) {
-      (!actions_ ? onUpdate : setValue)(valueNew as any);
+      (!actionsProps ? onUpdate : setValue)(valueNew as any);
 
       // Update input modal
       setInputModal(valueToInput(valueNew));
@@ -483,7 +483,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
   const onClose = (event: React.MouseEvent<any>) => {
     setOpen(false);
 
-    if (is('function', onClose_)) onClose_(event);
+    if (is('function', onCloseProps)) onCloseProps(event);
   };
 
   const onReset = () => {
@@ -539,7 +539,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onToday_)) onToday_(event);
+    if (is('function', onTodayProps)) onTodayProps(event);
   };
 
   const onClear = (event: React.MouseEvent) => {
@@ -561,7 +561,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onClear_)) onClear_(event);
+    if (is('function', onClearProps)) onClearProps(event);
   };
 
   const onOk = (event: React.MouseEvent) => {
@@ -579,7 +579,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onOk_)) onOk_(event);
+    if (is('function', onOkProps)) onOkProps(event);
   };
 
   const onCancel = (event: React.MouseEvent) => {
@@ -587,11 +587,11 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onCancel_)) onCancel_(event);
+    if (is('function', onCancelProps)) onCancelProps(event);
   };
 
   const valid = (...args: [OnesyDate, any?]) => {
-    if (is('function', valid_)) return valid_(...args);
+    if (is('function', validProps)) return validProps(...args);
 
     const onesyDate = args[0];
 
@@ -707,7 +707,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
     placeholder += `${SEPARATOR}${placeholder}`;
   }
 
-  placeholder = placeholder_ || placeholder;
+  placeholder = placeholderProps || placeholder;
 
   const buttonProps = {
     color: 'inherit',
@@ -872,7 +872,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
         ])}
       >
         {/* Upper actions */}
-        {actions_ && fullScreen && (
+        {actionsProps && fullScreen && (
           <Line
             gap={0}
 
@@ -915,7 +915,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
         )}
 
         {/* Heading */}
-        {heading_ && (
+        {headingProps && (
           <Type
             version='l2'
 
@@ -1218,7 +1218,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
         />
       )}
 
-      {actions_ && React.cloneElement(actions, {
+      {actionsProps && React.cloneElement(actions, {
         style: {
           paddingTop: theme.methods.space.value(1, 'px')
         }
@@ -1256,7 +1256,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
       validate={validate}
 
-      belowCalendars={actions_ ? actions : undefined}
+      belowCalendars={actionsProps ? actions : undefined}
 
       {...CalendarProps}
 
@@ -1276,7 +1276,7 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
     />
   );
 
-  if (static_) {
+  if (staticProps) {
     if (version === 'mobile') return mobile;
 
     if (version === 'desktop') return desktop;

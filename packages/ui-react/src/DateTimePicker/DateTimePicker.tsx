@@ -153,9 +153,9 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     tonal,
     color = 'primary',
 
-    version: version_ = 'auto',
+    version: versionProps = 'auto',
 
-    value: value_,
+    value: valueProps,
     valueDefault,
     onChange,
 
@@ -163,7 +163,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
     range,
     now,
-    static: static_,
+    static: staticProps,
     min,
     max,
     validate,
@@ -172,7 +172,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     headingTextTimeRange,
     headingTextDate,
     headingTextDateRange,
-    useHelperText: useHelperText_,
+    useHelperText: useHelperTextProps,
     format = '12',
     hour = true,
     minute = true,
@@ -180,18 +180,18 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     today,
     clear = true,
     size,
-    placeholder: placeholder_,
+    placeholder: placeholderProps,
     fullWidth,
     readOnly,
     disabled,
 
-    valid: valid_,
+    valid: validProps,
 
-    onClose: onClose_,
-    onToday: onToday_,
-    onClear: onClear_,
-    onCancel: onCancel_,
-    onOk: onOk_,
+    onClose: onCloseProps,
+    onToday: onTodayProps,
+    onClear: onClearProps,
+    onCancel: onCancelProps,
+    onOk: onOkProps,
 
     Icon: Icon_ = IconMaterialDateRange,
     IconDate = IconMaterialCalendarToday,
@@ -207,7 +207,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     ModeDesktopProps,
     ModeMobileProps,
     ButtonProps,
-    PickerProps: PickerProps_,
+    PickerProps: PickerPropsProps,
     MiddleProps,
     MainProps,
     IconProps,
@@ -226,14 +226,14 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
   const keys = React.useMemo(() => {
     const result = [];
-    const items = [useHelperText_];
+    const items = [useHelperTextProps];
 
     items.forEach(item => {
       if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
     });
 
     return unique(result);
-  }, [useHelperText_]);
+  }, [useHelperTextProps]);
 
   const breakpoints = {};
 
@@ -241,7 +241,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
   });
 
-  const useHelperText = valueBreakpoints(useHelperText_, undefined, breakpoints, theme);
+  const useHelperText = valueBreakpoints(useHelperTextProps, undefined, breakpoints, theme);
 
   const touch = useMediaQuery('(pointer: coarse)', { element: refs.root.current });
 
@@ -253,7 +253,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
   };
 
   const [value, setValue] = React.useState(() => {
-    const valueResult = (valueDefault !== undefined ? valueDefault : value_) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
+    const valueResult = (valueDefault !== undefined ? valueDefault : valueProps) || (now && (range ? [new OnesyDate(), new OnesyDate()] : [new OnesyDate()]));
 
     return onResolveValue(valueResult) as any;
   });
@@ -305,7 +305,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
   const [input, setInput] = React.useState(valueToInput());
 
-  let version = version_;
+  let version = versionProps;
 
   if (version === 'auto') {
     if (touch) version = 'mobile';
@@ -334,12 +334,12 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
   // Value
   React.useEffect(() => {
-    if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
-  }, [value_]);
+    if (valueProps !== undefined && valueProps !== value) onUpdateValue(valueProps);
+  }, [valueProps]);
 
   const onUpdate = (valueNew: OnesyDate, triggerOnChange = true) => {
     // Inner update
-    if (!props.hasOwnProperty('value')) setValue(valueNew as any);
+    if (!props.hasOwnProperty('value') || !triggerOnChange) setValue(valueNew as any);
 
     if (triggerOnChange && is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
   };
@@ -483,7 +483,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onToday_)) onToday_(event);
+    if (is('function', onTodayProps)) onTodayProps(event);
   };
 
   const onClear = (event: React.MouseEvent) => {
@@ -497,7 +497,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onClear_)) onClear_(event);
+    if (is('function', onClearProps)) onClearProps(event);
   };
 
   const onOk = (event: React.MouseEvent) => {
@@ -512,7 +512,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onOk_)) onOk_(event);
+    if (is('function', onOkProps)) onOkProps(event);
   };
 
   const onCancel = (event: React.MouseEvent) => {
@@ -520,7 +520,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
     onClose(event);
 
-    if (is('function', onCancel_)) onCancel_(event);
+    if (is('function', onCancelProps)) onCancelProps(event);
   };
 
   const onOpen = () => {
@@ -530,11 +530,11 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
   const onClose = (event: React.MouseEvent<any>) => {
     setOpen(false);
 
-    if (is('function', onClose_)) onClose_(event);
+    if (is('function', onCloseProps)) onCloseProps(event);
   };
 
   const valid = (...args: [OnesyDate, any?]) => {
-    if (is('function', valid_)) return valid_(...args);
+    if (is('function', validProps)) return validProps(...args);
 
     const onesyDate = args[0];
 
@@ -750,7 +750,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     placeholder += `${SEPARATOR}${placeholder}`;
   }
 
-  placeholder = placeholder_ || placeholder;
+  placeholder = placeholderProps || placeholder;
 
   const buttonProps = {
     tonal,
@@ -887,7 +887,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     readOnly,
     disabled,
 
-    ...PickerProps_,
+    ...PickerPropsProps,
 
     ...(tab === 'date' && DatePickerProps),
 
@@ -1001,7 +1001,7 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     if (!(readOnly || disabled)) moreProps.onClick = onOpen;
   }
 
-  if (static_) return element;
+  if (staticProps) return element;
 
   return (
     <Line
