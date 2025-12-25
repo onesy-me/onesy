@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CalendarMonth, Line, Reset, useMediaQuery } from '@onesy/ui-react';
+import { DatePicker, Line, Reset, useMediaQuery } from '@onesy/ui-react';
 import { classNames, style, useOnesyTheme } from '@onesy/style-react';
 
 const useStyle = style(theme => ({
@@ -69,7 +69,7 @@ const Main = () => {
         classes.root
       ])}
     >
-      <CalendarMonth />
+      <DatePicker color='primary' />
     </Line>
   </>
 };

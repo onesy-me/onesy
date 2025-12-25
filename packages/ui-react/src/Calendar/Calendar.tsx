@@ -1243,11 +1243,15 @@ const Calendar: React.FC<ICalendar> = props__ => {
                       <PaginationItem
                         key={index}
 
-                        tonal={tonal}
+                        tonal={tonal !== undefined ? tonal : false}
 
-                        color='inherit'
+                        version={selected ? 'filled' : 'text'}
+
+                        color={selected ? color : 'inherit'}
 
                         size={size}
+
+                        selected={selected}
 
                         InteractionProps={{
                           background: false
@@ -1283,11 +1287,6 @@ const Calendar: React.FC<ICalendar> = props__ => {
                         ])}
 
                         style={{
-                          ...(selected ? {
-                            color: theme.methods.palette.color.value(undefined, 90, true, palette),
-                            backgroundColor: theme.methods.palette.color.value(undefined, 40, true, palette)
-                          } : undefined),
-
                           ...PaginationItemsProps?.style
                         }}
                       >

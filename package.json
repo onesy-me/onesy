@@ -8,8 +8,7 @@
   "private": true,
   "scripts": {
     "build": "lerna bootstrap --scope='@onesy/docs' --include-dependencies && lerna run build --scope='@onesy/docs' --include-dependencies --stream",
-    "start": "cd docs && cross-env NODE_ENV=production node ./src",
-    "dev": "cd docs && yarn dev"
+    "dev": "cd packages/app && yarn local"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
