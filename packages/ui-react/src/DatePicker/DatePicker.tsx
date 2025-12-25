@@ -427,18 +427,18 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
     if (calendar_ !== undefined && calendar_ !== calendar) setCalendar(calendar_);
   }, [calendar_]);
 
-  const onUpdate = (valueNew: OnesyDate) => {
+  const onUpdate = (valueNew: OnesyDate, triggerOnChange = true) => {
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
-    if (is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
+    if (triggerOnChange && is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
   };
 
-  const onUpdateCalendar = (valueNew: OnesyDate) => {
+  const onUpdateCalendar = (valueNew: OnesyDate, triggerOnChange = true) => {
     // Inner update
     if (!props.hasOwnProperty('calendar')) setCalendar(valueNew);
 
-    if (is('function', onChangeCalendar)) onChangeCalendar(valueNew);
+    if (triggerOnChange && is('function', onChangeCalendar)) onChangeCalendar(valueNew);
   };
 
   // Update only internally, without using onChange
@@ -493,10 +493,10 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
 
     if (isValid) {
       // Update value
-      onUpdate(valueNew);
+      onUpdate(valueNew, false);
 
       // Update calendar
-      onUpdateCalendar(valueNew[0]);
+      onUpdateCalendar(valueNew[0], false);
 
       // Update input modal
       setInputModal(input);
@@ -507,10 +507,10 @@ const DatePicker: React.FC<IDatePicker> = props__ => {
       valueNew = [];
 
       // Update value
-      onUpdate(valueNew as any);
+      onUpdate(valueNew as any, false);
 
       // Update calendar
-      onUpdateCalendar(dateNow);
+      onUpdateCalendar(dateNow, false);
 
       // Update input
       setInput(valueToInput(valueNew));

@@ -69,7 +69,11 @@ const Main = () => {
         classes.root
       ])}
     >
-      <DatePicker color='primary' />
+      <DatePicker
+        color='primary'
+
+        onChange={(valueNew: any) => console.log('onChange', valueNew)}
+      />
     </Line>
   </>
 };

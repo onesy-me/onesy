@@ -337,11 +337,11 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
     if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
   }, [value_]);
 
-  const onUpdate = (valueNew: OnesyDate) => {
+  const onUpdate = (valueNew: OnesyDate, triggerOnChange = true) => {
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
-    if (is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
+    if (triggerOnChange && is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
   };
 
   const onPickSwitch = () => {
@@ -457,13 +457,13 @@ const DateTimePicker: React.FC<IDateTimePicker> = props__ => {
 
     if (isValid) {
       // Update value
-      onUpdate(valueNew);
+      onUpdate(valueNew, false);
     }
     else {
       valueNew = [];
 
       // Update value
-      onUpdate(valueNew as any);
+      onUpdate(valueNew as any, false);
 
       // Update input
       setInput(valueToInput(valueNew));

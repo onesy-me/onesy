@@ -599,13 +599,13 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     if (value_ !== undefined && value_ !== value) onUpdateValue(value_);
   }, [value_]);
 
-  const onUpdate = (valueNew_: OnesyDate) => {
+  const onUpdate = (valueNew_: OnesyDate, triggerOnChange = true) => {
     const valueNew = resolve(valueNew_);
 
     // Inner update
     if (!props.hasOwnProperty('value')) setValue(valueNew as any);
 
-    if (is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
+    if (triggerOnChange && is('function', onChange)) onChange(!range ? valueNew[0] : valueNew);
   };
 
   const onUpdateSelecting = (valueNew_: TClockUnit, index: number) => {
@@ -819,7 +819,7 @@ const TimePicker: React.FC<ITimePicker> = props__ => {
     const valueNew = inputToValue() as any;
 
     // Update value
-    onUpdate(valueNew);
+    onUpdate(valueNew, false);
 
     // Update dayTime
     setDayTime(valueNew.map(item => formatDate(item, 'a')));
