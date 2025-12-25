@@ -24,7 +24,7 @@ import { IconDoneAnimated } from '../Buttons/Buttons';
 import { ICalendarMonth, TCalendarMonthCalendar, TCalendarMonthValue } from '../CalendarMonth/CalendarMonth';
 import { TTransitionStatus } from '../Transition';
 import { ISurface } from '../Surface/Surface';
-import { iconFontSize, staticClassName } from '../utils';
+import { iconFontSize, scrollToMiddleOfParent, staticClassName } from '../utils';
 import { IElementReference, IPropsAny } from '../types';
 
 const useStyle = style(theme => ({
@@ -374,19 +374,6 @@ const Calendar: React.FC<ICalendar> = props__ => {
     if (refs.inProgressTransition.current) return;
 
     onUpdateCalendar((next ? add : remove)(1, unit, calendar));
-  };
-
-  const scrollToMiddleOfParent = (element: HTMLElement) => {
-    const parent = element.parentElement;
-
-    if (!parent) return;
-
-    const top = element.offsetTop - (parent.clientHeight / 2) + (element.offsetHeight / 2);
-
-    parent.scrollTo({
-      top,
-      behavior: 'smooth'
-    });
   };
 
   const onOpen = (valueUpdate: 'month' | 'year' = 'month') => {
