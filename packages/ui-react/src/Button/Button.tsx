@@ -357,7 +357,7 @@ const Button: React.FC<IButton> = props_ => {
     fab,
     chip,
     icon,
-    focus: focus_,
+    focus: focusProps,
     value,
     noIconRootFontSize,
     firstLevelChildren,
@@ -366,8 +366,8 @@ const Button: React.FC<IButton> = props_ => {
     readOnly,
     disabled: disabled_,
 
-    onFocus: onFocus_,
-    onBlur: onBlur_,
+    onFocus: onFocusProps,
+    onBlur: onBlurProps,
 
     IconWrapperComponent = 'span',
 
@@ -388,7 +388,7 @@ const Button: React.FC<IButton> = props_ => {
 
   const { classes } = useStyle();
 
-  const [focus, setFocus] = React.useState(focus_ !== undefined ? focus_ : false);
+  const [focus, setFocus] = React.useState(focusProps !== undefined ? focusProps : false);
 
   const refs = {
     root: React.useRef<any>(undefined),
@@ -536,15 +536,15 @@ const Button: React.FC<IButton> = props_ => {
   }
 
   const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (focus_ === undefined && event.target === refs.root.current && !disabled) setFocus(true);
+    if (focusProps === undefined && event.target === refs.root.current && !disabled) setFocus(true);
 
-    if (is('function', onFocus_)) onFocus_(event);
+    if (is('function', onFocusProps)) onFocusProps(event);
   };
 
   const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    if (focus_ === undefined && !disabled) setFocus(false);
+    if (focusProps === undefined && !disabled) setFocus(false);
 
-    if (is('function', onBlur_)) onBlur_(event);
+    if (is('function', onBlurProps)) onBlurProps(event);
   };
 
   const IconElement = (selected && iconSelected) || children_;

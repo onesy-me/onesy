@@ -295,6 +295,7 @@ export type IListItem = ISurface & {
   noBackground?: boolean;
   noOutline?: boolean;
   fullWidth?: boolean;
+  focus?: boolean;
 
   value?: any;
 
@@ -360,16 +361,19 @@ const ListItem: React.FC<IListItem> = props_ => {
     fullWidth = true,
     noOutline,
     noBackground,
+    focus: focusProps,
+
+    readOnly,
     disabled,
 
     onClick,
-    onFocus,
-    onBlur,
+    onFocus: onFocusProps,
+    onBlur: onBlurProps,
     onMouseEnter,
     onMouseLeave,
     onClose: onClose_,
 
-    RootComponent: RootComponent_ = 'div',
+    RootComponent: RootComponentProps = 'div',
 
     WrapperProps,
     RootProps,
@@ -394,6 +398,8 @@ const ListItem: React.FC<IListItem> = props_ => {
 
   const { classes } = useStyle();
 
+  const [focus, setFocus] = React.useState(focusProps !== undefined ? focusProps : false);
+
   const refs = {
     root: React.useRef<any>(undefined),
     props: React.useRef<any>(undefined),
@@ -404,6 +410,18 @@ const ListItem: React.FC<IListItem> = props_ => {
   };
 
   refs.props.current = props;
+
+  const onFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (focusProps === undefined && event.target === refs.root.current && !disabled) setFocus(true);
+
+    if (is('function', onFocusProps)) onFocusProps(event);
+  };
+
+  const onBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (focusProps === undefined && !disabled) setFocus(false);
+
+    if (is('function', onBlurProps)) onBlurProps(event);
+  };
 
   const styles: any = {
     root: {
@@ -416,7 +434,7 @@ const ListItem: React.FC<IListItem> = props_ => {
     tertiary: {}
   };
 
-  let RootComponent = RootComponent_;
+  let RootComponent = RootComponentProps;
 
   if (href) RootComponent = 'a';
 
@@ -436,8 +454,6 @@ const ListItem: React.FC<IListItem> = props_ => {
       tonal={tonal}
 
       color={colorToUse}
-
-      tabIndex={tabIndex !== undefined ? tabIndex : (button && !disabled) ? 0 : undefined}
 
       aria-labelledby={refs.ids.primary}
 
@@ -474,6 +490,8 @@ const ListItem: React.FC<IListItem> = props_ => {
       <RootComponent
         href={href}
 
+        tabIndex={tabIndex !== undefined ? tabIndex : (button && !(readOnly || disabled)) ? 0 : undefined}
+
         onClick={onClick}
 
         onFocus={onFocus}
@@ -492,6 +510,7 @@ const ListItem: React.FC<IListItem> = props_ => {
             `onesy-ListItem-size-${size}`,
             preselected && `onesy-ListItem-preselected`,
             selected && `onesy-ListItem-selected`,
+            readOnly && `onesy-ListItem-readOnly`,
             disabled && `onesy-ListItem-disabled`,
             inset && !start && `onesy-ListItem-inset`
           ],
@@ -523,6 +542,8 @@ const ListItem: React.FC<IListItem> = props_ => {
             border={false}
 
             preselected={InteractionProps?.focus || preselected || undefined}
+
+            pulse={focus}
 
             selected={selected}
 
