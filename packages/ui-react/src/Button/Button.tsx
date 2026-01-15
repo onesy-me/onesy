@@ -601,6 +601,7 @@ const Button: React.FC<IButton> = props_ => {
           selected && `onesy-Button-selected`,
           loading && `onesy-Button-loading`,
           focus && `onesy-Button-focus`,
+          readOnly && `onesy-Button-readOnly`,
           disabled && `onesy-Button-disabled`
         ],
 

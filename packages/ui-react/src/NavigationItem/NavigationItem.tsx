@@ -350,6 +350,7 @@ const NavigationItem: React.FC<INavigationItem> = props_ => {
             hover && `onesy-NavigationItem-hover`,
             mouseDown && `onesy-NavigationItem-mouse-down`,
             focus && `onesy-NavigationItem-focus`,
+            readOnly && `onesy-NavigationItem-readOnly`,
             disabled && `onesy-NavigationItem-disabled`
           ],
 

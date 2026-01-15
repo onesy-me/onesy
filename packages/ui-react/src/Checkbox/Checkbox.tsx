@@ -437,6 +437,7 @@ const Checkbox: React.FC<ICheckbox> = props_ => {
           `onesy-Checkbox-version-${version}`,
           `onesy-Checkbox-size-${size}`,
           value && `onesy-Checkbox-checked`,
+          readOnly && `onesy-Checkbox-readOnly`,
           disabled && `onesy-Checkbox-disabled`
         ],
 

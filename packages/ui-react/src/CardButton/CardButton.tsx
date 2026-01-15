@@ -92,6 +92,7 @@ const CardButton: React.FC<ICardButton> = props_ => {
         staticClassName('CardButton', theme) && [
           `onesy-CardButton-root`,
           focus && `onesy-CardButton-focus`,
+          readOnly && `onesy-CardButton-readOnly`,
           disabled && `onesy-CardButton-disabled`
         ],
 

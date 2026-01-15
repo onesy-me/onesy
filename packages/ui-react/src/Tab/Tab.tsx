@@ -232,6 +232,7 @@ const Tab: React.FC<ITab> = props_ => {
             `onesy-Tab-version-${version}`,
             `onesy-Tab-size-${size}`,
             active && `onesy-Tab-active`,
+            readOnly && `onesy-Tab-readOnly`,
             disabled && `onesy-Tab-disabled`
           ],
 

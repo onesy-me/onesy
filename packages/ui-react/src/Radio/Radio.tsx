@@ -295,6 +295,7 @@ const Radio: React.FC<IRadio> = props_ => {
           `onesy-Radio-version-${version}`,
           `onesy-Radio-size-${size}`,
           value && `onesy-Radio-checked`,
+          readOnly && `onesy-Radio-readOnly`,
           disabled && `onesy-Radio-disabled`
         ],
 
