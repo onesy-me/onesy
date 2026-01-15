@@ -255,6 +255,7 @@ const Checkbox: React.FC<ICheckbox> = props_ => {
 
     indeterminate: indeterminate_,
 
+    readOnly,
     disabled,
 
     inputRef,
@@ -377,7 +378,7 @@ const Checkbox: React.FC<ICheckbox> = props_ => {
 
   return (
     <IconButton
-      tabIndex={!disabled ? 0 : -1}
+      tabIndex={!(readOnly || disabled) ? 0 : -1}
 
       color={colorValue}
 

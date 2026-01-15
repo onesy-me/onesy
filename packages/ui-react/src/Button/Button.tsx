@@ -363,6 +363,7 @@ const Button: React.FC<IButton> = props_ => {
     firstLevelChildren,
     noFontSize,
 
+    readOnly,
     disabled: disabled_,
 
     onFocus: onFocus_,
@@ -559,7 +560,7 @@ const Button: React.FC<IButton> = props_ => {
         refs.root.current = item;
       }}
 
-      tabIndex={!disabled ? 0 : -1}
+      tabIndex={!(readOnly || disabled) ? 0 : -1}
 
       type='button'
 

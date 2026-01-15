@@ -163,6 +163,7 @@ const Radio: React.FC<IRadio> = props_ => {
 
     onChange,
 
+    readOnly,
     disabled,
 
     Component = 'span',
@@ -238,7 +239,7 @@ const Radio: React.FC<IRadio> = props_ => {
 
   return (
     <IconButton
-      tabIndex={!disabled ? 0 : -1}
+      tabIndex={!(readOnly || disabled) ? 0 : -1}
 
       tonal={tonal}
 

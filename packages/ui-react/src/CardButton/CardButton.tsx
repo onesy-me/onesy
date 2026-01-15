@@ -36,6 +36,8 @@ const CardButton: React.FC<ICardButton> = props_ => {
     focus: focus_,
     selected,
     href,
+
+    readOnly,
     disabled,
 
     onFocus: onFocus_,
@@ -76,7 +78,7 @@ const CardButton: React.FC<ICardButton> = props_ => {
 
   return (
     <Component
-      tabIndex={!disabled ? 0 : -1}
+      tabIndex={!(readOnly || disabled) ? 0 : -1}
 
       Component={Component}
 

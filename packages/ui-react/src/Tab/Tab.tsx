@@ -148,6 +148,7 @@ const Tab: React.FC<ITab> = props_ => {
 
     tooltip,
 
+    readOnly,
     disabled,
 
     onBlur: onBlur_,
@@ -207,7 +208,7 @@ const Tab: React.FC<ITab> = props_ => {
       {...wrapperProps}
     >
       <Surface
-        tabIndex={!disabled ? 0 : -1}
+        tabIndex={!(readOnly || disabled) ? 0 : -1}
 
         tonal={tonal}
 

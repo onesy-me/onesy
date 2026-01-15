@@ -171,6 +171,7 @@ const NavigationItem: React.FC<INavigationItem> = props_ => {
     iconSelected,
 
     selected,
+    readOnly,
     disabled,
 
     IconWrapperComponent = 'span',
@@ -326,7 +327,7 @@ const NavigationItem: React.FC<INavigationItem> = props_ => {
       {...TooltipProps}
     >
       <span
-        tabIndex={!disabled ? 0 : undefined}
+        tabIndex={!(readOnly || disabled) ? 0 : undefined}
 
         onFocus={onFocus}
 
