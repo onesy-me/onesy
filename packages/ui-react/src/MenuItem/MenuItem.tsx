@@ -304,8 +304,6 @@ const MenuItem: React.FC<IMenuItem> = props_ => {
       setOpenList(false);
       setHover(false);
       setFocus(false);
-
-      // if (is('function', onClose_)) onClose_();
     }
   };
 
@@ -314,8 +312,6 @@ const MenuItem: React.FC<IMenuItem> = props_ => {
       setOpenMenu(false);
       setHover(false);
       setFocus(false);
-
-      // if (is('function', onClose_)) onClose_();
     }
   };
 
@@ -364,6 +360,8 @@ const MenuItem: React.FC<IMenuItem> = props_ => {
 
       aria-expanded={openMenu}
 
+      button={!!onClick}
+
       menuItem
 
       className={classNames([
@@ -374,10 +372,6 @@ const MenuItem: React.FC<IMenuItem> = props_ => {
 
         classes.root
       ])}
-
-      InteractionProps={{
-        focus
-      }}
 
       RootProps={{
         className: classNames([

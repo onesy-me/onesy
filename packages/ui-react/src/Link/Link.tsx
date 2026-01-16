@@ -89,7 +89,7 @@ const useStyle = styleMethod(theme => ({
 }), { name: 'onesy-Link' });
 
 export type ILink = IType & {
-  underline?: true | 'hover';
+  underline?: boolean | 'hover';
 
   href?: string;
 

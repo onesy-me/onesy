@@ -39,7 +39,8 @@ const useStyle = styleMethod(theme => {
 
       position: 'relative',
       display: 'inline-flex',
-      width: '100%'
+      width: '100%',
+      textAlign: 'left'
     },
 
     shape_round_position_both: {
@@ -373,7 +374,7 @@ const ListItem: React.FC<IListItem> = props_ => {
     onMouseLeave,
     onClose: onClose_,
 
-    RootComponent: RootComponentProps = 'div',
+    RootComponent: RootComponentProps,
 
     WrapperProps,
     RootProps,
@@ -401,6 +402,7 @@ const ListItem: React.FC<IListItem> = props_ => {
   const [focus, setFocus] = React.useState(focusProps !== undefined ? focusProps : false);
 
   const refs = {
+    wrapper: React.useRef<any>(undefined),
     root: React.useRef<any>(undefined),
     props: React.useRef<any>(undefined),
     ids: {
@@ -434,7 +436,7 @@ const ListItem: React.FC<IListItem> = props_ => {
     tertiary: {}
   };
 
-  let RootComponent = RootComponentProps;
+  let RootComponent = RootComponentProps || ((button || interaction) ? 'button' : 'div');
 
   if (href) RootComponent = 'a';
 
@@ -448,7 +450,7 @@ const ListItem: React.FC<IListItem> = props_ => {
           else if (ref?.current) ref.current = item;
         }
 
-        refs.root.current = item;
+        refs.wrapper.current = item;
       }}
 
       tonal={tonal}
@@ -488,6 +490,8 @@ const ListItem: React.FC<IListItem> = props_ => {
       {...other}
     >
       <RootComponent
+        ref={refs.root}
+
         href={href}
 
         tabIndex={tabIndex !== undefined ? tabIndex : (button && !(readOnly || disabled)) ? 0 : undefined}
@@ -541,7 +545,7 @@ const ListItem: React.FC<IListItem> = props_ => {
           <Interaction
             border={false}
 
-            preselected={InteractionProps?.focus || preselected || undefined}
+            preselected={preselected}
 
             pulse={focus}
 
