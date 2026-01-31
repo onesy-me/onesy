@@ -191,6 +191,7 @@ export type IAutoComplete = Omit<ITextField, 'onChange'> & {
   IconButtonProps?: IPropsAny;
   InputProps?: IPropsAny;
   IconProps?: IPropsAny;
+  TextFieldProps?: IPropsAny;
 };
 
 const getText = (value: any) => {
@@ -298,6 +299,7 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
     IconButtonProps,
     InputProps,
     IconProps,
+    TextFieldProps,
 
     className,
     style,
@@ -987,12 +989,17 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
 
         disabled={disabled}
 
+        {...TextFieldProps}
+
         InputWrapperProps={{
+          ...TextFieldProps?.InputWrapperProps,
+
           className: classNames([
             staticClassName('AutoComplete', theme) && [
               'onesy-AutoComplete-input-wrapper'
             ],
 
+            TextFieldProps?.InputWrapperProps?.className,
             classes.inputWrapper,
             multiple && [
               classes.multiple,
@@ -1012,6 +1019,8 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
         }}
 
         inputProps={{
+          ...TextFieldProps?.inputProps,
+
           disabled: multiple,
 
           readOnly: multiple,
@@ -1027,6 +1036,7 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
         style={{
           ...styles.root,
 
+          ...TextFieldProps?.style,
           ...style
         }}
 
