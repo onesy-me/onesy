@@ -77,6 +77,8 @@ const AutoCompleteCountry: React.FC<IAutoCompleteCountry> = props_ => {
 
   return (
     <AutoComplete
+      name={l('Select a country')}
+
       valueInputDefault={valueInputDefault}
 
       valueDefault={valueDefault}

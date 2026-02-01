@@ -153,6 +153,7 @@ export type ISelect = ITextField & {
   chip?: boolean;
   clear?: boolean;
   noSelectText?: any;
+  portal?: boolean;
 
   renderValues?: (value: string | string[]) => IElement;
   renderChip?: (item: any, value: any, props: IPropsAny) => IElement;
@@ -228,6 +229,8 @@ const Select: React.FC<ISelect> = props_ => {
     noSelectText,
     disabled,
 
+    portal = props.MenuProps?.portal ?? true,
+
     renderValues: renderValues_,
     renderChip,
 
@@ -239,13 +242,7 @@ const Select: React.FC<ISelect> = props_ => {
     WrapperProps,
     ChipProps,
     ChiProps,
-    ListProps = {
-      style: {
-        maxHeight: 250,
-        overflowY: 'auto',
-        overflowX: 'hidden'
-      }
-    },
+    ListProps,
     MenuProps: MenuPropsProps,
     ListItemProps,
     ListItemTypeProps,
@@ -301,7 +298,7 @@ const Select: React.FC<ISelect> = props_ => {
     ...MenuPropsProps
   };
 
-  if (MenuProps?.portal && autoWidth) {
+  if (portal && autoWidth) {
     styles.menu.width = refs.wrapper.current?.clientWidth;
   }
 
@@ -721,7 +718,11 @@ const Select: React.FC<ISelect> = props_ => {
 
           open={open}
 
-          portal={false}
+          portal={portal}
+
+          includeQueries={['.onesy-more']}
+
+          includeParentQueries={['.onesy-more']}
 
           onClose={() => onClose(false)}
 
@@ -836,6 +837,8 @@ const Select: React.FC<ISelect> = props_ => {
             })
           ))}
 
+          ignoreNonExisting
+
           {...MenuProps}
 
           AppendProps={{
@@ -845,7 +848,7 @@ const Select: React.FC<ISelect> = props_ => {
           }}
 
           ModalProps={{
-            // focus: !MenuProps.portal,
+            freezeScroll: false,
 
             ...MenuProps?.ModalProps
           }}
@@ -861,9 +864,23 @@ const Select: React.FC<ISelect> = props_ => {
 
             'aria-label': name,
 
+            ...MenuProps?.ListProps,
+
             ...ListProps,
 
-            ...MenuProps?.ListProps
+            className: classNames([
+              MenuProps?.ListProps?.className,
+              ListProps?.className
+            ]),
+
+            style: {
+              maxHeight: 250,
+              overflow: 'hidden auto',
+              overscrollBehavior: 'contain',
+
+              ...MenuProps?.ListProps?.style,
+              ...ListProps?.style
+            }
           }}
 
           style={{
@@ -873,6 +890,8 @@ const Select: React.FC<ISelect> = props_ => {
           }}
 
           className={classNames([
+            'onesy-Select-Menu',
+
             MenuProps?.className
           ])}
         />

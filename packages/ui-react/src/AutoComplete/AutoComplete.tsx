@@ -180,6 +180,7 @@ export type IAutoComplete = Omit<ITextField, 'onChange'> & {
   selectOnFocus?: boolean;
   clearOnBlur?: boolean;
   noInputValue?: boolean;
+  portal?: boolean;
 
   IconClear?: IElementReference;
   IconDropdown?: IElementReference;
@@ -286,8 +287,9 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
     chip,
     fullWidth,
     noInputValue,
-
     disabled,
+
+    portal = props.MenuProps?.portal ?? true,
 
     IconClear = IconMaterialClose,
     IconDropdown = IconMaterialArrowDropDown,
@@ -351,7 +353,7 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
     }
   };
 
-  if (MenuProps?.portal && autoWidth) {
+  if (portal && autoWidth) {
     styles.menu.width = refs.wrapper.current?.clientWidth;
   }
 
@@ -1090,7 +1092,11 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
 
         autoSelectOnBlur={autoSelectOnBlur}
 
-        portal={true}
+        portal={portal}
+
+        includeQueries={['.onesy-more']}
+
+        includeParentQueries={['.onesy-more']}
 
         onClose={() => onClose(false)}
 
@@ -1106,14 +1112,20 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
 
         maxWidth='unset'
 
+        ignoreNonExisting
+
+        {...MenuProps}
+
         AppendProps={{
-          alignment: 'start'
+          alignment: 'start',
+
+          ...MenuProps?.AppendProps
         }}
 
         ModalProps={{
-          // focus: !MenuProps.portal
+          freezeScroll: false,
 
-          freezeScroll: false
+          ...MenuProps?.ModalProps
         }}
 
         ListProps={{
@@ -1129,23 +1141,35 @@ const AutoComplete: React.FC<IAutoComplete> = props_ => {
 
           'aria-label': label,
 
+          ...MenuProps?.ListProps,
+
           ...ListProps,
 
           className: classNames([
+            MenuProps?.ListProps?.className,
             ListProps?.className,
             classes.list
           ]),
-        }}
 
-        {...MenuProps}
+          style: {
+            maxHeight: 250,
+            overflow: 'hidden auto',
+            overscrollBehavior: 'contain',
+
+            ...MenuProps?.ListProps?.style,
+            ...ListProps?.style
+          }
+        }}
 
         style={{
           ...styles.menu,
 
-          ...MenuProps?.menu
+          ...MenuProps?.style
         }}
 
         className={classNames([
+          'onesy-Select-Menu',
+
           MenuProps?.className
         ])}
       />

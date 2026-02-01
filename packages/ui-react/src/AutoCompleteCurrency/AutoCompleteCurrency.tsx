@@ -65,6 +65,8 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = props_ => {
 
   return (
     <AutoComplete
+      name={l('Select a currency')}
+
       valueInputDefault={valueInputDefault}
 
       options={options}
