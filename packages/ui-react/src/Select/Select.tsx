@@ -712,7 +712,7 @@ const Select: React.FC<ISelect> = props_ => {
         </Line>
       </TextField>
 
-      {(!!items.length || children) && (
+      {(!!items.length || !!children.length) && (
         <Menu
           ref={refs.menu}
 
