@@ -545,6 +545,8 @@ const Select: React.FC<ISelect> = props_ => {
 
   const sizeListItem = MenuProps?.size || size;
 
+  const noOptions = !(!!items.length || !!children.length);
+
   return (
     <Line
       gap={0}
@@ -712,190 +714,195 @@ const Select: React.FC<ISelect> = props_ => {
         </Line>
       </TextField>
 
-      {(!!items.length || !!children.length) && (
-        <Menu
-          ref={refs.menu}
+      <Menu
+        ref={refs.menu}
 
-          open={open}
+        open={open}
 
-          portal={portal}
+        portal={portal}
 
-          includeQueries={['.onesy-more']}
+        includeQueries={['.onesy-more']}
 
-          includeParentQueries={['.onesy-more']}
+        includeParentQueries={['.onesy-more']}
 
-          onClose={() => onClose(false)}
+        onClose={() => onClose(false)}
 
-          anchorElement={refs.root.current}
+        anchorElement={refs.root.current}
 
-          transformOrigin='center top'
+        transformOrigin='center top'
 
-          transformOriginSwitch='center bottom'
+        transformOriginSwitch='center bottom'
 
-          maxWidth='unset'
+        maxWidth='unset'
 
-          size={size}
+        size={size}
 
-          menuItems={!!items.length ? (
-            items.map((item: any, index: number) => (
-              <ListItem
-                key={index}
+        menuItems={!!items.length ? (
+          items.map((item: any, index: number) => (
+            <ListItem
+              key={index}
 
-                role={'option'}
+              role={'option'}
 
-                selected={item.selected !== undefined ? item.selected : multiple ? value.includes(item?.value) : value === item?.value}
+              selected={item.selected !== undefined ? item.selected : multiple ? value.includes(item?.value) : value === item?.value}
 
-                preselected={item.preselected !== undefined ? item.preselected : !(multiple ? value.includes(item?.value) : value === item?.value)}
+              preselected={item.preselected !== undefined ? item.preselected : !(multiple ? value.includes(item?.value) : value === item?.value)}
 
-                onMouseUp={onMouseUp}
+              onMouseUp={onMouseUp}
 
-                onMouseDown={onMouseDown}
+              onMouseDown={onMouseDown}
 
-                primary={getOptionName ? getOptionName(item.name, item, index) : (
-                  <Type
-                    version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
+              primary={getOptionName ? getOptionName(item.name, item, index) : (
+                <Type
+                  version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
 
-                    {...ListItemTypeProps}
+                  {...ListItemTypeProps}
 
-                    {...ListItemTypePrimaryProps}
+                  {...ListItemTypePrimaryProps}
 
-                    className={classNames([
-                      ListItemTypeProps?.className,
-                      ListItemTypePrimaryProps?.className,
+                  className={classNames([
+                    ListItemTypeProps?.className,
+                    ListItemTypePrimaryProps?.className,
 
-                      'onesy-Select-option',
-                      'onesy-Select-option-primary',
-                      !(item.description || item.secondary || item.tertiary) && 'onesy-Select-option-primary-only'
-                    ])}
-                  >
-                    {item.name}
-                  </Type>
-                )}
+                    'onesy-Select-option',
+                    'onesy-Select-option-primary',
+                    !(item.description || item.secondary || item.tertiary) && 'onesy-Select-option-primary-only'
+                  ])}
+                >
+                  {item.name}
+                </Type>
+              )}
 
-                secondary={item.description ? is('string', item.description) ? (
-                  <Type
-                    version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
+              secondary={item.description ? is('string', item.description) ? (
+                <Type
+                  version={sizeListItem === 'large' ? 'b1' : sizeListItem === 'regular' ? 'b2' : 'b3'}
 
-                    {...ListItemTypeProps}
+                  {...ListItemTypeProps}
 
-                    {...ListItemTypeSecondaryProps}
+                  {...ListItemTypeSecondaryProps}
 
-                    className={classNames([
-                      ListItemTypeProps?.className,
-                      ListItemTypeSecondaryProps?.className,
+                  className={classNames([
+                    ListItemTypeProps?.className,
+                    ListItemTypeSecondaryProps?.className,
 
-                      'onesy-Select-option',
-                      'onesy-Select-option-secondary'
-                    ])}
-                  >
-                    {item.description}
-                  </Type>
-                ) : item.description : null}
+                    'onesy-Select-option',
+                    'onesy-Select-option-secondary'
+                  ])}
+                >
+                  {item.description}
+                </Type>
+              ) : item.description : null}
 
-                value={item.value}
+              value={item.value}
 
-                size={MenuProps?.size || size}
+              size={MenuProps?.size || size}
 
-                button
+              button
 
-                {...ListItemProps}
+              {...ListItemProps}
 
-                {...item.props}
+              {...item.props}
 
-                onClick={(event: React.MouseEvent) => {
-                  if (multiple && value.includes(item?.value)) onUnselect(item?.value);
-                  else onSelect(item?.value);
-
-                  if (is('function', item.props?.onClick)) item.props?.onClick(event);
-
-                  if (!multiple) setOpen(false);
-                }}
-              />
-            ))
-          ) : children.map((item: any, index: number) => (
-            React.cloneElement(item, {
-              key: index,
-
-              role: 'option',
-
-              selected: item.props.selected !== undefined ? item.props.selected : multiple ? value.includes(item.props?.value) : value === item.props?.value,
-
-              preselected: item.props.preselected !== undefined ? item.props.preselected : !(multiple ? value.includes(item.props?.value) : value === item.props?.value),
-
-              onMouseUp,
-
-              onMouseDown,
-
-              onClick: (event: React.MouseEvent) => {
-                if (multiple && value.includes(item.props?.value)) onUnselect(item.props?.value);
-                else onSelect(item.props?.value);
+              onClick={(event: React.MouseEvent) => {
+                if (multiple && value.includes(item?.value)) onUnselect(item?.value);
+                else onSelect(item?.value);
 
                 if (is('function', item.props?.onClick)) item.props?.onClick(event);
 
                 if (!multiple) setOpen(false);
-              }
-            })
-          ))}
+              }}
+            />
+          ))
+        ) : children.map((item: any, index: number) => (
+          React.cloneElement(item, {
+            key: index,
 
-          ignoreNonExisting
+            role: 'option',
 
-          {...MenuProps}
+            selected: item.props.selected !== undefined ? item.props.selected : multiple ? value.includes(item.props?.value) : value === item.props?.value,
 
-          AppendProps={{
-            alignment: 'start',
+            preselected: item.props.preselected !== undefined ? item.props.preselected : !(multiple ? value.includes(item.props?.value) : value === item.props?.value),
 
-            ...MenuProps?.AppendProps
-          }}
+            onMouseUp,
 
-          ModalProps={{
-            freezeScroll: false,
+            onMouseDown,
 
-            ...MenuProps?.ModalProps
-          }}
+            onClick: (event: React.MouseEvent) => {
+              if (multiple && value.includes(item.props?.value)) onUnselect(item.props?.value);
+              else onSelect(item.props?.value);
 
-          ListProps={{
-            menu: true,
+              if (is('function', item.props?.onClick)) item.props?.onClick(event);
 
-            size: ListProps?.size || MenuProps?.size || size,
-
-            role: 'listbox',
-
-            id: refs.ids.list,
-
-            'aria-label': name,
-
-            ...MenuProps?.ListProps,
-
-            ...ListProps,
-
-            className: classNames([
-              MenuProps?.ListProps?.className,
-              ListProps?.className
-            ]),
-
-            style: {
-              maxHeight: 250,
-              overflow: 'hidden auto',
-              overscrollBehavior: 'contain',
-
-              ...MenuProps?.ListProps?.style,
-              ...ListProps?.style
+              if (!multiple) setOpen(false);
             }
-          }}
+          })
+        ))}
 
-          style={{
-            ...styles.menu,
+        ignoreNonExisting
 
-            ...MenuProps?.style
-          }}
+        {...MenuProps}
 
-          className={classNames([
-            'onesy-Select-Menu',
+        AppendProps={{
+          alignment: 'start',
 
-            MenuProps?.className
-          ])}
-        />
-      )}
+          ...MenuProps?.AppendProps
+        }}
+
+        ModalProps={{
+          freezeScroll: false,
+
+          ...MenuProps?.ModalProps
+        }}
+
+        ListProps={{
+          menu: true,
+
+          size: ListProps?.size || MenuProps?.size || size,
+
+          role: 'listbox',
+
+          id: refs.ids.list,
+
+          'aria-label': name,
+
+          ...MenuProps?.ListProps,
+
+          ...ListProps,
+
+          className: classNames([
+            MenuProps?.ListProps?.className,
+            ListProps?.className
+          ]),
+
+          style: {
+            maxHeight: 250,
+            overflow: 'hidden auto',
+            overscrollBehavior: 'contain',
+
+            ...MenuProps?.ListProps?.style,
+            ...ListProps?.style
+          }
+        }}
+
+        style={{
+          ...(noOptions && {
+            opacity: 0,
+            visibility: 'hidden',
+            pointerEvents: 'none'
+          }),
+
+          ...styles.menu,
+
+          ...MenuProps?.style
+        }}
+
+        className={classNames([
+          'onesy-Select-Menu',
+          noOptions && 'onesy-Select-Menu-no-options',
+
+          MenuProps?.className
+        ])}
+      />
     </Line>
   );
 };
