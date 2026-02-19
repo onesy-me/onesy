@@ -5,7 +5,10 @@ import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-re
 import TypeElement from '../Type';
 import SurfaceElement from '../Surface';
 import { ISurface } from '../Surface/Surface';
-import { staticClassName } from '../utils';
+import { staticClassName, valueBreakpoints } from '../utils';
+import { IValueBreakpoints } from '../types';
+import { is, unique } from '@onesy/utils';
+import useMediaQuery from '../useMediaQuery';
 
 const useStyle = styleMethod(theme => ({
   root: {
@@ -141,13 +144,17 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-Divider' });
 
+export type IDividerAlignment = 'start' | 'center' | 'end';
+
+export type IDividerOrientation = 'vertical' | 'horizontal';
+
 export type IDivider = ISurface & {
   inset?: boolean;
   middle?: boolean;
   padding?: number;
   opacity?: number;
-  alignment?: 'start' | 'center' | 'end';
-  orientation?: 'vertical' | 'horizontal';
+  alignment?: IDividerAlignment | Partial<Record<IValueBreakpoints, IDividerAlignment>>;
+  orientation?: IDividerOrientation | Partial<Record<IValueBreakpoints, IDividerOrientation>>;
   flex?: boolean;
 };
 
@@ -161,6 +168,8 @@ const Divider: React.FC<IDivider> = props_ => {
   const Surface = theme?.elements?.Surface || SurfaceElement;
 
   const {
+    ref,
+
     tonal = true,
     color = 'inverted',
 
@@ -168,8 +177,8 @@ const Divider: React.FC<IDivider> = props_ => {
     middle,
     padding,
     opacity = theme.palette.visual_contrast.default.opacity.divider,
-    alignment = 'center',
-    orientation = 'horizontal',
+    alignment: alignmentProps,
+    orientation: orientationProps,
     flex,
 
     Component: Component_ = 'hr',
@@ -193,6 +202,30 @@ const Divider: React.FC<IDivider> = props_ => {
     end: {}
   };
 
+  const refs = {
+    root: React.useRef<any>(undefined)
+  };
+
+  const keys = React.useMemo(() => {
+    const result = [];
+    const items = [alignmentProps, orientationProps];
+
+    items.forEach(item => {
+      if (is('object', item)) Object.keys(item).filter(key => theme.breakpoints.media[key]).forEach(key => result.push(key));
+    });
+
+    return unique(result);
+  }, [alignmentProps, orientationProps]);
+
+  const breakpoints = {};
+
+  keys.forEach(key => {
+    breakpoints[key] = useMediaQuery(theme.breakpoints.media[key], { element: refs.root.current });
+  });
+
+  const alignment = valueBreakpoints(alignmentProps, 'center', breakpoints, theme);
+  const orientation = valueBreakpoints(orientationProps, 'horizontal', breakpoints, theme);
+
   let Component = Component_;
 
   if (children && Component === 'hr') Component = 'div';
@@ -203,6 +236,15 @@ const Divider: React.FC<IDivider> = props_ => {
 
   return (
     <Surface
+      ref={item => {
+        if (ref) {
+          if (is('function', ref)) ref(item);
+          else ref.current = item;
+        }
+
+        refs.root.current = item;
+      }}
+
       version='filled'
 
       tonal={tonal}
