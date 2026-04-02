@@ -49,7 +49,7 @@
   "dependencies": {
     "@onesy/date": "^1.0.2",
     "@onesy/errors": "^1.0.0",
-    "@onesy/log": "^1.0.1",
+    "@onesy/log": "^1.0.3",
     "@onesy/models": "^1.0.0",
     "@onesy/subscription": "^1.0.0",
     "@onesy/utils": "^1.0.20",
