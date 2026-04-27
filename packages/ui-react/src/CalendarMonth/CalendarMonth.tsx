@@ -112,6 +112,18 @@ const useStyle = style(theme => ({
     borderRadius: theme.methods.shape.radius.value(40, 'px')
   },
 
+  dayRangeStart: {
+    '&::before': {
+      display: 'none'
+    }
+  },
+
+  dayRangeEnd: {
+    '&::after': {
+      display: 'none'
+    }
+  },
+
   dayStartSelection: {
     '&::after': {
       content: '""',
@@ -124,11 +136,11 @@ const useStyle = style(theme => ({
     },
 
     '&.onesy-enabled::after': {
-      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 85 : 25})`
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 85 : 40})`
     },
 
     '&.onesy-disabled::after': {
-      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 90 : 20})`
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 90 : 35})`
     }
   },
 
@@ -145,11 +157,11 @@ const useStyle = style(theme => ({
     },
 
     '&.onesy-enabled::before': {
-      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 85 : 25})`
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 85 : 40})`
     },
 
     '&.onesy-disabled::before': {
-      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 90 : 20})`
+      backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 90 : 35})`
     }
   },
 
@@ -267,6 +279,7 @@ export type ICalendarMonth = Omit<ILine, 'onChange'> & {
   onChangeCalendar?: (value: TCalendarMonthCalendar) => any;
 
   colorSelected?: IColor;
+  colorSelectedFuture?: IColor;
 
   selected?: Array<[OnesyDate, OnesyDate?]>;
 
@@ -309,6 +322,14 @@ export interface IDay {
     same: boolean;
     selected: boolean;
     outside: boolean;
+
+    value: {
+      has: boolean;
+      start: boolean;
+      between: boolean;
+      end: boolean;
+      same: boolean;
+    };
 
     fromSelected: boolean;
 
@@ -357,6 +378,8 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
     onChangeCalendar,
 
     colorSelected = 'secondary',
+
+    colorSelectedFuture = props.colorSelected || 'secondary',
 
     selected,
 
@@ -597,14 +620,15 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
     const dayMonthStart = format(startOf(day, 'month'), 'DD-MM-YYYY');
     const dayMonthEnd = format(endOf(day, 'month'), 'DD-MM-YYYY');
 
-    const result = {
-      start: false,
-      between: false,
-      end: false,
+    const result: any = {
       same: false,
       selected: false,
       outside: false,
       fromSelected: false,
+
+      value: {
+        has: false
+      },
 
       monthStart: dayMonthStart === dayFormat,
       monthEnd: dayMonthEnd === dayFormat,
@@ -613,10 +637,10 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
       selectedSame: value.filter((item: any) => item.year === day.year && item.month === day.month && item.day === day.day).length === 2,
     };
 
-    // value
-    for (const itemRange of rangesValue) {
-      const rangeStartDay = format(new OnesyDate(itemRange.start), 'DD-MM-YYYY');
-      const rangeEndDay = format(new OnesyDate(itemRange.end), 'DD-MM-YYYY');
+    // pre-selected
+    for (const itemSelectedRange of rangesSelected) {
+      const rangeStartDay = format(new OnesyDate(itemSelectedRange.start), 'DD-MM-YYYY');
+      const rangeEndDay = format(new OnesyDate(itemSelectedRange.end), 'DD-MM-YYYY');
 
       // start
       if (dayFormat === rangeStartDay) result.selected = result.start = true;
@@ -625,27 +649,7 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
       if (dayFormat === rangeEndDay) result.selected = result.end = true;
 
       // between
-      if (day.milliseconds >= itemRange.start && day.milliseconds <= itemRange.end) result.selected = result.between = true;
-
-      // same
-      result.same = result.start && result.end;
-
-      if (result.selected) return result;
-    }
-
-    // selected
-    for (const itemRange of rangesSelected) {
-      const rangeStartDay = format(new OnesyDate(itemRange.start), 'DD-MM-YYYY');
-      const rangeEndDay = format(new OnesyDate(itemRange.end), 'DD-MM-YYYY');
-
-      // start
-      if (dayFormat === rangeStartDay) result.selected = result.start = true;
-
-      // end
-      if (dayFormat === rangeEndDay) result.selected = result.end = true;
-
-      // between
-      if (day.milliseconds >= itemRange.start && day.milliseconds <= itemRange.end) result.selected = result.between = true;
+      if (day.milliseconds >= itemSelectedRange.start && day.milliseconds <= itemSelectedRange.end) result.selected = result.between = true;
 
       // same
       result.same = result.start && result.end;
@@ -653,11 +657,53 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
       if (result.selected) {
         result.fromSelected = true;
 
-        return result;
+        break;
       }
     }
 
-    result.outside = true;
+    // value
+    for (const itemValueRange of rangesValue) {
+      const rangeStartDay = format(new OnesyDate(itemValueRange.start), 'DD-MM-YYYY');
+      const rangeEndDay = format(new OnesyDate(itemValueRange.end), 'DD-MM-YYYY');
+
+      const resultValue: any = {};
+
+      // start
+      if (dayFormat === rangeStartDay) resultValue.selected = resultValue.start = true;
+
+      // end
+      if (dayFormat === rangeEndDay) resultValue.selected = resultValue.end = true;
+
+      // between
+      if (day.milliseconds >= itemValueRange.start && day.milliseconds <= itemValueRange.end) resultValue.selected = resultValue.between = true;
+
+      // same
+      resultValue.same = resultValue.start && resultValue.end;
+
+      // value selected as well
+      if (resultValue.selected) {
+        result.value = {
+          has: true,
+          ...resultValue
+        };
+
+        result.selected = true;
+
+        if (result.between && resultValue.between) {
+          result.start = result.end = false;
+        }
+
+        if (!result.between) {
+          result.start = result.start ?? resultValue.start;
+          result.between = result.between ?? resultValue.between;
+          result.end = result.end ?? resultValue.end;
+
+          if (result.start && result.end) result.same = true;
+        }
+      }
+    }
+
+    if (!result.selected) result.outside = true;
 
     return result;
   };
@@ -781,6 +827,10 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
     return theme.palette.color[colorSelected] || theme.methods.color(colorSelected);
   }, [colorSelected, theme]);
 
+  const colorSelectedFutureTheme = React.useMemo(() => {
+    return theme.palette.color[colorSelectedFuture] || theme.methods.color(colorSelectedFuture);
+  }, [colorSelectedFuture, theme]);
+
   // noTransition
   refs.noTransition.current = monthSame;
 
@@ -887,18 +937,30 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
                         classes[`day_${day.in ? 'in' : 'out'}`],
                         (!day.in && !outside) && classes.day_out_no,
                         !propsDay.disabled ? 'onesy-enabled' : 'onesy-disabled',
-                        // same day
-                        // (day.is.same || ((day.is.monthStart || day.is.monthEnd) && day.is.selected)) && classes.dayStartEnd,
+                        day.is.between && 'onesy-is-between',
+                        day.is.same && 'onesy-is-same',
+                        day.is.start && 'onesy-is-start',
+                        day.is.end && 'onesy-is-end',
                         // start
                         (day.is.start && !isEdge) && classes.dayStart,
                         // end
                         (day.is.end && !isEdge) && classes.dayEnd,
+                        day.is.same && [
+                          day.is.start && classes.dayRangeStart,
+                          day.is.end && classes.dayRangeEnd
+                        ],
+                        day.is.start && !day.is.end && classes.dayRangeStart,
+                        day.is.end && !day.is.start && classes.dayRangeEnd,
                         // between
-                        day.is.between && !day.is.same && [!day.is.end && day.dayWeek !== 0 && !day.is.monthEnd && classes.dayStartSelection, !day.is.start && day.dayWeek !== 1 && !day.is.monthStart && classes.dayEndSelection]
+                        (day.is.between || day.is.start || day.is.end) && [
+                          day.dayWeek !== 0 && !day.is.monthEnd && classes.dayStartSelection,
+                          day.dayWeek !== 1 && !day.is.monthStart && classes.dayEndSelection
+                        ]
                       ])}
 
                       style={{
-                        '--onesy-color': theme.methods.palette.color.alpha(day.is.fromSelected ? colorSelectedTheme?.main : palette?.main, 1)
+                        'z-index': `${day.is.selected ? ((day.is.start || day.is.end) ? 3 : 2) : 1}`,
+                        '--onesy-color': theme.methods.palette.color.alpha(day.is.fromSelected ? (day.future ? colorSelectedFutureTheme : colorSelectedTheme)?.main : palette?.main, 1)
                       }}
                     >
                       {is('function', renderDay) ?
@@ -945,16 +1007,20 @@ const CalendarMonth: React.FC<ICalendarMonth> = props__ => {
                             ])}
 
                             style={{
+                              ...(day.is.value.has && {
+                                '--onesy-color': theme.methods.palette.color.alpha(palette?.main, 1)
+                              }),
+
                               ...(day.today ? {
                                 boxShadow: `inset 0px 0px 0px 1px ${palette[theme.palette.light ? 40 : 60]}`
                               } : undefined),
 
                               ...(day.is.selected && day.is.between && {
                                 color: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 10 : 98})`,
-                                backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? propsDay.disabled ? 90 : 85 : propsDay.disabled ? 20 : 25})`
+                                backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? propsDay.disabled ? 90 : 85 : propsDay.disabled ? 35 : 40})`
                               }),
 
-                              ...(day.is.selected && (day.is.start || day.is.end) && {
+                              ...(day.is.selected && (!day.is.value.has ? (day.is.start || day.is.end) : (day.is.value.start || day.is.value.end)) && {
                                 color: `hsl(from var(--onesy-color) h s ${theme.palette.light ? 98 : 10})`,
                                 backgroundColor: `hsl(from var(--onesy-color) h s ${theme.palette.light ? propsDay.disabled ? 40 : 50 : propsDay.disabled ? 60 : 70})`
                               }),
