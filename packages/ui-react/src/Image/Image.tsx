@@ -300,7 +300,7 @@ const Image: React.FC<IImage> = props_ => {
   }
   else if (rootIsImage && !noImage) {
     other.src = source;
-    other.atl = alt;
+    other.alt = alt;
     other.width = width;
     other.height = height;
     other.loading = loading;
