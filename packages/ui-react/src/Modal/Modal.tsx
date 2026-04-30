@@ -155,6 +155,7 @@ export type IModal = IBaseElement & {
 
   backgroundInvisible?: boolean;
 
+  onChange?: (open: boolean) => any;
   onClose?: TMethod;
 
   NoSurfaceProps?: IPropsAny;
@@ -214,6 +215,7 @@ const Modal: React.FC<IModal> = props_ => {
 
     backgroundInvisible,
 
+    onChange,
     onClose: onClose_,
 
     NoSurfaceProps,
@@ -326,6 +328,8 @@ const Modal: React.FC<IModal> = props_ => {
 
   const onExited = (value: any) => {
     setOpen(false);
+
+    if (is('function', onChange)) onChange(false);
 
     modal.close();
 
