@@ -3,6 +3,7 @@ import React from 'react';
 import { clamp, is } from '@onesy/utils';
 import { classNames, style as styleMethod, useOnesyTheme } from '@onesy/style-react';
 
+import IconMaterialSort from '@onesy/icons-material-rounded-react/IconMaterialSortW100';
 import IconMaterialArrowDownwardAlt from '@onesy/icons-material-rounded-react/IconMaterialArrowDownwardAltW100';
 
 import LineElement from '../Line';
@@ -138,7 +139,7 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-TableCell' });
 
-export type ITableCellSort = 'asc' | 'desc';
+export type ITableCellSort = 'asc' | 'desc' | null;
 
 export type ITableCell = IBaseElement & {
   sort?: boolean;
@@ -159,6 +160,7 @@ export type ITableCell = IBaseElement & {
   timeout?: number;
 
   IconArrow?: any;
+  IconIndifferent?: any;
 
   IconButtonSortProps?: any;
   TypeProps?: any;
@@ -193,10 +195,10 @@ const TableCell: React.FC<ITableCell> = props_ => {
     noWeight,
 
     sort,
-    sortedBy: sortedBy_,
+    sortedBy: sortedByProps,
     sortedByDefault,
 
-    onSort: onSort_,
+    onSort: onSortProps,
 
     sticky,
     stickyPosition = 'left',
@@ -207,6 +209,7 @@ const TableCell: React.FC<ITableCell> = props_ => {
     disabled,
 
     IconArrow = IconMaterialArrowDownwardAlt,
+    IconIndifferent = IconMaterialSort,
 
     IconButtonSortProps,
     TypeProps,
@@ -275,8 +278,8 @@ const TableCell: React.FC<ITableCell> = props_ => {
   }, [windowWidth]);
 
   React.useEffect(() => {
-    if (sortedBy !== sortedBy_) setSortedBy(sortedBy_);
-  }, [sortedBy_]);
+    if (sortedByProps !== undefined && sortedBy !== sortedByProps) setSortedBy(sortedByProps);
+  }, [sortedByProps]);
 
   const onStickyMove = () => {
     const offsetNew = refs.root.current.offsetLeft;
@@ -363,7 +366,7 @@ const TableCell: React.FC<ITableCell> = props_ => {
       return valueNew;
     });
 
-    if (is('function', onSort_)) onSort_!(valueNew);
+    if (is('function', onSortProps)) onSortProps!(valueNew);
   };
 
   const stylesOther: any = {};
@@ -373,6 +376,8 @@ const TableCell: React.FC<ITableCell> = props_ => {
 
     if (position === 'head') stylesOther.zIndex = '17';
   }
+
+  const isSorting = ['asc', 'desc'].includes(sortedBy);
 
   return (
     <Component
@@ -418,7 +423,7 @@ const TableCell: React.FC<ITableCell> = props_ => {
       {...other}
     >
       <Line
-        gap={0}
+        gap={0.5}
 
         direction='row'
 
@@ -462,7 +467,7 @@ const TableCell: React.FC<ITableCell> = props_ => {
 
         {sort && (
           <Tooltip
-            name={sortedBy === 'asc' ? l('Ascending') : l('Descending')}
+            name={!isSorting ? l('Sort') : (sortedBy === 'asc' ? l('Ascending') : l('Descending'))}
           >
             <IconButton
               size='small'
@@ -477,10 +482,10 @@ const TableCell: React.FC<ITableCell> = props_ => {
                 ],
 
                 classes.sortedBy,
-                classes[`sortedBy_${sortedBy}`]
+                isSorting && classes[`sortedBy_${sortedBy}`]
               ])}
             >
-              <IconArrow />
+              {isSorting ? <IconArrow /> : <IconIndifferent />}
             </IconButton>
           </Tooltip>
         )}
