@@ -361,7 +361,7 @@ const TableCell: React.FC<ITableCell> = props_ => {
     let valueNew: any;
 
     setSortedBy(item => {
-      valueNew = item === 'asc' ? 'desc' : 'asc';
+      valueNew = (!item || item === 'asc') ? 'desc' : 'asc';
 
       return valueNew;
     });
