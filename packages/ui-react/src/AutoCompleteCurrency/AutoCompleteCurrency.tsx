@@ -12,6 +12,8 @@ const useStyle = styleMethod(theme => ({
   }
 }), { name: 'onesy-AutoCompleteCurrency' });
 
+// "l('US Dollar') l('Canadian Dollar') l('Euro') l('United Arab Emirates Dirham') l('Afghan Afghani') l('Albanian Lek') l('Armenian Dram') l('Argentine Peso') l('Australian Dollar') l('Azerbaijani Manat') l('Bosnia-Herzegovina Convertible Mark') l('Bangladeshi Taka') l('Bulgarian Lev') l('Bahraini Dinar') l('Burundian Franc') l('Brunei Dollar') l('Bolivian Boliviano') l('Brazilian Real') l('Botswanan Pula') l('Belarusian Ruble') l('Belize Dollar') l('Congolese Franc') l('Swiss Franc') l('Chilean Peso') l('Chinese Yuan') l('Colombian Peso') l('Costa Rican Colón') l('Cape Verdean Escudo') l('Czech Republic Koruna') l('Djiboutian Franc') l('Danish Krone') l('Dominican Peso') l('Algerian Dinar') l('Estonian Kroon') l('Egyptian Pound') l('Eritrean Nakfa') l('Ethiopian Birr') l('British Pound Sterling') l('Georgian Lari') l('Ghanaian Cedi') l('Guinean Franc') l('Guatemalan Quetzal') l('Hong Kong Dollar') l('Honduran Lempira') l('Croatian Kuna') l('Hungarian Forint') l('Indonesian Rupiah') l('Israeli New Sheqel') l('Indian Rupee') l('Iraqi Dinar') l('Iranian Rial') l('Icelandic Króna') l('Jamaican Dollar') l('Jordanian Dinar') l('Japanese Yen') l('Kenyan Shilling') l('Cambodian Riel') l('Comorian Franc') l('South Korean Won') l('Kuwaiti Dinar') l('Kazakhstani Tenge') l('Lebanese Pound') l('Sri Lankan Rupee') l('Lithuanian Litas') l('Latvian Lats') l('Libyan Dinar') l('Moroccan Dirham') l('Moldovan Leu') l('Malagasy Ariary') l('Macedonian Denar') l('Myanma Kyat') l('Macanese Pataca') l('Mauritian Rupee') l('Mexican Peso') l('Malaysian Ringgit') l('Mozambican Metical') l('Namibian Dollar') l('Nigerian Naira') l('Nicaraguan Córdoba') l('Norwegian Krone') l('Nepalese Rupee') l('New Zealand Dollar') l('Omani Rial') l('Panamanian Balboa') l('Peruvian Nuevo Sol') l('Philippine Peso') l('Pakistani Rupee') l('Polish Zloty') l('Paraguayan Guarani') l('Qatari Rial') l('Romanian Leu') l('Serbian Dinar') l('Russian Ruble') l('Rwandan Franc') l('Saudi Riyal') l('Sudanese Pound') l('Swedish Krona') l('Singapore Dollar') l('Somali Shilling') l('Syrian Pound') l('Thai Baht') l('Tunisian Dinar') l('Tongan Paʻanga') l('Turkish Lira') l('Trinidad and Tobago Dollar') l('New Taiwan Dollar') l('Tanzanian Shilling') l('Ukrainian Hryvnia') l('Ugandan Shilling') l('Uruguayan Peso') l('Uzbekistan Som') l('Venezuelan Bolívar') l('Vietnamese Dong') l('CFA Franc BEAC') l('CFA Franc BCEAO') l('Yemeni Rial') l('South African Rand') l('Zambian Kwacha')"
+
 export type IAutoCompleteCurrency = IAutoComplete & {
 
 };
@@ -53,7 +55,7 @@ const AutoCompleteCurrency: React.FC<IAutoCompleteCurrency> = props_ => {
       { name: l('No currency'), value: '' },
 
       ...currencies.map(item => ({
-        name: `${item.code} ${item.name} (${item.symbol})`,
+        name: `${item.code} ${l(item.name)} (${item.symbol})`,
         value: item.code
       }))
     ];
