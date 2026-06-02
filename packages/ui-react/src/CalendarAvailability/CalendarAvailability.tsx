@@ -392,7 +392,7 @@ const CalendarAvailability: React.FC<ICalendarAvailability> = props_ => {
       { name: l('On a break'), value: 'break' },
       { name: l('Scheduled'), value: 'pending' },
       { name: l('Rescheduled'), value: 'rescheduled' },
-      { name: l('Cancelled'), value: 'canceled' },
+      { name: l('Canceled'), value: 'canceled' },
       { name: l('Other'), value: 'other' }
     ];
   }, []);
