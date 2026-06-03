@@ -628,7 +628,7 @@ const Tabs: React.FC<ITabs> = props_ => {
 
               activateOnFocus: item.props.activateOnFocus !== undefined ? item.props.activateOnFocus : activateOnFocus,
 
-              active: is('function', refs.isActive.current) ? refs.isActive.current(value, valueItem) : value === valueItem,
+              active: item.props.active !== undefined ? item.props.active : (is('function', refs.isActive.current) ? refs.isActive.current(value, valueItem) : value === valueItem),
 
               onClick: (event: React.MouseEvent<any>) => {
                 onChange(valueItem, index);
