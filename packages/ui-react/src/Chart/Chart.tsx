@@ -824,13 +824,13 @@ const Chart: React.FC<IChart> = props_ => {
   const minMax = React.useMemo(() => {
     const values_ = {
       min: {
-        x: minX || Number.MAX_SAFE_INTEGER,
-        y: minY || Number.MAX_SAFE_INTEGER
+        x: minX ?? Number.MAX_SAFE_INTEGER,
+        y: minY ?? Number.MAX_SAFE_INTEGER
       },
 
       max: {
-        x: maxX || Number.MIN_SAFE_INTEGER,
-        y: maxY || Number.MIN_SAFE_INTEGER
+        x: maxX ?? Number.MIN_SAFE_INTEGER,
+        y: maxY ?? Number.MIN_SAFE_INTEGER
       }
     };
 
