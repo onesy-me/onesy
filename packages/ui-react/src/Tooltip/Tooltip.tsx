@@ -531,6 +531,8 @@ const Tooltip: React.FC<ITooltip> = props_ => {
     if (position === 'bottom') return 'top';
   };
 
+  const isIcon = children && !Array.isArray(children) && children?.type?.name?.startsWith('IconMaterial') || children?.type?.displayName?.startsWith('OnesyIconMaterial');
+
   return (
     <Append
       open={open}
@@ -751,7 +753,15 @@ const Tooltip: React.FC<ITooltip> = props_ => {
           onMouseLeave,
 
           onTouchStart,
-          onTouchEnd
+          onTouchEnd,
+
+          style: {
+            ...isIcon && {
+              pointerEvents: 'auto'
+            },
+
+            ...children.props?.style
+          }
         })
       )}
     </Append>
